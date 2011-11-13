@@ -40,6 +40,7 @@ class BuildObject extends ContextObject{
     }
 
     function loaddata(s,id,oid,b){
+        trace("set statue state", s, id, oid, b);
         state = s;
         bid = id;
         objid = oid;
@@ -47,9 +48,11 @@ class BuildObject extends ContextObject{
         lefttime = 1;
         state2 = 0;
         sfilter = null;
+        trace("set begintime lefttime", begintime, lefttime);
     }
 
     function paintNode(){
+        trace("paint statue");
         contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
         contextNode.setevent(EVENT_HITTEST,objSelected);
         contextNode.setevent(EVENT_MOVE,objSelected);
@@ -62,6 +65,7 @@ class BuildObject extends ContextObject{
     }
 
     function objSelected(n,e,p,x,y,ps){
+        trace("touch object", n, e, p, x, y, ps);
         if(contextLevel >= global.currentLevel && lock ==0 ){
             if(global.context[0].flagbuild!=0){
                 return baseobj.objSelected(n,e,p,x,y);
@@ -191,6 +195,7 @@ class BuildObject extends ContextObject{
     var isAnimating;
 
     function setstate(){
+        trace("set view of new state of statue");
         if(contextNode == null){
             return 0;
         }

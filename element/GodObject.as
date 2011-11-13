@@ -83,6 +83,17 @@ class GodObject extends BuildObject{
                 ani = contextNode.addsprite("01.png").anchor(50,100).pos(ps[0]/2,-66+ps[1]);
                 ani.addaction(sequence(repeat(animate(1000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),ttime[objid]),callfunc(removeself)));
             //}
+            var grounds = global.context[0].grounds;
+            for(i = 0; i < len(grounds); i++)
+            {
+                if(grounds[i].objectid >= 600 && grounds[i].objectid <= 700)
+                {
+                    grounds[i].objnode.begintime = global.timer.currenttime;
+                    grounds[i].objnode.objid = (gtime[objid]+3599)/3600;
+                    grounds[i].objnode.state = 3;
+                    grounds[i].objnode.setstate();
+                }
+            }
         }
         lock = 0;
         setstate();

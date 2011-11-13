@@ -862,6 +862,7 @@ class CastlePage extends ContextObject{
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
+        trace("buildings ", objs);
         var btime = data.get("time");
         var cityid = data.get("city_id",0);
         grounds = new Array(0);
@@ -907,35 +908,43 @@ class CastlePage extends ContextObject{
             }
         }
         for(var x=0;x<len(objs);x++){
+            trace("init building", objs[x]);
             var objdata = objs[x].split(",");
             if(len(objdata)!=5||objdata[4]==""){
                 continue;
             }
-            var gid = int(objdata[0]);
+            var gid = int(objdata[0]);//grid
             if(gid == -1)
                 continue;
-            var g = int(objdata[1]);
+            var g = int(objdata[1]);//kind
             i = g/RECTMAX;
             var j = g%RECTMAX;
             var s = new NormalObject(gid,i,j);
             s.init(s,global);
             grounds.append(s);
             if(gid>0&&gid<500||gid>=600){
-                var objid = int(objdata[2]);
-                var time = int(objdata[3]);
-                var finish = int(objdata[4]);
+                var objid = int(objdata[2]);//product object
+                var time = int(objdata[3]);//product time
+                var finish = int(objdata[4]);//building finish yet
+                //0 unfin 1 unfin 2 finbuild  3 work 4 fin 
                 if(time == 0){
                     var state = 2;
+                    trace("fin building ");
                 }
                 else if(finish == 0){
+                    trace("in building");
                     state = 1;
                 }
-                else state = 3;
+                else{
+                    state = 3;
+                    trace("in working");
+                }
                 if(gid>=1000&&gid<1100){
                     state=0;
                     objid=-1;
                     time=btime;
                     global.http.addrequest(0,"getPets",["uid","cid"],[cuid,ccid],self,"getmypets");
+                    trace("pets information");
                 }
                 else if(gid<600){
                     if(gid==424&&ccard[18]==0){
@@ -1121,8 +1130,10 @@ class CastlePage extends ContextObject{
 
     var statestr="";
     function getidback(r,rc,c){
+        trace("init data model", r, rc, c);
         if(rc != 0){
             var data = json_loads(c);
+            trace("data is", data);
             global.userid = data.get("id",0);
             cuid = global.userid;
             if(global.userid == 0){

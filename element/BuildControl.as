@@ -82,7 +82,7 @@ class BuildControl extends ContextObject{
                 back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
                 var namelabel = back.addlabel(global.getname(placeObj.buildcontextname,placeObj.objectid%100),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state == 1 || place.state == 3){
-                    if(mode!=4 || place.state!=3){
+                    if((mode!=4&&mode!=6) || place.state!=3 ){
                         buttons.append(0);
                     }
                     timelabel = back.addlabel("",null,20).anchor(100,50).pos(197,158).color(0,0,0,100);
@@ -106,7 +106,10 @@ class BuildControl extends ContextObject{
                                 namelabel.text(global.getname("stone",place.objid));
                             }
                         }
-                        else{
+                        else if(mode == 6){
+                            labelstr = "生产城防中";
+                        }
+                        else {
                             labelstr = "祝福中";
                             buttons.append(-10);
                         }
