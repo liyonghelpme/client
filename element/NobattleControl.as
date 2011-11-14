@@ -115,7 +115,7 @@ class NobattleControl extends ContextObject{
     
     function addprotect(r,rc,c){
         if(rc!=0&&json_loads(c).get("id",1)!=0){
-            var times=[7200,43200,86400];
+            var times=[7200,28800,86400];
             global.user.setValue("nobattletime",global.timer.timec2s(global.timer.currenttime+times[selecttab]));
             if(caesars[selecttab]<0){
                 global.user.changeValue("caesars",caesars[selecttab]);
