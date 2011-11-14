@@ -25,7 +25,6 @@ class StatueObject extends BuildObject{
 
     override function objectgettime(){
         var GOD_TIME = [3600, 6*3600, 24*3600];
-        trace("get statue time");
         if(state == 1) return STATUE_TIME[bid%100];
         else if(state == 3) return GOD_TIME[objid];
         else return 0;
@@ -53,6 +52,8 @@ class StatueObject extends BuildObject{
             state = 2;
             var res = json_loads(c);
             global.user.changeValue("citydefence", res.get("defenceadd"));
+            global.user.changeValueAnimate(baseobj, "citydefence", res.get("defenceadd"), 0);
+            trace("set animate ");
         }
         lock = 0;
         setstate();

@@ -92,6 +92,10 @@ class GodObject extends BuildObject{
                     grounds[i].objnode.objid = (gtime[objid]+3599)/3600;
                     grounds[i].objnode.state = 3;
                     grounds[i].objnode.setstate();
+                    ps = grounds[i].contextNode.size();
+                    trace("add action to statue", ps);
+                    ani = grounds[i].contextNode.addsprite("01.png").anchor(50, 100).pos(ps[0]/2, grounds[i].contextid*33-ps[1]/2);
+                    ani.addaction(sequence(repeat(animate(1000, "rain1.png", "rain2.png", "rain3.png", "rain4.png", "rain5.png", "rain6.png"), ttime[objid]), callfunc(removeself)));
                 }
             }
         }
