@@ -29,30 +29,6 @@ class BuildControl extends ContextObject{
 
     function paintNode(){
         buttons = new Array(0);
-        /*
-        var posi = placeObj.getNode().pos();
-        var sizeid = placeObj.contextid;
-        posi[0] = posi[0] + 2*sizeid;
-        //posi[1] = posi[1] - (33*sizeid+1)/2;
-
-        if(posi[0] < 107) posi[0] = 150;
-        else if(posi[0] > PAGE_W-107) posi[0] = PAGE_W-107;
-        if(posi[1] < 183) posi[1] = 183;
-        else if(posi[1] > PAGE_H-93) posi[1] = PAGE_H-93;
-        var tpos = global.context[0].getNode().node2world(posi[0],posi[1]);
-        var toff = [0,0];
-        if(tpos[0] < 107)
-            toff[0] = 107-tpos[0];
-        else if(tpos[0] > 800-107)
-            toff[0] = 800-107-tpos[0];
-
-        if(tpos[1] < 183)
-            toff[1] = 183-tpos[1];
-        else if(tpos[1] > 480-93)
-            toff[1] = 480-93-tpos[1];
-
-        global.context[0].nodeMove(toff[0],toff[1]);
-        contextNode = sprite().pos(tpos[0]+toff[0],tpos[1]+toff[1]);*/
         contextNode = sprite().pos(400,240);
         
         var beginx;
