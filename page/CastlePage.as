@@ -1009,7 +1009,7 @@ class CastlePage extends ContextObject{
             ccard[18]=5;
         }
         if(int(sysinfo(21))>=5){
-            //system_gc();
+            system_gc();
         }
         c_invoke(delayresume,200,null);
     }
@@ -1427,7 +1427,7 @@ class CastlePage extends ContextObject{
                 addcmd(bdict);
             }
             if(int(sysinfo(21))>=5){
-                //system_gc();
+                system_gc();
             }
             c_invoke(delayresume,2000,null);
         }
