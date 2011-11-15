@@ -89,7 +89,7 @@ class GodObject extends BuildObject{
                 if(grounds[i].objectid >= 600 && grounds[i].objectid <= 700 && grounds[i].objnode.state == 2)
                 {
                     grounds[i].objnode.begintime = global.timer.currenttime;
-                    grounds[i].objnode.objid = (gtime[objid]+3599)/3600;
+                    grounds[i].objnode.objid = objid;
                     grounds[i].objnode.state = 3;
                     grounds[i].objnode.setstate();
                     ps = grounds[i].contextNode.size();
