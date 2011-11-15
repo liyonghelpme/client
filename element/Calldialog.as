@@ -2,7 +2,7 @@ class Calldialog extends ContextObject{
     var info;
     var element;
     var dialog;
-    var goddes=["丰收之神施展神迹能提升农作物产量","人口之神施展神迹能提升招募人口数量","财富之神施展神迹能提升店铺税收","战争之神施展神迹能提升士兵战斗力"];
+    var goddes=["丰收之神施展神迹能提升农作物产量","人口之神施展神迹能提升招募人口数量","财富之神施展神迹能提升店铺税收","战争之神施展神迹能提升士兵战斗力", "兽神施展神迹期间会增加城堡防御力"];
     function Calldialog(i){
         contextname = "dialog-build-callgod";
         contextNode = null;
