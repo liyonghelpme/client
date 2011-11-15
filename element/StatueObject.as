@@ -51,7 +51,6 @@ class StatueObject extends BuildObject{
         if(rc != 0){
             state = 2;
             var res = json_loads(c);
-            global.user.changeValue("citydefence", res.get("defenceadd"));
             global.user.changeValueAnimate(baseobj, "citydefence", res.get("defenceadd"), 0);
             trace("set animate ");
         }
