@@ -177,7 +177,8 @@ class ObjControl extends ContextObject{
         contextNode.addaction(moveto(300,pagepos,240));
         global.lastpage[6] = pagepos;
     }
-
+    //statue no <= 5 first 5 is defence power
+    //after that is population
     function beginbuild(n,e,param,x,y){
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
@@ -185,7 +186,7 @@ class ObjControl extends ContextObject{
                 lastx = n.pos()[0]+x+contextNode.pos()[0]-400;
                 flagmove = 0;
                 global.context[1].nodemove(n,EVENT_HITTEST,0,lastx,240);
-                if(param>1){
+                if(param>5){
                     n.texture("dialogelement2l1.png");
                 }
                 else{
@@ -200,7 +201,7 @@ class ObjControl extends ContextObject{
                     else if(time()-lasttime > 1000)
                         flagmove =1;
                     if(flagmove==1){
-                        if(param>1){
+                        if(param>5){
                             n.texture("dialogelement2l.png");
                         }
                         else{
