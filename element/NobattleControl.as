@@ -63,8 +63,11 @@ class NobattleControl extends ContextObject{
             element.addlabel("殖民地："+str(global.user.getValue("wonnum")),null,16).color(0,0,0,100).pos(58,59);
             for(var i=0;i<3;i++){
                 var tab=element.addsprite("nobattletab0.png",filter).pos(14+i*126,135);
-                tab.setevent(EVENT_UNTOUCH,choosetab,i);
-                tab.setevent(EVENT_TOUCH,choosetab,i);
+                if(inAttack == 0)
+                {
+                    tab.setevent(EVENT_UNTOUCH,choosetab,i);
+                    tab.setevent(EVENT_TOUCH,choosetab,i);
+                }
                 tab.addlabel(timestr[i],null,20).anchor(50,50).pos(63,30).color(0,0,0,100);
                 if(caesars[i]<0){
                     tab.addsprite("caesars_big.png",filter).anchor(50,50).pos(43,90);
