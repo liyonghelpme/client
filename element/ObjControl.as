@@ -180,13 +180,14 @@ class ObjControl extends ContextObject{
     //statue no <= 5 first 5 is defence power
     //after that is population
     function beginbuild(n,e,param,x,y){
+        var statueNum = 5;
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
                 lasttime = time();
                 lastx = n.pos()[0]+x+contextNode.pos()[0]-400;
                 flagmove = 0;
                 global.context[1].nodemove(n,EVENT_HITTEST,0,lastx,240);
-                if(param>5){
+                if(param>statueNum){
                     n.texture("dialogelement2l1.png");
                 }
                 else{
@@ -201,7 +202,7 @@ class ObjControl extends ContextObject{
                     else if(time()-lasttime > 1000)
                         flagmove =1;
                     if(flagmove==1){
-                        if(param>5){
+                        if(param>statueNum){
                             n.texture("dialogelement2l.png");
                         }
                         else{
@@ -216,7 +217,7 @@ class ObjControl extends ContextObject{
                 }
             }
             else if(e == EVENT_UNTOUCH){
-                if(param>1){
+                if(param>statueNum){
                     n.texture("dialogelement2l.png");
                 }
                 else{
@@ -228,7 +229,7 @@ class ObjControl extends ContextObject{
                         global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
-                        if(param>5){
+                        if(param>statueNum){
                             global.popContext(objcontext[param]);
                         }
                         else{

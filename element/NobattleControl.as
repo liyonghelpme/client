@@ -27,12 +27,27 @@ class NobattleControl extends ContextObject{
             var filter = NORMAL;
             timelabel=null;
             element.addsprite("selfandroid.jpg").pos(38,92);
+            var inAttack = 0;
+            for(var bn = 0; bn < len(global.battlelist); bn++)
+            {
+                if(global.battlelist[bn][2] == 1)
+                {
+                    inAttack = 1;
+                    break;
+                }
+            }
+
             if(endtime>global.timer.currenttime){
                 filter = GRAY;
                 element.addlabel("保护中",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
                 timelabel = element.addlabel("",null,20).pos(199,105).color(0,0,0,100);
                 global.timer.addlistener(endtime,self);
                 timerefresh();
+            }
+            else if(inAttack)
+            {
+                filter = GRAY;
+                element.addlabel("进攻中不得开启保护模式",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
             }
             else{
                 element.addlabel("开启保护模式",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
