@@ -10,7 +10,7 @@ class ImageController{
     "egg-3-3.png","egg-3-4.png","egg-3-5.png","egg-3-6.png","egg-3-7.png","egg-3.png","nestbuildingback.png","nestbuildingfiller.png","nestdialogelement.jpg","nestpetfiller0.png",
     "nestpetfiller1.png","nestpetfiller2.png","nestpettab1.png","nesttab0.png","opbutton19.png","opbutton21.png","opbutton23.png","opbutton25.png","petrenamepic.jpg","build1000.png",
     "egg-1-0.png","egg-1-1.png","egg-1-2.png","egg-1-3.png","egg-1.png","egg-2-0.png","egg-2-1.png","egg-2-2.png","egg-2-3.png","egg-2.png","egg-3-0.png","egg-3-1.png",
-    "blessing1.png","blessing2.png","blessing3.png","blessing4.png","blessing5.png","blessing6.png","blessing7.png","blessing8.png","blessing9.png","opbutton17.png", "loading-winter.jpg"];
+    "blessing1.png","blessing2.png","blessing3.png","blessing4.png","blessing5.png","blessing6.png","blessing7.png","blessing8.png","blessing9.png","opbutton17.png", "loading-winter.jpg", "loadingbar2.png"];
     const images2 = [
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
 "wartabperson.png","adddefence.png","attack_head.png","attackbeginelement.png", 
