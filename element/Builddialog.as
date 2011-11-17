@@ -43,6 +43,7 @@ class Builddialog extends ContextObject{
             buildtabs.append(tab);
         }
         //if(global.flagshownew==1){
+            buildtabs[1].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
             buildtabs[4].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
          //   buildtabs[5].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         //}

@@ -1,6 +1,6 @@
 class ImageController{
     var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png",
-    "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png",
+    "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",
     "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","soldier3_1.png","soldier3_2.png","soldier3_3.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
     "medalcard0_1.png","medalcard0_2.png","medalcard0_3.png","medalcard0_4.png","medalcard0_5.png","medalcard1_1.png","medalcard1_2.png","medalcard1_3.png","medalcard1_4.png","medalcard1_5.png",

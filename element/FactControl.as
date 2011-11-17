@@ -6,10 +6,11 @@ class FactControl extends ContextObject{
     var lastx;
     var flagmove;
     var buildable;
-    const objsmax = 10;
-    const objcontext = [3327,2300,2303,2306,2309,2315,2312,2318,2324,2321];
-    const objlevel = [7,1,4,6,8,14,15,21,24,29];
+    var objsmax = 11;
+    var objcontext = [2330,3327,2300,2303,2306,2309,2315,2312,2318,2324,2321];
+    var objlevel = [35, 7,1,4,6,8,14,15,21,24,29];
     function FactControl(){
+        objsmax = len(objcontext);
         contextname ="element-build-fact";
         contextNode = null;
         objs = new Array(10);
@@ -174,7 +175,7 @@ class FactControl extends ContextObject{
                     if(buildable[param].get("ok")==0){
                         global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
-                    else{
+                    else{//ok to build groundid
                         global.popContext(objcontext[param]);
                     }
                 }
