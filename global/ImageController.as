@@ -4,7 +4,7 @@ class ImageController{
     "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","soldier3_1.png","soldier3_2.png","soldier3_3.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
     "medalcard0_1.png","medalcard0_2.png","medalcard0_3.png","medalcard0_4.png","medalcard0_5.png","medalcard1_1.png","medalcard1_2.png","medalcard1_3.png","medalcard1_4.png","medalcard1_5.png",
-    "medalnob.png","wtask1.png","wtask2.png","wtask3.png","wtask4.png","medalbutton2.png","medalIcon2.png","loadingwarback.jpg","warchoosebuttonback0.png","warchoosebuttonback1.png",
+    "medalnob.png","wtask1.png","wtask2.png","wtask3.png","wtask4.png","medalbutton2.png","medalIcon2.png","loadingwarback.jpg", "loading-winter.jpg","loadingbar2.png","warchoosebuttonback0.png","warchoosebuttonback1.png",
     "dialogback_rank.png","friend_rank.png","rankcell4.jpg","rankcell5.jpg","rankcell6.jpg","rankcell7.jpg","rankleft.png","warchoose0.png","warchoose1.png","warchoose2.png",
     "rankright.png","ranktab0_0.png","ranktab0_1.png","ranktab1_0.png","ranktab1_1.png","ranktype0_0.png","ranktype0_1.png","ranktype1_0.png","ranktype1_1.png","egg-3-2.png",
     "egg-3-3.png","egg-3-4.png","egg-3-5.png","egg-3-6.png","egg-3-7.png","egg-3.png","nestbuildingback.png","nestbuildingfiller.png","nestdialogelement.jpg","nestpetfiller0.png",
