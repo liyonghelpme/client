@@ -13,8 +13,8 @@ class FactControl extends ContextObject{
         objsmax = len(objcontext);
         contextname ="element-build-fact";
         contextNode = null;
-        objs = new Array(10);
-        buildable = new Array(10);
+        objs = new Array(11);
+        buildable = new Array(11);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
