@@ -194,7 +194,7 @@ class Warchatdialog{
         else{
             var data = json_loads(c);
             var ms = data.get("messages");
-            trace(ms);
+           // trace(ms);
             if(len(ms)>0){
                 items.extend(ms);
                 lasttime=ms[len(ms)-1][3];

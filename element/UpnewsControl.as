@@ -117,7 +117,7 @@ class UpnewsControl extends ContextObject{
     }
     
     function addnewsitems(r,rc,c){
-        trace("getnews",rc,c);
+       // trace("getnews",rc,c);
         lock=0;
         if(rc!=0){
             var data = json_loads(c);

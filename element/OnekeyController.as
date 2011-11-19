@@ -239,10 +239,10 @@ class OnekeyController extends ContextObject{
                 global.popContext(null);
                 global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,-6);
                 var istask = 0;
-                trace(global.task.tasktype,global.task.taskreq);
+               // trace(global.task.tasktype,global.task.taskreq);
                 if(global.task.tasktype==0&&global.task.taskreq=="planting"){
                     var pair=["object_id",objid,"type",0];
-                    trace(pair,global.task.taskpair);
+                //    trace(pair,global.task.taskpair);
                     istask=1;
                     for(i=0;i<len(global.task.taskpair);i++){
                         if(pair[i]!=global.task.taskpair[i]){

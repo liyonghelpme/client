@@ -36,7 +36,7 @@ class RoomObject extends BuildObject{
     }
 
     function state4over(r,rc,c){
-trace("finipop",rc,c);
+//trace("finipop",rc,c);
         if(rc != 0){
             state = 2;
             state2 = 0;
@@ -71,7 +71,7 @@ trace("finipop",rc,c);
     }
 
     function state2over(r,rc,c){
-trace("population",rc,c);
+//trace("population",rc,c);
         if(rc != 0 && json_loads(c).get("id",1)==1){
             global.user.changeValueAnimate(baseobj,"food", - ROOM_FOOD[bid],0);
             state = 3;
