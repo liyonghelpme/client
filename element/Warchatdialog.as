@@ -12,6 +12,7 @@ class Warchatdialog{
     var contextNode;
     var web;
     var exportbutton;
+    var global;
     function Warchatdialog(userid,n,mapid){
         uid=userid;
         name=n;
@@ -52,14 +53,14 @@ class Warchatdialog{
         var ul = len(st);
         l = l-(ul - l)/6;
         if(t==""){
-            items.append([0,"系统","内容为空，无法发送！",0]);
+            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_empty"),0]);
             
             if(contextNode!=null){
                 refreshlist();
             }
         }
         else if(l>60){
-            items.append([0,"系统","字数超过30个汉字，无法发送！",0]);
+            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_wordlimit"),0]);
             if(contextNode!=null){
                 refreshlist();
             }
@@ -72,7 +73,7 @@ class Warchatdialog{
     
     function sendover(r,rc,c){
         if(rc==0){
-            items.append([0,"系统","超时了，你的消息发送失败",0]);
+            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_nettimeout"),0]);
             if(contextNode!=null){
                 refreshlist();
             }
@@ -194,7 +195,7 @@ class Warchatdialog{
         else{
             var data = json_loads(c);
             var ms = data.get("messages");
-           // trace(ms);
+            trace(ms);
             if(len(ms)>0){
                 items.extend(ms);
                 lasttime=ms[len(ms)-1][3];

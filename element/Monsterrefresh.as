@@ -19,7 +19,7 @@ class Monsterrefresh extends ContextObject{
         if(element == null){
             element = node();
             var d=element.addsprite("monsterrefresh.jpg").pos(20,35);
-            d.addlabel("哈哈哈，"+global.user.getValue("cityname")+"领主，献出你的粮食吧，否则你们将永不得安宁！",null,20,FONT_NORMAL,200,0,ALIGN_LEFT).pos(15,17).color(0,0,0,100);
+            d.addlabel(global.getFormatString("monster_refresh_format",["[NAME]",global.user.getValue("cityname")]),null,20,FONT_NORMAL,200,0,ALIGN_LEFT).pos(15,17).color(0,0,0,100);
             d.addsprite("dialogelement_help.png").scale(150).pos(190,97).setevent(EVENT_UNTOUCH,gotohelp,"robfood");
             element.addsprite("monster_"+str(maxlevel)+"_1.png").pos(280,65).scale(110);
         }
@@ -34,6 +34,6 @@ class Monsterrefresh extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(1,"确定");
+        dialog.usedefaultbutton(1,global.getStaticString("ok"));
     }
 }

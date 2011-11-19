@@ -361,8 +361,8 @@ class WarControl extends ContextObject{
                         contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                     }
                 }
-            setbutton(1,356,407,"分享").setevent(EVENT_UNTOUCH,closedialog,1);
-            setbutton(2,498,407,"确定").setevent(EVENT_UNTOUCH,closedialog,null);
+            setbutton(1,356,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,closedialog,1);
+            setbutton(2,498,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog,null);
             if(flaganimate==1){
                 element = global.dialogscreen.addsprite("warback.jpg").anchor(50,50).pos(400,240).color(0,0,0,0);
                 contextNode.visible(0);
@@ -404,7 +404,7 @@ class WarControl extends ContextObject{
                     l=rightuser.addlabel("+"+str(lgpower),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
                     l.addaction(sequence(delaytime(1500),itintto(100,100,0,100),moveby(2000,0,-200),tintto(2000,0,0,0,0)));
                     datadict.update("rightpower",datadict.get("rightpower")+lgpower);
-                    rightuser.addaction(sequence(delaytime(3500),callfunc(itext,"防御力："+str(datadict.get("rightpower")))));
+                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext,"防御力："+str(lgpower))));
                     for(rl=0;rl<3;rl++){
                         r=rightuser.addsprite("rain1.png").anchor(50,0).pos(60,40+rl*140);
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));

@@ -21,7 +21,7 @@ class NewsControl extends ContextObject{
         contextNode =node();
         contextNode.addsprite("pagenumback.png").anchor(50,50).pos(290,407);
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(290,407).color(0,0,0,100);
-        newspage = contextNode.addlabel("正在载入……",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+        newspage = contextNode.addlabel(global.getStaticString("loading_str"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(248,407).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(332,407).setevent(EVENT_UNTOUCH,choosePage,1);
@@ -71,29 +71,14 @@ class NewsControl extends ContextObject{
                     var item = items[i];
                     newspage.addsprite("dialogelement_newsflag.png").pos(54,83+i%PAGEITEMS*34);
                     var itemstr="";
-                    if(item[1] == 0){
-                        itemstr = "<b>"+global.getfriend(item[0]).get("name")+"<b>访问了你的领地";
-                    }
-                    else if(item[1] == 1){
-                        itemstr = "<b>"+global.getfriend(item[0]).get("name")+"<b>帮助你打理城堡";
-                    }
-                    else if(item[1] == 2){
-                        itemstr = "<b>"+global.getfriend(item[0]).get("name")+"<b>赠送了你礼物";
-                    }
-                    else if(item[1] == 3){
-                        itemstr = "你战胜了<b>"+global.getfriend(item[0]).get("name")+"<b>";
-                    }
-                    else if(item[1] == 4){
-                        itemstr = "<b>"+global.getfriend(item[0]).get("name")+"<b>战胜了你";
-                    }
-                    else if(item[1] == 5){
-                        itemstr = "<b>"+global.getfriend(item[0]).get("name")+"<b>帮助你打开宝箱";
+                    if(item[1] <= 6){
+                        itemstr = global.getFormatString("news_element"+str(item[1]),["[NAME]",global.getfriend(item[0]).get("name")]);
                     }
                     global.addtext(newspage,75,73+i%PAGEITEMS*34,itemstr,20);
                 }
             }
             else{
-                newspage.addlabel("还没有任何新闻哦！",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+                newspage.addlabel(global.getStaticString("news_nonews"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
             }
         }
     }

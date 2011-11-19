@@ -76,7 +76,11 @@ class SpeedattackControl extends ContextObject{
             contextNode.get(1).setevent(EVENT_UNTOUCH,null);
             trace(battledata);
             var edata = global.context[1].userdict.get(battledata[3]);
-            global.http.addrequest(1,"attackspeedup",["uid","enemy_id"],[global.userid,edata[5]],self,"speedbegin");
+            var eid = edata[1];
+            if(eid>=0){
+                eid=edata[5];
+            }
+            global.http.addrequest(1,"attackspeedup",["uid","enemy_id"],[global.userid,eid],self,"speedbegin");
         }
     }
     

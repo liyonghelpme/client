@@ -2,6 +2,7 @@ import element.AttackControl;
 import element.Attackbegindialog;
 import element.SpyControl;
 import element.Spyresult;
+import element.Spyresult2;
 import element.SpeedattackControl;
 
 class UserControl extends ContextObject{
@@ -34,10 +35,11 @@ class UserControl extends ContextObject{
         pn = global.context[1].placedict.get(gid/8).get(gid%8);
         var eudata = global.context[1].userdict.get(gid);
         mode = 0;
+        var i=0;
+        var ebindex=-1;
         if(eudata[8] != 1 || global.flagnew==1){
-            var ebindex = -1;
-            for(var i=0;i<len(global.battlelist);i++){
-                if(global.battlelist[i][2]==1&&global.battlelist[i][1] == eudata[0]){
+            for(i=0;i<len(global.battlelist);i++){
+                if(global.battlelist[i][2]==1&&global.battlelist[i][3] == eudata[3]){
                     ebindex = i;
                     ebdata = global.battlelist[i];
                     break;
@@ -71,29 +73,43 @@ class UserControl extends ContextObject{
         
         var board=contextNode.addsprite("mapuserboard"+str(eudata[1])+".png").anchor(100,50).pos(70,0);
         board.prepare();
-        if(eudata[1]==0){
+        if(eudata[1]<=0){
             board.texture("android.png");
         }
         else{
             board.texture("ipod.png");
         }
-        board.addsprite(avatar_url(int(eudata[0]))).pos(12,56).size(40,40);
-        board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
-        board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
-        board.addlabel(NOBNAME[eudata[2]*3+eudata[6]],null,18).pos(100,77).color(0,0,0,100);
+        if(eudata[0]=="0"){
+            board.addsprite("monsteravatar"+str(eudata[2])+".jpg").pos(12,56).size(40,40);
+            //board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
+            board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
+            board.addlabel(ENAME[eudata[2]],null,18).pos(100,77).color(0,0,0,100);
+        }
+        else{
+            board.addsprite(avatar_url(int(eudata[0]))).pos(12,56).size(40,40);
+            if(eudata[1]>=0){
+                board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
+                board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
+                board.addlabel(NOBNAME[eudata[2]*3+eudata[6]],null,18).pos(100,77).color(0,0,0,100);
+            }
+            else{
+                board.addlabel(global.getStaticString("master")+global.context[1].userdict.get(eudata[5])[4],null,18).pos(56,56).color(0,0,0,100);
+                board.addlabel(ENAME[eudata[2]]+global.getStaticString(":")+eudata[4],null,18).pos(56,77).color(0,0,0,100);
+            }
+        }
         l=board.addlabel("",null,18).pos(12,107).color(0,0,0,100);
         buttons = [14,15];
         if(mode == 3){
-            l.text("已征服");
+            l.text(global.getStaticString("user_occupy"));
         }
         else if(mode==0){
-            l.text("未征服");
+            l.text(global.getStaticString("user_notoccupy"));
             buttons = [12,13];
         }
         else{
             if(mode==2){
                 endtime = global.timer.times2c(eudata[7]);
-                l.text("保护中").color(0,0,67,100);
+                l.text(global.getStaticString("user_protected")).color(0,0,67,100);
                 timelabel = board.addlabel("",null,18).pos(197,107).anchor(100,0).color(0,0,0,100);
                 global.timer.addlistener(endtime,self);
                 timerefresh();
@@ -102,21 +118,28 @@ class UserControl extends ContextObject{
                 endtime = ebdata[0];
                 if(endtime<global.timer.currenttime){
                     buttons[1]=16;
-                    l.text("正在交战").color(75,0,0,100);
+                    l.text(global.getStaticString("user_fighting")).color(75,0,0,100);
                 }
                 else{
-                    buttons[1]=0;
-                    l.text("进攻中").color(75,0,0,100);
+                    if(eudata[1]>=0){
+                        buttons[1]=0;
+
+                    }
+                    else{
+                        buttons[0]=12;
+                        buttons[1]=18;
+                    }
+                    l.text(global.getStaticString("user_attacking")).color(75,0,0,100);
                     timelabel = board.addlabel("",null,18).pos(197,107).anchor(100,0).color(0,0,0,100);
                     global.timer.addlistener(endtime,self);
-                    timerefresh();
+                    timerefresh(); 
                 }
             }
         }
         
         for(var k=0;k<2;k++){
             var filter = NORMAL;
-            if(buttons[k]>=14){
+            if(buttons[k]>=14&&buttons[k]<18){
                 filter = GRAY;
             }
             var bt = contextNode.addsprite("buttontab0.png",filter).pos(65,-83+72*k);
@@ -128,14 +151,14 @@ class UserControl extends ContextObject{
     function buttonclicked(n,e,p){
         if(global.currentLevel == contextLevel){
             var filter = NORMAL;
-            if(buttons[p]>=14){
+            if(buttons[p]>=14&&buttons[p]<18){
                 filter = GRAY;
             }
             if(e==EVENT_TOUCH)
                 n.texture("buttontab1.png",filter);
             else{
                 n.texture("buttontab0.png",filter);
-                if(buttons[p]<14)
+                if(buttons[p]<14||buttons[p]>=18)
                     global.popContext(null);
                 if(buttons[p] == 12){
                     global.pushContext(null,new SpyControl(gid),NonAutoPop);
@@ -146,6 +169,25 @@ class UserControl extends ContextObject{
                 else if(buttons[p]==0){
                     global.pushContext(null,new SpeedattackControl(ebdata),NonAutoPop);
                 }
+                else if(buttons[p]==18){
+                    global.pushContext(self,new Warningdialog([global.getStaticString("attack_cancel"),1,1]),NonAutoPop);
+                }
+            }
+        }
+    }
+    
+    function reloadNode(re){
+        global.http.addrequest(1,"withdrawEmpty",["uid", "enemy_id"],[global.userid,ebdata[6]],self,"cancelattack");
+    }
+    
+    function useaction(p,rc,c){
+        if(p=="cancelattack"){
+            var data=json_loads(c);
+            if(data.get("id")!=0){
+                global.battlelist.remove(ebdata);
+                global.soldiers[0]=global.soldiers[0]+ebdata[4];
+                global.soldiers[1]=global.soldiers[1]+ebdata[5];
+                global.context[1].refreshmap(1);
             }
         }
     }

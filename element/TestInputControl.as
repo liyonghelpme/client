@@ -16,7 +16,7 @@ class TestInputControl extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("renamepic.jpg").pos(17,42);
-            element.addlabel("请输入帝国名称：",null,20).pos(136,85).color(0,0,0,100);
+            element.addlabel(global.getStaticString("text_empirename"),null,20).pos(136,85).color(0,0,0,100);
             //element.addsprite("renameelement.jpg").pos(136,110);
             web = v_create(V_INPUT_VIEW,333,222,236,60);
             v_root().addview(web);
@@ -32,7 +32,7 @@ class TestInputControl extends ContextObject{
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
         dialog.settitle("renametitle.png");
-        dialog.usedefaultbutton(2,["修改","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("change"),global.getStaticString("cancel")]);
         if(global.flagnew == 1){
             contextNode.get(1).setevent(EVENT_UNTOUCH,null);
         }
@@ -48,12 +48,12 @@ class TestInputControl extends ContextObject{
             var ul = len(st);
             l = l-(ul - l)/6;
             if(l>14){
-                warning.text("限7个汉字或者14个英文字符！");
+                warning.text(global.getFormatString("text_wordlimit_format",["[NUM]","7"]));
                 lock=0;
                 return 0;
             }
-            if(t==""|| t == "我的帝国" || t==global.user.getValue("cityname")){
-                warning.text("不能改成这个名字！");
+            if(t==""|| t == DEFAULT_NAME || t==global.user.getValue("cityname")){
+                warning.text(global.getStaticString("text_cannotset"));
                 lock = 0;
                 return 0;
             }
@@ -83,7 +83,7 @@ class TestInputControl extends ContextObject{
             }
         }
         else{
-            warning.text("抱歉，因网络原因本次改名失败！");
+            warning.text(global.getStaticString("text_nettimeout"));
         }
         lock = 0;
     }

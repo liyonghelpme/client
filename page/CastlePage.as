@@ -210,7 +210,11 @@ class CastlePage extends ContextObject{
     }
     
     function opensendmsg(){
-        global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
+        if(cpid==0){
+            global.pushContext(null,new Warningdialog(["圈子置顶帖已经恢复啦！凯撒留言功能关闭，如果有建议或是反馈可以去圈子的反馈板块留言哦，熊哥会第一时间解决的！感谢支持！",null,6]),NonAutoPop);
+        }
+        else
+            global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     
     function initialMenu(){
@@ -276,8 +280,8 @@ class CastlePage extends ContextObject{
         topmenu.add(global.wartask.enternode.pos(50,330));
         menu.add(box.boxbutton);
         box.init(box,global);
-        global.user.setValue("godtime",[-1,-1,-1,-1,-1,-1]);
-        global.user.setValue("godlevel",[-1,-1,-1,-1,-1,-1]);
+        global.user.setValue("godtime",[-1,-1,-1,-1,-1]);
+        global.user.setValue("godlevel",[-1,-1,-1,-1,-1]);
     }
     var leftbuttonnum;
     var rightbuttonnum;
@@ -569,7 +573,7 @@ class CastlePage extends ContextObject{
                 rightmenu.visible(1);
                 topmenu.visible(1);
                 for(var i=0;i<len(grounds);i++){
-                    if(grounds[i].objectid >0&& grounds[i].objectid<500 || grounds[i].objectid >= 600 && grounds[i].objectid <= 700 )
+                    if(grounds[i].objectid >0&& grounds[i].objectid<500)
                         grounds[i].objnode.stateNode.visible(global.system.flagnotice);
                 }
                 nodeMove(lastcenter[0]-ctpos[0],lastcenter[1]-ctpos[1]);
@@ -862,7 +866,6 @@ class CastlePage extends ContextObject{
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
-        //trace("buildings ", objs);
         var btime = data.get("time");
         var cityid = data.get("city_id",0);
         grounds = new Array(0);
@@ -908,43 +911,35 @@ class CastlePage extends ContextObject{
             }
         }
         for(var x=0;x<len(objs);x++){
-            //trace("init building", objs[x]);
             var objdata = objs[x].split(",");
             if(len(objdata)!=5||objdata[4]==""){
                 continue;
             }
-            var gid = int(objdata[0]);//grid
+            var gid = int(objdata[0]);
             if(gid == -1)
                 continue;
-            var g = int(objdata[1]);//kind
+            var g = int(objdata[1]);
             i = g/RECTMAX;
             var j = g%RECTMAX;
             var s = new NormalObject(gid,i,j);
             s.init(s,global);
             grounds.append(s);
             if(gid>0&&gid<500||gid>=600){
-                var objid = int(objdata[2]);//product object
-                var time = int(objdata[3]);//product time
-                var finish = int(objdata[4]);//building finish yet
-                //0 unfin 1 unfin 2 finbuild  3 work 4 fin 
+                var objid = int(objdata[2]);
+                var time = int(objdata[3]);
+                var finish = int(objdata[4]);
                 if(time == 0){
                     var state = 2;
-                    trace("fin building ");
                 }
                 else if(finish == 0){
-                    trace("in building");
                     state = 1;
                 }
-                else{
-                    state = 3;
-                    trace("in working");
-                }
+                else state = 3;
                 if(gid>=1000&&gid<1100){
                     state=0;
                     objid=-1;
                     time=btime;
                     global.http.addrequest(0,"getPets",["uid","cid"],[cuid,ccid],self,"getmypets");
-                    trace("pets information");
                 }
                 else if(gid<600){
                     if(gid==424&&ccard[18]==0){
@@ -1130,10 +1125,8 @@ class CastlePage extends ContextObject{
 
     var statestr="";
     function getidback(r,rc,c){
-        trace("init data model", r, rc, c);
         if(rc != 0){
             var data = json_loads(c);
-            trace("data is", data);
             global.userid = data.get("id",0);
             cuid = global.userid;
             if(global.userid == 0){
@@ -1439,23 +1432,41 @@ class CastlePage extends ContextObject{
     function getbattlelist(r,rc,c){
         if(rc==1){
             var data=json_loads(c);
+            trace(data);
             //global.battlelist.clear();
             var blist = [];
             for(var i=0;i<len(global.battlelist);i++){
-                blist.append(global.battlelist[i][1]+"-"+str(global.battlelist[i][2]));
+                if(global.battlelist[i][6]<0){
+                    blist.append(global.battlelist[i][1]+"-"+str(-global.battlelist[i][6]));
+                }
+                else{
+                    blist.append(global.battlelist[i][1]+"-"+str(global.battlelist[i][2]));
+                }
             }
             var alist = data.get("attacklist");
             var length = len(alist);
             for(i=0;i<length;i++){
                 if(blist.index(alist[i][0]+"-1")==-1)
-                    global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],1,alist[i][5],alist[i][2],alist[i][3]]);
+                    global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],1,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             //TODO alist[i][4]是用户类型
             alist = data.get("defencelist");
             length =len(alist);
             for(i=0;i<length;i++){
                 if(blist.index(alist[i][0]+"-0")==-1)
-                    global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],0,alist[i][5],alist[i][2],alist[i][3]]);
+                    global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],0,alist[i][5],alist[i][2],alist[i][3],0]);
+            }
+            alist = data.get("emptyAtt");
+            length =len(alist);
+            for(i=0;i<length;i++){
+                if(blist.index(alist[i][0]+"-"+str(alist[i][1]))==-1)
+                    global.battlelist.append([global.timer.times2c(alist[i][2]),alist[i][0],1,alist[i][6],alist[i][3],alist[i][4],-alist[i][1]]);
+            }
+            alist = data.get("emptyDef");
+            length =len(alist);
+            for(i=0;i<length;i++){
+                if(blist.index(alist[i][0]+"-"+str(alist[i][1]))==-1)
+                    global.battlelist.append([global.timer.times2c(alist[i][2]),alist[i][0],0,alist[i][6],alist[i][3],alist[i][4],-alist[i][1]]);
             }
         }
     }
@@ -1494,8 +1505,11 @@ class CastlePage extends ContextObject{
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
             else{
-                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
+                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==2){
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
+                }
+                else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
+                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
                 }
             }
             global.user.flaginit = 0;
@@ -1644,6 +1658,29 @@ class CastlePage extends ContextObject{
                     }
                 }
                 global.user.setValue("warrecordlist",alllist);
+                var alist = data.get("emptyResult");
+                for(i=0;i<len(alist);i++){
+                    if(alist[i][1]==0){
+                        alist.pop(i);
+                        i--;
+                    }
+                    else{
+                        var leftpower = alist[i][3]+alist[i][4]+alist[i][5];
+                        var leftgodpower = alist[i][6];
+                        var rightpower = alist[i][11]+alist[i][12]+alist[i][13];
+                        var rightgodpower = alist[i][14];
+                        var leftppyid = alist[i][2];
+                        var leftwin = alist[i][1];
+                        if(alist[i][2]!=global.userid){
+                            alllist.append([alist[i][0],0,alist[i][1],alist[i][11]+alist[i][12]-alist[i][15]-alist[i][16],alist[i][11]+alist[i][12]+alist[i][13],alist[i][3]+alist[i][4]+alist[i][5],str(alist[i][20])+"!"+str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23]),
+                            alist[i][2],alist[i][15],alist[i][16],alist[i][9],alist[i][10],alist[i][7],alist[i][8],alist[i][14],alist[i][6],"0"]);
+                        }
+                        else{
+                            alllist.append([alist[i][0],1,alist[i][1],alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],alist[i][3]+alist[i][4]+alist[i][5],alist[i][11]+alist[i][12]+alist[i][13],str(alist[i][20])+"!"+str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23]),
+                            alist[i][17],alist[i][7],alist[i][8],alist[i][18],alist[i][19],alist[i][15],alist[i][16],alist[i][6],alist[i][14],"0"]);
+                        }
+                    }
+                }
                 if(len(alllist)>0){
                     
                         var bdict = dict();
@@ -1668,6 +1705,10 @@ class CastlePage extends ContextObject{
                 global.user.setValue("caesars",data.get("cae",global.user.getValue("caesars")));
                 global.soldiers[0] = data.get("inf",global.soldiers[0]);
                 global.soldiers[1] = data.get("cav",global.soldiers[1]);
+                if(warpage.inite==1){
+                    var list = data.get("empty");
+                    warpage.loadempty(list);
+                }
             }
         }
     }
@@ -1728,7 +1769,6 @@ class CastlePage extends ContextObject{
             var cid=global.data.getSize(re);
             var posx = (ctpos[0]+2*ctpos[1])/62+cid/2;
             var posy = (-ctpos[0]+2*ctpos[1]-2*posx)/68+cid/2;
-            trace("cid",cid);
             if(posx<cid-1){
                 flagoff = 1;
                 posx = cid-1;

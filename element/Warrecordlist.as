@@ -65,7 +65,8 @@ class Warrecordlist extends ContextObject{
         for(var i=0;i<length;i++){
             items.append(null);
         }
-        pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
+        if(pagemax==0) pagemax=1;
     }
     
     function closedialog(node,event){
