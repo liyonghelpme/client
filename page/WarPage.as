@@ -297,36 +297,7 @@ trace("warinfo",rc,c);
 
 
     function addplace(x,y){
-        var s=sprite(getimage("warback.png"),ARGB_8888).size(1204,724).pos(1200*y,720*x);/*
-        if(x==-1||x==pn||y==-1||y==pn){
-            if(x==-1){
-                if(y==-1)
-                    s.addsprite("mapback-5.png",ARGB_8888).anchor(100,100).pos(1204,724).scale(100,100);
-                else if(y==pn)
-                    s.addsprite("mapback-5.png",ARGB_8888).anchor(100,100).pos(0,724).scale(-100,100);
-                else{
-                    s.addsprite("mapback-1.png",ARGB_8888).anchor(0,100).pos(0,724).scale(400,100);
-                }
-            }
-            else if(x==pn){
-                if(y==-1)
-                    s.addsprite("mapback-5.png",ARGB_8888).anchor(100,100).pos(1204,0).scale(100,-100);
-                else if(y==pn)
-                    s.addsprite("mapback-5.png",ARGB_8888).anchor(100,100).pos(1204,724).scale(-100,-100);
-                else{
-                    s.addsprite("mapback-2.png",ARGB_8888).anchor(100,0).pos(0,0).scale(-100,400);
-                }
-            }
-            else if(y==-1){
-                s.addsprite("mapback-2.png",ARGB_8888).anchor(100,0).pos(1204,0).scale(100,400);
-            }
-            else{
-                s.addsprite("mapback-1.png",ARGB_8888).anchor(0,100).pos(0,0).scale(400,-100);
-            }
-            baseNode.add(s);
-            placedict.update(10001+(x+1)*(pn+2)+y,s);
-            return 0;
-        }*/
+        var s=sprite(getimage("warback.png"),ARGB_8888).size(1204,724).pos(1200*y,720*x);
         var blockid=x*pn+y;
         baseNode.add(s,10000-blockid);
         placedict.update(blockid,s);
