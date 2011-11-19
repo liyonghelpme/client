@@ -862,7 +862,7 @@ class CastlePage extends ContextObject{
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
-        trace("buildings ", objs);
+        //trace("buildings ", objs);
         var btime = data.get("time");
         var cityid = data.get("city_id",0);
         grounds = new Array(0);
@@ -908,7 +908,7 @@ class CastlePage extends ContextObject{
             }
         }
         for(var x=0;x<len(objs);x++){
-            trace("init building", objs[x]);
+            //trace("init building", objs[x]);
             var objdata = objs[x].split(",");
             if(len(objdata)!=5||objdata[4]==""){
                 continue;
