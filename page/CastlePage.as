@@ -573,7 +573,7 @@ class CastlePage extends ContextObject{
                 rightmenu.visible(1);
                 topmenu.visible(1);
                 for(var i=0;i<len(grounds);i++){
-                    if(grounds[i].objectid >0&& grounds[i].objectid<500)
+                    if(grounds[i].objectid >0&& grounds[i].objectid<500 || grounds[i].objectid >= 600 && grounds[i].objectid <= 700 )
                         grounds[i].objnode.stateNode.visible(global.system.flagnotice);
                 }
                 nodeMove(lastcenter[0]-ctpos[0],lastcenter[1]-ctpos[1]);
