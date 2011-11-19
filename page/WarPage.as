@@ -41,6 +41,7 @@ class WarPage extends ContextObject{
     var subnobility;
     var warchat;
     var WS_MIN = -20;
+    var emptyCities;
     function WarPage(){
         contextname = "page-war";
         contextNode = null;
@@ -207,7 +208,12 @@ trace("warinfo",rc,c);
                 if(pn>1){
                     WS_MIN=-60;   
                 }
-                var list = data.get("list",[[887077,0,0,1,"linan",0,0]]);
+                var list = data.get("list");
+                emptyCities = dict();
+                for(var emp  = 0; emp < len(list); emp++)
+                {
+                    emptyCities.update(list[2], list[emp]);        
+                }
                 subnobility = data.get("subno",0);
                 global.user.setValue("nobility",nobility*3+subnobility);
                 global.user.setValue("nobattletime",data.get("protect"));
@@ -237,7 +243,11 @@ trace("warinfo",rc,c);
         var default1=["0",0,0,0,0,0,0,0,0];
         for(i=0;i<len(list);i++){
             var user=userdict.get(ugdict.get(list[i][1]),default1);
-            userdict.update(list[i][2],[user[0],-list[i][0],list[i][5],list[i][2],global.getEmptyName(list[i][2]),user[3],0,list[i][3],list[i][4],list[i][6]]);
+            var emptyData = [user[0],-list[i][0],list[i][5],list[i][2],global.getEmptyName(list[i][2]),user[3],0,list[i][3],list[i][4],list[i][6]]; 
+            trace("emptyData", list[i][2], emptyData);
+            //not agreement in data 
+            //gridid oid, -cid, lev, gid, emptyName of gid, user gid, inf, cav, last collect time 
+            userdict.update(list[i][2],emptyData);
         }
     }
 
@@ -264,7 +274,7 @@ trace("warinfo",rc,c);
         }
         if(m==0){
             flagn.texture("flagother.png").anchor(0,100).pos(117,125);
-            if(user[1]>-1&&user[8]==1 || user[1]<=-1&&user[5]==selfgid){
+            if(user[1]>-1&&user[8]==1 || user[1]==-1&&user[5]==selfgid){//self gid != 0
                 flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
             }
             else if(user[1]<=-1&&user[0]=="0"){
@@ -316,7 +326,17 @@ trace("warinfo",rc,c);
         for(var k=0;k<8;k++){
             var user = userdict.get(blockid*8+k,null);
             if(user!=null){
-                var em = sprite(getimage("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png")).anchor(50,50).pos(eplace[k]).scale(85);
+            //emptyCites cid, uid, gid, inf, cav, attribute, lasttime
+                var isemp = emptyCities.get(blockid*8+k, null);
+                var em;
+                if(isemp == null)
+                {
+                    em = sprite(getimage("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png")).anchor(50,50).pos(eplace[k]).scale(85);
+                }
+                else
+                {
+                    em = sprite(getimage("mapempirelv"+str((user[2]*3+4)/3)+".png")).anchor(50, 50).pos(eplace[k]).scale(85);
+                }
                 s.add(em,2,k);
                 var flagn = sprite(getimage("flagother.png")).anchor(0,100).pos(117,125);
                 em.add(flagn,2,2);
