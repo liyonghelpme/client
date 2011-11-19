@@ -280,8 +280,8 @@ class CastlePage extends ContextObject{
         topmenu.add(global.wartask.enternode.pos(50,330));
         menu.add(box.boxbutton);
         box.init(box,global);
-        global.user.setValue("godtime",[-1,-1,-1,-1,-1]);
-        global.user.setValue("godlevel",[-1,-1,-1,-1,-1]);
+        global.user.setValue("godtime",[-1,-1,-1,-1,-1,-1]);
+        global.user.setValue("godlevel",[-1,-1,-1,-1,-1,-1]);
     }
     var leftbuttonnum;
     var rightbuttonnum;
