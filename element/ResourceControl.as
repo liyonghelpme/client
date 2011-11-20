@@ -31,7 +31,7 @@ class ResourceControl extends ContextObject{
         contextNode.addlabel(global.getStaticString("stone")+global.getStaticString(":")+str(rc[3]*tc),null,18).pos(404,207).color(0,0,0,100);
         contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+global.timer.times2c(rdata[9])-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
         //contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+rdata[9]-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
-        //contextNode.addlabel("").pos(28,348).color(0,0,0,100);
+        contextNode.addlabel("注：驻扎在要塞的士兵，其战斗力将获得加成", null, 18).pos(28,348).color(0,0,0,100);
         contextNode.addsprite("help2.png").pos(489,342).setevent(EVENT_UNTOUCH,gotohelp,"fortress");
         var button;
         var ebindex=-1;
@@ -47,7 +47,7 @@ class ResourceControl extends ContextObject{
         }
         else{
             button=contextNode.addsprite("boxbutton1.png").pos(47,409).setevent(EVENT_UNTOUCH, quicksoldier,global.battlelist[ebindex]);
-            button.addlabel(global.getStaticString("quick"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+            button.addlabel(global.getStaticString("quickSendArmy"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         }
         button=contextNode.addsprite("boxbutton1.png").pos(210,409).setevent(EVENT_UNTOUCH,callbacksoldier,rdata);
         button.addlabel(global.getStaticString("minussoldier"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);

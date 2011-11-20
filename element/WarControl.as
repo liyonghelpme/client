@@ -212,7 +212,7 @@ class WarControl extends ContextObject{
         data.update(_self+"power",toInt(d[4]));
         data.update(_enemy+"power",toInt(d[5]));
         data.update(_self+"ppyid",ppy_userid());
-        data.update(_enemy+"ppyid",toInt(d[7]));
+        data.update(_enemy+"ppyid",toInt(d[7]));//other ppyid
         data.update(_self+"power2",toInt(d[8])+toInt(d[9]));
         data.update(_enemy+"power2",toInt(d[12])+toInt(d[13]));
         data.update(_self+"name",global.user.getValue("cityname"));
@@ -406,6 +406,7 @@ class WarControl extends ContextObject{
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
+
                 var mon = datadict.get("monster");
                 var noOwn = datadict.get("noOwner");
                 if(mon == 0 || noOwn == 0)
