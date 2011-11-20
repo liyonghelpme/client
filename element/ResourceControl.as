@@ -9,7 +9,7 @@ class ResourceControl extends ContextObject{
     var btime;
     var slabel;
     var timelabel;
-    const RESOUCE_PRODUCT=[[100,10,1,1],[200,20,2,2],[300,30,3,3],[400,40,4,4],[500,50,5,5],[600,60,6,6]];
+    const RESOUCE_PRODUCT=[[1000,10,1,1],[3000,30,3,3],[5000,50,5,5],[10000,100,10,10],[50000,500,50,50],[100000,1000,100,100]];
     function ResourceControl(g){
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
@@ -51,7 +51,10 @@ class ResourceControl extends ContextObject{
         }
         button=contextNode.addsprite("boxbutton1.png").pos(210,409).setevent(EVENT_UNTOUCH,callbacksoldier,rdata);
         button.addlabel(global.getStaticString("minussoldier"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
-        button=contextNode.addsprite("boxbutton1.png").pos(381,409).setevent(EVENT_UNTOUCH,callbackresource);
+        if(rc[0]*tc > 0)
+            button=contextNode.addsprite("boxbutton1.png").pos(381,409).setevent(EVENT_UNTOUCH,callbackresource);
+        else
+            button=contextNode.addsprite("boxbutton1.png", GRAY).pos(381,409);
         button.addlabel(global.getStaticString("getresource"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
     }
     

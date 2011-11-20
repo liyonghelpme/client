@@ -384,7 +384,7 @@ trace("warinfo",rc,c);
         var page=placedict.pop(key);
         destroynode(page);
     }
-
+    //reconstruct all object in map
     function refreshmap(flag){
         var bp = baseNode.world2node(0,0);
         bp[0] = (bp[0]+1200)/1200-1;
@@ -600,7 +600,8 @@ trace("warinfo",rc,c);
                     if(global.battlelist[i][2]==1){
                         u.texture("wartabperson_b.png");
                         trace(userdict.get(global.battlelist[i][3])[1]);
-                        if(userdict.get(global.battlelist[i][3])[1]>=0){
+                        if(int(userdict.get(global.battlelist[i][3])[0]) != ppy_userid())
+                        {
                             u.addlabel(global.getStaticString("state_attacking"),null,16).pos(50,25);
                         }
                         else{

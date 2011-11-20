@@ -380,7 +380,10 @@ class GlobalController{
     }
     
     function getEmptyName(gid){
-        return "二哥之城";
+        var firstName = ["天","地", "人", "月", "秦", "赵", "齐", "楚", "阳", "牙","风", "雷", "火", "水", "木", "金", "山", "音", "伊"];
+        var secondName = ["明", "暗", "井", "景", "静", "迟", "车", "龙", "紫", "念", "宁", "凝", "幻", "北", "西", "东", "南", "隐"];
+        var lastName = ["国", "城", "郡", "谷", "邦", "县", "寨", "洞", "府"];
+        return firstName[gid%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
     }
     
     function unlock(){

@@ -199,6 +199,7 @@ class UserControl extends ContextObject{
     function useaction(p,rc,c){
         if(p=="cancelattack"){
             var data=json_loads(c);
+            trace("cancelAttackEmpty", data, ebdata, global.battlelist);
             if(data.get("id")!=0){
                 global.battlelist.remove(ebdata);
                 global.soldiers[0]=global.soldiers[0]+ebdata[4];
