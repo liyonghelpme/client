@@ -52,6 +52,7 @@ class Warrecordlist extends ContextObject{
     }
     
     function getitem(index){
+        trace("warrecordcell", index);
         items[index] = sprite("warrecordcell.png").pos(290,80+index%PAGEITEMS*45);
         items[index].addsprite(avatar_url(int(datas[index][0]))).size(35,35).pos(14,4);
         items[index].addlabel(datas[index][1],null,24).anchor(0,50).pos(55,21).color(0,0,0,100);

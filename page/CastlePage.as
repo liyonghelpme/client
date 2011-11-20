@@ -1667,12 +1667,12 @@ class CastlePage extends ContextObject{
                         i--;
                     }
                     else{
-                        var leftpower = alist[i][3]+alist[i][4]+alist[i][5];
-                        var leftgodpower = alist[i][6];
-                        var rightpower = alist[i][11]+alist[i][12]+alist[i][13];
-                        var rightgodpower = alist[i][14];
-                        var leftppyid = alist[i][2];
-                        var leftwin = alist[i][1];
+                        //var leftpower = alist[i][3]+alist[i][4]+alist[i][5];
+                        //var leftgodpower = alist[i][6];
+                        //var rightpower = alist[i][11]+alist[i][12]+alist[i][13];
+                        //var rightgodpower = alist[i][14];
+                        //var leftppyid = alist[i][2];
+                        //var leftwin = alist[i][1];
                         //-1 I defence my EMpty
                         //-2 I attack otherEmpty
                         //I defence emptyCity  
