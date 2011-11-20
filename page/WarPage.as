@@ -210,9 +210,10 @@ trace("warinfo",rc,c);
                 }
                 var list = data.get("list");
                 emptyCities = dict();
+                global.emptyCitiesInGlo = emptyCities;
                 for(var emp  = 0; emp < len(list); emp++)
                 {
-                    emptyCities.update(list[2], list[emp]);        
+                    emptyCities.update(list[emp][2], list[emp]);        
                 }
                 subnobility = data.get("subno",0);
                 global.user.setValue("nobility",nobility*3+subnobility);

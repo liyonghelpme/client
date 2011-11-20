@@ -315,6 +315,7 @@ class DataController{
 
 
 class GlobalController{
+    var emptyCitiesInGlo = null;
     var self;
     var screen;
     var dialogscreen;

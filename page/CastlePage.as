@@ -1657,10 +1657,12 @@ class CastlePage extends ContextObject{
                         global.context[1].refreshlist();
                     }
                 }
+
                 global.user.setValue("warrecordlist",alllist);
                 var alist = data.get("emptyResult");
+                trace("emptyResult", alist);
                 for(i=0;i<len(alist);i++){
-                    if(alist[i][1]==0){
+                    if(alist[i][1]==2){//ignore sendArmy to myEmpty
                         alist.pop(i);
                         i--;
                     }
@@ -1671,16 +1673,31 @@ class CastlePage extends ContextObject{
                         var rightgodpower = alist[i][14];
                         var leftppyid = alist[i][2];
                         var leftwin = alist[i][1];
-                        if(alist[i][2]!=global.userid){
-                            alllist.append([alist[i][0],0,alist[i][1],alist[i][11]+alist[i][12]-alist[i][15]-alist[i][16],alist[i][11]+alist[i][12]+alist[i][13],alist[i][3]+alist[i][4]+alist[i][5],str(alist[i][20])+"!"+str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23]),
-                            alist[i][2],alist[i][15],alist[i][16],alist[i][9],alist[i][10],alist[i][7],alist[i][8],alist[i][14],alist[i][6],"0"]);
+                        //-1 I defence my EMpty
+                        //-2 I attack otherEmpty
+                        //I defence emptyCity  
+//eneid  att/def suc/fail
+//messageid
+                        if(alist[i][2]!=str(ppy_userid())){
+                            alllist.append([alist[i][0],0,alist[i][1],
+                            alist[i][11]+alist[i][12]-alist[i][15]-alist[i][16],
+                            alist[i][11]+alist[i][12]+alist[i][13],
+                            alist[i][3]+alist[i][4]+alist[i][5],
+                            str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),
+                            alist[i][2],alist[i][11],alist[i][12], alist[i][18],
+                            alist[i][10],alist[i][7],alist[i][8],alist[i][14],
+                            alist[i][6],-alist[i][19]-1, alist[i][17],alist[i][0]]);
                         }
                         else{
-                            alllist.append([alist[i][0],1,alist[i][1],alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],alist[i][3]+alist[i][4]+alist[i][5],alist[i][11]+alist[i][12]+alist[i][13],str(alist[i][20])+"!"+str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23]),
-                            alist[i][17],alist[i][7],alist[i][8],alist[i][18],alist[i][19],alist[i][15],alist[i][16],alist[i][6],alist[i][14],"0"]);
+                        //I attack EmptyCity
+                            alllist.append([alist[i][0],1,alist[i][1],alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],alist[i][3]+alist[i][4]+alist[i][5],alist[i][11]+alist[i][12]+alist[i][13],str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),
+                            alist[i][17],alist[i][7],alist[i][8], global.getEmptyName(alist[i][20]),
+                            alist[i][19],alist[i][15],alist[i][16],alist[i][6],
+                            alist[i][14],-alist[i][19]-1, alist[i][17],alist[i][0]]);
                         }
                     }
                 }
+                trace("alllist", alllist);
                 if(len(alllist)>0){
                     
                         var bdict = dict();

@@ -59,11 +59,32 @@ class Warrecordpage extends ContextObject{
         pagenum = p;
         pagetext.text(str(pagenum)+"/"+str(pagemax));
     }
-    
+    function toInt(data)
+    {
+        if(type(data) == type(""))
+            return int(data);
+        return data;
+    }
     function getitem(index){
-        items[index] = sprite("warrecordcell"+datas[index][1]+".jpg").pos(270,80+index%PAGEITEMS*51);
-        items[index].addsprite(avatar_url(int(datas[index][7]))).size(40,40).pos(10,6);
-        //items[index].addlabel(global.getdtimestr(datas[index][0]-global.timer.currenttime),null,24).anchor(50,50).pos(205,21).color(0,0,0,100);
+        //trace("warrecordcell", datas[index]);
+        items[index] = sprite("warrecordcell"+str(datas[index][1])+".jpg").pos(270,80+index%PAGEITEMS*51);
+        //attack normal people
+        var defdata =  toInt(datas[index][16]);
+        if(defdata >= 0)
+        {
+            items[index].addsprite(avatar_url(toInt(datas[index][7]))).size(40,40).pos(10,6);
+        }
+        //attack emptyCity
+        else
+        {
+            var level = -(defdata+1);//-1make sure level < 0
+            if(int(datas[index][17]) <= 0)//monster ppyid
+                items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
+            else//user own emptyCity
+                items[index].addsprite(avatar_url(toInt(datas[index][17]))).size(40,40).pos(10,6);
+
+
+        }
         items[index].addlabel(datas[index][10],null,18).pos(58,7).color(0,0,0,100);
         if(datas[index][0]==0){
             items[index].addlabel("该请求已处理",null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
@@ -76,10 +97,8 @@ class Warrecordpage extends ContextObject{
     }
     
     function receivegift(n,e,p){
-            var record = new WarControl(0);
-            record.init(record,global);
-            record.datadict = record.formatstringtodata(datas[p]);
-            record.flagresult = 1;
+        var record = new WarControl(0);
+        record.init(record,global);
         if(p>=0){
             record.flaganimate=1;
         }
@@ -87,7 +106,10 @@ class Warrecordpage extends ContextObject{
             record.flaganimate=0;
             p=-p-1;
         }
-            global.pushContext(null,record,NonAutoPop);
+        record.datadict = record.formatstringtodata(datas[p]);
+        record.flagresult = 1;
+
+        global.pushContext(null,record,NonAutoPop);
         datas[p][0]=0;
         items[p].removefromparent();
         contextNode.add(getitem(p));
@@ -102,10 +124,26 @@ class Warrecordpage extends ContextObject{
         contextNode.addaction(stop());
         contextNode.removefromparent();
         if(len(removelist)>0){
+            var removeEmpty = [];
+            for(var i = 0; i < len(removelist);)
+            {
+                var num = removelist[i];
+                if(len(datas[num]) > 17)//normal battleresult is length = 17
+                {
+                    removelist.pop(i);
+                    removeEmpty.append(datas[num][18]);
+                }
+                else
+                    i++;
+            }
             var removestr = json_dumps(removelist);
             global.http.addrequest(0,"removeRead",["uid","warList"],[global.userid,removestr],global.context[0],"nothing");
             global.user.changeValue("warrecordnum",-len(removelist));
             removelist.clear();
+            
+            removestr = json_dumps(removeEmpty);
+            global.http.addrequest(0, "removeEmptyResult", ["uid", "warList"], [global.userid, removestr], global.context[0], "nothing");
+            removeEmpty.clear();
         }
     }
 }

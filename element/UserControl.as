@@ -34,10 +34,20 @@ class UserControl extends ContextObject{
     function paintNode(){
         pn = global.context[1].placedict.get(gid/8).get(gid%8);
         var eudata = global.context[1].userdict.get(gid);
+        //warPage grid data
+        //normal
         mode = 0;
         var i=0;
         var ebindex=-1;
-        if(eudata[8] != 1 || global.flagnew==1){
+        //check if not occupy battle normal city
+        //emptyCity check just checkout battle exist yet 
+        //|| 
+        //what flagnew meaning?
+        //sendArmy to city
+        trace("OnCity", eudata, global.flagnew, global.battlelist);
+        if((eudata[8] != 1 && eudata[1]>=0)
+                || global.flagnew==1 
+                || (eudata[1]<0 && int(eudata[0]) != ppy_userid()) ){//emptyCity not mine
             for(i=0;i<len(global.battlelist);i++){
                 if(global.battlelist[i][2]==1&&global.battlelist[i][3] == eudata[3]){
                     ebindex = i;
@@ -45,13 +55,16 @@ class UserControl extends ContextObject{
                     break;
                 }
             }
+            //inbattlelist
             if(ebindex!=-1){
                 mode = 1;
             }
+            //endtime > current should finish now?
             else if(global.timer.times2c(eudata[7])>global.timer.currenttime){
                 mode=2;
             }
         }
+        //occupy mode = 3?
         else{
             mode=3;
         }
@@ -114,6 +127,7 @@ class UserControl extends ContextObject{
                 global.timer.addlistener(endtime,self);
                 timerefresh();
             }
+            //mode == 1 in battlelist
             else{
                 endtime = ebdata[0];
                 if(endtime<global.timer.currenttime){
@@ -126,7 +140,9 @@ class UserControl extends ContextObject{
 
                     }
                     else{
-                        buttons[0]=12;
+                        //disable spy 
+                        //buttons[0]=12;
+                        //withdraw soldiers
                         buttons[1]=18;
                     }
                     l.text(global.getStaticString("user_attacking")).color(75,0,0,100);
