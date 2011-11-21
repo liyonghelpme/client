@@ -1434,40 +1434,41 @@ class CastlePage extends ContextObject{
             var data=json_loads(c);
             trace(data);
             //global.battlelist.clear();
-            var blist = [];
+            var attackList = [];
+            var defenceList = [];
+            //endtime oid att/def gid inf cav -cid
             for(var i=0;i<len(global.battlelist);i++){
-                if(global.battlelist[i][6]<0){
-                    blist.append(global.battlelist[i][1]+"-"+str(-global.battlelist[i][6]));
-                }
-                else{
-                    blist.append(global.battlelist[i][1]+"-"+str(global.battlelist[i][2]));
-                }
+                if(global.battlelist[i][2] == 1)
+                    attackList.append(global.battlelist[i][3]);//attack gid
+                else //defence oid gid
+                    defenceList.append(global.battlelist[i][1]+"-"+str(global.battlelist[i][3]));
             }
             var alist = data.get("attacklist");
             var length = len(alist);
             for(i=0;i<length;i++){
-                if(blist.index(alist[i][0]+"-1")==-1)
+                if(attackList.index(alist[5])==-1)//attack other gid not same
                     global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],1,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             //TODO alist[i][4]是用户类型
             alist = data.get("defencelist");
             length =len(alist);
             for(i=0;i<length;i++){
-                if(blist.index(alist[i][0]+"-0")==-1)
+                if(defenceList.index(alist[i][0]+"-"+str(alist[5]))==-1)
                     global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],0,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             alist = data.get("emptyAtt");
             length =len(alist);
             for(i=0;i<length;i++){
-                if(blist.index(alist[i][0]+"-"+str(alist[i][1]))==-1)
+                if(attackList.index(alist[i][6])==-1)
                     global.battlelist.append([global.timer.times2c(alist[i][2]),alist[i][0],1,alist[i][6],alist[i][3],alist[i][4],-alist[i][1]]);
             }
             alist = data.get("emptyDef");
             length =len(alist);
             for(i=0;i<length;i++){
-                if(blist.index(alist[i][0]+"-"+str(alist[i][1]))==-1)
+                if(defenceList.index(alist[i][0]+"-"+str(alist[i][6]))==-1)
                     global.battlelist.append([global.timer.times2c(alist[i][2]),alist[i][0],0,alist[i][6],alist[i][3],alist[i][4],-alist[i][1]]);
             }
+            trace("battlelist", global.battlelist);
         }
     }
 

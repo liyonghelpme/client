@@ -29,7 +29,7 @@ class Spyresult2 extends ContextObject{
             element = node();
             element.addsprite("spyresultback2.jpg").anchor(50,0).pos(219,10);
             element.addlabel(global.getFormatString("spy_result_format",["[NUM]",str(data.get("dead",0)),"[WHO]",global.context[0].warpage.userdict.get(eid)[4]]),null,24,FONT_NORMAL,393,0,ALIGN_LEFT).pos(23,25).color(0,0,0,100);
-            element.addlabel(global.getStaticString("defence_power")+str(data.get("inf")+data.get("cav")),null,18).anchor(50,0).pos(219,121).color(0,0,0,100);
+            element.addlabel(global.getStaticString("emptyDefence")+str(data.get("inf")+data.get("cav")),null,18).anchor(50,0).pos(219,121).color(0,0,0,100);
             if(mode==0){
                 element.addlabel(global.getStaticString("spy_unknown"),null,18).anchor(50,0).pos(219,212).color(30,30,30,100);
             }

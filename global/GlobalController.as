@@ -206,7 +206,7 @@ const stringDict=dict([
 ["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
 ["money","银币"],["caesars","凯撒币"],["food","粮食"],["labor","空闲人口"],["person","人口"],["personmax","人口上限"],["stone","石头"],["wood","木材"],["caesar","凯撒"],
 ["share","分享"],["back","返回"],["change","修改"],["ok","确定"],["send","发送"],["cancel","取消"],["system","系统"],["devine","施展"],["retry","重试"],["help","帮忙"],["close","关闭"],["openbox","打开宝箱"],["askforhelp","求助好友"],
-["attack","攻打"],["defence_power","防御力："],["infpower","步兵战斗力"],["cavpower","骑兵战斗力"],["addsoldier","增兵"],["minussoldier","撤兵"],["getresource","运回资源"],["quick","加速"],["quickSendArmy", "增兵加速"],
+["attack","攻打"],["defence_power","防御力："],["emptyDefence", "未加成防御力"],["infpower","步兵战斗力"],["cavpower","骑兵战斗力"],["addsoldier","增兵"],["minussoldier","撤兵"],["getresource","运回资源"],["quick","加速"],["quickSendArmy", "增兵加速"],
 ["loading_str","正在载入，请稍候……"],["self","我"],
 ["request_done","该请求已处理"],
 ["friend_notload","抱歉，现在无法获得您的好友信息"],["friend_ally_notice","你可以访问好友和好友结盟，盟友会帮你战斗哦！"],["friend_invite","快来和我一起创造奇迹吧！"],["friend_invite_success","邀请成功！"],

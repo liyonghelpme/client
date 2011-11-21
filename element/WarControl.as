@@ -419,9 +419,9 @@ class WarControl extends ContextObject{
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
 
 
-                //if(mon == 0 || noOwn == 0)
-                //    rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
-                //else
+                if(mon == 0 || noOwn == 0)
+                    rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
+                else
                 {
                     var level = datadict.get("monLevel");
                     rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
