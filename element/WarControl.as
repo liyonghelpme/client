@@ -358,20 +358,31 @@ class WarControl extends ContextObject{
             contextNode.addlabel(global.getStaticString(6),null,20).pos(320,349).color(0,0,0,100);
             contextNode.addsprite("dialogelement_help.png").pos(463,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
             var offy=152;
-            if(datadict.get("leftwin") == datadict.get("leftself")){
-                infolabel.color(76,3,0,100);
-                if(rwd[0]!="0"){
-                    rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
-                    rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
-                    offy = 174;
+            var mon = datadict.get("monster");
+            var noOwn = datadict.get("noOwner");
+            if(mon == 0)
+            {
+                if(datadict.get("leftwin") == datadict.get("leftself")){
+                    infolabel.color(76,3,0,100);
+                    if(rwd[0]!="0"){
+                        rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
+                        rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
+                        offy = 174;
+                    }
+                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
+                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
                 }
-                rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
-                rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
+                else{
+                    infolabel.color(0,17,76,100);
+                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
+                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
+                }
             }
-            else{
+            else
+            {
                 infolabel.color(0,17,76,100);
                 rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
-                rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
+                rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
                 if(datadict.get("leftself")==1){
                     contextNode.addlabel("派出战斗力："+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
@@ -407,11 +418,10 @@ class WarControl extends ContextObject{
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
 
-                var mon = datadict.get("monster");
-                var noOwn = datadict.get("noOwner");
-                if(mon == 0 || noOwn == 0)
-                    rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
-                else
+
+                //if(mon == 0 || noOwn == 0)
+                //    rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
+                //else
                 {
                     var level = datadict.get("monLevel");
                     rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);

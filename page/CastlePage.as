@@ -1680,12 +1680,12 @@ class CastlePage extends ContextObject{
 //messageid
                         if(alist[i][2]!=str(ppy_userid())){
                             alllist.append(
-                            [alist[i][0],0,alist[i][1],
+                            [alist[i][0],0,1-alist[i][1],
                             alist[i][11]+alist[i][12]-alist[i][15]-alist[i][16],
                             alist[i][11]+alist[i][12]+alist[i][13],
                             alist[i][3]+alist[i][4]+alist[i][5],
                             str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),
-                            alist[i][2],alist[i][11],alist[i][12], alist[i][18],
+                            alist[i][2],alist[i][11],alist[i][12], alist[i][9],
                             alist[i][10],alist[i][7],alist[i][8],alist[i][14],
                             alist[i][6],-alist[i][19]-1, alist[i][17],alist[i][0]]);
                         }
@@ -1693,7 +1693,7 @@ class CastlePage extends ContextObject{
                         //I attack EmptyCity
                             alllist.append(
                             [alist[i][0],1,alist[i][1],
-                            alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],alist[i][3]+alist[i][4]+alist[i][5],
+                            alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],
                             alist[i][3]+alist[i][4]+alist[i][5],
                             alist[i][11]+alist[i][12]+alist[i][13],
                             str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),

@@ -18,6 +18,7 @@ class Warrecordlist extends ContextObject{
     }
 
     function paintNode(){
+        trace("paint Warrecord");
         contextNode = node();
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,384).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,384).setevent(EVENT_UNTOUCH,choosePage,-1);
