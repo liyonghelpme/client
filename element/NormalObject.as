@@ -116,7 +116,8 @@ class NormalObject extends ContextObject{
             objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
-                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544){
+                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544||objectid>=545&&objectid<=546){
+                    trace("draw light", objectid);
                     contextNode.add(sprite("object"+str(objectid-500)+"_l.png").anchor(0,100).pos(0,33*contextid+1),1,1);
                 }
             }
