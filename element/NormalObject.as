@@ -140,9 +140,9 @@ class NormalObject extends ContextObject{
         else if(contextid == 9){
             contextNode.size(530,283).anchor(50,100);
             objnode = sprite("empire1.png",ALPHA_TOUCH).anchor(50,100).pos(269,283).size(524,398);
-            contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
+                contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
             }
             else{
                 objnode.color(100,100,100,100);

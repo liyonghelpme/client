@@ -18,6 +18,7 @@ class Warrecordlist extends ContextObject{
     }
 
     function paintNode(){
+        trace("paint Warrecord");
         contextNode = node();
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,384).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,384).setevent(EVENT_UNTOUCH,choosePage,-1);
@@ -52,6 +53,7 @@ class Warrecordlist extends ContextObject{
     }
     
     function getitem(index){
+        trace("warrecordcell", index);
         items[index] = sprite("warrecordcell.png").pos(290,80+index%PAGEITEMS*45);
         items[index].addsprite(avatar_url(int(datas[index][0]))).size(35,35).pos(14,4);
         items[index].addlabel(datas[index][1],null,24).anchor(0,50).pos(55,21).color(0,0,0,100);
@@ -65,7 +67,8 @@ class Warrecordlist extends ContextObject{
         for(var i=0;i<length;i++){
             items.append(null);
         }
-        pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
+        if(pagemax==0) pagemax=1;
     }
     
     function closedialog(node,event){

@@ -17,8 +17,14 @@ class SpyControl extends ContextObject{
         if(element ==null){
             element = node();
             element.addsprite("spyback.jpg").anchor(50,0).pos(279,12);
-            element.addlabel("注：侦察级别越高，获得的信息越多哦！",null,20).anchor(0,50).pos(46,370).color(0,0,0,100);
-            euid = global.context[1].userdict.get(gid)[5];
+            element.addlabel(global.getStaticString("spy_notice"),null,20).anchor(0,50).pos(46,370).color(0,0,0,100);
+            var eu = global.context[1].userdict.get(gid);
+            if(eu[1]<0){
+                euid = eu[1];
+            }
+            else{
+                euid = eu[5];
+            }
             selecttab = -1;
             var snum = [6,6,6,(global.user.getValue("nobility")/3+1)];
             for(var i=0;i<4;i++){
@@ -35,7 +41,7 @@ class SpyControl extends ContextObject{
         var dialog = new Simpledialog(3,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["确定","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("ok"),global.getStaticString("cancel")]);
     }
 
     function choosetab(n,e,p){
@@ -64,13 +70,21 @@ class SpyControl extends ContextObject{
             }
         }
         global.popContext(null);
-        global.http.addrequest(1,"detect",["uid","enemy_id","type"],[global.userid,euid,selecttab],self,"detectover");
+        if(euid>=0){
+            global.http.addrequest(1,"detect",["uid","enemy_id","type"],[global.userid,euid,selecttab],self,"detectover");
+        }
+        else{
+            global.http.addrequest(1,"detectEmpty",["uid", "cid", "t"],[global.userid,-euid,selecttab],self,"detectover2");
+        }
         //http_request(BASE_URL+"detect?uid="+str(global.userid)+"&enemy_id="+str(euid)+"&type="+str(selecttab),detectover);
     }
     
     function useaction(p,rc,c){
         if(p=="detectover"){
             detectover(0,rc,c);
+        }
+        else if(p=="detectover2"){
+            detectover2(0,rc,c);
         }
     }
     
@@ -87,6 +101,18 @@ class SpyControl extends ContextObject{
         }
     }
     
+    function detectover2(r,rc,c){
+        if(rc!=0){
+            var re=json_loads(c);
+            if(re.get("id",1)==0){
+                return 0;
+            }
+            if(selecttab==3){
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-(global.user.getValue("nobility")/3+1),-6);
+            }
+            global.pushContext(null,new Spyresult2(re,gid,selecttab),NonAutoPop);
+        }
+    }
     function deleteContext(){
         contextNode.addaction(stop());
         contextNode.removefromparent();

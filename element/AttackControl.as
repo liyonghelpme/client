@@ -17,7 +17,8 @@ class AttackControl extends ContextObject{
     function paintNode(){
         soldiermaxs = [global.soldiers[0],global.soldiers[1]];
         soldiers = [0,0];
-        contextNode = sprite("dialogback_attack.png").anchor(50,50).pos(400,240);
+        contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
+        contextNode.addsprite("attackelement.jpg").pos(11,11);
         contextNode.addlabel(str(soldiermaxs[0]+soldiermaxs[1]),null,20).anchor(0,50).pos(120,99).color(0,0,0,100);
         slabel = contextNode.addlabel(str(0),null,20).anchor(0,50).pos(383,99).color(0,0,0,100);
         var dtime = [[7200,14400,0],[5400,12600,14400],[4680,9000,11520],[3960,6480,8640],[3240,5400,7200],[1800,3240,4680]];
@@ -33,12 +34,19 @@ class AttackControl extends ContextObject{
             var mw=abs(spos[1]/2-epos[1]/2);
             atime = t[2]*(abs(spos[0]-epos[0])+mw)+t[1]*(abs(spos[1]-epos[1])-mw);
         }
+        contextNode.addlabel(global.getStaticString("attacktime")+global.getStaticString(":"),null,20,FONT_BOLD).anchor(100,50).pos(115,371).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("attacktime_notice"),null,16).pos(317,366).color(0,0,0,100);
         timelabel = contextNode.addlabel(global.gettimestr(atime),null,20).anchor(0,50).pos(119,371).color(0,0,0,100);
         var bt = sprite("boxbutton1.png").anchor(50,50).pos(142,420).setevent(EVENT_UNTOUCH,attack);
         contextNode.add(bt,2,0);
-        bt.addlabel("攻击",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        if(global.context[1].userdict.get(eid)[0]!=ppy_userid()){
+            bt.addlabel(global.getStaticString("attack"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        }
+        else{
+            bt.addlabel(global.getStaticString("addsoldier"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        }
         contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(416,420).setevent(EVENT_UNTOUCH,closedialog);
-        contextNode.addlabel("返回",null,BUTTONFONTSIZE).anchor(50,50).pos(416,420);
+        contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(416,420);
         for(var i=1;i>=0;i--){
             var mb = contextNode.addsprite("moveback.png").anchor(0,50).pos(57,175+i*88);
             mb.setevent(EVENT_TOUCH,csnum,i);
@@ -87,10 +95,14 @@ class AttackControl extends ContextObject{
     function attack(){
         if(global.currentLevel == contextLevel){
             if(global.timer.times2c(global.user.getValue("nobattletime"))>global.timer.currenttime){
-                global.pushContext(null,Warningdialog(["在保护期中攻打其他玩家，保护状态将会终止",1,1]),NonAutoPop);
+                global.pushContext(null,Warningdialog([global.getStaticString("nobattle_whenattack"),1,1]),NonAutoPop);
                 return 0;
             }
-            var euid = global.context[1].userdict.get(eid)[5];
+            var eu=global.context[1].userdict.get(eid);
+            var euid=eu[1];
+            if(euid>=0){
+                euid=eu[5];
+            }
             global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry"],[global.userid,euid,btime,soldiers[0],soldiers[1]],self,"attackover");
         }
     }
@@ -107,10 +119,10 @@ class AttackControl extends ContextObject{
             if(data.get("id",1)==1){
                 global.soldiers[0] = global.soldiers[0] - soldiers[0];
                 global.soldiers[1] = global.soldiers[1] - soldiers[1];
-                var epid = global.context[1].userdict.get(eid)[0];
+                var eu = global.context[1].userdict.get(eid);
                 global.popContext(null);
                 var etime = global.timer.currenttime+btime;
-                global.battlelist.append([etime,epid,1,eid,soldiers[0],soldiers[1]]);
+                global.battlelist.append([etime,eu[0],1,eid,soldiers[0],soldiers[1],eu[1]]);
                 global.context[1].setuserflag(eid);
                 global.context[1].refreshlist();
                 global.user.setValue("nobattletime",0);
@@ -118,18 +130,18 @@ class AttackControl extends ContextObject{
             }
             else{
                 if(data.get("status")==0){
-                    global.pushContext(null,new Warningdialog(["该玩家的领地正在受保护中",null,1]),NonAutoPop);
+                    global.pushContext(null,new Warningdialog([global.getStaticString("attack_whennobattle"),null,1]),NonAutoPop);
                     global.context[1].userdict.get(eid)[7] = data.get("endtime");
                     global.context[1].setuserflag(eid);
                 }
                 else if(data.get("status")==1){
-                    global.pushContext(null,new Warningdialog(["你已经在进攻他了哦！",null,1]),NonAutoPop);
+                    global.pushContext(null,new Warningdialog([global.getStaticString("attack_whenattacked"),null,1]),NonAutoPop);
                 }
                 else if(data.get("status")==2){
-                    global.pushContext(null,new Warningdialog(["你已经征服他了哦！",null,1]),NonAutoPop);
+                    global.pushContext(null,new Warningdialog([global.getStaticString("attack_whenwon"),null,1]),NonAutoPop);
                 }
                 else if(data.get("status")==3){
-                    global.pushContext(null,new Warningdialog(["抱歉，该玩家已经升级到更高等级的地图。",null,1]),NonAutoPop);
+                    global.pushContext(null,new Warningdialog([global.getStaticString("attack_whenupdated"),null,1]),NonAutoPop);
                     global.context[1].atklist.remove(global.context[1].userdict.pop(eid));
                     global.context[1].refreshmap(1);
                 }
@@ -144,7 +156,11 @@ class AttackControl extends ContextObject{
     
     function reloadNode(re){
         if(re==1){
-            var euid = global.context[1].userdict.get(eid)[5];
+            var eu=global.context[1].userdict.get(eid);
+            var euid=eu[1];
+            if(euid>=0){
+                euid=eu[5];
+            }
             global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry"],[global.userid,euid,btime,soldiers[0],soldiers[1]],self,"attackover");
         }
     }

@@ -73,18 +73,18 @@ class BoxControl extends ContextObject{
                 name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
             }
             head.addlabel(name,null,16).anchor(50,50).pos(33,72).color(0,0,0,100);
-            head.addlabel("快帮我打开这个宝箱，",null,20).pos(103,19).color(0,0,0,100);
-            head.addlabel("大家一起分享宝藏吧！",null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
+            head.addlabel(global.getStaticString("box_str_1"),null,20).pos(103,19).color(0,0,0,100);
+            head.addlabel(global.getStaticString("box_str_2"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
         }
         else{
             head = sprite("boxelement0.png").pos(17,11);
-            global.addtext(head,93,3,"城堡里突然飘来一只<g>神秘宝箱<g>！！+快邀请好友一起开启吧！！+有神秘礼物等着你哦！",20);
+            global.addtext(head,93,3,global.getStaticString("box_str_3"),20);
         }
         contextNode.add(head,0,0);
         contextNode.add(sprite("dialogback_white.png").pos(21,92),0,3);
         contextNode.add(sprite("boxbutton1.png").pos(50,330),0,1);
         if(mode == 1){
-            contextNode.get(1).addlabel("帮忙",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+            contextNode.get(1).addlabel(global.getStaticString("help"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
             if(list.index(ppy_userid())==-1 && helpperson<maxperson){
                 flaghelp = 1;
                 contextNode.get(1).setevent(EVENT_UNTOUCH,helpopenbox);
@@ -95,17 +95,17 @@ class BoxControl extends ContextObject{
             }
         }
         else{
-            contextNode.get(1).add(label("打开宝箱",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19),0,1);
+            contextNode.get(1).add(label(global.getStaticString("openbox"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19),0,1);
             if(helpperson == maxperson){
                 contextNode.get(1).setevent(EVENT_UNTOUCH,completeopen);
             }
             else{
-                contextNode.get(1).get(1).text("求助好友");
+                contextNode.get(1).get(1).text(global.getStaticString("askforhelp"));
                 contextNode.get(1).setevent(EVENT_UNTOUCH,askforhelp);
             }
         }
         contextNode.add(sprite("boxbutton2.png").pos(270,330).setevent(EVENT_UNTOUCH,closedialog),0,2);
-        contextNode.get(2).addlabel("关闭",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        contextNode.get(2).addlabel(global.getStaticString("close"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         var l = contextNode.addlabel("",null,30).pos(133,37).color(0,0,0,100);
         evnodes = new Array(0);
         var xx;
@@ -117,13 +117,13 @@ class BoxControl extends ContextObject{
                     xx=contextNode.addsprite("boxperson.png").pos(32+78*(i%5),103+107*(i/5));
                     if(list[i]<0 || list[i]==ppy_userid()){
                         xx.addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                        xx.addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                        xx.addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                     }
                     else{
                         var fid = list[i];
                         var fn = global.getfriend(fid);
                         name = fn.get("name");
-                        if(name == null) name = "未知";
+                        if(name == null) name = "unknown";
                         if(len(name)>9)
                             name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
                         xx.addlabel(name,null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
@@ -151,7 +151,7 @@ class BoxControl extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(ppy_username()+"获得了一只神秘的宝箱，但是需要你们的帮助才能打开，快去帮助它吧！","http://getmugua.com");
+        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]),SHARE_URL);
     }
 
     function completeopen(n,e){
@@ -173,7 +173,7 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"打开了一只神秘宝箱，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),SHARE_URL);
         }
     }
 
@@ -187,8 +187,8 @@ class BoxControl extends ContextObject{
             contextNode = dialog.getNode();
             contextNode.focus(1);
             pn.add(contextNode.pos(400,270));
-            dialog.setbutton(1,183,339,"分享",1);
-            dialog.setbutton(2,355,339,"返回",null);
+            dialog.setbutton(1,183,339,global.getStaticString("share"),1);
+            dialog.setbutton(2,355,339,global.getStaticString("back"),null);
             
             contextNode.addsprite("money_big.png").size(32,32).pos(110,191);
             var v=2000+50*global.user.getValue("level");
@@ -215,7 +215,7 @@ class BoxControl extends ContextObject{
     function openboxwithcaesars(n,e){
         if(lock==0){
             if(global.user.getValue("caesars")<1){
-                global.pushContext(self,new Warningdialog(dict([["ok",0],["凯撒币",1]])),NonAutoPop);
+                global.pushContext(self,new Warningdialog(dict([["ok",0],[global.getStaticString("caesars"),1]])),NonAutoPop);
                 return 0;
             }
             lock=1;
@@ -231,7 +231,7 @@ trace("selfopen",rc,c);
                 evnodes[helpperson].remove(0);
                 evnodes[helpperson].texture("boxperson.png");
                 evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                evnodes[helpperson].addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                evnodes[helpperson].addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                 evnodes[helpperson].setevent(EVENT_UNTOUCH,null);
                 helpperson++;
                 global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-1,-6);
@@ -243,7 +243,7 @@ trace("selfopen",rc,c);
                 }
                 else{
                     contextNode.get(1).texture("boxbutton1.png");
-                    contextNode.get(1).get(1).text("打开宝箱");
+                    contextNode.get(1).get(1).text(global.getStaticString("openbox"));
                     contextNode.get(1).setevent(EVENT_UNTOUCH,completeopen);
                 }
                 setbox(-1,0,0);
@@ -260,7 +260,7 @@ trace("helpopen",rc,c);
         if(rc!=0 && json_loads(c).get("id")>0){
             evnodes[helpperson].texture("boxperson.png");
             evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-            evnodes[helpperson].addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+            evnodes[helpperson].addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
             helpperson++;
             boxfriends.append(str(ppy_userid()));
             setbox(-1,0,0);
