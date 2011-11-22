@@ -428,7 +428,13 @@ class WarControl extends ContextObject{
                 }
 
                 leftuser.add(label("攻击力："+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);
-                rightuser.add(label("防御力："+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                if(mon == 0)
+                    rightuser.add(label("防御力："+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                else{
+                    level = datadict.get("monLevel");
+                    var power = 15 + 1*level;
+                    rightuser.add(label("防御力："+str(datadict.get("rightpower")*power/10),null,16).anchor(0,50).pos(21,86),0,1);
+                }
                 leftuser.addlabel(datadict.get("leftname"),null,18).pos(82,22).color(0,0,0,100);
                 rightuser.addlabel(datadict.get("rightname"),null,18).pos(82,22).color(0,0,0,100);
                 leftuser.addsprite("nobi"+str(datadict.get("leftnob"))+".png").anchor(50,50).pos(94,57).size(25,25);
