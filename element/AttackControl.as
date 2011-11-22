@@ -70,7 +70,10 @@ class AttackControl extends ContextObject{
         else if(x<79) x = 79;
         var po = move.pos();
         move.pos(x,po[1]);
-        soldiers[p] = soldiermaxs[p]*(x-79)/254;
+        if(soldiermaxs[p] < 25400)
+            soldiers[p] = soldiermaxs[p]*(x-79)/254;
+        else
+            soldiers[p] = soldiermaxs[p]/254*(x-79);
         slabels[p].text(str(soldiers[p]));
         var tnum = soldiers[0]+soldiers[1];
         slabel.text(str(tnum));

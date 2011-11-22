@@ -47,9 +47,6 @@ class ObjControl extends ContextObject{
             if(oi>41){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
-            //if(i<3){
-            //    objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            //}
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -92,9 +89,11 @@ class ObjControl extends ContextObject{
                  bl=75;
             }
             objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112).scale(bl);
+            /*
             if(oi<6){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

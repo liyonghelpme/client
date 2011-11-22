@@ -209,12 +209,7 @@ trace("warinfo",rc,c);
                     WS_MIN=-60;   
                 }
                 var list = data.get("list");
-                emptyCities = dict();
-                global.emptyCitiesInGlo = emptyCities;
-                for(var emp  = 0; emp < len(list); emp++)
-                {
-                    emptyCities.update(list[emp][2], list[emp]);        
-                }
+
                 subnobility = data.get("subno",0);
                 global.user.setValue("nobility",nobility*3+subnobility);
                 global.user.setValue("nobattletime",data.get("protect"));
@@ -226,7 +221,16 @@ trace("warinfo",rc,c);
                         atklist.append(list[i]);
                     }
                 }
+
                 list = data.get("empty",[]);
+                emptyCities = dict();
+                global.emptyCitiesInGlo = emptyCities;
+                for(var emp  = 0; emp < len(list); emp++)
+                {
+                    emptyCities.update(list[emp][2], list[emp]);        
+                    var empty = ["0", 0, list[emp][5], list[emp][2], global.getEmptyName(list[emp][2]), list[emp][1], 0, -1, 2];
+                    atklist.append(empty);//show all emptyCites
+                }
                 trace(list);
                 loadempty(list);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
@@ -584,7 +588,7 @@ trace("warinfo",rc,c);
             pidlist.append(global.battlelist[i][1]);
             u = sprite();
             var udata = userdict.get(global.battlelist[i][3]);
-            if(udata[0]=="0"){
+            if(global.battlelist[i][6] < 0){
                 u.addsprite("monsteravatar"+str(udata[2])+".jpg").pos(5,5).size(40,40);
             }
             else{
@@ -628,12 +632,14 @@ trace("warinfo",rc,c);
             u = sprite("wartabperson.png");
             if(udata[0]=="0"){
                 u.addsprite("monsteravatar"+str(udata[2])+".jpg").pos(5,5).size(40,40);
+                u.addlabel(ENAME[udata[2]],null,16).anchor(100,100).pos(172,45).color(0,0,0,100);
             }
             else{
                 u.addsprite(avatar_url(int(udata[0]))).pos(5,5).size(40,40);
+                u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,16).anchor(100,100).pos(172,45).color(0,0,0,100);
             }
             u.addlabel(udata[4],null,16).pos(50,5).color(0,0,0,100);
-            u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,16).anchor(100,100).pos(172,45).color(0,0,0,100);
+
             u.setevent(EVENT_UNTOUCH,nodemovewithgidevent,udata[3]);
             u.setevent(EVENT_TOUCH,nodemovewithgidevent);
             u.setevent(EVENT_MOVE,nodemovewithgidevent);
