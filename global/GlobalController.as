@@ -21,7 +21,7 @@ const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
 const FARM_PERSON = [0,80,0,0,0,120,250];
 const FARM_EXP = [0,5,15,40,70,20,30];
 const FARM_FOOD = [0,0,0,0,0,600,1000];
-const FARM_USE = [0,"种植粮食","种植粮食（x1.2）","种植粮食（x1.4）","种植粮食（x1.6）","采集木材","采集石材"];
+const FARM_USE = [0,"plant crops","plant crops（x1.2）","plant crops（x1.4）","plant crops（x1.6）","produce wood","produce stone"];
 
 const PLANT_TIME = [600,2700,3600,9360,22680,14400,1800,5400,9000,11520,29160,25200];
 const PLANT_PRICE = [50,165,-1,700,1440,-3,230,600,-2,1210,3000,-5];
@@ -79,7 +79,7 @@ const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300];
 const CAMP_PERSON = [100,120,170,130,150,200,90,110,160];
 const CAMP_EXP = [5,10,20,15,20,35,7,15,30];
 const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400];
-const CAMP_USE = ["训练步兵","训练骑兵","训练侦察兵"];
+const CAMP_USE = ["train infantry","train cavalry","train scout"];
 const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4"];
 
 const SOLDIER_TIME = [7200,21600,43200];
@@ -88,8 +88,8 @@ const SOLDIER_PRICE=[750,2400,4800,1600,5000,10000,2400,7500,15000,2000,6300,126
 const SOLDIER_PERSON = [30,15,2];
 const SOLDIER_FOOD = [3,6,9,10,20,30,5,10,15];
 const SOLDIER_POWER = [1,2,3,4,5,6,0,0,0];
-const SOLDIER_NAME = ["民兵","步兵","白银步兵","轻骑兵","重骑兵","黄金骑兵","普通侦察兵","中级侦察兵","高级侦察兵"];
-const MONSTERNAME = ["普通蛇怪","中级蛇怪","高级蛇怪","普通野猪怪","中级野猪怪","高级野猪怪","普通狼怪","中级狼怪","高级狼怪","普通熊怪","中级熊怪","高级熊怪","普通狮子","中级狮子","高级狮子","普通恶龙","中级恶龙","高级恶龙","普通蛇王","中级蛇王","高级蛇王","普通野猪王","中级野猪王","高级野猪王","普通狼王","中级狼王","高级狼王","普通熊王","中级熊王","高级熊王","普通狮子王","中级狮子王","高级狮子王","普通恶龙王","中级恶龙王","高级恶龙王"];
+const SOLDIER_NAME = ["Lev1","Lev2","Lev3","Lev1","Lev2","Lev3","Lev1","Lev2","Lev3"];
+const MONSTERNAME = ["Snake Lev1","Snake Lev2","Snake Lev3","Boar Lev1","Boar Lev2","Boar Lev3","Wolf Lev1","Wolf Lev2","Wolf Lev3","Bear Lev1","Bear Lev2","Bear Lev3","Lion Lev1","Lion Lev2","Lion Lev3","Dragon Lev1","Dragon Lev2","Dragon Lev3","Snake King Lev1","Snake King Lev2","Snake King Lev3","Boar King Lev1","Boar King Lev2","Boar King Lev3","Wolf King Lev1","Wolf King Lev2","Wolf King Lev3","Bear King Lev1","Bear King Lev2","Bear King Lev3","Lion King Lev1","Lion King Lev2","Lion King Lev3","Dragon King Lev1","Dragon King Lev2","Dragon King Lev3"];
 const MONSTER_POWER = [20,30,41,25,37,49,28,42,56,33,49,65,40,58,77,50,75,100,42,65,90,51,74,104,60,90,120,73,109,145,80,120,160,100,150,200];
 
 const EXPAND_LEVEL=[4,7,10,15,20,25,30,40,50,60];
@@ -100,14 +100,14 @@ const EXPAND_EXP=[10,20,50,90,140,200,330,580,740,920];
 
 
     
-    const PETS_NAME=["初级龙蛋A","中级龙蛋A","高级龙蛋A","初级龙蛋B","中级龙蛋B","高级龙蛋B"];
+    const PETS_NAME=["Dragon egg A Lev1","Dragon egg A Lev2","Dragon egg A Lev3","Dragon egg B Lev1","Dragon egg B Lev2","Dragon egg B Lev3"];
     const PETS_PRICE=[50000,100000,500000,-10,-50,-100];
     const PETS_POWER = [100,250,1000,300,1200,1500];
     const PETS_UP = [5,6,10,7,12,17];
     
     const EXTEND_UP=[0,3,3];
     const EXTEND_NAME=["earth","fire","water"];
-    const EXTEND_PETS_NAME=["土龙","火龙","水龙"];
+    const EXTEND_PETS_NAME=["Earth dragon","Fiery dragon","Water dragon"];
 
 const OBJ_PRICE = [10,20,30,50,-1,100,100,100,100,100,100,200,-3,400,600,800,1000,900,1200,2000,-5,1500,1500,1500,1600,1600,1600,1600,-3,-3,-3,-3,1800,1800,1800,2000,2000,2000,-10,5000,-5,-10,2000,2000,-10];
 const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,60,65,65,65,65,150,150,150,150,70,70,70,80,80,80,300,90,150,300,30,30,300];
@@ -116,7 +116,7 @@ const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
 const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
 const STATUE_PERSON=[20,40,80,60,120,100];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
-const STATUE_NAME = ["蛇女","野猪勇士","狂狼斗士","暴熊武士","雄狮战士","龙枪勇士"];
+const STATUE_NAME = ["Snake womam","Boar warrior","Wolf fighter","Bear knight","Lion soldier","Dragon fighter"];
 
 const DIALOG_BASE_X = 100-74;
 const DIALOG_BASE_Y = 112+22;
@@ -138,31 +138,32 @@ const BUTTONFONTSIZE = 26;
 
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
 
-const ROOMNAME = ["橙色普通农舍","橙色中级农舍","橙色高级农舍","红色普通农舍","红色中级农舍","红色高级农舍","蓝色普通农舍","蓝色中级农舍","蓝色高级农舍","紫色普通农舍","紫色中级农舍","紫色高级农舍","橙色普通民宅","橙色中级民宅","橙色高级民宅","红色普通民宅","红色中级民宅","红色高级民宅","蓝色普通民宅","蓝色中级民宅","蓝色高级民宅","紫色普通民宅","紫色中级民宅","紫色高级民宅","橙色普通别墅","橙色中级别墅","橙色高级别墅","红色普通别墅","红色中级别墅","红色高级别墅","蓝色普通别墅","蓝色中级别墅","蓝色高级别墅","紫色普通别墅","紫色中级别墅","紫色高级别墅","橙色普通豪宅","橙色中级豪宅","橙色高级豪宅","红色普通豪宅","红色中级豪宅","红色高级豪宅","蓝色普通豪宅","蓝色中级豪宅","蓝色高级豪宅","紫色普通豪宅","紫色中级豪宅","紫色高级豪宅","橙色普通庄园","橙色中级庄园","橙色高级庄园","红色普通庄园","红色中级庄园","红色高级庄园","蓝色普通庄园","蓝色中级庄园","蓝色高级庄园","紫色普通庄园","紫色中级庄园","紫色高级庄园","橙色普通神奇屋","橙色中级神奇屋","橙色高级神奇屋","红色普通神奇屋","红色中级神奇屋","红色高级神奇屋","蓝色普通神奇屋","蓝色中级神奇屋","蓝色高级神奇屋","紫色普通神奇屋","紫色中级神奇屋","紫色高级神奇屋","普通丹桂月宫","中级丹桂月宫","高级丹桂月宫","普通金碧月宫","中级金碧月宫","高级金碧月宫"];
+const ROOMNAME = ["Orange cottage lev1","Orange cottage lev2","Orange cottage lev3","Red cottage lev1","Red cottage lev2","Red cottage lev3","Blue cottage lev1","Blue cottage lev2","Blue cottage lev3","Purple cottage lev1","Purple cottage lev2","Purple cottage lev3","Orange house lev1","Orange house lev2","Orange house lev3","Red house lev1","Red house lev2","Red house lev3","Blue house lev1","Blue house lev2","Blue house lev3","Purple house lev1","Purple house lev2","Purple house lev3","Orange villa lev1","Orange villa lev2","Orange villa lev3","Red villa lev1","Red villa lev2","Red villa lev3","Blue villa lev1","Blue villa lev2","Blue villa lev3","Purple villa lev1","Purple villa lev2","Purple villa lev3","Orange mansion lev1","Orange mansion lev2","Orange mansion lev3","Red mansion lev1","Red mansion lev2","Red mansion lev3","Blue mansion lev1","Blue mansion lev2","Blue mansion lev3","Purple mansion lev1","Purple mansion lev2","Purple mansion lev3","Orange manor lev1","Orange manor lev2","Orange manor lev3","Red manor lev1","Red manor lev2","Red manor lev3","Blue manor lev1","Blue manor lev2","Blue manor lev3","Purple manor lev1","Purple manor lev2","Purple manor lev3","Orange magic house lev1","Orange magic house lev2","Orange magic house lev3","Red magic house lev1","Red magic house lev2","Red magic house lev3","Blue magic house lev1","Blue magic house lev2","Blue magic house lev3","Purple magic house lev1","Purple magic house lev2","Purple magic house lev3","Orange moon palace lev1","Orange moon palace lev2","Orange moon palace lev3","Gold moon palace lev1","Gold moon palace lev2","Gold moon palace lev3"];
 const FACTNAME = ["普通面包房","中级面包房","高级面包房","普通水果店","中级水果店","高级水果店","普通肉铺","中级肉铺","高级肉铺","普通餐厅","中级餐厅","高级餐厅","普通诊所","中级诊所","高级诊所","普通书店","中级书店","高级书店","普通服装店","中级服装店","高级服装店","普通首饰店","中级首饰店","高级首饰店","普通赌场","中级赌场","高级赌场","普通嫦娥织坊","中级嫦娥织坊","高级嫦娥织坊", "普通海鲜店", "中级海鲜店", "高级海鲜店"];
-const CAMPNAME = ["普通步兵训练营","中级步兵训练营","高级步兵训练营","普通骑兵训练营","中级骑兵训练营","高级骑兵训练营","普通侦察兵训练营","中级侦察兵训练营","高级侦察兵训练营"];
-const FARMNAME = [null,"普通农田","水晶农田","宝石农田","精灵农田","伐木场","采石场"];
-const GONAME = ["丰收之神（青铜）","人口之神（青铜）","财富之神（青铜）","战争之神（青铜）","丰收之神（白银）","人口之神（白银）","财富之神（白银）","战争之神（白银）","丰收之神（黄金）","人口之神（黄金）","财富之神（黄金）","战争之神（黄金）","丰收之神（蓝玉）","人口之神（蓝玉）","财富之神（蓝玉）","战争之神（蓝玉）","丰收之神（紫金）","人口之神（紫金）","财富之神（紫金）","战争之神（紫金）","友谊之神（青铜）","友谊之神（白银）","友谊之神（黄金）","友谊之神（蓝玉）","友谊之神（紫金）", "兽神神像（青铜）", "兽神神像（白银）", "兽神神像（黄金）", "兽神神像（蓝玉）","兽神神像（紫金）"];
+const FACTNAME = ["Bakery lev1","Bakery lev2","Bakery lev3","Fruit shop lev1","Fruit shop lev2","Fruit shop lev3","Butcher shop lev1","Butcher shop lev2","Butcher shop lev3","Restaurant lev1","Restaurant lev2","Restaurant lev3","Clinic lev1","Clinic lev2","Clinic lev3","Bookshop lev1","Bookshop lev2","Bookshop lev3","Clothing shop lev1","Clothing shop lev2","Clothing shop lev3","Jewelers lev1","Jewelers lev2","Jewelers lev3","Casino lev1","Casino lev2","Casino lev3","Moon store lev1","Moon store lev2","Moon store lev3", "Fish shop lev1", "Fish shop lev2", "Fish shop lev3"];
+const CAMPNAME = ["Infantry barracks lev1","Infantry barracks lev2","Infantry barracks lev3","Cavalry barracks lev1","Cavalry barracks lev2","Cavalry barracks lev3","Scout barracks lev1","Scout barracks lev2","Scout barracks lev3"];
+const FARMNAME = [null,"Ordinary farmland","Crystal farmland","Gem farmland","Elves farmland","Lumber mill","Quarry"];
+const GONAME = ["Harvest goddess lev1","Liberty goddess lev1","Wealth god lev1","Mars lev1","Harvest goddess lev2","Liberty goddess lev2","Wealth god lev2","Mars lev2","Harvest goddess lev3","Liberty goddess lev3","Wealth god lev3","Mars lev3","Harvest goddess lev4","Liberty goddess lev4","Wealth god lev4","Mars lev4","Harvest goddess lev5","Liberty goddess lev5","Wealth god lev5","Mars lev5","Friendship god lev1","Friendship god lev2","Friendship god lev3","Friendship god lev4","Friendship god lev5", "Beast god lev1", "Beast god lev2", "Beast god lev3", "Beast god lev4", "Beast god lev5"];
 //todo
-const OBJNAME = ["砖石路","格子路","彩砖路","石头路","黄金路","白心花坛","红心花坛","粉心花坛","黄心花坛","蓝心花坛","紫心花坛","草坪","精灵灯","普通路灯","高杆路灯","吊灯","心形花灯","路牌","椅子","普通水井","魔法水井","紫色花丛","红色花丛","橙色花丛","深绿忘忧草","黄色忘忧草","绿色忘忧草","蓝色忘忧草","粉色樱花树","紫色樱花树","淡紫樱花树","红色樱花树","橙色灌木","黄色灌木","绿色灌木","春天枫树","夏天枫树","秋天枫树","天使雕像","月兔送福","丰收月饼台","吉祥兔儿神","红色糖果灯","金色糖果灯","南瓜灯"];
+const OBJNAME = ["Brick road","Grid Road","Color brick road","Stone road","Gold road","White parterre","Red parterre","Pink parterre","Yellow parterre","Blue parterre"," Purple parterre","Lawn","Vine lamp","Street lamp1","Street lamp2","Droplamp","Flower lamp","Guideboard","Bench","Ordinary well" ,"Magic well","Purple flowers","Red flowers","Orange flowers","Dark green nepenthe","Yellow nepenthe","Green nepenthe","Blue nepenthe","Pink cherry tree","Purple cherry tree","Lavender cherry tree","Red cherry tree","Orange shrubbery","Yellow shrubbery","Green shrubbery","Spring maple","Summer maple","Autumn maple","Angel Statue","Rabbit","Moon cakes","Moon rabbit","Red candy lamp","Gold candy lamp","Pumpkin lantern"];
 const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
-const nobilityname = ["平民","男爵","子爵","伯爵","侯爵","公爵","帝王"];
-const NOBNAME = ["三等平民","二等平民","一等平民","三等男爵","二等男爵","一等男爵","三等子爵","二等子爵","一等子爵","三等伯爵","二等伯爵","一等伯爵","三等侯爵","二等侯爵","一等侯爵","三等公爵","二等公爵","一等公爵","帝王"]
-const PLANTNAME=["小麦","胡萝卜","玉米","菠萝","茄子","西红柿","青椒","南瓜","水蜜桃","西瓜","芒果","草莓"];
-const STONENAME=["砾石","玄武岩","石灰岩","花岗岩","大理石","石英"];
-const WOONAME =["枫树","柳树","白杨","梧桐","松树","橡树"];
-const GIFTNAME =["木条","沙子","铁钉","铆钉","红砖","房梁","木门","三合板","碎石","青砖","木桩","钢管"];
-const ENAME = ["一级要塞","二级要塞","三级要塞","四级要塞","五级要塞","六级要塞"];
+const nobilityname = ["Civilians","Baron","Viscount","Earl","Marquis","Duke","Emperor"];
+const NOBNAME = ["Third-class civilians","Second-class civilians","First-class civilians","Third-class baron","Second-class baron","First-class baron","Third-class viscount","Second-class viscount","First-class viscount","Third-class earl","Second-class earl","First-class earl","Third-class marquis","Second-class marquis","First-class marquis","Third-class duke","Second-class duke","First-class duke","Emperor"]
+const PLANTNAME=["Wheat","Carrot","Corn","Pineapple","Eggplant","Tomato","Green pepper","Pumpkin","Peach","Waten melon","Mango","Strawberry"];
+const STONENAME=["Gravel","Wasalt","Limestone","Granite","Mable","Quartz"];
+const WOONAME =["Maple","Willow","White poplar","Chinar","Pine","Oak"];
+const GIFTNAME =["Wood","Sand","Nail","Rivet","Red brick","Beam","Door","Plywood","Macadam","Black brick","Deadman","Steel tube"];
+const ENAME = ["Forts lev1","Forts lev2","Forts lev3","Forts lev4","Forts lev5","Forts lev6"];
 
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
-const cardprename = ["蛇怪","野猪","狼怪","熊怪","狮子","恶龙","蛇王","野猪王","狼王","熊王","狮王","龙王","爵位","嫦娥","种植达人","商业达人","","","友谊"];
-const cardlevelname = ["卡","铜卡","银卡","金卡","蓝玉卡","紫金卡","勋章"];
+const cardprename = ["Snake","Boar","Wolf","Bear","Lion","Dragon","Snake king","Boar king","Wolf king","Bear king","Lion king","Dragon king","Title of nobility","Moon goddess","Planting daren","Business daren","","","Friendship"];
+const cardlevelname = ["card","card lev1","card lev2","card lev3","card lev4","card lev5","medal"];
 const allcardlevelnum = [[2,4,7,15,30],[1000,5000,20000,50000,100000],[10000,50000,100000,500000,1000000],[],[],[1,100,100,100,40]];
 const cardlevelnum = [5,15,45,85,135];
 
-const BUILD_TAB_NAME=["民居","店铺","资源","军事","奇迹","装饰","扩建"];
-const DEFAULT_NAME="我的帝国";
-const INVITE_STR=["木瓜游戏","与我一起玩奇迹帝国吧！","hi，我正在玩奇迹帝国，快与我一起经营、征战、创建自己的帝国吧！*奇迹帝国是一款大型手机社交游戏，各种手机平台都可以下载。下载地址：https://market.android.com/details?id=com.papaya.wonderempire1_cn"];
+const BUILD_TAB_NAME=["House","Store","Recource","Military","Miracle","Decoration","Expand"];
+const DEFAULT_NAME="My empire";
+const INVITE_STR=["papaya games", "enjoy Miracle Empire with me", "come on to help me defeat enemies and build your own empire!", "Miracle Empire is a big,gorgeous SNS game. You can download from Android market:https://market.android.com/details?id=com.papaya.wonderempire1_cn"];
 
 const GRAY =m_color(30,59,11,0,0, 30,59,11,0,0, 30,59,11,0,0, 0,0,0,100,0);
 const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
@@ -171,21 +172,32 @@ const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 const cardnum = 13;
 const NEWFLAG = 14;
     
-const staticString = ["你需要升到10级才能开启战争模式","开启战争模式之后暂时就不能退出咯，请查看帮助文档",
-"恭喜你抵挡住了[ENAME]的攻势，保卫了领地不被侵犯！","[ENAME]兵力过于强大，你的军队不幸战败，快去加强你的军事力量吧！",
-"[ENAME]兵力过于强大，回去厉兵秣马，来日再战！","恭喜你战胜了[ENAME]，你离帝王宝座又近了一步！","如何提高战斗力",
-"[USERNAME]进入新的地图啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","[USERNAME]升级为[NOBNAME]啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]的领地升级啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","[USERNAME]成功战胜侵略者，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]被YYYY[ENAME]打败了，赶快加入帮助[USERNAME]复仇吧！","[USERNAME]的大军被击退，赶快加入与[USERNAME]一起侵略其他领地吧！",
-"[USERNAME]战胜了[ENAME]，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","你需要升到15级才能使用一键操作","你没有空闲的农田，不能使用一键操作","你的农作物正在生长，无法一键收获",
-"[WHO]的[TYPE]数需要达到[NUM]才能升到下一等级。该卡紫金级别可以让[WHO]无限次免费使用一键操作功能！","[WHO]还需要战胜[NUM]个用户才能升级到[CARD]",
-"你的店铺正在工作，无法一键收税","怪兽卡片升级到紫金级别，你将可以免费获得一座怪兽雕像","抱歉，空间建筑正在开发，开发之后凭借嫦娥紫金卡你将免费获得空间建筑",
-"把丰收之神升到紫金级别，你将可以无限免费使用一键播种、一键收税功能","把财富之神升到紫金级别，你将可以无限免费使用一键收税功能",
-"抱歉，你已经访问过所有好友了！","每天宠物前100次训练才会增加1点战斗力哦！","你一键访问了[NUM]个好友，获得了[MONEY]银币奖励",
-"升级友谊之神到紫金级别","还差[NUM]个好友","还需要帮助好友打开[NUM]个宝箱","还需要帮助好友喂养[NUM]次宠物","需要升到[NUM]级",
-"你现在可以永久免费使用一键普通访问好友功能咯！","[NAME]晒出了自己领地的截图，大家快来围观吧！","","http://getmugua.com",
-"每天自己只能喂养一次，好友可以帮忙继续喂养。假如当天自己或好友都没喂养，成长点会下降哦！","该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
-"每天你只能帮同一个好友喂养一次^_^","[NAME]的宠物已经有[NUM]个好友喂养过了，谢谢帮忙^_^"];
+const staticString = ["Upgrade to lv10 to open War mode","You can't quit War mode after you open, please read Help doc carefully.",
+"Congratulations！you have defended the attack from [ENAME] succeseefully and protect your territory.","[ENAME] is too powerful,you are defeated unfortunetly.Cheer up and strengthen your military power!",
+"[ENAME] is too powerful,strengthen your military power and never give up！","Congratulations!you have defeated [ENAME]，go on fighting and gain your glory！","how to strengthen the military power",
+"[USERNAME]has entered a new map.Come on,Let's build our own miracle empire with [USERNAME]！","[USERNAME]has upgraded to[NOBNAME]，Come on,Let's build our own miracle empire with [USERNAME]！",
+"[USERNAME] has upgraded the territory，Come on,Let's build our own miracle empire with [USERNAME]！","[USERNAME] has defeated the invaders，Come on,Let's build our own miracle empire with [USERNAME]！",
+"[USERNAME] is defeated by YYYY[ENAME]，Let's go and revenge for [USERNAME]！","[USERNAME]'s army is defeated，convene your army and help [USERNAME] attacking！",
+"[USERNAME] has defeated [ENAME]，Let's build our own miracle empire with [USERNAME]！","You have to reach level 15 to unlock one-step finishing","Sorry,you don't have spare farmland for one-step finishing","Sorry, your crops are growing, Please try one-step finishing later",
+"[WHO] have to reach [NUM] to upgrade your [TYPE] to the next level.[WHO] can use one-step finishing without caesar coins after get the violet gold card of this kind！","[WHO] needs to defeated [NUM] more opponents to upgrade to [CARD]",
+"Your stores are working, please try one-step finishing later","You can get a monster statue for free after you have upgraded your monster card to violet gold level","Sorry, space room is developing, you will soon get it for free by lev5 moon goddess card.",
+"You can use one-step harvesting and one-step seeding for free when you upgrade the Goddess of Harvest to violet golden level","Upgrade the goddess of treasure to violet golden level to use one-step collecting taxes for free",
+"Sorry,you have already visited all your friends' castles！","Your dragon will become stronger after training everyday！","you have visited [NUM] friends and get [MONEY] coins for rewards",
+"Upgrade the god of friendship to violet golden level","You need [NUM] more friends","You need to open [NUM] more treasure chest for your friends","You need to feed your friends' dragons [NUM] more times","You need to reach level [NUM]",
+"You can use one-step visiting for free from now on！","[NAME] has shared the screenshot of his territory，Let's go and see！","","http://getmugua.com",
+"You can feed your dragon once a day，Friends can help you feeding. If your dragon isn't fed that day,it's growing points will decrease！","This dragon is gonna born, you can feed it later，thanks for helping!^_^",
+"You can feed a dragon once a day^_^","[NAME]'s dragon has been fed by [NUM] friends，thanks for helping^_^"];
+        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['Enable the war mode','You can enable the war mode at the level of 10，you can fight for the glory of your empire！','Enable the war mode','hint：Click the map bottom and then click the war icon'],'checknum':1,'reward':[5000,10,0]}"));
+        wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['check the assistant document','New options appear in war mode，Let's go and see！','check assistant document about war mode'],'checknum':1,'reward':[100,5,0]}"));
+        wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['ally with your friends','you can ally with strong friends to get reinforcement when you are at war！','Ally with a friend'],'checknum':1,'reward':[500,10,0]}"));
+        wartasklib.update(3,json_loads("{'id':3,'type':3,'req':'adddefence','des':['strengthen your defence','Strengthen your defence will make it possible for you to defense from invasions of other players.Click the castle first then click the plus sign to strengthen your defence','strengthen 100 point defence'],'checknum':100,'reward':[1000,15,0]}"));
+        wartasklib.update(4,json_loads("{'id':4,'type':0,'req':'build','pair':['ground_id',206],'des':['Build a scout training camp','You can train scouts to scout your enemy after scout training camp is built','build a normal scout training camp'],'checknum':1,'reward':[500,8,0]}"));
+        wartasklib.update(5,json_loads("{'id':5,'type':1,'req':'soldiers','pair':['btype',2,'objtype',0],'des':['Train a scout','normal scout can report enemy's information for you','train a normal scout'],'checknum':9,'reward':[800,10,0]}"));
+        wartasklib.update(6,json_loads("{'id':6,'type':0,'req':'detect','pair':[],'des':['scout an enemy','Know your enemy and know yourself，Scouts will get your enemy's fighting capacity information','Scout an enemy'],'checknum':1,'reward':[300,7,0]}"));
+        wartasklib.update(7,json_loads("{'id':7,'type':0,'req':'attack','pair':[],'des':['Attack an enemy','You can get rewards from your enemies and upgrade your title of nobility after defeate the enemies，Come on! Fight for the glory of your empire！','Attack an enemy'],'checknum':1,'reward':[1000,10,0]}"));
+        wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['increase the number of your allies','You can ally with more friends after enlarging your number of allies','increase the number of your allies'],'checknum':1,'reward':[1500,20,0]}"));
+        wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['upgrade your title of nobility','The higher your title of nobility is, the higher level map is which you can entered','Upgrade your title of nobility'],'checknum':1,'reward':[2000,25,0]}"));
+        wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['enter map of higher level','you can enter map of hugher map after defeated a number of enemies',' enter map of higher level'],'checknum':1,'reward':[2000,25,0]}"));
 //next 40
 /*
         wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第10级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
@@ -200,62 +212,54 @@ const staticString = ["你需要升到10级才能开启战争模式","开启战�
         wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['升级爵位','爵位越高可以前往越高等级的地图','升级爵位'],'checknum':1,'reward':[2000,25,0]}"));
         wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['进入高级地图','打败一定数量的敌人可以进入到更高级的地图',' 进入更高一级地图'],'checknum':1,'reward':[2000,25,0]}"));
 */
-const SPYITEMS =["获胜次数：","参战次数：","士兵战斗力：","盟友战斗力：","城堡防御力："];
+const SPYITEMS=["win:", "fight:", "soldier force", "ally force", "defence"];
 const SHARE_URL="http://getmugua.com";
 const stringDict=dict([
-["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
-["money","银币"],["caesars","凯撒币"],["food","粮食"],["labor","空闲人口"],["person","人口"],["personmax","人口上限"],["stone","石头"],["wood","木材"],["caesar","凯撒"],
-["share","分享"],["back","返回"],["change","修改"],["ok","确定"],["send","发送"],["cancel","取消"],["system","系统"],["devine","施展"],["retry","重试"],["help","帮忙"],["close","关闭"],["openbox","打开宝箱"],["askforhelp","求助好友"],
-["attack","攻打"],["defence_power","防御力："],["infpower","步兵战斗力"],["cavpower","骑兵战斗力"],["addsoldier","增兵"],["minussoldier","撤兵"],["getresource","运回资源"],["quick","加速"],
-["loading_str","正在载入，请稍候……"],["self","我"],
-["request_done","该请求已处理"],
-["friend_notload","抱歉，现在无法获得您的好友信息"],["friend_ally_notice","你可以访问好友和好友结盟，盟友会帮你战斗哦！"],["friend_invite","快来和我一起创造奇迹吧！"],["friend_invite_success","邀请成功！"],
-["nest_style_cannotchange","宠物正在进化中，这个时候不可以更换哦！"],
-["nest_talk_morning","早安，美好的一天又开启咯~"],["nest_talk_noon","午安，好饿呀，快点喂食吧~"],["nest_talk_night","晚安，早睡早起，睡觉啦~"],
-["nest_talk_other","每次训练我都会更加强大，快训练我吧！"],["nest_talk_feedover","我已经吃饱啦，感谢前来喂养"],["nest_talk_notfeedover","快喂养我吧，我还可以继续被喂养哦~"],
-["nest_talk_sleep","我还要适应成长，喂养到285点，我就可以飞翔咯！"],
-["nest_getup_1","孵化成功啦！它是一条土属性龙。"],["nest_getup_2","成长为少年龙啦！"],
-["nest_getup_format","[NAME][DESCRIBE]目前成长点为：[HEALTH]，属性为：[PROPERTY]，战斗力为：[ATTACK]"],
-["nest_pet_name","请输入宠物名称："],["nest_pet_name_warning","命名之后不能更改，请慎重命名"],
-["nest_gotohelp","为了更好地体验宠物系统，请查看帮助文档"],
-["box_str_1","快帮我打开这个宝箱，"],["box_str_2","大家一起分享宝藏吧！"],["box_str_3","城堡里突然飘来一只<g>神秘宝箱<g>！！+快邀请好友一起开启吧！！+有神秘礼物等着你哦！"],
-["god_bless_over","你已经施展过神迹了！"],
-["share_format","[NAME][DESCRIBE]，赶快加入与[NAME]一起打造属于自己的奇迹帝国吧！"],
-["share_box_format","[NAME]获得了一只神秘的宝箱，但是需要你们的帮助才能打开，快去帮助TA吧！"],
-["share_petup_1","成功孵化出宠物"],["share_petup_2","的幼龙长大啦"],
-["share_openbox","打开了一只神秘宝箱"],
-["default_petname","我的宠物"],
-["news_nonews","还没有任何消息哦！"],
-["news_element0","<b>[NAME]<b>访问了你的领地"],
-["news_element1","<b>[NAME]<b>帮助你打理城堡"],
-["news_element2","<b>[NAME]<b>赠送了你礼物"],
-["news_element3","你战胜了<b>[NAME]<b>"],
-["news_element4","<b>[NAME]<b>战胜了你"],
-["news_element5","<b>[NAME]<b>帮助你打开宝箱"],
-["news_element6","<b>[NAME]<b>帮助你喂养了宠物"],
-["gift_element0","[NAME]赠送你礼物[GIFT]"],
-["gift_element1","[NAME]向你索取礼物[GIFT]"],
-["monster_refresh_format","哈哈哈，[NAME]领主，献出你的粮食吧，否则你们将永不得安宁！"],
-["monster_foodwilllost","下次登录之前还没有把怪兽消灭，怪兽会抢夺你的粮食哦！"],
+["build_defence_format","Build [BUILD] will add [DEFENCE] castle defense，sure to build？（click castle to view def）"],
+["money","silver"],["caesars","gold"],["food","food"],["labor","idle population"],["person","population"],["stone","stone"],["wood","wood"],["caesar","Caesar"],
+["share","share"],["back","back"],["change","modify"],["ok","yes"],["send","send"],["cancel","cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","help"],["close","close"],["openbox","open treasure chest"],["askforhelp","ask friend"],
+["loading_str","loading..."],["self","me"],
+["request_done","request handled"],
+["friend_notload","sorry,can't get your friend list"],["friend_ally_notice","You can visit your friend and ally with him. Allies can help you fight!"],["friend_invite","Come to creat miracles with me!"],["friend_invite_success","Invite successfully！"],
+["nest_style_cannotchange","Your pet is evolving, you can't change your pet now！"],
+["nest_talk_morning","Good morning，a goodbegining helps to make a good end"],["nest_talk_noon","good afternoon，I'm hungry,would you feed me,please"],["nest_talk_night","Good night，early to bed,early to rise"],
+["nest_talk_other","I'will be stronger after training，come and train me now！"],["nest_talk_feedover","I'm satisfied now，thanks for seeding"],["nest_talk_notfeedover","I'm hungry now,would you feed me?"],
+["nest_talk_sleep","I need to adapt growing now，I can fly after being fed to 285 point！"],
+["nest_getup_1","Your pet has been evolved successfully！a soil property dragon is borned."],["nest_getup_2","It become a young dragon！"],
+["nest_getup_format","[NAME][DESCRIBE]'s current growing point is：[HEALTH]，propertyis：[PROPERTY]，fighting capacity is：[ATTACK]"],
+["nest_pet_name","enter your pet's name："],["nest_pet_name_warning","your pet's name can not be changed after named"],
+["nest_gotohelp","check the assistant document for better experience in pet system"],
+["box_str_1","Help me open this treasure chest,please，"],["box_str_2","Let's share the treasure！"],["box_str_3","a <g>mysterious treasure chest<g> was found in my castle！！+ask your friends to unlock it for you！！+a mysterious gift is waiting for you！"]
+["god_bless_over","you have perform magics already！"],
+["share_format","[NAME][DESCRIBE]，Come on!join [NAME] and build our own miracle empire together！"],
+["share_box_format","[NAME] has got a mysterious treasure chest，but he(she) can't unlock it without your help，Let's go and help him(her)！"],
+["share_petup_1","you have evolved your pet successfully"],["share_petup_2","'s baby dragon has grown up"],
+["share_openbox","open one mysterious treasure chest"],
+["default_petname","my pet"],
+["news_nonews","no messages"],
+["news_element0","<b>[NAME]<b> visit your land"],
+["news_element1","<b>[NAME]<b> help you manage castle"],
+["news_element2","<b>[NAME]<b> send you gift"],
+["news_element3"," You defeat <b>[NAME]<b>"],
+["news_element4","<b>[NAME]<b> defeat you"],
+["news_element5","<b>[NAME]<b> help you open treasure chest"],
+["news_element6","<b>[NAME]<b> help you feed your pet"],
+["gift_element0","[NAME] send you gift [GIFT]"],
+["gift_element1","[NAME] ask you for gift [GIFT]"],
+["monster_refresh_format","hahaha，[NAME]，give me your crops，or you will be restless"],
 ["warrecord_notice_format","你的领地发生了[NUM]场战争，观看可以知道士兵损失详细情况，是否观看？"],
 ["war_newmap_notice","恭喜你进入了新的地图！提示：不要太快进入更高等级的地图哦，先暗中积攒兵力吧^_^"],
-["spy_notice","注：侦察级别越高，获得的信息越多哦！"],["spy_unknown","未侦察到"],["spy_result_format","你损失了[NUM]个侦察兵，获取了[WHO]的情报："],
-["spy_result2_noenemy","未发现有进攻这个城堡的军队"],["spy_result2_format","已有[NUM]支军队正在进攻这个城堡，最快抵达时间为[TIME]以后"],
-["spy_result2_mode3_format","总计战斗力为[NUM]"],
-["chat_empty","内容为空，无法发送！"],["chat_wordlimit","字数超过30个汉字，无法发送！"],["chat_nettimeout","超时了，你的消息发送失败"],
-["text_wordlimit_format","限[NUM]个汉字！"],["text_cannotset","不能改成这个名字！"],["text_nettimeout","抱歉，因网络原因本次改名失败！"],
-["text_message_send","请输入留言内容："],["text_empty","内容不能为空"],["text_chat_nettimeout","抱歉，发送失败，请重新发送^_^"],
-["message_send_success","发送成功！"],["text_empire_name","请输入帝国名称："],
-["update_normal","普通升级"],["update_caesars","快速升级"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
-["onekey_plant","一键播种"],["onekey_harvest","一键收获"],["onekey_product","一键收税"],["onekey_visit_normal","一键普通访问"],["onekey_visit_inc","一键累计访问"],["onekey_title","一键操作"],
-["onekey_gotohelp","查看帮助及如何免费使用？"],
-["tab_fighting","作战中"],["tab_attackable","可攻打"],
-["nobattle_fail_whenhasattack","抱歉，正在进攻其他玩家时不能开启保护模式"],
-["nobattle_whenattack","在保护期中攻打其他玩家，保护状态将会终止"],
-["attack_whenattacked","你已经在进攻他了哦！"],["attack_whennobattle","该玩家的领地正在受保护中"],["attack_whenwon","你已经征服他了哦！"],["attack_whenupdated","抱歉，该玩家已经升级到更高等级的地图。"],
-["attack_cancel","是否撤消本次进攻？你的战斗力将立即回到城堡。"],["attacktime","行军时间"],["attacktime_notice","*骑兵比重越大，行军时间越短"],
-["state_attacking","进攻中"],["state_defencing","防御中"],["state_fighting","正在交战"],["state_adding","增兵中"],
-["net_state_1","貌似断网了，请检查是否有网络连接"],["net_state_2","网络连接遇到了问题，请稍候再试"],
+["spy_notice","tips：higher scout level,more details"],
+["chat_empty","Content can't be empty"],["chat_wordlimit","字数超过30个汉字，无法发送！"],["chat_nettimeout","超时了，你的消息发送失败"],
+["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","抱歉，因网络原因本次改名失败！"],
+["text_message_send","Please input message: "],["text_empty","can't empty"],["text_chat_nettimeout","Sorry,fail to send,try again^_^"],
+["message_send_success","Successfully send"],["text_empire_name","Please input empire name: "],
+["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
+["onekey_plant","One button plant"],["onekey_harvest","One button harvest"],["onekey_product","One button collect taxes"],["onekey_visit_normal","One button ordinary visit"],["onekey_visit_inc","One button accumulated visit"],["onekey_title","One button operation"],
+["onekey_gotohelp","How to free use？"],
+["tab_fighting","Fighting"],["tab_attackable","Fightable"],
+["state_attacking","attacking"],["state_defencing","defending"],["state_fighting","fighting"],
+["net_state_1","Network off, please check it"],["net_state_2","Network doesn't work, try again"],
 ["master","领主："],[":","："],
 ["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
 ["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
@@ -297,7 +301,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
+        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","Dragon Eyrie"]]);
         builddict.update(1000,build);
         sizedict = dict();
         for(var i=len(buildcontext)-1;i>=0;i--){
@@ -403,14 +407,14 @@ class GlobalController{
     }
     
     function getMedalString(index,pre,leftnum,medallevel){
-        var medalstr = pre+"还需要";
+        var medalstr = pre+" still need ";
         if(index<12){
-            medalstr = medalstr+"战胜"+str(leftnum)+"个"+substring(MONSTERNAME[index*3],6);
+            medalstr = medalstr+" defeat "+str(leftnum)+" "+substring(MONSTERNAME[index*3],6);
         }
         else if(index==13){
-            medalstr = medalstr+"连续登录"+str(leftnum)+"天";
+            medalstr = medalstr+" continue login "+str(leftnum)+"days";
         }
-        medalstr = medalstr+"才能获得"+cardprename[index]+cardlevelname[medallevel];
+        medalstr = medalstr+" to get "+cardprename[index]+cardlevelname[medallevel];
         return medalstr;
     }
     
@@ -424,7 +428,7 @@ class GlobalController{
 
     
     function getMedalString2(who,cstr,ctype,clevel){
-        return who+cstr+"才能获得"+cardprename[ctype]+cardlevelname[clevel];
+        return who+cstr+" to get "+cardprename[ctype]+cardlevelname[clevel];
     }
     
     function GlobalController(){
@@ -459,7 +463,7 @@ class GlobalController{
         dataname.update("statue",STATUE_NAME);
         timer =null;
         data = new DataController();
-        ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","凯撒"]])]]);
+        ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","Caesar"]])]]);
     }
     
     function inittimer(t){
