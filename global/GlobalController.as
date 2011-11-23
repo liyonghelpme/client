@@ -250,7 +250,7 @@ const stringDict=dict([
 ["update_normal","普通升级"],["update_caesars","快速升级"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
 ["onekey_plant","一键播种"],["onekey_harvest","一键收获"],["onekey_product","一键收税"],["onekey_visit_normal","一键普通访问"],["onekey_visit_inc","一键累计访问"],["onekey_title","一键操作"],
 ["onekey_gotohelp","查看帮助及如何免费使用？"],
-["tab_fighting","作战中"],["tab_attackable","可攻打"],
+["tab_fighting","作战中"],["tab_attackable","可攻打"],["tab_fortress", "要塞"],
 ["nobattle_fail_whenhasattack","抱歉，正在进攻其他玩家时不能开启保护模式"],
 ["nobattle_whenattack","在保护期中攻打其他玩家，保护状态将会终止"],
 ["attack_whenattacked","你已经在进攻他了哦！"],["attack_whennobattle","该玩家的领地正在受保护中"],["attack_whenwon","你已经征服他了哦！"],["attack_whenupdated","抱歉，该玩家已经升级到更高等级的地图。"],

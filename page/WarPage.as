@@ -42,6 +42,7 @@ class WarPage extends ContextObject{
     var warchat;
     var WS_MIN = -20;
     var emptyCities;
+    var myEmpty;
     function WarPage(){
         contextname = "page-war";
         contextNode = null;
@@ -224,14 +225,17 @@ trace("warinfo",rc,c);
 
                 list = data.get("empty",[]);
                 emptyCities = dict();
+                myEmpty = [];
                 global.emptyCitiesInGlo = emptyCities;
                 for(var emp  = 0; emp < len(list); emp++)
                 {
                     emptyCities.update(list[emp][2], list[emp]);        
                     var empty = ["0", 0, list[emp][5], list[emp][2], global.getEmptyName(list[emp][2]), list[emp][1], 0, -1, 2];
                     atklist.append(empty);//show all emptyCites
+                    if(list[emp][1] == global.userid)
+                        myEmpty.append(list[emp]);
                 }
-                trace(list);
+//                trace(list);
                 loadempty(list);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
                 warchat.global=global;
@@ -509,10 +513,11 @@ trace("warinfo",rc,c);
 
         rightmenu = menu.addsprite("warmenuback.png",ARGB_8888).anchor(100,0).pos(985,0).setevent(EVENT_TOUCH,wartabvisible);
         var listback=rightmenu.addsprite("warmenulistback.png").anchor(100,100).pos(253,480);
-        lists = new Array(2);
+        lists = new Array(3);
         selecttab = 0;
         lists[0] = listback.addnode();
         lists[1] = listback.addnode().visible(0);
+        lists[2] = listback.addnode().visible(0);
         listback.setevent(EVENT_UNTOUCH,listselect);
         listback.setevent(EVENT_TOUCH,listselect);
         listback.setevent(EVENT_MOVE,listselect);
@@ -532,11 +537,15 @@ trace("warinfo",rc,c);
         }
         rightmenu.addlabel(global.user.getValue("cityname"),null,20).anchor(0,50).pos(88+RIGHTOFF,25).color(0,0,0,100);
         rightmenu.add(global.getnobility(nobility,subnobility).pos(88+RIGHTOFF,40),0,11);
-        tabs = new Array(2);
-        tabs[0]=rightmenu.addsprite("warmenutab1.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
-        tabs[1]=rightmenu.addsprite("warmenutab0.png").anchor(100,100).pos(213+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,1);
-        rightmenu.addlabel(global.getStaticString("tab_fighting"),null,16).anchor(50,100).pos(73+RIGHTOFF,114+60).color(0,0,0,100);
-        rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(159+RIGHTOFF,114+60).color(0,0,0,100);
+        tabs = new Array(3);
+        tabs[0]=rightmenu.addsprite("selopen.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
+        tabs[1]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(87+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,1);
+        tabs[2]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(147+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,2);
+
+        rightmenu.addlabel(global.getStaticString("tab_fighting"),null,16).anchor(50,100).pos(63+RIGHTOFF,114+60).color(0,0,0,100);
+        rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(123+RIGHTOFF,114+60).color(0,0,0,100);
+        rightmenu.addlabel(global.getStaticString("tab_fortress"),null,16).anchor(50,100).pos(183+RIGHTOFF,114+60).color(0,0,0,100);
+        //rightmenu.addlable("要塞", null, 16).anchor(50, 100).pos(183+RIGHTOFF, 114+60).color(0,0,0);
         left.add(sprite("backbutton.png").anchor(0,100).pos(0,480).setevent(EVENT_UNTOUCH,goback),0,0);
         refreshlist();
         contextNode.add(sprite("warchatbutton3.png").anchor(50,50).pos(37,71).setevent(EVENT_UNTOUCH,changewarchat),10,10);
@@ -575,6 +584,12 @@ trace("warinfo",rc,c);
                 listnodes[i].removefromparent();
             }
         }
+        listnodes = lists[2].subnodes();
+        if(type(listnodes) == 2)
+        {
+            for(i=len(listnodes)-1; i>=0; i--)
+                listnodes[i].removefromparent();
+        }
         var i0=1;
         var i1=0;
         var pidlist = new Array(0);
@@ -646,6 +661,19 @@ trace("warinfo",rc,c);
             lists[1].add(u.pos(5,15+i1*54));
             i1++;
         }
+        le = len(myEmpty);
+        for(i=0; i < le; i++)
+        {
+            udata = myEmpty[i];
+            u = sprite("wartabperson.png");
+            u.addsprite("monsteravatar"+str(udata[5])+".jpg").pos(5,5).size(40,40);
+            u.addlabel(ENAME[udata[5]], null, 16).anchor(100, 100).pos(172, 45).color(0,0,0);
+            u.addlabel(global.getEmptyName(udata[2]), null, 16).pos(50, 5).color(0,0,0);
+            u.setevent(EVENT_UNTOUCH,nodemovewithgidevent,udata[2]);
+            u.setevent(EVENT_TOUCH,nodemovewithgidevent);
+            u.setevent(EVENT_MOVE,nodemovewithgidevent);
+            lists[2].add(u.pos(5, 15+i*54));
+        }
     }
     
     var lasty;
@@ -677,12 +705,15 @@ trace("warinfo",rc,c);
         }
     }
     
-    var selecttab;
+    var selecttab=0;
     function tabchange(n,e,p){
+        if(selecttab == p)
+            return;
         tabs[p].texture("warmenutab1.png");
-        tabs[1-p].texture("warmenutab0.png");
+        tabs[selecttab].texture("warmenutab0.png");
+
         lists[p].visible(1);
-        lists[1-p].visible(0);
+        lists[selecttab].visible(0);
         selecttab=p;
     }
 
