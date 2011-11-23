@@ -264,6 +264,7 @@ const stringDict=dict([
 ["master","领主："],[":","："],
 ["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
 ["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
+["quit", "quit"],["back", "back"],
 ]);
 
 var image=dict();    
