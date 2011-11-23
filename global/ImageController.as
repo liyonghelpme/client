@@ -20,7 +20,8 @@ class ImageController{
     "fire-4-6.png","fire-4-7.png","fire-4-8.png","fire-4-9.png","fire-4.png","fire-5.png","fire-6.png","fire-7.png","fire-9.png","fire-f1.png","fire-f2.png","fire-f3.png","fire-f4.png",
     "water-1-10.png","water-1-11.png","water-1-12.png","water-1-13.png","water-1-1.png","water-1-2.png","water-1-3.png","water-1-4.PNG","water-1-5.png","water-1-6.png",
     "water-1-7.png","water-1-8.png","water-1-9.png","water-1.png","water-2.png","water-3.png","water-4-1.png","water-4-2.png","water-4-3.png","water-4-4.png","water-4-5.png",
-    "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png"
+    "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png",
+    "selopen.png", "selclose.png"
     ];
     const images2 = [
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
