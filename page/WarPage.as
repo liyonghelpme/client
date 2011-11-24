@@ -43,6 +43,7 @@ class WarPage extends ContextObject{
     var WS_MIN = -20;
     var emptyCities;
     var myEmpty;
+    var mapUser = null;
     function WarPage(){
         contextname = "page-war";
         contextNode = null;
@@ -199,6 +200,7 @@ trace("warinfo",rc,c);
         trace("net unlock",initlock);
         if(rc!=0){
             userdict.clear();
+            global.mapUsers = userdict;
             var data = json_loads(c);
             if(data.get("id",1)!=0){
                 selfgid = data.get("gridid",4);
@@ -210,7 +212,12 @@ trace("warinfo",rc,c);
                     WS_MIN=-60;   
                 }
                 var list = data.get("list");
-
+                mapUser = dict();
+                for(var l = 0; l < len(list); l++)
+                {
+                    mapUser.update(list[l][5], list[l]);
+                }
+                //trace("mapUser", mapUser);
                 subnobility = data.get("subno",0);
                 global.user.setValue("nobility",nobility*3+subnobility);
                 global.user.setValue("nobattletime",data.get("protect"));
@@ -250,7 +257,7 @@ trace("warinfo",rc,c);
         for(var i=0;i<len(vs);i++){
             ugdict.update(vs[i][5],vs[i][3]);
         }
-        var default1=["0",0,0,0,0,0,0,0,0];
+        var default1=["0",0,0,0,0,0,0,0,0,0];
         for(i=0;i<len(list);i++){
             var user=userdict.get(ugdict.get(list[i][1]),default1);
             var emptyData = [user[0],-list[i][0],list[i][5],list[i][2],global.getEmptyName(list[i][2]),user[3],0,list[i][3],list[i][4],list[i][6]]; 
@@ -287,7 +294,7 @@ trace("warinfo",rc,c);
         var empty = emptyCities.get(gid);
         if(empty != null )
         {
-            if(m == 0){
+            //if(m == 0){
                 flagn.texture("flagother.png").anchor(0,100).pos(117,125);
                 if(empty[1] == -1)
                 {
@@ -298,7 +305,7 @@ trace("warinfo",rc,c);
                     flagn.texture("flag1.png");
                     //flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
                 }
-            }
+           // }
         }
         else {
             if(m==0){//blue flag white flag
@@ -310,9 +317,10 @@ trace("warinfo",rc,c);
                     flagn.texture("flagempty.png");
                 }
             }
+            else
+                flagn.addaction(repeat(animate(1000,"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",UPDATE_SIZE)));
         }
-        if(m == 1)
-            flagn.addaction(repeat(animate(1000,"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",UPDATE_SIZE)));
+
         flagn = userplace.get(gid%8).get(1);
         if(user[1]>-1){
             if(user[8]==1){
@@ -558,7 +566,8 @@ trace("warinfo",rc,c);
         }
         rightmenu.addlabel(global.user.getValue("cityname"),null,20).anchor(0,50).pos(88+RIGHTOFF,25).color(0,0,0,100);
         rightmenu.add(global.getnobility(nobility,subnobility).pos(88+RIGHTOFF,40),0,11);
-        if(global.user.getValue("nobility") < 2)
+        trace("show nobility", global.user.getValue("nobility"));
+        if(global.user.getValue("nobility")/3 < 3)
         {
             tabs = new Array(2);
             tabs[0]=rightmenu.addsprite("warmenutab1.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
@@ -635,7 +644,17 @@ trace("warinfo",rc,c);
             u = sprite();
             var udata = userdict.get(global.battlelist[i][3]);
             if(global.battlelist[i][6] < 0){
-                u.addsprite("monsteravatar"+str(udata[2])+".jpg").pos(5,5).size(40,40);
+                var empty = emptyCities.get(global.battlelist[i][3]);
+                if(empty[1] == -1)
+                    u.addsprite("monsteravatar"+str(empty[5])+".jpg").pos(5,5).size(40,40);
+                else
+                {
+                    var user = mapUser.get(empty[1]);
+                    trace("avatar head", mapUser);
+                    trace("user", user);
+                    trace("empty", empty);
+                    u.addsprite(avatar_url(int(user[0]))).pos(5,5).size(40,40);
+                }
             }
             else{
                 u.addsprite(avatar_url(int(udata[0]))).pos(5,5).size(40,40);
@@ -669,7 +688,7 @@ trace("warinfo",rc,c);
                 i0++;
         }
         le = len(atklist);
-        trace("atklist", atklist);
+        //trace("atklist", atklist);
         for(i=0;i<le;i++){
             udata = atklist[i];
             var index = pidlist.index(udata[0]);

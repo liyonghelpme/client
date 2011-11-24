@@ -97,7 +97,21 @@ trace("speed",rc,c);
             for(var i=0;i<len(global.battlelist);i++){
                 if(battledata[1]==global.battlelist[i][1]&&global.battlelist[i][2]==1){
                     global.battlelist[i][0]=global.timer.base_localtime;
+                    break;
                 }
+            }
+            var battle = global.battlelist[i];
+            var empty = global.emptyCitiesInGlo.get(battledata[3], null);
+            //grid-->
+            trace("speed empty", empty);
+            if(empty != null && empty[1] == global.userid)
+            {
+               var data = global.mapUsers.get(battledata[3]);
+               //grid--> user
+               trace("global mapUsers", global.mapUsers);
+               trace("data", data);
+               data[6] += battle[4];
+               data[7] += battle[5];//emptyData update infantrypowe and cavalrypower
             }
             timelabel.removefromparent();
             qlabel.removefromparent();

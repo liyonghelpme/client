@@ -257,7 +257,8 @@ class WarControl extends ContextObject{
         contextNode.addaction(stop());
         contextNode.removefromparent();
         contextNode = null;
-        element.removefromparent();
+        if(element != null)
+            element.removefromparent();
         if(flaganimate==2){
             global.system.popmusic();
         }

@@ -92,10 +92,13 @@ class AttackControl extends ContextObject{
             b1 = 1;
         }
         var factor = 1;
-        if(soldiers[0] > 1000000 || soldiers[1] > 1000000)
-            factor = 1000;
+        var bound = [100000, 1000000, 10000000];
+        var fac = [1000, 10000, 100000];
+        for(var i = len(bound)-1 ; i >= 0; i--)
+            if(soldiers[0] > bound[i] || soldiers[1] > bound[i])
+                factor = fac[i];
         //btime = (soldiers[0]/factor*atime + soldiers[1]/factor*atime/2)/(bz/factor);
-        btime = ((soldiers[0]*2+soldiers[1])/factor)*atime/((2*bz)/factor)
+        btime = (soldiers[0]*2/factor+soldiers[1]/factor)*atime/(2*(bz/factor))
         //btime = 100*(bz+b1)/(2*bz)*atime/100;
         timelabel.text(global.gettimestr(btime));
     }
@@ -127,10 +130,19 @@ class AttackControl extends ContextObject{
             if(data.get("id",1)==1){//add battlelist
                 global.soldiers[0] = global.soldiers[0] - soldiers[0];
                 global.soldiers[1] = global.soldiers[1] - soldiers[1];
-                var eu = global.context[1].userdict.get(eid);
+                var empty = global.emptyCitiesInGlo.get(eid);
+
                 global.popContext(null);
                 var etime = global.timer.currenttime+btime;
-                global.battlelist.append([etime,eu[0],1,eid,soldiers[0],soldiers[1],eu[1]]);
+                if(empty != null)
+                {
+                    global.battlelist.append([etime,"0",1,eid,soldiers[0],soldiers[1],empty[0]]);//cid
+                }
+                else
+                {
+                    var eu = global.context[1].userdict.get(eid);
+                    global.battlelist.append([etime,eu[0],1,eid,soldiers[0],soldiers[1],eu[1]]);
+                }
                 global.context[1].setuserflag(eid);
                 global.context[1].refreshlist();
                 global.user.setValue("nobattletime",0);

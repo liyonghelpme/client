@@ -46,7 +46,7 @@ class ResourceControl extends ContextObject{
             button.addlabel(global.getStaticString("addsoldier"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         }
         else{
-            button=contextNode.addsprite("boxbutton1.png").pos(47,409).setevent(EVENT_UNTOUCH, quicksoldier,global.battlelist[ebindex]);
+            button=contextNode.addsprite("boxbutton1.png").pos(47,409).setevent(EVENT_UNTOUCH, quicksoldier,global.battlelist[ebindex]);//battle
             button.addlabel(global.getStaticString("quickSendArmy"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         }
         button=contextNode.addsprite("boxbutton1.png").pos(210,409).setevent(EVENT_UNTOUCH,callbacksoldier,rdata);

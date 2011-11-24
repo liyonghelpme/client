@@ -1564,7 +1564,7 @@ class CastlePage extends ContextObject{
                         iswar=1;
                     }
                 }
-                if(iswar==1||flaganimate<10){
+                if(iswar==1||flaganimate<10){//emptyBattle result
                     global.http.addrequest(0,"war",["uid"],[global.userid],self,"addnewbattle");
                 }
                 global.user.setValue("battlenum",len(global.battlelist));
