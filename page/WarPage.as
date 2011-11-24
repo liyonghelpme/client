@@ -235,6 +235,7 @@ trace("warinfo",rc,c);
                     if(list[emp][1] == global.userid)
                         myEmpty.append(list[emp]);
                 }
+
 //                trace(list);
                 loadempty(list);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
@@ -271,28 +272,47 @@ trace("warinfo",rc,c);
     function setuserflag(gid){
         var userplace=placedict.get(gid/8);
         if(userplace == null) return 0;
-        var user=userdict.get(gid);
+        var user=userdict.get(gid);//no such user
         var flagn = userplace.get(gid%8).get(2);
         var m=0;
         var length = len(global.battlelist);
+        //in battle list
         for(var i=0;i<length;i++){
             if(global.battlelist[i][2]==1&&global.battlelist[i][3] == gid){
                 m=1;
                 break;
             }
         }
-        if(m==0){
-            flagn.texture("flagother.png").anchor(0,100).pos(117,125);
-            if(user[1]>-1&&user[8]==1 || user[1]==-1&&user[5]==selfgid){//self gid != 0
-                flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
-            }
-            else if(user[1]<=-1&&user[0]=="0"){
-                flagn.texture("flagempty.png");
+        //emptyCites cid, uid, gid, inf, cav, attribute, lasttime
+        var empty = emptyCities.get(gid);
+        if(empty != null )
+        {
+            if(m == 0){
+                flagn.texture("flagother.png").anchor(0,100).pos(117,125);
+                if(empty[1] == -1)
+                {
+                    flagn.texture("flagempty.png");
+                }
+                else if(empty[1] == global.userid)
+                {
+                    flagn.texture("flag1.png");
+                    //flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
+                }
             }
         }
-        else{
+        else {
+            if(m==0){//blue flag white flag
+                flagn.texture("flagother.png").anchor(0,100).pos(117,125);
+                if(user[1]>-1&&user[8]==1 || user[1]==-1&&user[5]==selfgid){//self gid != 0
+                    flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
+                }
+                else if(user[1]<=-1&&user[0]=="0"){
+                    flagn.texture("flagempty.png");
+                }
+            }
+        }
+        if(m == 1)
             flagn.addaction(repeat(animate(1000,"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",UPDATE_SIZE)));
-        }
         flagn = userplace.get(gid%8).get(1);
         if(user[1]>-1){
             if(user[8]==1){
@@ -311,6 +331,7 @@ trace("warinfo",rc,c);
         else{
             flagn.texture("mapelement4.png");
         }
+
     }
         
 
@@ -537,14 +558,24 @@ trace("warinfo",rc,c);
         }
         rightmenu.addlabel(global.user.getValue("cityname"),null,20).anchor(0,50).pos(88+RIGHTOFF,25).color(0,0,0,100);
         rightmenu.add(global.getnobility(nobility,subnobility).pos(88+RIGHTOFF,40),0,11);
-        tabs = new Array(3);
-        tabs[0]=rightmenu.addsprite("selopen.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
-        tabs[1]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(87+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,1);
-        tabs[2]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(147+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,2);
-
-        rightmenu.addlabel(global.getStaticString("tab_fighting"),null,16).anchor(50,100).pos(63+RIGHTOFF,114+60).color(0,0,0,100);
-        rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(123+RIGHTOFF,114+60).color(0,0,0,100);
-        rightmenu.addlabel(global.getStaticString("tab_fortress"),null,16).anchor(50,100).pos(183+RIGHTOFF,114+60).color(0,0,0,100);
+        if(global.user.getValue("nobility") < 2)
+        {
+            tabs = new Array(2);
+            tabs[0]=rightmenu.addsprite("warmenutab1.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
+            tabs[1]=rightmenu.addsprite("warmenutab0.png").anchor(100,100).pos(213+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,1);
+            rightmenu.addlabel(global.getStaticString("tab_fighting"),null,16).anchor(50,100).pos(73+RIGHTOFF,114+60).color(0,0,0,100);
+            rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(159+RIGHTOFF,114+60).color(0,0,0,100);
+        }
+        else{
+            tabs = new Array(3);
+            tabs[0]=rightmenu.addsprite("selopen.png").anchor(0,100).pos(27+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,0);
+            tabs[1]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(147+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,1);
+            tabs[2]=rightmenu.addsprite("selclose.png").anchor(100,100).pos(207+RIGHTOFF,120+60).setevent(EVENT_UNTOUCH,tabchange,2);
+    
+            rightmenu.addlabel(global.getStaticString("tab_fighting"),null,16).anchor(50,100).pos(53+RIGHTOFF,114+60).color(0,0,0,100);
+            rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(113+RIGHTOFF,114+60).color(0,0,0,100);
+            rightmenu.addlabel(global.getStaticString("tab_fortress"),null,16).anchor(50,100).pos(173+RIGHTOFF,114+60).color(0,0,0,100);
+        }
         //rightmenu.addlable("要塞", null, 16).anchor(50, 100).pos(183+RIGHTOFF, 114+60).color(0,0,0);
         left.add(sprite("backbutton.png").anchor(0,100).pos(0,480).setevent(EVENT_UNTOUCH,goback),0,0);
         refreshlist();
@@ -638,6 +669,7 @@ trace("warinfo",rc,c);
                 i0++;
         }
         le = len(atklist);
+        trace("atklist", atklist);
         for(i=0;i<le;i++){
             udata = atklist[i];
             var index = pidlist.index(udata[0]);
@@ -656,8 +688,8 @@ trace("warinfo",rc,c);
             u.addlabel(udata[4],null,16).pos(50,5).color(0,0,0,100);
 
             u.setevent(EVENT_UNTOUCH,nodemovewithgidevent,udata[3]);
-            u.setevent(EVENT_TOUCH,nodemovewithgidevent);
-            u.setevent(EVENT_MOVE,nodemovewithgidevent);
+            u.setevent(EVENT_TOUCH,nodemovewithgidevent, udata[3]);
+            u.setevent(EVENT_MOVE,nodemovewithgidevent, udata[3]);
             lists[1].add(u.pos(5,15+i1*54));
             i1++;
         }

@@ -91,7 +91,12 @@ class AttackControl extends ContextObject{
             bz = 1;
             b1 = 1;
         }
-        btime = 100*(bz+b1)/(2*bz)*atime/100;
+        var factor = 1;
+        if(soldiers[0] > 1000000 || soldiers[1] > 1000000)
+            factor = 1000;
+        //btime = (soldiers[0]/factor*atime + soldiers[1]/factor*atime/2)/(bz/factor);
+        btime = ((soldiers[0]*2+soldiers[1])/factor)*atime/((2*bz)/factor)
+        //btime = 100*(bz+b1)/(2*bz)*atime/100;
         timelabel.text(global.gettimestr(btime));
     }
     
@@ -119,7 +124,7 @@ class AttackControl extends ContextObject{
     function attackover(r,rc,c){
         if(rc!=0){
             var data = json_loads(c);
-            if(data.get("id",1)==1){
+            if(data.get("id",1)==1){//add battlelist
                 global.soldiers[0] = global.soldiers[0] - soldiers[0];
                 global.soldiers[1] = global.soldiers[1] - soldiers[1];
                 var eu = global.context[1].userdict.get(eid);
