@@ -14,6 +14,7 @@ class ResourceControl extends ContextObject{
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
         rdata = g;
+        trace("resource data", rdata);
     }
     function paintNode(){
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);

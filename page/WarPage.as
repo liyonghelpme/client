@@ -198,6 +198,7 @@ class WarPage extends ContextObject{
 trace("warinfo",rc,c);
         initlock=initlock-2;
         trace("net unlock",initlock);
+        trace("initial warData");
         if(rc!=0){
             userdict.clear();
             global.mapUsers = userdict;
@@ -217,7 +218,6 @@ trace("warinfo",rc,c);
                 {
                     mapUser.update(list[l][5], list[l]);
                 }
-                //trace("mapUser", mapUser);
                 subnobility = data.get("subno",0);
                 global.user.setValue("nobility",nobility*3+subnobility);
                 global.user.setValue("nobattletime",data.get("protect"));
@@ -243,7 +243,6 @@ trace("warinfo",rc,c);
                         myEmpty.append(list[emp]);
                 }
 
-//                trace(list);
                 loadempty(list);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
                 warchat.global=global;
@@ -294,7 +293,7 @@ trace("warinfo",rc,c);
         var empty = emptyCities.get(gid);
         if(empty != null )
         {
-            //if(m == 0){
+            if((m == 0) || (empty[1] == global.userid)){
                 flagn.texture("flagother.png").anchor(0,100).pos(117,125);
                 if(empty[1] == -1)
                 {
@@ -305,7 +304,9 @@ trace("warinfo",rc,c);
                     flagn.texture("flag1.png");
                     //flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
                 }
-           // }
+            }
+           else
+                flagn.addaction(repeat(animate(1000,"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",UPDATE_SIZE)));
         }
         else {
             if(m==0){//blue flag white flag
@@ -646,13 +647,15 @@ trace("warinfo",rc,c);
             if(global.battlelist[i][6] < 0){
                 var empty = emptyCities.get(global.battlelist[i][3]);
                 if(empty[1] == -1)
+                {
                     u.addsprite("monsteravatar"+str(empty[5])+".jpg").pos(5,5).size(40,40);
+                }
                 else
                 {
                     var user = mapUser.get(empty[1]);
-                    trace("avatar head", mapUser);
-                    trace("user", user);
-                    trace("empty", empty);
+                    //trace("avatar head", mapUser);
+                    //trace("user", user);
+                    //trace("empty", empty);
                     u.addsprite(avatar_url(int(user[0]))).pos(5,5).size(40,40);
                 }
             }

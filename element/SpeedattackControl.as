@@ -109,9 +109,9 @@ trace("speed",rc,c);
                var data = global.mapUsers.get(battledata[3]);
                //grid--> user
                trace("global mapUsers", global.mapUsers);
-               trace("data", data);
-               data[6] += battle[4];
-               data[7] += battle[5];//emptyData update infantrypowe and cavalrypower
+               trace("data", data, battle);
+               data[7] += battle[4];
+               data[8] += battle[5];//emptyData update infantrypowe and cavalrypower
             }
             timelabel.removefromparent();
             qlabel.removefromparent();
