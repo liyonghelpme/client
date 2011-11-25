@@ -1506,10 +1506,10 @@ class CastlePage extends ContextObject{
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
             else{
-                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==2){
+                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
                 }
-                else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
+                else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
                     global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
                 }
             }

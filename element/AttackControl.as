@@ -98,8 +98,8 @@ class AttackControl extends ContextObject{
             if(soldiers[0] > bound[i] || soldiers[1] > bound[i])
                 factor = fac[i];
         //btime = (soldiers[0]/factor*atime + soldiers[1]/factor*atime/2)/(bz/factor);
-        btime = (soldiers[0]*2/factor+soldiers[1]/factor)*atime/(2*(bz/factor))
-        //btime = 100*(bz+b1)/(2*bz)*atime/100;
+        //btime = (soldiers[0]*2/factor+soldiers[1]/factor)*atime/(2*(bz/factor))
+        btime = 100*(bz+b1)/(2*bz)*atime/100;
         timelabel.text(global.gettimestr(btime));
     }
     
