@@ -116,8 +116,9 @@ class NormalObject extends ContextObject{
             objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
-                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544){
-                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png").anchor(0,100).pos(0,33*contextid+1),1,1);
+                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544||objectid>=545&&objectid<=546){
+                    trace("draw light", objectid);
+                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
                 }
             }
             else{
@@ -139,9 +140,9 @@ class NormalObject extends ContextObject{
         else if(contextid == 9){
             contextNode.size(530,283).anchor(50,100);
             objnode = sprite("empire1.png",ALPHA_TOUCH).anchor(50,100).pos(269,283).size(524,398);
-            contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
+                contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
             }
             else{
                 objnode.color(100,100,100,100);

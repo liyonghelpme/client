@@ -76,7 +76,11 @@ class SpeedattackControl extends ContextObject{
             contextNode.get(1).setevent(EVENT_UNTOUCH,null);
             trace(battledata);
             var edata = global.context[1].userdict.get(battledata[3]);
-            global.http.addrequest(1,"attackspeedup",["uid","enemy_id"],[global.userid,edata[5]],self,"speedbegin");
+            var eid = edata[1];
+            if(eid>=0){
+                eid=edata[5];
+            }
+            global.http.addrequest(1,"attackspeedup",["uid","enemy_id"],[global.userid,eid],self,"speedbegin");
         }
     }
     
@@ -93,7 +97,21 @@ trace("speed",rc,c);
             for(var i=0;i<len(global.battlelist);i++){
                 if(battledata[1]==global.battlelist[i][1]&&global.battlelist[i][2]==1){
                     global.battlelist[i][0]=global.timer.base_localtime;
+                    break;
                 }
+            }
+            var battle = global.battlelist[i];
+            var empty = global.emptyCitiesInGlo.get(battledata[3], null);
+            //grid-->
+            trace("speed empty", empty);
+            if(empty != null && empty[1] == global.userid)
+            {
+               var data = global.mapUsers.get(battledata[3]);
+               //grid--> user
+               trace("global mapUsers", global.mapUsers);
+               trace("data", data, battle);
+               data[7] += battle[4];
+               data[8] += battle[5];//emptyData update infantrypowe and cavalrypower
             }
             timelabel.removefromparent();
             qlabel.removefromparent();

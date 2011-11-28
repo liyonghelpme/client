@@ -183,6 +183,8 @@ class UserController{
                     }
                 }
             }
+            trace("clevel",i);
+            trace("nclevel",global.card[14+cardindex]%10);
             if(i>global.card[14+cardindex]%10){
                 global.http.addrequest(0,"changecard",["userid","cardnum","type"],[global.userid,i,cardindex],global.context[0],null);
                 var bdict = dict();
@@ -274,7 +276,6 @@ class UserController{
         bn.add(n.scale(80),20000);
     }
     
-    const cn_proname = dict([["money","银币"],["caesars","凯撒币"],["food","粮食"],["labor","空闲人口"],["person","人口"]]);
     function testCost(cost){
         var items = cost.items();
         var buildable = dict([["ok",1]]);
@@ -288,7 +289,7 @@ class UserController{
             }
             if(getValue(key)-value<cmpvalue){
                 buildable.update("ok",0);
-                buildable.update(cn_proname.get(items[i][0]),value+cmpvalue-getValue(key));
+                buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
             }
         }
         if(buildable.get("ok")==1){

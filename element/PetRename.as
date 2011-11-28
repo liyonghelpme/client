@@ -18,13 +18,13 @@ class PetRename extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("petrenamepic.jpg").pos(17,42);
-            element.addlabel("请输入宠物名称：",null,20).pos(136,85).color(0,0,0,100);
+            element.addlabel(global.getStaticString("nest_pet_name"),null,20).pos(136,85).color(0,0,0,100);
             //element.addsprite("renameelement.jpg").pos(136,110);
             web = v_create(V_INPUT_VIEW,333,213,236,60);
             v_root().addview(web);
             web.text(nest.petname);
             
-            warning = element.addlabel("命名之后不能更改，请慎重命名",null,16).pos(136,160).color(100,0,0,100);
+            warning = element.addlabel(global.getStaticString("nest_pet_name_warning"),null,16).pos(136,160).color(100,0,0,100);
         }
         return element;
     }
@@ -33,7 +33,7 @@ class PetRename extends ContextObject{
         dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["修改","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("change"),global.getStaticString("cancel")]);
     }
     
 
@@ -46,12 +46,12 @@ class PetRename extends ContextObject{
             var ul = len(st);
             l = l-(ul - l)/6;
             if(l>14){
-                warning.text("限7个汉字或者14个英文字符！");
+                warning.text(global.getFormatString("text_wordlimit_format",["[NUM]","7"]));
                 lock=0;
                 return 0;
             }
-            if(t==""|| t == "我的宠物"){
-                warning.text("不能改成这个名字！");
+            if(t==""|| t == global.getStaticString("default_petname")){
+                warning.text(global.getStaticString("text_cannotset"));
                 lock = 0;
                 return 0;
             }
@@ -74,10 +74,10 @@ class PetRename extends ContextObject{
             var t = web.text();
             nest.petname=t;
             global.popContext(null);
-            global.pushContext(self,new Warningdialog(["为了更好地体验宠物系统，请查看帮助文档",1,4]),NonAutoPop);
+            global.pushContext(self,new Warningdialog([global.getStaticString("nest_gotohelp"),1,4]),NonAutoPop);
         }
         else{
-            warning.text("抱歉，因网络原因本次改名失败！");
+            warning.text(global.getStaticString("text_nettimeout"));
         }
         lock = 0;
     }

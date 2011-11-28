@@ -180,43 +180,71 @@ class WarControl extends ContextObject{
         flagresult = 0;
         datadict = dl;
     }
-    
+    function toInt(data)
+    {
+        if(type(data) == type(""))
+            return int(data)
+        return data;
+    }
     function formatstringtodata(dl){
+        trace("format", dl);
         var data = dict();
         var d;
         if(type(dl)==type(""))
             d= dl.split(",");
         else if(type(dl)==type([]))
             d=dl;
-        var leftself = int(d[1]);
+        var leftself = toInt(d[1]);//attack split into int
         if(leftself==1){
             _self = "left";
             _enemy = "right";
-            data.update("leftwin",int(d[2]));
+            data.update("leftwin",toInt(d[2]));
         }
         else{
             _self = "right";
             _enemy = "left";
-            data.update("leftwin",1-int(d[2]));
+            data.update("leftwin",1-toInt(d[2]));
         }
-        data.update("enemyuid",int(d[0]));
+        data.update("enemyuid",toInt(d[0]));
         data.update("leftself",leftself);
         data.update("reward",d[6]);
-        data.update("powerlost",int(d[3]));
-        data.update(_self+"power",int(d[4]));
-        data.update(_enemy+"power",int(d[5]));
+        data.update("powerlost",toInt(d[3]));
+        data.update(_self+"power",toInt(d[4]));
+        data.update(_enemy+"power",toInt(d[5]));
         data.update(_self+"ppyid",ppy_userid());
-        data.update(_enemy+"ppyid",int(d[7]));
-        data.update(_self+"power2",int(d[8])+int(d[9]));
-        data.update(_enemy+"power2",int(d[12])+int(d[13]));
+        data.update(_enemy+"ppyid",toInt(d[7]));//other ppyid
+        data.update(_self+"power2",toInt(d[8])+toInt(d[9]));
+        data.update(_enemy+"power2",toInt(d[12])+toInt(d[13]));
         data.update(_self+"name",global.user.getValue("cityname"));
         data.update(_enemy+"name",d[10]);
         data.update(_self+"nob",global.user.getValue("nobility"));
-        data.update(_enemy+"nob",int(d[11]));
-        data.update(_self+"godpower",int(d[14]));
-        data.update(_enemy+"godpower",int(d[15]));
+        data.update(_enemy+"nob",toInt(d[11]));
+        data.update(_self+"godpower",toInt(d[14]));
+        data.update(_enemy+"godpower",toInt(d[15]));
+        function toInt(data)
+        {
+            if(type(data) == type(""))
+                return int(data);
+            return data;
+        }
+        var defdata = toInt(d[16]);
+        if(defdata >= 0)
+        {
+            data.update("monster", 0);
+        }
+        else
+        {
+            data.update("monster", 1);
+            var level = -(defdata+1);
+            data.update("monLevel", level);
+            if(toInt(d[17]) <= 0)
+                data.update("noOwner", 1);
+            else
+                data.update("noOwner", 0);
+        }
+
         if(len(d)>=17){
-            data.update("defence",int(d[16]));
+            data.update("defence",toInt(d[16]));
         }
         else{
             data.update("defence",global.user.getValue("citydefence"));   
@@ -229,7 +257,8 @@ class WarControl extends ContextObject{
         contextNode.addaction(stop());
         contextNode.removefromparent();
         contextNode = null;
-        element.removefromparent();
+        if(element != null)
+            element.removefromparent();
         if(flaganimate==2){
             global.system.popmusic();
         }
@@ -330,20 +359,31 @@ class WarControl extends ContextObject{
             contextNode.addlabel(global.getStaticString(6),null,20).pos(320,349).color(0,0,0,100);
             contextNode.addsprite("dialogelement_help.png").pos(463,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
             var offy=152;
-            if(datadict.get("leftwin") == datadict.get("leftself")){
-                infolabel.color(76,3,0,100);
-                if(rwd[0]!="0"){
-                    rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
-                    rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
-                    offy = 174;
+            var mon = datadict.get("monster");
+            var noOwn = datadict.get("noOwner");
+            if(mon == 0)
+            {
+                if(datadict.get("leftwin") == datadict.get("leftself")){
+                    infolabel.color(76,3,0,100);
+                    if(rwd[0]!="0"){
+                        rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
+                        rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
+                        offy = 174;
+                    }
+                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
+                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
                 }
-                rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
-                rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
+                else{
+                    infolabel.color(0,17,76,100);
+                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
+                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
+                }
             }
-            else{
+            else
+            {
                 infolabel.color(0,17,76,100);
                 rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
-                rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
+                rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
                 if(datadict.get("leftself")==1){
                     contextNode.addlabel(global.getStaticString("sendFight")+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
@@ -378,9 +418,23 @@ class WarControl extends ContextObject{
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
-                rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
+
+                if(mon == 0 || noOwn == 0)
+                    rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
+                else
+                {
+                    var level = datadict.get("monLevel");
+                    rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
+                }
+
                 leftuser.add(label(global.getStaticString("attack")+":"+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);
-                rightuser.add(label(global.getStaticString("defence")+":"+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                if(mon == 0)
+                    rightuser.add(label(global.getStaticString("defence")+":"+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                else{
+                    level = datadict.get("monLevel");
+                    var power = 15 + 1*level;
+                    rightuser.add(label(global.getStaticString("defence")+":"+str(datadict.get("rightpower")*power/10),null,16).anchor(0,50).pos(21,86),0,1);
+                }
                 leftuser.addlabel(datadict.get("leftname"),null,18).pos(82,22).color(0,0,0,100);
                 rightuser.addlabel(datadict.get("rightname"),null,18).pos(82,22).color(0,0,0,100);
                 leftuser.addsprite("nobi"+str(datadict.get("leftnob"))+".png").anchor(50,50).pos(94,57).size(25,25);
@@ -404,7 +458,7 @@ class WarControl extends ContextObject{
                     l=rightuser.addlabel("+"+str(lgpower),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
                     l.addaction(sequence(delaytime(1500),itintto(100,100,0,100),moveby(2000,0,-200),tintto(2000,0,0,0,0)));
                     datadict.update("rightpower",datadict.get("rightpower")+lgpower);
-                    rightuser.addaction(sequence(delaytime(3500),callfunc(itext,"防御力："+str(datadict.get("rightpower")))));
+                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext,"防御力："+str(lgpower))));
                     for(rl=0;rl<3;rl++){
                         r=rightuser.addsprite("rain1.png").anchor(50,0).pos(60,40+rl*140);
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
