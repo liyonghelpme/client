@@ -11,8 +11,8 @@ const AutoPop = 1;
 const NonAutoPop = 0;
 const NotAdd = 2;
 
-const BASE_URL = "http://223.4.87.9:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://223.4.87.9:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -264,7 +264,7 @@ const stringDict=dict([
 ["master","领主："],[":","："],
 ["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
 ["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
-["quit", "quit"],["back", "back"],
+["quit", "quit"],["back", "back"],["sendFight", "Send fighting"], ["totalFight", "Total fighting"], ["lostFight", "Lost fighting"], ["returnFight", "Return fighting"], ["defenceFight", "Defence fighting"], ["lostDefence", "Lost defence"], ["leftDefence", "Left defence"], ["lostCoin", "Lost coin"], ["share", "share"], ["ok", "OK"], ["attack", "Attack"], ["defence", "Defence"]
 ]);
 
 var image=dict();    

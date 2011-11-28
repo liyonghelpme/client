@@ -346,23 +346,23 @@ class WarControl extends ContextObject{
                 rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
                 if(datadict.get("leftself")==1){
-                    contextNode.addlabel("派出战斗力："+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                    contextNode.addlabel("损失战斗力：",null,20).pos(343,245).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("sendFight")+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("lostFight")+":",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("返回战斗力："+str(datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("returnFight")+":"+str(datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
                 }
                 else{
-                    contextNode.addlabel("留守防御力："+str(datadict.get("defence")+datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                    contextNode.addlabel("损失防御力：",null,20).pos(343,245).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("defenceFight")+":"+str(datadict.get("defence")+datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("lostDefence")+":",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("剩余防御力："+str(datadict.get("defence")+datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel(global.getStaticString("leftDefence")+":"+str(datadict.get("defence")+datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
                     if(datadict.get("leftwin")==1){
-                        contextNode.addlabel("损失银币：",null,20).pos(359,309).color(0,0,0,100);
+                        contextNode.addlabel(global.getStaticString("lostCoin")+":",null,20).pos(359,309).color(0,0,0,100);
                         contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                     }
                 }
-            setbutton(1,356,407,"分享").setevent(EVENT_UNTOUCH,closedialog,1);
-            setbutton(2,498,407,"确定").setevent(EVENT_UNTOUCH,closedialog,null);
+            setbutton(1,356,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,closedialog,1);
+            setbutton(2,498,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog,null);
             if(flaganimate==1){
                 element = global.dialogscreen.addsprite("warback.jpg").anchor(50,50).pos(400,240).color(0,0,0,0);
                 contextNode.visible(0);
@@ -379,8 +379,8 @@ class WarControl extends ContextObject{
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
                 rightuser.addsprite(avatar_url(datadict.get("rightppyid"))).pos(25,19).size(50,50);
-                leftuser.add(label("攻击力："+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);
-                rightuser.add(label("防御力："+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                leftuser.add(label(global.getStaticString("attack")+":"+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);
+                rightuser.add(label(global.getStaticString("defence")+":"+str(datadict.get("rightpower")),null,16).anchor(0,50).pos(21,86),0,1);
                 leftuser.addlabel(datadict.get("leftname"),null,18).pos(82,22).color(0,0,0,100);
                 rightuser.addlabel(datadict.get("rightname"),null,18).pos(82,22).color(0,0,0,100);
                 leftuser.addsprite("nobi"+str(datadict.get("leftnob"))+".png").anchor(50,50).pos(94,57).size(25,25);
@@ -393,7 +393,7 @@ class WarControl extends ContextObject{
                     var l=leftuser.addlabel("+"+str(lgpower),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
                     l.addaction(sequence(delaytime(1500),itintto(100,100,0,100),moveby(2000,0,-200),tintto(2000,0,0,0,0)));
                     datadict.update("leftpower",datadict.get("leftpower")+lgpower);
-                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext,"攻击力："+str(datadict.get("leftpower")))));
+                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext,global.getStaticString("attack")+":"+str(datadict.get("leftpower")))));
                     for(var rl=0;rl<3;rl++){
                         var r=leftuser.addsprite("rain1.png").anchor(50,0).pos(60,40+rl*140);
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
@@ -410,135 +410,6 @@ class WarControl extends ContextObject{
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
                     }
                 }
-                                /*
-                var appear_time = 1500;
-                var walk_time = 2000;
-                var race_time = 800;
-                var fight_time = 3000;
-                var win_time = 1500;
-                var wait_time = appear_time+walk_time+fight_time+race_time;
-                
-                var astr = "animate_";
-                element.addsprite("mapempirelv1"+estr+".png").anchor(50,50).pos(400,130).scale(110);
-
-
-                var lpower = powernumtolevel(datadict.get("leftpower"));
-                var rpower = powernumtolevel(datadict.get("rightpower"));
-                var ibasex = [40,-10,40];
-                var ibasey = [20,80,140];
-                var soldpos = [[0,20],[40,40],[00,60],[40,80],[0,100]];
-                var lsoldier = [(lpower+2)/3,(lpower+3)/3,(lpower+1)/3];
-                if(lpower==1){
-                    lsoldier = [1,0,1];
-                }
-                
-                var h0 = sprite(lstr+"left_0_1.png").pos(200-100,70);
-                h0.addaction(sequence(animate(appear_time,lstr+"left_0_9.png",lstr+"left_0_10.png",lstr+"left_0_11.png",lstr+"left_0_12.png",lstr+"left_0_13.png",lstr+"left_0_1.png"),
-                spawn(moveby(walk_time,200,0),repeat(animate(walk_time/4,lstr+"left_0_2.png",lstr+"left_0_3.png",lstr+"left_0_4.png",lstr+"left_0_5.png",lstr+"left_0_6.png",lstr+"left_0_1.png"),4)),
-                repeat(animate(appear_time,lstr+"left_0_9.png",lstr+"left_0_10.png",lstr+"left_0_11.png",lstr+"left_0_12.png",lstr+"left_0_13.png",lstr+"left_0_1.png"),5)));
-                element.add(h0,70);
-                var lgpower = datadict.get("leftgodpower");
-                if(lgpower>0){
-                    var l=leftuser.addlabel("+"+str(datadict.get("leftgodpower")),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
-                    l.addaction(sequence(delaytime(appear_time),itintto(100,100,0,100),moveby(walk_time/2,0,-200),tintto(walk_time/2,0,0,0,0)));
-                    datadict.update("leftpower",datadict.get("leftpower")+lgpower);
-                    leftuser.addaction(callfunc(itext,"攻击力："+str(datadict.get("leftpower"))));
-                }
-                lgpower = datadict.get("rightgodpower");
-                if(lgpower>0){
-                    l=rightuser.addlabel("+"+str(datadict.get("rightgodpower")),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
-                    l.addaction(sequence(delaytime(appear_time),itintto(100,100,0,100),moveby(walk_time/2,0,-200),tintto(walk_time/2,0,0,0,0)));
-                    datadict.update("rightpower",datadict.get("rightpower")+lgpower);
-                    rightuser.addaction(callfunc(itext,"防御力："+str(datadict.get("rightpower"))));
-                }
-                for(var i=0;i<3;i++){
-                    if(lsoldier[i]==0){
-                        continue;
-                    }
-                    else{
-                        var slstr = lstr+"left_"+str(lsoldier[i])+"_";
-                    }
-                    for(var j=0;j<5;j++){
-                        var h1 = sprite(slstr+"2.png").anchor(50,0).pos(-ibasex[i]+soldpos[j][0]+90,ibasey[i]+100+soldpos[j][1]);
-                        if(i%2==1){
-                            h1.addaction(sequence(delaytime(appear_time),
-                            spawn(moveby(walk_time,200,0),repeat(animate(walk_time/4,slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png"),4)),
-                            delaytime(race_time/2),spawn(moveby(race_time/2,50,0),animate(race_time/2,slstr+"1.png",slstr+"2.png")),
-                            repeat(animate(fight_time/8,slstr+"3.png",slstr+"2.png"),8)));
-                        }
-                        else{
-                            h1.addaction(sequence(delaytime(appear_time),
-                            spawn(moveby(walk_time,200,0),repeat(animate(walk_time/4,slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png"),4)),
-                            spawn(moveby(race_time,100,0),repeat(animate(race_time/2,slstr+"1.png",slstr+"2.png"),2)),
-                            repeat(animate(fight_time/8,slstr+"3.png",slstr+"2.png"),8)));
-                        }
-                        if(datadict.get("leftwin")==1){
-                            h1.addaction(sequence(delaytime(wait_time),repeat(animate(400,lstr+str(lsoldier[i])+"_1.png",lstr+str(lsoldier[i])+"_2.png"),win_time/400)));
-                        }
-                        else{
-                            h1.addaction(sequence(delaytime(wait_time),stop(),itexture(slstr+"4.png")));
-                        }
-                        element.add(h1,ibasey[i]+100+soldpos[j][1]+1);
-                    }
-                    if(datadict.get("leftgodpower")!=0){
-                        h1.prepare();
-                        var r=h1.addsprite("rain1.png").anchor(50,100).pos(h1.size()[0]/2,40);
-                        r.addaction(sequence(delaytime(appear_time),repeat(animate(walk_time/2,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
-                    }
-                }
-                if(datadict.get("leftwin")==0){
-                    h0.addaction(sequence(delaytime(wait_time),stop(),itexture(lstr+"left_0_8.png")));
-                }
-                
-                var rsoldier = [(rpower+2)/3,(rpower+3)/3,(rpower+1)/3];
-                if(rpower==1){
-                    rsoldier = [1,0,1];
-                }
-                lstr = rstr;
-                lsoldier=rsoldier;
-                h0 = sprite(lstr+"left_0_1.png").pos(600+100,70).scale(-100,100);
-                h0.addaction(sequence(animate(appear_time,lstr+"left_0_9.png",lstr+"left_0_10.png",lstr+"left_0_11.png",lstr+"left_0_12.png",lstr+"left_0_13.png",lstr+"left_0_1.png"),
-                spawn(moveby(walk_time,-200,0),repeat(animate(walk_time/4,lstr+"left_0_2.png",lstr+"left_0_3.png",lstr+"left_0_4.png",lstr+"left_0_5.png",lstr+"left_0_6.png",lstr+"left_0_1.png"),4)),
-                repeat(animate(appear_time,lstr+"left_0_9.png",lstr+"left_0_10.png",lstr+"left_0_11.png",lstr+"left_0_12.png",lstr+"left_0_13.png",lstr+"left_0_1.png"),5)));
-                element.add(h0,70);
-                for(i=0;i<3;i++){
-                    if(lsoldier[i]==0){
-                        continue;
-                    }
-                    else{
-                        slstr = lstr+"left_"+str(lsoldier[i])+"_";
-                    }
-                    for(j=0;j<5;j++){
-                        h1 = sprite(slstr+"2.png").anchor(50,0).pos(ibasex[i]-soldpos[j][0]+710,ibasey[i]+100+soldpos[j][1]).scale(-100,100);
-                        if(i%2==1){
-                            h1.addaction(sequence(delaytime(appear_time),
-                            spawn(moveby(walk_time,-200,0),repeat(animate(walk_time/4,slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png"),4)),
-                            delaytime(race_time/2),spawn(moveby(race_time/2,-50,0),animate(race_time/2,slstr+"1.png",slstr+"2.png")),
-                            repeat(animate(fight_time/8,slstr+"3.png",slstr+"2.png"),8)));
-                        }
-                        else{
-                            h1.addaction(sequence(delaytime(appear_time),
-                            spawn(moveby(walk_time,-200,0),repeat(animate(walk_time/4,slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png",slstr+"1.png",slstr+"2.png"),4)),
-                            spawn(moveby(race_time,-100,0),repeat(animate(race_time/2,slstr+"1.png",slstr+"2.png"),2)),
-                            repeat(animate(fight_time/8,slstr+"3.png",slstr+"2.png"),8)));
-                        }
-                        if(datadict.get("leftwin")==0){
-                            h1.addaction(sequence(delaytime(wait_time),repeat(animate(400,lstr+str(lsoldier[i])+"_1.png",lstr+str(lsoldier[i])+"_2.png"),win_time/400)));
-                        }
-                        else{
-                            h1.addaction(sequence(delaytime(wait_time),stop(),itexture(slstr+"4.png")));
-                        }
-                        element.add(h1,ibasey[i]+100+soldpos[j][1]+1);
-                    }
-                    if(datadict.get("rightgodpower")!=0){
-                        h1.prepare();
-                        r=h1.addsprite("rain1.png").anchor(50,100).pos(h1.size()[0]/2,40);
-                        r.addaction(sequence(delaytime(appear_time),repeat(animate(walk_time/2,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
-                    }
-                }
-                if(datadict.get("leftwin")==1){
-                    h0.addaction(sequence(delaytime(wait_time),stop(),itexture(lstr+"left_0_8.png")));
-                }*/
                 global.system.pushmusic("4.mp3");
                 flaganimate=2;
             }
