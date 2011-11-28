@@ -186,33 +186,6 @@ const staticString = ["Upgrade to lv10 to open War mode","You can't quit War mod
 "You can use one-step visiting for free from now on！","[NAME] has shared the screenshot of his territory，Let's go and see！","","http://getmugua.com",
 "You can feed your dragon once a day，Friends can help you feeding. If your dragon isn't fed that day,it's growing points will decrease！","This dragon is gonna born, you can feed it later，thanks for helping!^_^",
 "You can feed a dragon once a day^_^","[NAME]'s dragon has been fed by [NUM] friends，thanks for helping^_^"];
-/*
-        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['Enable the war mode','You can enable the war mode at the level of 10，you can fight for the glory of your empire！','Enable the war mode','hint：Click the map bottom and then click the war icon'],'checknum':1,'reward':[5000,10,0]}"));
-        wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['check the assistant document','New options appear in war mode，Let's go and see！','check assistant document about war mode'],'checknum':1,'reward':[100,5,0]}"));
-        wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['ally with your friends','you can ally with strong friends to get reinforcement when you are at war！','Ally with a friend'],'checknum':1,'reward':[500,10,0]}"));
-        wartasklib.update(3,json_loads("{'id':3,'type':3,'req':'adddefence','des':['strengthen your defence','Strengthen your defence will make it possible for you to defense from invasions of other players.Click the castle first then click the plus sign to strengthen your defence','strengthen 100 point defence'],'checknum':100,'reward':[1000,15,0]}"));
-        wartasklib.update(4,json_loads("{'id':4,'type':0,'req':'build','pair':['ground_id',206],'des':['Build a scout training camp','You can train scouts to scout your enemy after scout training camp is built','build a normal scout training camp'],'checknum':1,'reward':[500,8,0]}"));
-        wartasklib.update(5,json_loads("{'id':5,'type':1,'req':'soldiers','pair':['btype',2,'objtype',0],'des':['Train a scout','normal scout can report enemy's information for you','train a normal scout'],'checknum':9,'reward':[800,10,0]}"));
-        wartasklib.update(6,json_loads("{'id':6,'type':0,'req':'detect','pair':[],'des':['scout an enemy','Know your enemy and know yourself，Scouts will get your enemy's fighting capacity information','Scout an enemy'],'checknum':1,'reward':[300,7,0]}"));
-        wartasklib.update(7,json_loads("{'id':7,'type':0,'req':'attack','pair':[],'des':['Attack an enemy','You can get rewards from your enemies and upgrade your title of nobility after defeate the enemies，Come on! Fight for the glory of your empire！','Attack an enemy'],'checknum':1,'reward':[1000,10,0]}"));
-        wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['increase the number of your allies','You can ally with more friends after enlarging your number of allies','increase the number of your allies'],'checknum':1,'reward':[1500,20,0]}"));
-        wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['upgrade your title of nobility','The higher your title of nobility is, the higher level map is which you can entered','Upgrade your title of nobility'],'checknum':1,'reward':[2000,25,0]}"));
-        wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['enter map of higher level','you can enter map of hugher map after defeated a number of enemies',' enter map of higher level'],'checknum':1,'reward':[2000,25,0]}"));
-*/
-//next 40
-/*
-        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第10级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
-        wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['查看帮助文档','战争系统有很多新的设定，快去看看有哪些新设定吧！','查看战争相关帮助文档'],'checknum':1,'reward':[100,5,0]}"));
-        wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['好友结盟','与一个强大的好友结盟，等你与其他人作战时，盟友会给你援军哦！','与一个好友结盟'],'checknum':1,'reward':[500,10,0]}"));
-        wartasklib.update(3,json_loads("{'id':3,'type':3,'req':'adddefence','des':['增加防御力','城墙防御力可以有效阻挡其他用户的进攻点击城堡再点击加号按钮增加防御力','增加100城墙防御力'],'checknum':100,'reward':[1000,15,0]}"));
-        wartasklib.update(4,json_loads("{'id':4,'type':0,'req':'build','pair':['ground_id',206],'des':['建造侦察兵训练营','建造侦察兵训练营可以训练侦察兵侦察敌情','建造普通侦察兵训练营'],'checknum':1,'reward':[500,8,0]}"));
-        wartasklib.update(5,json_loads("{'id':5,'type':1,'req':'soldiers','pair':['btype',2,'objtype',0],'des':['训练侦察兵','普通侦察兵可以从事侦察工作，为你获取敌人信息','训练普通侦察兵'],'checknum':9,'reward':[800,10,0]}"));
-        wartasklib.update(6,json_loads("{'id':6,'type':0,'req':'detect','pair':[],'des':['侦察敌人','知己知彼百战百胜，侦察敌人可以获取到Ta的战斗力信息','侦察敌人'],'checknum':1,'reward':[300,7,0]}"));
-        wartasklib.update(7,json_loads("{'id':7,'type':0,'req':'attack','pair':[],'des':['攻打敌人','战胜敌人可以升级爵位，获取敌人的资源，成就帝王之路！','攻打敌人'],'checknum':1,'reward':[1000,10,0]}"));
-        wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['增加盟友位','你可以通过增加盟友位置来与更多的好友结盟','增加盟友位'],'checknum':1,'reward':[1500,20,0]}"));
-        wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['升级爵位','爵位越高可以前往越高等级的地图','升级爵位'],'checknum':1,'reward':[2000,25,0]}"));
-        wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['进入高级地图','打败一定数量的敌人可以进入到更高级的地图',' 进入更高一级地图'],'checknum':1,'reward':[2000,25,0]}"));
-*/
 const SPYITEMS=["win:", "fight:", "soldier force", "ally force", "defence"];
 const SHARE_URL="http://getmugua.com";
 const stringDict=dict([
@@ -248,24 +221,25 @@ const stringDict=dict([
 ["gift_element0","[NAME] send you gift [GIFT]"],
 ["gift_element1","[NAME] ask you for gift [GIFT]"],
 ["monster_refresh_format","hahaha，[NAME]，give me your crops，or you will be restless"],
-["warrecord_notice_format","你的领地发生了[NUM]场战争，观看可以知道士兵损失详细情况，是否观看？"],
-["war_newmap_notice","恭喜你进入了新的地图！提示：不要太快进入更高等级的地图哦，先暗中积攒兵力吧^_^"],
+["warrecord_notice_format","there are [NUM] wars, would you like to watch?"],
+["war_newmap_notice","congratulations ! you enter a new map. hint : prepare enough soldiers for next level map^_^"],
 ["spy_notice","tips：higher scout level,more details"],
-["chat_empty","Content can't be empty"],["chat_wordlimit","字数超过30个汉字，无法发送！"],["chat_nettimeout","超时了，你的消息发送失败"],
-["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","抱歉，因网络原因本次改名失败！"],
+["chat_empty","Content can't be empty"],["chat_wordlimit","word number > 30"],["chat_nettimeout","network timeout, send message fail"],
+["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","sorry, network timeout, change name fail"],
 ["text_message_send","Please input message: "],["text_empty","can't empty"],["text_chat_nettimeout","Sorry,fail to send,try again^_^"],
 ["message_send_success","Successfully send"],["text_empire_name","Please input empire name: "],
-["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
+["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning", "the building is working, upgrade will break the work, do you want to upgrade?"],
 ["onekey_plant","One button plant"],["onekey_harvest","One button harvest"],["onekey_product","One button collect taxes"],["onekey_visit_normal","One button ordinary visit"],["onekey_visit_inc","One button accumulated visit"],["onekey_title","One button operation"],
 ["onekey_gotohelp","How to free use？"],
 ["tab_fighting","Fighting"],["tab_attackable","Fightable"],
 ["state_attacking","attacking"],["state_defencing","defending"],["state_fighting","fighting"],
 ["net_state_1","Network off, please check it"],["net_state_2","Network doesn't work, try again"],
-["master","领主："],[":","："],
-["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
-["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
-["quit", "quit"],["back", "back"],["sendFight", "Send fighting"], ["totalFight", "Total fighting"], ["lostFight", "Lost fighting"], ["returnFight", "Return fighting"], ["defenceFight", "Defence fighting"], ["lostDefence", "Lost defence"], ["leftDefence", "Left defence"], ["lostCoin", "Lost coin"], ["share", "share"], ["ok", "OK"], ["attack", "Attack"], ["defence", "Defence"]
-]);
+["master","master:"],[":","："],
+["user_notoccupy","unoccupitation"],["user_occupy","occupited"],["user_protected","in protect"],["user_fighting","fighting"],["user_attacking","marching"],
+["resource_get_format","the fortress product coin [MONEY] ，food [FOOD]，wood [WOOD]，stone [STONE] per hour，time left to harvest : [TIME]"],
+["quit", "quit"],["back", "back"],["sendFight", "Send fighting"], ["totalFight", "Total fighting"], ["lostFight", "Lost fighting"], ["returnFight", "Return fighting"], ["defenceFight", "Defence fighting"], ["lostDefence", "Lost defence"], ["leftDefence", "Left defence"], ["lostCoin", "Lost coin"], ["share", "share"], ["ok", "OK"], ["attack", "Attack"], ["defence", "Defence"], ["retry", "Retry"], ["cancel", "Cancel"], ["netFail1", "can't connect the server"], ["netFail2", "network timeout, please retry later"], ["taskShare", "congratulations! you finish the task, share it with your friends"], ["shareReward", "share brings you reward"],["complete", "complete"], ["giveup", "Giveup"], ["giveupwarn", "giveup task will lost a chance to get reward"], ["playWithme"], ["come to play Miracle Empire with me"]);
+
+
 
 var image=dict();    
 function getimage(str){
@@ -387,7 +361,7 @@ class GlobalController{
     }
     
     function getEmptyName(gid){
-        var firstName = ["天","地", "人", "月", "秦", "赵", "齐", "楚", "阳", "牙","风", "雷", "火", "水", "木", "金", "山", "音", "伊"];
+        var firstName = ["sky","earch", "human", "moon", "qin", "赵", "齐", "楚", "阳", "牙","风", "雷", "火", "水", "木", "金", "山", "音", "伊"];
         var secondName = ["明", "暗", "井", "景", "静", "迟", "车", "龙", "紫", "念", "宁", "凝", "幻", "北", "西", "东", "南", "隐"];
         var lastName = ["国", "城", "郡", "谷", "邦", "县", "寨", "洞", "府"];
         return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];

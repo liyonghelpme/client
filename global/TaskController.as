@@ -128,15 +128,15 @@ class TaskController extends ContextObject{
         contextNode = sprite("taskback1.png").anchor(50,50).pos(373,240);
         contextNode.addlabel(taskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(taskstep >= tasknum){
-            contextNode.addlabel("恭喜你完成了任务！快去与好友分享吧！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
-            contextNode.addlabel("点击分享将会有奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
+            contextNode.addlabel(global.getStaticString("taskShare"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
+            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
             element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
             element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
             element.addsprite("exp.png").anchor(50,50).pos(158,172);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,172).color(0,0,0,100);
-            setbutton(4,256,407,"分享").setevent(EVENT_UNTOUCH,taskcomplete,1);
-            setbutton(1,498,407,"完成").setevent(EVENT_UNTOUCH,taskcomplete,null);
+            setbutton(4,256,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,taskcomplete,1);
+            setbutton(1,498,407,global.getStaticString("complete")).setevent(EVENT_UNTOUCH,taskcomplete,null);
         }
         else{
             contextNode.addlabel(taskdes[1],null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
@@ -149,8 +149,8 @@ class TaskController extends ContextObject{
             element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
             element.addsprite("exp.png").anchor(50,50).pos(158,247);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,247).color(0,0,0,100);
-            setbutton(1,256,407,"确定").setevent(EVENT_UNTOUCH,closedialog);
-            setbutton(2,498,407,"放弃").setevent(EVENT_UNTOUCH,taskgiveup);
+            setbutton(1,256,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog);
+            setbutton(2,498,407,global.getStaticString("giveup")).setevent(EVENT_UNTOUCH,taskgiveup);
         }
         contextNode.setevent(EVENT_KEYDOWN,keydown);
     }
@@ -162,7 +162,6 @@ class TaskController extends ContextObject{
     
     function gotoMacket(){
         inctaskstep(1);
-        //global.pushContext(null,new TestWebControl(3),NonAutoPop);
         openUrl("http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating");
     }
     
@@ -173,7 +172,7 @@ class TaskController extends ContextObject{
     }
     
     function taskgiveup(){
-        global.pushContext(self,new Warningdialog(["放弃任务将失去一次额外奖励的机会哦",1,5]),NonAutoPop);
+        global.pushContext(self,new Warningdialog([global.getStaticString("giveupWarn"),1,5]),NonAutoPop);
     }
     
     function taskcomplete(n,e,p){
@@ -181,7 +180,7 @@ class TaskController extends ContextObject{
         enternode.visible(0);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"完成了"+taskdes[0]+"任务，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+ global.getStaticString("complete")+taskdes[0]+" task, "+global.getStaticString("playWithme"),"http://getmugua.com");
         }
         global.http.addrequest(0,"taskaccomplished",["uid"],[global.userid],self,"taskaccomplished");
     }
