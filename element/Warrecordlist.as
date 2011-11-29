@@ -23,7 +23,7 @@ class Warrecordlist extends ContextObject{
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,384).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,384).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(547,384).setevent(EVENT_UNTOUCH,choosePage,1);
-        contextNode.addlabel("注：每次进入新的战场，该列表将清空",null,20).pos(313,414).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("clearList"),null,20).pos(313,414).color(0,0,0,100);
         choosePage(0,0,0);
     }
 

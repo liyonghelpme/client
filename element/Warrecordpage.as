@@ -87,7 +87,7 @@ class Warrecordpage extends ContextObject{
         }
         items[index].addlabel(datas[index][10],null,18).pos(58,7).color(0,0,0,100);
         if(datas[index][0]==0){
-            items[index].addlabel("该请求已处理",null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
+            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
         }
         else{
             items[index].addsprite("wrbutton1.png").pos(296,8).setevent(EVENT_UNTOUCH,receivegift,index);
