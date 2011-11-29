@@ -15,13 +15,13 @@ class Levelupdialog extends ContextObject{
         contextNode = sprite("dialogback_normal.png").anchor(50,50).pos(400,240);
         if(level>3){
             contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(257,400).setevent(EVENT_TOUCH,closedialog,1);
-            contextNode.addlabel("分享",null,BUTTONFONTSIZE).anchor(50,50).pos(257,400);
+            contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(257,400);
             contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(417,400).setevent(EVENT_TOUCH,closedialog,null);
-            contextNode.addlabel("返回",null,BUTTONFONTSIZE).anchor(50,50).pos(417,400);
+            contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(417,400);
         }
         else{
             contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(380,400).setevent(EVENT_TOUCH,closedialog,null);
-            contextNode.addlabel("确定",null,BUTTONFONTSIZE).anchor(50,50).pos(380,400);
+            contextNode.addlabel(global.getStaticString("ok"),null,BUTTONFONTSIZE).anchor(50,50).pos(380,400);
         }
         var levelback = contextNode.addsprite("dialogback_levup.jpg").pos(163,40);
         levelback.addlabel(str(global.user.getValue("level")),null,36).anchor(0,50).pos(299,48).color(100,0,0,100);
@@ -56,7 +56,7 @@ class Levelupdialog extends ContextObject{
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"升到第"+str(global.user.getValue("level"))+"级啦，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("levelUp", ["[NAME]", ppy_name(), "[LEVEL]", str(global.user.getValue("level"))]),"http://getmugua.com");
         }
     }
 

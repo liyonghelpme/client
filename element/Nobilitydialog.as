@@ -30,11 +30,11 @@ class Nobilitydialog extends ContextObject{
             }
             var nback=element.addsprite("nobilityback.png").anchor(50,50).pos(219,191);
             nback.addsprite("nobi"+str(nob)+".png").anchor(50,50).pos(215,62);
-            var upstr = "恭喜！你晋级到了"+NOBNAME[nob];
+            var upstr = global.getStaticString("levelUp")+NOBNAME[nob];
             if(nob%3==0){
                 var db = c_opendb(0,"flag");
                 db.put("mapnew",1);
-                upstr =upstr+"，你即将进入新地图，在那里你会遇到更强大的对手，努力战胜他们吧！";
+                upstr =upstr+global.getStaticString("goInNewMap");
                 global.user.setValue("nobility",nob);
                 var reward=[5000,250,10000,500,30000,1500,50000,2500,70000,3500,100000,5000];
                 var index = (nob/3-1)*2;                
@@ -58,7 +58,7 @@ class Nobilitydialog extends ContextObject{
                 return element;
             }
             if(nob%3==2){
-                upstr = upstr+"，你的领地也升级啦！";
+                upstr = upstr+global.getStaticString("cityLevelUp");
                 if(global.context[0].warpage.inite==1){
                     global.context[0].warpage.userdict.get(global.context[0].warpage.selfgid)[6]=2;
                     if(global.context[1].contextname=="page-war"){
@@ -67,7 +67,7 @@ class Nobilitydialog extends ContextObject{
                 }
             }
             else{
-                upstr = upstr +"，再升一级你领地就可以升级罗！";
+                upstr = upstr +global.getStaticString("oneLevel");
             }
             element.addlabel(upstr,null,24,FONT_NORMAL,360,0,ALIGN_LEFT).anchor(50,0).pos(219,172).color(0,0,0,100);
         }
@@ -78,7 +78,7 @@ class Nobilitydialog extends ContextObject{
         dialog = new Simpledialog(0,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["分享","确定"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("share"), global.getStaticString("ok")]);
     }
         
     function excute(p){

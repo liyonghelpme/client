@@ -49,7 +49,7 @@ class QuickControl extends ContextObject{
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
         dialog.settitle("quicktitle.png");
-        dialog.usedefaultbutton(2,["加速","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("acc"),global.getStaticString("cancel")]);
         var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
@@ -103,7 +103,7 @@ trace("speed",rc,c);
             }
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
-            timelabel.text("剩余时间:"+global.gettimestr(lefttime));
+            timelabel.text(global.getStaticString("leftTime")+global.gettimestr(lefttime));
             var per = global.request[contextLevel].gettimeper();
             var per1 = per/10;
             var per2 = per%10;

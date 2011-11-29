@@ -58,7 +58,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("money")<GOD_B_PRICE[0]){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",GOD_B_PRICE[0]-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),GOD_B_PRICE[0]-global.user.getValue("money"));
                 }
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                 objs[i].addlabel(str(GOD_B_PRICE[0]),null,16).pos(34,202).color(cl,0,0,100);
@@ -67,7 +67,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("food") < GOD_FOOD[0]){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("粮食",GOD_FOOD[0]-global.user.getValue("food"));
+                    buildable[i].update(global.getStaticString("food"),GOD_FOOD[0]-global.user.getValue("food"));
                 }
                 objs[i].addsprite("food.png").size(29,33).pos(80,195);
                 objs[i].addlabel(str(GOD_FOOD[0]),null,16).pos(113,202).color(cl,0,0,100);
@@ -101,7 +101,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("money")<data.get("price")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",data.get("price")-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),data.get("price")-global.user.getValue("money"));
                 }
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                 objs[i].addlabel(str(data.get("price")),null,16).pos(30,202).color(cl,0,0,100);
@@ -110,7 +110,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("food") <data.get("food")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("粮食",data.get("food")-global.user.getValue("food"));
+                    buildable[i].update(global.getStaticString("food"),data.get("food")-global.user.getValue("food"));
                 }
                 objs[i].addsprite("food.png").size(29,33).pos(80,195);
                 objs[i].addlabel(str(data.get("food")),null,16).pos(103,202).color(cl,0,0,100);

@@ -21,7 +21,7 @@ class GiftControl extends ContextObject{
     function paintNode(){
         contextNode = sprite("dialogback_a.png").anchor(50,50).pos(400,240).size(439,383);
         contextNode.addsprite("gift.jpg").pos(25,13);
-        global.addtext(contextNode,115,41,"选择一件礼物赠送给<g>"+global.getfriend(global.context[0].cpid).get("name")+"<g>",20);
+        global.addtext(contextNode,115,41,global.getStaticString("sendGift")+global.getfriend(global.context[0].cpid).get("name")+"<g>",20);
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(439,0).setevent(EVENT_UNTOUCH,closedialog);
         selecttab = -1;
         for(var i=0;i<12;i++){
@@ -35,9 +35,9 @@ class GiftControl extends ContextObject{
         choosetab(0,0,0);
         choosepage(0,0,0);
         contextNode.addsprite("boxbutton1.png").pos(270,331).setevent(EVENT_TOUCH,gagift,1);
-        contextNode.addlabel("索要",null,BUTTONFONTSIZE).anchor(50,50).pos(332,350);
+        contextNode.addlabel(global.getStaticString("ask"),null,BUTTONFONTSIZE).anchor(50,50).pos(332,350);
         contextNode.addsprite("boxbutton4.png").pos(50,331).setevent(EVENT_TOUCH,gagift,0);
-        contextNode.addlabel("赠送",null,BUTTONFONTSIZE).anchor(50,50).pos(112,350);
+        contextNode.addlabel(global.getStaticString("send"),null,BUTTONFONTSIZE).anchor(50,50).pos(112,350);
     }
 
     function reloadNode(re){
@@ -59,7 +59,8 @@ class GiftControl extends ContextObject{
 
     function gagiftover(r,rc,c){
         trace("selectgift",rc,c);
-        var ganame=["你每天只能赠送给同一个好友至多一个礼物哦^_^","你每天只能向同一个好友至多索要一个礼物哦^_^"];
+        var ganname = ganname1;
+        //var ganame=["你每天只能赠送给同一个好友至多一个礼物哦^_^","你每天只能向同一个好友至多索要一个礼物哦^_^"];
         if(rc!=0 && json_loads(c).get("id")==0){
             global.pushContext(null,new Warningdialog([ganame[lock-1],-1,5]),NonAutoPop);
         }

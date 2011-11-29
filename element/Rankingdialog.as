@@ -38,7 +38,7 @@ class Rankingpage extends ContextObject{
         }
         contextNode =node();
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(360,438).color(0,0,0,100);
-        newspage = contextNode.addlabel("正在载入……",null,30).anchor(50,50).pos(360,296).color(0,0,0,100);
+        newspage = contextNode.addlabel(global.getStaticString("loading"),null,30).anchor(50,50).pos(360,296).color(0,0,0,100);
         left = contextNode.addsprite("rankleft.png").anchor(50,50).pos(313,438).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("rankright.png").anchor(50,50).pos(407,438).setevent(EVENT_UNTOUCH,choosePage,1);
         choosePage(0,0,0);
@@ -127,9 +127,9 @@ class Rankingpage extends ContextObject{
                                 cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(164,34).color(0,0,0,100);
                             }
                             else{
-                                cell.addlabel("未开启战争模式",null,16,FONT_BOLD).pos(134,34).color(0,0,0,100);
+                                cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(134,34).color(0,0,0,100);
                             }
-                            cell.addlabel("胜利数：",null,16,FONT_BOLD).pos(350,34).color(0,0,0,100);
+                            cell.addlabel(global.getStaticString("winNum"),null,16,FONT_BOLD).pos(350,34).color(0,0,0,100);
                             cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(414,34).color(0,0,67,100);
                         }
                     }
@@ -175,9 +175,9 @@ class Rankingpage extends ContextObject{
                                 cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
                             else{
-                                cell.addlabel("未开启",null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
+                                cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
-                            cell.addlabel("胜利数：",null,16,FONT_BOLD).pos(408,10).color(0,0,0,100);
+                            cell.addlabel(global.getStaticString("winNum"),null,16,FONT_BOLD).pos(408,10).color(0,0,0,100);
                             cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(472,10).color(0,0,67,100);
                         }
                     }
@@ -225,9 +225,9 @@ class Rankingpage extends ContextObject{
                                 cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
                             else{
-                                cell.addlabel("未开启",null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
+                                cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
-                            cell.addlabel("胜利数：",null,16,FONT_BOLD).pos(408,10).color(0,0,0,100);
+                            cell.addlabel(global.getStaticString("winNum"),null,16,FONT_BOLD).pos(408,10).color(0,0,0,100);
                             cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(472,10).color(0,0,67,100);
                         }
                     }

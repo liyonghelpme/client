@@ -22,7 +22,7 @@
     function initdata(){
         pagemax = 1;
         objmax = 6;
-        titlename = "选择宠物";
+        titlename = global.getStaticString("choosePet");
         objpath="pet";
     }
     
@@ -41,7 +41,7 @@
                 if(global.user.getValue("caesars") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                    buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                 }
                 cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(17,155);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,155).color(cl,0,0,100);
@@ -51,7 +51,7 @@
                 if(global.user.getValue("money") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",price-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                 }
                 cell.addsprite("money_big.png").size(20,20).anchor(0,50).pos(17,155);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,155).color(cl,0,0,100);
@@ -105,7 +105,7 @@
 
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog([PETS_NAME[param]+"初始战斗力："+str(PETS_POWER[param])+"，每成长点增加战斗力："+str(PETS_UP[param])+"。确定召唤？",param,6]),NonAutoPop);
+            global.pushContext(self,new Warningdialog(global.getFormatString("callDragonDia", ["[NAME]", [PETS_NAME[param], "[POWER]", str(PETS_POWER[param]), "[ADD]",  str(PETS_UP[param])]),param,6]),NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);

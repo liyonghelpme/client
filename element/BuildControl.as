@@ -63,30 +63,30 @@ class BuildControl extends ContextObject{
                     }
                     timelabel = back.addlabel("",null,20).anchor(100,50).pos(197,158).color(0,0,0,100);
                     timelabel.addaction(repeat(callfunc(updatetime),delaytime(1000)));
-                    var labelstr = "建筑中";
+                    var labelstr = global.getStaticString("inBuild");
                     if(place.state == 3){
-                        if(mode == 0) labelstr = "招募中";
-                        else if(mode == 1) labelstr = "生产中";
-                        else if(mode == 2) labelstr = "训练中";
+                        if(mode == 0) labelstr = global.getStaticString("inCall");
+                        else if(mode == 1) labelstr = global.getStaticString("inProduct");
+                        else if(mode == 2) labelstr = global.getStaticString("training");
                         else if(mode == 3){
                             if(place.bid<5){
-                                labelstr = "种植中";
+                                labelstr = global.getStaticString("planting");
                                 namelabel.text(global.getname("plant",place.objid));
                             }
                             else if(place.bid == 5){
-                                labelstr = "砍伐中";
+                                labelstr = global.getStaticString("wooding");
                                 namelabel.text(global.getname("wood",place.objid));
                             }
                             else{
-                                labelstr = "开采中";
+                                labelstr = global.getStaticString("stoning");
                                 namelabel.text(global.getname("stone",place.objid));
                             }
                         }
                         else if(mode == 6){
-                            labelstr = "生产城防中";
+                            labelstr =  global.getStaticString("proDefing");
                         }
                         else {
-                            labelstr = "祝福中";
+                            labelstr = global.getStaticString("blessing");
                             buttons.append(-10);
                         }
                     }
@@ -113,7 +113,7 @@ class BuildControl extends ContextObject{
                     else if(mode == 4){
                         buttons.append(10);
                     }
-                    back.addlabel("空闲中",null,20).anchor(0,50).pos(18,158).color(1,17,56);
+                    back.addlabel(global.getStaticString("free"),null,20).anchor(0,50).pos(18,158).color(1,17,56);
                 }
                 if(place.state>=2 && mode != 3 && mode!=6 && ((mode!=4 &&place.bid%3!=2) ||(mode==4 && (place.bid<16||place.bid>=20&&place.bid%5!=4)))){
                     buttons.append(1);
@@ -134,17 +134,17 @@ class BuildControl extends ContextObject{
                     if(stt>2) stt=2;
                     if(place.state==3){
                         back.add(sprite("egg-"+str(stt+1)+".png").anchor(50,0).pos(107,7),1,111);
-                        back.addlabel("孵化中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
+                        back.addlabel(global.getStaticString("egging"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
                     else if(place.state==4){
                         var pstr = EXTEND_NAME[place.extendid]+"-";
                         back.add(sprite(pstr+"7.png").anchor(50,0).pos(107,7).scale(70),1,111);
-                        back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
+                        back.addlabel(global.getStaticString("growing"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
                     else if(place.state==5){
                         pstr = EXTEND_NAME[place.extendid]+"-";
                         back.add(sprite(pstr+"1-1.png").anchor(50,50).pos(107,57).scale(70),1,111);
-                        back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
+                        back.addlabel(global.getStaticString("growing"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
                     var l=back.addlabel(str(place.attack),null,20).anchor(100,50).pos(197,94).color(0,0,0,100);
                     l.prepare();
@@ -181,7 +181,7 @@ class BuildControl extends ContextObject{
                 else{
                     back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
                     buttons.append(25);
-                    back.addlabel("空闲中",null,20).anchor(0,50).pos(18,158).color(1,17,56);
+                    back.addlabel(global.getStaticString("free"),null,20).anchor(0,50).pos(18,158).color(1,17,56);
                 }
                 beginx = -119;
             }

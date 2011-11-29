@@ -20,16 +20,16 @@ class GiftDialog extends ContextObject{
             contextNode.addlabel(name,null,16).anchor(0,50).pos(195,37).color(96,54,4,100);
             contextNode.addsprite("gift"+str(giftid+1)+".png").anchor(50,50).pos(248,105);
             button = contextNode.addsprite("boxbutton1.png").anchor(50,0).pos(202,200).setevent(EVENT_TOUCH,closedialog,1);
-            button.addlabel("接受",null,20).anchor(50,50).pos(62,19);
+            button.addlabel(global.getStaticString("accept"),null,20).anchor(50,50).pos(62,19);
         }
         else{
             contextNode.addsprite(avatar_url(ppyid)).pos(325,23).size(50,50);
             contextNode.addlabel(name,null,16).anchor(0,50).pos(104,37).color(96,54,4,100);
             contextNode.addsprite("gift"+str(giftid+1)+".png").anchor(50,50).pos(154,105);
             button = contextNode.addsprite("boxbutton1.png").pos(52,200).setevent(EVENT_TOUCH,closedialog,1);
-            button.addlabel("赠送",null,20).anchor(50,50).pos(62,19);
+            button.addlabel(global.getStaticString("send"),null,20).anchor(50,50).pos(62,19);
             button = contextNode.addsprite("boxbutton2.png").pos(227,200).setevent(EVENT_TOUCH,closedialog,0);
-            button.addlabel("返回",null,20).anchor(50,50).pos(62,19);
+            button.addlabel(global.getStaticString("back"),null,20).anchor(50,50).pos(62,19);
         }
     }
 

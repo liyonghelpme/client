@@ -37,10 +37,10 @@ class SoldierControl extends ContextObject{
                     tab.addlabel(global.getname("soldier",sid),null,16).anchor(0,50).pos(14,13).color(0,0,0,100);
                     var sp= SOLDIER_POWER[sid];
                     if(sp == 0){
-                        tab.addlabel("用于侦察",null,16).anchor(100,50).pos(202,13).color(0,0,0,100);
+                        tab.addlabel(global.getStaticString("toDetect"),null,16).anchor(100,50).pos(202,13).color(0,0,0,100);
                     }
                    else{
-                        tab.addlabel("单位战斗力",null,16).anchor(0,50).pos(80,13).color(0,0,0,100);
+                        tab.addlabel(global.getStaticString("unitPower"),null,16).anchor(0,50).pos(80,13).color(0,0,0,100);
                         tab.addsprite("power.png").anchor(50,50).pos(182,13);
                         tab.addlabel(str(sp),null,16).anchor(0,50).pos(198,13).color(0,0,0,100);
                     }
@@ -67,7 +67,7 @@ class SoldierControl extends ContextObject{
                 if(value > global.user.getValue("money")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",value-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),value-global.user.getValue("money"));
                 }
                 soldiers[i].addsprite("money_big.png").anchor(50,50).pos(24,100).size(20,20);
                 soldiers[i].addlabel(str(value),null,16).anchor(0,50).pos(36,100).color(cl,0,0,100);
@@ -77,7 +77,7 @@ class SoldierControl extends ContextObject{
                 if(value > global.user.getValue("food")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("粮食",value-global.user.getValue("food"));
+                    buildable[i].update(global.getStaticString("food"),value-global.user.getValue("food"));
                 }
                 soldiers[i].addsprite("food.png").anchor(50,50).size(29,33).pos(24,131);
                 soldiers[i].addlabel(str(value),null,16).anchor(0,50).pos(35,131).color(cl,0,0,100);
@@ -86,7 +86,7 @@ class SoldierControl extends ContextObject{
                 if(sp > global.user.getValue("person")-global.user.getValue("labor")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("空闲人口",sp-global.user.getValue("person")+global.user.getValue("labor"));
+                    buildable[i].update(global.getStaticString("free"),sp-global.user.getValue("person")+global.user.getValue("labor"));
                 }
                 soldiers[i].addsprite("personmax.png").anchor(50,50).pos(95,131);
                 soldiers[i].addlabel(str(sp),null,16).anchor(0,50).pos(112,131).color(cl,0,0,100);

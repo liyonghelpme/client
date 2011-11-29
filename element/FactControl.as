@@ -55,7 +55,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("银币",price-global.user.getValue("money"));
+                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -64,7 +64,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("空闲人口",nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update(global.getStaticString("free"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -73,7 +73,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("粮食",food-global.user.getValue("food"));
+                        buildable[i].update(global.getStaticString("food"),food-global.user.getValue("food"));
                     }
                     objs[i].addsprite("food.png").size(29,33).pos(80,195);
                     objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);
@@ -84,7 +84,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);

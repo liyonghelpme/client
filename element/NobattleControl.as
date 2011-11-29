@@ -1,6 +1,6 @@
 class NobattleControl extends ContextObject{
     var element;
-    const timestr = ["2小时","8小时","24小时"];
+    //const timestr = ["2小时","8小时","24小时"];
     const caesars = [4999,14999,-2];
     var endtime;
     var timeisend;
@@ -21,6 +21,7 @@ class NobattleControl extends ContextObject{
     }
     
     function getelement(){
+    	const timestr = timestr1;
         if(element==null){
             element = node();
             endtime = global.timer.times2c(global.user.getValue("nobattletime"));
@@ -39,7 +40,7 @@ class NobattleControl extends ContextObject{
 
             if(endtime>global.timer.currenttime){
                 filter = GRAY;
-                element.addlabel("保护中",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("inProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
                 timelabel = element.addlabel("",null,20).pos(199,105).color(0,0,0,100);
                 global.timer.addlistener(endtime,self);
                 timerefresh();
@@ -47,10 +48,10 @@ class NobattleControl extends ContextObject{
             else if(inAttack)
             {
                 filter = GRAY;
-                element.addlabel("进攻中不得开启保护模式",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("attNoProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
             }
             else{
-                element.addlabel("开启保护模式",null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("openProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
                 element.addsprite("help2.png").pos(319,101).setevent(EVENT_UNTOUCH,gotohelp,"nobattle");
             }
             element.addsprite("power.png").pos(28,22);
@@ -60,7 +61,7 @@ class NobattleControl extends ContextObject{
             element.addsprite("friendbutton2.png").pos(260,22).size(28,29);
             element.addlabel(str(len(global.context[0].friend.flist2)),null,16).color(0,0,0,100).pos(290,26);
             element.addsprite("selfwon.png").pos(28,55);
-            element.addlabel("殖民地："+str(global.user.getValue("wonnum")),null,16).color(0,0,0,100).pos(58,59);
+            element.addlabel(global.getStaticString("colonial")+str(global.user.getValue("wonnum")),null,16).color(0,0,0,100).pos(58,59);
             for(var i=0;i<3;i++){
                 var tab=element.addsprite("nobattletab0.png",filter).pos(14+i*126,135);
                 if(inAttack == 0)

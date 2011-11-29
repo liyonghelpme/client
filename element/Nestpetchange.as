@@ -24,7 +24,7 @@
     function initdata(){
         pagemax = 1;
         objmax = 6;
-        titlename = "更改属性";
+        titlename = global.getStaticString("changeAtt");
         objpath="pet";
     }
     
@@ -37,7 +37,7 @@
 
         if(type.objid==i){
             cell.texture("nestpettab1.png");
-            cell.addlabel("当前宠物",null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
+            cell.addlabel(global.getStaticString("curPet"),null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
         }
         else{
             cell.setevent(EVENT_TOUCH,beginPlant,i);
@@ -48,7 +48,7 @@
                 if(global.user.getValue("caesars") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                    buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                 }
                 cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(70,155);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(92,155).color(cl,0,0,100);
@@ -58,7 +58,7 @@
                 if(global.user.getValue("money") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",price-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                 }
                 cell.addsprite("money_big.png").size(20,20).anchor(0,50).pos(57,155);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(79,155).color(cl,0,0,100);
@@ -111,7 +111,7 @@
 
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog([PETS_NAME[param]+"初始战斗力："+str(PETS_POWER[param])+"，每成长点增加战斗力："+str(PETS_UP[param])+"。确定更改吗？",param,6]),NonAutoPop);
+            global.pushContext(self,new Warningdialog(global.getFormatString("petPro", ["[NAME]", [PETS_NAME[param], "[POWER]", str(PETS_POWER[param]), "[ADD]", str(PETS_UP[param])]), param,6]),NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);

@@ -26,7 +26,7 @@ class UpnewsControl extends ContextObject{
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(290,407).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(248,407).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(332,407).setevent(EVENT_UNTOUCH,choosePage,1);
-        newspage = contextNode.addlabel("正在载入……",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+        newspage = contextNode.addlabel(global.getStaticString("loading"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         length = len(items);
         pagemax = (length-1)/PAGEITEMS+1;
@@ -76,7 +76,7 @@ class UpnewsControl extends ContextObject{
                 }
             }
             else{
-                newspage.addlabel("还没有任何更新哦！",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+                newspage.addlabel(global.getStaticString("noUpdate"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
             }
         }
     }

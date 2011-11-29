@@ -295,10 +295,10 @@ class WarControl extends ContextObject{
         element.addsprite("pic1.jpg").anchor(50,50).pos(80,120);
         if(flagresult==0){
             if(datadict.get("leftself")==1){
-                element.addlabel("你的大军已经抵达"+datadict.get(_enemy+"name")+"领地，战争即将展开！",null,24,FONT_NORMAL,240,0,ALIGN_LEFT).color(0,0,0,100).anchor(50,50).pos(264,124);
+                element.addlabel(global.getStaticString("yourArmy", ["[NAME]", datadict.get(_enemy+"name")]),null,24,FONT_NORMAL,240,0,ALIGN_LEFT).color(0,0,0,100).anchor(50,50).pos(264,124);
             }
             else{
-                element.addlabel(datadict.get(_enemy+"name")+"的军队已经兵临城下，你的领地即将遭受攻击！",null,24,FONT_NORMAL,240,0,ALIGN_LEFT).color(0,0,0,100).anchor(50,50).pos(264,124);
+                element.addlabel(global.getStaticString("enemyArmy", ["[NAME]", datadict.get(_enemy+"name")]),null,24,FONT_NORMAL,240,0,ALIGN_LEFT).color(0,0,0,100).anchor(50,50).pos(264,124);
             }
         }
         return element;
@@ -343,8 +343,8 @@ class WarControl extends ContextObject{
             var dialog = new Simpledialog(1,self);
             dialog.init(dialog,global);
             contextNode = dialog.getNode();
-            dialog.setbutton(1,118,228,"观战",1);
-            dialog.setbutton(2,286,228,"跳过",0);
+            dialog.setbutton(1,118,228,global.getStaticString("viewWar"),1);
+            dialog.setbutton(2,286,228,global.getStaticString("skip"),0);
         }
         else if(flagresult==1){
             contextNode = sprite("taskback2.png").anchor(50,50).pos(373,240);
@@ -458,7 +458,7 @@ class WarControl extends ContextObject{
                     l=rightuser.addlabel("+"+str(lgpower),null,20).anchor(50,0).pos(118,300).color(0,0,0,0);
                     l.addaction(sequence(delaytime(1500),itintto(100,100,0,100),moveby(2000,0,-200),tintto(2000,0,0,0,0)));
                     datadict.update("rightpower",datadict.get("rightpower")+lgpower);
-                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext,"防御力："+str(lgpower))));
+                    leftuser.addaction(sequence(delaytime(3500),callfunc(itext, global.getStaticString("defence")+str(lgpower))));
                     for(rl=0;rl<3;rl++){
                         r=rightuser.addsprite("rain1.png").anchor(50,0).pos(60,40+rl*140);
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));

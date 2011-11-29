@@ -14,7 +14,7 @@ class RoomObject extends BuildObject{
             var buildable = dict([["ok",1]]);
             var pr = ROOM_FOOD[bid];
             var pname = "food";
-            var pcname = "粮食";
+            var pcname = global.getStaticString("food");
             if(global.user.getValue(pname)<pr){
                 buildable.update("ok",0);
                 buildable.update(pcname,pr-global.user.getValue(pname));
@@ -23,7 +23,7 @@ class RoomObject extends BuildObject{
             var pp=pr-global.user.getValue("personmax")+global.user.getValue("person");
             if(pp>0){
                 buildable.update("ok",0);
-                buildable.update("人口上限",pp);
+                buildable.update(global.getStaticString("peopUp"),pp);
             }
             if(buildable.get("ok")==0){
                 global.pushContext(null,new Warningdialog(buildable),NonAutoPop);

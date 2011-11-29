@@ -19,31 +19,31 @@ class AllyControl extends ContextObject{
         if(element == null){
             element = node();
             if(mode==0){
-                element.addlabel("你还剩"+str(global.allymax-len(global.context[0].friend.flist2))+"个盟友名额",null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
+                element.addlabel(global.getStaticString("youLeft")+str(global.allymax-len(global.context[0].friend.flist2))+global.getStaticString("allyNum"),null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
                 element.addsprite("adddefence.png").anchor(50,50).pos(395,34).setevent(EVENT_UNTOUCH,addallybound);
-                element.addlabel("你确定与Ta结盟吗？",null,24).pos(25,81).color(0,0,0,100);
+                element.addlabel(global.getStaticString("sureToally"),null,24).pos(25,81).color(0,0,0,100);
                 var ap = element.addsprite("allyelement.png").anchor(50,50).pos(219,159);
                 ap.addsprite(avatar_url(global.context[0].cpid)).pos(38,22).size(50,50);
                 ap.addlabel(fname,null,20).anchor(0,50).pos(103,48).color(0,0,0,100);
-                element.addlabel("在你战斗时，盟军将会提供你士兵援助。请慎重结盟，取消盟约需要花费凯撒币！",null,20,FONT_NORMAL,340,0,ALIGN_LEFT).pos(32,226).color(0,0,0,100);
-                dialog.usedefaultbutton(2,["结盟","返回"]);
+                element.addlabel(global.getStaticString("allyOk"),null,20,FONT_NORMAL,340,0,ALIGN_LEFT).pos(32,226).color(0,0,0,100);
+                dialog.usedefaultbutton(2,[global.getStaticString("makeAlly"),global.getStaticString("back")]);
             }
             else if(mode==1){
                 element.addsprite("pic3.jpg").anchor(50,50).pos(80,120);
-                element.addlabel("确定与"+fname+"取消结盟？",null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,47).color(0,0,0,100);
+                element.addlabel(global.getStaticString("cancelAlly")+fname,null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,47).color(0,0,0,100);
                 var cap = element.addsprite("cancelallyelement.png").anchor(50,50).pos(269,150);
-                cap.addlabel("惩罚：",null,25).anchor(20,50).color(100,0,0,100);
+                cap.addlabel(global.getStaticString("punish"),null,25).anchor(20,50).color(100,0,0,100);
                 cap.addsprite("caesars_big.png").anchor(50,50).pos(80,35).size(32,32);
                 cap.addlabel("5",null,30).anchor(0,50).pos(100,35).color(100,0,0,100);
-                dialog.usedefaultbutton(2,["确定","取消"]);
+                dialog.usedefaultbutton(2,[global.getStaticString("ok"),global.getStaticString("cancel")]);
             }
             else if(mode==2){
-                element.addlabel("你的盟友数已达上限",null,24).anchor(0,50).pos(22,100).color(0,0,0,100);
+                element.addlabel(global.getStaticString("allyUp"),null,24).anchor(0,50).pos(22,100).color(0,0,0,100);
                 element.addsprite("adddefence.png").anchor(0,50).pos(245,100).setevent(EVENT_UNTOUCH,addallybound);
-                dialog.usedefaultbutton(2,["增加","关闭"]);
+                dialog.usedefaultbutton(2,[global.getStaticString("add"), global.getStaticString("close")]);
             }
             else if(mode==3){
-                element.addlabel("增加一个盟友数",null,30).pos(30,46).color(0,0,0,100);
+                element.addlabel(global.getStaticString("addAlly"),null,30).pos(30,46).color(0,0,0,100);
                 var au = element.addsprite("addallybound.jpg").anchor(50,50).pos(202,150);
                 au.addsprite("caesars_big.png").anchor(50,50).pos(130,35).size(32,32);
                 var cl=0;
@@ -52,7 +52,7 @@ class AllyControl extends ContextObject{
                     cl=100;
                 }
                 au.addlabel("x "+str(cae),null,30).anchor(0,50).pos(180,35).color(cl,0,0,100);
-                dialog.usedefaultbutton(2,["确定","取消"]);
+                dialog.usedefaultbutton(2,[global.getStaticString("ok"), global.getStaticString("cancel")]);
             }
         }
         return element;

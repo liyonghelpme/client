@@ -23,7 +23,7 @@ class ChatnewsControl extends ContextObject{
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(290,407).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(248,407).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(332,407).setevent(EVENT_UNTOUCH,choosePage,1);
-        newspage = contextNode.addlabel("正在载入……",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+        newspage = contextNode.addlabel(global.getStaticString("loading"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         lock=1;
         global.http.addrequest(0,"fetchMsg",["uid","start","end"],[global.userid,0,-1],self,"addnewsitems");
@@ -49,10 +49,6 @@ class ChatnewsControl extends ContextObject{
             fpage=pagemax;
         }
         if(len(items) < fpage*PAGEITEMS && len(items)<length){
-            //if(lock==0){
-            //    lock = 1;
-            //global.http.addrequest(0,"getgift",["uid","off","num"],[ppy_userid(),0,length],self,"addnewsitems");
-            //}
         }
         else{
             newspage.removefromparent();
@@ -81,7 +77,7 @@ class ChatnewsControl extends ContextObject{
                 }
             }
             else{
-                newspage.addlabel("还没有任何消息哦！",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+                newspage.addlabel(global.getStaticString("noNews"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
             }
         }
     }

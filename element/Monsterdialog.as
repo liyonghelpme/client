@@ -36,11 +36,11 @@ class Monsterdialog extends ContextObject{
             }
             element.addlabel(MONSTERNAME[mtype],null,20).anchor(50,50).pos(219,78).color(0,0,0,100);
             element.addsprite("monster_"+str(mtype)+"_1.png").anchor(50,50).pos(219,160).scale(150);
-            element.addlabel("战斗力为："+str(mpower),null,20).anchor(50,50).pos(219,242).color(0,0,0,100);
+            element.addlabel(global.getStaticString("attackIs")+str(mpower),null,20).anchor(50,50).pos(219,242).color(0,0,0,100);
             var warning=element.addlabel("",null,20).anchor(50,50).pos(219,285).color(100,0,0,100);
         
             if(global.soldiers[0]+global.soldiers[1]<mpower){
-                warning.text("你的战斗力不足！");
+                warning.text(global.getStaticString("powerlack"));
                 flagdefeatable = 0;
             }
         }
@@ -51,7 +51,7 @@ class Monsterdialog extends ContextObject{
         var dialog = new Simpledialog(0,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["攻击","返回"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("attack"), global.getStaticString("back")]);
         if(flagdefeatable == 0){
             contextNode.get(0).texture("boxbutton2.png");
             contextNode.get(0).setevent(EVENT_UNTOUCH,null);

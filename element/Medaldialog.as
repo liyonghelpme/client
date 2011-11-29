@@ -117,7 +117,7 @@ class MedalControl extends ContextObject{
             else if(e == EVENT_UNTOUCH){
                 if(flagmove == 0&&global.context[0].cuid==global.userid){
                     if(clevels[param]<5||(param==12&&medals[param]%100<18)){
-                        var pn="你";
+                        var pn="You";
                         //if(){
                         //    pn = "Ta";
                         //}
@@ -127,9 +127,9 @@ class MedalControl extends ContextObject{
                         }
                         else if(param>13&&param<19){
                             if(param==14)
-                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]","粮食","[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
+                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]",global.getStaticString("food"),"[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
                             else if(param==15)
-                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]","银币","[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
+                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]",global.getStaticString("coin"),"[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
                             else if(param==18){
                                 global.pushContext(null,new Warningdialog([global.getMedalString2(pn,global.getFormatString(27+clevels[18],["[NUM]",str(allcardlevelnum[param-13][clevels[18]]-medals[18]/10)]),18,clevels[18]+1),null,6]),NonAutoPop);
                             }
