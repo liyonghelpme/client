@@ -18,7 +18,7 @@ class WarTaskController extends ContextObject{
         wartasklib = dict();
         var wartaskfile = c_res_file("wartask.txt");
         var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
-        wartask =  json.loads(wartaskstr)
+        var wartask =  json_loads(wartaskstr)
         for(var i=0;i<len(wartask);i++){
             wartasklib.update(i, wartask[i]);
         }

@@ -357,10 +357,10 @@ const stringDict=dict([
 ["incomePost", "[NAME]从殖民地获得了进贡奖励，快加入进来一起打造自己的奇迹帝国吧"], 
 ["chooseWood", "选择木材"]
 ]);
-const gangame1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
+const ganname1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
 const btname1 = ["延迟一天", "立即刷怪"];
 const timestr1 = ["2小时", "8小时", "24小时"];
-const  newupdata1 = ["每晚8点至凌晨6点自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景来关闭"];
+const  newupdate1 = ["每晚8点至凌晨6点自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景来关闭"];
 
 /*
 const godstr = [

@@ -56,7 +56,7 @@ class Levelupdialog extends ContextObject{
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("levelUp", ["[NAME]", ppy_name(), "[LEVEL]", str(global.user.getValue("level"))]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("levelUp", ["[NAME]", ppy_username(), "[LEVEL]", str(global.user.getValue("level"))]),"http://getmugua.com");
         }
     }
 
