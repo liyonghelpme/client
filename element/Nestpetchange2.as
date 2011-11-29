@@ -107,7 +107,7 @@ class Nestpetchange2 extends ContextObject{
 
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog(global.getFormatString("petAtt", ["[NAME]", [EXTEND_PETS_NAME[param], "[POWER]", str(PETS_UP[type.objid]+EXTEND_UP[param])]),param,6]),NonAutoPop);
+            global.pushContext(self,new Warningdialog([global.getFormatString("petAtt", ["[NAME]", EXTEND_PETS_NAME[param], "[POWER]", str(PETS_UP[type.objid]+EXTEND_UP[param])]),param,6]),NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);

@@ -321,7 +321,7 @@ const stringDict=dict([
 ["quit", "quit"],["back", "back"],
 
 ["sendFight", "派出战斗力"], ["totalFight", "总站斗力"], ["lostFight", "损失战斗力"], ["returnFight", "返回战斗力"], ["defenceFight", "防御战斗力"], ["lostDefence", "损失防御力"], ["leftDefence", "剩余防御力"], ["lostCoin", "损失银币"], ["share", "分享"], ["ok", "确定"], ["attack", "进攻"], ["defence", "防守"], ["retry", "重试"], ["cancel", "取消"], ["netFail1", "貌似断网了，请见查网络连接"], ["netFail2", "网络连接遇到了问题，请稍候再试"], ["taskShare", "恭喜你完成了任务！快去和你的好友分享吧！"], ["shareReward", "点击分享将会有奖励哦"],["complete", "完成"], ["giveup", "放弃"], ["giveupwarn", "放弃任务将会损失一次奖励机会哦"], ["playWithme", "快和我一起打造属于我们自己的奇迹帝国吧"], ["goSee", "去看看"], ["IKnow", "知道了"], ["genAdd", "普通增加"], ["fastAdd", "快速增加"], ["chooseDefence", "你所选择要增加的防御力:"], ["youLeft", "你还剩"], ["allyNum", "盟友名额"], ["sureToally", "你确定与Ta结盟？"], ["allyOk", "在你战斗时，盟军会提供你士兵援助。请慎重结盟，取消结盟需要花费凯撒币"], ["cancelAlly", "确定取消结盟？"], ["makeAlly", "结盟"], ["punish", "惩罚"], ["allyUp", "你的盟友数已达上限"], ["add", "增加"], ["close", "关闭"], ["addAlly", "增加一个盟友数"], ["attackNow", "你的军队已经出征啦"], ["hintPower", "注:主帅在线时，会增加士兵战斗力哦"], ["youWin", "你胜利了"], ["attackIt", "攻打！"], ["inBuild", "建筑中"], ["inCall", "招募中"], ["inProduct", "生产中"], ["training", "训练中"], ["planting", "种植中"], ["wooding", "砍伐中"], ["stoning", "开采中"], ["proDefing", "生产城防中"], ["blessing", "祝福中"], ["free", "空闲中"], ["egging", "孵化中"], ["growing", "成长中"], ["shopping", "购买中"], ["buyCaesar", "购买凯撒币"], ["fulfill", "丰收之神施展神迹能提升农作物产量"], ["population", "人口之神施展神迹能够提升招募人口数量"], ["war", "战争之神施展神迹能提升士兵战斗力"], ["beast", "兽神施展神迹期间会增加城堡防御力"], ["dragon", "龙巢可以召唤属于你的独特宠物哦！确定召唤吗？"], 
-["godBless", “[GOD]能施展神迹，确定召唤[GOD]吗?”], 
+["godBless", "[GOD]能施展神迹，确定召唤[GOD]吗?"], 
 ["call", "召唤"], ["coin", "银币"], ["freePeople", "空闲人口"], ["food", "粮食"], ["zijin", "赶快升到紫金级别吧， 这样就能免费一键操作了"], ["freeZijin", "你可以免费使用一键操作功能了"], ["youGet", "恭喜！你获得了"],
 ["youPost", "[NAME]获得了[CARD] [CARDLEV]，赶快加入与[NAME]一起打造我们的帝国吧！"],
 ["loading", "正在载入..."], ["noNews", "还没有任何消息"], ["loginBonus", "[NAME]登录了奇迹帝国，领取了每日奖励"], 
@@ -334,19 +334,29 @@ const stringDict=dict([
 ["openProtect", "开启保护模式"], ["colonial", "殖民地"], ["levelUp", "恭喜！你晋级了"], ["goInNewMap", ", 你即将进入新地图， 在那里你会遇到更强大的对手，努力战胜他们吧！"], ["cityLevelUp", ",你的领地也升级啦！"], ["oneLevel", ", 再升一级你领地就可以升级罗！"], ["next", "下一条"],
 ["choosePlant", "选择农作物"], ["sureToBuy", "确定购买"],["acc", "加速"],
 ["leftTime", "剩余时间"], ["noBattle", "未开启战争模式"], ["winNum", "胜利数："], ["netRefresh", "因为网络问题，导致了数据异常，请刷新数据"], ["fresh", "刷新"],["fightAdd", "注：驻扎在要塞的士兵，其战斗力将获得加成"],
-["peopUp", "人口上限"], ["sureTosell", "确定出售？"],
-["sell", "出售"], ["toDetect", "用于侦查"], ["unitPower", "单位战斗力"],
-["chooseStone", "选择石材"], ["noUpdate", "还没有任何更新呢！"],
+["peopUp", "人口上限"], 
+["sureTosell", "确定出售？"],
+["sell", "出售"], 
+["toDetect", "用于侦查"], 
+["unitPower", "单位战斗力"],
+["chooseStone", "选择石材"], 
+["noUpdate", "还没有任何更新呢！"],
 ["visitReward", "[NAME]访问好友获得奖励，赶快加入奇迹帝国吧!"],
 ["yourArmy", "你的大军已经抵达了[NAME]的领地，战争即将展开！"],
 ["enemyArmy", "[NAME]的大军已经兵临城下，你的领地即将遭到攻击！"],
-["viewWar", "观战"], ["skip", "跳过"], ["sendArmy", "<g>+已经派出大军攻打你的城市"],
+["viewWar", "观战"],
+["skip", "跳过"], 
+["sendArmy", "<g>+已经派出大军攻打你的城市"],
 ["godInc", "注：敌人战争之神施展神迹也会提高一定比例+<b> <b>的战斗力"],
-["howDef", "*如何提高防御力"],["youNeed", "你还缺少"], ["speNeed", "特殊物品不足"], ["clearList", "注：每次进入新的战场，该列表将被清空"], ["reqHandle", "该请求已被处理"], 
+["howDef", "*如何提高防御力"],
+["youNeed", "你还缺少"],
+["speNeed", "特殊物品不足"], 
+["clearList", "注：每次进入新的战场，该列表将被清空"],
+["reqHandle", "该请求已被处理"], 
 ["income", "恭喜你获得了[COIN]银币的进贡，你当前拥有[NUM]个殖民地。殖民地越多，进贡越多哦！"], 
 ["incomePost", "[NAME]从殖民地获得了进贡奖励，快加入进来一起打造自己的奇迹帝国吧"], 
 ["chooseWood", "选择木材"]
-);
+]);
 const gangame1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
 const btname1 = ["延迟一天", "立即刷怪"];
 const timestr1 = ["2小时", "8小时", "24小时"];
