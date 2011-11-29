@@ -326,9 +326,27 @@ const stringDict=dict([
 ["youPost", "[NAME]获得了[CARD] [CARDLEV]，赶快加入与[NAME]一起打造我们的帝国吧！"],
 ["loading", "正在载入..."], ["noNews", "还没有任何消息"], ["loginBonus", "[NAME]登录了奇迹帝国，领取了每日奖励"], 
 ["godShow", "神迹"], ["inGodShow", "在神迹有效期间内，"],
-["show", "施展"], ["friend", "好友"], ["level", "等级"],["expandOver", "恭喜你！扩建成功"], ["expandPost", "[NAME]扩建了自己的领地，赶快加入奇迹帝国吧！"], ["feedback", "如果你有任何反馈，请发送邮件到"], ["feedGift", "建议一旦被采纳，有神秘礼品哦"], ["sendGift", "选择一件礼物赠送给<g>"],["ask", "索要"], ["send", "赠送"], [] 
+["show", "施展"], ["friend", "好友"], ["level", "等级"],["expandOver", "恭喜你！扩建成功"], ["expandPost", "[NAME]扩建了自己的领地，赶快加入奇迹帝国吧！"], ["feedback", "如果你有任何反馈，请发送邮件到"], ["feedGift", "建议一旦被采纳，有神秘礼品哦"], ["sendGift", "选择一件礼物赠送给<g>"],["ask", "索要"], ["send", "赠送"], ["accept", "接受"], ["levelUp", "[NAME]升级到[LEVEL]，赶快加入到奇迹帝国吧！"], ["killAll", "[NAME]消灭了所有怪物保卫了领地和财产安全，赶快加入奇迹帝国吧！"],["nextMonster", "下一波怪兽来袭倒计时"], ["comeSoon", "马上来临"],
+["attackIs", "战斗力为"], ["powerlack", "你的战斗力不足！"], ["monRob", "你被怪兽抢走了"],["activeDra", "快帮我激活吧"], ["letsShare", "大家一起分享吧！"], ["askForAct", "快去求助好友激活吧！"], ["helpme", "帮忙"],["askFri", "求助好友"], ["unknown", "未知"], ["getDragon", "获得了龙巢，但是需要你们的帮助才能打开，快去帮助它吧！"], ["callPet", "恭喜你激活了龙巢，可以召唤宠物了！"], ["myPet", "我的宠物"], ["dragonPost", "[NAME]成功激活了它的龙巢，赶快加入奇迹帝国吧"], ["curPet", "当前宠物"], ["changeMode", "更改样式"],
+["petAtt", "[NAME]每成长点会增加[POWER]战斗力，确定更改样式？"], ["freeFee", "免费"], ["changeAtt", "改变属性"], ["petPro", "[NAME]初始战斗力：[POWER],每成长点增加战斗力：[ADD]。确定更改？"],
+["choosePet", "选择宠物"], ["callDragonDia", "[NAME]初始战斗力：[POWER],每成长点增加[ADD]。确定召唤？"],
+["inProtect", "保护中"], ["attNoProtect", "进攻中不能开启保护模式"],
+["openProtect", "开启保护模式"], ["colonial", "殖民地"], ["levelUp", "恭喜！你晋级了"], ["goInNewMap", ", 你即将进入新地图， 在那里你会遇到更强大的对手，努力战胜他们吧！"], ["cityLevelUp", ",你的领地也升级啦！"], ["oneLevel", ", 再升一级你领地就可以升级罗！"], ["next", "下一条"],
+["choosePlant", "选择农作物"], ["sureToBuy", "确定购买"],["acc", "加速"],
+["leftTime", "剩余时间"], ["noBattle", "未开启战争模式"], ["winNum", "胜利数："], ["netRefresh", "因为网络问题，导致了数据异常，请刷新数据"], ["fresh", "刷新"],["fightAdd", "注：驻扎在要塞的士兵，其战斗力将获得加成"],
+["peopUp", "人口上限"], ["sureTosell", "确定出售？"],
+["sell", "出售"], ["toDetect", "用于侦查"], ["unitPower", "单位战斗力"],
+["chooseStone", "选择石材"], ["noUpdate", "还没有任何更新呢！"],
+["visitReward", "[NAME]访问好友获得奖励，赶快加入奇迹帝国吧!"],
+["yourArmy", "你的大军已经抵达了[NAME]的领地，战争即将展开！"],
+["enemyArmy", "[NAME]的大军已经兵临城下，你的领地即将遭到攻击！"],
+["viewWar", "观战"], ["skip", "跳过"], ["sendArmy", "<g>+已经派出大军攻打你的城市"]
+
 );
 const gangame1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
+const btname1 = ["延迟一天", "立即刷怪"];
+const timestr1 = ["2小时", "8小时", "24小时"];
+const  newupdata1 = ["每晚8点至凌晨6点自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景来关闭"];
 
 /*
 const godstr = [
