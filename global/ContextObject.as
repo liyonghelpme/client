@@ -1,6 +1,6 @@
 import global.GlobalController;
 class ContextObject{
-    var global;
+//    var global;
     var contextLevel;
     var contextNode;
     var contextname;

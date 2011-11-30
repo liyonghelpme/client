@@ -286,6 +286,7 @@ const stringDict=dict([
 ["gift_element0","[NAME] send you gift [GIFT]"],
 
 ["gift_element1","[NAME] ask you for gift [GIFT]"],
+["monster_foodwilllost","下次登录之前还没有把怪兽消灭，怪兽会抢夺你的粮食哦！"],
 
 ["monster_refresh_format","hahaha，[NAME]，give me your crops，or you will be restless"],
 

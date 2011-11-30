@@ -1,4 +1,4 @@
-import global.ContextObject;
+//import global.ContextObject;
 
 class PlantControl extends ContextObject{
     var objs;
