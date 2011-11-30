@@ -483,7 +483,6 @@ class NormalObject extends ContextObject{
                 for(j=0;j<contextid;j++)
                     global.context[0].map[(posi[0]-i)*RECTMAX+posi[1]-j] = -1;
             }
-            //global.context[0].map[RECTMAX*posi[0]+posi[1]] = contextid*1000+objectid;
         }
     }
 
