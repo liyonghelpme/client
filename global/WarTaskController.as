@@ -18,10 +18,17 @@ class WarTaskController extends ContextObject{
         wartasklib = dict();
         var wartaskfile = c_res_file("wartask.txt");
         var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
-        var wartask =  json_loads(wartaskstr)
+        var wartask =  wartaskstr.split(";");
         trace("wartask", wartask);
         for(var i=0;i<len(wartask);i++){
-            wartasklib.update(i, wartask[i]);
+            var taskobj = json_loads(wartask[i]);
+            //trace("taskobj", taskobj);
+            if(taskobj == null)
+            {
+                trace("wartask error", i);
+                continue;
+            }
+            wartasklib.update(i, taskobj);
         }
     }
     
