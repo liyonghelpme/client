@@ -16,6 +16,7 @@ class WarTaskController extends ContextObject{
         enternode.setevent(EVENT_UNTOUCH,enterwartask);
         wartasktype =-1;
         wartasklib = dict();
+        /*
         wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第10级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
         wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['查看帮助文档','战争系统有很多新的设定，快去看看有哪些新设定吧！','查看战争相关帮助文档'],'checknum':1,'reward':[100,5,0]}"));
         wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['好友结盟','与一个强大的好友结盟，等你与其他人作战时，盟友会给你援军哦！','与一个好友结盟'],'checknum':1,'reward':[500,10,0]}"));
@@ -27,7 +28,7 @@ class WarTaskController extends ContextObject{
         wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['增加盟友位','你可以通过增加盟友位置来与更多的好友结盟','增加盟友位'],'checknum':1,'reward':[1500,20,0]}"));
         wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['升级爵位','爵位越高可以前往越高等级的地图','升级爵位'],'checknum':1,'reward':[2000,25,0]}"));
         wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['进入高级地图','打败一定数量的敌人可以进入到更高级的地图',' 进入更高一级地图'],'checknum':1,'reward':[2000,25,0]}"));
-/*
+        */
         var wartaskfile = c_res_file("wartask.txt");
         var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
         var wartaskstrs = wartaskstr.split(";");
@@ -40,7 +41,6 @@ class WarTaskController extends ContextObject{
                 wartasklib.update(wartaskobj.get("id"),wartaskobj);
             }
         }
-        */
     }
     
     function initwartask(p,s){
