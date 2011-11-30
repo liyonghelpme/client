@@ -155,7 +155,7 @@ const FARMNAME = [null,"Ordinary farmland","Crystal farmland","Gem farmland","El
 const GONAME = ["Harvest goddess lev1","Liberty goddess lev1","Wealth god lev1","Mars lev1","Harvest goddess lev2","Liberty goddess lev2","Wealth god lev2","Mars lev2","Harvest goddess lev3","Liberty goddess lev3","Wealth god lev3","Mars lev3","Harvest goddess lev4","Liberty goddess lev4","Wealth god lev4","Mars lev4","Harvest goddess lev5","Liberty goddess lev5","Wealth god lev5","Mars lev5","Friendship god lev1","Friendship god lev2","Friendship god lev3","Friendship god lev4","Friendship god lev5", "Beast god lev1", "Beast god lev2", "Beast god lev3", "Beast god lev4", "Beast god lev5"];
 
 //todo
-const OBJNAME = ["Brick road","Grid Road","Color brick road","Stone road","Gold road","White parterre","Red parterre","Pink parterre","Yellow parterre","Blue parterre"," Purple parterre","Lawn","Vine lamp","Street lamp1","Street lamp2","Droplamp","Flower lamp","Guideboard","Bench","Ordinary well" ,"Magic well","Purple flowers","Red flowers","Orange flowers","Dark green nepenthe","Yellow nepenthe","Green nepenthe","Blue nepenthe","Pink cherry tree","Purple cherry tree","Lavender cherry tree","Red cherry tree","Orange shrubbery","Yellow shrubbery","Green shrubbery","Spring maple","Summer maple","Autumn maple","Angel Statue","Rabbit","Moon cakes","Moon rabbit","Red candy lamp","Gold candy lamp","Pumpkin lantern", "Rose lantern", "Blue thanksgiven latern"];
+const OBJNAME = ["Brick road","Grid Road","Color brick road","Stone road","Gold road","White parterre","Red parterre","Pink parterre","Yellow parterre","Blue parterre"," Purple parterre","Lawn","Vine lamp","Street lamp1","Street lamp2","Droplamp","Flower lamp","Guideboard","Bench","Ordinary well" ,"Magic well","Purple flowers","Red flowers","Orange flowers","Dark green nepenthe","Yellow nepenthe","Green nepenthe","Blue nepenthe","Pink cherry tree","Purple cherry tree","Lavender cherry tree","Red cherry tree","Orange shrubbery","Yellow shrubbery","Green shrubbery","Spring maple","Summer maple","Autumn maple","Angel Statue","Rabbit","Moon cakes","Moon rabbit","Red candy lamp","Gold candy lamp","Pumpkin lantern", "Rose lantern", "Blue thanksgiven latern", "Green thanksgiven latern", "Golden thanksgiven latern", "Purple thanksgiven latern"];
 
 const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
 const nobilityname = ["Civilians","Baron","Viscount","Earl","Marquis","Duke","Emperor"];
@@ -353,14 +353,47 @@ const stringDict=dict([
 ["reqHandle", "该请求已被处理"], 
 ["income", "恭喜你获得了[COIN]银币的进贡，你当前拥有[NUM]个殖民地。殖民地越多，进贡越多哦！"], 
 ["incomePost", "[NAME]从殖民地获得了进贡奖励，快加入进来一起打造自己的奇迹帝国吧"], 
-["chooseWood", "选择木材"]
+["chooseWood", "选择木材"],
+["youNeed", "你还缺少"], ["speNeed", "你的特殊物品不足"], ["", ""]
 ]);
 const ganname1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
 const btname1 = ["延迟一天", "立即刷怪"];
 const timestr1 = ["2小时", "8小时", "24小时"];
 const  newupdate1 = ["每晚8点至凌晨6点自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景来关闭"];
 
-/*
+
+const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'领地的发展离不开农业，种植些+粮食吧。点击空闲的【农田】'}",
+    "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'点击【种植】'}",
+    "{'cp':[209,181],'cz':[240,240],'gtype':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'选择营养丰富的+【小麦】'}",
+    "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'种植会耗费时间，但我们能加快+这一过程。点击种植中的【农田】'}",
+    "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'点击【加速】'}",
+    "{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':'加速农作物成熟过程'}",
+    "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'小麦成熟了，点击收获吧'}",
+    null,
+    "{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'第一阶段任务完成+500+1+4+下一步+农业相关任务完成啦！ 恭喜，你必将+成为一个优秀的领主！'}",
+    "{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':'领地的发展也离不开人口，建造+民居来招募人口。点击【建造】'}",
+    "{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':'选择【农舍】'}",
+    "{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':'选择建造农舍的位置后，点击+【确认】'}",
+    "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'哇！这座民居已经招募到人口了，+点击【农舍】接收他们吧！'}",
+    "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'点击【空闲】的农舍'}",
+    //"{'cp':[282,266],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'btclick','param':0}",
+    "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'点击【招募】'}",
+    "{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'你的农舍已经开始招募人口了。+领地的发展也离不开金钱，点击+面包房【收税】吧！'}",
+    null,
+    "{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'第二阶段任务完成+1500+2+10+下一步+人口及商业相关任务完成啦！恭喜，+祝你的领地蒸蒸日上！'}",
+    "{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'竟然有【怪兽】前来你的领地掠+夺粮食，去消灭它们吧！'}",
+    "{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'点击【地图】，查看你领地周边+的情况'}",
+    "{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'点击【怪兽】'}",
+    "{'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'点击【攻击】'}",
+    "{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'恭喜你获得了胜利，点击【城堡】+返回领地'},",
+    "{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'最后给自己的领地取一个独一无+二的名字吧！点击左上的+【信息栏】'}",
+    null,
+    "{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'新手任务完成+2000+3+15+完成+恭喜你命名成功!再接再厉，让奇迹+大陆铸就你的传奇！'}"];
+
+const items = ["2011/11/15 兽神神像上线啦！+兽神神像施展神迹期间，所有怪兽雕像都会增加城堡防御力哦！注：神迹施展之后建造的雕像无效，即神迹只对已经建造完成的雕像有效",
+        "2011/11/2 奇迹帝国2.3版本上线啦！+大家可以去电子市场（Android market）或其他任何渠道下载更新。新版本增加了如下功能：+1. 支付宝充值功能；+2. 优化了访问好友速度，修复了访问好友死机的bug；+3. 增加了战争聊天室，增加了夜景和灯光效果。",
+        "2011/10/30 战争聊天室上线啦！+1. 战争页面点击红色箭头就可以看到战争聊天室罗！+2. 预告：“要塞”即将上线！伯爵以上地图会出现怪兽占领的要塞，大家可以争夺要塞，要塞每小时会生产资源，占领越多的要塞会不停地获得更多的资源哦！敬请期待！+3. 给凯撒留言：由于木瓜社区置顶帖功能要过段时间才能恢复，所以大家有啥建议都可以给凯撒留言，熊哥我会及时看并回复的！",
+        "2011/10/29 宠物训练&一键访问好友上线啦！+1. 训练宠物增加战斗力：点击宠物-》点击最右侧训练图标-》“完整”训练动画结束【注意是完整的动画结束哦！】-》宠物增加1点战斗力（每天最多只能加100点战斗力） +2. 一键访问好友：一键访问好友会领取所有未访问好友奖励，详细请查看帮助文档。+3. 圈子升级：这个是木瓜社区控制的，有好的建议可以反馈给木瓜社区哦！+4. 怪兽第一次出现后没有被立即消灭才会抢粮，大家要及时杀怪呀！"];
 const godstr = [
     "农作物产量增加20%","民居招募人口数量增加20%","店铺税收增加20%","士兵战斗力增加5%",
     "农作物产量增加40%","民居招募人口数量增加40%","店铺税收增加40%","士兵战斗力增加10%",
@@ -369,9 +402,8 @@ const godstr = [
     "农作物产量增加100%","民居招募人口数量增加100%","店铺税收增加100%","士兵战斗力增加25%",
     "访问好友奖励增加5银币","访问好友奖励增加10银币","访问好友奖励增加20银币","访问好友奖励增加30银币","访问好友奖励增加50银币",
     "怪兽雕像增加城堡防御力", "怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力"];
-    const timestr = ["持续1小时","持续6小时","持续24小时"];
+const timestr = ["持续1小时","持续6小时","持续24小时"];
 
-*/
 
 /*注：上面标点符号都是汉字， 请改成英文的标点符号！*/
 /*

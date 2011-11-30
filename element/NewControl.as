@@ -19,6 +19,7 @@ class NewControl extends ContextObject{
     var noticetext;
     var opobj;
     var lock;
+    /*
     const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'领地的发展离不开农业，种植些+粮食吧。点击空闲的【农田】'}",
     "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'点击【种植】'}",
     "{'cp':[209,181],'cz':[240,240],'gtype':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'选择营养丰富的+【小麦】'}",
@@ -46,6 +47,7 @@ class NewControl extends ContextObject{
     "{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'最后给自己的领地取一个独一无+二的名字吧！点击左上的+【信息栏】'}",
     null,
     "{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'新手任务完成+2000+3+15+完成+恭喜你命名成功!再接再厉，让奇迹+大陆铸就你的传奇！'}"];
+    */
     function NewControl(n){
         //n=2;
         contextNode = null;

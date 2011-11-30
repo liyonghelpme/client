@@ -3,7 +3,7 @@ class Devinedialog extends ContextObject{
     var selecttab;
     var element;
     var buildid;
-
+/*
     const godstr = [
     "农作物产量增加20%","民居招募人口数量增加20%","店铺税收增加20%","士兵战斗力增加5%",
     "农作物产量增加40%","民居招募人口数量增加40%","店铺税收增加40%","士兵战斗力增加10%",
@@ -13,7 +13,7 @@ class Devinedialog extends ContextObject{
     "访问好友奖励增加5银币","访问好友奖励增加10银币","访问好友奖励增加20银币","访问好友奖励增加30银币","访问好友奖励增加50银币",
     "怪兽雕像增加城堡防御力", "怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力"];
     const timestr = ["持续1小时","持续6小时","持续24小时"];
-
+*/
     function Devinedialog(){
         contextname = "dialog-build-devine";
         contextNode = null;

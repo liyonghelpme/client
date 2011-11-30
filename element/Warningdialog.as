@@ -49,7 +49,7 @@ class Warningdialog extends ContextObject{
                 infos.remove("ok");
                 var basey = 53+(3-len(infos))*14;
                 for(var i=0;i<len(infos);i++){
-                    element.addlabel("你还缺少",null,24).pos(148,basey+28*i).color(0,0,0,100);
+                    element.addlabel(global.getStaticString("youNeed"),null,24).pos(148,basey+28*i).color(0,0,0,100);
                     element.addlabel(str(info.get(infos[i]))+infos[i],null,24).pos(244,basey+28*i).color(100,0,0,100);
                 }
                 if(infos.index(global.getStaticString("personmax"))!=-1){
@@ -59,7 +59,7 @@ class Warningdialog extends ContextObject{
             }
             else if(info.get("ok")==-1){
                 element.addsprite("pic4.jpg").anchor(50,50).pos(80,120);
-                element.addlabel("你的特殊物品不足",null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(0,50).pos(148,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("speNeed") ,null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(0,50).pos(148,105).color(0,0,0,100);
                 element.addsprite("dialogelement_help.png").anchor(50,50).pos(365,105).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"special");
                 dialog.usedefaultbutton(1,global.getStaticString("ok"));
             }
