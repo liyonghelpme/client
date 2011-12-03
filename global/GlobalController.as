@@ -296,13 +296,13 @@ const stringDict=dict([
 
 ["chat_empty","Content can't be empty"],["chat_wordlimit","word number > 30"],["chat_nettimeout","network timeout, send message fail"],
 
-["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","抱歉因为网络原因改名失败！"],
+["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","Sorry,net time out！"],
 
 ["text_message_send","Please input message: "],["text_empty","can't empty"],["text_chat_nettimeout","Sorry,fail to send,try again^_^"],
 
 ["message_send_success","Successfully send"],["text_empire_name","Please input empire name: "],
 
-["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning", "该建筑物正在运作， 如果升级将会导致中断，确认升级？"],
+["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning", "The building is occupied，upgrading will interupt the operation，are you sure？"],
 
 ["onekey_plant","One button plant"],["onekey_harvest","One button harvest"],["onekey_product","One button collect taxes"],["onekey_visit_normal","One button ordinary visit"],["onekey_visit_inc","One button accumulated visit"],["onekey_title","One button operation"],
 
@@ -319,48 +319,48 @@ const stringDict=dict([
 ["resource_get_format","the fortress product coin [MONEY] ，food [FOOD]，wood [WOOD]，stone [STONE] per hour，time left to harvest : [TIME]"],
 ["quit", "quit"],["back", "back"],
 
-["sendFight", "派出战斗力"], ["totalFight", "总站斗力"], ["lostFight", "损失战斗力"], ["returnFight", "返回战斗力"], ["defenceFight", "防御战斗力"], ["lostDefence", "损失防御力"], ["leftDefence", "剩余防御力"], ["lostCoin", "损失银币"], ["share", "分享"], ["ok", "确定"], ["attack", "进攻"], ["defence", "防守"], ["retry", "重试"], ["cancel", "取消"], ["netFail1", "貌似断网了，请见查网络连接"], ["netFail2", "网络连接遇到了问题，请稍候再试"], ["taskShare", "恭喜你完成了任务！快去和你的好友分享吧！"], ["shareReward", "点击分享将会有奖励哦"],["complete", "完成"], ["giveup", "放弃"], ["giveupwarn", "放弃任务将会损失一次奖励机会哦"], ["playWithme", "快和我一起打造属于我们自己的奇迹帝国吧"], ["goSee", "去看看"], ["IKnow", "知道了"], ["genAdd", "普通增加"], ["fastAdd", "快速增加"], ["chooseDefence", "你所选择要增加的防御力:"], ["youLeft", "你还剩"], ["allyNum", "盟友名额"], ["sureToally", "你确定与Ta结盟？"], ["allyOk", "在你战斗时，盟军会提供你士兵援助。请慎重结盟，取消结盟需要花费凯撒币"], ["cancelAlly", "确定取消结盟？"], ["makeAlly", "结盟"], ["punish", "惩罚"], ["allyUp", "你的盟友数已达上限"], ["add", "增加"], ["close", "关闭"], ["addAlly", "增加一个盟友数"], ["attackNow", "你的军队已经出征啦"], ["hintPower", "注:主帅在线时，会增加士兵战斗力哦"], ["youWin", "你胜利了"], ["attackIt", "攻打！"], ["inBuild", "建筑中"], ["inCall", "招募中"], ["inProduct", "生产中"], ["training", "训练中"], ["planting", "种植中"], ["wooding", "砍伐中"], ["stoning", "开采中"], ["proDefing", "生产城防中"], ["blessing", "祝福中"], ["free", "空闲中"], ["egging", "孵化中"], ["growing", "成长中"], ["shopping", "购买中"], ["buyCaesar", "购买凯撒币"], ["fulfill", "丰收之神施展神迹能提升农作物产量"], ["population", "人口之神施展神迹能够提升招募人口数量"], ["war", "战争之神施展神迹能提升士兵战斗力"], ["beast", "兽神施展神迹期间会增加城堡防御力"], ["dragon", "龙巢可以召唤属于你的独特宠物哦！确定召唤吗？"], 
-["godBless", "[GOD]能施展神迹，确定召唤[GOD]吗?"], 
-["call", "召唤"], ["coin", "银币"], ["freePeople", "空闲人口"], ["food", "粮食"], ["zijin", "赶快升到紫金级别吧， 这样就能免费一键操作了"], ["freeZijin", "你可以免费使用一键操作功能了"], ["youGet", "恭喜！你获得了"],
-["youPost", "[NAME]获得了[CARD] [CARDLEV]，赶快加入与[NAME]一起打造我们的帝国吧！"],
-["loading", "正在载入..."], ["noNews", "还没有任何消息"], ["loginBonus", "[NAME]登录了奇迹帝国，领取了每日奖励"], 
-["godShow", "神迹"], ["inGodShow", "在神迹有效期间内，"],
-["show", "施展"], ["friend", "好友"], ["level", "等级"],["expandOver", "恭喜你！扩建成功"], ["expandPost", "[NAME]扩建了自己的领地，赶快加入奇迹帝国吧！"], ["feedback", "如果你有任何反馈，请发送邮件到"], ["feedGift", "建议一旦被采纳，有神秘礼品哦"], ["sendGift", "选择一件礼物赠送给<g>"],["ask", "索要"], ["send", "赠送"], ["accept", "接受"], ["levelUp", "[NAME]升级到[LEVEL]，赶快加入到奇迹帝国吧！"], ["killAll", "[NAME]消灭了所有怪物保卫了领地和财产安全，赶快加入奇迹帝国吧！"],["nextMonster", "下一波怪兽来袭倒计时"], ["comeSoon", "马上来临"],
-["attackIs", "战斗力为"], ["powerlack", "你的战斗力不足！"], ["monRob", "你被怪兽抢走了"],["activeDra", "快帮我激活吧"], ["letsShare", "大家一起分享吧！"], ["askForAct", "快去求助好友激活吧！"], ["helpme", "帮忙"],["askFri", "求助好友"], ["unknown", "未知"], ["getDragon", "获得了龙巢，但是需要你们的帮助才能打开，快去帮助它吧！"], ["callPet", "恭喜你激活了龙巢，可以召唤宠物了！"], ["myPet", "我的宠物"], ["dragonPost", "[NAME]成功激活了它的龙巢，赶快加入奇迹帝国吧"], ["curPet", "当前宠物"], ["changeMode", "更改样式"],
-["petAtt", "[NAME]每成长点会增加[POWER]战斗力，确定更改样式？"], ["freeFee", "免费"], ["changeAtt", "改变属性"], ["petPro", "[NAME]初始战斗力：[POWER],每成长点增加战斗力：[ADD]。确定更改？"],
-["choosePet", "选择宠物"], ["callDragonDia", "[NAME]初始战斗力：[POWER],每成长点增加[ADD]。确定召唤？"],
-["inProtect", "保护中"], ["attNoProtect", "进攻中不能开启保护模式"],
-["openProtect", "开启保护模式"], ["colonial", "殖民地"], ["levelUp", "恭喜！你晋级了"], ["goInNewMap", ", 你即将进入新地图， 在那里你会遇到更强大的对手，努力战胜他们吧！"], ["cityLevelUp", ",你的领地也升级啦！"], ["oneLevel", ", 再升一级你领地就可以升级罗！"], ["next", "下一条"],
-["choosePlant", "选择农作物"], ["sureToBuy", "确定购买"],["acc", "加速"],
-["leftTime", "剩余时间"], ["noBattle", "未开启战争模式"], ["winNum", "胜利数："], ["netRefresh", "因为网络问题，导致了数据异常，请刷新数据"], ["fresh", "刷新"],["fightAdd", "注：驻扎在要塞的士兵，其战斗力将获得加成"],
-["peopUp", "人口上限"], 
-["sureTosell", "确定出售？"],
-["sell", "出售"], 
-["toDetect", "用于侦查"], 
-["unitPower", "单位战斗力"],
-["chooseStone", "选择石材"], 
-["noUpdate", "还没有任何更新呢！"],
-["visitReward", "[NAME]访问好友获得奖励，赶快加入奇迹帝国吧!"],
-["yourArmy", "你的大军已经抵达了[NAME]的领地，战争即将展开！"],
-["enemyArmy", "[NAME]的大军已经兵临城下，你的领地即将遭到攻击！"],
-["viewWar", "观战"],
-["skip", "跳过"], 
-["sendArmy", "<g>+已经派出大军攻打你的城市"],
-["godInc", "注：敌人战争之神施展神迹也会提高一定比例+<b> <b>的战斗力"],
-["howDef", "*如何提高防御力"],
-["youNeed", "你还缺少"],
-["speNeed", "特殊物品不足"], 
-["clearList", "注：每次进入新的战场，该列表将被清空"],
-["reqHandle", "该请求已被处理"], 
-["income", "恭喜你获得了[COIN]银币的进贡，你当前拥有[NUM]个殖民地。殖民地越多，进贡越多哦！"], 
-["incomePost", "[NAME]从殖民地获得了进贡奖励，快加入进来一起打造自己的奇迹帝国吧"], 
-["chooseWood", "选择木材"],
+["sendFight", "Sent forces"], ["totalFight", "Total forces"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defend fighting"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defend"], ["retry", "Retry"], ["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations,you finish this task! Come on to share with your friends!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary add"], ["fastAdd", "Fast add"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left"], ["allyNum", "Ally number"], ["sureToally", "Sure to ally with him/her?"], ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar coins to destroy the covenant, please choose your ally carefully"], ["cancelAlly", "Cancel ally, Are you sure？"], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], ["addAlly", "add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's fighting capability will increase if you are on line when they are fighting"], ["youWin", "You win"], ["attackIt", "Attack！"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "magic performing"], ["free", "unoccupied"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "purchasing"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], ["dragon", "The dragon's nest will make it possible to summon your own pet！Are you sure？"], 
+["godBless", "[GOD] can perform magic，summon [GOD],are you sure?"], 
+["call", "summon"], ["coin", "coin"], ["freePeople", "unoccupied people"], ["food", "food"], ["zijin", "Upgrading to the violet golden level to use one-step finishing for free"], ["freeZijin", "You can use one-step finishing for free now"], ["youGet", "Congratulations！你获得了"],
+["youPost", "[NAME] got [CARD] [CARDLEV]，join [NAME] to build your own miracle empire！"],
+["loading", "Loading..."], ["noNews", "No more news"], ["loginBonus", "[NAME] has played the miracle empire and gas gained daily rewards"], 
+["godShow", "Magic"], ["inGodShow", "in the magic time of effect，"],
+["show", "perform"], ["friend", "Friends"], ["level", "Lev"],["expandOver", "Congratulations！expanding successfully"], ["expandPost", "[NAME] has expanded his territory，come and join the Miracle Empire！"], ["feedback", "If you have any advice of feedback,please email"], ["feedGift", "You will get mysterious gifts if your advice is accepted"], ["sendGift", "Choose a gift and send it to<g>"],["ask", "Ask "], ["send", "Send"], ["accept", "Accept"], ["levelUp", "[NAME] has level up to [LEVEL]，join the Miracle Empire and enjoy！"], ["killAll", "[NAME] has defeated the monsters and secure his territory，join the Miracle Empire and have fun！"],["nextMonster", "Monsters will come again after"], ["comeSoon", "Coming soon"],
+["attackIs", "fighting capacity is"], ["powerlack", "You don't have enough fighting capacity！"], ["monRob", "Monsters have robbed"],["activeDra", "would you help me activating?"], ["letsShare", "Let's share together！"], ["askForAct", "Let's go and ask friends for help！"], ["helpme", "Help"],["askFri", "Ask friends for help"], ["unknown", "Unknown"], ["getDragon", "has got the dragon's nest，but still need your help to activate，let's go and help him！"], ["callPet", "Congratulations! You have activated the dragon's nest，now you can summon your pet！"], ["myPet", "my pet"], ["dragonPost", "[NAME] has activated dragon's nest successfully，join the Miracle Emoire and have fun！"], ["curPet", "current pet"], ["changeMode", "change mode"],
+["petAtt", "[NAME] will increase [POWER] fighting point every growing point，are you sure changing mode？"], ["freeFee", "for free"], ["changeAtt", "change attribute"], ["petPro", "[NAME]'s initial fighting capacity：[POWER],increased fighting points every growing point：[ADD]. Are you sure？"],
+["choosePet", "choose your pet"], ["callDragonDia", "[NAME]'s initial fighting points：[POWER],every growing point will increase [ADD].are you sure summoning this pet？"],
+["inProtect", "under protection"], ["attNoProtect", "You can't enable protection mode during attacking period"],
+["openProtect", "enable protection"], ["colonial", "colonial"], ["levelUp", "Congratulations！Level up"], ["goInNewMap", ", New map entered，you will see stronger opponents there，try to defeat them！"], ["cityLevelUp", ",your territory is level up！"], ["oneLevel", ", you need more experiences to upgrade your territory！"], ["next", "Next"],
+["choosePlant", "choose crops"], ["sureToBuy", "are you sure purchasing"],["acc", "Accelerate"],
+["leftTime", "Time left"], ["noBattle", "War mode unable"], ["winNum", "winning number："], ["netRefresh", "data exception because of net problem，please try again"], ["fresh", "refresh"],["fightAdd", "hint：soilders will have fighting capacity added when quarteres at fortress"],
+["peopUp", "the miximum of population"], 
+["sureTosell", "selling, are you sure？"],
+["sell", "sell"], 
+["toDetect", "use on detecting"], 
+["unitPower", "unit fighting capacity"],
+["chooseStone", "choose stone"], 
+["noUpdate", "no new update！"],
+["visitReward", "[NAME] has got the rewards of visiting friends，join the Miracle Empire and have fun!"],
+["yourArmy", "Your military has arrived [NAME]'s territory，war is near！"],
+["enemyArmy", "[NAME]'s military has arrived your territory，Let's get ready for the fight！"],
+["viewWar", "watching"],
+["skip", "Skip"], 
+["sendArmy", "<g>+ has send his army to attack your territory"],
+["godInc", "Hint: your enemy's fighting capacity will increase a regular porpotion +<b> <b>"],
+["howDef", "*How to strengthen defence"],
+["youNeed", "You need more"],
+["speNeed", "not enough special material"], 
+["clearList", "Hint：The listing will be emptied every time you entered new battlefield"],
+["reqHandle", "Requests solved"], 
+["income", "Congratulations![COIN] coins have been paid tribute to you，You have [NUM] colonies currently. The more your colonies is, The more your rewards is！"], 
+["incomePost", "[NAME] has gained tribute rewards from colonies，join the wonder empire and have fun"], 
+["chooseWood", "choose lumber"]
 ["youNeed", "你还缺少"], ["speNeed", "你的特殊物品不足"], ["", ""]
 ]);
-const ganname1 = ["你每天只能赠送一件礼物给一个好友哦", "每天只能向每个好友索要一次哦"];
-const btname1 = ["延迟一天", "立即刷怪"];
-const timestr1 = ["2小时", "8小时", "24小时"];
-const  newupdate1 = ["每晚8点至凌晨6点自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景来关闭"];
+const ganname1 = ["You can send every friend one gift a day", "You can ask for gift from every friend once a day"];
+const btname1 = ["one day delay", "refresh monsters immediately"];
+const timestr1 = ["2 hours", "8 hours", "24 hours"];
+const  newupdate1 = ["Your territory change to night mode from 8 p.m to 6 a.m automatically. Click menu button-》night scene to close"];
 
 
 const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'领地的发展离不开农业，种植些+粮食吧。点击空闲的【农田】'}",
@@ -396,14 +396,14 @@ const items = ["2011/11/15 兽神神像上线啦！+兽神神像施展神迹期�
         "2011/10/30 战争聊天室上线啦！+1. 战争页面点击红色箭头就可以看到战争聊天室罗！+2. 预告：“要塞”即将上线！伯爵以上地图会出现怪兽占领的要塞，大家可以争夺要塞，要塞每小时会生产资源，占领越多的要塞会不停地获得更多的资源哦！敬请期待！+3. 给凯撒留言：由于木瓜社区置顶帖功能要过段时间才能恢复，所以大家有啥建议都可以给凯撒留言，熊哥我会及时看并回复的！",
         "2011/10/29 宠物训练&一键访问好友上线啦！+1. 训练宠物增加战斗力：点击宠物-》点击最右侧训练图标-》“完整”训练动画结束【注意是完整的动画结束哦！】-》宠物增加1点战斗力（每天最多只能加100点战斗力） +2. 一键访问好友：一键访问好友会领取所有未访问好友奖励，详细请查看帮助文档。+3. 圈子升级：这个是木瓜社区控制的，有好的建议可以反馈给木瓜社区哦！+4. 怪兽第一次出现后没有被立即消灭才会抢粮，大家要及时杀怪呀！"];
 const godstr = [
-    "农作物产量增加20%","民居招募人口数量增加20%","店铺税收增加20%","士兵战斗力增加5%",
-    "农作物产量增加40%","民居招募人口数量增加40%","店铺税收增加40%","士兵战斗力增加10%",
-    "农作物产量增加60%","民居招募人口数量增加60%","店铺税收增加60%","士兵战斗力增加15%",
-    "农作物产量增加80%","民居招募人口数量增加80%","店铺税收增加80%","士兵战斗力增加20%",
-    "农作物产量增加100%","民居招募人口数量增加100%","店铺税收增加100%","士兵战斗力增加25%",
-    "访问好友奖励增加5银币","访问好友奖励增加10银币","访问好友奖励增加20银币","访问好友奖励增加30银币","访问好友奖励增加50银币",
-    "怪兽雕像增加城堡防御力", "怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力"];
-const timestr = ["持续1小时","持续6小时","持续24小时"];
+    "crops yield increase 20%","population recruited in dwellings increase 20%","tax from stores increase 20%","fighting capacity increase 5%",
+    "crops yield increase 40%","population recruited in dwellings increase 40%","tax from stores increase 40%","fighting capacity increase 10%",
+    "crops yield increase 60%","population recruited in dwellings increase 60%","tax from stores increase 60%","fighting capacity increase 15%",
+    "crops yield increase 80%","population recruited in dwellings increase 80%","tax from stores increase 80%","fighting capacity increase 20%",
+    "crops yield increase 100%","population recruited in dwellings increase 100%","tax from stores increase 100%","fighting capacity increase 25%",
+    "rewards for visiting friends, increase 5 coins","rewards for visiting friends, increase 10 coins","rewards for visiting friends, increase 20 coins","rewards for visiting friends, increase 30 coins","rewards for visiting friends, increase 50 coins",
+    "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense"];
+    const timestr = ["Last for 1 hour","Last for 6 hours","Last for 24 hours"];
 
 
 /*注：上面标点符号都是汉字， 请改成英文的标点符号！*/
