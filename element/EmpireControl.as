@@ -55,7 +55,7 @@ class EmpireControl extends ContextObject{
     }
     function addMagic(node, event, param, x, y, points)
     {
-       global.pushContext(null, new BuyMagic(), NonAutoPop); 
+       //global.pushContext(null, new BuyMagic(), NonAutoPop); 
     }
     function getelement(p){
         element = node();
