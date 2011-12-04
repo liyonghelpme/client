@@ -118,6 +118,7 @@ class NestObject extends BuildObject{
     }
     
     function loadpets(c){
+        trace("loadpets", c);
         pid=c[0];
         bbid=c[1];
         state=c[3]+1;

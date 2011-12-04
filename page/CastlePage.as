@@ -537,6 +537,7 @@ class CastlePage extends ContextObject{
         }
         else if(p=="getmypets"){
             var data=json_loads(c);
+            trace("pets", data);
             if(data.get("id")==1){
                 var pets = data.get("pets");
                 for(var i=0;i<len(pets);i++){
