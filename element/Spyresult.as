@@ -29,9 +29,9 @@ class Spyresult extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("spyresultback.jpg").anchor(50,0).pos(219,10);
-            element.addlabel("你损失了"+str(data.get("dead",0))+"个侦察兵，获取了"+global.context[0].warpage.userdict.get(eid)[4]+"的情报：",null,24,FONT_NORMAL,393,0,ALIGN_LEFT).pos(23,25).color(0,0,0,100);
+            element.addlabel(global.getFormatString("spy_result_format",["[NUM]",str(data.get("dead",0)),"[WHO]",global.context[0].warpage.userdict.get(eid)[4]]),null,24,FONT_NORMAL,393,0,ALIGN_LEFT).pos(23,25).color(0,0,0,100);
             var spyres = [data.get("won"),data.get("total"),data.get("power"),data.get("allynum"),data.get("citydefence")];
-            var spyitems = ["获胜次数：","参战次数：","士兵战斗力：","盟友战斗力：","城堡防御力："];
+            var spyitems = SPYITEMS;
             var spypos=[[33,123],[223,123],[33,214],[33,245],[223,214]];
             for(var i=0;i<5;i++){
                 var tl=element.addlabel(spyitems[i],null,18).pos(spypos[i]).color(0,0,0,100);
@@ -41,7 +41,7 @@ class Spyresult extends ContextObject{
                     element.addlabel(str(value),null,18).pos(spypos[i][0]+tl.size()[0],spypos[i][1]).color(0,0,0,100);
                 }
                 else{
-                    element.addlabel("未侦察到",null,18).pos(spypos[i][0]+tl.size()[0],spypos[i][1]).color(30,30,30,100);
+                    element.addlabel(global.getStaticString("spy_unknown"),null,18).pos(spypos[i][0]+tl.size()[0],spypos[i][1]).color(30,30,30,100);
                 }
             }
         }
@@ -52,7 +52,7 @@ class Spyresult extends ContextObject{
         dialog = new Simpledialog(0,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["出兵攻打","返回"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("attack"),global.getStaticString("back")]);
     }
     
     function excute(p){

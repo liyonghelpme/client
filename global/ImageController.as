@@ -1,10 +1,10 @@
 class ImageController{
-    var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png",
-    "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png",
+    var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
+    "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",
     "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","soldier3_1.png","soldier3_2.png","soldier3_3.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
     "medalcard0_1.png","medalcard0_2.png","medalcard0_3.png","medalcard0_4.png","medalcard0_5.png","medalcard1_1.png","medalcard1_2.png","medalcard1_3.png","medalcard1_4.png","medalcard1_5.png",
-    "medalnob.png","wtask1.png","wtask2.png","wtask3.png","wtask4.png","medalbutton2.png","medalIcon2.png","loadingwarback.jpg","warchoosebuttonback0.png","warchoosebuttonback1.png",
+    "medalnob.png","wtask1.png","wtask2.png","wtask3.png","wtask4.png","medalbutton2.png","medalIcon2.png","loadingwarback.jpg", "loading-winter.jpg","loadingbar2.png","warchoosebuttonback0.png","warchoosebuttonback1.png",
     "dialogback_rank.png","friend_rank.png","rankcell4.jpg","rankcell5.jpg","rankcell6.jpg","rankcell7.jpg","rankleft.png","warchoose0.png","warchoose1.png","warchoose2.png",
     "rankright.png","ranktab0_0.png","ranktab0_1.png","ranktab1_0.png","ranktab1_1.png","ranktype0_0.png","ranktype0_1.png","ranktype1_0.png","ranktype1_1.png","egg-3-2.png",
     "egg-3-3.png","egg-3-4.png","egg-3-5.png","egg-3-6.png","egg-3-7.png","egg-3.png","nestbuildingback.png","nestbuildingfiller.png","nestdialogelement.jpg","nestpetfiller0.png",
@@ -20,7 +20,7 @@ class ImageController{
     "fire-4-6.png","fire-4-7.png","fire-4-8.png","fire-4-9.png","fire-4.png","fire-5.png","fire-6.png","fire-7.png","fire-9.png","fire-f1.png","fire-f2.png","fire-f3.png","fire-f4.png",
     "water-1-10.png","water-1-11.png","water-1-12.png","water-1-13.png","water-1-1.png","water-1-2.png","water-1-3.png","water-1-4.PNG","water-1-5.png","water-1-6.png",
     "water-1-7.png","water-1-8.png","water-1-9.png","water-1.png","water-2.png","water-3.png","water-4-1.png","water-4-2.png","water-4-3.png","water-4-4.png","water-4-5.png",
-    "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png"
+    "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png", "monsteravatar0.jpg", "monsteravatar1.jpg", "monsteravatar2.jpg", "monsteravatar3.jpg", "monsteravatar4.jpg", "monsteravatar5.jpg", "monsteravatar6.jpg", "selopen.png", "selclose.png"
     ];
     const images2 = [
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",

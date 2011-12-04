@@ -23,7 +23,7 @@ class GiftnewsControl extends ContextObject{
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(290,407).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(248,407).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(332,407).setevent(EVENT_UNTOUCH,choosePage,1);
-        newspage = contextNode.addlabel("正在载入……",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+        newspage = contextNode.addlabel(global.getStaticString("loading_str"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         length = global.user.getValue("newgift");
         pagemax = (length-1)/PAGEITEMS+1;
@@ -73,14 +73,14 @@ class GiftnewsControl extends ContextObject{
                     var giftstr = GIFTNAME[item[2]];
                     
                     if(item[3] == 0){
-                        itemstr = itemstr+"赠送你礼物"+giftstr;
+                        itemstr = global.getFormatString("gift_element0",["[NAME]",itemstr,"[GIFT]",giftstr]);
                     }
                     else{
-                        itemstr = itemstr+"向你索取礼物"+giftstr;
+                        itemstr = global.getFormatString("gift_element1",["[NAME]",itemstr,"[GIFT]",giftstr]);
                     }
                     cell.addlabel(itemstr,null,20).pos(57,19).color(0,0,0,100);
                     if(item[0]==-1){
-                        cell.addlabel("该请求已处理",null,20,FONT_ITALIC).pos(374,19).color(20,20,20,100);
+                        cell.addlabel(global.getStaticString("request_done"),null,20,FONT_ITALIC).pos(374,19).color(20,20,20,100);
                     }
                     else{
                         if(item[3]==1){
@@ -91,7 +91,7 @@ class GiftnewsControl extends ContextObject{
                 }
             }
             else{
-                newspage.addlabel("还没有任何请求哦！",null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
+                newspage.addlabel(global.getStaticString("news_nonews"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
             }
         }
     }

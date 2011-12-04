@@ -40,7 +40,7 @@ class BuildObject extends ContextObject{
     }
 
     function loaddata(s,id,oid,b){
-        trace("set statue state", s, id, oid, b);
+       // trace("set statue state", s, id, oid, b);
         state = s;
         bid = id;
         objid = oid;
@@ -48,11 +48,11 @@ class BuildObject extends ContextObject{
         lefttime = 1;
         state2 = 0;
         sfilter = null;
-        trace("set begintime lefttime", begintime, lefttime);
+       // trace("set begintime lefttime", begintime, lefttime);
     }
 
     function paintNode(){
-        trace("paint statue");
+       // trace("paint statue");
         contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
         contextNode.setevent(EVENT_HITTEST,objSelected);
         contextNode.setevent(EVENT_MOVE,objSelected);
@@ -65,7 +65,7 @@ class BuildObject extends ContextObject{
     }
 
     function objSelected(n,e,p,x,y,ps){
-        trace("touch object", n, e, p, x, y, ps);
+       // trace("touch object", n, e, p, x, y, ps);
         if(contextLevel >= global.currentLevel && lock ==0 ){
             if(global.context[0].flagbuild!=0){
                 return baseobj.objSelected(n,e,p,x,y);
@@ -158,7 +158,7 @@ class BuildObject extends ContextObject{
     }
 
     function eliminusstateover(r,rc,c){
-        trace("eliminus",rc,c);
+       // trace("eliminus",rc,c);
         if(rc!=0){
             state2 = 3;
             if(json_loads(c).get("id",1)==1){
@@ -195,7 +195,7 @@ class BuildObject extends ContextObject{
     var isAnimating;
 
     function setstate(){
-        trace("set view of new state of statue");
+       // trace("set view of new state of statue");
         if(contextNode == null){
             return 0;
         }
@@ -417,7 +417,7 @@ class BuildObject extends ContextObject{
     }
     
     function addminus(r,rc,c){
-        trace("addminus",rc,c);
+      //  trace("addminus",rc,c);
         if(rc!=0 && json_loads(c).get("id",1)!=0){
             state2 = mstate2;
         }

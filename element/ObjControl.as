@@ -6,14 +6,14 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 51;
-    const objlevel = [27,30,32,34,37,40,17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
-    const objcontext = [2600,2601,2602,2603,2604,2605,1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
+    const objsmax = 56;
+    const objlevel = [27,30,32,34,37,40, 30, 40, 40, 40, 40, 17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
+    const objcontext = [2600,2601,2602,2603,2604,2605, 1545, 1546, 1547,1548,1549, 1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
     function ObjControl(){
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(51);
-        buildable = new Array(51);
+        objs = new Array(56);
+        buildable = new Array(56);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -47,9 +47,6 @@ class ObjControl extends ContextObject{
             if(oi>41){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
-            //if(i<3){
-            //    objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            //}
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -92,9 +89,11 @@ class ObjControl extends ContextObject{
                  bl=75;
             }
             objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112).scale(bl);
+            /*
             if(oi<6){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
