@@ -16,7 +16,7 @@ class EmpireControl extends ContextObject{
         contextNode.addlabel(str(global.user.getValue("level")),null,16,FONT_BOLD).anchor(50,50).pos(164,36).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(508,4).setevent(EVENT_UNTOUCH,closedialog);
 
-        tabs[0] = contextNode.addsprite("dialogelement_state1.png").setevent(EVENT_UNTOUCH,choosetab,0);
+        tabs[0] = contextNode.addsprite("dialogelement_state3.png").setevent(EVENT_UNTOUCH,choosetab,0);
         for(var i=0;i<5;i++)
             tabs[0].addsprite("dialogelement_star"+str((4-i)/4)+".png").anchor(50,50).pos(176+32*i,28);
         tabs[1] = contextNode.addsprite("dialogelement_resource0.png").setevent(EVENT_UNTOUCH,choosetab,1);
@@ -31,9 +31,9 @@ class EmpireControl extends ContextObject{
                 var flag = 0;
                 var flag1 = 0;
                 if(i==p){
-                    flag=1;
+                    flag=3;
                     if(i==2||(i==0&&global.user.getValue("nobility")>=0)){
-                        flag=2;
+                        flag=4;
                     }
                 }
                 else if(i>p) flag1 =1;
@@ -53,7 +53,10 @@ class EmpireControl extends ContextObject{
             global.pushContext(null,new Adddefencedialog(),NonAutoPop);
         }
     }
-    
+    function addMagic(node, event, param, x, y, points)
+    {
+       global.pushContext(null, new BuyMagic(), NonAutoPop); 
+    }
     function getelement(p){
         element = node();
         if(p==0){
@@ -71,6 +74,18 @@ class EmpireControl extends ContextObject{
             element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(200,offy+107).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(255,offy+142).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
+
+            if(global.user.getValue("nobility")>=0){
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 241).size(140, 18);
+                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 241).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(312, 241).setevent(EVENT_UNTOUCH,addMagic);
+            }
+            else
+            {
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 233).size(140, 18);
+                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 233).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(312, 233).setevent(EVENT_UNTOUCH,addMagic);
+            }
         }
         else if(p==1){
             element.addsprite("food.png").anchor(50,50).pos(42,77).size(29,32);

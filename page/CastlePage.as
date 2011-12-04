@@ -1140,6 +1140,11 @@ class CastlePage extends ContextObject{
             newstate = data.get("newstate",3);
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
+
+            global.user.setValue("mana", data.get("mana", 0));
+            global.user.setValue("boundary", data.get("boundary", 0));
+            global.user.setValue("lasttime", data.get("lasttime", 0));
+
             global.user.setValue("caesars",data.get("cae",0));
             global.user.setValue("citydefence",data.get("citydefence",0));
             
