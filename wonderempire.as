@@ -62,13 +62,13 @@ var flaglastimage = 0;
 
 var percent =0;
 var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
-var lback = fetch("loadingback.jpg");
+var lback = fetch("loading-winter.jpg");
 var loadingstr = "";
 if(lback==null){
     page.texture("loadingback.jpg");
     //checkImages(0,0,0);
     //page.addlabel("正在加载新图片...",null,25).anchor(50,50).pos(400,450);
-    //node().addaction(request("loading-winter.jpg",1,null));
+    node().addaction(request("loading-winter.jpg",1,null));
     //flaglogin=2;
 }
 else{

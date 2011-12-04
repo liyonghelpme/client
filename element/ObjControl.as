@@ -66,7 +66,7 @@ class ObjControl extends ContextObject{
                         buildable[i].update(global.getStaticString("caesars"),price-global.user.getValue("caesars"));
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
-                    objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
+                    objs[i].addlabel(str(price),null,16, FONT_NORMAL, 100, 100).pos(34,202).color(cl,0,0,100);
                 }
                 else{
                     if(global.user.getValue("money")<price){
@@ -78,13 +78,13 @@ class ObjControl extends ContextObject{
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
                 }
                 objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
-                objs[i].addlabel(str(OBJ_PERSON[oi]),null,16).pos(34,244).color(0,0,0,100);
+                objs[i].addlabel(str(OBJ_PERSON[oi]),null,16, FONT_NORMAL, 100, 100).pos(34,244).color(0,0,0,100);
             }
         }
         else if(oi<700){
             oi=oi%100;
             objs[i] = sprite("dialogelement2d2.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
-            objs[i].addlabel(STATUE_NAME[oi],null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
+            objs[i].addlabel(STATUE_NAME[oi],null,16, FONT_NORMAL, 100, 100).anchor(50,0).pos(74,10).color(0,0,0,100);
             if(objcontext[i]/1000==2){
                  bl=75;
             }

@@ -58,11 +58,13 @@ class NewControl extends ContextObject{
         newstate = n;
         strnum = strstate[n];
         newstr = newstrs[strnum];
+        trace("newstr", newstr);
         contextname = "control-newuser";
     }
     
     function loadstr(){
         var newdata = json_loads(newstr);
+        trace("new data", newdata);
         cp = newdata.get("cp",[-400,-240]);
         cz = newdata.get("cz",[160,160]);
         gtype = newdata.get("gtype");
@@ -78,10 +80,6 @@ class NewControl extends ContextObject{
                 opobj = global.context[0].getobjectby(nposi[0],nposi[1]);
             }
         }
-        //else if(cmd == "select"){
-        //    opobj = global.context[1];
-        //    param = global.context[1].selfgid;
-        //}
         trace(cmd,param);
     }
     
@@ -170,18 +168,18 @@ class NewControl extends ContextObject{
         notice.removefromparent();
         notice = contextNode.addsprite("dialogback_new"+str(flag)+".png").anchor(50,50).pos(tp);
         if(flag == 1){
-        for(var i=0;i<len(strs);i++){
-            if(strs[i].rfind("【")==-1){
-                notice.addlabel(strs[i],null,20).pos(40,30+24*i).color(0,0,0,100);
+            for(var i=0;i<len(strs);i++){
+                if(strs[i].rfind("【")==-1){
+                    notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
+                }
+                else{
+                    var end = strs[i].split("】");
+                    var begin = end[0].split("【");
+                    notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
+                    notice.addlabel("【"+begin[1]+"】",null,20).pos(40+len(begin[0])/3*20,30+24*i).color(100,0,0,100);
+                    notice.addlabel(end[1],null,20).pos(60+len(end[0])/3*20,30+24*i).color(0,0,0,100);
+                }
             }
-            else{
-                var end = strs[i].split("】");
-                var begin = end[0].split("【");
-                notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
-                notice.addlabel("【"+begin[1]+"】",null,20).pos(40+len(begin[0])/3*20,30+24*i).color(100,0,0,100);
-                notice.addlabel(end[1],null,20).pos(60+len(end[0])/3*20,30+24*i).color(0,0,0,100);
-            }
-        }
         }
         else{
             notice.addlabel(strs[0],null,30).anchor(50,50).pos(221,45).color(1,14,56,100);
@@ -200,7 +198,7 @@ class NewControl extends ContextObject{
             notice.addsprite("boxbutton4.png").anchor(50,50).pos(221,230).setevent(EVENT_UNTOUCH,nextstate);
             notice.addlabel(strs[4],null,20).anchor(50,50).pos(221,230).color(0,0,0,100);
             for(i=5;i<len(strs);i++){
-                notice.addlabel(strs[i],null,20).pos(60,24*i-50).color(0,0,0,100);
+                notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(60,24*i-50).color(0,0,0,100);
             }
         }
     }
@@ -262,15 +260,7 @@ class NewControl extends ContextObject{
                 opobj.baseobj.statenode.removefromparent();
                 global.context[0].buildovertrue(0,1,"{'id':1}");
             }
-            else if(cmd == "attack"){/*
-                dtime = 17000;
-                global.popContext(null);
-                var bat=new WarControl(0);
-                bat.flaganimate = 1;
-                bat.flagresult= 1;
-                bat.datadict = dict([["leftself",1],["leftwin",1],["getmoney",0],["getexp",0],["spec",""],["leftpower",100000],["rightpower",100000],["leftppyid",ppy_userid()],["rightppyid",0],
-                ["leftpower2",60],["rightpower2",0],["leftname","我"],["rightname","邪恶的城主"],["leftnob",0],["rightnob",0],["leftgodpower",0],["rightgodpower",0]]);
-                global.pushContext(null,bat,NonAutoPop);*/
+            else if(cmd == "attack"){
                 global.context[2].excute(1);
                 dtime = 5000;
             }
