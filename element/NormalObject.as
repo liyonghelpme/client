@@ -54,7 +54,7 @@ class NormalObject extends ContextObject{
             contextid=global.data.getSize(objectid);
         }
         var classid = objectid/100;
-        trace(contextid,objectid);
+        //trace(contextid,objectid);
         if(classid==5){
             objnode=null;
             buildcontextname = "obj";
