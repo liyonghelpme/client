@@ -1118,14 +1118,25 @@ class CastlePage extends ContextObject{
             y = 480-c2[1];
         contextNode.addaction(imoveby(x,y));
     }
-
-    function initialFactorys(){
+    var input;
+    var but;
+    function login()
+    {
+        var in = input.text();
+        input.removefromparent();
+        but.removefromparent();
+        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[int(in),0,md5(in+"-0800717193")],self,"getidback");
+    }
+    function initialFactorys(page){
         blocknode = contextNode.addnode().visible(0);
         cpid = ppy_userid();
         pagedict = dict();
         pagedict.update(cpid,contextNode.pos());
         initlock = 1;
-        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
+        input = v_create(V_INPUT_VIEW, 100, 100, 200, 200);
+        v_root().add(input);
+        but = page.addsprite("boxbutton01.png").setevent(EVENT_UNTOUCH, login);
+        //global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 
     var statestr="";
