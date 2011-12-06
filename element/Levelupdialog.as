@@ -24,7 +24,7 @@ class Levelupdialog extends ContextObject{
             contextNode.addlabel(global.getStaticString("ok"),null,BUTTONFONTSIZE).anchor(50,50).pos(380,400);
         }
         var levelback = contextNode.addsprite("dialogback_levup.jpg").pos(163,40);
-        levelback.addlabel(str(global.user.getValue("level")),null,36).anchor(0,50).pos(299,48).color(100,0,0,100);
+        levelback.addlabel(str(global.user.getValue("level")),null,36).anchor(0,50).pos(305,65).color(100,0,0,100);
         levelback.addsprite("money_big.png").anchor(50,50).pos(144,137).size(24,24);
         var m = global.user.getValue("level")*200;
         levelback.addlabel(str(m),null,24).anchor(0,50).pos(160,137).color(0,0,0,100);

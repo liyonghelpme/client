@@ -39,7 +39,7 @@ class DailyDialog extends ContextObject{
     function closedialog(node,event,p){
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("loginBonus", "[NAME]", ppy_username()),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("loginBonus", ["[NAME]", ppy_username()]),"http://getmugua.com");
         }
         if(bonus>0){
             global.user.changeValueAnimate3(global.context[0].moneyb,"money",bonus,-6);

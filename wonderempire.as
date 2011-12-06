@@ -130,12 +130,12 @@ var percentmax = 0;
             }
             if(global.image.needloading==1){
                 if(percentmax>tmp){
-                    loadingstr="正在加载游戏...";
+                    loadingstr="loading...";
                 }
                 global.image.flagtime++;
                 if(global.image.flagtime==27){
                     global.image.checkimages(0,0,0);
-                    loadingstr = "如果进度条卡住，请点击返回按钮重启游戏...";
+                    loadingstr = "if progressbar blocked, press back to restart game...";
                 }
             }
         }

@@ -173,7 +173,7 @@ class TaskController extends ContextObject{
     }
     
     function taskgiveup(){
-        global.pushContext(self,new Warningdialog([global.getStaticString("giveupWarn"),1,5]),NonAutoPop);
+        global.pushContext(self,new Warningdialog([global.getStaticString("giveupwarn"),1,5]),NonAutoPop);
     }
     
     function taskcomplete(n,e,p){

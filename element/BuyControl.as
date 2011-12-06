@@ -22,7 +22,7 @@ class BuyControl extends ContextObject{
                 tabs[i].addlabel(num[1],null,20).anchor(50,50).pos(90,73).color(0,0,0,100);
                 //tabs[i].addsprite("temp"+str(i)+".png").pos(73,61);
             }
-            tabs[i].addlabel(num[2],null,18).anchor(50,50).pos(35,175).color(0,0,0,100);
+            tabs[i].addlabel(num[2],null,18).anchor(50,50).pos(25,175).color(0,0,0,100);
         }
         choosetab(0,0,0);
         ppy_query("papayas",null,setpapayas);

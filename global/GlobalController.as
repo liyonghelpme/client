@@ -174,7 +174,7 @@ const ENAME = ["Forts lev1","Forts lev2","Forts lev3","Forts lev4","Forts lev5",
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
 const cardprename = ["Snake","Boar","Wolf","Bear","Lion","Dragon","Snake king","Boar king","Wolf king","Bear king","Lion king","Dragon king","Title of nobility","Moon goddess","Planting daren","Business daren","","","Friendship"];
 
-const cardlevelname = ["card","card lev1","card lev2","card lev3","card lev4","card lev5","medal"];
+const cardlevelname = [""," lev1"," lev2"," lev3"," lev4"," lev5"," medal"];
 
 const allcardlevelnum = [[2,4,7,15,30],[1000,5000,20000,50000,100000],[10000,50000,100000,500000,1000000],[],[],[1,100,100,100,40]];
 const cardlevelnum = [5,15,45,85,135];
@@ -229,7 +229,7 @@ const stringDict=dict([
 
 ["money","silver"],["caesars","gold"],["food","food"],["labor","idle population"],["person","population"],["stone","stone"],["wood","wood"],["caesar","Caesar"],
 
-["share","share"],["back","back"],["change","modify"],["ok","yes"],["send","send"],["cancel","cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","help"],["close","close"],["openbox","open treasure chest"],["askforhelp","ask friend"],
+["share","Share"],["back","Back"],["change","Done"],["ok","yes"],["send","send"],["cancel","cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","help"],["close","close"],["openbox","open treasure chest"],["askforhelp","ask friend"],
 
 ["loading_str","loading..."],["self","me"],
 
@@ -314,15 +314,15 @@ const stringDict=dict([
 ["net_state_1","Network off, please check it"],["net_state_2","Network doesn't work, try again"],
 
 ["master","master:"],[":","："],
-["user_notoccupy","unoccupitation"],["user_occupy","occupited"],["user_protected","in protect"],["user_fighting","fighting"],["user_attacking","marching"],
+["user_notoccupy","unoccupitation"],["user_occupy","free"],["user_protected","in protect"],["user_fighting","fighting"],["user_attacking","marching"],
 ["resource_get_format","the fortress product coin [MONEY] ，food [FOOD]，wood [WOOD]，stone [STONE] per hour，time left to harvest : [TIME]"],
-["quit", "quit"],["back", "back"],
+["quit", "Quit"],["back", "Back"],
 
-["sendFight", "Sent forces"], ["totalFight", "Total forces"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defend fighting"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defend"], ["retry", "Retry"], ["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations,you finish this task! Come on to share with your friends!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary add"], ["fastAdd", "Fast add"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left"], ["allyNum", "Ally number"], ["sureToally", "Sure to ally with him/her?"], ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar coins to destroy the covenant, please choose your ally carefully"], ["cancelAlly", "Cancel ally, Are you sure？"], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], ["addAlly", "add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's fighting capability will increase if you are on line when they are fighting"], ["youWin", "You win"], ["attackIt", "Attack！"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "magic performing"], ["free", "unoccupied"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "purchasing"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], ["dragon", "The dragon's nest will make it possible to summon your own pet！Are you sure？"], 
+["sendFight", "Sent forces"], ["totalFight", "Total forces"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defend fighting"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defend"], ["retry", "Retry"], ["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations,you finish this task! Come on to share with your friends!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary add"], ["fastAdd", "Fast add"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left"], ["allyNum", "Ally number"], ["sureToally", "Sure to ally with him/her?"], ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar coins to destroy the covenant, please choose your ally carefully"], ["cancelAlly", "Cancel ally, Are you sure？"], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], ["addAlly", "add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's fighting capability will increase if you are on line when they are fighting"], ["youWin", "You win"], ["attackIt", "Attack！"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "magic performing"], ["free", "unoccupied"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], ["dragon", "The dragon's nest will make it possible to summon your own pet！Are you sure？"], 
 ["godBless", "[GOD] can perform magic，summon [GOD],are you sure?"], 
 ["call", "summon"], ["coin", "coin"], ["freePeople", "unoccupied people"], ["food", "food"], ["zijin", "Upgrading to the violet golden level to use one-step finishing for free"], ["freeZijin", "You can use one-step finishing for free now"], ["youGet", "Congratulations！You get "], 
 ["youPost", "[NAME] got [CARD] [CARDLEV]，join [NAME] to build your own miracle empire！"],
-["loading", "Loading..."], ["noNews", "No more news"], ["loginBonus", "[NAME] has played the miracle empire and gas gained daily rewards"], 
+["loading", "Loading..."], ["noNews", "No more news"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
 ["godShow", "Magic"], ["inGodShow", "in the magic time of effect，"],
 ["show", "perform"], ["friend", "Friends"], ["level", "Lev"],["expandOver", "Congratulations！expanding successfully"], ["expandPost", "[NAME] has expanded his territory，come and join the Miracle Empire！"], ["feedback", "If you have any advice of feedback,please email"], ["feedGift", "You will get mysterious gifts if your advice is accepted"], ["sendGift", "Choose a gift and send it to<g>"],["ask", "Ask "], ["send", "Send"], ["accept", "Accept"], ["levelUp", "[NAME] has level up to [LEVEL]，join the Miracle Empire and enjoy！"], ["killAll", "[NAME] has defeated the monsters and secure his territory，join the Miracle Empire and have fun！"],["nextMonster", "Monsters will come again after"], ["comeSoon", "Coming soon"],
 ["attackIs", "fighting capacity is"], ["powerlack", "You don't have enough fighting capacity！"], ["monRob", "Monsters have robbed"],["activeDra", "would you help me activating?"], ["letsShare", "Let's share together！"], ["askForAct", "Let's go and ask friends for help！"], ["helpme", "Help"],["askFri", "Ask friends for help"], ["unknown", "Unknown"], ["getDragon", "has got the dragon's nest，but still need your help to activate，let's go and help him！"], ["callPet", "Congratulations! You have activated the dragon's nest，now you can summon your pet！"], ["myPet", "my pet"], ["dragonPost", "[NAME] has activated dragon's nest successfully，join the Miracle Emoire and have fun！"], ["curPet", "current pet"], ["changeMode", "change mode"],
@@ -330,10 +330,10 @@ const stringDict=dict([
 ["choosePet", "choose your pet"], ["callDragonDia", "[NAME]'s initial fighting points：[POWER],every growing point will increase [ADD].are you sure summoning this pet？"],
 ["inProtect", "under protection"], ["attNoProtect", "You can't enable protection mode during attacking period"],
 ["openProtect", "enable protection"], ["colonial", "colonial"], ["levelUp", "Congratulations！Level up"], ["goInNewMap", ", New map entered，you will see stronger opponents there，try to defeat them！"], ["cityLevelUp", ",your territory is level up！"], ["oneLevel", ", you need more experiences to upgrade your territory！"], ["next", "Next"],
-["choosePlant", "choose crops"], ["sureToBuy", "are you sure purchasing"],["acc", "Accelerate"],
+["choosePlant", "choose Crops"], ["sureToBuy", "are you sure purchasing"],["acc", "Quicken"],
 ["leftTime", "Time left"], ["noBattle", "War mode unable"], ["winNum", "winning number："], ["netRefresh", "data exception because of net problem，please try again"], ["fresh", "refresh"],["fightAdd", "hint：soilders will have fighting capacity added when quarteres at fortress"],
 ["peopUp", "the miximum of population"], 
-["sureTosell", "selling, are you sure？"],
+["sureTosell", "Are you sure to sell"],
 ["sell", "sell"], 
 ["toDetect", "use on detecting"], 
 ["unitPower", "unit fighting capacity"],
@@ -359,21 +359,21 @@ const newstrs = [
 "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Territory's development needs agriculture, click the free［farmland］\"}",   
 "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' click ［plant］'}",   
 "{'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'choose ［wheat］'}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Crop's growth need long time,but we can  accelerate it. Click the busy [farm]\"}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Crop's growth need long time,but we can  accelerate it. Click the busy [farmland]\"}",   
 "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Click [accelerate]'}",   
 "{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':\"accelerate crops' growth\"}",   
 "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'harvest wheat'}",   
 null,    
-"{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task 1 completed+500+1+4+ next step + Agriculture related task completed! Congrats, you must will become a excellent lord！'}",   
-"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"Territory's development need population, build residential to recruit more people. Click[Build]\"}",   
+"{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
+"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"Territory's development needs population, build residential to recruit more people. Click[Build Icon]\"}",   
 "{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Choose[cottage] '}",   
 "{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':\"Click[yes] after choosing cottage's build location.\"}", 
 "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'Wow! This residential has recruited people,  click[cottage] to receive them!'}",   
 "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Click [free] cottage'}",    
 "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Click [recruit]'}",   
-"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also need money, click bakery to collect tax!'}",   
+"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also needs money, click bakery to collect tax!'}",   
 null,    
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task 2 completed+1500+2+10+ next step +Population and business related tasks completed！Congrats, wish your territory being better！'}",   
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!'}",   
 "{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are [monsters] robbing your crops in your territory, go to kill them!'}",   
 "{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'Click [map] to view your territory nearby situation.'}",   
 "{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Click [monster]'}",   
@@ -381,7 +381,7 @@ null,
 "{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you win! Click [castle] to return your territory.'},",    
 "{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'In the end, give your territory a unique name! Click left-upper [info bar].'}",   
 null,   
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'New user task completed +2000+3+15+Complete+Congrats！And still make efforts to let all people praise your legend. '}"];
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!'}"];
 const items = ["2011/11/15 兽神神像上线啦！+兽神神像施展神迹期间，所有怪兽雕像都会增加城堡防御力哦！注：神迹施展之后建造的雕像无效，即神迹只对已经建造完成的雕像有效",        "2011/11/2 奇迹帝国2.3版本上线啦！+大家可以去电子市场（Android market）或其他任何渠道下载更新。新版本增加了如下功能：+1. 支付宝充值功能；+2. 优化了访问好友速度，修复了访问好友死机的bug；+3. 增加了战争聊天室，增加了夜景和灯光效果。",        "2011/10/30 战争聊天室上线啦！+1. 战争页面点击红色箭头就可以看到战争聊天室罗！+2. 预告：“要塞”即将上线！伯爵以上地图会出现怪兽占领的要塞，大家可以争夺要塞，要塞每小时会生产资源，占领越多的要塞会不停地获得更多的资源哦！敬请期待！+3. 给凯撒留言：由于木瓜社区置顶帖功能要过段时间才能恢复，所以大家有啥建议都可以给凯撒留言，熊哥我会及时看并回复的！",        "2011/10/29 宠物训练&一键访问好友上线啦！+1. 训练宠物增加战斗力：点击宠物-》点击最右侧训练图标-》“完整”训练动画结束【注意是完整的动画结束哦！】-》宠物增加1点战斗力（每天最多只能加100点战斗力） +2. 一键访问好友：一键访问好友会领取所有未访问好友奖励，详细请查看帮助文档。+3. 圈子升级：这个是木瓜社区控制的，有好的建议可以反馈给木瓜社区哦！+4. 怪兽第一次出现后没有被立即消灭才会抢粮，大家要及时杀怪呀！"];
 const timestr = ["Last for 1 hour","Last for 6 hours","Last for 24 hours"];
 
