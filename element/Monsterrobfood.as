@@ -20,7 +20,7 @@ class Monsterrobfood extends ContextObject{
             element = node();
             element.addsprite("warning.png").anchor(50,50).pos(80,130).scale(150);
             element.addsprite("warningtitle.jpg").anchor(50,50).pos(202,44);
-            element.addlabel(global.getStaticString("monRob")+str(food)+global.getStaticString("food"),null,20,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(270,130).color(0,0,0,100);
+            element.addlabel(global.getFormatString("monRob", ["[FOOD]", str(food)]),null,20,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(270,130).color(0,0,0,100);
         }
         return element;
     }
