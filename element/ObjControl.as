@@ -178,7 +178,7 @@ class ObjControl extends ContextObject{
     function beginbuild(n,e,param,x,y){
         var statueNum = 600;
         var oid = objcontext[param]%1000;
-        trace("oid", oid);
+        //trace("oid", oid);
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
                 lasttime = time();
