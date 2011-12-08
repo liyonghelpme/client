@@ -31,7 +31,10 @@ class EmpireControl extends ContextObject{
                 var flag = 0;
                 var flag1 = 0;
                 if(i==p){
-                    flag=3;
+                    if(p != 0)
+                        flag = 1;
+                    else
+                        flag = 3;
                     if(i==2||(i==0&&global.user.getValue("nobility")>=0)){
                         flag=4;
                     }
@@ -55,7 +58,7 @@ class EmpireControl extends ContextObject{
     }
     function addMagic(node, event, param, x, y, points)
     {
-       //global.pushContext(null, new BuyMagic(), NonAutoPop); 
+       global.pushContext(null, new BuyMagic(), NonAutoPop); 
     }
     function getelement(p){
         element = node();
@@ -75,14 +78,16 @@ class EmpireControl extends ContextObject{
             element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(255,offy+142).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
+            var rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 241).size(140, 18);
+
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 241).size(rate, 18);
                 element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 241).color(100, 100, 100);
                 element.addsprite("adddefence2.png").pos(312, 241).setevent(EVENT_UNTOUCH,addMagic);
             }
             else
             {
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 233).size(140, 18);
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 233).size(rate, 18);
                 element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 233).color(100, 100, 100);
                 element.addsprite("adddefence2.png").pos(312, 233).setevent(EVENT_UNTOUCH,addMagic);
             }

@@ -27,6 +27,7 @@ import element.Chatdialog;
 import element.Noticedialog;
 import element.Nobilitydialog;
 import element.Monsterrobfood;
+import element.BuyMagic;
 
 class CastlePage extends ContextObject{
     var lastpoint;
@@ -544,7 +545,17 @@ class CastlePage extends ContextObject{
                 }
             }
         }
-        else{
+        else if(p == "addmana"){
+            data = json_loads(c);
+            if(data.get("id") == 1)
+            {   
+                var mana = data.get("mana");
+                var boundary = data.get("boundary");
+                global.user.setValue("mana", mana);
+                global.user.setValue("boundary", boundary);
+                var now = time();
+                global.user.setValue("manatime", now);
+            }
         }
     }
     
@@ -1144,6 +1155,9 @@ class CastlePage extends ContextObject{
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
             global.user.setValue("lasttime", data.get("lasttime", 0));
+            var now = time();
+            global.user.setValue("manatime", now);
+
 
             global.user.setValue("caesars",data.get("cae",0));
             global.user.setValue("citydefence",data.get("citydefence",0));
@@ -1505,6 +1519,12 @@ class CastlePage extends ContextObject{
     }
     function timerefresh(timer,tick,param){
         var i;
+        var now = time();
+        trace("manatime", now, global.user.getValue("manatime"));
+        if((now - global.user.getValue("manatime")) > 300)
+        {
+            global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
+        }
         if(initlock == 0){
             initlock = -1;
             if(newstate < 3&&global.flagnew == 0){
