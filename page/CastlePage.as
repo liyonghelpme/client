@@ -1482,7 +1482,7 @@ class CastlePage extends ContextObject{
             alist = data.get("defencelist");
             length =len(alist);
             for(i=0;i<length;i++){
-                if(defenceList.index(alist[i][0]+"-"+str(alist[5]))==-1)
+                if(defenceList.index(alist[i][0]+"-"+str(alist[i][5]))==-1)
                     global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],0,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             alist = data.get("emptyAtt");
