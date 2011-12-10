@@ -547,15 +547,22 @@ class CastlePage extends ContextObject{
         }
         else if(p == "addmana"){
             data = json_loads(c);
+            trace("mana", data);
             if(data.get("id") == 1)
             {   
+                trace("add mana");
                 var mana = data.get("mana");
                 var boundary = data.get("boundary");
                 global.user.setValue("mana", mana);
                 global.user.setValue("boundary", boundary);
                 var now = time();
                 global.user.setValue("manatime", now);
+                initlock = 0;
             }
+        }
+        else if(p == "changeBoundary")
+        {
+            changeBoundary();
         }
     }
     
@@ -1152,11 +1159,14 @@ class CastlePage extends ContextObject{
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
 
+            var btime = data.get("time",190000000);
+
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
-            global.user.setValue("lasttime", data.get("lasttime", 0));
+            var diff = btime - data.get("lasttime", 0);
             var now = time();
-            global.user.setValue("manatime", now);
+            global.user.setValue("manatime", now-diff);
+            trace("mana", global.user.getValue("mana"));
 
 
             global.user.setValue("caesars",data.get("cae",0));
@@ -1245,7 +1255,7 @@ class CastlePage extends ContextObject{
                     }
                 }
             var objs = data.get("stri","0,370,0,0,0").split(";");
-            var btime = data.get("time",190000000);
+            //var btime = data.get("time",190000000);
             global.inittimer(btime);
             var hour=btime%86400/3600;
             if(hour<6||hour>=20){
@@ -1520,9 +1530,12 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        trace("manatime", now, global.user.getValue("manatime"));
-        if((now - global.user.getValue("manatime")) > 300)
+        //trace("manatime", now, global.user.getValue("manatime"));
+        if((now - global.user.getValue("manatime")) > 300000 && initlock == 0)
         {
+            trace("manatime", now, global.user.getValue("manatime"));
+            trace("increase mana");
+            initlock = -1;
             global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
         }
         if(initlock == 0){
@@ -1873,6 +1886,10 @@ class CastlePage extends ContextObject{
             cmdlist.append(c);
         }
     }
+    function changeBoundary()
+    {
+        global.user.changeValueAnimate2(global.context[0].moneyb, "boundary", 1, -6);
+    }
     function executecmd(cmd){
         var name = cmd.get("name");
         if(name == "daily" && global.flagnew==0){
@@ -1883,6 +1900,7 @@ class CastlePage extends ContextObject{
             global.pushContext(self,new GiftDialog(cmd.get("ppyid"),cmd.get("giftid"),cmd.get("askorgive")),NonAutoPop);
         }
         else if(name == "nobility"){
+            global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
             global.pushContext(self,new Nobilitydialog(),NonAutoPop);
         }
         else if(name == "levup"){
@@ -1898,10 +1916,10 @@ class CastlePage extends ContextObject{
             global.pushContext(self,new Monstercomplete(cmd.get("power")),NonAutoPop);
         }
         else if(name == "getcard"){
+            global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
             global.pushContext(self,new Cardget(cmd.get("cardid"),cmd.get("cardlevel")),NonAutoPop);
         }
         else if(name == "battleresult"){
-            //global.pushContext(self,new WarControl(cmd.get("param")),NonAutoPop);
             for(var i=1;i<len(cmdlist);i++){
                 if(cmdlist[i].get("name")=="battleresult"){
                     cmd=cmdlist.pop(i);

@@ -34,7 +34,7 @@ class GodObject extends BuildObject{
     override function objectinterface(s,p){
         if(s==2 && p!=null){
             var cost = dict();
-            cost.update("caesars",BLESS_CAESARS[p]);
+            cost.update("mana",BLESS_CAESARS[p]);
             if(global.user.testCost(cost)==0){
                 lock=0;
                 setstate();
@@ -59,7 +59,7 @@ class GodObject extends BuildObject{
                 blevel = (bid-20)%5;
                 btype = bid/5;
             }
-            global.user.changeValueAnimate(baseobj,"caesars",-BLESS_CAESARS[objid],4);
+            global.user.changeValueAnimate(baseobj,"mana",-BLESS_CAESARS[objid],4);
             state=3;
             var gtime = [3600,21600,86400];
             begintime = time()/1000;

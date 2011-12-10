@@ -81,15 +81,15 @@ class EmpireControl extends ContextObject{
             var rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){
 
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 241).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 241).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(312, 241).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
+                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(381, 235).setevent(EVENT_UNTOUCH,addMagic);
             }
             else
             {
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 233).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 50).pos(268, 233).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(312, 233).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
+                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(381, 217).setevent(EVENT_UNTOUCH,addMagic);
             }
         }
         else if(p==1){

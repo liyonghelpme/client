@@ -11,8 +11,8 @@ const AutoPop = 1;
 const NonAutoPop = 0;
 const NotAdd = 2;
 
-const BASE_URL = "http://223.4.87.9:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://223.4.87.9:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -203,6 +203,7 @@ const SPYITEMS =["获胜次数：","参战次数：","士兵战斗力：","盟�
 const SHARE_URL="http://getmugua.com";
 const stringDict=dict([
 ["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
+["mana", "魔法值"],
 ["money","银币"],["caesars","凯撒币"],["food","粮食"],["labor","空闲人口"],["person","人口"],["personmax","人口上限"],["stone","石头"],["wood","木材"],["caesar","凯撒"],
 ["share","分享"],["back","返回"],["change","修改"],["ok","确定"],["send","发送"],["cancel","取消"],["system","系统"],["devine","施展"],["retry","重试"],["help","帮忙"],["close","关闭"],["openbox","打开宝箱"],["askforhelp","求助好友"],
 ["attack","攻打"],["defence_power","防御力："],["emptyDefence", "未加成防御力"],["infpower","步兵战斗力"],["cavpower","骑兵战斗力"],["addsoldier","增兵"],["minussoldier","撤兵"],["getresource","运回资源"],["quick","加速"],["quickSendArmy", "增兵加速"],

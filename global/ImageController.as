@@ -2,6 +2,7 @@ class ImageController{
     var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
     "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",
     "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","dialogelement_state3.png", "dialogelement_state4.png","soldier3_1.png","soldier3_2.png","soldier3_3.png", "magic_bar.png", "magic_big.png",
+    "buyelement20.png", "buyelement21.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
     "medalcard0_1.png","medalcard0_2.png","medalcard0_3.png","medalcard0_4.png","medalcard0_5.png","medalcard1_1.png","medalcard1_2.png","medalcard1_3.png","medalcard1_4.png","medalcard1_5.png",
     "medalnob.png","wtask1.png","wtask2.png","wtask3.png","wtask4.png","medalbutton2.png","medalIcon2.png","loadingwarback.jpg", "loading-winter.jpg","loadingbar2.png","warchoosebuttonback0.png","warchoosebuttonback1.png",

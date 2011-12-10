@@ -70,7 +70,7 @@ class NobattleControl extends ContextObject{
                 }
                 tab.addlabel(timestr[i],null,20).anchor(50,50).pos(63,30).color(0,0,0,100);
                 if(caesars[i]<0){
-                    tab.addsprite("caesars_big.png",filter).anchor(50,50).pos(43,90);
+                    tab.addsprite("magic_big.png",filter).anchor(50,50).pos(43,90);
                     tab.addlabel(str(-caesars[i]),null,20).anchor(0,50).pos(71,90).color(0,0,0,100);
                 }
                 else{

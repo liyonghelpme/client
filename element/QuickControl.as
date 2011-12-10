@@ -50,7 +50,7 @@ class QuickControl extends ContextObject{
         contextNode = dialog.getNode();
         dialog.settitle("quicktitle.png");
         dialog.usedefaultbutton(2,["加速","取消"]);
-        var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
+        var cae = sprite("magic_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
         contextNode.add(cae,4);
@@ -60,7 +60,7 @@ class QuickControl extends ContextObject{
     function excute(p){
         if(lock == 0){
             var cost = dict();
-            cost.update("caesars",costcae);
+            cost.update("mana",costcae);
             if(global.user.testCost(cost)==0){
                 return 0;
             }
@@ -98,9 +98,9 @@ trace("speed",rc,c);
         if(flagquick == 0){
             var lefttime = global.request[contextLevel].lefttime;
             costcae = (lefttime-1)/10800+1;
-            if(costcae>3){
-                costcae=5;
-            }
+            //if(costcae>3){
+            //    costcae=5;
+            //}
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             timelabel.text("剩余时间:"+global.gettimestr(lefttime));
@@ -114,7 +114,7 @@ trace("speed",rc,c);
             flagquick++;
         }
         else if(flagquick == 2){
-            global.user.changeValueAnimate(global.request[global.currentLevel].baseobj,"caesars",-costcae,0);
+            global.user.changeValueAnimate(global.request[global.currentLevel].baseobj,"mana",-costcae,0);
             global.popContext(null);
             lock = 0;
             timeisend=1;
