@@ -34,13 +34,15 @@ class EmpireControl extends ContextObject{
                     if(p != 0)
                         flag = 1;
                     else
-                        flag = 3;
-                    if(i==2||(i==0&&global.user.getValue("nobility")>=0)){
-                        flag=4;
+                    {
+                        if(global.user.getValue("nobility") < 0)
+                            flag = 3;
+                        else
+                            flage = 4;
                     }
                 }
                 else if(i>p) flag1 =1;
-                
+                trace("flag", flag); 
                 tabs[i].texture(name[i]+str(flag)+".png",UPDATE_SIZE).pos(16,59*(i+1)+flag1*228-3);
             }
             index = p;
@@ -58,7 +60,7 @@ class EmpireControl extends ContextObject{
     }
     function addMagic(node, event, param, x, y, points)
     {
-       global.pushContext(null, new BuyMagic(), NonAutoPop); 
+       global.pushContext(null, new ChargeMagic(), NonAutoPop); 
     }
     function getelement(p){
         element = node();

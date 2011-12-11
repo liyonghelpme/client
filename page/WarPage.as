@@ -230,7 +230,7 @@ trace("warinfo",rc,c);
                     }
                 }
 
-                list = data.get("empty",[]);
+                list = data.get("empty",null);
                 emptyCities = dict();
                 myEmpty = [];
                 global.emptyCitiesInGlo = emptyCities;
@@ -241,6 +241,7 @@ trace("warinfo",rc,c);
                     atklist.append(empty);//show all emptyCites
                     if(list[emp][1] == global.userid)
                         myEmpty.append(list[emp]);
+                    userdict.update(list[emp][2], empty);
                 }
 
                 loadempty(list);
@@ -251,13 +252,19 @@ trace("warinfo",rc,c);
     }
     
     function loadempty(list){
+        if(list == null)
+            return;
         var ugdict=dict();
         var vs = userdict.values();
-        for(var i=0;i<len(vs);i++){
+        var i = 0; 
+        for(i=0;i<len(vs);i++){
             ugdict.update(vs[i][5],vs[i][3]);
         }
         var default1=["0",0,0,0,0,0,0,0,0,0];
+        trace("load empty list", list, len(list));
         for(i=0;i<len(list);i++){
+            if(type(list[i]) != type([]))
+                continue;
             var user=userdict.get(ugdict.get(list[i][1]),default1);
             var emptyData = [user[0],-list[i][0],list[i][5],list[i][2],global.getEmptyName(list[i][2]),user[3],0,list[i][3],list[i][4],list[i][6]]; 
             trace("emptyData", list[i][2], emptyData);

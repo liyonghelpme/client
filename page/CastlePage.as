@@ -27,7 +27,7 @@ import element.Chatdialog;
 import element.Noticedialog;
 import element.Nobilitydialog;
 import element.Monsterrobfood;
-import element.BuyMagic;
+import element.ChargeMagic;
 
 class CastlePage extends ContextObject{
     var lastpoint;
@@ -233,7 +233,7 @@ class CastlePage extends ContextObject{
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
-        var fb = sprite("personboard.png");
+        var fb = sprite("personboard1.png");
         fmenu.add(fb.pos(-114,0),-1,-1);
         fb.add(sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
         
@@ -258,12 +258,15 @@ class CastlePage extends ContextObject{
         global.user.initText("cityname",empirelabel);
         ub.addsprite(avatar_url(ppy_userid())).pos(12,8).size(50,50);
 
-        var personb = sprite("personboard.png");
-        var personlabel = personb.addlabel("0/0",null,18).anchor(50,50).pos(114,29).color(0,0,0,100);
+        var personb = sprite("personboard1.png");
+        var magicbar = personb.addsprite("mana_bar.png").anchor(0, 0).pos(39, 19).size(1, 18);
+        var magiclabel = personb.addlabel("0/0", null, 18).anchor(50, 50).pos(83, 29).color(0, 0, 0, 100);
+        global.user.initMagic(magiclabel,magicbar);
+        var personlabel = personb.addlabel("0",null,18).anchor(50,50).pos(207,29).color(0,0,0,100);
         global.user.initPerson(personlabel,global.user);
-        var foodlabel = personb.addlabel("0",null,18).anchor(0,50).pos(263,29).color(0,0,0,100);
+        var foodlabel = personb.addlabel("0",null,18).anchor(0,50).pos(294,29).color(0,0,0,100);
         global.user.initText("food",foodlabel);
-        personb.add(sprite("personopen.png").anchor(50,50).pos(365,22).scale(-100,100).setevent(EVENT_UNTOUCH,openpersonbar),0,1);
+        personb.add(sprite("personopen.png").anchor(50,50).pos(395,22).scale(-100,100).setevent(EVENT_UNTOUCH,openpersonbar),0,1);
         
         topmenu.add(personb.pos(220,0),-1,1);
         moneyb = menu.addnode().pos(640,43);
@@ -352,12 +355,12 @@ class CastlePage extends ContextObject{
     
     function openpersonbar(n,e){
         var p = topmenu.get(1).pos();
-        if(p[0] == -114){
+        if(p[0] == -134){
             topmenu.get(1).addaction(moveto(200,220,0));
             topmenu.get(1).get(1).addaction(sequence(delaytime(200),scaleto(200,-100,100)));
         }
         else{
-            topmenu.get(1).addaction(moveto(200,-114,0));
+            topmenu.get(1).addaction(moveto(200,-134,0));
             topmenu.get(1).get(1).addaction(sequence(delaytime(200),scaleto(200,100,100)));
         }
     }
@@ -557,8 +560,9 @@ class CastlePage extends ContextObject{
                 global.user.setValue("boundary", boundary);
                 var now = time();
                 global.user.setValue("manatime", now);
-                initlock = 0;
+                //initlock = 0;
             }
+            addManaLock = 0;
         }
         else if(p == "changeBoundary")
         {
@@ -1475,7 +1479,7 @@ class CastlePage extends ContextObject{
             var alist = data.get("attacklist");
             var length = len(alist);
             for(i=0;i<length;i++){
-                if(attackList.index(alist[5])==-1)//attack other gid not same
+                if(attackList.index(alist[i][5])==-1)//attack other gid not same
                     global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],1,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             //TODO alist[i][4]是用户类型
@@ -1527,15 +1531,17 @@ class CastlePage extends ContextObject{
     function timeend(){
         global.timer.addlistener(time()/1000+86400,self);
     }
+    var addManaLock = 0;
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
         //trace("manatime", now, global.user.getValue("manatime"));
-        if((now - global.user.getValue("manatime")) > 300000 && initlock == 0)
+        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 ) //&& initlock == 0)
         {
+            addManaLock = 1;
             trace("manatime", now, global.user.getValue("manatime"));
             trace("increase mana");
-            initlock = -1;
+            //initlock = -1;
             global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
         }
         if(initlock == 0){
@@ -1768,7 +1774,7 @@ class CastlePage extends ContextObject{
                 global.soldiers[0] = data.get("inf",global.soldiers[0]);
                 global.soldiers[1] = data.get("cav",global.soldiers[1]);
                 if(warpage.inite==1){
-                    var list = data.get("empty");
+                    var list = data.get("empty", []);
                     warpage.loadempty(list);
                 }
             }

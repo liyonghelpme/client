@@ -97,10 +97,7 @@ trace("speed",rc,c);
     function timerefresh(){
         if(flagquick == 0){
             var lefttime = global.request[contextLevel].lefttime;
-            costcae = (lefttime-1)/10800+1;
-            //if(costcae>3){
-            //    costcae=5;
-            //}
+            costcae = lefttime/3600+1;
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             timelabel.text("剩余时间:"+global.gettimestr(lefttime));

@@ -129,9 +129,7 @@ trace("speed",rc,c);
         if(flagquick == 0){
             var lefttime = battledata[0]-global.timer.currenttime;
             costcae = (lefttime/3600+1)*2;
-            //if(costcae>6){
-            //    costcae=10;
-            //}
+            trace("acc mana cost", costcae);
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             timelabel.text("剩余时间:"+global.gettimestr(lefttime));

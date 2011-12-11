@@ -684,3 +684,4 @@ class GlobalController{
         }
     }
 }
+var global = new GlobalController();
