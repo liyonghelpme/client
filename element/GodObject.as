@@ -41,9 +41,9 @@ class GodObject extends BuildObject{
                 btype = bid/5;
             }
             var cost = dict();
-            var level = [10, 12, 14, 16, 20];
-            cost.update("mana",BLESS_CAESARS[p]*level[blevel]/10);
-            trace("god bless", p, blevel, BLESS_CAESARS[p]*level[blevel]/10);
+            //var level = [10, 12, 14, 16, 20];
+            cost.update("mana",BLESS_CAESARS[blevel*3+p]);
+            trace("god bless", p, blevel, BLESS_CAESARS[blevel*3+p]);
             if(global.user.testCost(cost)==0){
                 lock=0;
                 setstate();
@@ -64,7 +64,7 @@ class GodObject extends BuildObject{
                 blevel = (bid-20)%5;
                 btype = bid/5;
             }
-            global.user.changeValueAnimate(baseobj,"mana",-BLESS_CAESARS[objid]*level[blevel]/10,4);
+            global.user.changeValueAnimate(baseobj,"mana",-BLESS_CAESARS[objid+blevel*3],4);
             state=3;
             var gtime = [3600,21600,86400];
             begintime = time()/1000;

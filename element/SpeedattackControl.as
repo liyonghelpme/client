@@ -68,7 +68,7 @@ class SpeedattackControl extends ContextObject{
     function excute(p){
         if(lock == 0){
             var cost = dict();
-            cost.update("caesars",costcae);
+            cost.update("mana",costcae);
             if(global.user.testCost(cost)==0){
                 return 0;
             }
@@ -128,7 +128,7 @@ trace("speed",rc,c);
     function timerefresh(){
         if(flagquick == 0){
             var lefttime = battledata[0]-global.timer.currenttime;
-            costcae = (lefttime/3600+1)*2 + 10;
+            costcae = (lefttime+3599)/3600*2 + 10;
             trace("acc mana cost", costcae);
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));

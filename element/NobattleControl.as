@@ -112,7 +112,7 @@ class NobattleControl extends ContextObject{
             if(x>0&&y>0&&x<n.size()[0]&&y<n.size()[1]){
                 var cost = dict();
                 if(caesars[p]<0){
-                    cost.update("caesars",-caesars[p]);
+                    cost.update("mana",-caesars[p]);
                 }
                 else{
                     cost.update("money",caesars[p]);
@@ -136,7 +136,7 @@ class NobattleControl extends ContextObject{
             var times=[7200,28800,86400];
             global.user.setValue("nobattletime",global.timer.timec2s(global.timer.currenttime+times[selecttab]));
             if(caesars[selecttab]<0){
-                global.user.changeValue("caesars",caesars[selecttab]);
+                global.user.changeValue("mana",caesars[selecttab]);
             }
             else{
                 global.user.changeValue("money",-caesars[selecttab]);

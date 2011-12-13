@@ -44,7 +44,7 @@ class Devinedialog extends ContextObject{
                 tabs[i].addlabel(timestr[i],null,20).anchor(50,50).pos(57,60).color(0,0,0,100);
                 tabs[i].addsprite("magic_big.png").anchor(50,50).pos(33,130);
 
-                tabs[i].addlabel("x"+str(BLESS_CAESARS[i]*level[blevel]/10),null,20).anchor(0,50).pos(52,130).color(0,0,0,100);
+                tabs[i].addlabel("x"+str(BLESS_CAESARS[i+blevel*3]),null,20).anchor(0,50).pos(52,130).color(0,0,0,100);
             }
             choosetab(0,0,0);
         }

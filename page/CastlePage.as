@@ -238,7 +238,7 @@ class CastlePage extends ContextObject{
         var b = fmenu.addsprite("friendboard.png");
         var fb = sprite("personboard1.png");
         fmenu.add(fb.pos(inpos,0),-1,-1);
-        fb.add(sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
+        fb.add(sprite("message.png").anchor(50,50).pos(385,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
         
         friendlevlabel = b.addlabel("Level 1",null,16).color(0,0,0,100).anchor(50,100).pos(39,80);
         friendnamelabel = b.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
@@ -1407,7 +1407,8 @@ class CastlePage extends ContextObject{
                     bdict.update("name","daily");
                     bdict.update("bonus",bonus);
                     addcmd(bdict);
-                    var clevel = allcardlevelnum[0].index(global.card[13]);
+                    addcmd(dict([["name","notice"]]));
+                    var clevel = allcardlevelnum[0].index(global.card[13]%1000);
                     if(clevel!=-1){
                         bdict = dict();
                         bdict.update("name","getcard");
@@ -1416,13 +1417,13 @@ class CastlePage extends ContextObject{
                         addcmd(bdict);
                     }
                 }
-                    if(data.get("wonBonus",0)!=0){
-                        bdict = dict();
-                        bdict.update("name","wonbonus");
-                        bdict.update("money",data.get("wonBonus"));
-                        bdict.update("num",data.get("wonNum"));
-                        addcmd(bdict);
-                    }
+                if(data.get("wonBonus",0)!=0){
+                    bdict = dict();
+                    bdict.update("name","wonbonus");
+                    bdict.update("money",data.get("wonBonus"));
+                    bdict.update("num",data.get("wonNum"));
+                    addcmd(bdict);
+                }
                 global.system.flagrob = data.get("foodlost");
                 if(global.system.flagrob==null){
                     global.system.flagrob= 0;
@@ -1935,10 +1936,13 @@ class CastlePage extends ContextObject{
             global.pushContext(self,new Monstercomplete(cmd.get("power")),NonAutoPop);
         }
         else if(name == "getcard"){
-            if(cmd.get("cardlevel") == 4 && cmd.get("cardid") < 12)//monster card
+            if(cmd.get("cardid") < 12)//monster card
             {
-                global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
-                global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+                if(cmd.get("cardlevel") == 5)
+                {
+                    global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+                    global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+                }
             }
             else//other card
             {

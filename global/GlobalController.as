@@ -11,8 +11,8 @@ const AutoPop = 1;
 const NonAutoPop = 0;
 const NotAdd = 2;
 
-//const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -71,7 +71,7 @@ const GOD_FOOD = [500,1000,2000,5000,10000];
 const GOD_PERSON_MAX = [250,500,750,1000,1250];
 const GOD_EXP = [50,100,170,250,350];
 
-const BLESS_CAESARS = [15,23,30];
+const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
 
 const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000];
 const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300];
@@ -191,8 +191,8 @@ const staticString = [
 "[WHO]的[TYPE]数需要达到[NUM]才能升到下一等级。该卡每升一级将会增加1点魔法上限！",
 "[WHO]还需要战胜[NUM]个用户才能升级到[CARD]，该卡每升级一级将会增加一点魔法值上限。",
 "你的店铺正在工作，无法一键收税",
-"怪兽卡片升级到紫金级别，你将可以免费获得一座怪兽雕",
-"抱歉，空间建筑正在开发，开发之后凭借嫦娥紫金卡你将免费获得空间建筑",
+"恭喜你获得了该紫金卡片，你的魔法值上限增加了两点",
+"恭喜，嫦娥卡升到紫金级别，魔法值上限增加了5",
 "把丰收之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
 "把财富之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
 "抱歉，你已经访问过所有好友了！",
@@ -430,7 +430,7 @@ class GlobalController{
         medalstr = medalstr+"才能获得"+cardprename[index]+cardlevelname[medallevel];
         if(index == 13)
         {
-            medalstr += "，该卡每升一级，将会增加一点魔法值上限。";
+            medalstr += "，该卡每升一级将会增加一点魔法值上限。";
         }
         else if(index < 12)
         {
