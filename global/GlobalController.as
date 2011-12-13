@@ -71,7 +71,7 @@ const GOD_FOOD = [500,1000,2000,5000,10000];
 const GOD_PERSON_MAX = [250,500,750,1000,1250];
 const GOD_EXP = [50,100,170,250,350];
 
-const BLESS_CAESARS = [3,15,30];
+const BLESS_CAESARS = [15,23,30];
 
 const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000];
 const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300];
@@ -170,35 +170,47 @@ const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 const cardnum = 13;
 const NEWFLAG = 14;
     
-const staticString = ["你需要升到10级才能开启战争模式","开启战争模式之后暂时就不能退出咯，请查看帮助文档",
-"恭喜你抵挡住了[ENAME]的攻势，保卫了领地不被侵犯！","[ENAME]兵力过于强大，你的军队不幸战败，快去加强你的军事力量吧！",
-"[ENAME]兵力过于强大，回去厉兵秣马，来日再战！","恭喜你战胜了[ENAME]，你离帝王宝座又近了一步！","如何提高战斗力",
-"[USERNAME]进入新的地图啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","[USERNAME]升级为[NOBNAME]啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]的领地升级啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","[USERNAME]成功战胜侵略者，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]被YYYY[ENAME]打败了，赶快加入帮助[USERNAME]复仇吧！","[USERNAME]的大军被击退，赶快加入与[USERNAME]一起侵略其他领地吧！",
-"[USERNAME]战胜了[ENAME]，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！","你需要升到15级才能使用一键操作","你没有空闲的农田，不能使用一键操作","你的农作物正在生长，无法一键收获",
-"[WHO]的[TYPE]数需要达到[NUM]才能升到下一等级。该卡紫金级别可以让[WHO]无限次免费使用一键操作功能！","[WHO]还需要战胜[NUM]个用户才能升级到[CARD]",
-"你的店铺正在工作，无法一键收税","怪兽卡片升级到紫金级别，你将可以免费获得一座怪兽雕像","抱歉，空间建筑正在开发，开发之后凭借嫦娥紫金卡你将免费获得空间建筑",
-"把丰收之神升到紫金级别，你将可以无限免费使用一键播种、一键收税功能","把财富之神升到紫金级别，你将可以无限免费使用一键收税功能",
-"抱歉，你已经访问过所有好友了！","每天宠物前100次训练才会增加1点战斗力哦！","你一键访问了[NUM]个好友，获得了[MONEY]银币奖励",
-"升级友谊之神到紫金级别","还差[NUM]个好友","还需要帮助好友打开[NUM]个宝箱","还需要帮助好友喂养[NUM]次宠物","需要升到[NUM]级",
-"你现在可以永久免费使用一键普通访问好友功能咯！","[NAME]晒出了自己领地的截图，大家快来围观吧！","","http://getmugua.com",
-"每天自己只能喂养一次，好友可以帮忙继续喂养。假如当天自己或好友都没喂养，成长点会下降哦！","该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
-"每天你只能帮同一个好友喂养一次^_^","[NAME]的宠物已经有[NUM]个好友喂养过了，谢谢帮忙^_^"];
-//next 40
-/*
-        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第10级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
-        wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['查看帮助文档','战争系统有很多新的设定，快去看看有哪些新设定吧！','查看战争相关帮助文档'],'checknum':1,'reward':[100,5,0]}"));
-        wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['好友结盟','与一个强大的好友结盟，等你与其他人作战时，盟友会给你援军哦！','与一个好友结盟'],'checknum':1,'reward':[500,10,0]}"));
-        wartasklib.update(3,json_loads("{'id':3,'type':3,'req':'adddefence','des':['增加防御力','城墙防御力可以有效阻挡其他用户的进攻点击城堡再点击加号按钮增加防御力','增加100城墙防御力'],'checknum':100,'reward':[1000,15,0]}"));
-        wartasklib.update(4,json_loads("{'id':4,'type':0,'req':'build','pair':['ground_id',206],'des':['建造侦察兵训练营','建造侦察兵训练营可以训练侦察兵侦察敌情','建造普通侦察兵训练营'],'checknum':1,'reward':[500,8,0]}"));
-        wartasklib.update(5,json_loads("{'id':5,'type':1,'req':'soldiers','pair':['btype',2,'objtype',0],'des':['训练侦察兵','普通侦察兵可以从事侦察工作，为你获取敌人信息','训练普通侦察兵'],'checknum':9,'reward':[800,10,0]}"));
-        wartasklib.update(6,json_loads("{'id':6,'type':0,'req':'detect','pair':[],'des':['侦察敌人','知己知彼百战百胜，侦察敌人可以获取到Ta的战斗力信息','侦察敌人'],'checknum':1,'reward':[300,7,0]}"));
-        wartasklib.update(7,json_loads("{'id':7,'type':0,'req':'attack','pair':[],'des':['攻打敌人','战胜敌人可以升级爵位，获取敌人的资源，成就帝王之路！','攻打敌人'],'checknum':1,'reward':[1000,10,0]}"));
-        wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['增加盟友位','你可以通过增加盟友位置来与更多的好友结盟','增加盟友位'],'checknum':1,'reward':[1500,20,0]}"));
-        wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['升级爵位','爵位越高可以前往越高等级的地图','升级爵位'],'checknum':1,'reward':[2000,25,0]}"));
-        wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['进入高级地图','打败一定数量的敌人可以进入到更高级的地图',' 进入更高一级地图'],'checknum':1,'reward':[2000,25,0]}"));
-*/
+const staticString = [
+"你需要升到10级才能开启战争模式",
+"开启战争模式之后暂时就不能退出咯，请查看帮助文档",
+"恭喜你抵挡住了[ENAME]的攻势，保卫了领地不被侵犯！",
+"[ENAME]兵力过于强大，你的军队不幸战败，快去加强你的军事力量吧！",
+"[ENAME]兵力过于强大，回去厉兵秣马，来日再战！",
+"恭喜你战胜了[ENAME]，你离帝王宝座又近了一步！",
+"如何提高战斗力",
+"[USERNAME]进入新的地图啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
+"[USERNAME]升级为[NOBNAME]啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
+"[USERNAME]的领地升级啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
+"[USERNAME]成功战胜侵略者，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
+"[USERNAME]被YYYY[ENAME]打败了，赶快加入帮助[USERNAME]复仇吧！",
+"[USERNAME]的大军被击退，赶快加入与[USERNAME]一起侵略其他领地吧！",
+"[USERNAME]战胜了[ENAME]，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
+"你需要升到15级才能使用一键操作",
+"你没有空闲的农田，不能使用一键操作",
+"你的农作物正在生长，无法一键收获",
+"[WHO]的[TYPE]数需要达到[NUM]才能升到下一等级。该卡每升一级将会增加1点魔法上限！",
+"[WHO]还需要战胜[NUM]个用户才能升级到[CARD]，该卡每升级一级将会增加一点魔法值上限。",
+"你的店铺正在工作，无法一键收税",
+"怪兽卡片升级到紫金级别，你将可以免费获得一座怪兽雕",
+"抱歉，空间建筑正在开发，开发之后凭借嫦娥紫金卡你将免费获得空间建筑",
+"把丰收之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
+"把财富之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
+"抱歉，你已经访问过所有好友了！",
+"每天宠物前100次训练才会增加1点战斗力哦！",
+"你一键访问了[NUM]个好友，获得了[MONEY]银币奖励",
+"升级友谊之神到紫金级别",
+"还差[NUM]个好友",
+"还需要帮助好友打开[NUM]个宝箱",
+"还需要帮助好友喂养[NUM]次宠物",
+"需要升到[NUM]级",
+"你现在可以永久免费使用一键普通访问好友功能咯！",
+"[NAME]晒出了自己领地的截图，大家快来围观吧！",
+"",
+"http://getmugua.com",
+"每天自己只能喂养一次，好友可以帮忙继续喂养。假如当天自己或好友都没喂养，成长点会下降哦！",
+"该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
+"每天你只能帮同一个好友喂养一次^_^",
+"[NAME]的宠物已经有[NUM]个好友喂养过了，谢谢帮忙^_^"];
 const SPYITEMS =["获胜次数：","参战次数：","士兵战斗力：","盟友战斗力：","城堡防御力："];
 const SHARE_URL="http://getmugua.com";
 const stringDict=dict([
@@ -416,6 +428,14 @@ class GlobalController{
             medalstr = medalstr+"连续登录"+str(leftnum)+"天";
         }
         medalstr = medalstr+"才能获得"+cardprename[index]+cardlevelname[medallevel];
+        if(index == 13)
+        {
+            medalstr += "，该卡每升一级，将会增加一点魔法值上限。";
+        }
+        else if(index < 12)
+        {
+            medalstr += "，该卡升到紫金级别将会增加两点魔法值上限，其它级别不增加。";
+        }
         return medalstr;
     }
     
@@ -429,7 +449,7 @@ class GlobalController{
 
     
     function getMedalString2(who,cstr,ctype,clevel){
-        return who+cstr+"才能获得"+cardprename[ctype]+cardlevelname[clevel];
+        return who+cstr+"才能获得"+cardprename[ctype]+cardlevelname[clevel]+"。该卡每升一级将会增加一点魔法值上";
     }
     
     function GlobalController(){

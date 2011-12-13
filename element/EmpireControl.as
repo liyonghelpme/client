@@ -31,14 +31,16 @@ class EmpireControl extends ContextObject{
                 var flag = 0;
                 var flag1 = 0;
                 if(i==p){
-                    if(p != 0)
+                    if(p == 2)
+                        flag = 2;
+                    else if(p == 1)
                         flag = 1;
                     else
                     {
                         if(global.user.getValue("nobility") < 0)
                             flag = 3;
                         else
-                            flage = 4;
+                            flag = 4;
                     }
                 }
                 else if(i>p) flag1 =1;
@@ -61,6 +63,10 @@ class EmpireControl extends ContextObject{
     function addMagic(node, event, param, x, y, points)
     {
        global.pushContext(null, new ChargeMagic(), NonAutoPop); 
+    }
+    function checkTime(node, event, param, x, y, points)
+    {
+        global.pushContext(null, new CheckTime(), NonAutoPop);
     }
     function getelement(p){
         element = node();
@@ -85,13 +91,15 @@ class EmpireControl extends ContextObject{
 
                 element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
                 element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(381, 235).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("adddefence2.png").pos(414, 235).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(351, 235).setevent(EVENT_UNTOUCH, checkTime);
             }
             else
             {
                 element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
                 element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(381, 217).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("adddefence2.png").pos(414, 217).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(351, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
         }
         else if(p==1){

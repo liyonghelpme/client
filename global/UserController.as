@@ -331,11 +331,17 @@ class UserController{
                 buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
             }
         }
+        trace("buildable", buildable);
         if(buildable.get("ok")==1){
             return 1;
         }
-        else{
+        else if(cost.get("mana") == null){
             global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
+            return 0;
+        }
+        else
+        {
+            global.pushContext(null, new MagicWarning(), NonAutoPop);
             return 0;
         }
     }

@@ -128,7 +128,7 @@ trace("speed",rc,c);
     function timerefresh(){
         if(flagquick == 0){
             var lefttime = battledata[0]-global.timer.currenttime;
-            costcae = (lefttime/3600+1)*2;
+            costcae = (lefttime/3600+1)*2 + 10;
             trace("acc mana cost", costcae);
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));

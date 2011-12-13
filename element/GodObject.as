@@ -33,13 +33,6 @@ class GodObject extends BuildObject{
     
     override function objectinterface(s,p){
         if(s==2 && p!=null){
-            var cost = dict();
-            cost.update("mana",BLESS_CAESARS[p]);
-            if(global.user.testCost(cost)==0){
-                lock=0;
-                setstate();
-                return 0;
-            }
             objid = p;
             var blevel = bid/4;
             var btype = bid%4;
@@ -47,6 +40,16 @@ class GodObject extends BuildObject{
                 blevel = (bid-20)%5;
                 btype = bid/5;
             }
+            var cost = dict();
+            var level = [10, 12, 14, 16, 20];
+            cost.update("mana",BLESS_CAESARS[p]*level[blevel]/10);
+            trace("god bless", p, blevel, BLESS_CAESARS[p]*level[blevel]/10);
+            if(global.user.testCost(cost)==0){
+                lock=0;
+                setstate();
+                return 0;
+            }
+
             global.http.addrequest(0,"godbless",["uid","godtype","caetype"],[global.userid,btype,p],self,"state2over");
         }
     }
@@ -55,11 +58,13 @@ class GodObject extends BuildObject{
         if(rc>0 && json_loads(c).get("id")==1){
             var blevel = bid/4;
             var btype = bid%4;
+            var level = [10, 12, 14, 16, 20];
+
             if(blevel>=5){
                 blevel = (bid-20)%5;
                 btype = bid/5;
             }
-            global.user.changeValueAnimate(baseobj,"mana",-BLESS_CAESARS[objid],4);
+            global.user.changeValueAnimate(baseobj,"mana",-BLESS_CAESARS[objid]*level[blevel]/10,4);
             state=3;
             var gtime = [3600,21600,86400];
             begintime = time()/1000;
@@ -83,19 +88,23 @@ class GodObject extends BuildObject{
                 ani = contextNode.addsprite("01.png").anchor(50,100).pos(ps[0]/2,-66+ps[1]);
                 ani.addaction(sequence(repeat(animate(1000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),ttime[objid]),callfunc(removeself)));
             //}
-            var grounds = global.context[0].grounds;
-            for(i = 0; i < len(grounds); i++)
+            //0harvest 1population 2war 3fortune 4friendship 5 monster 
+            if(btype == 5)
             {
-                if(grounds[i].objectid >= 600 && grounds[i].objectid <= 700 && grounds[i].objnode.state == 2)
+                var grounds = global.context[0].grounds;
+                for(i = 0; i < len(grounds); i++)
                 {
-                    grounds[i].objnode.begintime = global.timer.currenttime;
-                    grounds[i].objnode.objid = objid;
-                    grounds[i].objnode.state = 3;
-                    grounds[i].objnode.setstate();
-                    ps = grounds[i].contextNode.size();
-                    trace("add action to statue", ps);
-                    ani = grounds[i].contextNode.addsprite("01.png").anchor(50, 100).pos(ps[0]/2, grounds[i].contextid*33-ps[1]/2);
-                    ani.addaction(sequence(repeat(animate(1000, "rain1.png", "rain2.png", "rain3.png", "rain4.png", "rain5.png", "rain6.png"), ttime[objid]), callfunc(removeself)));
+                    if(grounds[i].objectid >= 600 && grounds[i].objectid <= 700 && grounds[i].objnode.state == 2)
+                    {
+                        grounds[i].objnode.begintime = global.timer.currenttime;
+                        grounds[i].objnode.objid = objid;
+                        grounds[i].objnode.state = 3;
+                        grounds[i].objnode.setstate();
+                        ps = grounds[i].contextNode.size();
+                        trace("add action to statue", ps);
+                        ani = grounds[i].contextNode.addsprite("01.png").anchor(50, 100).pos(ps[0]/2, grounds[i].contextid*33-ps[1]/2);
+                        ani.addaction(sequence(repeat(animate(1000, "rain1.png", "rain2.png", "rain3.png", "rain4.png", "rain5.png", "rain6.png"), ttime[objid]), callfunc(removeself)));
+                    }
                 }
             }
         }

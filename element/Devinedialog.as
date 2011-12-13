@@ -29,11 +29,22 @@ class Devinedialog extends ContextObject{
             element.addlabel("神迹",null,30).anchor(50,50).pos(219,43).color(0,0,0,100);
             element.addlabel("在神迹有效时间内，"+godstr[buildid],null,16).anchor(50,50).pos(219,75).color(0,0,0,100);
             selecttab = -1;
+            
+            var level = [10, 12, 14, 16, 20];
+            var blevel = buildid/4;
+            var btype = buildid%4;
+            if(blevel>=5)
+            {
+                blevel = (buildid-20)%5;
+                btype = buildid/5;
+            }
+
             for(var i=0;i<3;i++){
                 tabs[i] = element.addsprite("dialogelement_god_normal.png").pos(37+i*125,110).setevent(EVENT_UNTOUCH,choosetab,i);
                 tabs[i].addlabel(timestr[i],null,20).anchor(50,50).pos(57,60).color(0,0,0,100);
                 tabs[i].addsprite("magic_big.png").anchor(50,50).pos(33,130);
-                tabs[i].addlabel("x"+str(BLESS_CAESARS[i]),null,20).anchor(0,50).pos(52,130).color(0,0,0,100);
+
+                tabs[i].addlabel("x"+str(BLESS_CAESARS[i]*level[blevel]/10),null,20).anchor(0,50).pos(52,130).color(0,0,0,100);
             }
             choosetab(0,0,0);
         }

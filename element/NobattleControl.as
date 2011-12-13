@@ -1,7 +1,7 @@
 class NobattleControl extends ContextObject{
     var element;
     const timestr = ["2小时","8小时","24小时"];
-    const caesars = [4999,14999,-2];
+    const caesars = [-15,-30,-60];
     var endtime;
     var timeisend;
     var timelabel;

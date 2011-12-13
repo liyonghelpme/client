@@ -28,6 +28,8 @@ import element.Noticedialog;
 import element.Nobilitydialog;
 import element.Monsterrobfood;
 import element.ChargeMagic;
+import element.CheckTime;
+import element.MagicWarning;
 
 class CastlePage extends ContextObject{
     var lastpoint;
@@ -102,6 +104,7 @@ class CastlePage extends ContextObject{
 
     var friendpredict;
     var waitfriend;
+    var inpos = -140;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -234,7 +237,7 @@ class CastlePage extends ContextObject{
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
         var fb = sprite("personboard1.png");
-        fmenu.add(fb.pos(-114,0),-1,-1);
+        fmenu.add(fb.pos(inpos,0),-1,-1);
         fb.add(sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
         
         friendlevlabel = b.addlabel("Level 1",null,16).color(0,0,0,100).anchor(50,100).pos(39,80);
@@ -268,7 +271,7 @@ class CastlePage extends ContextObject{
         global.user.initText("food",foodlabel);
         personb.add(sprite("personopen.png").anchor(50,50).pos(395,22).scale(-100,100).setevent(EVENT_UNTOUCH,openpersonbar),0,1);
         
-        topmenu.add(personb.pos(220,0),-1,1);
+        topmenu.add(personb.pos(210,0),-1,1);
         moneyb = menu.addnode().pos(640,43);
         var mb = topmenu.addsprite("moneyboard.png").anchor(100,0).pos(800,0).setevent(EVENT_UNTOUCH,buycaesars);
         var moneylabel = mb.addlabel("0",null,18).anchor(0,50).pos(37,16).color(0,0,0,100);
@@ -355,12 +358,13 @@ class CastlePage extends ContextObject{
     
     function openpersonbar(n,e){
         var p = topmenu.get(1).pos();
-        if(p[0] == -134){
-            topmenu.get(1).addaction(moveto(200,220,0));
+
+        if(p[0] == inpos){
+            topmenu.get(1).addaction(moveto(200,210,0));
             topmenu.get(1).get(1).addaction(sequence(delaytime(200),scaleto(200,-100,100)));
         }
         else{
-            topmenu.get(1).addaction(moveto(200,-134,0));
+            topmenu.get(1).addaction(moveto(200, inpos,0));
             topmenu.get(1).get(1).addaction(sequence(delaytime(200),scaleto(200,100,100)));
         }
     }
@@ -1168,8 +1172,10 @@ class CastlePage extends ContextObject{
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
             var diff = btime - data.get("lasttime", 0);
-            var now = time();
-            global.user.setValue("manatime", now-diff);
+            var now = time() - diff*1000;
+            if(now < 0)
+                now = 0;
+            global.user.setValue("manatime", now);
             trace("mana", global.user.getValue("mana"));
 
 
@@ -1535,14 +1541,20 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        //trace("manatime", now, global.user.getValue("manatime"));
         if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 ) //&& initlock == 0)
         {
             addManaLock = 1;
             trace("manatime", now, global.user.getValue("manatime"));
             trace("increase mana");
             //initlock = -1;
-            global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
+            var mana = global.user.getValue("mana");
+            var boundary = global.user.getValue("boundary");
+            if(mana < boundary)
+                global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
+            else
+            {
+                global.user.setValue("manatime", now);
+            }
         }
         if(initlock == 0){
             initlock = -1;
@@ -1679,7 +1691,7 @@ class CastlePage extends ContextObject{
                 var bstr = data.get("battleresult");
                 var battles = bstr.split(";");
                 var nob = data.get("nobility");
-                var sub = data.get("minus",1);
+                var sub = data.get("minus",1);//next nobility need enemy
                 global.card[12] = nob+100*sub;
                 var alllist = [];
                 if(battles != ""){
@@ -1906,6 +1918,7 @@ class CastlePage extends ContextObject{
             global.pushContext(self,new GiftDialog(cmd.get("ppyid"),cmd.get("giftid"),cmd.get("askorgive")),NonAutoPop);
         }
         else if(name == "nobility"){
+            //nobility level up increase 1 boundary
             global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
             global.pushContext(self,new Nobilitydialog(),NonAutoPop);
         }
@@ -1922,7 +1935,15 @@ class CastlePage extends ContextObject{
             global.pushContext(self,new Monstercomplete(cmd.get("power")),NonAutoPop);
         }
         else if(name == "getcard"){
-            global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+            if(cmd.get("cardlevel") == 4 && cmd.get("cardid") < 12)//monster card
+            {
+                global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+                global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+            }
+            else//other card
+            {
+                global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+            }
             global.pushContext(self,new Cardget(cmd.get("cardid"),cmd.get("cardlevel")),NonAutoPop);
         }
         else if(name == "battleresult"){
