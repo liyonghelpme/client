@@ -241,7 +241,7 @@ trace("warinfo",rc,c);
                     atklist.append(empty);//show all emptyCites
                     if(list[emp][1] == global.userid)
                         myEmpty.append(list[emp]);
-                    userdict.update(list[emp][2], empty);
+                    //userdict.update(list[emp][2], empty);
                 }
 
                 loadempty(list);
@@ -514,6 +514,7 @@ trace("warinfo",rc,c);
             else if(event == EVENT_UNTOUCH && select == 0){
                 return 0;
             }
+            trace("grid city:", p, userdict.get(p), selfgid);
             if(p == selfgid && global.flagnew == 0)
                 global.pushContext(self,new NobattleControl(),NonAutoPop);
             else if(userdict.get(p)[1]<0&&userdict.get(p)[5]==selfgid)
