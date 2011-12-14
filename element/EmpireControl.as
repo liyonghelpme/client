@@ -84,7 +84,7 @@ class EmpireControl extends ContextObject{
             element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(200,offy+72).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(200,offy+107).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(255,offy+142).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
+            //element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
             var rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){

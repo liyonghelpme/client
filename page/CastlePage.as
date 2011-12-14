@@ -238,7 +238,7 @@ class CastlePage extends ContextObject{
         var b = fmenu.addsprite("friendboard.png");
         var fb = sprite("personboard1.png");
         fmenu.add(fb.pos(inpos,0),-1,-1);
-        fb.add(sprite("message.png").anchor(50,50).pos(385,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
+        fb.add(sprite("message.png").anchor(50,50).pos(395,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
         
         friendlevlabel = b.addlabel("Level 1",null,16).color(0,0,0,100).anchor(50,100).pos(39,80);
         friendnamelabel = b.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
