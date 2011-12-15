@@ -357,7 +357,7 @@ class WarControl extends ContextObject{
             var rwd = datadict.get("reward").split("!");
             var infolabel = contextNode.addlabel(global.getFormatString(2+2*datadict.get("leftself")+datadict.get("leftwin"),["[ENAME]",datadict.get(_enemy+"name")]),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110);
             contextNode.addlabel(global.getStaticString(6),null,20).pos(320,349).color(0,0,0,100);
-            contextNode.addsprite("dialogelement_help.png").pos(463,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
+            contextNode.addsprite("dialogelement_help.png").pos(480,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
             var offy=152;
             var mon = datadict.get("monster");
             var noOwn = datadict.get("noOwner");
@@ -397,7 +397,7 @@ class WarControl extends ContextObject{
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
                     contextNode.addlabel(global.getStaticString("leftDefence")+":"+str(datadict.get("defence")+datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
                     if(datadict.get("leftwin")==1){
-                        contextNode.addlabel(global.getStaticString("lostCoin")+":",null,20).pos(359,309).color(0,0,0,100);
+                        contextNode.addlabel(global.getStaticString("lostCoin")+":",null,20).pos(343,309).color(0,0,0,100);
                         contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                     }
                 }

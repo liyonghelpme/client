@@ -36,10 +36,13 @@ class FactControl extends ContextObject{
             objs[i].addlabel(global.getname("fact",oi),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
             var b=100;
             if(objcontext[i]/1000==3) b=66;
-            objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
+            var fac = objs[i].addsprite().anchor(50,100).pos(74,160).scale(b);
+            spriteManager.getPic("fact"+str(oi)+".png", fac);
+            /*
             if(i<1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -64,7 +67,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("free"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -170,6 +173,7 @@ class FactControl extends ContextObject{
                 }
             }
             else if(e == EVENT_UNTOUCH){
+                n.texture("dialogelement2p.png");
                 if(flagmove == 0){
                     global.lastpage[0] = 1;
                     if(buildable[param].get("ok")==0){

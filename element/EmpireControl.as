@@ -62,15 +62,15 @@ class EmpireControl extends ContextObject{
                 offy=56;
             }
             else{
-                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(200,offy).color(0,0,0,100);
+                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(220,offy).color(0,0,0,100);
                 global.user.initText("citydefence",cdl);
                 element.addsprite("adddefence2.png").pos(312,offy-15).setevent(EVENT_UNTOUCH,adddefence);
             }
-            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(180,offy+36).color(0,0,0,100);
-            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(200,offy+72).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(200,offy+107).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(255,offy+142).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
+            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(230,offy+36).color(0,0,0,100);
+            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(252,offy+72).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(340,offy+142).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(231,offy+175).color(0,0,0,100);
         }
         else if(p==1){
             element.addsprite("food.png").anchor(50,50).pos(42,77).size(29,32);

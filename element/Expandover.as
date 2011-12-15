@@ -10,7 +10,7 @@ class Expandover extends ContextObject{
         //contextNode.addsprite("expandfont.jpg").anchor(0,50).pos(100,100);
         contextNode.addlabel(global.getStaticString("expandOver"),null,28,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,100).color(0,0,0,100);
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(150,234).setevent(EVENT_UNTOUCH,closedialog,1);
-        contextNode.addlabel(global.getStatic("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(150,234);
+        contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(150,234);
         contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(300,234).setevent(EVENT_UNTOUCH,closedialog,null);
         contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(300,234);
     }

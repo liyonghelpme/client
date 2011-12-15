@@ -241,6 +241,7 @@ trace("warinfo",rc,c);
                     atklist.append(empty);//show all emptyCites
                     if(list[emp][1] == global.userid)
                         myEmpty.append(list[emp]);
+                    userdict.update(list[emp][2], empty);
                 }
 
                 loadempty(list);

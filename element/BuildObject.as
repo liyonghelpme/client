@@ -54,6 +54,7 @@ class BuildObject extends ContextObject{
     function paintNode(){
        // trace("paint statue");
         contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
+        spriteManager.getPic(buildname+str(bid)+".png", contextNode);
         contextNode.setevent(EVENT_HITTEST,objSelected);
         contextNode.setevent(EVENT_MOVE,objSelected);
         contextNode.setevent(EVENT_UNTOUCH,objSelected);

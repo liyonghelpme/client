@@ -48,7 +48,7 @@ class MedalControl extends ContextObject{
             else{
                 clevel = 6;
             }
-            obj.addlabel(cardprename[ci]+cardlevelname[clevel],null,18).anchor(50,0).pos(62,10).color(23,20,3,100);
+            obj.addlabel(cardprename[ci],null,18).anchor(50,0).pos(62,10).color(23,20,3,100);
             if(ci<6){
                 var m=sprite("monster_"+str(ci*3+clevel/2)+"_1.png").anchor(0,100).pos(29,128);
                 m.prepare();
@@ -65,7 +65,8 @@ class MedalControl extends ContextObject{
                     obj.add(m);
                 }
                 else{
-                    obj.addsprite("medalcard"+str(ci-13)+"_1.png").pos(3,32).color(40,40,40,100);
+                    var medal = obj.addsprite().pos(3,32).color(40,40,40,100);
+                    spriteManager.getPic("medalcard"+str(ci-13)+"_1.png", medal);
                 }
             }
             else{
@@ -74,12 +75,13 @@ class MedalControl extends ContextObject{
                     obj.add(m);
                 }
                 else if(ci!=12){
-                    obj.addsprite("medalcard"+str(ci-13)+"_"+str(clevel)+".png").pos(3,32);
+                    medal = obj.addsprite().pos(3,32);
+                    spriteManager.getPic("medalcard"+str(ci-13)+"_"+str(clevel)+".png", medal);
                 }
                 else{
                     obj.addsprite("medalnob.png").pos(3,32);
                     obj.addsprite("nobi"+str(medals[ci]%100)+".png").anchor(50,0).pos(62,47).size(50,50);
-                    obj.addlabel(NOBNAME[medals[ci]%100],null,18).anchor(50,0).pos(62,105).color(23,20,3,100);
+                    obj.addlabel(NOBNAME[medals[ci]%100],null,15).anchor(50,0).pos(62,105).color(23,20,3,100);
                 }
             }
             //if(clevel<5||(ci==12&&medals[ci]%100<18)){

@@ -73,12 +73,12 @@ class BoxControl extends ContextObject{
                 name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
             }
             head.addlabel(name,null,16).anchor(50,50).pos(33,72).color(0,0,0,100);
-            head.addlabel(global.getStaticString("box_str_1"),null,20).pos(103,19).color(0,0,0,100);
-            head.addlabel(global.getStaticString("box_str_2"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
+            head.addlabel(global.getStaticString("box_str_1"),null,20,FONT_NORMAL, 200, 0).pos(103,19).color(0,0,0,100);
+            //head.addlabel(global.getStaticString("box_str_2"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
         }
         else{
             head = sprite("boxelement0.png").pos(17,11);
-            global.addtext(head,93,3,global.getStaticString("box_str_3"),20);
+            head.addlabel(global.getStaticString("box_str_3"), null, 20, FONT_NORMAL, 300, 0).pos(93, 3).color(0, 0, 0, 100);
         }
         contextNode.add(head,0,0);
         contextNode.add(sprite("dialogback_white.png").pos(21,92),0,3);
@@ -163,7 +163,7 @@ class BoxControl extends ContextObject{
 
     function getelement(){
         var element = node();
-        element.addsprite("boxelement2.jpg").pos(106,19);
+        element.addsprite("boxelement2.jpg").pos(86,19);
         var w=element.addsprite("boxreward.png").anchor(50,0).pos(220,144);
         element.addsprite("girl1.png").anchor(50,100).pos(0,375).size(191,409);
         return element;

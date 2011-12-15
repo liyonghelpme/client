@@ -16,15 +16,18 @@ if(ppy_connected()!=1){
 }
 //var global = new GlobalController();
 global.self = global;
+
 global.system = new MenuControl();
 global.system.initwithconfig();
 global.system.pushmusic("0.mp3");
 global.http = new HttpController();
 global.http.init(global.http,global);
+//initial task
 global.task = new TaskController();
 global.task.init(global.task,global);
 global.wartask = new WarTaskController();
 global.wartask.init(global.wartask,global);
+
 global.user = new UserController();
 global.user.global = global;
 global.image = new ImageController();

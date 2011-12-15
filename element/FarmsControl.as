@@ -83,7 +83,7 @@ class FarmsControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < person){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("free"),person-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update(global.getStaticString("freePeople"),person-global.user.getValue("person")+global.user.getValue("labor"));
                     }
                     farm.addsprite("person.png").size(32,30).pos(83,165);
                     farm.addlabel(str(person),null,16).pos(118,170).color(cl,0,0,100);

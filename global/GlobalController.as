@@ -12,12 +12,12 @@ const NonAutoPop = 0;
 const NotAdd = 2;
 
 //const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+const HELP_URL = "http://uhz000738.chinaw3.com/"
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
 const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
-//const FARM_SALE = [0,375,750,1125,1500,2500,7125];
 const FARM_PERSON = [0,80,0,0,0,120,250];
 const FARM_EXP = [0,5,15,40,70,20,30];
 const FARM_FOOD = [0,0,0,0,0,600,1000];
@@ -89,9 +89,6 @@ const SOLDIER_PRICE=[750,2400,4800,1600,5000,10000,2400,7500,15000,2000,6300,126
 const SOLDIER_PERSON = [30,15,2];
 const SOLDIER_FOOD = [3,6,9,10,20,30,5,10,15];
 const SOLDIER_POWER = [1,2,3,4,5,6,0,0,0];
-const SOLDIER_NAME = ["Lev1","Lev2","Lev3","Lev1","Lev2","Lev3","Lev1","Lev2","Lev3"];
-
-const MONSTERNAME = ["Snake Lev1","Snake Lev2","Snake Lev3","Boar Lev1","Boar Lev2","Boar Lev3","Wolf Lev1","Wolf Lev2","Wolf Lev3","Bear Lev1","Bear Lev2","Bear Lev3","Lion Lev1","Lion Lev2","Lion Lev3","Dragon Lev1","Dragon Lev2","Dragon Lev3","Snake King Lev1","Snake King Lev2","Snake King Lev3","Boar King Lev1","Boar King Lev2","Boar King Lev3","Wolf King Lev1","Wolf King Lev2","Wolf King Lev3","Bear King Lev1","Bear King Lev2","Bear King Lev3","Lion King Lev1","Lion King Lev2","Lion King Lev3","Dragon King Lev1","Dragon King Lev2","Dragon King Lev3"];
 
 const MONSTER_POWER = [20,30,41,25,37,49,28,42,56,33,49,65,40,58,77,50,75,100,42,65,90,51,74,104,60,90,120,73,109,145,80,120,160,100,150,200];
 
@@ -101,34 +98,23 @@ const EXPAND_CAESARS=[1,3,5,7,10,15,20,27,37,50];
 const EXPAND_FRIEND=[1,10,30,60,100,150,210,280,360,450];
 const EXPAND_EXP=[10,20,50,90,140,200,330,580,740,920];
 
+const PETS_PRICE=[50000,100000,500000,-10,-50,-100];
+const PETS_POWER = [100,250,1000,300,1200,1500];
+const PETS_UP = [5,6,10,7,12,17];
 
-    
-    const PETS_NAME=["Dragon egg A Lev1","Dragon egg A Lev2","Dragon egg A Lev3","Dragon egg B Lev1","Dragon egg B Lev2","Dragon egg B Lev3"];
-
-    const PETS_PRICE=[50000,100000,500000,-10,-50,-100];
-    const PETS_POWER = [100,250,1000,300,1200,1500];
-    const PETS_UP = [5,6,10,7,12,17];
-    
-    const EXTEND_UP=[0,3,3];
-    const EXTEND_NAME=["earth","fire","water"];
-    const EXTEND_PETS_NAME=["Earth dragon","Fiery dragon","Water dragon"];
+const EXTEND_UP=[0,3,3];
 
 
 const OBJ_PRICE = [10,20,30,50,-1,100,100,100,100,100,100,200,-3,400,600,800,1000,900,1200,2000,-5,1500,1500,1500,1600,1600,1600,1600,-3,-3,-3,-3,1800,1800,1800,2000,2000,2000,-10,5000,-5,-10,2000,2000,-10,-2,-5, -6, -7, -8];
 const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,60,65,65,65,65,150,150,150,150,70,70,70,80,80,80,300,90,150,300,30,30,300,120,150, 155, 160, 165];
-
 const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
 const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
 const STATUE_PERSON=[20,40,80,60,120,100];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
-const STATUE_NAME = ["Snake womam","Boar warrior","Wolf fighter","Bear knight","Lion soldier","Dragon fighter"];
-
-
 const DIALOG_BASE_X = 100-74;
 const DIALOG_BASE_Y = 112+22;
 const DIALOG_OFF_X = 161;
 const DIALOG_OFF_Y = 112-22;
-
 const RECTMAX = 40;
 const PAGE_W = 2750;
 const PAGE_H = 1460;
@@ -141,267 +127,23 @@ const MS_MIN = -50;
 const FILLER_W = 119;
 const FILLER_H = 13;
 const BUTTONFONTSIZE = 26;
-
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
-
-const ROOMNAME = ["Orange cottage lev1","Orange cottage lev2","Orange cottage lev3","Red cottage lev1","Red cottage lev2","Red cottage lev3","Blue cottage lev1","Blue cottage lev2","Blue cottage lev3","Purple cottage lev1","Purple cottage lev2","Purple cottage lev3","Orange house lev1","Orange house lev2","Orange house lev3","Red house lev1","Red house lev2","Red house lev3","Blue house lev1","Blue house lev2","Blue house lev3","Purple house lev1","Purple house lev2","Purple house lev3","Orange villa lev1","Orange villa lev2","Orange villa lev3","Red villa lev1","Red villa lev2","Red villa lev3","Blue villa lev1","Blue villa lev2","Blue villa lev3","Purple villa lev1","Purple villa lev2","Purple villa lev3","Orange mansion lev1","Orange mansion lev2","Orange mansion lev3","Red mansion lev1","Red mansion lev2","Red mansion lev3","Blue mansion lev1","Blue mansion lev2","Blue mansion lev3","Purple mansion lev1","Purple mansion lev2","Purple mansion lev3","Orange manor lev1","Orange manor lev2","Orange manor lev3","Red manor lev1","Red manor lev2","Red manor lev3","Blue manor lev1","Blue manor lev2","Blue manor lev3","Purple manor lev1","Purple manor lev2","Purple manor lev3","Orange magic house lev1","Orange magic house lev2","Orange magic house lev3","Red magic house lev1","Red magic house lev2","Red magic house lev3","Blue magic house lev1","Blue magic house lev2","Blue magic house lev3","Purple magic house lev1","Purple magic house lev2","Purple magic house lev3","Orange moon palace lev1","Orange moon palace lev2","Orange moon palace lev3","Gold moon palace lev1","Gold moon palace lev2","Gold moon palace lev3"];
-
-const FACTNAME = ["Bakery lev1","Bakery lev2","Bakery lev3","Fruit shop lev1","Fruit shop lev2","Fruit shop lev3","Butcher shop lev1","Butcher shop lev2","Butcher shop lev3","Restaurant lev1","Restaurant lev2","Restaurant lev3","Clinic lev1","Clinic lev2","Clinic lev3","Bookshop lev1","Bookshop lev2","Bookshop lev3","Clothing shop lev1","Clothing shop lev2","Clothing shop lev3","Jewelers lev1","Jewelers lev2","Jewelers lev3","Casino lev1","Casino lev2","Casino lev3","Moon store lev1","Moon store lev2","Moon store lev3", "Fish shop lev1", "Fish shop lev2", "Fish shop lev3"];
-
-const CAMPNAME = ["Infantry barracks lev1","Infantry barracks lev2","Infantry barracks lev3","Cavalry barracks lev1","Cavalry barracks lev2","Cavalry barracks lev3","Scout barracks lev1","Scout barracks lev2","Scout barracks lev3"];
-
-const FARMNAME = [null,"Ordinary farmland","Crystal farmland","Gem farmland","Elves farmland","Lumber mill","Quarry"];
-
-const GONAME = ["Harvest goddess lev1","Liberty goddess lev1","Wealth god lev1","Mars lev1","Harvest goddess lev2","Liberty goddess lev2","Wealth god lev2","Mars lev2","Harvest goddess lev3","Liberty goddess lev3","Wealth god lev3","Mars lev3","Harvest goddess lev4","Liberty goddess lev4","Wealth god lev4","Mars lev4","Harvest goddess lev5","Liberty goddess lev5","Wealth god lev5","Mars lev5","Friendship god lev1","Friendship god lev2","Friendship god lev3","Friendship god lev4","Friendship god lev5", "Beast god lev1", "Beast god lev2", "Beast god lev3", "Beast god lev4", "Beast god lev5"];
-
-//todo
-const OBJNAME = ["Brick road","Grid Road","Color brick road","Stone road","Gold road","White parterre","Red parterre","Pink parterre","Yellow parterre","Blue parterre"," Purple parterre","Lawn","Vine lamp","Street lamp1","Street lamp2","Droplamp","Flower lamp","Guideboard","Bench","Ordinary well" ,"Magic well","Purple flowers","Red flowers","Orange flowers","Dark green nepenthe","Yellow nepenthe","Green nepenthe","Blue nepenthe","Pink cherry tree","Purple cherry tree","Lavender cherry tree","Red cherry tree","Orange shrubbery","Yellow shrubbery","Green shrubbery","Spring maple","Summer maple","Autumn maple","Angel Statue","Rabbit","Moon cakes","Moon rabbit","Red candy lamp","Gold candy lamp","Pumpkin lantern", "Rose lantern", "Blue thanksgiven latern", "Green thanksgiven latern", "Golden thanksgiven latern", "Purple thanksgiven latern"];
-
 const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
-const nobilityname = ["Civilians","Baron","Viscount","Earl","Marquis","Duke","Emperor"];
 
-const NOBNAME = ["Third-class civilians","Second-class civilians","First-class civilians","Third-class baron","Second-class baron","First-class baron","Third-class viscount","Second-class viscount","First-class viscount","Third-class earl","Second-class earl","First-class earl","Third-class marquis","Second-class marquis","First-class marquis","Third-class duke","Second-class duke","First-class duke","Emperor"]
-
-const PLANTNAME=["Wheat","Carrot","Corn","Pineapple","Eggplant","Tomato","Green pepper","Pumpkin","Peach","Waten melon","Mango","Strawberry"];
-
-const STONENAME=["Gravel","Wasalt","Limestone","Granite","Mable","Quartz"];
-
-const WOONAME =["Maple","Willow","White poplar","Chinar","Pine","Oak"];
-
-const GIFTNAME =["Wood","Sand","Nail","Rivet","Red brick","Beam","Door","Plywood","Macadam","Black brick","Deadman","Steel tube"];
-
-const ENAME = ["Forts lev1","Forts lev2","Forts lev3","Forts lev4","Forts lev5","Forts lev6"];
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
-const cardprename = ["Snake","Boar","Wolf","Bear","Lion","Dragon","Snake king","Boar king","Wolf king","Bear king","Lion king","Dragon king","Title of nobility","Moon goddess","Planting daren","Business daren","","","Friendship"];
 
-const cardlevelname = [""," lev1"," lev2"," lev3"," lev4"," lev5"," medal"];
 
 const allcardlevelnum = [[2,4,7,15,30],[1000,5000,20000,50000,100000],[10000,50000,100000,500000,1000000],[],[],[1,100,100,100,40]];
 const cardlevelnum = [5,15,45,85,135];
 
-const BUILD_TAB_NAME=["House","Store","Recource","Military","Miracle","Decoration","Expand"];
 
 const DEFAULT_NAME="My empire";
-const INVITE_STR=["papaya games", "enjoy Miracle Empire with me", "come on to help me defeat enemies and build your own empire!", "Miracle Empire is a big,gorgeous SNS game. You can download from Android market:https://market.android.com/details?id=com.papaya.wonderempire1_cn"];
-
 
 const GRAY =m_color(30,59,11,0,0, 30,59,11,0,0, 30,59,11,0,0, 0,0,0,100,0);
 const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
-
-//const scale_node = sprite().addaction(repeat(scaleto(750,1),
 const cardnum = 13;
 const NEWFLAG = 14;
-    
-const staticString = ["Upgrade to lv10 to open War mode","You can't quit War mode after you open, please read Help doc carefully.",
-
-"Congratulations！you have defended the attack from [ENAME] succeseefully and protect your territory.","[ENAME] is too powerful,you are defeated unfortunetly.Cheer up and strengthen your military power!",
-
-"[ENAME] is too powerful,strengthen your military power and never give up！","Congratulations!you have defeated [ENAME]，go on fighting and gain your glory！","how to strengthen the military power",
-
-"[USERNAME]has entered a new map.Come on,Let's build our own miracle empire with [USERNAME]！","[USERNAME]has upgraded to[NOBNAME]，Come on,Let's build our own miracle empire with [USERNAME]！",
-
-"[USERNAME] has upgraded the territory，Come on,Let's build our own miracle empire with [USERNAME]！","[USERNAME] has defeated the invaders，Come on,Let's build our own miracle empire with [USERNAME]！",
-
-"[USERNAME] is defeated by YYYY[ENAME]，Let's go and revenge for [USERNAME]！","[USERNAME]'s army is defeated，convene your army and help [USERNAME] attacking！",
-
-"[USERNAME] has defeated [ENAME]，Let's build our own miracle empire with [USERNAME]！","You have to reach level 15 to unlock one-step finishing","Sorry,you don't have spare farmland for one-step finishing","Sorry, your crops are growing, Please try one-step finishing later",
-
-"[WHO] have to reach [NUM] to upgrade your [TYPE] to the next level.[WHO] can use one-step finishing without caesar coins after get the violet gold card of this kind！","[WHO] needs to defeated [NUM] more opponents to upgrade to [CARD]",
-
-"Your stores are working, please try one-step finishing later","You can get a monster statue for free after you have upgraded your monster card to violet gold level","Sorry, space room is developing, you will soon get it for free by lev5 moon goddess card.",
-
-"You can use one-step harvesting and one-step seeding for free when you upgrade the Goddess of Harvest to violet golden level","Upgrade the goddess of treasure to violet golden level to use one-step collecting taxes for free",
-
-"Sorry,you have already visited all your friends' castles！","Your dragon will become stronger after training everyday！","you have visited [NUM] friends and get [MONEY] coins for rewards",
-
-"Upgrade the god of friendship to violet golden level","You need [NUM] more friends","You need to open [NUM] more treasure chest for your friends","You need to feed your friends' dragons [NUM] more times","You need to reach level [NUM]",
-
-"You can use one-step visiting for free from now on！","[NAME] has shared the screenshot of his territory，Let's go and see！","","http://getmugua.com",
-
-"You can feed your dragon once a day，Friends can help you feeding. If your dragon isn't fed that day,it's growing points will decrease！","This dragon is gonna born, you can feed it later，thanks for helping!^_^",
-
-"You can feed a dragon once a day^_^","[NAME]'s dragon has been fed by [NUM] friends，thanks for helping^_^"];
-
-const SPYITEMS=["win:", "fight:", "soldier force", "ally force", "defence"];
 const SHARE_URL="http://getmugua.com";
-const stringDict=dict([
-["build_defence_format","Build [BUILD] will add [DEFENCE] castle defense，sure to build？（click castle to view def）"],
-
-["money","silver"],["caesars","gold"],["food","food"],["labor","idle population"],["person","population"],["stone","stone"],["wood","wood"],["caesar","Caesar"],
-
-["share","Share"],["back","Back"],["change","Done"],["ok","yes"],["send","send"],["cancel","cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","help"],["close","close"],["openbox","open treasure chest"],["askforhelp","ask friend"],
-
-["loading_str","loading..."],["self","me"],
-
-["request_done","request handled"],
-
-["friend_notload","sorry,can't get your friend list"],["friend_ally_notice","You can visit your friend and ally with him. Allies can help you fight!"],["friend_invite","Come to creat miracles with me!"],["friend_invite_success","Invite successfully！"],
-
-["nest_style_cannotchange","Your pet is evolving, you can't change your pet now！"],
-
-["nest_talk_morning","Good morning，a goodbegining helps to make a good end"],["nest_talk_noon","good afternoon，I'm hungry,would you feed me,please"],["nest_talk_night","Good night，early to bed,early to rise"],
-
-["nest_talk_other","I'will be stronger after training，come and train me now！"],["nest_talk_feedover","I'm satisfied now，thanks for seeding"],["nest_talk_notfeedover","I'm hungry now,would you feed me?"],
-
-["nest_talk_sleep","I need to adapt growing now，I can fly after being fed to 285 point！"],
-
-["nest_getup_1","Your pet has been evolved successfully！a soil property dragon is borned."],["nest_getup_2","It become a young dragon！"],
-
-["nest_getup_format","[NAME][DESCRIBE]'s current growing point is：[HEALTH]，propertyis：[PROPERTY]，fighting capacity is：[ATTACK]"],
-
-["nest_pet_name","enter your pet's name："],["nest_pet_name_warning","your pet's name can not be changed after named"],
-
-["nest_gotohelp","check the assistant document for better experience in pet system"],
-
-["box_str_1","Help me open this treasure chest,please，"],["box_str_2","Let's share the treasure！"],["box_str_3","a <g>mysterious treasure chest<g> was found in my castle！！+ask your friends to unlock it for you！！+a mysterious gift is waiting for you！"],
-
-["god_bless_over","you have perform magics already！"],
-
-["share_format","[NAME][DESCRIBE]，Come on!join [NAME] and build our own miracle empire together！"],
-
-["share_box_format","[NAME] has got a mysterious treasure chest，but he(she) can't unlock it without your help，Let's go and help him(her)！"],
-
-["share_petup_1","you have evolved your pet successfully"],["share_petup_2","'s baby dragon has grown up"],
-
-["share_openbox","open one mysterious treasure chest"],
-
-["default_petname","my pet"],
-
-["news_nonews","no messages"],
-
-["news_element0","<b>[NAME]<b> visit your land"],
-
-["news_element1","<b>[NAME]<b> help you manage castle"],
-
-["news_element2","<b>[NAME]<b> send you gift"],
-
-["news_element3"," You defeat <b>[NAME]<b>"],
-
-["news_element4","<b>[NAME]<b> defeat you"],
-
-["news_element5","<b>[NAME]<b> help you open treasure chest"],
-
-["news_element6","<b>[NAME]<b> help you feed your pet"],
-
-["gift_element0","[NAME] send you gift [GIFT]"],
-
-["gift_element1","[NAME] ask you for gift [GIFT]"],
-["monster_foodwilllost","Kill monsters before next login, or they will rob your crops!"], 
-["monster_refresh_format","hahaha，[NAME]，give me your crops，or you will be restless"],
-
-["warrecord_notice_format","there are [NUM] wars, would you like to watch?"],
-["war_newmap_notice","congratulations ! you enter a new map. hint : prepare enough soldiers for next level map^_^"],
-["spy_notice","tips：higher scout level,more details"],
-
-["chat_empty","Content can't be empty"],["chat_wordlimit","word number > 30"],["chat_nettimeout","network timeout, send message fail"],
-
-["text_wordlimit_format","Limit [NUM] words！"],["text_cannotset","Can't change this name！"],["text_nettimeout","Sorry,net time out！"],
-
-["text_message_send","Please input message: "],["text_empty","can't empty"],["text_chat_nettimeout","Sorry,fail to send,try again^_^"],
-
-["message_send_success","Successfully send"],["text_empire_name","Please input empire name: "],
-
-["update_normal","Ordinary upgrade"],["update_caesars","Special upgrade"],["update_warning", "The building is occupied，upgrading will interupt the operation，are you sure？"],
-
-["onekey_plant","One button plant"],["onekey_harvest","One button harvest"],["onekey_product","One button collect taxes"],["onekey_visit_normal","One button ordinary visit"],["onekey_visit_inc","One button accumulated visit"],["onekey_title","One button operation"],
-
-["onekey_gotohelp","How to free use？"],
-
-["tab_fighting","Fighting"],["tab_attackable","Fightable"],
-
-["state_attacking","attacking"],["state_defencing","defending"],["state_fighting","fighting"],
-
-["net_state_1","Network off, please check it"],["net_state_2","Network doesn't work, try again"],
-
-["master","master:"],[":","："],
-["user_notoccupy","unoccupitation"],["user_occupy","free"],["user_protected","in protect"],["user_fighting","fighting"],["user_attacking","marching"],
-["resource_get_format","the fortress product coin [MONEY] ，food [FOOD]，wood [WOOD]，stone [STONE] per hour，time left to harvest : [TIME]"],
-["quit", "Quit"],["back", "Back"],
-
-["sendFight", "Sent forces"], ["totalFight", "Total forces"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defend fighting"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defend"], ["retry", "Retry"], ["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations,you finish this task! Come on to share with your friends!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary add"], ["fastAdd", "Fast add"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left"], ["allyNum", "Ally number"], ["sureToally", "Sure to ally with him/her?"], ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar coins to destroy the covenant, please choose your ally carefully"], ["cancelAlly", "Cancel ally, Are you sure？"], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], ["addAlly", "add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's fighting capability will increase if you are on line when they are fighting"], ["youWin", "You win"], ["attackIt", "Attack！"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "magic performing"], ["free", "unoccupied"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], ["dragon", "The dragon's nest will make it possible to summon your own pet！Are you sure？"], 
-["godBless", "[GOD] can perform magic，summon [GOD],are you sure?"], 
-["call", "summon"], ["coin", "coin"], ["freePeople", "unoccupied people"], ["food", "food"], ["zijin", "Upgrading to the violet golden level to use one-step finishing for free"], ["freeZijin", "You can use one-step finishing for free now"], ["youGet", "Congratulations！You get "], 
-["youPost", "[NAME] got [CARD] [CARDLEV]，join [NAME] to build your own miracle empire！"],
-["loading", "Loading..."], ["noNews", "No more news"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
-["godShow", "Magic"], ["inGodShow", "in the magic time of effect，"],
-["show", "perform"], ["friend", "Friends"], ["level", "Lev"],["expandOver", "Congratulations！expanding successfully"], ["expandPost", "[NAME] has expanded his territory，come and join the Miracle Empire！"], ["feedback", "If you have any advice of feedback,please email"], ["feedGift", "You will get mysterious gifts if your advice is accepted"], ["sendGift", "Choose a gift and send it to<g>"],["ask", "Ask "], ["send", "Send"], ["accept", "Accept"], ["levelUp", "[NAME] has level up to [LEVEL]，join the Miracle Empire and enjoy！"], ["killAll", "[NAME] has defeated the monsters and secure his territory，join the Miracle Empire and have fun！"],["nextMonster", "Monsters will come again after"], ["comeSoon", "Coming soon"],
-["attackIs", "fighting capacity is"], ["powerlack", "You don't have enough fighting capacity！"], 
-["monRob", "Monsters have robbed [FOOD] food"],
-["activeDra", "would you help me activating?"], ["letsShare", "Let's share together！"], ["askForAct", "Let's go and ask friends for help！"], ["helpme", "Help"],["askFri", "Ask friends for help"], ["unknown", "Unknown"], ["getDragon", "has got the dragon's nest，but still need your help to activate，let's go and help him！"], ["callPet", "Congratulations! You have activated the dragon's nest，now you can summon your pet！"], ["myPet", "my pet"], ["dragonPost", "[NAME] has activated dragon's nest successfully，join the Miracle Emoire and have fun！"], ["curPet", "current pet"], ["changeMode", "change mode"],
-["petAtt", "[NAME] will increase [POWER] fighting point every growing point，are you sure changing mode？"], ["freeFee", "for free"], ["changeAtt", "change attribute"], ["petPro", "[NAME]'s initial fighting capacity：[POWER],increased fighting points every growing point：[ADD]. Are you sure？"],
-["choosePet", "choose your pet"], ["callDragonDia", "[NAME]'s initial fighting points：[POWER],every growing point will increase [ADD].are you sure summoning this pet？"],
-["inProtect", "under protection"], ["attNoProtect", "You can't enable protection mode during attacking period"],
-["openProtect", "enable protection"], ["colonial", "colonial"], ["levelUp", "Congratulations！Level up"], ["goInNewMap", ", New map entered，you will see stronger opponents there，try to defeat them！"], ["cityLevelUp", ",your territory is level up！"], ["oneLevel", ", you need more experiences to upgrade your territory！"], ["next", "Next"],
-["choosePlant", "choose Crops"], ["sureToBuy", "are you sure purchasing"],["acc", "Quicken"],
-["leftTime", "Time left"], ["noBattle", "War mode unable"], ["winNum", "winning number："], ["netRefresh", "data exception because of net problem，please try again"], ["fresh", "refresh"],["fightAdd", "hint：soilders will have fighting capacity added when quarteres at fortress"],
-["peopUp", "the miximum of population"], 
-["sureTosell", "Are you sure to sell "],
-["sell", "sell"], 
-["toDetect", "use on detecting"], 
-["unitPower", "unit fighting capacity"],
-["chooseStone", "choose stone"], 
-["noUpdate", "no new update！"],
-["visitReward", "[NAME] has got the rewards of visiting friends，join the Miracle Empire and have fun!"],
-["yourArmy", "Your military has arrived [NAME]'s territory，war is near！"],
-["enemyArmy", "[NAME]'s military has arrived your territory，Let's get ready for the fight！"],
-["viewWar", "watching"],
-["skip", "Skip"], 
-["sendArmy", "<g>+ has send his army to attack your territory"],
-["godInc", "Hint: your enemy's fighting capacity will increase a regular porpotion +<b> <b>"],
-["howDef", "*How to strengthen defence"],
-["youNeed", "You need more"],
-["speNeed", "not enough special material"], 
-["clearList", "Hint：The listing will be emptied every time you entered new battlefield"],
-["reqHandle", "Requests solved"], 
-["income", "Congratulations![COIN] coins have been paid tribute to you，You have [NUM] colonies currently. The more your colonies is, The more your rewards is！"], 
-["incomePost", "[NAME] has gained tribute rewards from colonies，join the wonder empire and have fun"], 
-["chooseWood", "choose lumber"],
-["youNeed", "You still lack "], ["speNeed", "need more special materials"]]);
-const newstrs = [
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Territory's development needs agriculture, click the free［farmland］\"}",   
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' click ［plant］'}",   
-"{'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'choose ［wheat］'}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Crop's growth need long time,but we can  accelerate it. Click the busy [farmland]\"}",   
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Click [accelerate]'}",   
-"{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':\"accelerate crops' growth\"}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'harvest wheat'}",   
-null,    
-"{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
-"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"Territory's development needs population, build residential to recruit more people. Click[Build Icon]\"}",   
-"{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Choose[cottage] '}",   
-"{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':\"Click[yes] after choosing cottage's build location.\"}", 
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'Wow! This residential has recruited people,  click[cottage] to receive them!'}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Click [free] cottage'}",    
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Click [recruit]'}",   
-"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also needs money, click bakery to collect tax!'}",   
-null,    
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!'}",   
-"{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are [monsters] robbing your crops in your territory, go to kill them!'}",   
-"{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'Click [map] to view your territory nearby situation.'}",   
-"{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Click [monster]'}",   
-"{'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'Click [attack]'}",   
-"{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you win! Click [castle] to return your territory.'},",    
-"{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'In the end, give your territory a unique name! Click left-upper [info bar].'}",   
-null,   
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!'}"];
-const items = ["2011/11/15 兽神神像上线啦！+兽神神像施展神迹期间，所有怪兽雕像都会增加城堡防御力哦！注：神迹施展之后建造的雕像无效，即神迹只对已经建造完成的雕像有效",        "2011/11/2 奇迹帝国2.3版本上线啦！+大家可以去电子市场（Android market）或其他任何渠道下载更新。新版本增加了如下功能：+1. 支付宝充值功能；+2. 优化了访问好友速度，修复了访问好友死机的bug；+3. 增加了战争聊天室，增加了夜景和灯光效果。",        "2011/10/30 战争聊天室上线啦！+1. 战争页面点击红色箭头就可以看到战争聊天室罗！+2. 预告：“要塞”即将上线！伯爵以上地图会出现怪兽占领的要塞，大家可以争夺要塞，要塞每小时会生产资源，占领越多的要塞会不停地获得更多的资源哦！敬请期待！+3. 给凯撒留言：由于木瓜社区置顶帖功能要过段时间才能恢复，所以大家有啥建议都可以给凯撒留言，熊哥我会及时看并回复的！",        "2011/10/29 宠物训练&一键访问好友上线啦！+1. 训练宠物增加战斗力：点击宠物-》点击最右侧训练图标-》“完整”训练动画结束【注意是完整的动画结束哦！】-》宠物增加1点战斗力（每天最多只能加100点战斗力） +2. 一键访问好友：一键访问好友会领取所有未访问好友奖励，详细请查看帮助文档。+3. 圈子升级：这个是木瓜社区控制的，有好的建议可以反馈给木瓜社区哦！+4. 怪兽第一次出现后没有被立即消灭才会抢粮，大家要及时杀怪呀！"];
-const timestr = ["Last for 1 hour","Last for 6 hours","Last for 24 hours"];
-
-const ganname1 = ["You can send every friend one gift a day", "You can ask for gift from every friend once a day"];
-const btname1 = ["one day delay", "refresh monsters immediately"];
-const timestr1 = ["2 hours", "8 hours", "24 hours"];
-const  newupdate1 = ["Your territory change to night mode from 8 p.m to 6 a.m automatically. Click menu button-》night scene to close"];
-
-
-
-const godstr = [
-    "crops yield increase 20%","population recruited in dwellings increase 20%","tax from stores increase 20%","fighting capacity increase 5%",
-    "crops yield increase 40%","population recruited in dwellings increase 40%","tax from stores increase 40%","fighting capacity increase 10%",
-    "crops yield increase 60%","population recruited in dwellings increase 60%","tax from stores increase 60%","fighting capacity increase 15%",
-    "crops yield increase 80%","population recruited in dwellings increase 80%","tax from stores increase 80%","fighting capacity increase 20%",
-    "crops yield increase 100%","population recruited in dwellings increase 100%","tax from stores increase 100%","fighting capacity increase 25%",
-    "rewards for visiting friends, increase 5 coins","rewards for visiting friends, increase 10 coins","rewards for visiting friends, increase 20 coins","rewards for visiting friends, increase 30 coins","rewards for visiting friends, increase 50 coins",
-    "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense"];
 
 
 /*注：上面标点符号都是汉字， 请改成英文的标点符号！*/
@@ -413,6 +155,105 @@ const godstr = [
         return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
     }
 */
+
+var staticString = ["loading", "loading"];
+var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
+sta = json_loads(sta);
+if(sta != null)
+{
+    trace("pass sta");
+    staticString = sta;
+}
+
+
+var stringDict;
+sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
+sta = json_loads(sta);
+if(sta != null)
+{
+    trace("pass dict");
+    stringDict = dict(sta);
+}
+
+var newstrs;
+var timestr;
+var ganname1;
+var btname1;
+var timestr1;
+var newupdate1;
+var godstr;
+var items;
+var SPYITEMS;
+sta = c_file_op(C_FILE_READ, c_res_file("others.txt"));
+sta = json_loads(sta);
+if(sta != null)
+{
+    trace("pass others");
+    newstrs = sta.get("newstrs");
+    timestr = sta.get("timestr");
+    timestr1 = sta.get("timestr1");
+    ganname1 = sta.get("ganname1");
+    btname1 = sta.get("btname1");
+    newupdate1 = sta.get("newupdate1");
+    godstr = sta.get("godstr");
+    items = sta.get("items");
+    SPYITEMS = sta.get("SPYITEMS");
+}
+var FACTNAME;
+var WOONAME;
+var cardprename;
+var PLANTNAME;
+var FARMNAME;
+var ENAME;
+var STATUE_NAME;
+var PETS_NAME;
+var BUILD_TAB_NAME;
+var STONENAME;
+var GIFTNAME;
+var EXTEND_PETS_NAME;
+var NOBNAME;
+var nobilityname;
+var ROOMNAME;
+var ROOMNAME1;
+var cardlevelname;
+var GONAME;
+var INVITE_STR;
+var SOLDIER_NAME;
+var EXTEND_NAME;
+var CAMPNAME;
+var OBJNAME;
+var MONSTERNAME;
+
+sta = c_file_op(C_FILE_READ, c_res_file("names.txt"));
+sta = json_loads(sta);
+if(sta != null)
+{
+    trace("pass name");
+    FACTNAME = sta.get("FACTNAME");
+    WOONAME = sta.get("WOONAME");
+    cardprename = sta.get("cardprename");
+    PLANTNAME = sta.get("PLANTNAME");
+    FARMNAME = sta.get("FARMNAME");
+    ENAME = sta.get("ENAME");
+    STATUE_NAME = sta.get("STATUE_NAME");
+    PETS_NAME = sta.get("PETS_NAME");
+    BUILD_TAB_NAME = sta.get("BUILD_TAB_NAME");
+    STONENAME = sta.get("STONENAME");
+    GIFTNAME = sta.get("GIFTNAME");
+    EXTEND_PETS_NAME = sta.get("EXTEND_PETS_NAME");
+    NOBNAME = sta.get("NOBNAME");
+    nobilityname = sta.get("nobilityname");
+    ROOMNAME = sta.get("ROOMNAME");
+    ROOMNAME1 = sta.get("ROOMNAME1");
+    cardlevelname = sta.get("cardlevelname");
+    GONAME = sta.get("GONAME");
+    INVITE_STR = sta.get("INVITE_STR");
+    SOLDIER_NAME = sta.get("SOLDIER_NAME");
+    EXTEND_NAME = sta.get("EXTEND_NAME");
+    CAMPNAME = sta.get("CAMPNAME");
+    OBJNAME = sta.get("OBJNAME");
+    MONSTERNAME = sta.get("MONSTERNAME");
+}
 
 var image=dict();    
 function getimage(str){
@@ -450,7 +291,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","Dragon Eyrie"]]);
+        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","Dragon Nest"]]);
 
         builddict.update(1000,build);
         sizedict = dict();
@@ -516,6 +357,92 @@ class GlobalController{
     
     var lockpage;
     var flagshownew;
+    function update(name, force, param)
+    {
+        if(name == "task.txt")
+        {
+            task = new TaskController();
+            task.init(task,self);
+        }
+        else if(name == "wartask.txt")
+        {
+            wartask = new WarTaskController();
+            wartask.init(wartask,self);
+        }
+        else if(name == "static.txt")
+        {
+            var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
+            sta = json_loads(sta);
+            if(sta != null)
+            {
+                trace("pass sta");
+                staticString = sta;
+            }
+        }
+        else if(name == "dict.txt")
+        {
+            sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
+            sta = json_loads(sta);
+            if(sta != null)
+            {
+                trace("pass dict");
+                stringDict = dict(sta);
+            }
+        }
+        else if(name == "others.txt")
+        {
+            sta = c_file_op(C_FILE_READ, c_res_file("others.txt"));
+            sta = json_loads(sta);
+            if(sta != null)
+            {
+                trace("pass others");
+                newstrs = sta.get("newstrs");
+                timestr = sta.get("timestr");
+                timestr1 = sta.get("timestr1");
+                ganname1 = sta.get("ganname1");
+                btname1 = sta.get("btname1");
+                newupdate1 = sta.get("newupdate1");
+                godstr = sta.get("godstr");
+                items = sta.get("items");
+                SPYITEMS = sta.get("SPYITEMS");
+            }
+        }
+        else if(name == "names.txt")
+        {
+            sta = c_file_op(C_FILE_READ, c_res_file("names.txt"));
+            sta = json_loads(sta);
+            if(sta != null)
+            {
+                trace("pass name");
+                FACTNAME = sta.get("FACTNAME");
+                WOONAME = sta.get("WOONAME");
+                cardprename = sta.get("cardprename");
+                PLANTNAME = sta.get("PLANTNAME");
+                FARMNAME = sta.get("FARMNAME");
+                ENAME = sta.get("ENAME");
+                STATUE_NAME = sta.get("STATUE_NAME");
+                PETS_NAME = sta.get("PETS_NAME");
+                BUILD_TAB_NAME = sta.get("BUILD_TAB_NAME");
+                STONENAME = sta.get("STONENAME");
+                GIFTNAME = sta.get("GIFTNAME");
+                EXTEND_PETS_NAME = sta.get("EXTEND_PETS_NAME");
+                NOBNAME = sta.get("NOBNAME");
+                nobilityname = sta.get("nobilityname");
+                ROOMNAME = sta.get("ROOMNAME");
+                ROOMNAME1 = sta.get("ROOMNAME1");
+                cardlevelname = sta.get("cardlevelname");
+                GONAME = sta.get("GONAME");
+                INVITE_STR = sta.get("INVITE_STR");
+                SOLDIER_NAME = sta.get("SOLDIER_NAME");
+                EXTEND_NAME = sta.get("EXTEND_NAME");
+                CAMPNAME = sta.get("CAMPNAME");
+                OBJNAME = sta.get("OBJNAME");
+                MONSTERNAME = sta.get("MONSTERNAME");
+            }
+                        
+        }
+    }
+    
     function lock(){
         if(lockpage==null){
             lockpage = new ClockObject();
@@ -535,7 +462,7 @@ class GlobalController{
     }
     
     function getEmptyName(gid){
-        var firstName = ["天","地", "人", "月", "秦", "赵", "齐", "楚", "阳", "牙","风", "雷", "火", "水", "木", "金", "山", "音", "伊"];
+        var firstName = ["Moon ","Sun ", "Earth ", "Lone ", "Sky ", "Far ", "New ", "Old ", "Wind ", "Tooth "];
         var secondName = ["明", "暗", "井", "景", "静", "迟", "车", "龙", "紫", "念", "宁", "凝", "幻", "北", "西", "东", "南", "隐"];
         var lastName = ["国", "城", "郡", "谷", "邦", "县", "寨", "洞", "府"];
         return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
@@ -610,6 +537,7 @@ class GlobalController{
         battlelist = new Array(0);
         dataname = new dict();
         dataname.update("room",ROOMNAME);
+        dataname.update("room1", ROOMNAME1);
         dataname.update("fact",FACTNAME);
         dataname.update("god",GONAME);
         dataname.update("camp",CAMPNAME);
@@ -844,4 +772,6 @@ class GlobalController{
         }
     }
 }
+import global.SpriteManager;
 var global= new GlobalController();
+var spriteManager = new SpriteManager(global);

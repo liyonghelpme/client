@@ -10,6 +10,7 @@ class TaskController extends ContextObject{
     var enternode;
     var tasklib;
     function TaskController(){
+        trace("init task controller");
         contextNode = null;
         contextname = "dialog-task";
         enternode = sprite("task0.png").anchor(50,50);
@@ -17,10 +18,13 @@ class TaskController extends ContextObject{
         tasktype =-1;
         tasklib = dict();
         var taskfile = c_res_file("task.txt");
+        if(taskfile == null)
+            return;
         var taskstr = c_file_op(C_FILE_READ,taskfile);
         var taskstrs = taskstr.split(";");
+
         for(var i=0;i<len(taskstrs);i++){
-            //trace("taskstr[i]", taskstrs[i]);
+            trace("taskstr[i]", taskstrs[i]);
             var taskobj = json_loads(taskstrs[i]);
             if(taskobj==null){
                 trace("taskerr",i);
@@ -130,7 +134,7 @@ class TaskController extends ContextObject{
         contextNode.addlabel(taskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(taskstep >= tasknum){
             contextNode.addlabel(global.getStaticString("taskShare"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
-            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
+            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,200).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
             element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
             element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
@@ -181,7 +185,7 @@ class TaskController extends ContextObject{
         enternode.visible(0);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+ global.getStaticString("complete")+taskdes[0]+" task, "+global.getStaticString("playWithme"),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("taskFinishPost", ["[NAME]", ppy_username(), "[TASK]", taskdes[0]]),"http://getmugua.com");
         }
         global.http.addrequest(0,"taskaccomplished",["uid"],[global.userid],self,"taskaccomplished");
     }

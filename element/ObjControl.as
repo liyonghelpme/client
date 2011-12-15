@@ -126,7 +126,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("free"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);

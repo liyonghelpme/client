@@ -12,7 +12,7 @@ class Levelupdialog extends ContextObject{
             global.dark[len(global.dark)-1].visible(1);
         }
         var level = global.user.getValue("level");
-        contextNode = sprite("dialogback_normal.png").anchor(50,50).pos(400,240);
+        contextNode = sprite("dialogback_normal.png").anchor(50,50).pos(400,235);
         if(level>3){
             contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(257,400).setevent(EVENT_TOUCH,closedialog,1);
             contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(257,400);

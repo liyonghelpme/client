@@ -101,6 +101,9 @@ class CastlePage extends ContextObject{
 
     var friendpredict;
     var waitfriend;
+    
+    var msgbut;
+    var fb;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -232,9 +235,10 @@ class CastlePage extends ContextObject{
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
-        var fb = sprite("personboard.png");
+        fb = sprite("personboard.png");
         fmenu.add(fb.pos(-114,0),-1,-1);
-        fb.add(sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg),0,1);
+        msgbut = sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg);
+        fb.add(msgbut, 0, 1);
         
         friendlevlabel = b.addlabel("Level 1",null,16).color(0,0,0,100).anchor(50,100).pos(39,80);
         friendnamelabel = b.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
@@ -730,9 +734,11 @@ class CastlePage extends ContextObject{
                     fmenu.visible(1);
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
+                        //msgbut.removefromparent();
                     }
                     else{
                         favatar.texture(avatar_url(cpid));
+
                     }
                     var f=global.getfriend(cpid);
                     friendlevlabel.text("Level "+str(f.get("level")));
@@ -848,9 +854,12 @@ class CastlePage extends ContextObject{
         fmenu.visible(1);
         if(cpid==0){
             favatar.texture("avatar_caesar.png");
+            fb.removefromparent();
         }
         else{
             favatar.texture(avatar_url(cpid));
+            if(fb.parent() == null)
+                fmenu.add(fb.pos(-114,0),-1,-1);
         }
         pagedict.update(cpid,contextNode.pos());
         var f = global.getfriend(cpid);
@@ -1446,7 +1455,7 @@ class CastlePage extends ContextObject{
             var alist = data.get("attacklist");
             var length = len(alist);
             for(i=0;i<length;i++){
-                if(attackList.index(alist[5])==-1)//attack other gid not same
+                if(attackList.index(alist[i][5])==-1)//attack other gid not same
                     global.battlelist.append([global.timer.times2c(alist[i][1]),alist[i][0],1,alist[i][5],alist[i][2],alist[i][3],0]);
             }
             //TODO alist[i][4]是用户类型

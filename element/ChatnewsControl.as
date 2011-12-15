@@ -60,9 +60,11 @@ class ChatnewsControl extends ContextObject{
                     }
                     var item = items[i];
                     var cell=newspage.addsprite("messagetab_new"+str(item[4])+".jpg").pos(30,76+i%PAGEITEMS*104);
+                    /*
                     if(item[4]==0){
                         cell.addsprite("new.png").pos(9,57);
                     }
+                    */
                     var itemstr=global.getfriend(item[5]).get("name");
                     cell.addlabel(itemstr,null,16).pos(66,5).color(0,0,0,100);
                     cell.addlabel(global.getdatetimestr(item[3]),null,14).pos(277,8).color(0,0,0,100);
