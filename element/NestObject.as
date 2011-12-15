@@ -285,6 +285,7 @@ class NestObject extends BuildObject{
             }
             else if(state==4){
                 var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
+                trace("system time", stime);
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
                     var talktime=0;
