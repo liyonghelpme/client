@@ -31,8 +31,8 @@ class OnekeyController extends ContextObject{
             costs = [0,0,0];
             if(mode == 0 || mode == 1)
             {
-                costs[0] = 18;
-                costs[1] = 18;
+                costs[0] = 10;
+                costs[1] = 10;
             }
             else
             {

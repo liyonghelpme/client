@@ -1173,10 +1173,11 @@ class CastlePage extends ContextObject{
             global.user.setValue("boundary", data.get("boundary", 0));
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
-            if(now < 0)
-                now = 0;
+            //if(now < 0)
+            //    now = 0;
             global.user.setValue("manatime", now);
             trace("mana", global.user.getValue("mana"));
+            trace("manatime", global.user.getValue("manatime"));
 
 
             global.user.setValue("caesars",data.get("cae",0));

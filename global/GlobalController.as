@@ -11,8 +11,8 @@ const AutoPop = 1;
 const NonAutoPop = 0;
 const NotAdd = 2;
 
-//const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 

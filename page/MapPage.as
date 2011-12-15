@@ -55,6 +55,7 @@ class MapPage extends ContextObject{
     }
 
     function paintNode(){
+        contextname = "page-map";
         placedict = dict();
         global.system.pushmusic("3.mp3");
         contextNode = sprite("wartexture.png").size(800,480).anchor(50,50).pos(-400,240);

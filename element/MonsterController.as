@@ -188,12 +188,12 @@ class MonsterController extends ContextObject{
         }
     }
     function timerefresh(){
-        trace("monster dialog", global.currentLevel, isShown, global.context[1].contextname);
+        //trace("monster dialog", global.currentLevel, isShown, global.context[1].contextname);
         if(isShown == 1){
             timelabel.text(global.gettimestr(endtime-time()/1000));
         }
         else{
-            if(global.context[1].contextname == "page-map"){
+            if(global.currentLevel >= 1 && global.context[1].contextname == "page-map"){
                 trace("show me");
                 monsterShow();
             }
