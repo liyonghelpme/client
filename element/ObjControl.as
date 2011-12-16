@@ -6,18 +6,30 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 56;
-    const objlevel = [27,30,32,34,37,40,
+    const objsmax = 63;
+    const objlevel = [
 25, 10, 6, 8, 6, 15, 20,
+2, 2, 2, 3, 3, 3, 4, 5, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 10, 11, 12, 13, 14, 15, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 25, 25, 25, 27, 30, 30, 32, 34, 37, 40, 40, 40, 40, 40];
+/* 
+    const objlevel = [
+25, 10, 6, 8, 6, 15, 20,
+27,30,32,34,37,40,
 30, 40, 40, 40, 40, 17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
-    const objcontext = [2600,2601,2602,2603,2604,2605, 
+*/
+    const objcontext = [
 2550, 2551, 1552, 2553, 2554, 2555, 2556, 
+1500, 1501, 1502, 2539, 2540, 2541, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1520, 1516, 1517, 1518, 1519, 1528, 1529, 1530, 1531, 1521, 1522, 1523, 1542, 1543, 1524, 1525, 1526, 1527, 1532, 1533, 1534, 1538, 2544, 1535, 1536, 1537, 2600, 2601, 1545, 2602, 2603, 2604, 2605, 1546, 1547, 1548, 1549];
+/*
+    const objcontext = [
+2550, 2551, 1552, 2553, 2554, 2555, 2556, 
+2600,2601,2602,2603,2604,2605, 
 1545, 1546, 1547,1548,1549, 1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
+*/
     function ObjControl(){
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(56);
-        buildable = new Array(56);
+        objs = new Array(63);
+        buildable = new Array(63);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -202,7 +214,7 @@ class ObjControl extends ContextObject{
     //statue no <= 5 first 5 is defence power
     //after that is population
     function beginbuild(n,e,param,x,y){
-        var statueNum = 5;
+        var statueNum = 600;
         var oi = objcontext[param];
         var add = 1;
         oi %= 1000;
@@ -218,7 +230,7 @@ class ObjControl extends ContextObject{
                 lastx = n.pos()[0]+x+contextNode.pos()[0]-400;
                 flagmove = 0;
                 global.context[1].nodemove(n,EVENT_HITTEST,0,lastx,240);
-                if(param>statueNum){
+                if(oi < statueNum){
                     if(add > 0)
                         n.texture("dialogelement2l1.png");
                     else
@@ -237,7 +249,7 @@ class ObjControl extends ContextObject{
                     else if(time()-lasttime > 1000)
                         flagmove =1;
                     if(flagmove==1){
-                        if(param>statueNum){
+                        if(oi < statueNum){
                             if(add > 0)
                                 n.texture("dialogelement2l.png");
                             else
@@ -256,7 +268,7 @@ class ObjControl extends ContextObject{
                 }
             }
             else if(e == EVENT_UNTOUCH){
-                if(param>statueNum){
+                if(oi < statueNum){
                     if(add > 0)
                         n.texture("dialogelement2l.png");
                     else
@@ -271,7 +283,7 @@ class ObjControl extends ContextObject{
                         global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
-                        if(param>statueNum){
+                        if(oi < statueNum){
                             global.popContext(objcontext[param]);
                         }
                         else{

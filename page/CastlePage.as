@@ -626,7 +626,7 @@ class CastlePage extends ContextObject{
                 {
                     add = -add;
                     global.user.changeValueAnimate(changes,"boundary",add,0);
-                    global.user.changeValue("boundary", add);
+                    //global.user.changeValue("boundary", add);
                     /*
                     for(var i = 0; i < add; i++)
                         global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");

@@ -55,7 +55,7 @@ class Builddialog extends ContextObject{
         left.setevent(EVENT_TOUCH, onLeftTou);
         left.setevent(EVENT_UNTOUCH, onLeftUn);
         right = sprite("buildLeftUn.png", ARGB_8888);
-        right.anchor(100, 50).pos(744, 240);
+        right.anchor(100, 50).pos(740, 240);
         contextNode.add(right, 1);
         right.setevent(EVENT_TOUCH, onRightTou);
         right.setevent(EVENT_UNTOUCH, onRightUn);

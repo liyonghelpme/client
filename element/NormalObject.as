@@ -569,9 +569,9 @@ trace("sell",r,rc,c);
             }
             else if(obj == 1){
                 if(p > 0)
-                    global.user.changeValueAnimate2(contextNode,"personmax",p,-2);
-                else
-                    global.user.changeValueAnimate2(contextNode,"mana",-p,-2);
+                    global.user.changeValueAnimate2(contextNode,"personmax",-p,-2);
+                //else
+                //    global.user.changeValueAnimate2(contextNode,"mana",p,-2);
             }
             deleteContext();
         }

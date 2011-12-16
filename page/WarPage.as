@@ -236,6 +236,7 @@ trace("warinfo",rc,c);
                 global.emptyCitiesInGlo = emptyCities;
                 for(var emp  = 0; emp < len(list); emp++)
                 {
+                    //empty cid, uid gid inf cav attribute lasttime
                     emptyCities.update(list[emp][2], list[emp]);        
                     var empty = ["0", 0, list[emp][5], list[emp][2], global.getEmptyName(list[emp][2]), list[emp][1], 0, -1, 2];
                     atklist.append(empty);//show all emptyCites
