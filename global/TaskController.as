@@ -24,7 +24,7 @@ class TaskController extends ContextObject{
         var taskstrs = taskstr.split(";");
 
         for(var i=0;i<len(taskstrs);i++){
-            trace("taskstr[i]", taskstrs[i]);
+            //trace("taskstr[i]", taskstrs[i]);
             var taskobj = json_loads(taskstrs[i]);
             if(taskobj==null){
                 trace("taskerr",i);

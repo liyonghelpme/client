@@ -20,7 +20,7 @@ class NewControl extends ContextObject{
     var opobj;
     var lock;
     /*
-    const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'领地的发展离不开农业，种植些+粮食吧。点击空闲的【农田】'}",
+    const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'Territory's development needs agriculture, click the free [farmland]'}",
     "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'点击【种植】'}",
     "{'cp':[209,181],'cz':[240,240],'gtype':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'选择营养丰富的+【小麦】'}",
     "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'种植会耗费时间，但我们能加快+这一过程。点击种植中的【农田】'}",
@@ -48,6 +48,66 @@ class NewControl extends ContextObject{
     null,
     "{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'新手任务完成+2000+3+15+完成+恭喜你命名成功!再接再厉，让奇迹+大陆铸就你的传奇！'}"];
     */
+    /*
+    const newstrs = [
+    {'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':"Territory's development needs agriculture, click the free［farmland］"},   
+    {'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' click ［plant］'},   
+    {'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'choose ［wheat］'},   
+    {'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':"Crop's growth need long time,but we can  accelerate it. Click the busy [farmland]"},   
+    {'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Click [accelerate]'},   
+    {'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':"accelerate crops' growth"},   
+    {'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'harvest wheat'},   
+    null,
+    {'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task one completed+500+1+4+ Next step + Agriculture related task completed!'},   
+    {'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':"Territory's development needs population, build residential to recruit more people. Click[Build Icon]"},   
+    {'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Choose[cottage] '},   
+    {'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':"Click[yes] after choosing cottage's build location."}, 
+    {'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'Wow! This residential has recruited people,  click[cottage] to receive them!'},   
+    {'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Click [free] cottage'},    
+    {'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Click [recruit]'},   
+    {'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also needs money, click bakery to collect tax!'},   
+    null,
+    {'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!'},   
+    {'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are [monsters] robbing your crops in your territory, go to kill them!'},   
+    {'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'Click [map] to view your territory nearby situation.'},   
+    {'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Click [monster]'},   
+    {'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'Click [attack]'},   
+    {'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you win! Click [castle] to return your territory.'},    
+    {'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'In the end, give your territory a unique name! Click left-upper [info bar].'},   
+    null,
+    {'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!'}];
+    */
+    /*
+    const newstrs = [
+    {"cp":[400,300],"cz":[120,120],"gtype":0,"posi":[17,8],"cmd":"select","param":0,"tp":[600,140],"text":"Territory\'s development needs agriculture, click the free［farmland］"},   
+    {"cp":[328,288],"cz":[120,120],"gtype":0,"posi":[17,8],"cmd":"btclick","param":0,"tp":[600,140],"text":" click ［plant］"},   
+    {"cp":[209,181],"cz":[240,240],"type":1,"posi":[17,8],"cmd":"state2over","param":0,"tp":[600,140],"text":"choose ［wheat］"},   
+    {"cp":[400,300],"cz":[120,120],"gtype":0,"posi":[17,8],"cmd":"select","param":0,"tp":[600,140],"text":"Crop\'s growth need long time,but we can  accelerate it. Click the busy [farmland]"},   
+    {"cp":[328,288],"cz":[120,120],"gtype":0,"posi":[17,8],"cmd":"btclick","param":0,"tp":[600,140],"text":"Click [accelerate]"},   
+    {"cp":[314,342],"cz":[160,60],"gtype":0,"posi":[17,8],"cmd":"speed","param":0,"tp":[600,140],"text":"accelerate crops\' growth"},   
+    {"cp":[400,300],"cz":[120,120],"gtype":0,"posi":[17,8],"cmd":"state4over","param":0,"tp":[600,140],"text":"harvest wheat"},   
+    null,
+    {"gtype":2,"posi":[17,8],"cmd":"harvest","param":0,"tp":[400,240],"text":"Task one completed+500+1+4+ Next step + Agriculture related task completed!"},   
+    {"cp":[35,435],"cz":[80,80],"gtype":1,"posi":[14,13],"cmd":"mclick","param":4,"tp":[200,140],"text":"Territory\'s development needs population, build residential to recruit more people. Click[Build Icon]"},   
+    {"cp":[100,250],"cz":[160,280],"gtype":1,"posi":[14,13],"cmd":"pop","param":2100,"mp":[400,240],"tp":[400,140],"text":" Choose[cottage] "},   
+    {"cp":[445,75],"cz":[80,80],"gtype":0,"posi":[14,13],"cmd":"build","param":1,"mp":[400,180],"tp":[600,340],"text":"Click[yes] after choosing cottage\'s build location."}, 
+    {"cp":[400,300],"cz":[120,120],"gtype":0,"posi":[14,15],"cmd":"state4over","param":0,"tp":[600,140],"text":"Wow! This residential has recruited people,  click[cottage] to receive them!"},   
+    {"cp":[400,300],"cz":[120,120],"gtype":0,"posi":[14,15],"cmd":"select","param":0,"tp":[600,140],"text":"Click [free] cottage"},    
+    {"cp":[328,288],"cz":[120,120],"gtype":0,"posi":[14,15],"cmd":"state2over","param":1,"tp":[600,140],"text":"Click [recruit]"},   
+    {"cp":[400,300],"cz":[160,160],"gtype":0,"posi":[14,10],"cmd":"state4over","param":0,"tp":[600,140],"text":"Your cottage has recruited people. But your territory also needs money, click bakery to collect tax!"},   
+    null,
+    {"gtype":2,"posi":[14,10],"cmd":"state4over","param":0,"tp":[400,240],"text":"Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!"},   
+    {"cp":[106,435],"cz":[80,80],"gtype":5,"posi":[14,10],"cmd":"mclick","param":5,"tp":[200,140],"text":"There are [monsters] robbing your crops in your territory, go to kill them!"},   
+    {"cp":[177,435],"cz":[80,80],"gtype":5,"posi":[14,10],"cmd":"mclick","param":2,"tp":[200,140],"text":"Click [map] to view your territory nearby situation."},   
+    {"cp":[650,360],"cz":[120,120],"gtype":4,"posi":0,"cmd":"monster","param":15,"tp":[600,140],"mp":[650,360],"text":"Click [monster]"},   
+    {"cp":[310,386],"cz":[160,80],"gtype":5,"posi":0,"cmd":"attack","param":1,"tp":[200,140],"mp":[650,360],"text":"Click [attack]"},   
+    {"cp":[450,360],"cz":[120,120],"gtype":4,"posi":0,"cmd":"goback","tp":[600,140],"mp":[650,360],"text":"Congrats, you win! Click [castle] to return your territory."},    
+    {"cp":[120,40],"cz":[240,80],"gtype":0,"posi":[14,10],"cmd":"rename","param":0,"tp":[600,340],"text":"In the end, give your territory a unique name! Click left-upper [info bar]."},   
+    null,
+    {"gtype":2,"posi":[14,10],"cmd":"state4over","param":0,"tp":[400,240],"text":"Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!"}];
+    */
+    
+
     function NewControl(n){
         //n=2;
         contextNode = null;
@@ -169,14 +229,16 @@ class NewControl extends ContextObject{
         notice = contextNode.addsprite("dialogback_new"+str(flag)+".png").anchor(50,50).pos(tp);
         if(flag == 1){
             for(var i=0;i<len(strs);i++){
-                if(strs[i].rfind("【")==-1){
+                if(strs[i].rfind("[")==-1){
                     notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
                 }
                 else{
-                    var end = strs[i].split("】");
-                    var begin = end[0].split("【");
+                    var end = strs[i].split("]");
+                    var begin = end[0].split("[");
                     notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
-                    notice.addlabel("【"+begin[1]+"】",null,20).pos(40+len(begin[0])/3*20,30+24*i).color(100,0,0,100);
+                    //chinese utf8 len = 3
+                    //english character len = 1
+                    notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*20,30+24*i).color(100,0,0,100);
                     notice.addlabel(end[1],null,20).pos(60+len(end[0])/3*20,30+24*i).color(0,0,0,100);
                 }
             }
@@ -315,7 +377,7 @@ class NewControl extends ContextObject{
             global.user.changeValue("money",3000);
             return 0;
         }
-        else if(newstrs[strnum]==null){
+        else if(newstrs[strnum]== ""){
             contextNode.visible(0);
             global.http.addrequest(1,"newcomplete",["uid","level"],[global.userid,newstate+1],self,"newcomplete");
             return 0;

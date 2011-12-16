@@ -189,7 +189,7 @@ sta = json_loads(sta);
 if(sta != null)
 {
     trace("pass others");
-    newstrs = sta.get("newstrs");
+    newstrs = sta.get("newstr");
     timestr = sta.get("timestr");
     timestr1 = sta.get("timestr1");
     ganname1 = sta.get("ganname1");
@@ -357,6 +357,7 @@ class GlobalController{
     
     var lockpage;
     var flagshownew;
+    /*
     function update(name, force, param)
     {
         if(name == "task.txt")
@@ -442,7 +443,7 @@ class GlobalController{
                         
         }
     }
-    
+    */
     function lock(){
         if(lockpage==null){
             lockpage = new ClockObject();
