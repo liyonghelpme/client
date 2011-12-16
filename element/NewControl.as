@@ -223,6 +223,29 @@ class NewControl extends ContextObject{
         setnotice(flag);
     }
     
+    function colorWords(str, width, ew)
+    {
+        var words = str.split(" ");
+        var lines = [];
+        var sum = 0;
+        var l = "";
+        for(var i = 0; i < len(words); i++)
+        {
+            sum = len(l) + len(words[i])+1;
+            if(sum*ew > width)
+            {
+                lines.append(l);
+                l = words[i];
+                sum = 0;
+            }
+            else
+            {
+                l += " "+words[i]; 
+            }
+        }
+        return lines;
+    }
+        
     function setnotice(flag){
         var strs = noticetext.split("+");
         notice.removefromparent();
@@ -233,6 +256,25 @@ class NewControl extends ContextObject{
                     notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
                 }
                 else{
+                    var li = colorWords(strs[i], 300, 20);
+                    for(var j = 0; j < len(li); j++)
+                    {
+                        if(li[j].rfind("[") == -1)
+                        {
+                            notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
+                        }
+                        else
+                        {
+                            var end = li[i].split("]");
+                            var begin = end[0].split("[");
+                            var lenb = len(begin[0]);
+                            notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
+                            notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*20,30+24*i).color(100,0,0,100);
+                            notice.addlabel(end[1],null,20).pos(60+len(end[0])/1*20,30+24*i).color(0,0,0,100);
+
+                        }
+                    }
+                    /*
                     var end = strs[i].split("]");
                     var begin = end[0].split("[");
                     notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
@@ -240,6 +282,7 @@ class NewControl extends ContextObject{
                     //english character len = 1
                     notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*20,30+24*i).color(100,0,0,100);
                     notice.addlabel(end[1],null,20).pos(60+len(end[0])/3*20,30+24*i).color(0,0,0,100);
+                    */
                 }
             }
         }
