@@ -15,6 +15,7 @@ class ImageController{
     "nestpetfiller1.png","nestpetfiller2.png","nestpettab1.png","nesttab0.png","opbutton19.png","opbutton21.png","opbutton23.png","opbutton25.png","petrenamepic.jpg","build1000.png",
     "egg-1-0.png","egg-1-1.png","egg-1-2.png","egg-1-3.png","egg-1.png","egg-2-0.png","egg-2-1.png","egg-2-2.png","egg-2-3.png","egg-2.png","egg-3-0.png","egg-3-1.png",
     "shen20.png","shen21.png","shen22.png","shen23.png","shen24.png","dialogelement2d3.png","dialogelement2d2.png","build600.png","build601.png","object12_l.png","object13_l.png","object14_l.png","object15_l.png","object16_l.png",
+    "object50.png", "object51.png", "object52.png", "object53.png", "object54.png", "object55.png", "object56.png", 
     "blessing1.png","blessing2.png","blessing3.png","blessing4.png","blessing5.png","blessing6.png","blessing7.png","blessing8.png","blessing9.png","opbutton17.png",
     "earth-1-10.png","earth-1-11.png","earth-1-12.png","earth-1-13.png","earth-1-1.png","earth-1-2.png","earth-1-3.png","earth-1-4.PNG","earth-1-5.png","earth-1-6.png",
     "earth-1-7.png","earth-1-8.png","earth-1-9.png","earth-1.png","earth-2.png","earth-3.png","earth-4-1.png","earth-4-2.png","earth-4-3.png","earth-4-4.png","earth-4-5.png",

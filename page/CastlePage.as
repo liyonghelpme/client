@@ -619,7 +619,19 @@ class CastlePage extends ContextObject{
                     global.user.changeValueAnimate(changes,"money",-p,2);
                     cost.update("money",p);
                 }
-                global.user.changeValueAnimate(changes,"personmax",OBJ_PERSON[changes.objectid-500],0);
+                var add = OBJ_PERSON[changes.objectid-500];
+                if(add > 0)
+                    global.user.changeValueAnimate(changes,"personmax",add,0);
+                else
+                {
+                    add = -add;
+                    global.user.changeValueAnimate(changes,"boundary",add,0);
+                    global.user.changeValue("boundary", add);
+                    /*
+                    for(var i = 0; i < add; i++)
+                        global.http.addrequest(1,"changeboundary",["userid"],[global.userid],self,"changeBoundary");
+                    */
+                }   
                 
                 changes.flagnew = 0;
                 grounds.append(changes);
@@ -1408,7 +1420,7 @@ class CastlePage extends ContextObject{
                     bdict.update("name","daily");
                     bdict.update("bonus",bonus);
                     addcmd(bdict);
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
                     var clevel = allcardlevelnum[0].index(global.card[13]%1000);
                     if(clevel!=-1){
                         bdict = dict();

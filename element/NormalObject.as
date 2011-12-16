@@ -508,6 +508,7 @@ trace("sell",r,rc,c);
             var ol=0;
             var m=0;
             var p=0;
+            var obj = 0;
             if(ot==0){
                 m = FARM_PRICE[oi];
                 p = FARM_PERSON[oi];
@@ -543,8 +544,9 @@ trace("sell",r,rc,c);
                 p = STATUE_PERSON[oi];
             }
             else{
+                obj = 1;
                 m = OBJ_PRICE[oi];
-                p = -OBJ_PERSON[oi];
+                p = OBJ_PERSON[oi];
             }
             if(m<0){
                 m = -2000*m;
@@ -562,11 +564,14 @@ trace("sell",r,rc,c);
                 m=m*4;
             }
             global.user.changeValueAnimate2(contextNode,"money",m,0);
-            if(p>0){
+            if(obj == 0){
                 global.user.changeValueAnimate2(contextNode,"labor",-p,-2);
             }
-            else if(p<0){
-                global.user.changeValueAnimate2(contextNode,"personmax",p,-2);
+            else if(obj == 1){
+                if(p > 0)
+                    global.user.changeValueAnimate2(contextNode,"personmax",p,-2);
+                else
+                    global.user.changeValueAnimate2(contextNode,"mana",-p,-2);
             }
             deleteContext();
         }

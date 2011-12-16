@@ -13,6 +13,8 @@ class Builddialog extends ContextObject{
     var movenode;
     var flagmove;
     var lastx;
+    var left;
+    var right;
     function Builddialog(){
         contextname = "dialog-build";
         contextNode = null;
@@ -46,8 +48,42 @@ class Builddialog extends ContextObject{
         contextNode.add(sprite("dialogback_left.png",ARGB_8888).pos(0,97),1);
         contextNode.add(sprite("dialogback_right.png",ARGB_8888).anchor(100,0).pos(800,97),1);
         changePage(0,0,global.lastpage[0]);
+        left = sprite("buildLeftUn.png", ARGB_8888);
+        left.anchor(0, 50);
+        left.pos(4, 240);
+        contextNode.add(left, 1);
+        left.setevent(EVENT_TOUCH, onLeftTou);
+        left.setevent(EVENT_UNTOUCH, onLeftUn);
+        right = sprite("buildLeftUn.png", ARGB_8888);
+        right.anchor(100, 50).pos(744, 240);
+        contextNode.add(right, 1);
+        right.setevent(EVENT_TOUCH, onRightTou);
+        right.setevent(EVENT_UNTOUCH, onRightUn);
+        right.scale(-100, 100);
     }
-
+    function onLeftTou(n, event, param, x, y)
+    {
+        left.texture("buildLeftTou.png");
+    }
+    function onLeftUn(n, event, param, x, y)
+    {
+        left.texture("buildLeftUn.png");
+        movePage(1);
+    }
+    function onRightTou(n, event, param, x, y)
+    {
+        right.texture("buildLeftTou.png");
+    }
+    function onRightUn(n, event, param, x, y)
+    {
+        right.texture("buildLeftUn.png");
+        movePage(-1);
+    }
+    function movePage(dir)
+    {
+        buildpages[pageindex].getNode().addaction(imoveby(800*dir,0));
+        buildpages[pageindex].refreshpage();
+    }
     function nodemove(n,e,param,x,y){
         if(contextLevel >= global.currentLevel){
             if(e == EVENT_HITTEST){
