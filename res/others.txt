@@ -1,0 +1,60 @@
+{
+"SPYITEMS" : ["win:", "fight:", "soldier force:", "ally force:", "defence:"],
+
+"items" : ["2011/11/15 兽神上线啦!"],
+"timestr": ["Last for 1 hour","Last for 6 hours","Last for 24 hours"],
+
+"ganname1": ["You can only send every friend one gift one day", "You can ask for gift from every friend once a day"],
+
+"btname1": ["one day delay", "refresh monsters immediately"],
+
+"timestr1": ["2 hours", "8 hours", "24 hours"],
+
+"newupdate1":["Your territory change to night mode from 8 p.m to 6 a.m automatically. Click menu button-》night scene to close"],
+
+"godstr": [
+    "crops yield increase 20%","population recruited in dwellings increase 20%","tax from stores increase 20%","fighting capacity increase 5%",
+    "crops yield increase 40%","population recruited in dwellings increase 40%","tax from stores increase 40%","fighting capacity increase 10%",
+    "crops yield increase 60%","population recruited in dwellings increase 60%","tax from stores increase 60%","fighting capacity increase 15%",
+    "crops yield increase 80%","population recruited in dwellings increase 80%","tax from stores increase 80%","fighting capacity increase 20%",
+    "crops yield increase 100%","population recruited in dwellings increase 100%","tax from stores increase 100%","fighting capacity increase 25%",
+    "rewards for visiting friends, increase 5 coins","rewards for visiting friends, increase 10 coins","rewards for visiting friends, increase 20 coins","rewards for visiting friends, increase 30 coins","rewards for visiting friends, increase 50 coins",
+    "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense"],
+
+"newstr": [
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Territory's development needs agriculture, click the free [farmland]\"}",   
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' click [plant]'}",   
+"{'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'choose  [wheat]'}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Crop's growth need long time,but we can  accelerate it. Click the busy [farmland]\"}",   
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Click [accelerate]'}",   
+"{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':\"accelerate crops' growth\"}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'harvest wheat'}",   
+
+"",
+
+"{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
+"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"Territory's development needs population, build residential to recruit more people. Click [Build Icon]\"}",   
+"{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Choose  [cottage] '}",   
+"{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':\"Click [yes] after choosing cottage's build location.\"}", 
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'Wow! This residential has recruited people,  click [cottage] to receive them!'}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Click [free] cottage'}",    
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Click [recruit]'}",   
+"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also needs money, click [bakery]  to collect tax!'}",   
+
+"",
+
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!'}",   
+"{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are  [monsters] robbing your crops in your territory, go to kill them!'}",   
+"{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'Click [map] to view your territory nearby situation.'}",   
+"{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Click [monster]'}",   
+"{'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'Click [attack]'}",   
+"{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you win! Click [castle] to return your territory.'},",    
+"{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'In the end, give your territory a unique name! Click left-upper  [info bar]'}",   
+
+"",
+
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!'}"]
+    
+}
+
+
