@@ -243,37 +243,44 @@ class NewControl extends ContextObject{
                 l += " "+words[i]; 
             }
         }
+        lines.append(l);
         return lines;
     }
         
     function setnotice(flag){
         var strs = noticetext.split("+");
+        trace("strs", strs);
         notice.removefromparent();
         notice = contextNode.addsprite("dialogback_new"+str(flag)+".png").anchor(50,50).pos(tp);
         if(flag == 1){
             for(var i=0;i<len(strs);i++){
+                trace(" i strs", i, strs[i]);
                 if(strs[i].rfind("[")==-1){
                     notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
                 }
                 else{
-                    var li = colorWords(strs[i], 300, 20);
+                    var li = colorWords(strs[i], 300, 10);
+                    trace("lines ", li);
                     for(var j = 0; j < len(li); j++)
                     {
+                        trace("newline", li[j]);
                         if(li[j].rfind("[") == -1)
                         {
-                            notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
+                            notice.addlabel(li[j],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*j).color(0,0,0,100);
                         }
                         else
                         {
-                            var end = li[i].split("]");
+                            var end = li[j].split("]");
                             var begin = end[0].split("[");
                             var lenb = len(begin[0]);
-                            notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
-                            notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*20,30+24*i).color(100,0,0,100);
-                            notice.addlabel(end[1],null,20).pos(60+len(end[0])/1*20,30+24*i).color(0,0,0,100);
+                            trace("begin end", begin, end);
+                            var pre = notice.addlabel(begin[0],null,20).pos(40,30+24*j).color(0,0,0,100);
+                            var mid = notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*8, 30+24*j).color(100,0,0,100);
+                            notice.addlabel(end[1],null,20).pos(40+(len(end[0]))/1*10,30+24*j).color(0,0,0,100);
 
                         }
                     }
+                
                     /*
                     var end = strs[i].split("]");
                     var begin = end[0].split("[");

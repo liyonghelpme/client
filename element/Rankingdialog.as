@@ -124,7 +124,7 @@ class Rankingpage extends ContextObject{
                             var nob=item[6]*3+item[7];
                             if(nob>=0){
                                 cell.addsprite("nobi"+str(nob)+".png").size(24,24).pos(134,27);
-                                cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(164,34).color(0,0,0,100);
+                                cell.addlabel(NOBNAME2[nob],null,16,FONT_BOLD).pos(164,34).color(0,0,0,100);
                             }
                             else{
                                 cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(134,34).color(0,0,0,100);

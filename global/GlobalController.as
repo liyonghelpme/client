@@ -212,6 +212,8 @@ var STONENAME;
 var GIFTNAME;
 var EXTEND_PETS_NAME;
 var NOBNAME;
+var NOBNAME2;
+
 var nobilityname;
 var ROOMNAME;
 var ROOMNAME1;
@@ -242,6 +244,7 @@ if(sta != null)
     GIFTNAME = sta.get("GIFTNAME");
     EXTEND_PETS_NAME = sta.get("EXTEND_PETS_NAME");
     NOBNAME = sta.get("NOBNAME");
+    NOBNAME2 = sta.get("NOBNAME2");
     nobilityname = sta.get("nobilityname");
     ROOMNAME = sta.get("ROOMNAME");
     ROOMNAME1 = sta.get("ROOMNAME1");
