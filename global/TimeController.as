@@ -24,9 +24,18 @@ class TimeController{
         timelist.append([endtime,listener]);
     }
     
-    //function removelistener(endtime,listener){
-    //    for(var i=0;i<len(timelist
-    
+    function removelistener(listener){
+        for(var i=0;i<len(timelist); i++)
+        {
+            if(timelist[i][1] == listener)
+            {
+                timelist.pop(i);
+                break;
+            }
+           
+        }
+    }
+
     function timecontrol(){
         currenttime = (time()-base_realtime)/1000+base_localtime;
         var length= len(timelist);
@@ -54,3 +63,4 @@ class TimeController{
         }
     }
 }
+

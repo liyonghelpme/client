@@ -86,7 +86,12 @@ class CampControl extends ContextObject{
     }
     
     function refreshpage(){
+        var curpos = contextNode.pos(); 
         pagepos = contextNode.pos()[0];
+        if(pagepos > 400) pagepos = 400;
+        else if(pagepos < pageposmax) pagepos = pageposmax;
+        contextNode.pos(pagepos, curpos[1]);
+
         var index = (400-pagepos)/DIALOG_OFF_X;
         for(var i=0;i<objsmax;i++){
             if(i<index||i>index+6){
@@ -95,6 +100,7 @@ class CampControl extends ContextObject{
                     objs[i] = null;
                 }
             }
+       
             else if(objs[i]==null){
                 getcell(i);
                 contextNode.add(objs[i]);

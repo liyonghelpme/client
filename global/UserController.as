@@ -87,7 +87,37 @@ class LevelHandle{
         return cmd;
     }
 }
-
+class MagicHandle
+{
+    var bar;
+    var lab;
+    function MagicHandle()
+    {
+        
+    }
+    function update(v)
+    {
+        var mana = global.user.getValue("mana");
+        var boundary = global.user.getValue("boundary");
+        if(boundary > 0)
+            bar.size(mana*92/boundary, 19);
+        lab.text(str(mana)+"/"+str(boundary));
+    }
+}
+class PersonHandle
+{
+    var label;
+    function PersonHandle()
+    {
+    }
+    function update(v)
+    {   
+        var labor = global.user.getValue("labor");
+        var person = global.user.getValue("person");
+        var idle = person - labor;
+        label.text(str(idle));
+    }
+}
 class PairHandle{
     var plabel;
     var pairname;
@@ -132,11 +162,20 @@ class UserController{
         handledict.update("exp",eh);
         eh.initdata(user,em);
     }
+    function initMagic(l, bar)
+    {
+        var mh = new MagicHandle();
+        handledict.update("mana", mh);
+        handledict.update("boundary", mh);
+        mh.bar = bar;
+        mh.lab = l;
+        //mh.update(null);
+    }
     function initPerson(l,user){
-        var ph = new PairHandle(l,"labor","person");
+        var ph = new PersonHandle();
+        ph.label = l;
         handledict.update("labor",ph);
         handledict.update("person",ph);
-        ph.initdata(user);
     }
     
     function getValue(name){
@@ -292,11 +331,17 @@ class UserController{
                 buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
             }
         }
+        trace("buildable", buildable);
         if(buildable.get("ok")==1){
             return 1;
         }
-        else{
+        else if(cost.get("mana") == null){
             global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
+            return 0;
+        }
+        else
+        {
+            global.pushContext(null, new MagicWarning(), NonAutoPop);
             return 0;
         }
     }

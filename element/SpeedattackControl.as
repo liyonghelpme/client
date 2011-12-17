@@ -58,7 +58,7 @@ class SpeedattackControl extends ContextObject{
         contextNode = dialog.getNode();
         dialog.settitle("quicktitle.png");
         dialog.usedefaultbutton(2,[global.getStaticString("acc"),global.getStaticString("cancel")]);
-        var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
+        var cae = sprite("magic_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
         contextNode.add(cae,4);
@@ -68,7 +68,7 @@ class SpeedattackControl extends ContextObject{
     function excute(p){
         if(lock == 0){
             var cost = dict();
-            cost.update("caesars",costcae);
+            cost.update("mana",costcae);
             if(global.user.testCost(cost)==0){
                 return 0;
             }
@@ -128,10 +128,8 @@ trace("speed",rc,c);
     function timerefresh(){
         if(flagquick == 0){
             var lefttime = battledata[0]-global.timer.currenttime;
-            costcae = (lefttime-1)/10800*2+2;
-            if(costcae>6){
-                costcae=10;
-            }
+            costcae = (lefttime+3599)/3600*2 + 10;
+            trace("acc mana cost", costcae);
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             timelabel.text(global.getStaticString("leftTime")+global.gettimestr(lefttime));
@@ -145,7 +143,7 @@ trace("speed",rc,c);
             flagquick++;
         }
         else if(flagquick == 2){
-            global.user.changeValue("caesars",-costcae);
+            global.user.changeValue("mana",-costcae);
             global.popContext(null);
             lock = 0;
             timeisend=1;

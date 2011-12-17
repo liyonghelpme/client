@@ -14,7 +14,10 @@ var myid;
 if(ppy_connected()!=1){
     ppy_login();
 }
+<<<<<<< HEAD
 //var global = new GlobalController();
+=======
+>>>>>>> e696d6b85bea3685c73a8eb3f43535e5d0ab0fc3
 global.self = global;
 global.system = new MenuControl();
 global.system.initwithconfig();

@@ -6,7 +6,6 @@ class Noticedialog extends ContextObject{
     var updatenum;
     var showlabel;
     var buttonlabel;
-    //const newupdate = ["每天晚上8点到凌晨6点会自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景 来关闭夜景"];
     function paintNode(){
         updatenum=-1;
         contextNode = sprite("dialogback_expand.png",ARGB_8888).anchor(50,50).pos(400,300);

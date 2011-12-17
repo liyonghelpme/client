@@ -1,7 +1,6 @@
 class NobattleControl extends ContextObject{
     var element;
-    //const timestr = ["2小时","8小时","24小时"];
-    const caesars = [4999,14999,-2];
+    const caesars = [-15,-30,-60];
     var endtime;
     var timeisend;
     var timelabel;
@@ -71,7 +70,7 @@ class NobattleControl extends ContextObject{
                 }
                 tab.addlabel(timestr[i],null,20).anchor(50,50).pos(63,30).color(0,0,0,100);
                 if(caesars[i]<0){
-                    tab.addsprite("caesars_big.png",filter).anchor(50,50).pos(43,90);
+                    tab.addsprite("magic_big.png",filter).anchor(50,50).pos(43,90);
                     tab.addlabel(str(-caesars[i]),null,20).anchor(0,50).pos(71,90).color(0,0,0,100);
                 }
                 else{
@@ -113,7 +112,7 @@ class NobattleControl extends ContextObject{
             if(x>0&&y>0&&x<n.size()[0]&&y<n.size()[1]){
                 var cost = dict();
                 if(caesars[p]<0){
-                    cost.update("caesars",-caesars[p]);
+                    cost.update("mana",-caesars[p]);
                 }
                 else{
                     cost.update("money",caesars[p]);
@@ -137,7 +136,7 @@ class NobattleControl extends ContextObject{
             var times=[7200,28800,86400];
             global.user.setValue("nobattletime",global.timer.timec2s(global.timer.currenttime+times[selecttab]));
             if(caesars[selecttab]<0){
-                global.user.changeValue("caesars",caesars[selecttab]);
+                global.user.changeValue("mana",caesars[selecttab]);
             }
             else{
                 global.user.changeValue("money",-caesars[selecttab]);

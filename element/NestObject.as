@@ -271,6 +271,8 @@ class NestObject extends BuildObject{
             c_invoke(executeAnimate,1000,null);
             return 0;
         }
+        var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
+        trace("system time", stime);
         if(contextNode.get(1)!=null){
             if(state==3){
                 var stt = health/17+1;
@@ -284,7 +286,6 @@ class NestObject extends BuildObject{
                 }
             }
             else if(state==4){
-                var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
                     var talktime=0;
@@ -328,7 +329,7 @@ class NestObject extends BuildObject{
                 //repeat(animate(280,prestr+"f1.png",prestr+"f2.png",prestr+"f3.png",prestr+"f4.png",UPDATE_SIZE),2),itexture(prestr+"9.png",UPDATE_SIZE),delaytime(300),itexture(prestr+"4.png",UPDATE_SIZE),delaytime(200),itexture(prestr+"1.png",UPDATE_SIZE)));
             }
             else if(state==5){
-                //var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
+                //stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
                     //if(stime>=6&&stime<10 || stime>=11&&stime<14 || stime>=20||stime<6){

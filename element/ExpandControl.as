@@ -78,13 +78,21 @@ class ExpandControl extends ContextObject{
     }
 
     function refreshpage(){
-    
-    }
-
-    function choosepage(){
+        var curpos = contextNode.pos(); 
         pagepos = contextNode.pos()[0];
         if(pagepos > 400) pagepos = 400;
         else if(pagepos < pageposmax) pagepos = pageposmax;
+
+        contextNode.pos(pagepos, curpos[1]);
+    }
+
+    function choosepage(){
+        var curpos = contextNode.pos(); 
+        pagepos = contextNode.pos()[0];
+        if(pagepos > 400) pagepos = 400;
+        else if(pagepos < pageposmax) pagepos = pageposmax;
+        
+        contextNode.pos(pagepos, curpos[1]);
         contextNode.addaction(moveto(300,pagepos,240));
     }
 

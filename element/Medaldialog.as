@@ -120,9 +120,6 @@ class MedalControl extends ContextObject{
                 if(flagmove == 0&&global.context[0].cuid==global.userid){
                     if(clevels[param]<5||(param==12&&medals[param]%100<18)){
                         var pn="You";
-                        //if(){
-                        //    pn = "Ta";
-                        //}
                         if(param==12){
                             global.pushContext(null,new Warningdialog([global.getFormatString(18,["[WHO]",pn,"[NUM]",str(medals[param]/100),"[CARD]",NOBNAME[medals[param]%100+1]]),null,1]),NonAutoPop);
                             return 0;

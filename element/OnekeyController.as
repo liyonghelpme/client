@@ -29,32 +29,26 @@ class OnekeyController extends ContextObject{
         if(element==null){
             tabs = new Array(3);
             costs = [0,0,0];
-            //要改
-            if(mode<2){
-                if(global.card[14+mode]>=5){
-                    costcae=0;
-                }
-                else{
-                    costcae=1;
-                }
-                for(var i=0;i<3;i++){
-                    costs[i]=costcae;
-                }
+            if(mode == 0 || mode == 1)
+            {
+                costs[0] = 10;
+                costs[1] = 10;
             }
-            else if(mode==2){
-                if(global.card[18]!=5)
-                    costs[0]=2;
-                costs[1]=10;
+            else
+            {
+                costs[0] = 25;
+                costs[1] = 60;
             }
             element = node();
             element.addsprite("devineback.jpg").anchor(50,0).pos(219,30);
             element.addlabel(global.getStaticString("onekey_title"),null,30).anchor(50,50).pos(219,63).color(0,0,0,100);
             selecttab = -1;
             var tabsize = len(tabstr);
+            var i = 0;
             for(i=0;i<tabsize;i++){ 
                 tabs[i] = element.addsprite("dialogelement_god_normal.png").pos(162-tabsize*125/2+i*125,110).setevent(EVENT_UNTOUCH,choosetab,i);
-                tabs[i].addlabel(global.getStaticString(tabstr[i]),null,20,FONT_NORMAL,80,0).anchor(50,50).pos(57,60).color(0,0,0,100);
-                tabs[i].addsprite("caesars_big.png").anchor(50,50).pos(43,130);
+            tabs[i].addlabel(global.getStaticString(tabstr[i]),null,20,FONT_NORMAL,80,0).anchor(50,50).pos(57,60).color(0,0,0,100);
+                tabs[i].addsprite("magic_big.png").anchor(50,50).pos(43,130);
                 tabs[i].addlabel("x"+str(costs[i]),null,20).anchor(0,50).pos(62,130).color(0,0,0,100);
             }
             tabs[i] = element.addsprite("dialogelement_god_normal.png").pos(162-tabsize*125/2+i*125,110).setevent(EVENT_UNTOUCH,choosetab,i);
@@ -84,7 +78,7 @@ class OnekeyController extends ContextObject{
     function excute(p){
         if(selecttab!=len(tabstr)){
             var cost = dict();
-            cost.update("caesars",costcae);
+            cost.update("mana",costcae);
             if(global.user.testCost(cost)==0){
                 return 0;
             }
@@ -186,7 +180,7 @@ class OnekeyController extends ContextObject{
             objid=re;
             if(re%3==2){
                 var cost = dict();
-                cost.update("caesars",costcae-PLANT_PRICE[re]);
+                cost.update("mana",costcae-PLANT_PRICE[re]);
                 if(global.user.testCost(cost)==0){
                     return 0;
                 }
@@ -200,7 +194,7 @@ class OnekeyController extends ContextObject{
             var data = json_loads(c);
             if(data.get("id")==1){
                 global.popContext(null);
-                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,-6);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"mana",-costcae,-6);
                 var length=len(global.context[0].grounds);
                 for(var i=0;i<length;i++){
                     var build = global.context[0].grounds[i];
@@ -218,7 +212,7 @@ class OnekeyController extends ContextObject{
             data = json_loads(c);
             if(data.get("id")==1){
                 global.popContext(null);
-                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,-6);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"mana",-costcae,-6);
                 length=len(global.context[0].grounds);
                 for(i=0;i<length;i++){
                     build = global.context[0].grounds[i];
@@ -235,14 +229,12 @@ class OnekeyController extends ContextObject{
         else if(p=="plantingall"){
             data = json_loads(c);
             var overlist = data.get("plant");
-            //if(data.get("id")==1){
                 global.popContext(null);
-                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,-6);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"mana",-costcae,-6);
                 var istask = 0;
-               // trace(global.task.tasktype,global.task.taskreq);
-                if(global.task.tasktype==0&&global.task.taskreq=="planting"){
+                if(global.task.tasktype==0&&global.task.taskreq=="planting")
+                {
                     var pair=["object_id",objid,"type",0];
-                //    trace(pair,global.task.taskpair);
                     istask=1;
                     for(i=0;i<len(global.task.taskpair);i++){
                         if(pair[i]!=global.task.taskpair[i]){
@@ -287,7 +279,7 @@ class OnekeyController extends ContextObject{
                 }
                 global.pushContext(null,new Warningdialog([global.getFormatString(26,["[NUM]",str(num),"[MONEY]",str(data.get("cornadd"))]),null,6]),NonAutoPop);
                 global.user.changeValueAnimate2(global.context[0].moneyb,"money",data.get("cornadd"),-6);
-                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,-4);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"mana",-costcae,-4);
             }
             else{
                 global.pushContext(null,new Warningdialog([data.get("reason"),null,5]),NonAutoPop);

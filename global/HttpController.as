@@ -58,6 +58,7 @@ class HttpController extends ContextObject{
     }
     
     function addhandle(handle){
+        trace("handle object", handle.get("target"));
         if(handle.get("target").contextname.rfind("object-build")!=-1){
             if(len(handledict2)<1){
                 var rid=http_request(BASE_URL+handle.get("request"),httpcallback,handle.get("poststr"),15000);
