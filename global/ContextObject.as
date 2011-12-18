@@ -9,6 +9,7 @@ class ContextObject{
         //trace("context object init", contextname);
         contextname = "not init";
         contextNode = null;
+        trace("main context ", contextname);
     }
     function getNode(){
         if(contextNode == null){
