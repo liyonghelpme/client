@@ -14,7 +14,6 @@ var myid;
 if(ppy_connected()!=1){
     ppy_login();
 }
-var global = new GlobalController();
 global.self = global;
 global.system = new MenuControl();
 global.system.initwithconfig();

@@ -39,11 +39,14 @@ class AttackControl extends ContextObject{
         timelabel = contextNode.addlabel(global.gettimestr(atime),null,20).anchor(0,50).pos(119,371).color(0,0,0,100);
         var bt = sprite("boxbutton1.png").anchor(50,50).pos(142,420).setevent(EVENT_UNTOUCH,attack);
         contextNode.add(bt,2,0);
-        if(global.context[1].userdict.get(eid)[0]!=ppy_userid()){
-            bt.addlabel(global.getStaticString("attack"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
-        }
-        else{
+        var empty = global.emptyCitiesInGlo.get(eid, null);
+        if(empty != null && empty[1] == global.userid)
+        {
             bt.addlabel(global.getStaticString("addsoldier"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        }
+        else
+        {
+            bt.addlabel(global.getStaticString("attack"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         }
         contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(416,420).setevent(EVENT_UNTOUCH,closedialog);
         contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(416,420);

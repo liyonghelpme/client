@@ -6,7 +6,9 @@ class Noticedialog extends ContextObject{
     var updatenum;
     var showlabel;
     var buttonlabel;
-    const newupdate = ["每天晚上8点到凌晨6点会自动进入黑夜模式，可以点击menu（菜单按钮）-》夜景 来关闭夜景"];
+    const newupdate = [
+    "为前天木瓜服务器挂了，离线未增加魔法值bug，战争要塞bug道歉！特补偿给12月14日23点前登录过的用户10个凯撒币。感谢大家的支持！这周末会上线圣诞节活动，敬请期待！",
+    "魔法值上线啦！加速，一键，神迹，保护功能都可以通过魔法值施展。魔法值每5分钟回复1点。有建议请在圈子内反馈，谢谢！"];
     function paintNode(){
         updatenum=-1;
         contextNode = sprite("dialogback_expand.png",ARGB_8888).anchor(50,50).pos(400,300);

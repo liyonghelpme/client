@@ -6,14 +6,30 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 56;
-    const objlevel = [27,30,32,34,37,40, 30, 40, 40, 40, 40, 17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
-    const objcontext = [2600,2601,2602,2603,2604,2605, 1545, 1546, 1547,1548,1549, 1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
+    const objsmax = 63;
+    const objlevel = [
+25, 10, 6, 8, 6, 15, 20,
+2, 2, 2, 3, 3, 3, 4, 5, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 10, 11, 12, 13, 14, 15, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 25, 25, 25, 27, 30, 30, 32, 34, 37, 40, 40, 40, 40, 40];
+/* 
+    const objlevel = [
+25, 10, 6, 8, 6, 15, 20,
+27,30,32,34,37,40,
+30, 40, 40, 40, 40, 17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
+*/
+    const objcontext = [
+2550, 2551, 1552, 2553, 2554, 2555, 2556, 
+1500, 1501, 1502, 2539, 2540, 2541, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1520, 1516, 1517, 1518, 1519, 1528, 1529, 1530, 1531, 1521, 1522, 1523, 1542, 1543, 1524, 1525, 1526, 1527, 1532, 1533, 1534, 1538, 2544, 1535, 1536, 1537, 2600, 2601, 1545, 2602, 2603, 2604, 2605, 1546, 1547, 1548, 1549];
+/*
+    const objcontext = [
+2550, 2551, 1552, 2553, 2554, 2555, 2556, 
+2600,2601,2602,2603,2604,2605, 
+1545, 1546, 1547,1548,1549, 1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
+*/
     function ObjControl(){
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(56);
-        buildable = new Array(56);
+        objs = new Array(63);
+        buildable = new Array(63);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -32,9 +48,15 @@ class ObjControl extends ContextObject{
     function getcell(i){
         buildable[i] = dict([["ok",1]]);
         var oi = objcontext[i]%1000;
+
         if(oi<600){
             oi=oi%100;
-            objs[i] = sprite("dialogelement2l.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
+            var add = OBJ_PERSON[oi];
+            if(add > 0)
+                objs[i] = sprite("dialogelement2l.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
+            else
+                objs[i] = sprite("dialogelement2m.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
+                
             objs[i].addlabel(global.getname("obj",oi),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
             var bl=150;
             if(objcontext[i]/1000==2){
@@ -44,7 +66,7 @@ class ObjControl extends ContextObject{
                 bl=100;
             }
             objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
-            if(oi>41){
+            if(oi>=50){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
             if(objlevel[i]>global.user.getValue("level")){
@@ -77,8 +99,16 @@ class ObjControl extends ContextObject{
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
                 }
-                objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
-                objs[i].addlabel(str(OBJ_PERSON[oi]),null,16).pos(34,244).color(0,0,0,100);
+
+                //var add =  OBJ_PERSON[oi];
+                if(add < 0)
+                {
+                    add = -add;
+                    objs[i].addsprite("magic_big.png").size(20,20).pos(10,244);
+                }
+                else
+                    objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
+                objs[i].addlabel(str(add),null,16).pos(34,244).color(0,0,0,100);
             }
         }
         else if(oi<700){
@@ -140,7 +170,12 @@ class ObjControl extends ContextObject{
     }
     
     function refreshpage(){
+        var curpos = contextNode.pos(); 
         pagepos = contextNode.pos()[0];
+        if(pagepos > 400) pagepos = 400;
+        else if(pagepos < pageposmax) pagepos = pageposmax;
+        contextNode.pos(pagepos, curpos[1]);
+
         var index = (400-pagepos)/DIALOG_OFF_X;
         for(var i=0;i<objsmax;i++){
             if(i<index||i>index+6){
@@ -179,15 +214,28 @@ class ObjControl extends ContextObject{
     //statue no <= 5 first 5 is defence power
     //after that is population
     function beginbuild(n,e,param,x,y){
-        var statueNum = 5;
+        var statueNum = 600;
+        var oi = objcontext[param];
+        var add = 1;
+        oi %= 1000;
+        if(oi < 600)
+        {
+            oi %= 100;
+            add =  OBJ_PERSON[oi];
+        }
+        trace("select oi", oi, add);
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
                 lasttime = time();
                 lastx = n.pos()[0]+x+contextNode.pos()[0]-400;
                 flagmove = 0;
                 global.context[1].nodemove(n,EVENT_HITTEST,0,lastx,240);
-                if(param>statueNum){
-                    n.texture("dialogelement2l1.png");
+                if(oi < statueNum){
+                    if(add > 0)
+                        n.texture("dialogelement2l1.png");
+                    else
+                        n.texture("dialogelement2m1.png");
+                        
                 }
                 else{
                     n.texture("dialogelement2d3.png");
@@ -201,8 +249,12 @@ class ObjControl extends ContextObject{
                     else if(time()-lasttime > 1000)
                         flagmove =1;
                     if(flagmove==1){
-                        if(param>statueNum){
-                            n.texture("dialogelement2l.png");
+                        if(oi < statueNum){
+                            if(add > 0)
+                                n.texture("dialogelement2l.png");
+                            else
+                                n.texture("dialogelement2m.png");
+                                
                         }
                         else{
                             n.texture("dialogelement2d2.png");
@@ -216,8 +268,11 @@ class ObjControl extends ContextObject{
                 }
             }
             else if(e == EVENT_UNTOUCH){
-                if(param>statueNum){
-                    n.texture("dialogelement2l.png");
+                if(oi < statueNum){
+                    if(add > 0)
+                        n.texture("dialogelement2l.png");
+                    else
+                        n.texture("dialogelement2m.png");
                 }
                 else{
                     n.texture("dialogelement2d2.png");
@@ -228,7 +283,7 @@ class ObjControl extends ContextObject{
                         global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
-                        if(param>statueNum){
+                        if(oi < statueNum){
                             global.popContext(objcontext[param]);
                         }
                         else{
