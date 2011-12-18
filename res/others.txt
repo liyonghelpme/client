@@ -6,7 +6,7 @@
 
 "ganname1": ["You can only send every friend one gift one day", "You can ask for gift from every friend once a day"],
 
-"btname1": ["one day delay", "refresh monsters immediately"],
+"btname1": ["Delay", "Refresh"],
 
 "timestr1": ["2 hours", "8 hours", "24 hours"],
 
