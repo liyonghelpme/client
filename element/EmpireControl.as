@@ -3,7 +3,7 @@ class EmpireControl extends ContextObject{
     var tabs;
     var element;
     function EmpireControl(){
-        contextname = "dialog-castleinfo";
+        contextname = "dialog-territoryinfo";
         contextNode = null;
     }
 
