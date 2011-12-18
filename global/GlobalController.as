@@ -603,7 +603,7 @@ class GlobalController{
                 task.inctaskstep(1);
             }
         }
-        trace("wartask", wartask.wartasktype, wartask.wartaskreq, co.contextname);
+        //trace("wartask", wartask.wartasktype, wartask.wartaskreq, co.contextname);
         if(wartask.wartasktype==2){
             if(wartask.wartaskreq == co.contextname){
                 wartask.incwartaskstep(1);
