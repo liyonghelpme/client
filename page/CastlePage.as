@@ -1031,6 +1031,7 @@ class CastlePage extends ContextObject{
         }
         var visitn = data.get("visited");
         data.update("visited",1);
+        trace("visit friend", date.get("visited"), data.get("corn"));
         if(visitn==0){
             visitn = data.get("corn",0);
             global.pushContext(self,new Visitreward(visitn),NonAutoPop);
