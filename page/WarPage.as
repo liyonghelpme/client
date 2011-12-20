@@ -676,25 +676,25 @@ trace("warinfo",rc,c);
             u.setevent(EVENT_MOVE,nodemovewithgidevent);
                 lists[0].add(u.pos(5,15+i0*54));
                 if(global.battlelist[i][0]>global.timer.currenttime){
-                    u.addlabel(global.gettimestr(global.battlelist[i][0]-global.timer.currenttime),null,16).pos(105,25);
+                    u.addlabel(global.gettimestr(global.battlelist[i][0]-global.timer.currenttime),null,13).pos(120,25);
                     if(global.battlelist[i][2]==1){
                         u.texture("wartabperson_b.png");
                         trace(userdict.get(global.battlelist[i][3])[1]);
                         if(int(userdict.get(global.battlelist[i][3])[0]) != ppy_userid())
                         {
-                            u.addlabel(global.getStaticString("state_attacking"),null,16).pos(50,25);
+                            u.addlabel(global.getStaticString("state_attacking"),null,13).pos(50,25);
                         }
                         else{
-                            u.addlabel(global.getStaticString("state_adding"),null,16).pos(50,25);
+                            u.addlabel(global.getStaticString("state_adding"),null,13).pos(50,25);
                         }
                     }
                     else{
                         u.texture("wartabperson_r.png");
-                        u.addlabel(global.getStaticString("state_defencing"),null,16).pos(50,25);
+                        u.addlabel(global.getStaticString("state_defencing"),null,13).pos(50,25);
                     }
                 }
                 else{
-                        u.addlabel(global.getStaticString("state_fighting"),null,16).pos(50,25).color(0,0,0,100);
+                        u.addlabel(global.getStaticString("state_fighting"),null,13).pos(50,25).color(0,0,0,100);
                 }
                 i0++;
         }
@@ -713,7 +713,7 @@ trace("warinfo",rc,c);
             }
             else{
                 u.addsprite(avatar_url(int(udata[0]))).pos(5,5).size(40,40);
-                u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,16).anchor(100,100).pos(172,45).color(0,0,0,100);
+                u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,14).anchor(100,100).pos(172,45).color(0,0,0,100);
             }
             u.addlabel(udata[4],null,16).pos(50,5).color(0,0,0,100);
 

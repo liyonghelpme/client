@@ -5,9 +5,11 @@ class EmpireControl extends ContextObject{
     function EmpireControl(){
         contextname = "dialog-territoryinfo";
         contextNode = null;
+
     }
 
     function paintNode(){
+        contextname = "dialog-territoryinfo";
         index = -1;
         element = sprite();
         tabs = new Array(3);
@@ -68,6 +70,9 @@ class EmpireControl extends ContextObject{
     {
         global.pushContext(null, new CheckTime(), NonAutoPop);
     }
+    var rate;
+    var manabar;
+    var manalab;
     function getelement(p){
         element = node();
         if(p==0){
@@ -95,20 +100,20 @@ class EmpireControl extends ContextObject{
             element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(340,offy+142).color(0,0,0,100);
             //element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
-            var rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
+            rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){
 
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 242).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 242).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(414, 235).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(351, 235).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 242).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 242).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(420, 235).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(367, 235).setevent(EVENT_UNTOUCH, checkTime);
             }
             else
             {
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 223).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 223).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(414, 217).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(351, 217).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 223).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 223).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(420, 217).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(367, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
 //>>>>>>> e696d6b85bea3685c73a8eb3f43535e5d0ab0fc3
         }
@@ -133,7 +138,18 @@ class EmpireControl extends ContextObject{
                 element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(150*i-227,236).color(0,0,0,100);
             }
         }
+        global.timer.addlistener(global.timer.currenttime+999999, self);
         return element;
+    }
+    var timeisend = 0;
+    function timeend()
+    {
+    }
+    function timerefresh()
+    {
+        rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
+        manabar.size(rate, 18);
+        manalab.text(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")));
     }
     function closedialog(n,e){
         global.popContext(null);
@@ -141,5 +157,6 @@ class EmpireControl extends ContextObject{
 
     function deleteContext(){
         contextNode.removefromparent();
+        timeisend = 1;
     }
 }

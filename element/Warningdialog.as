@@ -55,8 +55,8 @@ class Warningdialog extends ContextObject{
                 var infos = info.keys();
                 infos.remove("ok");
                 var basey = 53+(3-len(infos))*14;
+                element.addlabel(global.getStaticString("youNeed"),null,24).pos(148,basey).color(0,0,0,100);
                 for(var i=0;i<len(infos);i++){
-                    element.addlabel(global.getStaticString("youNeed"),null,24).pos(148,basey+28*i).color(0,0,0,100);
                     element.addlabel(str(info.get(infos[i]))+" "+infos[i],null,24).pos(148,basey+28*i+25).color(100,0,0,100);
                 }
                 if(infos.index(global.getStaticString("personmax"))!=-1){

@@ -7,6 +7,7 @@ class MedalControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
+    //nob friendship business planting change  monsters
     var cardcontext = [12,18,15,14,13,0,1,2,3,4,5,6,7,8,9,10,11];
     function MedalControl(m){
         medals=m;
@@ -119,46 +120,94 @@ class MedalControl extends ContextObject{
             else if(e == EVENT_UNTOUCH){
                 if(flagmove == 0&&global.context[0].cuid==global.userid){
                     if(clevels[param]<5||(param==12&&medals[param]%100<18)){
-                        var pn="You";
                         if(param==12){
-                            global.pushContext(null,new Warningdialog([global.getFormatString(18,["[WHO]",pn,"[NUM]",str(medals[param]/100),"[CARD]",NOBNAME[medals[param]%100+1]]),null,1]),NonAutoPop);
+                            var cardStr = global.getFormatString("NobCard", 
+                            ["[WHO]", global.getStaticString("You"), 
+                            "[NUM]", str(medals[param]/100), 
+                            "[CARD]",NOBNAME[medals[param]%100+1]
+                            ]);
+                            trace("carddialog", cardStr);
+                            global.pushContext(null,new Warningdialog([cardStr,null,1]),NonAutoPop);
                             return 0;
                         }
                         else if(param>13&&param<19){
                             if(param==14)
-                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]",global.getStaticString("food"),"[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
+                            {
+                                cardStr = global.getFormatString("BusiCard",
+                                ["[WHO]",global.getStaticString("You"),
+                                "[TYPE]",global.getStaticString("PlantingCard"),
+                                "[NUM]",str(allcardlevelnum[param-13][clevels[param]])
+                                ]);
+                                trace("card", cardStr);
+                                global.pushContext(null,new Warningdialog([cardStr ,null,6]),NonAutoPop);
+                            }
                             else if(param==15)
-                                global.pushContext(null,new Warningdialog([global.getFormatString(17,["[WHO]",pn,"[TYPE]",global.getStaticString("coin"),"[NUM]",str(allcardlevelnum[param-13][clevels[param]])]),null,6]),NonAutoPop);
-                            else if(param==18){
-                                global.pushContext(null,new Warningdialog([global.getMedalString2(pn,global.getFormatString(27+clevels[18],["[NUM]",str(allcardlevelnum[param-13][clevels[18]]-medals[18]/10)]),18,clevels[18]+1),null,6]),NonAutoPop);
+                            {
+                                cardStr = global.getFormatString("BusiCard",
+                                ["[WHO]",global.getStaticString("You"),
+                                "[TYPE]",global.getStaticString("Business Card"),
+                                "[NUM]",str(allcardlevelnum[param-13][clevels[param]])]);
+                                trace(cardStr);
+                                global.pushContext(null,new Warningdialog([cardStr,null,6]),NonAutoPop);
+                            }
+                            else if(param==18)
+                            {
+                                cardStr = global.getFormatString("FriendCard"+str(clevels[18]), 
+                                ["[WHO]", global.getStaticString("You"), 
+                                "[NUM]", str(allcardlevelnum[param-13][clevels[18]]-medals[18]/10), 
+                                "[NAME]", str(cardprename[18]), 
+                                "[LEV]", str(cardlevelname[clevels[18]+1])
+                                ]);
+                                trace("cardStr");
+                                global.pushContext(null,new Warningdialog([cardStr,null,6]),NonAutoPop);
                             }
                             return 0;
                         }
                         if(param<12){
                             var clevelnum = cardlevelnum;
-                            global.pushContext(null,new Warningdialog([global.getMedalString(param,pn,clevelnum[clevels[param]]-medals[param],clevels[param]+1),null,1]),NonAutoPop);
+                            cardStr = global.getFormatString("MonsterLevUp",
+                            ["[NUM]", str(clevelnum[clevels[param]]-medals[param]), 
+                            "[NAME]", MONSTERNAME[param*3], 
+                            "[LEV]",  str(clevels[param]+1)]);
+                            trace(cardStr);
+                            global.pushContext(null,new Warningdialog([cardStr,null,1]),NonAutoPop);
                         }
-                        else{
+                        else if(param == 13)
+                        {
                             clevelnum = allcardlevelnum[param-13];
-                            global.pushContext(null,new Warningdialog([global.getMedalString(param,pn,clevelnum[clevels[param]]-medals[param]/1000,clevels[param]+1),null,1]),NonAutoPop);
+                            cardStr = global.getFormatString("ChangELevUp",
+                            ["[DAY]", str(clevelnum[clevels[param]]-medals[param]/1000), 
+                            "[LEV]", str(clevels[param]+1)]);
+                            trace(cardStr);
+                            global.pushContext(null,new Warningdialog([cardStr,null,1]),NonAutoPop);
                         }
                     }
                     else{
+                        var map = dict([[12, "MonsterZijin"],
+                        [13, "ChangEZijin"],
+                        [14, "PlantZijin"],
+                        [15, "BusiZijin"],
+                        [16, "NobZijin"]
+                        ]);
+
+                        global.pushContext(null,new Warningdialog([global.getStaticString(map.get(param)),null,5]),NonAutoPop);
+                        /*
                         if(param<12){
-                            global.pushContext(null,new Warningdialog([global.getStaticString(20),null,5]),NonAutoPop);
+
                         }
                         else if(param==13){
-                            global.pushContext(null,new Warningdialog([global.getStaticString(21),null,5]),NonAutoPop);
+                            global.pushContext(null,new Warningdialog([global.getStaticString("ChangEZijin"),null,5]),NonAutoPop);
                         }
                         else if(param==14){
-                            global.pushContext(null,new Warningdialog([global.getStaticString(22),null,5]),NonAutoPop);
+                            global.pushContext(null,new Warningdialog([global.getStaticString("PlantZijin"),null,5]),NonAutoPop);
                         }
                         else if(param==15){
-                            global.pushContext(null,new Warningdialog([global.getStaticString(23),null,5]),NonAutoPop);
+                            global.pushContext(null,new Warningdialog([global.getStaticString("BusiZijin"),null,5]),NonAutoPop);
                         }
                         else if(param==18){
-                            global.pushContext(null,new Warningdialog([global.getStaticString(32),null,5]),NonAutoPop);
+                            global.pushContext(null,new Warningdialog([global.getStaticString("NobZijin"),null,5]),NonAutoPop);
                         }
+                        */
                     }
                 }
                 else{

@@ -19,13 +19,13 @@ class CheckTime extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            element.addlabel("当前魔法值", null, 24, FONT_BOLD).color(0, 0, 0, 100).anchor(50, 0).pos(202, 58);
+            element.addlabel(global.getStaticString("curMana"), null, 24, FONT_BOLD).color(0, 0, 0, 100).anchor(50, 0).pos(202, 58);
             var qback = element.addsprite("chargeBack.png").anchor(50, 0).pos(202,106);
             qfiller = element.addsprite("magic_bar.png").anchor(0, 0).pos(130,109).size(0,18);
 
             qlabel = qfiller.addlabel("0",null,20).color(0,0,0,100).anchor(50,50).pos(75,12);
             timelabel = element.addlabel("", null, 18).color(0, 0, 0, 100).anchor(50, 50).pos(202, 154);
-            //global.timer.addlistener(999999,self);
+            global.timer.addlistener(global.timer.currenttime+999999,self);
         }
         return element;
     }
@@ -34,7 +34,7 @@ class CheckTime extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["充满","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("fullfil"),global.getStaticString("cancel")]);
         var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
@@ -103,7 +103,7 @@ class CheckTime extends ContextObject{
             trace("lefttime", lefttime, time(), global.user.getValue("manatime"));
             if(lefttime < 0)
                 lefttime = 0;
-            timelabel.text("距离下一次增加一点还差 "+global.gettimestr(lefttime));
+            timelabel.text(global.getStaticString("nextTime")+global.gettimestr(lefttime));
         }
         else if(flagquick < 2){
             flagquick++;

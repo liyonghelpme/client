@@ -39,15 +39,15 @@ class NobattleControl extends ContextObject{
 
             if(endtime>global.timer.currenttime){
                 filter = GRAY;
-                element.addlabel(global.getStaticString("inProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
-                timelabel = element.addlabel("",null,20).pos(199,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("inProtect"),null,20,FONT_BOLD).pos(110,105).color(0,0,0,100);
+                timelabel = element.addlabel("",null,20).pos(220,105).color(0,0,0,100);
                 global.timer.addlistener(endtime,self);
                 timerefresh();
             }
             else if(inAttack)
             {
                 filter = GRAY;
-                element.addlabel(global.getStaticString("attNoProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);
+                element.addlabel(global.getStaticString("attNoProtect"),null,20,FONT_BOLD, 270, 0).pos(121,60).color(0,0,0,100);
             }
             else{
                 element.addlabel(global.getStaticString("openProtect"),null,20,FONT_BOLD).pos(139,105).color(0,0,0,100);

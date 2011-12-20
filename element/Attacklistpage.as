@@ -30,9 +30,9 @@ class Attacklistpage extends ContextObject{
                 length++;
             }
         }
-        contextNode.addsprite("attack_head.png").pos(253,77);
+        contextNode.addsprite("attack_head.png").pos(275,77);
         var power = global.soldiers[0]+global.soldiers[1];
-        powertext = contextNode.addlabel(str(outnum)+"/"+str(power+outnum),null,20).anchor(0,50).pos(500,87).color(0,0,0,100);
+        powertext = contextNode.addlabel(str(outnum)+"/"+str(power+outnum),null,20).anchor(0,50).pos(550,87).color(0,0,0,100);
         pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(512,412).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,414).setevent(EVENT_UNTOUCH,choosePage,-1);

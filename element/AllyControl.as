@@ -25,7 +25,7 @@ class AllyControl extends ContextObject{
                 var ap = element.addsprite("allyelement.png").anchor(50,50).pos(219,159);
                 ap.addsprite(avatar_url(global.context[0].cpid)).pos(38,22).size(50,50);
                 ap.addlabel(fname,null,20).anchor(0,50).pos(103,48).color(0,0,0,100);
-                element.addlabel(global.getStaticString("allyOk"),null,20,FONT_NORMAL,340,0,ALIGN_LEFT).pos(32,226).color(0,0,0,100);
+                element.addlabel(global.getStaticString("allyOk"),null,20,FONT_NORMAL,340,0,ALIGN_LEFT).pos(32,216).color(0,0,0,100);
                 dialog.usedefaultbutton(2,[global.getStaticString("makeAlly"),global.getStaticString("back")]);
             }
             else if(mode==1){

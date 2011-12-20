@@ -36,7 +36,7 @@ class Calldialog extends ContextObject{
                 element.addlabel(global.getStaticString("dragon"),null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
             }
             else{
-                element.addlabel(global.getFormatString("godBless", ["[GOD]", substring(global.getname("god", info), 0, 12), "[GOD]", substring(global.getname("god", info), 0, 12)]),null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
+                element.addlabel(global.getFormatString("godBless", ["[GOD]", global.getname("god", info), "[GOD]", global.getname("god", info)]),null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
             }
         }
         return element;

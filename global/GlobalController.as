@@ -177,6 +177,7 @@ if(sta != null)
 {
     trace("pass dict");
     stringDict = dict(sta);
+    trace(stringDict.get("NobCard"));
 }
 
 var newstrs;
@@ -521,9 +522,14 @@ class GlobalController{
     }
     
     function getFormatString(index,pair){
+        trace("format", index, pair);
         var rstr = getStaticString(index);
+        trace("static string", rstr);
         for(var i=0;i<len(pair);i=i+2){
-            rstr = rstr.replace(pair[i],pair[i+1]);
+            var rep = pair[i+1];
+            if(type(rep) != type(""))
+                rep = str(rep);
+            rstr = rstr.replace(pair[i], rep);
         }
         return rstr;
     }

@@ -357,7 +357,7 @@ class WarControl extends ContextObject{
             var rwd = datadict.get("reward").split("!");
             var infolabel = contextNode.addlabel(global.getFormatString(2+2*datadict.get("leftself")+datadict.get("leftwin"),["[ENAME]",datadict.get(_enemy+"name")]),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110);
             contextNode.addlabel(global.getStaticString(6),null,20).pos(320,349).color(0,0,0,100);
-            contextNode.addsprite("dialogelement_help.png").pos(480,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
+            contextNode.addsprite("dialogelement_help.png").pos(510,349).scale(130).setevent(EVENT_UNTOUCH,gotohelp,"power");
             var offy=152;
             var mon = datadict.get("monster");
             var noOwn = datadict.get("noOwner");
@@ -439,8 +439,8 @@ class WarControl extends ContextObject{
                 rightuser.addlabel(datadict.get("rightname"),null,18).pos(82,22).color(0,0,0,100);
                 leftuser.addsprite("nobi"+str(datadict.get("leftnob"))+".png").anchor(50,50).pos(94,57).size(25,25);
                 rightuser.addsprite("nobi"+str(datadict.get("rightnob"))+".png").anchor(50,50).pos(94,57).size(25,25);
-                leftuser.addlabel(NOBNAME[datadict.get("leftnob")],null,18).pos(111,51).color(0,0,0,100);
-                rightuser.addlabel(NOBNAME[datadict.get("rightnob")],null,18).pos(111,51).color(0,0,0,100);
+                leftuser.addlabel(NOBNAME[datadict.get("leftnob")],null,14).pos(111,51).color(0,0,0,100);
+                rightuser.addlabel(NOBNAME[datadict.get("rightnob")],null,14).pos(111,51).color(0,0,0,100);
                 
                 var lgpower = datadict.get("leftgodpower");
                 if(lgpower>0){

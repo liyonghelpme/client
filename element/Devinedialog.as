@@ -26,8 +26,8 @@ class Devinedialog extends ContextObject{
             buildid = global.request[global.currentLevel].bid;
             element = node();
             element.addsprite("devineback.jpg").anchor(50,0).pos(219,10);
-            element.addlabel(global.getStatcString("godShow"),null,30).anchor(50,50).pos(219,43).color(0,0,0,100);
-            element.addlabel(global.getStaticString("inGodShow")+godstr[buildid],null,16).anchor(50,50).pos(219,75).color(0,0,0,100);
+            element.addlabel(global.getStaticString("godShow"),null,30).anchor(50,50).pos(219,43).color(0,0,0,100);
+            element.addlabel(godstr[buildid],null,16).anchor(50,50).pos(219,75).color(0,0,0,100);
             selecttab = -1;
             
             var level = [10, 12, 14, 16, 20];

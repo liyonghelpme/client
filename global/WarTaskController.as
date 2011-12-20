@@ -117,7 +117,7 @@ class WarTaskController extends ContextObject{
         contextNode.addlabel(wartaskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(wartaskstep >= wartasknum){
             contextNode.addlabel(global.getStaticString("taskShare"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
-            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
+            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,200).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
             element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
             element.addlabel(str(wartaskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);

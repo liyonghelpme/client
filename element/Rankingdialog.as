@@ -172,7 +172,7 @@ class Rankingpage extends ContextObject{
                             cell.texture("rankcell7"+fix+".jpg");
                             nob=item[6]*3+item[7];
                             if(nob>=0){
-                                cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
+                                cell.addlabel(NOBNAME2[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
                             else{
                                 cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
@@ -222,7 +222,7 @@ class Rankingpage extends ContextObject{
                             cell.texture("rankcell7"+fix+".jpg");
                             nob=item[6]*3+item[7];
                             if(nob>=0){
-                                cell.addlabel(NOBNAME[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
+                                cell.addlabel(NOBNAME2[nob],null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);
                             }
                             else{
                                 cell.addlabel(global.getStaticString("noBattle"),null,16,FONT_BOLD).pos(299,10).color(0,0,0,100);

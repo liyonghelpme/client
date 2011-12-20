@@ -103,7 +103,7 @@ class UserControl extends ContextObject{
             if(eudata[1]>=0){
                 board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
                 board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
-                board.addlabel(NOBNAME[eudata[2]*3+eudata[6]],null,18).pos(100,77).color(0,0,0,100);
+                board.addlabel(NOBNAME[eudata[2]*3+eudata[6]],null,14).pos(100,77).color(0,0,0,100);
             }
             else{
                 board.addlabel(global.getStaticString("master")+global.context[1].userdict.get(eudata[5])[4],null,18).pos(56,56).color(0,0,0,100);

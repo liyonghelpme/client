@@ -3,7 +3,9 @@ class TestWebControl extends ContextObject{
     var web;
     var mode;
     var helpstr;
+    var inputm;
     function TestWebControl(m){
+        inputm = m;
         contextname = "dialog-web";
         contextNode = null;
         lock =0;
@@ -25,6 +27,22 @@ class TestWebControl extends ContextObject{
     }
 
     function paintNode(){
+        contextname = "dialog-web";
+        if(inputm==0){
+            contextname="dialog-circle";
+        }
+        else if(inputm==3){
+            contextname="dialog-mark";
+        }
+        else if(inputm==4){
+            contextname="dialog-papayas";
+        }
+        else if(type(inputm)==type("")){
+            contextname="dialog-help";
+            mode=2;
+            helpstr = inputm;
+        }
+
         contextNode = sprite("webback.jpg").anchor(50,50).pos(400,240);
         contextNode.setevent(EVENT_TOUCH,closedialog);
         contextNode.setevent(EVENT_MOVE,closedialog);

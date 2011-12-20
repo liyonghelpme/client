@@ -17,17 +17,17 @@
 
 ["nest_talk_other","I'will be stronger after training,come and train me now!"],["nest_talk_feedover","I'm satisfied now,thanks for seeding"],["nest_talk_notfeedover","I'm hungry now,would you feed me?"],
 
-["nest_talk_sleep","I need to adapt growing now,I can fly after being fed to 285 point!"],
+["nest_talk_sleep","I'm still growing now, I can't fly until fed to 285 point!"],
 
 ["nest_getup_1","Your pet has been evolved successfully!a soil property dragon is borned."],["nest_getup_2","It become a young dragon!"],
 
 ["nest_getup_format","[NAME][DESCRIBE]'s current growing point is:[HEALTH],propertyis:[PROPERTY], ATK : [ATTACK]"],
 
-["nest_pet_name","enter your pet's name:"],["nest_pet_name_warning","your pet's name can not be changed after named"],
+["nest_pet_name","enter your pet's name:"],["nest_pet_name_warning","name can only be changed once"],
 
 ["nest_gotohelp","check the assistant document for better experience in pet system"],
 
-["box_str_1","Help me open this treasure chest please!"],["box_str_2","Let's share the treasure!"],["box_str_3","A <g>mysterious treasure chest<g> was found, ask friends to help open it."],
+["box_str_1","Help me open this treasure chest please!"],["box_str_2","Let's share the treasure!"],["box_str_3","A mysterious treasure chest was found, ask friends to help open it."],
 
 ["god_bless_over","you have perform magics already!"],
 
@@ -41,7 +41,7 @@
 
 ["default_petname","my pet"],
 
-["news_nonews","No messages"],
+["news_nonews","No more news"],
 
 ["news_element0","<b>[NAME]<b> visit your land"],
 
@@ -75,7 +75,7 @@
 
 ["message_send_success","Successfully send"],["text_empire_name","Please input empire name: "],
 
-["update_normal","Ordinary"],["update_caesars","Fast"],["update_warning", "The building is occupied,upgrading will interupt the operation,are you sure?"],
+["update_normal","Ordinary"],["update_caesars","Fast"],["update_warning", "The building is occupied. Upgrading will interupt the operation,are you sure?"],
 
 ["onekey_plant","One button plant"],["onekey_harvest","One button harvest"],["onekey_product","One button collect taxes"],["onekey_visit_normal","One button ordinary visit"],["onekey_visit_inc","One button accumulated visit"],["onekey_title","One button operation"],
 
@@ -101,28 +101,29 @@
 ["quit", "Quit"],["back", "Back"],
 
 ["sendFight", "Sent forces"], ["totalFight", "Total forces"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defense"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defence"], ["retry", "Retry"], 
-["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations,you finish this task!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary"], ["fastAdd", "Fast"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left"], ["allyNum", "Ally number"], ["sureToally", "Sure to ally with him/her?"], 
+["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congratulations, you finish this task!"], ["shareReward", "Share with your friends, you will get reward."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come on to build your own miracle empire with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary"], ["fastAdd", "Fast"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left "], ["allyNum", " Ally number"], ["sureToally", "Sure to ally with him/her?"], 
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"],
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
 ["cancelAlly", "Are you sure to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"],
 ["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's atk will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "magic performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
-["dragon", "The dragon's nest will make it possible to summon your own pet!Are you sure?"], 
+["dragon", "The Dragon's nest will make it possible to summon your own pet!Are you sure?"], 
 ["godBless", "[GOD] can perform magic, summon [GOD],are you sure?"], 
 ["call", "Summon"], ["coin", "coin"], ["freePeople", "idle people"], ["food", "food"], ["zijin", "Upgrading to the violet golden level to use one-step finishing for free"], ["freeZijin", "You can use one-step finishing for free now"], ["youGet", "Congratulations!You get "], 
 ["youPost", "[NAME] got [CARD] [CARDLEV],join [NAME] to build your own miracle empire!"],
-["loading", "Loading..."], ["noNews", "No more news"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
-["godShow", "Magic"], ["inGodShow", "in the magic time of effect,"],
-["show", "perform"], ["friend", "Friends"], ["level", "Lev"],["expandOver", "Congratulations! Expanding successfully"], ["expandPost", "[NAME] has expanded his territory,come and join the Miracle Empire!"], ["feedback", "If you have any advice of feedback,please email"], ["feedGift", "You will get mysterious gifts if your advice is accepted"], ["sendGift", "Choose a gift for <g>"],["ask", "Ask "], ["send", "Send"], ["accept", "Accept"], ["levelUp", "[NAME] has level up to [LEVEL],join the Miracle Empire and enjoy!"], ["killAll", "[NAME] has defeated the monsters and secure his territory,join the Miracle Empire and have fun!"],["nextMonster", "Next attack: "], ["comeSoon", "Coming soon"],
+["loading", "Loading..."], ["noNews", "No messages"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
+["godShow", "Magic"], ["inGodShow", ""],
+["show", "Perform"], ["friend", "Friends"], ["level", "Lev"],["expandOver", "Congratulations! Expanding successfully"], ["expandPost", "[NAME] has expanded his territory,come and join the Miracle Empire!"], ["feedback", "If you have any advice of feedback,please email"], ["feedGift", "You will get mysterious gifts if your advice is accepted"], ["sendGift", "Choose a gift for <g>"],["ask", "Ask "], ["send", "Send"], ["accept", "Accept"], ["levelUp", "[NAME] has level up to [LEVEL],join the Miracle Empire and enjoy!"], ["killAll", "[NAME] has defeated the monsters and secure his territory,join the Miracle Empire and have fun!"],["nextMonster", "Next attack: "], ["comeSoon", "Coming soon"],
 ["attackIs", "ATK : "], ["powerlack", "You don't have enough fighting capacity!"], 
 ["monRob", "Monsters have robbed [FOOD] crops"],
-["activeDra", "would you help me activating?"], ["letsShare", "Let's share together!"], ["askForAct", "Ask friends for help!"], ["helpMe", "Help"],["askFri", "Ask help"], ["unknown", "Unknown"], ["getDragon", "has got the dragon's nest,but still need your help to activate,let's go and help him!"], ["callPet", "Congratulations! You have activated the dragon's nest,now you can summon your pet!"], ["myPet", "my pet"], ["dragonPost", "[NAME] has activated dragon's nest successfully,join the Miracle Empire and have fun!"], ["curPet", "current pet"], ["changeMode", "change mode"],
+["active", "Active"],
+["activeDra", "would you help me activate it?"], ["letsShare", "Let's share together!"], ["askForAct", "Ask friends for help!"], ["helpMe", "Help"],["askFri", "Ask help"], ["unknown", "Unknown"], ["getDragon", "has got the Dragon's nest,but still need your help to activate,let's go and help him!"], ["callPet", "Congratulations! You have activated the Dragon's nest,now you can summon your pet!"], ["myPet", "my pet"], ["dragonPost", "[NAME] has activated Dragon's nest successfully,join the Miracle Empire and have fun!"], ["curPet", "current pet"], ["changeMode", "change mode"],
 ["petAtt", "[NAME] will increase [POWER] fighting point every growing point,are you sure changing mode?"], ["freeFee", "for free"], ["changeAtt", "Change attribute"], ["petPro", "[NAME]'s basic atk is [POWER], every growing point adds [ADD] atk. Are you sure to change?"],
 ["choosePet", "Choose pet"], ["callDragonDia", "[NAME]'s basic atk is [POWER], every growing point add [ADD] atk. Are you sure to summon?"],
-["inProtect", "under protection"], ["attNoProtect", "You can't enable protection mode during attacking period"],
+["inProtect", "Protected"], ["attNoProtect", "You can't enable protection mode during attacking period"],
 ["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congratulations!Level up"], ["goInNewMap", ", New map entered,you will see stronger opponents there,try to defeat them!"], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
 ["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase "],["acc", "Quicken"],
 ["leftTime", "Time left "], ["noBattle", "War mode unable"], ["winNum", "wins"], ["netRefresh", "data exception because of net problem,please try again"], ["fresh", "refresh"],["fightAdd", "hint:soilders will have fighting capacity added when quarteres at fortress"],
-["peopUp", "the miximum of population"], 
+["peopUp", " population"], 
 ["sureTosell", "Are you sure to sell "],
 ["sell", "Sell"], 
 ["toDetect", "use on detecting"], 
@@ -141,8 +142,29 @@
 ["speNeed", "not enough special material"], 
 ["clearList", "Hint:This list will be emptied in new battlefield"],
 ["reqHandle", "Requests solved"], 
-["income", "Congratulations![COIN] coins have been paid tribute to you,You have [NUM] colonies currently. The more your colonies is, The more your rewards is!"], 
+["income", "Congrats! You have [NUM] colonies, they give you [COIN] coins as tribute."], 
 ["incomePost", "[NAME] has gained tribute rewards from colonies,join the wonder empire and have fun"], 
 ["chooseWood", "choose lumber"],
-["youNeed", "You still lack "], ["speNeed", "Need more special materials"]
+["youNeed", "You still lack "], ["speNeed", "Need more special materials"],
+["fullfilMana", "Fullfil mana"], ["fullfil", "Fullfil"], ["curMana", "Mana"], ["nextTime", "next charge time "], 
+
+["You", "You"], ["StillNeed", " still need "], 
+
+["MonsterLevUp", "You still need defeat [NUM] [NAME] to upgrade to lev[LEV], and your magic capacity will +2 when upgrade to top lev"],
+["ChangELevUp", "You still need [DAY] continuous logins to get Moon goddess lev[LEV], and your magic capacity will +1"],
+["OtherCardLevUp", ""],
+["NobCard", "[WHO] needs to defeated [NUM] more opponents to upgrade to [CARD]"],
+["BusiCard", "[WHO] have to reach [NUM] to upgrade your [TYPE] to the next level. Your magic capacity will +1 when upgrade!"],
+["FriendCard0", "[WHO] need to upgrade the god of friendship to violet golden level to get [NAME] [LEV]. Each upgrade increase one magic capacity."],
+["FriendCard1", "You need [NUM] more friends to get [NAME] [LEV]. Each upgrade increase one magic capacity."],
+["FriendCard2", "You need to open [NUM] more treasure chest for your friends to get [NAME] [LEV]. Each upgrade increase one magic capacity."],
+["FriendCard3", "You need to feed your friends' dragons [NUM] more times to get [NAME] [LEV]. Each upgrade increase one magic capacity."],
+["FriendCard4", "You need to reach level [NUM] to get [NAME] [LEV]. Each upgrade increase one magic capacity."],
+["FriendCard5", "You can use one-step visiting from now on!"],
+["MonsterZijin", "Your magic capacity will increase 2 when get violet card."],
+["ChangEZijin", "Your magic capacity will increase 1 when card level up."],
+["PlantZijin", "Your magic capacity will increase 1 when card level up."],
+["BusiZijin", "Your magic capacity will increase 1 when card level up."],
+["NobZijin", "Your magic capacity will increase 1 when card level up."],
+["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"]
 ]
