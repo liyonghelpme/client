@@ -1,6 +1,9 @@
 class ImageController{
-    var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
-    "wartask.txt", "task.txt", "dict.txt", "static.txt", "others.txt", "names.txt",
+    //business pictures
+    /*
+    "shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
+    */
+    /*
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
     "dialogelement_state3.png", "dialogelement_state4.png",
     "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
@@ -27,17 +30,14 @@ class ImageController{
     "water-1-10.png","water-1-11.png","water-1-12.png","water-1-13.png","water-1-1.png","water-1-2.png","water-1-3.png","water-1-4.PNG","water-1-5.png","water-1-6.png",
     "water-1-7.png","water-1-8.png","water-1-9.png","water-1.png","water-2.png","water-3.png","water-4-1.png","water-4-2.png","water-4-3.png","water-4-4.png","water-4-5.png",
     "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png", "monsteravatar0.jpg", "monsteravatar1.jpg", "monsteravatar2.jpg", "monsteravatar3.jpg", "monsteravatar4.jpg", "monsteravatar5.jpg", "monsteravatar6.jpg", "selopen.png", "selclose.png"
+    */
+    var images1 = [
+    "wartask.txt", "task.txt", "dict.txt", "static.txt", "others.txt", "names.txt"
     ];
-    const images2 = [
+    //war pictures
+    /*
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
 "wartabperson.png","adddefence.png","attack_head.png","attackbeginelement.png", 
-"animate_self_left_2_4.png","animate_enemy_1_1.png","dialogback_attack.png",
-"animate_enemy_1_2.png","animate_enemy_2_1.png","animate_enemy_2_2.png","animate_enemy_left_0_1.png","animate_enemy_left_0_2.png","animate_enemy_left_0_3.png",
-"animate_enemy_left_0_4.png","animate_enemy_left_0_5.png","animate_enemy_left_0_6.png","animate_enemy_left_0_8.png","animate_enemy_left_0_9.png","animate_enemy_left_0_10.png",
-"animate_enemy_left_0_11.png","animate_enemy_left_0_12.png","animate_enemy_left_0_13.png","animate_enemy_left_1_1.png","animate_enemy_left_1_2.png","animate_enemy_left_1_3.png",
-"animate_enemy_left_1_4.png","animate_enemy_left_2_1.png","animate_enemy_left_2_2.png","animate_enemy_left_2_3.png","animate_enemy_left_2_4.png","animate_self_left_0_1.png",
-"animate_self_left_0_2.png","animate_self_left_0_3.png","animate_self_left_0_4.png","animate_self_left_0_5.png","animate_self_left_0_6.png","animate_self_left_0_8.png",
-"animate_self_left_0_9.png","animate_self_left_0_10.png","animate_self_left_0_11.png","animate_self_left_0_12.png","animate_self_left_0_13.png","animate_self_left_1_4.png",
 "battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png","battleresultback.jpg","battleuserback0.png","battleuserback1.png",
 "defence_head.png","defenceback.jpg","dialogback_warabout.png","dialogtab_warabout0.png","adddefence2.png",
 "dialogtab_warabout1.png","flagother.png","help.png","mapelement0.png","mapelement2.png","mapelement3.png","mapempirelv1.png",
@@ -52,7 +52,9 @@ class ImageController{
 "warbutton01.png","warbutton10.png","warbutton11.png","warbutton20.png","warbutton21.png",
 "warinfotab00.png","warinfotab01.png","warinfotab10.png","warinfotab11.png","warinfotab12.png","warmenulistback.png","warmenutab0.png",
 "warmenutab1.png","warrecord.png","warrecordcell.png","4.mp3", "adddefencetitle.png","adddefenceboard.jpg","nobattletab0.png","nobattletab1.png","wartabperson_b.png","wartabperson_r.png",
-"warlostleft.jpg","warwinelement2.jpg","warwinleft.jpg","warloseelement2.jpg","help2.png","defence.png","opbutton16.png"];
+"warlostleft.jpg","warwinelement2.jpg","warwinleft.jpg","warloseelement2.jpg","help2.png","defence.png","opbutton16.png"
+*/
+    const images2 = ["help2.png"];
     var images;
     var imageindex;
     var imagemax;

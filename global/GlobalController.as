@@ -169,7 +169,6 @@ if(sta != null)
     staticString = sta;
 }
 
-
 var stringDict;
 sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
 sta = json_loads(sta);
@@ -797,3 +796,4 @@ class GlobalController{
 import global.SpriteManager;
 var global= new GlobalController();
 var spriteManager = new SpriteManager(global);
+spriteManager.self = spriteManager;

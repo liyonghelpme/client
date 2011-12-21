@@ -44,7 +44,11 @@ class WarChoose extends ContextObject{
                 n.texture("warchoosebuttonback0.png",filter);
                 global.popContext(null);
                 if(buttons[p] == 0)
-                    global.pushContext(null,global.context[0].warmap,NonAutoPop);
+                {
+                    trace("manager get monster page");
+                    spriteManager.getMonster();
+                    //global.pushContext(null,global.context[0].warmap,NonAutoPop);
+                }
                 else if(buttons[p] == 1){
                     if(global.user.getValue("nobility")<0){
                         var tmp=new Warningdialog([global.getStaticString(1),1,3]);

@@ -166,5 +166,6 @@
 ["PlantZijin", "Your magic capacity will increase 1 when card level up."],
 ["BusiZijin", "Your magic capacity will increase 1 when card level up."],
 ["NobZijin", "Your magic capacity will increase 1 when card level up."],
-["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"]
+["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"],
+["Download", "Downloading"]
 ]

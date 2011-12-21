@@ -1,5 +1,7 @@
 class ImageController{
-    const images1 = ["friend_objback1s.png","new.png","opbutton9.png","warchatback.png","warchatbutton3.png","warchattop.png","warchatbottom.png","warchatsend.png",
+    const images1 = [
+    /*
+    "friend_objback1s.png","new.png","opbutton9.png","warchatback.png","warchatbutton3.png","warchattop.png","warchatbottom.png","warchatsend.png",
     "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png",
     "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","soldier3_1.png","soldier3_2.png","soldier3_3.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
@@ -10,8 +12,11 @@ class ImageController{
     "egg-3-3.png","egg-3-4.png","egg-3-5.png","egg-3-6.png","egg-3-7.png","egg-3.png","nestbuildingback.png","nestbuildingfiller.png","nestdialogelement.jpg","nestpetfiller0.png",
     "nestpetfiller1.png","nestpetfiller2.png","nestpettab1.png","nesttab0.png","opbutton19.png","opbutton21.png","opbutton23.png","opbutton25.png","petrenamepic.jpg","build1000.png",
     "egg-1-0.png","egg-1-1.png","egg-1-2.png","egg-1-3.png","egg-1.png","egg-2-0.png","egg-2-1.png","egg-2-2.png","egg-2-3.png","egg-2.png","egg-3-0.png","egg-3-1.png",
-    "blessing1.png","blessing2.png","blessing3.png","blessing4.png","blessing5.png","blessing6.png","blessing7.png","blessing8.png","blessing9.png","opbutton17.png", "loading-winter.jpg", "loadingbar2.png"];
+    "blessing1.png","blessing2.png","blessing3.png","blessing4.png","blessing5.png","blessing6.png","blessing7.png","blessing8.png","blessing9.png","opbutton17.png", "loading-winter.jpg", "loadingbar2.png"
+    */
+    ];
     const images2 = [
+    /*
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
 "wartabperson.png","adddefence.png","attack_head.png","attackbeginelement.png", 
 "animate_self_left_2_4.png","animate_enemy_1_1.png","dialogback_attack.png",
@@ -35,7 +40,9 @@ class ImageController{
 "warbutton01.png","warbutton10.png","warbutton11.png","warbutton20.png","warbutton21.png",
 "warinfotab00.png","warinfotab01.png","warinfotab10.png","warinfotab11.png","warinfotab12.png","warmenulistback.png","warmenutab0.png",
 "warmenutab1.png","warrecord.png","warrecordcell.png","4.mp3", "adddefencetitle.png","adddefenceboard.jpg","nobattletab0.png","nobattletab1.png","wartabperson_b.png","wartabperson_r.png",
-"warlostleft.jpg","warwinelement2.jpg","warwinleft.jpg","warloseelement2.jpg","help2.png","defence.png","opbutton16.png"];
+"warlostleft.jpg","warwinelement2.jpg","warwinleft.jpg","warloseelement2.jpg","help2.png","defence.png","opbutton16.png"
+    */
+];
     var images;
     var imageindex;
     var imagemax;
