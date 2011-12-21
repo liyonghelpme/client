@@ -113,7 +113,7 @@ class CheckTime extends ContextObject{
             global.popContext(null);
             lock = 0;
             timeisend=1;
-            global.timer.removelistener(self);
+            //global.timer.removelistener(self);
         }
     }
 

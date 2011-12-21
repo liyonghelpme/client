@@ -15,6 +15,11 @@ class Petstate4 extends ContextObject{
         else if(build.state==5){
             contextNode.addlabel(global.getFormatString("nest_getup_format",["[NAME]",build.petname,"[DESCRIBE]",global.getStaticString("nest_getup_2"),"[HEALTH]","201","[PROPERTY]",str(PETS_UP[build.objid]+EXTEND_UP[build.extendid]),"[ATTACK]",str(build.attack)]),null,26,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,114).color(0,0,0,100);
         }
+        else
+        {
+            contextNode.addlabel("它成长啦！",null,26,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,114).color(0,0,0,100);
+            
+        }
         //contextNode.addsprite("dialogelement_help.png").scale(150).pos(334,166).setevent(EVENT_UNTOUCH,gotohelp,"colony");
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(150,234).setevent(EVENT_UNTOUCH,closedialog,1);
         contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(150,234);

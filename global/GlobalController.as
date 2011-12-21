@@ -15,6 +15,8 @@ const NotAdd = 2;
 //const BASE_URL = "http://223.4.87.9:8000/";
 const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const HELP_URL = "http://uhz000738.chinaw3.com/"
+const hmax = [51,201,831, 9999];
+const hmaxs = [3, 5, 7, 7];
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -687,6 +689,7 @@ class GlobalController{
                 task.inctaskstep(1);
             }
         }
+        //trace("wartask", wartask.wartasktype, wartask.wartaskreq, co.contextname);
         if(wartask.wartasktype==2){
             if(wartask.wartaskreq == co.contextname){
                 wartask.incwartaskstep(1);

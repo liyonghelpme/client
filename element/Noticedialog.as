@@ -6,6 +6,9 @@ class Noticedialog extends ContextObject{
     var updatenum;
     var showlabel;
     var buttonlabel;
+    var newupdate = [
+        "特给予50凯撒币补偿您之前获得过的一键免费操作。感谢支持！"
+    ]; 
     function paintNode(){
         updatenum=-1;
         contextNode = sprite("dialogback_expand.png",ARGB_8888).anchor(50,50).pos(400,300);
@@ -18,7 +21,7 @@ class Noticedialog extends ContextObject{
     
     function nextupdate(){
         updatenum++;
-        var newupdate=newupdate1;
+        //var newupdate=newupdate1;
         var l = len(newupdate);
         if(updatenum == l){
             global.popContext(null);

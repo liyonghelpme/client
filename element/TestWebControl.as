@@ -3,13 +3,15 @@ class TestWebControl extends ContextObject{
     var web;
     var mode;
     var helpstr;
-    var inputm;
+    var initm;
     function TestWebControl(m){
         inputm = m;
         contextname = "dialog-web";
         contextNode = null;
         lock =0;
         mode = m;
+        initm = m;
+        trace(m, "type");
         if(m==0){
             contextname="dialog-circle";
         }
@@ -24,23 +26,25 @@ class TestWebControl extends ContextObject{
             mode=2;
             helpstr = m;
         }
+        trace("context name", contextname);
     }
 
     function paintNode(){
+        trace("paint node");
         contextname = "dialog-web";
-        if(inputm==0){
+        if(initm==0){
             contextname="dialog-circle";
         }
-        else if(inputm==3){
+        else if(initm==3){
             contextname="dialog-mark";
         }
-        else if(inputm==4){
+        else if(initm==4){
             contextname="dialog-papayas";
         }
-        else if(type(inputm)==type("")){
+        else if(type(initm)==type("")){
             contextname="dialog-help";
             mode=2;
-            helpstr = inputm;
+            helpstr = initm;
         }
 
         contextNode = sprite("webback.jpg").anchor(50,50).pos(400,240);
