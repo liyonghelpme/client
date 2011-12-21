@@ -470,9 +470,9 @@ class GlobalController{
     }
     
     function getEmptyName(gid){
-        var firstName = ["Moon ","Sun ", "Earth ", "Lone ", "Sky ", "Far ", "New ", "Old ", "Wind ", "Tooth "];
-        var secondName = ["明", "暗", "井", "景", "静", "迟", "车", "龙", "紫", "念", "宁", "凝", "幻", "北", "西", "东", "南", "隐"];
-        var lastName = ["国", "城", "郡", "谷", "邦", "县", "寨", "洞", "府"];
+        var secondName = ["Moon ","Sun ", "Earth ", "Lone ", "Sky ", "Far ", "New ", "Old ", "Wind ", "Tooth "];
+        var firstName = ["Light ", "Dark ", "Small ", "Great ", "Sill ", "Late ", "Far ", "Near ", "Red ", "Blue ", "Lone ", "East "];
+        var lastName = [" Country", " City", " Town", " Village", " State", " Province", " Bay", " Hill", " Lake"];
         return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
     }
     

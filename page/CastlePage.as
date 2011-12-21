@@ -738,7 +738,10 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
-            spriteManager.getWar();
+            global.pushContext(self,global.context[0].warpage,0);
+            global.context[0].warpage.initialdata();
+        
+            //spriteManager.getWar();
         }
     }
 
