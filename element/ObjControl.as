@@ -86,7 +86,7 @@ class ObjControl extends ContextObject{
                         buildable[i].update(global.getStaticString("caesars"),price-global.user.getValue("caesars"));
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
-                    objs[i].addlabel(str(price),null,16, FONT_NORMAL, 100, 100).pos(34,202).color(cl,0,0,100);
+                    objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
                 }
                 else{
                     if(global.user.getValue("money")<price){

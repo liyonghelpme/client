@@ -5,7 +5,7 @@ class TestWebControl extends ContextObject{
     var helpstr;
     var initm;
     function TestWebControl(m){
-        inputm = m;
+        initm = m;
         contextname = "dialog-web";
         contextNode = null;
         lock =0;

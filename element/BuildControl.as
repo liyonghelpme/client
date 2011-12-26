@@ -197,16 +197,16 @@ class BuildControl extends ContextObject{
         }
         else{
             back = contextNode.addsprite("buildcontrolback1.png").anchor(50,100).pos(0,9);
-            back.addlabel(global.getname("obj",placeObj.objectid-500),null,20).anchor(50,50).pos(71,123).color(0,0,0,100);
-            bl=100;
+            back.addlabel(global.getname("obj",placeObj.objectid-500),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
+            bl=120;
             if(placeObj.objectid==541){
-                bl=50;
+                bl=60;
             }
             else if(placeObj.contextid==2){
-                bl=75;
+                bl=92;
             }
-            back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(71,55).scale(bl);
-            beginx = -83;
+            back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65).scale(bl);
+            beginx = -119;
         }
         if(placeObj.objectid<1000&&mode!=4)
             buttons.append(2);

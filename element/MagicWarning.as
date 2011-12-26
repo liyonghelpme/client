@@ -17,7 +17,7 @@ class MagicWarning extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("pic6.jpg").anchor(50, 50).pos(80, 120);
-            element.addlabel("抱歉你的魔法值不足，是否充满？", null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
+            element.addlabel(global.getStaticString("LackMagic"), null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
         }
         return element;
     }
@@ -26,7 +26,7 @@ class MagicWarning extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["充满","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("fullfill"), global.getStaticString("cancel")]);
         var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
