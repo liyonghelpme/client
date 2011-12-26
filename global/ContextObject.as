@@ -2,13 +2,13 @@ import global.GlobalController;
 class ContextObject{
     var global;
     var contextLevel;
-    var contextNode;
+    var contextNode = null;
     var contextname;
     var self;
     function ContextObject(){
         //trace("context object init", contextname);
-        contextname = "not init";
-        contextNode = null;
+        //contextname = "not init";
+        //contextNode = null;
         //trace("main context ", contextname);
     }
     function getNode(){

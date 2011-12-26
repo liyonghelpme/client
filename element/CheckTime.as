@@ -25,7 +25,7 @@ class CheckTime extends ContextObject{
 
             qlabel = qfiller.addlabel("0",null,20).color(0,0,0,100).anchor(50,50).pos(75,12);
             timelabel = element.addlabel("", null, 18).color(0, 0, 0, 100).anchor(50, 50).pos(202, 154);
-            //global.timer.addlistener(999999,self);
+            global.timer.addlistener(global.timer.currenttime+999999,self);
         }
         return element;
     }
@@ -113,7 +113,7 @@ class CheckTime extends ContextObject{
             global.popContext(null);
             lock = 0;
             timeisend=1;
-            global.timer.removelistener(self);
+            //global.timer.removelistener(self);
         }
     }
 

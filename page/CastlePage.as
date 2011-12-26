@@ -1032,6 +1032,7 @@ class CastlePage extends ContextObject{
         }
         var visitn = data.get("visited");
         data.update("visited",1);
+        trace("visited", data.get("visited"), data.get("corn"));
         if(visitn==0){
             visitn = data.get("corn",0);
             global.pushContext(self,new Visitreward(visitn),NonAutoPop);
@@ -1250,7 +1251,11 @@ class CastlePage extends ContextObject{
             ccard = global.card;
             ccard[13] = ccard[13]+data.get("loginNum",0)*1000;
             global.user.setValue("food",data.get("food",0));
-            global.user.setValue("money",data.get("corn",0));
+            var moneyN = data.get("corn", 0);
+            //money too much just ignore part
+            if(moneyN < 0)
+                moneyN = MAX_INT;
+            global.user.setValue("money", moneyN);
             global.user.setValue("exp",data.get("exp",0));
             if(data.get("lev",1)<global.user.getValue("level")){
                 global.http.addrequest(0,"levup",["uid","lev"],[global.userid,global.user.getValue("level")],self,"levelup");
@@ -1419,7 +1424,10 @@ class CastlePage extends ContextObject{
             if(newstate == 3){
                 global.user.setValue("wonnum",data.get("wonNum",0));
                 var bonus = data.get("bonus",0);
+
                 if(bonus != 0){
+                    //if(global.card[15] == 5 || global.card[14] == 5)
+                    //    addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];
@@ -1432,7 +1440,7 @@ class CastlePage extends ContextObject{
                     bdict.update("name","daily");
                     bdict.update("bonus",bonus);
                     addcmd(bdict);
-                    //addcmd(dict([["name","notice"]]));
+
                     var clevel = allcardlevelnum[0].index(global.card[13]%1000);
                     if(clevel!=-1){
                         bdict = dict();

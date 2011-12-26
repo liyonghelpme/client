@@ -97,7 +97,7 @@ class NestObject extends BuildObject{
             }
             //lock = 1;
             if(state >= 2){
-                var hmax = [51,201,831];
+
                 if(state > 2&&global.context[0].flagfriend==0&&petname==global.getStaticString("default_petname")){
                     global.pushContext(self,new PetRename(self),NonAutoPop);
                 }
@@ -236,7 +236,7 @@ class NestObject extends BuildObject{
                         contextNode.add(s,1,1);
                     }
                 }
-                else if(state==5){
+                else if(state>=5){
                     petstr = EXTEND_NAME[extendid];
                     if(contextNode.get(1)!=null){
                         destroynode(contextNode.get(1));
@@ -329,7 +329,7 @@ class NestObject extends BuildObject{
                 //contextNode.get(1).addaction(sequence(stop(),animate(1400,prestr+"2.png",prestr+"3.png",prestr+"3.png",prestr+"4.png",prestr+"5.png",prestr+"6.png",prestr+"7.png",UPDATE_SIZE),delaytime(200),
                 //repeat(animate(280,prestr+"f1.png",prestr+"f2.png",prestr+"f3.png",prestr+"f4.png",UPDATE_SIZE),2),itexture(prestr+"9.png",UPDATE_SIZE),delaytime(300),itexture(prestr+"4.png",UPDATE_SIZE),delaytime(200),itexture(prestr+"1.png",UPDATE_SIZE)));
             }
-            else if(state==5){
+            else if(state>=5){
                 //stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
@@ -425,9 +425,11 @@ class NestObject extends BuildObject{
     
     override function useaction(p,rc,c){
         if(p=="getup"){
-            var hhmaxs=[51,201,831];
             state=state+1;
-            health=hhmaxs[state-4];
+            if((state-4) < len(hmax))
+                health=hmax[state-4];
+            else
+                health = hmax[len(hmax)-1]
             global.pushContext(null,new Petstate4(self),NonAutoPop);
             setstate();
         }
@@ -457,8 +459,10 @@ class NestObject extends BuildObject{
             }
             else{
                 feeded = 1;
-                var hmaxs=[3,5,7];
-                hadd = hmaxs[state-3];
+                if((state-3) < len(hmaxs))
+                    hadd = hmaxs[state-3];
+                else
+                    hadd = hmaxs[len(hmaxs)-1]
                 global.user.changeValueAnimate2(global.context[0].ub,"food",-20*hadd,-6);
             }
             health=health+hadd;

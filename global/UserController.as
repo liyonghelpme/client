@@ -240,7 +240,10 @@ class UserController{
         getValue(name)[index] = value;
     }
     function changeValue(name,value){
-        setValue(name,getValue(name)+value);
+        var v = getValue(name)+value;
+        if(v < 0)
+            v = MAX_INT;
+        setValue(name,v);
         trace("LOG",name+" changed:"+str(value));
     }
     function changeValueAnimate(ne,key,value,hi){

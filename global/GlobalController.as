@@ -11,7 +11,8 @@ const darkColorAlpha = 65;
 const AutoPop = 1;
 const NonAutoPop = 0;
 const NotAdd = 2;
-
+const hmax = [51,201,831, 9999];
+const hmaxs = [3, 5, 7, 7];
 const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 

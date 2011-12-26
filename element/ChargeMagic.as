@@ -29,7 +29,7 @@ class ChargeMagic extends ContextObject{
             qlabel = qfiller.addlabel("0",null,20).color(0,0,0,100).anchor(50,50).pos(75,12);
 
             timelabel = element.addlabel("", null, 18).color(0, 0, 0, 100).anchor(50, 50).pos(285, 151);
-            //global.timer.addlistener(999999,self);
+            global.timer.addlistener(global.timer.currenttime+999999,self);
         }
         return element;
     }
@@ -107,7 +107,7 @@ class ChargeMagic extends ContextObject{
         else if(flagquick == 2){
             global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-costcae,0);
             global.popContext(null);
-            global.timer.removelistener(self);
+            //global.timer.removelistener(self);
             lock = 0;
             timeisend=1;
         }

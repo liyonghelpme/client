@@ -126,10 +126,19 @@ class BuildControl extends ContextObject{
             else{
                 namelabel = back.addlabel(global.data.getbuild(place.bid).get("name"),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state>=3){
-                    var maxs=[51,201,831];
-                    var hmaxs=[3,5,7];
-                    var max = maxs[place.state-3];
-                    var hmax= hmaxs[place.state-3];
+                    //var maxs = hmax;
+                    //var hmaxs=[3,5,7];
+                    var max;
+                    if((place.state - 3) < len(hmax))
+                        max = hmax[place.state-3];
+                    else
+                        max = hmax[len(hmax)-1];
+                    //var hmax;
+                    var add;
+                    if((place.state-3) < len(hmaxs))
+                        add = hmaxs[place.state-3];
+                    else
+                        add = hmaxs[len(hmaxs)-1];
                     var stt = place.health/(max/3);
                     if(stt>2) stt=2;
                     if(place.state==3){
@@ -141,7 +150,7 @@ class BuildControl extends ContextObject{
                         back.add(sprite(pstr+"7.png").anchor(50,0).pos(107,7).scale(70),1,111);
                         back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
-                    else if(place.state==5){
+                    else if(place.state >= 5){
                         pstr = EXTEND_NAME[place.extendid]+"-";
                         back.add(sprite(pstr+"1-1.png").anchor(50,50).pos(107,57).scale(70),1,111);
                         back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
@@ -152,12 +161,12 @@ class BuildControl extends ContextObject{
                     namelabel.anchor(0,50).pos(18,123).text(place.petname).scale(90);
                     buttons.append(23);
                     if(global.context[0].flagfriend == 1){
-                        if(place.health>=max||len(place.helpfriends)>=hmax||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
+                        if(place.health>=max||len(place.helpfriends)>=add||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
                             buttons[0] = -23;
                         }
                     }
                     else{
-                        if(place.feeded==1 || global.user.getValue("food")<20*hmax){
+                        if(place.feeded==1 || global.user.getValue("food")<20*add){
                             buttons[0] = -23;
                         }
                         if(place.state==5&&place.health<285){
