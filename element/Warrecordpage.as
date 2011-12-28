@@ -128,7 +128,7 @@ class Warrecordpage extends ContextObject{
             for(var i = 0; i < len(removelist);)
             {
                 var num = removelist[i];
-                if(len(datas[num]) > 17)//normal battleresult is length = 17
+                if(len(datas[num]) > 18)//normal battleresult is length = 17
                 {
                     removelist.pop(i);
                     removeEmpty.append(datas[num][18]);
