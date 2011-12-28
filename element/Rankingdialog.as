@@ -103,6 +103,8 @@ class Rankingpage extends ContextObject{
                         if(mode==0){
                             cell.texture("rankcell4"+fix+".jpg");
                             cell.addlabel("Level "+str(item[4]),null,16,FONT_BOLD).pos(133,34).color(0,0,0,100);
+                            if(item[5] < 0)
+                                item[5] = MAX_INT;
                             cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(341,34).color(0,0,0,100);
                             //cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(412,34).color(0,0,0,100);
                         }
@@ -152,6 +154,8 @@ class Rankingpage extends ContextObject{
                         if(mode==0){
                             cell.texture("rankcell5"+fix+".jpg");
                             cell.addlabel("lv "+str(item[4]),null,16,FONT_BOLD).pos(304,10).color(0,0,0,100);
+                            if(item[5] < 0)
+                                item[5] = MAX_INT;
                             cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(388,10).color(0,0,0,100);
                             //cell.addlabel(str(item[5]),null,16,FONT_BOLD).pos(436,10).color(0,0,0,100);
                         }

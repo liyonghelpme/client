@@ -9,7 +9,7 @@ class ResourceControl extends ContextObject{
     var btime;
     var slabel;
     var timelabel;
-    const RESOUCE_PRODUCT=[[1000,10,1,1],[3000,30,3,3],[5000,50,5,5],[10000,100,10,10],[50000,500,50,50],[100000,1000,100,100]];
+    const RESOUCE_PRODUCT=[[1000,10,1,1,6],[3000,30,3,3,5],[5000,50,5,5,4],[10000,100,10,10,3],[50000,500,50,50,2],[100000,1000,100,100,1]];
     function ResourceControl(g){
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
@@ -26,11 +26,18 @@ class ResourceControl extends ContextObject{
         var time=global.timer.currenttime-global.timer.times2c(rdata[9]);
         var tc = time/3600;
         var rc=RESOUCE_PRODUCT[rdata[2]];
+        var oldTime = tc;
+        if(tc > rc[4])
+            tc = rc[4];
         contextNode.addlabel(global.getStaticString("money")+global.getStaticString(":")+str(rc[0]*tc),null,18).pos(44,207).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("food")+global.getStaticString(":")+str(rc[1]*tc),null,18).pos(164,207).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("wood")+global.getStaticString(":")+str(rc[2]*tc),null,18).pos(274,207).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("stone")+global.getStaticString(":")+str(rc[3]*tc),null,18).pos(404,207).color(0,0,0,100);
-        contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+global.timer.times2c(rdata[9])-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
+        if(tc < rc[4])
+            contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+global.timer.times2c(rdata[9])-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
+        else
+            contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr(0)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
+            
         //contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+rdata[9]-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("fightAdd"), null, 18).pos(28,348).color(0,0,0,100);
         contextNode.addsprite("help2.png").pos(489,342).setevent(EVENT_UNTOUCH,gotohelp,"fortress");

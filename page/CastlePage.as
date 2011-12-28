@@ -1251,7 +1251,11 @@ class CastlePage extends ContextObject{
             ccard = global.card;
             ccard[13] = ccard[13]+data.get("loginNum",0)*1000;
             global.user.setValue("food",data.get("food",0));
-            global.user.setValue("money",data.get("corn",0));
+            var moneyN = data.get("corn", 0);
+            //money too much just ignore part
+            if(moneyN < 0)
+                moneyN = MAX_INT;
+            global.user.setValue("money", moneyN);
             global.user.setValue("exp",data.get("exp",0));
             if(data.get("lev",1)<global.user.getValue("level")){
                 global.http.addrequest(0,"levup",["uid","lev"],[global.userid,global.user.getValue("level")],self,"levelup");
