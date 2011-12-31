@@ -91,19 +91,34 @@ c_invoke(beginLoading,1000,null);
 function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
-    castle.initialFactorys();
+    castle.initialFactorys(page);
 }
 
 function setlogin(){
     flaglogin=0;
 }
-
+var pageTime = 0;
+var pages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+var curPage = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
             timer.stop();
             global.context[0].initialControls();
             page.removefromparent();
+        }
+        var newstate = page.get();
+        if(newstate < 3)
+        {
+            page.texture(pages[curPage]);
+            pageTime += 1;
+            if(pageTime >= 4)//2000 
+            {
+                pageTime = 0;
+                curPage++;
+                if(curPage >= len(pages))
+                    curPage = 0;
+            }
         }
         if(castle.initlock == 0 && flaglogin==0 && global.image.isdownloadfinish()==1){
             if(percentmax<81){
