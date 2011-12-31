@@ -105,6 +105,7 @@ class CastlePage extends ContextObject{
     var friendpredict;
     var waitfriend;
     var inpos = -140;
+    var LoadPage;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -1153,7 +1154,9 @@ class CastlePage extends ContextObject{
         contextNode.addaction(imoveby(x,y));
     }
 
-    function initialFactorys(){
+    function initialFactorys(page){
+        LoadPage = page;
+        page.put(10);
         blocknode = contextNode.addnode().visible(0);
         cpid = ppy_userid();
         pagedict = dict();
@@ -1177,6 +1180,7 @@ class CastlePage extends ContextObject{
             global.task.inittask(data.get("task"),data.get("taskstring"));
             global.wartask.initwartask(data.get("wartask",-1),data.get("wartaskstring",0));
             newstate = data.get("newstate",3);
+            LoadPage.put(newstate);
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
 
