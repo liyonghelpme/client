@@ -3,7 +3,7 @@
 "Congrats, you win!",
 "Sorry, you are defeated.",
 "[ENAME] is too powerful,strengthen your military power and never give up!",
-"Congratulations!you have defeated [ENAME],go on fighting and gain your glory!",
+"Congrats! you have defeated [ENAME],go on fighting and gain your glory!",
 "How to add power",
 "[USERNAME] has entered a new map.Come on,Let's build our own miracle empire with [USERNAME]!",
 "[USERNAME]has upgraded to[NOBNAME],Come on,Let's build our own miracle empire with [USERNAME]!",

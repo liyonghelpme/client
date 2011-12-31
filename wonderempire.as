@@ -64,7 +64,7 @@ var flaglastimage = 0;
 
 var percent =0;
 var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
-var lback = fetch("loading-chr.jpg");
+var lback = fetch("loadingback.jpg");
 var loadingstr = "";
 if(lback==null){
     page.texture("loadingback.jpg");

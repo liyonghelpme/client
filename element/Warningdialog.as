@@ -60,7 +60,7 @@ class Warningdialog extends ContextObject{
                     element.addlabel(str(info.get(infos[i]))+" "+infos[i],null,24).pos(148,basey+28*i+25).color(100,0,0,100);
                 }
                 if(infos.index(global.getStaticString("personmax"))!=-1){
-                    element.addsprite("dialogelement_help.png").pos(148,basey+28*i).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"personmax");
+                    element.addsprite("dialogelement_help.png").pos(365,basey+28*i).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"personmax");
                 }
                 dialog.usedefaultbutton(1,global.getStaticString("ok"));
             }

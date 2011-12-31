@@ -26,7 +26,8 @@ class Warrecordpage extends ContextObject{
         var outnum = 0;
         datas = global.user.getValue("warrecordlist");
         length = len(datas);
-        pagemax = (length-1)/PAGEITEMS+1;
+        //pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
         for(var i=0;i<length;i++)
             items.append(null);
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,414).color(0,0,0,100);
@@ -36,7 +37,7 @@ class Warrecordpage extends ContextObject{
     }
 
     function choosePage(n,e,po){
-        if(pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(pagenum == 1 && po == -1 || pagenum >= pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)

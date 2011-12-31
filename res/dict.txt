@@ -27,7 +27,7 @@
 
 ["nest_gotohelp","check the assistant document for better experience in pet system"],
 
-["box_str_1","Help me open this treasure chest please!"],["box_str_2","Let's share the treasure!"],["box_str_3","A mysterious treasure chest was found, ask friends to help open it."],
+["box_str_1","Help me open this treasure chest please!"],["box_str_2","Let's share the treasure!"],["box_str_3","You found a treasure chest, ask friends to help open it."],
 
 ["god_bless_over","you have perform magics already!"],
 
@@ -64,7 +64,7 @@
 ["monster_refresh_format","hahaha,[NAME],give me your crops,or you will be restless"],
 
 ["warrecord_notice_format","There are [NUM] wars, would you like to watch?"],
-["war_newmap_notice","Congrats ! you enter a new map. hint : prepare enough soldiers for next level map^_^"],
+["war_newmap_notice","Congrats! you enter a new map. Hint: there are more powerful players in this map"],
 ["spy_notice","tips:higher scout level,more details"],
 
 ["chat_empty","Content can't be empty"],["chat_wordlimit","word number > 30"],["chat_nettimeout","network timeout, send message fail"],
@@ -120,7 +120,7 @@
 ["petAtt", "[NAME] will increase [POWER] fighting point every growing point,are you sure changing mode?"], ["freeFee", "for free"], ["changeAtt", "Change attribute"], ["petPro", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] ATK. Are you sure to change?"],
 ["choosePet", "Choose pet"], ["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Are you sure to summon?"],
 ["inProtect", "Protected"], ["attNoProtect", "You can't enable protection mode during attacking period"],
-["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congrats! Level up"], ["goInNewMap", ", New map entered,you will see stronger opponents there,try to defeat them!"], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
+["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congrats! [NAME] has upgraded to lev [LEVEL], come on to build your own miracle empire!"], ["goInNewMap", ", New map entered,you will see stronger opponents there,try to defeat them!"], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
 ["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase "],["acc", "Quicken"],
 ["leftTime", "Time left "], ["noBattle", "War mode unable"], ["winNum", "wins"], ["netRefresh", "data exception because of net problem,please try again"], ["fresh", "refresh"],["fightAdd", "hint:soilders will have fighting capacity added when quarteres at fortress"],
 ["peopUp", " population"], 
@@ -146,7 +146,7 @@
 ["incomePost", "[NAME] has gained tribute rewards from colonies,join the wonder empire and have fun"], 
 ["chooseWood", "choose lumber"],
 ["youNeed", "You still lack "], ["speNeed", "Need more special materials"],
-["fullfilMana", "Fullfil mana"], ["fullfil", "Fullfil"], ["curMana", "Mana"], ["nextTime", "next charge time "], 
+["fullfilMana", "Fulfil magic"], ["fullfil", "Fulfil"], ["curMana", "Magic Value"], ["nextTime", "next charge time "], 
 
 ["You", "You"], ["StillNeed", " still need "], 
 

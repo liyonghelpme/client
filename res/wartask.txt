@@ -1,4 +1,4 @@
-{'id':0,'type':0,'req':'warinfo','pair':[],'des':['Unlock war mode','When you upgrade to lev 10', 'you can unlock war mode to fight with friends','Unlock war mode','hint: click map button then click war mode'],'checknum':1,'reward':[5000,10,0]};
+{'id':0,'type':0,'req':'warinfo','pair':[],'des':['Unlock war mode','You need upgrade to lev 10', 'you can unlock war mode to fight with friends','Unlock war mode','hint: click map button then click war mode'],'checknum':1,'reward':[5000,10,0]};
 {'id':1,'type':2,'req':'dialog-help','des':['View help','Learn about war mode by viewing help document','view help about war'],'checknum':1,'reward':[100,5,0]};
 {'id':2,'type':0,'req':'makeally','pair':[],'des':['Ally with friends','Ally with friend will bring you soldiers when you fight','ally with a friend'],'checknum':1,'reward':[500,10,0]};
 {'id':3,'type':3,'req':'adddefence','des':['Increase defense','Increase defence of wall hint: click castle then click add button to add defence','add 100 defence'],'checknum':100,'reward':[1000,15,0]};
