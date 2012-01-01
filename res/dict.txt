@@ -82,7 +82,7 @@
 ["onekey_gotohelp","How to use for free?"],
 
 ["tab_fighting","Fighting"],["tab_attackable","Fightable"],
-["tab_fortress", "fortress"], 
+["tab_fortress", "Fortress"], 
 ["nobattle_fail_whenhasattack", "Sorry, can't protect when attack"],
 ["nobattle_whenattack", "attack will stop your protect mode"],
 ["attack_whenattacked", "You are in attacking with him"],
@@ -107,7 +107,7 @@
 ["cancelAlly", "Are you sure to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"],
 ["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "lumbering"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The goddess of harvest can increase the crop yield by performing magic"], ["population", "the goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
 ["dragon", "The Dragon's nest will make it possible to summon your own pet!Are you sure?"], 
-["godBless", "[GOD] can perform magic, summon [GOD],are you sure?"], 
+["godBless", "[GOD] can perform magic, are you sure to summon [GOD]?"], 
 ["call", "Summon"], ["coin", "coin"], ["freePeople", "idle people"], ["food", "food"], ["zijin", "Upgrading to the violet golden level to use one-step finishing for free"], ["freeZijin", "You can use one-step finishing for free now"], ["youGet", "Congrats! You get "], 
 ["youPost", "[NAME] got [CARD] [CARDLEV],join [NAME] to build your own miracle empire!"],
 ["loading", "Loading..."], ["noNews", "No messages"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
