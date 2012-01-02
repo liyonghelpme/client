@@ -1181,6 +1181,7 @@ class CastlePage extends ContextObject{
             global.wartask.initwartask(data.get("wartask",-1),data.get("wartaskstring",0));
             newstate = data.get("newstate",3);
             LoadPage.put(newstate);
+            LoadPage = null;
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
 
@@ -1283,7 +1284,7 @@ class CastlePage extends ContextObject{
                     if(db.get("new")==null||db.get("new")<NEWFLAG){
                         global.flagshownew=1;
                         db.put("new",NEWFLAG);
-                        //addcmd(dict([["name","notice"]]));
+                        addcmd(dict([["name","notice"]]));
                     }
                 }
             var objs = data.get("stri","0,370,0,0,0").split(";");
@@ -1320,10 +1321,17 @@ class CastlePage extends ContextObject{
                 var s = new NormalObject(gid,i,j);
                 s.init(s,global);
                 grounds.append(s);
-                if(gid>0&&gid<500||gid>=600){
-                    var objid = int(objdata[2]);
-                    var time = int(objdata[3]);
-                    var finish = int(objdata[4]);
+                var objid;
+                var time;
+                var finish;
+                objid = int(objdata[2]);
+                time = int(objdata[3]);
+                finish = int(objdata[4]);
+                if(gid == 0)
+                {
+                    s.empireLevel = objid+1;
+                }
+                else if(gid>0&&gid<500||gid>=600){
                     if(gid/100==4){
                         if(gid<420){
                             objid=0;

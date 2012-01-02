@@ -60,65 +60,79 @@ var flaglogin = 0;
 var flaglastimage = 0;
 
 var percent =0;
-var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
+var backNode = node().size(800, 480).setevent(EVENT_TOUCH,donothing);
+var black = backNode.addsprite("dark.png").size(800, 480);
+var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
+var src = backNode.addsprite().anchor(50,50).pos(400,240);
+
+//var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
 var lback = fetch("loading-chr.jpg");
 var loadingstr = "";
 if(lback==null){
-    page.texture("loadingback.jpg");
+    src.texture("loadingback.jpg");
     //checkImages(0,0,0);
     //page.addlabel("正在加载新图片...",null,25).anchor(50,50).pos(400,450);
     node().addaction(request("loading-chr.jpg",1,null));
     //flaglogin=2;
 }
 else{
-    page.texture(lback);
+    src.texture(lback);
     //checkImages(0,0,0);
 }
-global.dialogscreen.add(page,0);
-page.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
+global.dialogscreen.add(backNode,0);
+backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
 var loadbar = fetch("loadingbar2.png")
 if(loadbar == null)
 {
-    page.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
+    backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
     node().addaction(request("loadingbar2.png", 1, null));
 }
 else
 {   
-    page.add(sprite("loadingbar2.png").pos(0,450).size(1,12),0,2);
+    backNode.add(sprite("loadingbar2.png").pos(0,450).size(1,12),0,2);
 }
 c_invoke(beginLoading,1000,null);
 
 function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
-    castle.initialFactorys(page);
+    castle.initialFactorys(backNode);
 }
 
 function setlogin(){
     flaglogin=0;
 }
-var pageTime = 0;
-var pages = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
-var curPage = 0;
+var curTime = 0;
+var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+var curTex = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
             timer.stop();
             global.context[0].initialControls();
-            page.removefromparent();
+            backNode.removefromparent();
         }
-        var newstate = page.get();
-        if(newstate < 3)
+        if(backNode.get() < 3)
         {
-            page.texture(pages[curPage]);
-            pageTime += 1;
-            if(pageTime >= 4)//2000 
+            curTime += 1;
+            src.texture(allTex[curTex]);
+            tar.texture(allTex[(curTex+1)%len(allTex)]);
+            if(curTime == 4)
             {
-                pageTime = 0;
-                curPage++;
-                if(curPage >= len(pages))
-                    curPage = 0;
+                src.addaction(fadeout(2000));
+                tar.addaction(fadein(2000));
             }
+            if(curTime >= 8)
+            {
+                curTime = 0;
+                curTex += 1;
+                if(curTex >= len(allTex))
+                    curTex = 0;
+                var temp = src;
+                src = tar;
+                tar = temp;
+            }
+
         }
         if(castle.initlock == 0 && flaglogin==0 && global.image.isdownloadfinish()==1){
             if(percentmax<81){
@@ -159,6 +173,6 @@ var percentmax = 0;
         if(percent>percentmax){
             percent = percentmax;
         }
-        page.get(1).text(loadingstr+str(percent)+"%");
-        page.get(2).size(8*percent,12);
+        backNode.get(1).text(loadingstr+str(percent)+"%");
+        backNode.get(2).size(8*percent,12);
     }
