@@ -14,7 +14,7 @@ class EmpireControl extends ContextObject{
         if(building.empireLevel < 1)
             global.pushContext(building, new UpdateControl(), NonAutoPop); 
         else
-            global.pushContext(null, new Warningdialog(["对不去，第三级城堡尚未开放", null, 1]), NonAutoPop);
+            global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 1]), NonAutoPop);
     }
 
     function paintNode(){
