@@ -11,7 +11,11 @@ class EmpireControl extends ContextObject{
     function upgradeEmpire(n, e, p, x, y, pos)
     {
         trace("empireLevel", building.empireLevel);
-        if(building.empireLevel < 1)
+        if(global.user.getValue("level") < 20)
+        {
+            global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 1]), NonAutoPop);
+        }
+        else if(building.empireLevel < 1)
             global.pushContext(building, new UpdateControl(), NonAutoPop); 
         else
             global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 1]), NonAutoPop);
@@ -37,7 +41,7 @@ class EmpireControl extends ContextObject{
 
         }
         var lev = global.user.getValue("level");
-        if(lev >= 20)
+        //if(lev >= 20)
             tabs[0].addsprite("upgrade.png").anchor(0, 50).pos(176+32*i, 28).setevent(EVENT_UNTOUCH, upgradeEmpire);
         tabs[1] = contextNode.addsprite("dialogelement_resource0.png").setevent(EVENT_UNTOUCH,choosetab,1);
         tabs[2] = contextNode.addsprite("dialogelement_military0.png").setevent(EVENT_UNTOUCH,choosetab,2);

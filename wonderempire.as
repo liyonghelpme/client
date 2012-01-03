@@ -112,6 +112,7 @@ var percentmax = 0;
             global.context[0].initialControls();
             backNode.removefromparent();
         }
+        /*
         if(backNode.get() < 3)
         {
             curTime += 1;
@@ -134,6 +135,7 @@ var percentmax = 0;
             }
 
         }
+        */
         if(castle.initlock == 0 && flaglogin==0 && global.image.isdownloadfinish()==1){
             if(percentmax<81){
                 if(global.user.getValue("nobility")>=0){

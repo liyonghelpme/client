@@ -1284,7 +1284,7 @@ class CastlePage extends ContextObject{
                     if(db.get("new")==null||db.get("new")<NEWFLAG){
                         global.flagshownew=1;
                         db.put("new",NEWFLAG);
-                        addcmd(dict([["name","notice"]]));
+                        //addcmd(dict([["name","notice"]]));
                     }
                 }
             var objs = data.get("stri","0,370,0,0,0").split(";");
@@ -1329,7 +1329,7 @@ class CastlePage extends ContextObject{
                 finish = int(objdata[4]);
                 if(gid == 0)
                 {
-                    s.empireLevel = objid+1;
+                    s.empireLevel = objid;
                 }
                 else if(gid>0&&gid<500||gid>=600){
                     if(gid/100==4){
@@ -1427,7 +1427,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //if(global.card[15] == 5 || global.card[14] == 5)
-                    //    addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];

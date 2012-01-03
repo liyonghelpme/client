@@ -270,7 +270,7 @@ class UpdateControl extends ContextObject{
         else{
             if(obj.baseobj == null)
             {
-                global.http.addrequest(1,"upgradecastle",["userid","lev", "type", p],[global.userid, obj.empireLevel+1, updatetype],self,"updateover");
+                global.http.addrequest(1,"upgradecastle",["userid","lev", "type"],[global.userid, obj.empireLevel+1, updatetype],self,"updateover");
             }
             else if(obj.state >2){
                 global.pushContext(self,new Warningdialog([global.getStaticString("update_warning"),p,4]),NonAutoPop);
