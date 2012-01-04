@@ -13,12 +13,12 @@ class EmpireControl extends ContextObject{
         trace("empireLevel", building.empireLevel);
         if(global.user.getValue("level") < 20)
         {
-            global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 1]), NonAutoPop);
+            global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 6]), NonAutoPop);
         }
         else if(building.empireLevel < 1)
             global.pushContext(building, new UpdateControl(), NonAutoPop); 
         else
-            global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 1]), NonAutoPop);
+            global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 6]), NonAutoPop);
     }
 
     function paintNode(){

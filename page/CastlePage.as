@@ -963,6 +963,10 @@ class CastlePage extends ContextObject{
             var s = new NormalObject(gid,i,j);
             s.init(s,global);
             grounds.append(s);
+            if(gid == 0)
+            {
+                s.empireLevel = int(objdata[2]);
+            }
             if(gid>0&&gid<500||gid>=600){
                 var objid = int(objdata[2]);
                 var time = int(objdata[3]);

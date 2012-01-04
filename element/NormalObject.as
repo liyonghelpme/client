@@ -38,6 +38,7 @@ class NormalObject extends ContextObject{
 
     function NormalObject(id,l,r){
         contextname = "object-build-normal";
+        empireLevel = 0;
         objectid=id;
         contextid=0;
         posi = new Array(l,r);

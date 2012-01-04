@@ -105,37 +105,57 @@ function setlogin(){
 var curTime = 0;
 var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
 var curTex = 0;
+var oneceMax = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
-            timer.stop();
-            global.context[0].initialControls();
-            backNode.removefromparent();
-        }
-        /*
-        if(backNode.get() < 3)
-        {
-            curTime += 1;
-            src.texture(allTex[curTex]);
-            tar.texture(allTex[(curTex+1)%len(allTex)]);
-            if(curTime == 4)
+            if(backNode.get() < 3)
             {
-                src.addaction(fadeout(2000));
-                tar.addaction(fadein(2000));
-            }
-            if(curTime >= 8)
+                curTime += 1;
+                src.texture(allTex[curTex]);
+                tar.texture(allTex[(curTex+1)%len(allTex)]);
+                if(curTime == 4 && oneceMax == 0 && curTex < (len(allTex)-1))
+                {
+                    src.addaction(fadeout(2000));
+                    tar.addaction(fadein(2000));
+                }
+                if(curTime >= 8)
+                {
+                    curTime = 0;
+                    curTex += 1;
+                    if(curTex == (len(allTex)-1))
+                        oneceMax = 1;
+                    if(curTex >= len(allTex))
+                    {
+                        curTex = len(allTex)-1;
+                        oneceMax = 1;
+                    }
+                    else
+                    {
+                        var temp = src;
+                        src = tar;
+                        tar = temp;
+                    }
+                }
+             }
+            if(backNode.get() < 3)
             {
-                curTime = 0;
-                curTex += 1;
-                if(curTex >= len(allTex))
-                    curTex = 0;
-                var temp = src;
-                src = tar;
-                tar = temp;
+                backNode.remove(1); 
+                backNode.remove(2);
+                if(oneceMax == 1)
+                {
+                    timer.stop();
+                    global.context[0].initialControls();
+                    backNode.removefromparent();
+                }
+            }
+            else
+            {
+                timer.stop();
+                global.context[0].initialControls();
+                backNode.removefromparent();
             }
-
         }
-        */
         if(castle.initlock == 0 && flaglogin==0 && global.image.isdownloadfinish()==1){
             if(percentmax<81){
                 if(global.user.getValue("nobility")>=0){
@@ -175,6 +195,9 @@ var percentmax = 0;
         if(percent>percentmax){
             percent = percentmax;
         }
-        backNode.get(1).text(loadingstr+str(percent)+"%");
-        backNode.get(2).size(8*percent,12);
+        if(backNode.get(1) != null)
+        {
+            backNode.get(1).text(loadingstr+str(percent)+"%");
+            backNode.get(2).size(8*percent,12);
+        }
     }
