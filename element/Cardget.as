@@ -38,10 +38,10 @@ class Cardget extends ContextObject{
             var endstr = "!";
             if(cardid>13&&cardid<18){
                 if(cardlevel<5){
-                    endstr = "。赶快升级到紫金级别吧，那么你能无限次免费使用一键操作功能！";
+                    endstr = "。该卡每升级一级增加1点魔法值上限。";
                 }
                 else{
-                    endstr = "。你已经能够无限次免费使用一键操作功能!";
+                    endstr = "。该卡每升级一级增加1点魔法值上限。";
                 }
             }
             element.addlabel("恭喜你获得了"+cardprename[cardid]+cardlevelname[cardlevel]+endstr,null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);

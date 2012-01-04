@@ -114,7 +114,7 @@ class MenuControl extends ContextObject{
                         grounds[i].contextNode.add(sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1),1,1);
                     }
                     else if(grounds[i].objectid==0){
-                        grounds[i].contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
+                        grounds[i].contextNode.add(sprite("empire"+str(grounds[i].empireLevel)+"_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
                     }
                 }
             }
