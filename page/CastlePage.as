@@ -1165,7 +1165,10 @@ class CastlePage extends ContextObject{
         contextNode.addaction(imoveby(x,y));
     }
 
-    function initialFactorys(){
+    var LoadPage;
+    function initialFactorys(page){
+        LoadPage = page;
+        page.put(10);
         blocknode = contextNode.addnode().visible(0);
         cpid = ppy_userid();
         pagedict = dict();
@@ -1183,12 +1186,15 @@ class CastlePage extends ContextObject{
             if(global.userid == 0){
                 quitgame();
             }
+            newstate = data.get("newstate",3);
+            LoadPage.put(newstate);
+            LoadPage = null;
             if(data.get("ppyname")!=ppy_username()){
                 global.http.addrequest(0,"updateppyname",["uid","ppyname"],[global.userid,ppy_username()],self,"nothing");
             }
             global.task.inittask(data.get("task"),data.get("taskstring"));
             global.wartask.initwartask(data.get("wartask",-1),data.get("wartaskstring",0));
-            newstate = data.get("newstate",3);
+
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
 

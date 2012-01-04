@@ -134,7 +134,49 @@ const FILLER_W = 119;
 const FILLER_H = 13;
 const BUTTONFONTSIZE = 26;
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
-const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
+const UNLOCK = [
+null,
+null,
+"90,object0.png;90,object1.png;90,object2.png",
+"50,plant2.png",
+"50,fact3.png;90,object3.png",
+"90,object4.png;50,room12.png;50,plant3.png",
+"90,object5.png;50,fact6.png",
+"90,object11.png;50,plant4.png",
+"90,object12.png;50,room60.png;25,shen0.png;50,fact9.png",
+"90,object13.png;50,plant5.png",
+"90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png",
+"90,object15.png;50,camp3.png",
+"90,object16.png;25,shen1.png",
+"90,object17.png;50,plant7.png",
+"90,object18.png;90,wood1.png;50,fact15.png",
+"90,object19.png;90,object28.png;33,room36.png;50,fact12.png",
+"90,object21.png;50,plant8.png;25,shen3.png",
+"90,wood2.png",
+"90,object24.png;33,farm6.png",
+"90,object32.png;90,object38.png",
+"50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png",
+"50,fact18.png;90,wood3.png",
+"90,stone1.png",
+"50,plant10.png",
+"50,fact24.png;90,stone2.png",
+"90,object35.png;50,plant12.png;90,wood5.png",
+"50,plant11.png",
+"90,stone3.png",
+"90,wood4.png",
+"50,fact21.png",
+"90,stone5.png;50,farm4.png;90,stone4.png",
+"",
+"50,build602.png",
+"",
+"50,build603.png",
+"",
+"",
+"50,build604.png",
+"",
+"",
+"50,build605.png;90,object46.png;90,object47.png;90,object48.png;90,object49"
+];
 
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
 
