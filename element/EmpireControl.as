@@ -42,7 +42,7 @@ class EmpireControl extends ContextObject{
         }
         var lev = global.user.getValue("level");
         //if(lev >= 20)
-            tabs[0].addsprite("upgrade.png").anchor(0, 50).pos(176+32*i, 28).setevent(EVENT_UNTOUCH, upgradeEmpire);
+            tabs[0].addsprite("upgrade.png").anchor(0, 0).pos(376, 18).setevent(EVENT_UNTOUCH, upgradeEmpire);
         tabs[1] = contextNode.addsprite("dialogelement_resource0.png").setevent(EVENT_UNTOUCH,choosetab,1);
         tabs[2] = contextNode.addsprite("dialogelement_military0.png").setevent(EVENT_UNTOUCH,choosetab,2);
         choosetab(0,0,0);

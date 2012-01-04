@@ -296,13 +296,14 @@ class UpdateControl extends ContextObject{
             if(obj.baseobj == null)
             {
                 obj.empireLevel += 1;
+                trace("change Value animate1");
+                global.user.changeValueAnimate2(global.context[0].moneyb,"boundary", EmpireMana[obj.empireLevel],-4);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"personmax", EmpirePopUp[obj.empireLevel],-2);
             }
             else
             {
                 obj.bid = updatebid%100;
                 obj.baseobj.objectid = updatebid;
-                global.user.changeValueAnimate(global.context[0].moneyb,"boundary", EmpireMana[obj.empireLevel],-4);
-                global.user.changeValueAnimate(global.context[0].moneyb,"personmax", EmpirePopUp[obj.empireLevel],-2);
             }
             if(global.card[18]%10==0 && updatebid==424){
                 var flevel=1+10*(len(global.ppyuserdict)-2);
@@ -339,6 +340,7 @@ class UpdateControl extends ContextObject{
             if(updatetype == 1){
                 var k=costdict.keys();
                 for(i=0;i<len(k);i++){
+                    trace("change Value animate2");
                     global.user.changeValueAnimate(target,k[i],-costdict.get(k[i]),i*2);
                 }
                 for(i=0;i<len(costspec);i++){
