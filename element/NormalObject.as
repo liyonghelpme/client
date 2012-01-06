@@ -31,9 +31,14 @@ class NormalObject extends ContextObject{
 
     var flagmulti;
     var buildcontextname;
+    var empireLevel;
+    var empireLight;
+    var baseobj = null;
+
 
     function NormalObject(id,l,r){
         contextname = "object-build-normal";
+        empireLevel = 0;
         objectid=id;
         contextid=0;
         posi = new Array(l,r);
@@ -142,10 +147,11 @@ class NormalObject extends ContextObject{
         }
         else if(contextid == 9){
             contextNode.size(530,283).anchor(50,100);
-            objnode = sprite("empire1.png",ALPHA_TOUCH).anchor(50,100).pos(269,283).size(524,398);
+            objnode = sprite("empire"+str(empireLevel+1)+".png",ALPHA_TOUCH).anchor(50,100).pos(269,283).size(524,398);
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
-                contextNode.add(sprite("empire1_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
+                empireLight = sprite("empire"+str(empireLevel+1)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
+                contextNode.add(empireLight,1,1);
             }
             else{
                 objnode.color(100,100,100,100);
@@ -261,7 +267,7 @@ class NormalObject extends ContextObject{
                 return 0;
             }
             lock = 1;
-            global.pushContext(self,new EmpireControl(),NonAutoPop);
+            global.pushContext(self,new EmpireControl(self),NonAutoPop);
             lock=0;
         }
     }

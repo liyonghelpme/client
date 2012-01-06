@@ -2,10 +2,23 @@ class EmpireControl extends ContextObject{
     var index;
     var tabs;
     var element;
-    function EmpireControl(){
+    var building;
+    function EmpireControl(b){
         contextname = "dialog-territoryinfo";
         contextNode = null;
-
+        building = b;
+    }
+    function upgradeEmpire(n, e, p, x, y, pos)
+    {
+        trace("empireLevel", building.empireLevel);
+        if(global.user.getValue("level") < 20)
+        {
+            global.pushContext(null, new Warningdialog([global.getStaticString("LevelNot"), null, 6]), NonAutoPop);
+        }
+        else if(building.empireLevel < 1)
+            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        else
+            global.pushContext(null, new Warningdialog([global.getStaticString("EmpireNotOpen"), null, 6]), NonAutoPop);
     }
 
     function paintNode(){
@@ -19,8 +32,18 @@ class EmpireControl extends ContextObject{
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(508,4).setevent(EVENT_UNTOUCH,closedialog);
 
         tabs[0] = contextNode.addsprite("dialogelement_state3.png").setevent(EVENT_UNTOUCH,choosetab,0);
+        trace("empireLevel", building.empireLevel);
         for(var i=0;i<5;i++)
-            tabs[0].addsprite("dialogelement_star"+str((4-i)/4)+".png").anchor(50,50).pos(176+32*i,28);
+        {
+            if(i <= building.empireLevel)
+                tabs[0].addsprite("dialogelement_star1.png").anchor(50,50).pos(176+32*i,28);
+            else
+                tabs[0].addsprite("dialogelement_star0.png").anchor(50,50).pos(176+32*i,28);
+
+        }
+        var lev = global.user.getValue("level");
+        //if(lev >= 20)
+            tabs[0].addsprite("upgrade.png").anchor(0, 0).pos(376, 18).setevent(EVENT_UNTOUCH, upgradeEmpire);
         tabs[1] = contextNode.addsprite("dialogelement_resource0.png").setevent(EVENT_UNTOUCH,choosetab,1);
         tabs[2] = contextNode.addsprite("dialogelement_military0.png").setevent(EVENT_UNTOUCH,choosetab,2);
         choosetab(0,0,0);
@@ -85,15 +108,6 @@ class EmpireControl extends ContextObject{
                 global.user.initText("citydefence",cdl);
                 element.addsprite("adddefence2.png").pos(312,offy-15).setevent(EVENT_UNTOUCH,adddefence);
             }
-/*
-<<<<<<< HEAD
-            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(230,offy+36).color(0,0,0,100);
-            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(252,offy+72).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(340,offy+142).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(231,offy+175).color(0,0,0,100);
-=======
-*/
             element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(230,offy+36).color(0,0,0,100);
             element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(252,offy+72).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
@@ -115,7 +129,6 @@ class EmpireControl extends ContextObject{
                 element.addsprite("adddefence2.png").pos(420, 217).setevent(EVENT_UNTOUCH,addMagic);
                 element.addsprite("timeLeft.png").pos(367, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
-//>>>>>>> e696d6b85bea3685c73a8eb3f43535e5d0ab0fc3
         }
         else if(p==1){
             element.addsprite("food.png").anchor(50,50).pos(42,77).size(29,32);

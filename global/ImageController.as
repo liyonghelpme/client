@@ -5,6 +5,8 @@ class ImageController{
     */
     /*
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
+    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+    "empire2.png", "empire2_l.png", "upgrade.png",
     "dialogelement_state3.png", "dialogelement_state4.png",
     "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
     "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",
