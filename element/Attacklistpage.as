@@ -41,7 +41,7 @@ class Attacklistpage extends ContextObject{
     }
 
     function choosePage(n,e,po){
-        if(pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(pagenum == 1 && po == -1 || pagenum >= pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)

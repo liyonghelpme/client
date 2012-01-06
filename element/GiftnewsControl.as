@@ -35,7 +35,7 @@ class GiftnewsControl extends ContextObject{
     }
     
     function choosePage(n,e,po){
-        if(global.context[0].reqlock==1 ||lock==1 || pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(global.context[0].reqlock==1 ||lock==1 || pagenum >= 1 && po == -1 || pagenum == pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)

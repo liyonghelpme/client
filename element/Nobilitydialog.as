@@ -30,7 +30,7 @@ class Nobilitydialog extends ContextObject{
             }
             var nback=element.addsprite("nobilityback.png").anchor(50,50).pos(219,191);
             nback.addsprite("nobi"+str(nob)+".png").anchor(50,50).pos(215,62);
-            var upstr = global.getStaticString("levelUp")+NOBNAME[nob];
+            var upstr = global.getStaticString("NobUp")+NOBNAME[nob];
             if(nob%3==0){
                 var db = c_opendb(0,"flag");
                 db.put("mapnew",1);

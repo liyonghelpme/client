@@ -72,7 +72,7 @@ const GOD_B_TIME = [7200,21600,43200,64800,86400];
 const GOD_B_PRICE = [10000,20000,50000,100000,500000];
 const GOD_UP = [0,"5","10","15","30"];
 const GOD_FOOD = [500,1000,2000,5000,10000];
-const GOD_PERSON_MAX = [250,500,750,1000,1250];
+const GOD_PERSON_MAX = [100,250,450,700,1000];
 const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
@@ -516,7 +516,7 @@ class GlobalController{
     function getEmptyName(gid){
         var secondName = ["Moon ","Sun ", "Earth ", "Lone ", "Sky ", "Far ", "New ", "Old ", "Wind ", "Tooth "];
         var firstName = ["Light ", "Dark ", "Small ", "Great ", "Sill ", "Late ", "Far ", "Near ", "Red ", "Blue ", "Lone ", "East "];
-        var lastName = [" Country", " City", " Town", " Village", " State", " Province", " Bay", " Hill", " Lake"];
+        var lastName = ["Country", "City", "Town", "Village", "State", "Province", "Bay", "Hill", "Lake"];
         return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
     }
     
@@ -801,7 +801,7 @@ class GlobalController{
     function getnobility(nob,subnob){
         if(subnob==3) subnob=2;
         var n = sprite("nobi"+str(nob*3+subnob)+".png").size(30,30);
-        n.addlabel(NOBNAME[nob*3+subnob],null,20).anchor(0,50).pos(32,15).color(0,0,0,100);
+        n.addlabel(NOBNAME2[nob*3+subnob],null,20).anchor(0,50).pos(32,15).color(0,0,0,100);
         return n;
     }
     

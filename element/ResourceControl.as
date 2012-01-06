@@ -20,8 +20,8 @@ class ResourceControl extends ContextObject{
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("resourceelement.jpg").pos(11,11);
         contextNode.addlabel(ENAME[rdata[2]]+global.getStaticString(":")+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("infpower")+global.getStaticString(":")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("cavpower")+global.getStaticString(":")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("infpower")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("cavpower")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").pos(493,14).setevent(EVENT_UNTOUCH,closedialog);
         var time=global.timer.currenttime-global.timer.times2c(rdata[9]);
         var tc = time/3600;

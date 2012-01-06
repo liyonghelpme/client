@@ -30,7 +30,7 @@ class Spyresult extends ContextObject{
             element = node();
             element.addsprite("spyresultback.jpg").anchor(50,0).pos(219,10);
             element.addlabel(global.getFormatString("spy_result_format",["[NUM]",str(data.get("dead",0)),"[WHO]",global.context[0].warpage.userdict.get(eid)[4]]),null,24,FONT_NORMAL,393,0,ALIGN_LEFT).pos(23,25).color(0,0,0,100);
-            var spyres = [data.get("won"),data.get("total"),data.get("power"),data.get("allynum"),data.get("citydefence")];
+            var spyres = [data.get("won", 0),data.get("total", 0),data.get("power", 0),data.get("allynum", 0),data.get("citydefence", 0)];
             var spyitems = SPYITEMS;
             var spypos=[[33,123],[223,123],[33,214],[33,245],[223,214]];
             for(var i=0;i<5;i++){

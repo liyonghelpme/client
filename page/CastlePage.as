@@ -242,13 +242,13 @@ class CastlePage extends ContextObject{
 
         fb = sprite("personboard1.png");
         fmenu.add(fb.pos(inpos,0),-1,-1);
-        msgbut = sprite("message.png").anchor(50,50).pos(365,22).setevent(EVENT_UNTOUCH,opensendmsg);
+        msgbut = sprite("message.png").anchor(50,50).pos(380,22).setevent(EVENT_UNTOUCH,opensendmsg);
         fb.add(msgbut, 0, 1);
         
         friendlevlabel = b.addlabel("Level 1",null,16).color(0,0,0,100).anchor(50,100).pos(39,80);
         friendnamelabel = b.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
         b.add(sprite().anchor(50,50).pos(80,45),1,1);
-        friendinfolabel = b.addlabel("",null,20).color(0,0,0,100).anchor(0,50).pos(0,50).pos(95,45);
+        friendinfolabel = b.addlabel("",null,14).color(0,0,0,100).anchor(0,50).pos(0,50).pos(95,45);
         friendmoney = 0;
         /*以上要改*/
         allybutton = fmenu.addsprite("bindButton.png").anchor(100,0).pos(780,210).setevent(EVENT_UNTOUCH,ally);
@@ -881,6 +881,8 @@ class CastlePage extends ContextObject{
         friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
+                if((fi-2) >= len(friend.flist1))
+                    continue;
                 addprefriend(friend.flist1[fi-2].get("id"));
             }
         }

@@ -145,7 +145,7 @@ class MedalControl extends ContextObject{
                             {
                                 cardStr = global.getFormatString("BusiCard",
                                 ["[WHO]",global.getStaticString("You"),
-                                "[TYPE]",global.getStaticString("Business Card"),
+                                "[TYPE]",global.getStaticString("BusinessCard"),
                                 "[NUM]",str(allcardlevelnum[param-13][clevels[param]])]);
                                 trace(cardStr);
                                 global.pushContext(null,new Warningdialog([cardStr,null,6]),NonAutoPop);

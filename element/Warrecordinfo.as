@@ -19,7 +19,7 @@ class Warrecordinfo extends ContextObject{
             contextNode.addlabel(str(aw)+"/"+str(aw+al),null,20).anchor(0,50).pos(offx+177,offy+168).color(0,0,0,100);
 
             contextNode.addlabel(str(dw)+"/"+str(dw+dl),null,20).anchor(0,50).pos(offx+329,offy+209).color(0,0,0,100);
-            contextNode.addlabel(NOBNAME[global.user.getValue("nobility")],null,20).anchor(0,50).pos(offx+163,offy+250).color(0,0,0,100);
+            contextNode.addlabel(NOBNAME[global.user.getValue("nobility")],null,14).anchor(0,50).pos(offx+163,offy+250).color(0,0,0,100);
             contextNode.addlabel(str(global.card[12]/100),null,20).anchor(50,50).pos(offx+138,offy+285).color(0,0,0,100);
         }
     }

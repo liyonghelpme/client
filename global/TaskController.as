@@ -36,6 +36,7 @@ class TaskController extends ContextObject{
     }
     
     function inittask(p,s){
+        trace("inittask", p, s);
         if(p==null || p==-1){
             tasktype = -1;
             taskid = -1;
@@ -82,6 +83,7 @@ class TaskController extends ContextObject{
             step = int(step);
         }
         taskstep=step;
+        trace("taskstep", taskstep, tasknum);
         if(taskstep>=tasknum){
             enternode.addaction(sequence(stop(),itexture("task0.png")));
             var tmp = sprite("taskover0.png").pos(33,47);
