@@ -1431,7 +1431,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //if(global.card[15] == 5 || global.card[14] == 5)
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];
