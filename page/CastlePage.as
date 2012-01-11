@@ -739,10 +739,7 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
-            global.pushContext(self,global.context[0].warpage,0);
-            global.context[0].warpage.initialdata();
-        
-            //spriteManager.getWar();
+            spriteManager.getWar();
         }
     }
 
@@ -1445,7 +1442,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //if(global.card[15] == 5 || global.card[14] == 5)
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];
@@ -1885,7 +1882,11 @@ class CastlePage extends ContextObject{
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re >= 1000||re<0){
+        if(re == -2000)
+        {
+           spriteManager.DecideToDown(); 
+        }
+        else if(re >= 1000||re<0){
             if(re>1000){
                 re=re%1000;
             }

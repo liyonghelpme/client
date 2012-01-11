@@ -410,12 +410,18 @@ class WarControl extends ContextObject{
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
 
                 if(datadict.get("leftself") == 1){
-                    leftuser = element.addsprite("battleuserback0.png");
-                    rightuser= element.addsprite("battleuserback1.png").anchor(100,0).pos(800,0);
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback0.png", leftuser);
+                    rightuser= element.addsprite().anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback1.png", rightuser);
                 }
                 else{
-                    leftuser = element.addsprite("battleuserback1.png");
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback1.png", leftuser);
+
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback0.png", rightuser);
+
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
 
@@ -424,7 +430,9 @@ class WarControl extends ContextObject{
                 else
                 {
                     var level = datadict.get("monLevel");
-                    rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
+                    var monavt = rightuser.addsprite().pos(25, 19).size(50, 50);
+                    spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+
                 }
 
                 leftuser.add(label(global.getStaticString("attack")+":"+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);

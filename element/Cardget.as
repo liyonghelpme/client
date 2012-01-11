@@ -23,13 +23,16 @@ class Cardget extends ContextObject{
             mb.addlabel(cardprename[cardid]+cardlevelname[cardlevel],null,16).anchor(50,0).pos(62,10).color(0,0,0,100);
             mb.addsprite("medaltab"+str(cardlevel)+".png").pos(3,32);
             if(cardid<6){
-                var m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(0,100).pos(29,128);
+                var m=sprite().anchor(0,100).pos(29,128);
+                spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
                 m.prepare();
                 var ms = m.size();
                 m.size(70,ms[1]*70/ms[0]);
             }
             else if(cardid<12){
-                m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(50,100).pos(62,128);
+                m=sprite().anchor(50,100).pos(62,128);
+                spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
+
             }
             else{
                 m=sprite("medalcard"+str(cardid-13)+"_"+str(cardlevel)+".png").pos(3,32);

@@ -106,13 +106,6 @@ class ObjControl extends ContextObject{
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
                 }
-/*
-<<<<<<< HEAD
-                objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
-                objs[i].addlabel(str(OBJ_PERSON[oi]),null,16, FONT_NORMAL, 100, 100).pos(34,244).color(0,0,0,100);
-=======
-
-*/              
                 if(add < 0)
                 {
                     add = -add;

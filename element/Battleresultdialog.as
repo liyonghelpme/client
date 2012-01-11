@@ -17,7 +17,9 @@ class Battleresultdialog extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            element.addsprite("battleresultback.jpg").anchor(50,0).pos(219,10);
+            var backpic = element.addsprite().anchor(50,0).pos(219,10);
+            spriteManager.getPic("battleresultback.jpg", backpic);
+
             element.addlabel("",null,30).anchor(50,50).pos(219,55);
             element.addlabel(global.getStaticString("youWin"),null,30).anchor(50,50).pos(219,67);
         }

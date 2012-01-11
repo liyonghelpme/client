@@ -53,14 +53,14 @@ class Warchatdialog{
         var ul = len(st);
         l = l-(ul - l)/6;
         if(t==""){
-            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_empty"),0]);
+            items.append([0,global.getStaticString("system"),global.getStaticString("chat_empty"),0]);
             
             if(contextNode!=null){
                 refreshlist();
             }
         }
         else if(l>60){
-            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_wordlimit"),0]);
+            items.append([0,global.getStaticString("system"),global.getStaticString("chat_wordlimit"),0]);
             if(contextNode!=null){
                 refreshlist();
             }
@@ -73,7 +73,7 @@ class Warchatdialog{
     
     function sendover(r,rc,c){
         if(rc==0){
-            items.append([0,global.getsStaticString("system"),global.getsStaticString("chat_nettimeout"),0]);
+            items.append([0,global.getStaticString("system"),global.getStaticString("chat_nettimeout"),0]);
             if(contextNode!=null){
                 refreshlist();
             }

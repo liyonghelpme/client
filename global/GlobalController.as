@@ -410,93 +410,7 @@ class GlobalController{
     
     var lockpage;
     var flagshownew;
-    /*
-    function update(name, force, param)
-    {
-        if(name == "task.txt")
-        {
-            task = new TaskController();
-            task.init(task,self);
-        }
-        else if(name == "wartask.txt")
-        {
-            wartask = new WarTaskController();
-            wartask.init(wartask,self);
-        }
-        else if(name == "static.txt")
-        {
-            var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
-            sta = json_loads(sta);
-            if(sta != null)
-            {
-                trace("pass sta");
-                staticString = sta;
-            }
-        }
-        else if(name == "dict.txt")
-        {
-            sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
-            sta = json_loads(sta);
-            if(sta != null)
-            {
-                trace("pass dict");
-                stringDict = dict(sta);
-            }
-        }
-        else if(name == "others.txt")
-        {
-            sta = c_file_op(C_FILE_READ, c_res_file("others.txt"));
-            sta = json_loads(sta);
-            if(sta != null)
-            {
-                trace("pass others");
-                newstrs = sta.get("newstrs");
-                timestr = sta.get("timestr");
-                timestr1 = sta.get("timestr1");
-                ganname1 = sta.get("ganname1");
-                btname1 = sta.get("btname1");
-                newupdate1 = sta.get("newupdate1");
-                godstr = sta.get("godstr");
-                items = sta.get("items");
-                SPYITEMS = sta.get("SPYITEMS");
-            }
-        }
-        else if(name == "names.txt")
-        {
-            sta = c_file_op(C_FILE_READ, c_res_file("names.txt"));
-            sta = json_loads(sta);
-            if(sta != null)
-            {
-                trace("pass name");
-                FACTNAME = sta.get("FACTNAME");
-                WOONAME = sta.get("WOONAME");
-                cardprename = sta.get("cardprename");
-                PLANTNAME = sta.get("PLANTNAME");
-                FARMNAME = sta.get("FARMNAME");
-                ENAME = sta.get("ENAME");
-                STATUE_NAME = sta.get("STATUE_NAME");
-                PETS_NAME = sta.get("PETS_NAME");
-                BUILD_TAB_NAME = sta.get("BUILD_TAB_NAME");
-                STONENAME = sta.get("STONENAME");
-                GIFTNAME = sta.get("GIFTNAME");
-                EXTEND_PETS_NAME = sta.get("EXTEND_PETS_NAME");
-                NOBNAME = sta.get("NOBNAME");
-                nobilityname = sta.get("nobilityname");
-                ROOMNAME = sta.get("ROOMNAME");
-                ROOMNAME1 = sta.get("ROOMNAME1");
-                cardlevelname = sta.get("cardlevelname");
-                GONAME = sta.get("GONAME");
-                INVITE_STR = sta.get("INVITE_STR");
-                SOLDIER_NAME = sta.get("SOLDIER_NAME");
-                EXTEND_NAME = sta.get("EXTEND_NAME");
-                CAMPNAME = sta.get("CAMPNAME");
-                OBJNAME = sta.get("OBJNAME");
-                MONSTERNAME = sta.get("MONSTERNAME");
-            }
-                        
-        }
-    }
-    */
+    var sp;
     function lock(){
         if(lockpage==null){
             lockpage = new ClockObject();
@@ -742,7 +656,15 @@ class GlobalController{
     }
 
     function popContext(re){
-        if(re == -999){
+        if(re == -2000)//spriteManager warning dialog return
+        {
+            context[currentLevel].deleteContext();
+            context[currentLevel] = null;
+            currentLevel--;
+            white();
+            sp.DecideToDown();
+        }
+        else if(re == -999){
             newcontext.deleteContext();
             flagnew = 0;
             context[currentLevel].getNode().focus(1);
@@ -844,3 +766,4 @@ import global.SpriteManager;
 var global= new GlobalController();
 var spriteManager = new SpriteManager(global);
 spriteManager.self = spriteManager;
+global.sp = spriteManager;
