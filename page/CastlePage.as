@@ -734,8 +734,10 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
-            global.pushContext(self,warpage,NonAutoPop);
-            warpage.initialdata();
+            //global.pushContext(self,warpage,NonAutoPop);
+            //warpage.initialdata();
+            spriteManager.getWar();
+            //global.pushContext(self, Warningdialog([""]))
         }
     }
 
@@ -1871,7 +1873,11 @@ class CastlePage extends ContextObject{
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re >= 1000||re<0){
+        if(re == -2000)
+        {
+           spriteManager.DecideToDown(); 
+        }
+        else if(re >= 1000||re<0){
             if(re>1000){
                 re=re%1000;
             }

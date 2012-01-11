@@ -118,12 +118,18 @@ class NormalObject extends ContextObject{
         contextNode = sprite().anchor(47,100).pos(PBX+posi[0]*(-34)+posi[1]*30,PBY-1+posi[0]*17+posi[1]*16).size(64*contextid-2,33*contextid+1);
         var classid = objectid/100;
         if(classid==5){
-            objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
+//            objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
+            objnode = sprite("", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
+            spriteManager.getPic("object"+str(objectid-500)+".png", objnode);
+            
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
                 if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544||objectid>=545&&objectid<=549){
                     trace("draw light", objectid);
-                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
+//                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
+                    var lightpng = sprite("", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
+                    spriteManager.getPic("object"+str(objectid-500)+"_l.png", lightpng);
+                    contextNode.add(lightpng, 1, 1);
                 }
             }
             else{

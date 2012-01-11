@@ -79,7 +79,10 @@ class Warrecordpage extends ContextObject{
         {
             var level = -(defdata+1);//-1make sure level < 0
             if(int(datas[index][17]) <= 0)//monster ppyid
-                items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
+            {
+                var monavt = items[index].addsprite().size(40,40).pos(10,6);
+                spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+            }
             else//user own emptyCity
                 items[index].addsprite(avatar_url(toInt(datas[index][17]))).size(40,40).pos(10,6);
 

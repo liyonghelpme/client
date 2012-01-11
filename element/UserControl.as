@@ -93,8 +93,8 @@ class UserControl extends ContextObject{
             board.texture("ipod.png");
         }
         if(eudata[0]=="0"){
-            board.addsprite("monsteravatar"+str(eudata[2])+".jpg").pos(12,56).size(40,40);
-            //board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
+            var monavt = board.addsprite().pos(12,56).size(40,40);
+            spriteManager.getPic("monsteravatar"+str(eudata[2])+".jpg", monavt);
             board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
             board.addlabel(ENAME[eudata[2]],null,18).pos(100,77).color(0,0,0,100);
         }

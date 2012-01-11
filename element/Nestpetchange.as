@@ -30,10 +30,9 @@
     
     function getcell(i){
         var cell = sprite("nesttab0.png");
-        //cell.addlabel(global.getname(objpath,i),null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
         cell.addlabel(PETS_NAME[i],null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
-        //cell.addsprite(objpath+str(i)+".png").anchor(50,50).pos(94,66).size(67,67);
-        cell.addsprite("egg-1.png").anchor(0,0).pos(59,38);
+        var eggpic = cell.addsprite().anchor(0,0).pos(59,38);
+        spriteManager.getPic("egg-1.png", eggpic);
 
         if(type.objid==i){
             cell.texture("nestpettab1.png");

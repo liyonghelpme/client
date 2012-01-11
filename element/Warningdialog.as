@@ -42,6 +42,11 @@ class Warningdialog extends ContextObject{
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.usedefaultbutton(1,global.getStaticString("ok"));
                 }
+                else if(info[1] == -2000)//spriteManager 
+                {
+                    element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+                    dialog.usedefaultbutton(2,[global.getStaticString("ok"),global.getStaticString("cancel")]);
+                }
             }
             else if(info.get("ok")==0){
                 element.addsprite("pic6.jpg").anchor(50,50).pos(80,120);

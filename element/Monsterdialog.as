@@ -35,7 +35,8 @@ class Monsterdialog extends ContextObject{
                 mpower = mpower+global.context[1].monstercontroller.mlevel-59;
             }
             element.addlabel(MONSTERNAME[mtype],null,20).anchor(50,50).pos(219,78).color(0,0,0,100);
-            element.addsprite("monster_"+str(mtype)+"_1.png").anchor(50,50).pos(219,160).scale(150);
+            var monpic = element.addsprite().anchor(50,50).pos(219,160).scale(150);
+            spriteManager.getPic("monster_"+str(mtype)+"_1.png", monpic);
             element.addlabel("战斗力为："+str(mpower),null,20).anchor(50,50).pos(219,242).color(0,0,0,100);
             var warning=element.addlabel("",null,20).anchor(50,50).pos(219,285).color(100,0,0,100);
         
@@ -97,6 +98,8 @@ class Monsterdialog extends ContextObject{
                     m.addaction(sequence(stop(),delaytime(3500),animate(3000,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
                 else{
+                    var temp = sprite();
+                    spriteManager.getPic("monster_"+str(mtype)+"_dead.png", temp)
                     m.addaction(sequence(stop(),delaytime(3500),itexture("monster_"+str(mtype)+"_dead.png"),delaytime(1000),animate(2500,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
                 c_addtimer(1000,defeatover,[m,data.get("powerlost",0),data.get("specialgoods","")],3500,1);

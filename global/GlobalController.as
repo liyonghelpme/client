@@ -378,6 +378,7 @@ class GlobalController{
     
     var lockpage;
     var flagshownew;
+    var sp;
     function lock(){
         if(lockpage==null){
             lockpage = new ClockObject();
@@ -612,7 +613,15 @@ class GlobalController{
     }
 
     function popContext(re){
-        if(re == -999){
+        if(re == -2000)//spriteManager warning dialog return
+        {
+            context[currentLevel].deleteContext();
+            context[currentLevel] = null;
+            currentLevel--;
+            white();
+            sp.DecideToDown();
+        }
+        else if(re == -999){
             newcontext.deleteContext();
             flagnew = 0;
             context[currentLevel].getNode().focus(1);
@@ -709,4 +718,8 @@ class GlobalController{
         }
     }
 }
+import global.SpriteManager;
 var global = new GlobalController();
+var spriteManager = new SpriteManager(global);
+spriteManager.self = spriteManager;
+global.sp = spriteManager;
