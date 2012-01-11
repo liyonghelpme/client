@@ -105,6 +105,7 @@ class CastlePage extends ContextObject{
     var friendpredict;
     var waitfriend;
     var inpos = -140;
+    var LoadPage;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -963,6 +964,10 @@ class CastlePage extends ContextObject{
             var s = new NormalObject(gid,i,j);
             s.init(s,global);
             grounds.append(s);
+            if(gid == 0)
+            {
+                s.empireLevel = int(objdata[2]);
+            }
             if(gid>0&&gid<500||gid>=600){
                 var objid = int(objdata[2]);
                 var time = int(objdata[3]);
@@ -1163,6 +1168,8 @@ class CastlePage extends ContextObject{
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[int(oid),0,md5(oid+"-0800717193")],self,"getidback");
     }
     function initialFactorys(page){
+        LoadPage = page;
+        LoadPage.put(10);
         blocknode = contextNode.addnode().visible(0);
         cpid = ppy_userid();
         pagedict = dict();
@@ -1189,6 +1196,8 @@ class CastlePage extends ContextObject{
             global.task.inittask(data.get("task"),data.get("taskstring"));
             global.wartask.initwartask(data.get("wartask",-1),data.get("wartaskstring",0));
             newstate = data.get("newstate",3);
+            LoadPage.put(newstate);
+            LoadPage = null;
             global.cityid = data.get("city_id",0);
             ccid = global.cityid;
 
@@ -1328,10 +1337,17 @@ class CastlePage extends ContextObject{
                 var s = new NormalObject(gid,i,j);
                 s.init(s,global);
                 grounds.append(s);
-                if(gid>0&&gid<500||gid>=600){
-                    var objid = int(objdata[2]);
-                    var time = int(objdata[3]);
-                    var finish = int(objdata[4]);
+                var objid;
+                var time;
+                var finish;
+                objid = int(objdata[2]);
+                time = int(objdata[3]);
+                finish = int(objdata[4]);
+                if(gid == 0)
+                {
+                    s.empireLevel = objid;
+                }
+                else if(gid>0&&gid<500||gid>=600){
                     if(gid/100==4){
                         if(gid<420){
                             objid=0;
@@ -1427,7 +1443,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //if(global.card[15] == 5 || global.card[14] == 5)
-                    //    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];

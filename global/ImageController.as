@@ -1,6 +1,8 @@
 class ImageController{
     var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
+    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+    "empire2.png", "empire2_l.png", "upgrade.png",
     "dialogelement_state3.png", "dialogelement_state4.png",
     "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
     "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",

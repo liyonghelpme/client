@@ -9,7 +9,14 @@ class UpdateControl extends ContextObject{
     var updatetype;
     var updatebid;
     var buildable;
-    const objcontextname = ["farm","room","camp","fact","shen"];
+    const EmpireCoin = [0,100000];
+    const EmpireFood = [0,1000];
+    const EmpirePeople = [0,100];
+    const EmpireSpe = ["","100;a,30;b,30;c,30"];
+    const EmpirePopUp = [0,100];
+    const EmpireMana = [0, 5];
+
+    const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
         contextname = "dialog-build-update";
         contextNode = null;
@@ -34,14 +41,34 @@ class UpdateControl extends ContextObject{
             var back=element.addsprite("updateelement.png").anchor(100,0).pos(337,28);
             element.addsprite("caesars_big.png").anchor(50,50).pos(60,390);
             obj = global.request[global.currentLevel];
-            var btype = obj.baseobj.objectid/100;
-            objname = objcontextname[btype];
+            var btype;
+            var objbid;
+            var upbid;
+            //empire Level up 
+            trace("obj", obj.bid, obj.empireLevel);
+            if(obj.baseobj == null)
+            {
+                btype = 0;
+                objname= "empire";
+                objbid = obj.empireLevel;
+                upbid = obj.empireLevel + 1;
+            }
+            else
+            {
+                btype = obj.baseobj.objectid/100;
+                objname = objcontextname[btype];
+                updatebid = obj.baseobj.objectid+1;
+                objbid = obj.bid;
+                upbid = obj.bid+1;
+            }
             var bl1=90;
             var bl2=100;
-            updatebid = obj.baseobj.objectid+1;
-            var objbid = obj.bid;
-            var upbid = obj.bid+1;
-            if(obj.baseobj.contextid == 3){
+            if(obj.baseobj == null)
+            {
+                bl1 = 25;
+                bl2 = 25;
+            }
+            else if(obj.baseobj.contextid == 3){
                 bl1 = 60;
                 bl2 = 67;
             }
@@ -53,14 +80,39 @@ class UpdateControl extends ContextObject{
                     upbid = obj.bid+4;
                 }
             }
-
-            back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
-            back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+            
+            if(obj.baseobj == null)
+            {
+                back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
+            }
+            else
+            {
+                back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+            }
 
             var i;
             var ok;
-            if(btype!=4){
-                var starnum = objbid%3+1;
+            var starnum;
+            if(btype == 0)
+            {
+                starnum = objbid+1;
+                for(i=0;i<5;i++){
+                    ok=0;
+                    if(starnum > i)
+                        ok=1;
+                    back.addsprite("dialogelement_star"+str(ok)+".png").anchor(50,50).pos(-2+i*29,124);
+                }
+
+                for(i=0;i<5;i++){
+                    ok=0;
+                    if(starnum>=i) ok=1;
+                    back.addsprite("dialogelement_star"+str(ok)+".png").anchor(50,50).pos(173+i*29,130);
+                }
+            }
+            else if(btype!=4){
+                starnum = objbid%3+1;
                 for(i=0;i<3;i++){
                     ok=0;
                     if(starnum > i)
@@ -96,10 +148,16 @@ class UpdateControl extends ContextObject{
             buildable[1] = dict([["ok",1]]);
             var money;
             var food;
-            var lperson;
             var person;
             var upspec;
-            if(btype == 1){
+            if(btype == 0)
+            {
+                money = EmpireCoin[upbid];
+                food = EmpireFood[upbid];
+                person = EmpirePeople[upbid];
+                upspec = EmpireSpe[upbid].split(";");
+            }
+            else if(btype == 1){
                 money = ROOM_PRICE[upbid];
                 food = ROOM_B_FOOD[upbid];
                 upspec=ROOM_UP[upbid].split(";");
@@ -210,7 +268,11 @@ class UpdateControl extends ContextObject{
             global.pushContext(self,new Warningdialog(buildable[p]),NonAutoPop);
         }
         else{
-            if(obj.state >2){
+            if(obj.baseobj == null)
+            {
+                global.http.addrequest(1,"upgradecastle",["userid","lev", "type"],[global.userid, obj.empireLevel+1, updatetype],self,"updateover");
+            }
+            else if(obj.state >2){
                 global.pushContext(self,new Warningdialog([global.getStaticString("update_warning"),p,4]),NonAutoPop);
             }
             else{
@@ -218,7 +280,6 @@ class UpdateControl extends ContextObject{
             }
         }
     }
-    
     function reloadNode(p){
         global.http.addrequest(1,"updatebuilding",["user_id","city_id","ground_id","grid_id","type"],[global.userid,global.cityid,updatebid,obj.baseobj.posi[0]*RECTMAX+obj.baseobj.posi[1],p],self,"updateover");
     }
@@ -232,8 +293,18 @@ class UpdateControl extends ContextObject{
     function updateover(r,rc,c){
         if(rc!=0 && json_loads(c).get("id")==1){
             var i;
-            obj.bid = updatebid%100;
-            obj.baseobj.objectid = updatebid;
+            if(obj.baseobj == null)
+            {
+                obj.empireLevel += 1;
+                trace("change Value animate1");
+                global.user.changeValueAnimate2(global.context[0].moneyb,"boundary", EmpireMana[obj.empireLevel],-4);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"personmax", EmpirePopUp[obj.empireLevel],-2);
+            }
+            else
+            {
+                obj.bid = updatebid%100;
+                obj.baseobj.objectid = updatebid;
+            }
             if(global.card[18]%10==0 && updatebid==424){
                 var flevel=1+10*(len(global.ppyuserdict)-2);
                 if(flevel/10>=100){
@@ -247,20 +318,39 @@ class UpdateControl extends ContextObject{
                 global.card[18]=flevel;
                 global.http.addrequest(0,"changecard",["userid","cardnum","type"],[global.userid,global.card[18]%10,4],self,null);
             }
-            obj.beginbuild();
+            if(obj.baseobj != null)
+                obj.beginbuild();
+            else
+            {
+                obj.objnode.texture("empire"+str(obj.empireLevel+1)+".png");
+                if(global.system.flagnight==0){
+                    obj.contextNode.get(1).texture("empire"+str(obj.empireLevel+1)+"_l.png");
+                }
+            }
+            var target;
+            //because empire' parent is normalobject
+            //but other buildings is buildObject
+            //use base obj == null to check which is!
+            if(obj.baseobj == null)
+            {
+                target = obj;
+            }
+            else
+                target = obj.baseobj;
             if(updatetype == 1){
                 var k=costdict.keys();
                 for(i=0;i<len(k);i++){
-                    global.user.changeValueAnimate(obj.baseobj,k[i],-costdict.get(k[i]),i*2);
+                    trace("change Value animate2");
+                    global.user.changeValueAnimate(target,k[i],-costdict.get(k[i]),i*2);
                 }
                 for(i=0;i<len(costspec);i++){
                     global.special[costspec[i][0]] = global.special[costspec[i][0]]-costspec[i][1];
                 }
             }
             else{
-                global.user.changeValueAnimate(obj.baseobj,"caesars",-costcaesars,0);
+                global.user.changeValueAnimate(target,"caesars",-costcaesars,0);
                 if(costdict.get("labor",0)!=0){
-                    global.user.changeValueAnimate(obj.baseobj,"labor",-costdict.get("labor"),2);
+                    global.user.changeValueAnimate(target,"labor",-costdict.get("labor"),2);
                 }
             }
         }

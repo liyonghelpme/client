@@ -2,9 +2,23 @@ class EmpireControl extends ContextObject{
     var index;
     var tabs;
     var element;
-    function EmpireControl(){
+    var building;
+    function EmpireControl(b){
         contextname = "dialog-castleinfo";
         contextNode = null;
+        building = b;
+    }
+    function upgradeEmpire(n, e, p, x, y, pos)
+    {
+        trace("empireLevel", building.empireLevel);
+        if(global.user.getValue("level") < 20)
+        {
+            global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 6]), NonAutoPop);
+        }
+        else if(building.empireLevel < 1)
+            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        else
+            global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 6]), NonAutoPop);
     }
 
     function paintNode(){
@@ -17,8 +31,18 @@ class EmpireControl extends ContextObject{
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(508,4).setevent(EVENT_UNTOUCH,closedialog);
 
         tabs[0] = contextNode.addsprite("dialogelement_state3.png").setevent(EVENT_UNTOUCH,choosetab,0);
+        trace("empireLevel", building.empireLevel);
         for(var i=0;i<5;i++)
-            tabs[0].addsprite("dialogelement_star"+str((4-i)/4)+".png").anchor(50,50).pos(176+32*i,28);
+        {
+            if(i <= building.empireLevel)
+                tabs[0].addsprite("dialogelement_star1.png").anchor(50,50).pos(176+32*i,28);
+            else
+                tabs[0].addsprite("dialogelement_star0.png").anchor(50,50).pos(176+32*i,28);
+
+        }
+        var lev = global.user.getValue("level");
+        //if(lev >= 20)
+            tabs[0].addsprite("upgrade.png").anchor(0, 0).pos(376, 18).setevent(EVENT_UNTOUCH, upgradeEmpire);
         tabs[1] = contextNode.addsprite("dialogelement_resource0.png").setevent(EVENT_UNTOUCH,choosetab,1);
         tabs[2] = contextNode.addsprite("dialogelement_military0.png").setevent(EVENT_UNTOUCH,choosetab,2);
         choosetab(0,0,0);
@@ -96,8 +120,8 @@ class EmpireControl extends ContextObject{
             }
             else
             {
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
+                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 224).size(rate, 18);
+                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 224).color(100, 100, 100);
                 element.addsprite("adddefence2.png").pos(414, 217).setevent(EVENT_UNTOUCH,addMagic);
                 element.addsprite("timeLeft.png").pos(351, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
