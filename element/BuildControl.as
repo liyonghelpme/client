@@ -142,22 +142,6 @@ class BuildControl extends ContextObject{
                     var stt = place.health/(max/3);
                     if(stt>2) stt=2;
                     if(place.state==3){
-/*
-<<<<<<< HEAD
-                        back.add(sprite("egg-"+str(stt+1)+".png").anchor(50,0).pos(107,7),1,111);
-                        back.addlabel(global.getStaticString("egging"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
-                    }
-                    else if(place.state==4){
-                        var pstr = EXTEND_NAME[place.extendid]+"-";
-                        back.add(sprite(pstr+"7.png").anchor(50,0).pos(107,7).scale(70),1,111);
-                        back.addlabel(global.getStaticString("growing"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
-                    }
-                    else if(place.state >= 5){
-                        pstr = EXTEND_NAME[place.extendid]+"-";
-                        back.add(sprite(pstr+"1-1.png").anchor(50,50).pos(107,57).scale(70),1,111);
-                        back.addlabel(global.getStaticString("growing"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
-=======
-*/
                         var eggpic = sprite().anchor(50,0).pos(107,7);
                         spriteManager.getPic("egg-"+str(stt+1)+".png", eggpic);
                         back.add(eggpic,1,111);
@@ -345,7 +329,6 @@ class BuildControl extends ContextObject{
                 }
                 else if(buttons[p] == 25){
                     spriteManager.getDragon(place);
-                    //global.pushContext(place,new Nestpetdialog(),NonAutoPop);
                 }
                 else
                     global.pushContext(place,new SoldierControl(buttons[p]-7,place.bid%3),NonAutoPop);
