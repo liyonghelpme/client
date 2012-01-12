@@ -55,6 +55,35 @@ class SpriteManager
 "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
 "warloseelement.jpg", "warloseelement2.jpg",
 ];
+    var DragonPic = [
+    "earth-1-10.png", "earth-1-11.png", "earth-1-12.png", "earth-1-13.png",
+    "earth-1-1.png", "earth-1-2.png", "earth-1-3.png", "earth-1-4.png", 
+    "earth-1-5.png", "earth-1-6.png", "earth-1-7.png", "earth-1-8.png", 
+    "earth-1-9.png", "earth-2.png", "earth-3.png", "earth-4-1.png", 
+    "earth-4-2.png", "earth-4-3.png", "earth-4-4.png", "earth-4-5.png", 
+    "earth-4-6.png", "earth-4-7.png", "earth-4-8.png", "earth-4-9.png", 
+    "earth-4.png", "earth-5.png", "earth-6.png", "earth-7.png", 
+    "earth-9.png", "earth-f1.png", "earth-f2.png", "earth-f3.png", 
+    "earth-f4.png", "egg-1-0.png", "egg-1-1.png", "egg-1-2.png", 
+     "egg-1-3.png", "egg-2-0.png", "egg-2-1.png", "egg-2-2.png", 
+     "egg-2-3.png", "egg-3-0.png", "egg-3-1.png", "egg-3-2.png", 
+     "egg-3-3.png", "egg-3-4.png", "egg-3-5.png", "egg-3-6.png", 
+     "egg-3-7.png", "fire-1-10.png", "fire-1-11.png", "fire-1-12.png", 
+     "fire-1-13.png", "fire-1-1.png", "fire-1-2.png", "fire-1-3.png", 
+     "fire-1-4.png", "fire-1-5.png", "fire-1-6.png", "fire-1-7.png", 
+     "fire-1-8.png", "fire-1-9.png", "fire-2.png", "fire-3.png", 
+     "fire-4-1.png", "fire-4-2.png", "fire-4-3.png", "fire-4-4.png", 
+     "fire-4-5.png", "fire-4-6.png", "fire-4-7.png", "fire-4-8.png", 
+     "fire-4-9.png", "fire-4.png", "fire-5.png", "fire-6.png", 
+     "fire-7.png", "fire-9.png", "fire-f1.png", "fire-f2.png", 
+     "fire-f3.png", "fire-f4.png", "water-1-10.png", "water-1-11.png", 
+     "water-1-12.png", "water-1-13.png", "water-1-1.png", 
+     "water-1-2.png", "water-1-3.png", "water-1-4.png", "water-1-5.png", 
+     "water-1-6.png", "water-1-7.png", "water-1-8.png", "water-1-9.png", 
+     "water-2.png", "water-3.png", "water-4-1.png", "water-4-2.png", 
+     "water-4-3.png", "water-4-4.png", "water-4-5.png", "water-4-6.png", 
+     "water-4-7.png", "water-4-8.png", "water-4-9.png", "water-4.png", "water-5.png", "water-6.png", "water-7.png", "water-9.png", "water-f1.png", "water-f2.png", "water-f3.png", "water-f4.png"];
+    
     var mainNode = node();
     var notdownload = 0;
     var downbar;
@@ -92,10 +121,24 @@ class SpriteManager
     function getWar()
     {
         var arr = animate + warpic;
-        getDownload(arr, warBack);
+        getDownload(arr, warBack, 0);
+    }
+
+    var dragonPlace;
+    function dragonBack()
+    {
+        global.pushContext(dragonPlace,new Nestpetdialog(), 0);
+    }
+
+    function getDragon(place)
+    {
+        trace("getDragon");
+        dragonPlace = place;
+        var arr = DragonPic;
+        getDownload(arr, dragonBack, 1);
     }
     var ToDown = [];
-    function getDownload(arr, callback)
+    function getDownload(arr, callback, p)
     {
         if(notdownload == 1)
             return;
@@ -113,7 +156,7 @@ class SpriteManager
             }
             else
             {
-                //trace("down", arr[i]);
+                trace("down", arr[i]);
                 /*
                 if(notdownload == 0)
                 {
@@ -140,9 +183,15 @@ class SpriteManager
         {
             //SpriteManager warning !
             trace("warning dialog");
-           notdownload = 0;
-           global.pushContext(global.context[0], Warningdialog(["开启战争模式需要下载1M相关图片，是否下载？", -2000, 3]), 0); 
-
+            notdownload = 0;
+            if(p == 0)//download war picture
+            {
+                global.pushContext(global.context[0], Warningdialog(["开启战争模式需要下载相关图片，是否下载？", -2000, 3]), 0); 
+            }
+            else if(p == 1)//download dragon picture
+            {
+                global.pushContext(global.context[0], Warningdialog(["召唤宠物需要下载相关图片，是否下载？", -2000, 6]), 0);        
+            }
         }
         /*
         else
@@ -161,11 +210,13 @@ class SpriteManager
             return;
         notdownload = 1;
         trace("decide to download");
+        mainNode.addaction(request(ToDown[0], 0, finDownload));
+        /*
         for(var i = 0; i < len(ToDown); i++)
         {
-            mainNode.addaction(request(ToDown[i], 0, finDownload));
-        }
 
+        }
+        */
         timeisend = 0;
         global.timer.addlistener(global.timer.currenttime+99999, self);
         global.context[0].contextNode.parent().add(downloadNode);
@@ -190,11 +241,15 @@ class SpriteManager
     }
     function getMonster()
     {
-        getDownload(animate, monBack);
+        getDownload(animate, monBack, 2);
     }
     function finDownload(name, force, param)
     {
         downloadLen--;
+        ToDown.pop(0);
+        if(len(ToDown) > 0)
+            mainNode.addaction(request(ToDown[0], 0, finDownload));
+            
         if(downloadLen <= 0)//close download
         {
             notdownload = 0;

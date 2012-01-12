@@ -327,7 +327,8 @@ class BuildControl extends ContextObject{
                     }
                 }
                 else if(buttons[p] == 25){
-                    global.pushContext(place,new Nestpetdialog(),NonAutoPop);
+                    spriteManager.getDragon(place);
+                    //global.pushContext(place,new Nestpetdialog(),NonAutoPop);
                 }
                 else
                     global.pushContext(place,new SoldierControl(buttons[p]-7,place.bid%3),NonAutoPop);
