@@ -261,6 +261,7 @@ class BuildControl extends ContextObject{
             if(e==EVENT_TOUCH)
                 n.texture("buttontab1.png",filter);
             else{
+                trace("button", buttons[p]);
                 n.texture("buttontab0.png",filter);
                 if(buttons[p] != 6)
                     global.popContext(null);
@@ -343,7 +344,8 @@ class BuildControl extends ContextObject{
                     }
                 }
                 else if(buttons[p] == 25){
-                    global.pushContext(place,new Nestpetdialog(),NonAutoPop);
+                    spriteManager.getDragon(place);
+                    //global.pushContext(place,new Nestpetdialog(),NonAutoPop);
                 }
                 else
                     global.pushContext(place,new SoldierControl(buttons[p]-7,place.bid%3),NonAutoPop);
