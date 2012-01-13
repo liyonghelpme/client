@@ -9,15 +9,15 @@ class CampControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
-    const objsmax = 3;
-    const objcontext = [2200,2206,2203];
-    const objlevel = [1,3,11];
+    const objsmax = 4;
+    const objcontext = [2200,2206,2203, 2209];
+    const objlevel = [1,3,11, 25];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
         contextNode = null;
-        objs = new Array(3);
-        buildable = new Array(3);
+        objs = new Array(4);
+        buildable = new Array(4);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
