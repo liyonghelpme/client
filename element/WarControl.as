@@ -1,3 +1,4 @@
+import element.CataControl;
 class SoldierImage{
     var images;
     function SoldierImage(){
@@ -536,6 +537,7 @@ class WarControl extends ContextObject{
                 soldiers2[i].health = soldiers2[i].health*3/2;
             }
         }
+        initCata();
         c_addtimer(100,animaterefresh);
         background = showback;
     }
@@ -602,10 +604,99 @@ class WarControl extends ContextObject{
             }
         }
     }
+    var stones;
+    var Cata;
+    var leftCataPower = 400;
+    var rightCataPower = 400;
+    var lastTime = 0;
+    function addStone(sta)
+    {
+        stones.append(sta);
+        contextNode.add(sta.bg);
+    }
+    function removeStone(sta)
+    {
+        stones.remove(sta);
+        sta.bg.removefromparent();
+    }
+    function getCata(power)
+    {
+        var temp = [0, 0, 0];
+        if(power > 0)
+        {
+            if(power < 400)
+                temp = [(power+199)/200, 0, 0];
+            else if(power < 1000)
+                temp = [1, power/500, 0];
+            else
+                temp = [1, 1, 1];
+        }
+        return temp;
+    }
+    const yinit = 100;
+    function initCata()
+    {
+        trace("initial catapult", leftCataPower, rightCataPower);
+        var temp = getCata(leftCataPower);
+        Cata = [];
+        stones = [];
+        var ypos = yinit;
+        var dify = 100;
+        var p = temp[0]+temp[1]*2+temp[2]*4;
+        var ep = leftCataPower/p;
+        for(var j = 0; j < len(temp); j++)
+        {
+            for(var i = 0; i < temp[j]; i++)
+            {
+                Cata.append(new CataControl(j, [100, ypos], 0, ep*(1<<j), this));
+                ypos += dify;
+            }
+        }
+        temp = getCata(rightCataPower);
+        p = temp[0]+temp[1]*2+temp[2]*4;
+        ep = rightCataPower/p;
+        ypos = yinit; 
+        for(j = 0; j < len(temp); j++)
+        {
+            for(i = 0; i < temp[j]; i++)
+            {
+                Cata.append(new CataControl(j, [700, ypos], 1, ep*(1<<j), this));
+                ypos += dify;
+            }
+        }
+        //back = node();
+        trace("cata", len(Cata));
+        for(i = 0; i < len(Cata); i++)
+        {
+            contextNode.add(Cata[i].bg);
+            trace("add i", i);
+        }
+    }
     
     function animaterefresh(timer){
         check(soldiers1);
         check(soldiers2);
+        var diff;
+        if(lastTime == 0)
+        {
+            lastTime = time();
+            diff = 0;
+        }
+        else
+        {
+            var now = time();
+            diff = now - lastTime;
+            lastTime = now;
+        }
+        var i;
+        for(i = 0; i < len(Cata); i++)
+        {
+            Cata[i].update(diff);
+        }
+        for(i = 0; i < len(stones); i++)
+        {
+            stones[i].update(diff);
+        }
         if(executeAnimate(soldiers1,soldiers2)==1||executeAnimate(soldiers2,soldiers1)==1){
             timer.stop();
             contextNode.addaction(sequence(delaytime(2000),callfunc(animateover)));
