@@ -16,7 +16,14 @@ class Simpledialog extends ContextObject{
     function setclosebutton(){
         contextNode.add(sprite("builddialogclose.png").anchor(100,0).pos(dialogsize[dialogtype][0]-10,10).setevent(EVENT_UNTOUCH,closedialog,null),1);
     }
-    
+    //100 101
+    function AttackUseCata(name)
+    {
+        var w=dialogsize[dialogtype][0];
+        var h=dialogsize[dialogtype][1]-42;
+        setbutton(1,w/3-17,h,name[0],100);
+        setbutton(2,w*2/3+17,h,name[1],101);
+    }
     function usedefaultbutton(buttonnum,name){
         var w=dialogsize[dialogtype][0];
         var h=dialogsize[dialogtype][1]-42;
@@ -30,7 +37,16 @@ class Simpledialog extends ContextObject{
     }
     
     function closedialog(n,e,p){
-        if(p==null){
+        if(p == 100)//attack with catapult 
+        {
+            //warning dialog 
+            dialogelement.excute(p);
+        }
+        else if(p == 101)//attack without catapult
+        {
+            dialogelement.excute(p);
+        }
+        else if(p==null){
             global.popContext(null);
         }
         else{

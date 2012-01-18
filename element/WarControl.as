@@ -29,9 +29,13 @@ class Soldier{
     var jump;
     var state;
     var state2;
-    function Soldier(t,color,im){
+    var show;
+    var color;
+
+    function Soldier(t,c2,im, c){
         type=t;
-        colorstr = color;
+        color = c;
+        colorstr = c2;
         enemy=null;
         image=im;
         jump = 0;
@@ -40,6 +44,7 @@ class Soldier{
         mposi=null;
         state =-1;
         state2 =1;
+        show = 0;
         if(type==1){
             health = 7;
             atk=1;
@@ -60,6 +65,7 @@ class Soldier{
     
     function appear(f){
         body = sprite(image.getImage("animate_"+colorstr+"_left_"+str(type)+"_2.png")).anchor(50,100);
+        show = 1;
         body.color(0,0,0,0);
         body.prepare();
         jump = 4;
@@ -78,10 +84,13 @@ class Soldier{
     }
     
     function setenemy(e){
-        enemy = e;
-        if(e!=null){
+        if(enemy != e && e != null)
+        {
             e.defencenum++;
+            if(enemy != null)
+                enemy.defencenum--;
         }
+        enemy = e;
     }
     
     function move(p){
@@ -138,6 +147,7 @@ class Soldier{
     function isdead(){
         if(health<=0){
             body.addaction(sequence(stop(),itexture(image.getImage("animate_"+colorstr+"_left_"+str(type)+"_4.png")),tintto(2000,0,0,0,0),callfunc(removeself)));
+            enemy.defencenum--;
             return 1;
         }
         return 0;
@@ -478,6 +488,7 @@ class WarControl extends ContextObject{
     var images;
     var background;
     
+    var timer;
     function initanimate(showback,data){
         function getSoldierArray(p){
             var result = new Array(0);
@@ -513,18 +524,18 @@ class WarControl extends ContextObject{
         soldiers2 = getSoldierArray(data.get("rightpower"));
         for(var i=0;i<len(soldiers1);i++){
             if(leftself==1){
-                soldiers1[i] = new Soldier(soldiers1[i],"self",images);
+                soldiers1[i] = new Soldier(soldiers1[i],"self",images, 0);
             }
             else{
-                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images);
+                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images, 1);
             }
         }
         for(i=0;i<len(soldiers2);i++){
-            if(leftself==0){
-                soldiers2[i] = new Soldier(soldiers2[i],"self",images);
+            if(leftself==0){//color = 0 at left
+                soldiers2[i] = new Soldier(soldiers2[i],"self",images, 0);
             }
             else{
-                soldiers2[i] = new Soldier(soldiers2[i],"enemy",images);
+                soldiers2[i] = new Soldier(soldiers2[i],"enemy",images, 1);
             }
         }
         if(leftwin==1){
@@ -537,29 +548,50 @@ class WarControl extends ContextObject{
                 soldiers2[i].health = soldiers2[i].health*3/2;
             }
         }
-        initCata();
-        c_addtimer(100,animaterefresh);
         background = showback;
+        initCata();
+        timer = c_addtimer(100,animaterefresh);
+
     }
-    
+    function findNearCata(src)
+    {
+        var c;
+        c = src.color; 
+        //trace("nearCata", c);
+
+        var nearest = null;
+        var minlength = 100000;
+
+        var des = Cata;
+        for(var i = 0; i < len(des); i++)
+        {   
+            //trace("des", des[i].color, des[i].defencenum);
+            if(des[i].color != c  && des[i].health >= 0)//defence Num error
+            {
+                var length = abs(src.posi[0]-des[i].body.pos()[0])+abs(src.posi[1]-des[i].body.pos()[1]);
+                if(length<minlength){
+                    minlength=length;
+                    nearest = des[i];
+                }
+            }
+        }
+        //trace("near Cata", nearest, src.body.pos(), nearest.body.pos());
+        return nearest;
+    }
     function executeAnimate(src,des){
         var iswin=0;
+        var catWin = 0;
         if(len(des)==0){
             iswin=1;
         }
         var i;
-        if(iswin==1){
-            for(i=0;i<len(src);i++){
-                if(src[i].body!=null){
-                    src[i].win();
-                }
-            }
-            return 1;
-        }
+
         var f=0;
         if(src == soldiers2){
             f=1;
         }
+        
+        var FindCata = 0;
         for(i=0;i<len(src);i++){
             if(src[i].needjump()==1){
                 break;
@@ -572,10 +604,26 @@ class WarControl extends ContextObject{
             else{
                 src[i].body.removefromparent();
                 var e=findnearest(src[i],des);
+                if(e == null)
+                    e = findNearCata(src[i]);
+                if(e == null)   
+                    continue;
+                FindCata = 1;
                 src[i].setenemy(e);
                 src[i].executeAction();
                 background.add(src[i].body,src[i].posi[1]);
             }
+        }
+
+        if(FindCata == 0)
+            catWin = 1;
+        if(iswin==1 && catWin == 1){
+            for(i=0;i<len(src);i++){
+                if(src[i].body!=null){
+                    src[i].win();
+                }
+            }
+            return 1;
         }
         return 0;
     }
@@ -599,6 +647,7 @@ class WarControl extends ContextObject{
     function check(src){
         for(var i=len(src)-1;i>=0;i--){
             src[i].defencenum=0;
+            //src[i].enemy.defencenum--;
             if(src[i].isdead()==1){
                 src.pop(i);
             }
@@ -612,12 +661,12 @@ class WarControl extends ContextObject{
     function addStone(sta)
     {
         stones.append(sta);
-        contextNode.add(sta.bg);
+        background.add(sta.body);
     }
     function removeStone(sta)
     {
         stones.remove(sta);
-        sta.bg.removefromparent();
+        sta.body.removefromparent();
     }
     function getCata(power)
     {
@@ -637,6 +686,10 @@ class WarControl extends ContextObject{
     function initCata()
     {
         trace("initial catapult", leftCataPower, rightCataPower);
+        if(leftwin == 1)
+            leftCataPower *= 5;
+        else
+            rightCataPower *= 5;
         var temp = getCata(leftCataPower);
         Cata = [];
         stones = [];
@@ -668,11 +721,20 @@ class WarControl extends ContextObject{
         trace("cata", len(Cata));
         for(i = 0; i < len(Cata); i++)
         {
-            contextNode.add(Cata[i].bg);
+            background.add(Cata[i].body);
             trace("add i", i);
         }
     }
-    
+    function checkCataDeath(c)
+    {
+        for(var i = 0; i < len(Cata); i++)
+        {
+            if(Cata[i].color == c && Cata[i].state != 3)//color death
+                return 0;
+        }
+        return 1;
+    }
+    var winyet=0;
     function animaterefresh(timer){
         check(soldiers1);
         check(soldiers2);
@@ -689,6 +751,14 @@ class WarControl extends ContextObject{
             lastTime = now;
         }
         var i;
+        if(winyet == 0)
+        {
+            if(executeAnimate(soldiers1,soldiers2)==1 || executeAnimate(soldiers2,soldiers1)==1){
+                winyet = 1;
+                trace("win");
+                contextNode.addaction(sequence(delaytime(2000),callfunc(animateover)));
+            }
+        }
         for(i = 0; i < len(Cata); i++)
         {
             Cata[i].update(diff);
@@ -697,13 +767,10 @@ class WarControl extends ContextObject{
         {
             stones[i].update(diff);
         }
-        if(executeAnimate(soldiers1,soldiers2)==1||executeAnimate(soldiers2,soldiers1)==1){
-            timer.stop();
-            contextNode.addaction(sequence(delaytime(2000),callfunc(animateover)));
-        }
     }
     
     function animateover(){
+        timer.stop();
         contextNode.visible(1);
     }
 }

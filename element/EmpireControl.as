@@ -143,6 +143,7 @@ class EmpireControl extends ContextObject{
             for(i=0;i<2;i++){
                 element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(89+192*i,161).color(0,0,0,100);
             }
+            element.addlabel(global.user.getValue("catapult"), null, 20).anchor(0, 50).pos(89+192*2, 161).color(0, 0, 0, 100);
             for(i=2;i<5;i++){
                 element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(150*i-227,236).color(0,0,0,100);
             }

@@ -105,19 +105,28 @@ class AttackControl extends ContextObject{
         btime = 100*(bz+b1)/(2*bz)*atime/100;
         timelabel.text(global.gettimestr(btime));
     }
-    
+    function realAttack(p)
+    {
+        if(global.timer.times2c(global.user.getValue("nobattletime"))>global.timer.currenttime){
+            global.pushContext(null,Warningdialog([global.getStaticString("nobattle_whenattack"),1,1]),NonAutoPop);
+            return 0;
+        }
+        var eu=global.context[1].userdict.get(eid);
+        var euid=eu[1];
+        if(euid>=0){
+            euid=eu[5];
+        }
+        if(p == -3000)//attack with catapult
+            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 1],self,"attackover");
+        else //attack without catapult
+            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 0],self,"attackover");
+    }
     function attack(){
         if(global.currentLevel == contextLevel){
-            if(global.timer.times2c(global.user.getValue("nobattletime"))>global.timer.currenttime){
-                global.pushContext(null,Warningdialog([global.getStaticString("nobattle_whenattack"),1,1]),NonAutoPop);
-                return 0;
-            }
-            var eu=global.context[1].userdict.get(eid);
-            var euid=eu[1];
-            if(euid>=0){
-                euid=eu[5];
-            }
-            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry"],[global.userid,euid,btime,soldiers[0],soldiers[1]],self,"attackover");
+            //-2000 spriteManager
+            //>= 0 what
+            //< 0 what
+            global.pushContext(null, Warningdialog(["是否派出你的投石车？", -3000, 1]), NonAutoPop); 
         }
     }
     
@@ -178,7 +187,11 @@ class AttackControl extends ContextObject{
     }
     
     function reloadNode(re){
-        if(re==1){
+        if(re == -3000 || re == -3001)//attack without catapult
+        {
+            realAttack(re);
+        }
+        else if(re==1){
             var eu=global.context[1].userdict.get(eid);
             var euid=eu[1];
             if(euid>=0){
