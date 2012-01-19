@@ -725,10 +725,6 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(currentLevel > 0)
-            {
-                return;
-            }
             if(re == -2000)
             {
                 sp.DecideToDown();
@@ -739,6 +735,11 @@ class GlobalController{
                     context[currentLevel].getNode().focus(1);
                 request[currentLevel+1].response(re);
             }
+            if(currentLevel > 0)
+            {
+                return;
+            }
+
         }
 
     }
