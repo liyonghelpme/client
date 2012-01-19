@@ -68,7 +68,8 @@ class Simpledialog extends ContextObject{
     }
     
     function paintNode(){
-        contextNode = sprite(dialogpic[dialogtype]).anchor(50,50).pos(400,240);
+        contextNode = sprite().anchor(50,50).pos(400,240);
+        spriteManager.getPic(dialogpic[dialogtype], contextNode);
         contextNode.setevent(EVENT_KEYDOWN,dialogkeydown);
         contextNode.add(dialogelement.getelement(),0);
     }

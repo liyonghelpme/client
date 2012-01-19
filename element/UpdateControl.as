@@ -81,17 +81,21 @@ class UpdateControl extends ContextObject{
                 }
             }
             
+            var hou1 = back.addsprite().anchor(50,50).pos(56,70).scale(bl1);
+            spriteManager.getPic(objname+str(objbid)+".png", hou1);
+            var hou2 = back.addsprite().anchor(50,50).pos(231,65).scale(bl2);
+            spriteManager.getPic(objname+str(upbid)+".png", hou2);
+            /*
             if(obj.baseobj == null)
             {
-                back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
-                back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
+
             }
             else
             {
                 back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
             }
-
+            */
             var i;
             var ok;
             var starnum;

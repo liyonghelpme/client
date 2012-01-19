@@ -35,9 +35,15 @@ class Nestpetchange2 extends ContextObject{
         cell.addlabel(EXTEND_PETS_NAME[i],null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
         //cell.addsprite(objpath+str(i)+".png").anchor(50,50).pos(94,66).size(67,67);
         if(type.state==4)
-            cell.addsprite(EXTEND_NAME[i]+"-7.png").anchor(50,0).pos(94,38).scale(70);
+        {
+            var dragonpic = cell.addsprite().anchor(50,0).pos(94,38).scale(70);
+            spriteManager.getPic(EXTEND_NAME[i]+"-7.png", dragonpic);
+        }
         else
-            cell.addsprite(EXTEND_NAME[i]+"-1-1.png").anchor(50,0).pos(94,38).scale(70);
+        {
+            dragonpic = cell.addsprite().anchor(50,0).pos(94,38).scale(70);
+            spriteManager.getPic(EXTEND_NAME[i]+"-1-1.png", dragonpic);
+        }
         
 
         if(type.extendid==i){

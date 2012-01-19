@@ -9,15 +9,15 @@ class CampControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
-    const objsmax = 3;
-    const objcontext = [2200,2206,2203];
-    const objlevel = [1,3,11];
+    const objsmax = 4;
+    const objcontext = [2200,2206,2203, 2209];
+    const objlevel = [1,3,11, 25];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
         contextNode = null;
-        objs = new Array(3);
-        buildable = new Array(3);
+        objs = new Array(4);
+        buildable = new Array(4);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -38,7 +38,10 @@ class CampControl extends ContextObject{
             var objid = objcontext[i]%100;
             objs[i] = sprite("dialogelement2u.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
             objs[i].addlabel(global.getname("camp",objid),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
-            objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
+//            objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
+            var camp = objs[i].addsprite().anchor(50,100).pos(74,160);
+            spriteManager.getPic("camp"+str(objid)+".png", camp);
+            
             if(i==1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }

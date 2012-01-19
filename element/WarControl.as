@@ -191,75 +191,72 @@ class WarControl extends ContextObject{
         flagresult = 0;
         datadict = dl;
     }
-    function toInt(data)
-    {
-        if(type(data) == type(""))
-            return int(data)
-        return data;
-    }
+    var Record ;
     function formatstringtodata(dl){
+        Record = dl;
         trace("format", dl);
         var data = dict();
-        var d;
-        if(type(dl)==type(""))
-            d= dl.split(",");
-        else if(type(dl)==type([]))
-            d=dl;
-        var leftself = toInt(d[1]);//attack split into int
-        if(leftself==1){
+        var d = dl;
+        //I attack or defence 
+        var leftself = 1-getWarrecordList("kind", d); 
+
+        if(leftself == 1){//I attack
             _self = "left";
             _enemy = "right";
-            data.update("leftwin",toInt(d[2]));
+            data.update("leftwin", getWarrecordList("win", d)); 
         }
-        else{
+        else{//I defence
             _self = "right";
             _enemy = "left";
-            data.update("leftwin",1-toInt(d[2]));
+            data.update("leftwin", 1-getWarrecordList("win", d));
         }
-        data.update("enemyuid",toInt(d[0]));
+        var kind = getWarrecordList("type", d);
+
         data.update("leftself",leftself);
-        data.update("reward",d[6]);
-        data.update("powerlost",toInt(d[3]));
-        data.update(_self+"power",toInt(d[4]));
-        data.update(_enemy+"power",toInt(d[5]));
+        if(kind == 0) //attack normal user
+            data.update("reward", getWarrecordList("reward", d));
+        else
+            data.update("reward", 
+            str(getWarrecordList("coinReward", d))+"!"+
+                +str(getWarrecordList("foodReward", d))+"!"+
+                +str(getWarrecordList("woodReward", d))+"!"+
+                +str(getWarrecordList("stoneReward", d))
+                );//reward
+        data.update("powerlost", getWarrecordList("lostPower", d));
+        data.update("leftpower", getWarrecordList("attFullPow", d));
+        data.update("rightpower", getWarrecordList("defFullPow", d));
         data.update(_self+"ppyid",ppy_userid());
-        data.update(_enemy+"ppyid",toInt(d[7]));//other ppyid
-        data.update(_self+"power2",toInt(d[8])+toInt(d[9]));
-        data.update(_enemy+"power2",toInt(d[12])+toInt(d[13]));
-        data.update(_self+"name",global.user.getValue("cityname"));
-        data.update(_enemy+"name",d[10]);
-        data.update(_self+"nob",global.user.getValue("nobility"));
-        data.update(_enemy+"nob",toInt(d[11]));
-        data.update(_self+"godpower",toInt(d[14]));
-        data.update(_enemy+"godpower",toInt(d[15]));
-        function toInt(data)
-        {
-            if(type(data) == type(""))
-                return int(data);
-            return data;
-        }
-        var defdata = toInt(d[16]);
-        if(defdata >= 0)
+        data.update(_enemy+"ppyid",getWarrecordList("otherUid", d));//other ppyid
+        data.update("leftpower2", getWarrecordList("attPurePow", d));
+        data.update("rightpower2", getWarrecordList("defPurePow", d));
+
+        data.update(_self+"name",global.user.getValue("cityname", d));
+        data.update(_enemy+"name", getWarrecordList("eneEmpirename", d));
+
+        data.update(_self+"nob", global.user.getValue("nobility", d));
+        data.update(_enemy+"nob", getWarrecordList("eneNobility", d));
+        data.update("leftgodpower", getWarrecordList("attGod", d));
+        data.update("rightgodpower", getWarrecordList("defGod", d));
+        data.update("leftCatapult", getWarrecordList("attCatapult", d));
+        if(kind == 0)//attack normal user
         {
             data.update("monster", 0);
+            data.update("rightCatapult", getWarrecordList("defCatapult", d));
         }
-        else
+        else //attack Normal
         {
             data.update("monster", 1);
-            var level = -(defdata+1);
+            data.update("rightCatapult", 0);
+            var level = getWarrecordList("empLev", d);
             data.update("monLevel", level);
-            if(toInt(d[17]) <= 0)
+
+            if(getWarrecordList("otherUid", d) == "0")//empty Owner's ppyid = 0
                 data.update("noOwner", 1);
             else
                 data.update("noOwner", 0);
         }
-
-        if(len(d)>=17){
-            data.update("defence",toInt(d[16]));
-        }
-        else{
-            data.update("defence",global.user.getValue("citydefence"));   
-        }
+        leftCataPower = data.get("leftCatapult");
+        rightCataPower = data.get("rightCatapult");
         return data;
     }
     
@@ -397,16 +394,16 @@ class WarControl extends ContextObject{
                 rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
                 if(datadict.get("leftself")==1){
-                    contextNode.addlabel("派出战斗力："+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel("派出战斗力："+str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
                     contextNode.addlabel("损失战斗力：",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("返回战斗力："+str(datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel("返回战斗力："+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
                 }
                 else{
-                    contextNode.addlabel("留守防御力："+str(datadict.get("defence")+datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel("留守防御力："+ str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
                     contextNode.addlabel("损失防御力：",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("剩余防御力："+str(datadict.get("defence")+datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel("剩余防御力："+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
                     if(datadict.get("leftwin")==1){
                         contextNode.addlabel("损失银币：",null,20).pos(359,309).color(0,0,0,100);
                         contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
@@ -421,12 +418,18 @@ class WarControl extends ContextObject{
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
 
                 if(datadict.get("leftself") == 1){
-                    leftuser = element.addsprite("battleuserback0.png");
-                    rightuser= element.addsprite("battleuserback1.png").anchor(100,0).pos(800,0);
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback0.png", leftuser);
+                    rightuser= element.addsprite().anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback1.png", rightuser);
                 }
                 else{
-                    leftuser = element.addsprite("battleuserback1.png");
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback1.png", leftuser);
+
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback0.png", rightuser);
+
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
 
@@ -436,7 +439,9 @@ class WarControl extends ContextObject{
                 else
                 {
                     var level = datadict.get("monLevel");
-                    rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
+                    var monavt = rightuser.addsprite().pos(25, 19).size(50, 50);
+                    spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+
                 }
 
                 leftuser.add(label("攻击力："+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);

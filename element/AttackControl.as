@@ -117,7 +117,7 @@ class AttackControl extends ContextObject{
             euid=eu[5];
         }
         if(p == -3000)//attack with catapult
-            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 1],self,"attackover");
+            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], global.user.getValue("catapult")],self,"attackover");
         else //attack without catapult
             global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 0],self,"attackover");
     }

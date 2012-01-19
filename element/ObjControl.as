@@ -65,10 +65,12 @@ class ObjControl extends ContextObject{
             else if(oi>41){
                 bl=100;
             }
-            objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
+            //objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
             if(oi>=50){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            var objpng = objs[i].addsprite().anchor(50,50).pos(74,112).scale(bl);
+            spriteManager.getPic("object"+str(oi)+".png", objpng);
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

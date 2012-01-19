@@ -6,7 +6,7 @@ const buildcontext = [
 //house
 2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,3172,3173,3174,3175,3176,3177,
 //camp
-2200,2201,2202,2203,2204,2205,2206,2207,2208,
+2200,2201,2202,2203,2204,2205,2206,2207,2208, 2209, 2210, 2211,
 //fact
 2300,2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315,2316,2317,2318,2319,2320,2321,2322,2323,2324,2325,2326,3327,3328,3329,2330,2331,2332,
 //god
@@ -23,7 +23,9 @@ const NotAdd = 2;
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
 //const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+//const BASE_URL = "http://localhost:8080/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -84,13 +86,16 @@ const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
 
-const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000];
-const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300];
-const CAMP_PERSON = [100,120,170,130,150,200,90,110,160];
-const CAMP_EXP = [5,10,20,15,20,35,7,15,30];
-const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400];
-const CAMP_USE = ["训练步兵","训练骑兵","训练侦察兵"];
-const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4"];
+const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000, 20000, 45000, 100000];
+const CATA_PRICE = [400, 1000, 2000];
+const CATA_CAE = [20, 50, 100];
+const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300, 400, -400, -100400];
+const CAMP_PERSON = [100,120,170,130,150,200,90,110,160, 200, 50, 50];
+const CAMP_EXP = [5,10,20,15,20,35,7,15,30, 20, 50, 100];
+const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400, 5*3600, 7*3600+1800, 10*3600];
+const CATA_NAME=["普通投石车", "中级投石车", "高级投石车"];
+const CAMP_USE = ["训练步兵","训练骑兵","训练侦察兵", "生产投石车"];
+const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4", 0, "20;a,8;b,8", "40;c,15;g,15"];
 
 const SOLDIER_TIME = [7200,21600,43200];
 const SOLDIER_EXP = [5,8,13,9,15,21,16,25,34,10,15,20,30,40,50,60,75,90,3,6,9,5,8,13,9,15,21];
@@ -152,12 +157,11 @@ const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,191
 
 const ROOMNAME = ["橙色普通农舍","橙色中级农舍","橙色高级农舍","红色普通农舍","红色中级农舍","红色高级农舍","蓝色普通农舍","蓝色中级农舍","蓝色高级农舍","紫色普通农舍","紫色中级农舍","紫色高级农舍","橙色普通民宅","橙色中级民宅","橙色高级民宅","红色普通民宅","红色中级民宅","红色高级民宅","蓝色普通民宅","蓝色中级民宅","蓝色高级民宅","紫色普通民宅","紫色中级民宅","紫色高级民宅","橙色普通别墅","橙色中级别墅","橙色高级别墅","红色普通别墅","红色中级别墅","红色高级别墅","蓝色普通别墅","蓝色中级别墅","蓝色高级别墅","紫色普通别墅","紫色中级别墅","紫色高级别墅","橙色普通豪宅","橙色中级豪宅","橙色高级豪宅","红色普通豪宅","红色中级豪宅","红色高级豪宅","蓝色普通豪宅","蓝色中级豪宅","蓝色高级豪宅","紫色普通豪宅","紫色中级豪宅","紫色高级豪宅","橙色普通庄园","橙色中级庄园","橙色高级庄园","红色普通庄园","红色中级庄园","红色高级庄园","蓝色普通庄园","蓝色中级庄园","蓝色高级庄园","紫色普通庄园","紫色中级庄园","紫色高级庄园","橙色普通神奇屋","橙色中级神奇屋","橙色高级神奇屋","红色普通神奇屋","红色中级神奇屋","红色高级神奇屋","蓝色普通神奇屋","蓝色中级神奇屋","蓝色高级神奇屋","紫色普通神奇屋","紫色中级神奇屋","紫色高级神奇屋","普通丹桂月宫","中级丹桂月宫","高级丹桂月宫","普通金碧月宫","中级金碧月宫","高级金碧月宫"];
 const FACTNAME = ["普通面包房","中级面包房","高级面包房","普通水果店","中级水果店","高级水果店","普通肉铺","中级肉铺","高级肉铺","普通餐厅","中级餐厅","高级餐厅","普通诊所","中级诊所","高级诊所","普通书店","中级书店","高级书店","普通服装店","中级服装店","高级服装店","普通首饰店","中级首饰店","高级首饰店","普通赌场","中级赌场","高级赌场","普通嫦娥织坊","中级嫦娥织坊","高级嫦娥织坊", "普通海鲜店", "中级海鲜店", "高级海鲜店"];
-const CAMPNAME = ["普通步兵训练营","中级步兵训练营","高级步兵训练营","普通骑兵训练营","中级骑兵训练营","高级骑兵训练营","普通侦察兵训练营","中级侦察兵训练营","高级侦察兵训练营"];
+const CAMPNAME = ["普通步兵训练营","中级步兵训练营","高级步兵训练营","普通骑兵训练营","中级骑兵训练营","高级骑兵训练营","普通侦察兵训练营","中级侦察兵训练营","高级侦察兵训练营", " 普通兵工厂", "中级兵工厂", "高级兵工厂"];
 const FARMNAME = [null,"普通农田","水晶农田","宝石农田","精灵农田","伐木场","采石场"];
 const GONAME = ["丰收之神（青铜）","人口之神（青铜）","财富之神（青铜）","战争之神（青铜）","丰收之神（白银）","人口之神（白银）","财富之神（白银）","战争之神（白银）","丰收之神（黄金）","人口之神（黄金）","财富之神（黄金）","战争之神（黄金）","丰收之神（蓝玉）","人口之神（蓝玉）","财富之神（蓝玉）","战争之神（蓝玉）","丰收之神（紫金）","人口之神（紫金）","财富之神（紫金）","战争之神（紫金）","友谊之神（青铜）","友谊之神（白银）","友谊之神（黄金）","友谊之神（蓝玉）","友谊之神（紫金）", "兽神神像（青铜）", "兽神神像（白银）", "兽神神像（黄金）", "兽神神像（蓝玉）","兽神神像（紫金）"];
 //todo
-const OBJNAME = ["砖石路","格子路","彩砖路","石头路","黄金路","白心花坛","红心花坛","粉心花坛","黄心花坛","蓝心花坛","紫心花坛","草坪","精灵灯","普通路灯","高杆路灯","吊灯","心形花灯","路牌","椅子","普通水井","魔法水井","紫色花丛","红色花丛","橙色花丛","深绿忘忧草","黄色忘忧草","绿色忘忧草","蓝色忘忧草","粉色樱花树","紫色樱花树","淡紫樱花树","红色樱花树","橙色灌木","黄色灌木","绿色灌木","春天枫树","夏天枫树","秋天枫树","天使雕像","月兔送福","丰收月饼台","吉祥兔儿神","红色糖果灯","金色糖果灯","南瓜灯", "玫瑰花灯", "蓝色感恩灯", "绿色感恩灯", "金色感恩灯", "紫色感恩灯", 
-"圣诞老人", "精致圣诞树", "普通圣诞树", "精致雪人", "普通雪人", "麋鹿一", "麋鹿二"];
+const OBJNAME = ["砖石路","格子路","彩砖路","石头路","黄金路","白心花坛","红心花坛","粉心花坛","黄心花坛","蓝心花坛","紫心花坛","草坪","精灵灯","普通路灯","高杆路灯","吊灯","心形花灯","路牌","椅子","普通水井","魔法水井","紫色花丛","红色花丛","橙色花丛","深绿忘忧草","黄色忘忧草","绿色忘忧草","蓝色忘忧草","粉色樱花树","紫色樱花树","淡紫樱花树","红色樱花树","橙色灌木","黄色灌木","绿色灌木","春天枫树","夏天枫树","秋天枫树","天使雕像","月兔送福","丰收月饼台","吉祥兔儿神","红色糖果灯","金色糖果灯","南瓜灯", "玫瑰花灯", "蓝色感恩灯", "绿色感恩灯", "金色感恩灯", "紫色感恩灯", "圣诞老人", "精致圣诞树", "普通圣诞树", "精致雪人", "普通雪人", "麋鹿一", "麋鹿二"];
 const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
 const nobilityname = ["平民","男爵","子爵","伯爵","侯爵","公爵","帝王"];
 const NOBNAME = ["三等平民","二等平民","一等平民","三等男爵","二等男爵","一等男爵","三等子爵","二等子爵","一等子爵","三等伯爵","二等伯爵","一等伯爵","三等侯爵","二等侯爵","一等侯爵","三等公爵","二等公爵","一等公爵","帝王"]
@@ -313,8 +317,93 @@ function destroynode(p){
         }
         p.addaction(stop());
         p.removefromparent();
-    }
+}
 
+var BattleKey;
+function InitBattleKey()
+{
+    var keys = [
+    "type", "readed",
+    "kind", "otherUid", "win", "lostPower", "attFullPow", "defFullPow", "attPurePow", "defPurePow", "reward", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "attCatapult", "defCatapult" 
+    ];
+    BattleKey = dict();
+    for(var i = 0; i < len(keys); i++)
+    {
+        BattleKey.update([[keys[i], i]]);
+    }
+}
+InitBattleKey();
+function getBattleResult(key, data)
+{
+    return data[BattleKey.get(key)];
+}
+function setBattleResult(key, value, data)
+{
+    data[BattleKey.get(key)] = value;
+}
+var EmptyResult;
+function InitEmptyResult()
+{
+    var keys =  [
+    "type", "readed",
+    "id", "kind", "otherUid", "win", "lostPower", "attFullPow", "defFullPow", "attPurePow", "defPurePow", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "empInf", "empCav", "empLev", "empGid", "attCatapult", "coinReward", "foodReward", "woodReward", "stoneReward"
+    ];//coinGen foodGen woodGen stoneGen
+    EmptyResult = dict();
+    for(var i = 0; i < len(keys); i++)
+        EmptyResult.update([[keys[i], i]]);
+}
+InitEmptyResult();
+function getEmptyResult(key, data)
+{
+    return data[EmptyResult.get(key)];
+}
+function getEmptyResults(keys, data)
+{
+    var res = [];
+    for(var i = 0; i < len(keys); i++)
+    {
+        if(type(keys[i]) == type(""))
+            res.append(getEmptyResult(keys[i], data));
+        else
+            res.append(keys[i]);
+    }
+    return res;
+}
+function setEmptyResult(key, value, data)
+{
+   data[EmptyResult.get(key)] = value; 
+}
+/*
+var WarrecordList;
+function InitWarrecordList()
+{
+    var keys = ["type", "kind", "otheruid", "win", "lostPower", "attFullPow", "defFullPow", "reward", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "attCatapult", "defCatapult", "id", "coinReward", "foodReward", "woodReward", "stoneReward"];
+    WarrecordList = dict();
+    for(var i = 0; i < len(keys); i++)
+    {
+        WarrecordList.update([[keys[i], i]]);
+    }
+}
+function getWarrecordList(key, data)
+{
+    return data[WarrecordList.get(key)];
+}
+*/
+function getWarrecordList(key, data)
+{
+    var kind = data[0];
+    if(kind == 0)
+        return getBattleResult(key, data);
+    return getEmptyResult(key, data);
+}
+function setWarrecordList(key, value, data)
+{   
+    var kind = data[0];
+    if(kind == 0)//normal user
+        setBattleResult(key, value, data);
+    else
+        setEmptyResult(key, value, data);
+}
 import global.TimeController;
 
 class DataController{
@@ -388,6 +477,7 @@ class GlobalController{
     
     var lockpage;
     var flagshownew;
+    var sp;
     function lock(){
         if(lockpage==null){
             lockpage = new ClockObject();
@@ -622,30 +712,35 @@ class GlobalController{
     }
 
     function popContext(re){
-        if(re == -3000 || re == -3001)//attack choose whether use catapult 
-        {
-            context[currentLevel].deleteContext();
-            context[currentLevel] = null;
-            currentLevel--;
-            white();
-            request[currentLevel+1].response(re);
-        }
-        else if(re == -999){
+        if(re == -999){//new user task 
             newcontext.deleteContext();
             flagnew = 0;
             context[currentLevel].getNode().focus(1);
             if(len(dark)>0)
                 dark[len(dark)-1].visible(1);
         }
-        else if(currentLevel > 0){
+        else 
+        {
             context[currentLevel].deleteContext();
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(flagnew == 0)
-                context[currentLevel].getNode().focus(1);
-            request[currentLevel+1].response(re);
+            if(currentLevel > 0)
+            {
+                return;
+            }
+            if(re == -2000)
+            {
+                sp.DecideToDown();
+            }
+            else
+            {
+                if(flagnew == 0)
+                    context[currentLevel].getNode().focus(1);
+                request[currentLevel+1].response(re);
+            }
         }
+
     }
     
     function getdatestr(seconds){
@@ -727,4 +822,8 @@ class GlobalController{
         }
     }
 }
+import global.SpriteManager;
 var global = new GlobalController();
+var spriteManager = new SpriteManager(global);
+spriteManager.self = spriteManager;
+global.sp = spriteManager;
