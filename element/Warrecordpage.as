@@ -68,20 +68,23 @@ class Warrecordpage extends ContextObject{
     function getitem(index){
         trace("show warrecordcell", index);
 
+        trace("warrecord data", datas[index]);
         items[index] = sprite("warrecordcell"+str(getWarrecordList("kind", datas[index]))+".jpg").pos(270,80+index%PAGEITEMS*51);
 
         var kind = getWarrecordList("type", datas[index]);
         if(kind == 0)//attack Normal People
         {
             items[index].addsprite(avatar_url(getWarrecordList("eneOtherid", datas[index]))).size(40,40).pos(10,6);
+            items[index].addlabel(getWarrecordList("eneEmpirename", datas[index]),null,18).pos(58,7).color(0,0,0,100);
         }
         else//attack Empty
         {
             var level = getWarrecordList("empLev", datas[index]); 
             var monavt = items[index].addsprite().size(40,40).pos(10,6);
             spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+            items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
         }
-        items[index].addlabel(getWarrecordList("eneEmpirename", datas[index]),null,18).pos(58,7).color(0,0,0,100);
+
         if(getWarrecordList("readed",datas[index]) == 1){
             items[index].addlabel("该请求已处理",null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
         }

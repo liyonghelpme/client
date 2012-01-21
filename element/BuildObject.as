@@ -10,7 +10,7 @@ class BuildObject extends ContextObject{
     var lockNode;
     var stateNode;
 
-    var lock;
+  var lock;
     var select;
 
     var slabel;
@@ -52,8 +52,7 @@ class BuildObject extends ContextObject{
     }
 
     function paintNode(){
-       // trace("paint statue");
-//        contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
+        //trace("paint statue");
         contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
         spriteManager.getPic(buildname+str(bid)+".png", contextNode);
         
@@ -67,6 +66,8 @@ class BuildObject extends ContextObject{
         setstate();
     }
 
+    //state:
+    //
     function objSelected(n,e,p,x,y,ps){
        // trace("touch object", n, e, p, x, y, ps);
         if(contextLevel >= global.currentLevel && lock ==0 ){

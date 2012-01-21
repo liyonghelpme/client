@@ -20,6 +20,7 @@ class Stone
         tar = t.body.pos();
         attack = a;
         body = sprite("cataStone.png");
+        spriteManager.getPic("cataStone", body);
         body.pos(p);
         body.anchor(50, 50);
         initPos = p;
@@ -100,12 +101,12 @@ class CataControl
         body = sprite("move"+str(l+1)+"-1.png");
         body.pos(pos);
         body.anchor(50, 50);
-        trace("pos", body.pos());
+        //trace("pos", body.pos());
         move = ["move"+str(l+1)+"-1.png", "move"+str(l+1)+"-2.png", "move"+str(l+1)+"-3.png", "move"+str(l+1)+"-4.png"];
         post = ["move"+str(l+1)+"-1.png", "throw"+str(l+1)+"-1.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png"];
         color = c;
-        attack = p;
-        health = p*5;
+        attack = 10;
+        health = 20;
         state = 0;//STOP
         speed = 50;
         lastTime = 0;
@@ -122,17 +123,29 @@ class CataControl
         
         if(len(battle.soldiers1) > 0)
         {
+            if(color == 0)
+                eneSoldier = battle.soldiers2;
+            else
+                eneSoldier = battle.soldiers1;
+            /*
             if(battle.soldiers1[0].color != color )
                 eneSoldier = battle.soldiers1;
             else
                 eneSoldier = battle.soldiers2;
+            */
         }
         else
         {
+            if(color == 0)
+                eneSoldier = battle.soldiers2;
+            else
+                eneSoldier = battle.soldiers1;
+            /*
             if(battle.soldiers2[0].color != color)
                 eneSoldier = battle.soldiers2;
             else
                 eneSoldier = battle.soldiers1;
+            */
         }
     }
     function distance(p1, p2)
@@ -158,7 +171,7 @@ class CataControl
             for(i = 0; i < len(eneSoldier); i++)
             {
                 ene = eneSoldier[i];
-                trace("soldier ene", ene.body, ene.health);
+                //trace("soldier ene", ene.body, ene.health);
                 if(ene.health >= 0 && ene.body != null)
                 {   
                     dis = distance(body.pos(), ene.body.pos());
@@ -174,7 +187,7 @@ class CataControl
                 state = 1;
                 lastTime = 0;
                 tar = t;
-                trace("tar", tar.body.pos());
+                //trace("tar", tar.body.pos());
             }
             else
             {
@@ -194,7 +207,7 @@ class CataControl
                 
                 if(t != null)
                 {
-                    trace("dis", mindis);
+                    //trace("dis", mindis);
                     state = 1;
                     lastTime = 0;
                     tar = t;
@@ -220,10 +233,10 @@ class CataControl
                     var mx = p2[0] - p1[0];
                     var my = p2[1] - p1[1];
                     
-                    trace("movex, movey", diff, sqrt(dis), mx, my);
+                    //trace("movex, movey", diff, sqrt(dis), mx, my);
                     mx = mx*100/sqrt(dis)*speed*diff/1000/100;
                     my = my*100/sqrt(dis)*speed*diff/1000/100;
-                    trace("movex, movey",  mx, my);
+                    //trace("movex, movey",  mx, my);
                     p1[0] += mx;
                     p1[1] += my;
                     body.pos(p1);
@@ -419,11 +432,11 @@ class Battle
             }
         }
         back = node();
-        trace("cata", len(Cata));
+        //trace("cata", len(Cata));
         for(i = 0; i < len(Cata); i++)
         {
             back.add(Cata[i].body);
-            trace("add i", i);
+            //trace("add i", i);
         }
     }
     function update()

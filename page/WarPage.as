@@ -168,7 +168,6 @@ class WarPage extends ContextObject{
             global.dialogscreen.add(loadingpage,10,10);
             initlock=initlock+2;
             global.http.addrequest(0,"warinfo",["userid"],[global.userid],self,"initialover");
-            //global.http.addrequest(0,"warrecord",["uid"],[global.userid],self,"getrecordover");
             inite=1;
         }
         c_addtimer(200,initover);
@@ -261,7 +260,11 @@ trace("warinfo",rc,c);
         for(i=0;i<len(vs);i++){
             ugdict.update(vs[i][5],vs[i][3]);
         }
-        var default1=["0",0,0,0,0,0,0,0,0,0];
+
+        //listData 
+        //EmptyCastal.cid, EmptyCastal.uid, EmptyCastal.gid, EmptyCastal.inf, EmptyCastal.cav, EmptyCastal.attribute, EmptyCastal.lastTime
+        //oid, -cid, lev, gid, emptyName of gid, user gid, inf, cav, last collect time 
+        var default1=["0",0,0,-1,0,0,0,0,0,0];
         trace("load empty list", list, len(list));
         for(i=0;i<len(list);i++){
             if(type(list[i]) != type([]))

@@ -1734,6 +1734,7 @@ class CastlePage extends ContextObject{
             var data = json_loads(c);
             if(data!=null&&data.get("id",1) == 1){
                 var battles = data.get("battleresult", []);
+                trace("addnewbattle", data);
 /*battleresult
 att/def  otheruid   att-win/lose  lostPower attFullPow  defFullPow attReward 
 0       uid         1/0
@@ -1743,13 +1744,13 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 var sub = data.get("minus",1);//next nobility need enemy
                 global.card[12] = nob+100*sub;
                 var alllist = [];
-
-                if(type(battles) != type([])){
+                trace("battles", battles);
+                if(type(battles) == type([])){
                     trace("handle battleresult");
                     for(var i=0;i<len(battles);i++){
                         var btems=battles[i];
                         btems.insert(0, 0);//type
-                        btems.insert(0, 0);//readed
+                        btems.insert(1, 0);//readed
                         alllist.append(btems);
                         //attack and successful 
                         if(getBattleResult("kind", btems) == 1 && getBattleResult("win", btems) == 1 && warpage.inite==1){
@@ -1787,7 +1788,7 @@ reward
                     else{
                         var empItems = alist[i];
                         empItems.insert(0, 1);//type empty
-                        empItems.insert(0, 0);//readed
+                        empItems.insert(1, 0);//readed
                         alllist.append(empItems);
                     }
                 }
@@ -1798,10 +1799,10 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
 */
                 trace("alllist merge emptyResult and battleresult ");
                 if(len(alllist)>0){//new warresult
-                        var bdict = dict();
-                        bdict.update("name","battleresult");
-                        bdict.update("num",len(alllist));
-                        addcmd(bdict);
+                    var bdict = dict();
+                    bdict.update("name","battleresult");
+                    bdict.update("num",len(alllist));
+                    addcmd(bdict);
                 }
                 global.user.setValue("warrecordnum",len(alllist));
                 if(sub<=0){

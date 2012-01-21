@@ -194,7 +194,7 @@ class WarControl extends ContextObject{
     var Record ;
     function formatstringtodata(dl){
         Record = dl;
-        trace("format", dl);
+        //trace("format", dl);
         var data = dict();
         var d = dl;
         //I attack or defence 
@@ -231,10 +231,17 @@ class WarControl extends ContextObject{
         data.update("rightpower2", getWarrecordList("defPurePow", d));
 
         data.update(_self+"name",global.user.getValue("cityname", d));
-        data.update(_enemy+"name", getWarrecordList("eneEmpirename", d));
 
+        if(kind == 0)
+            data.update(_enemy+"name", getWarrecordList("eneEmpirename", d));
+        else
+            data.update(_enemy+"name", global.getEmptyName(getWarrecordList("empGid", d)));           
         data.update(_self+"nob", global.user.getValue("nobility", d));
-        data.update(_enemy+"nob", getWarrecordList("eneNobility", d));
+        if(kind == 0)
+            data.update(_enemy+"nob", getWarrecordList("eneNobility", d));
+        else
+            data.update(_enemy+"nob", getWarrecordList("empLev", d));
+            
         data.update("leftgodpower", getWarrecordList("attGod", d));
         data.update("rightgodpower", getWarrecordList("defGod", d));
         data.update("leftCatapult", getWarrecordList("attCatapult", d));
@@ -532,12 +539,12 @@ class WarControl extends ContextObject{
                 soldiers1[i] = new Soldier(soldiers1[i],"self",images, 0);
             }
             else{
-                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images, 1);
+                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images, 0);
             }
         }
         for(i=0;i<len(soldiers2);i++){
             if(leftself==0){//color = 0 at left
-                soldiers2[i] = new Soldier(soldiers2[i],"self",images, 0);
+                soldiers2[i] = new Soldier(soldiers2[i],"self",images, 1);
             }
             else{
                 soldiers2[i] = new Soldier(soldiers2[i],"enemy",images, 1);
@@ -607,12 +614,12 @@ class WarControl extends ContextObject{
                 break;
             }
             else{
-                src[i].body.removefromparent();
                 var e=findnearest(src[i],des);
                 if(e == null)
                     e = findNearCata(src[i]);
                 if(e == null)   
                     continue;
+                src[i].body.removefromparent();
                 FindCata = 1;
                 src[i].setenemy(e);
                 src[i].executeAction();
@@ -690,7 +697,7 @@ class WarControl extends ContextObject{
     const yinit = 100;
     function initCata()
     {
-        trace("initial catapult", leftCataPower, rightCataPower);
+        //trace("initial catapult", leftCataPower, rightCataPower);
         if(leftwin == 1)
             leftCataPower *= 5;
         else
@@ -712,7 +719,10 @@ class WarControl extends ContextObject{
         }
         temp = getCata(rightCataPower);
         p = temp[0]+temp[1]*2+temp[2]*4;
-        ep = rightCataPower/p;
+        if(p == 0)
+            ep = 0;
+        else
+            ep = rightCataPower/p;
         ypos = yinit; 
         for(j = 0; j < len(temp); j++)
         {
@@ -723,11 +733,11 @@ class WarControl extends ContextObject{
             }
         }
         //back = node();
-        trace("cata", len(Cata));
+        //trace("cata", len(Cata));
         for(i = 0; i < len(Cata); i++)
         {
             background.add(Cata[i].body);
-            trace("add i", i);
+            //trace("add i", i);
         }
     }
     function checkCataDeath(c)

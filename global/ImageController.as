@@ -1,5 +1,16 @@
 class ImageController{
-    const images1 = ["defence_bubble.png"];
+    const images1 = [
+    "move1-1.png", "move1-2.png", "move1-3.png", "move1-4.png", 
+    "move2-1.png", "move2-2.png", "move2-3.png", "move2-4.png",
+    "move3-1.png", "move3-2.png", "move3-3.png", "move3-4.png",
+    "throw1-1.png", "throw1-2.png",
+    "throw2-1.png", "throw2-2.png",
+    "throw3-1.png", "throw3-2.png",
+    "cataStone.png", "catasel.png", "cataunsel.png", "opbutton26.png", 
+    "flycatapult.png",
+    "camp9.png", "camp10.png", "camp11.png", 
+    "dialogelement_military3.png",
+    ];
     /*
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",

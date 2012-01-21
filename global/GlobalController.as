@@ -87,10 +87,13 @@ const GOD_EXP = [50,100,170,250,350];
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
 
 const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000, 20000, 45000, 100000];
-const CATA_PRICE = [400, 1000, 2000];
+const CATA_ATTACK = [400, 1000, 2000];
+const CATA_PRICE = [10000, 50000, 100000];
+const CATA_SPECIAL = ["500;a,5;b,5", "-500;a,8;c,8", "-1000;g,12;i,12"];
+const CATA_TIME = [7200, 21600, 43200];
 const CATA_CAE = [20, 50, 100];
 const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300, 400, -400, -100400];
-const CAMP_PERSON = [100,120,170,130,150,200,90,110,160, 200, 50, 50];
+const CAMP_PERSON = [100,120,170,130,150,200,90,110,160, 200, 250, 300];
 const CAMP_EXP = [5,10,20,15,20,35,7,15,30, 20, 50, 100];
 const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400, 5*3600, 7*3600+1800, 10*3600];
 const CATA_NAME=["普通投石车", "中级投石车", "高级投石车"];
@@ -373,25 +376,10 @@ function setEmptyResult(key, value, data)
 {
    data[EmptyResult.get(key)] = value; 
 }
-/*
-var WarrecordList;
-function InitWarrecordList()
-{
-    var keys = ["type", "kind", "otheruid", "win", "lostPower", "attFullPow", "defFullPow", "reward", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "attCatapult", "defCatapult", "id", "coinReward", "foodReward", "woodReward", "stoneReward"];
-    WarrecordList = dict();
-    for(var i = 0; i < len(keys); i++)
-    {
-        WarrecordList.update([[keys[i], i]]);
-    }
-}
-function getWarrecordList(key, data)
-{
-    return data[WarrecordList.get(key)];
-}
-*/
 function getWarrecordList(key, data)
 {
     var kind = data[0];
+    //trace("war kind", key);
     if(kind == 0)
         return getBattleResult(key, data);
     return getEmptyResult(key, data);
@@ -721,6 +709,8 @@ class GlobalController{
         }
         else 
         {
+            if(currentLevel < 0)
+                return;
             context[currentLevel].deleteContext();
             context[currentLevel] = null;
             currentLevel--;
@@ -728,18 +718,17 @@ class GlobalController{
             if(re == -2000)
             {
                 sp.DecideToDown();
+                return;
             }
-            else
-            {
-                if(flagnew == 0)
-                    context[currentLevel].getNode().focus(1);
-                request[currentLevel+1].response(re);
-            }
+            if(flagnew == 0)
+                context[currentLevel].getNode().focus(1);
+            request[currentLevel+1].response(re);
+            /*
             if(currentLevel > 0)
             {
                 return;
             }
-
+            */
         }
 
     }

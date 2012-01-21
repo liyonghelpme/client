@@ -66,18 +66,15 @@ var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
 var src = backNode.addsprite().anchor(50,50).pos(400,240);
 
 //var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
-var lback = fetch("loading-chr.jpg");
+var lpng = "loading_spring.jpg";
+var lback = fetch(lpng);
 var loadingstr = "";
 if(lback==null){
     src.texture("loadingback.jpg");
-    //checkImages(0,0,0);
-    //page.addlabel("正在加载新图片...",null,25).anchor(50,50).pos(400,450);
-    node().addaction(request("loading-chr.jpg",1,null));
-    //flaglogin=2;
+    node().addaction(request(lpng,1,null));
 }
 else{
-    src.texture(lback);
-    //checkImages(0,0,0);
+    src.texture(lpng);
 }
 global.dialogscreen.add(backNode,0);
 backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);

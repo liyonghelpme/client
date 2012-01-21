@@ -42,7 +42,7 @@ class CampControl extends ContextObject{
             var camp = objs[i].addsprite().anchor(50,100).pos(74,160);
             spriteManager.getPic("camp"+str(objid)+".png", camp);
             
-            if(i==1){
+            if(i==3){//catapult
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
             if(objlevel[i] > global.user.getValue("level")){
