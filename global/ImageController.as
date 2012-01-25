@@ -1,12 +1,40 @@
 class ImageController{
-    var images1 = ["shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png","defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png","object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
+    const images1 = [
+    "move1-1.png", "move1-2.png", "move1-3.png", "move1-4.png", 
+    "move2-1.png", "move2-2.png", "move2-3.png", "move2-4.png",
+    "move3-1.png", "move3-2.png", "move3-3.png", "move3-4.png",
+    "throw1-1.png", "throw1-2.png",
+    "throw2-1.png", "throw2-2.png",
+    "throw3-1.png", "throw3-2.png",
+    "cataStone.png", "catasel.png", "cataunsel.png", "opbutton26.png", 
+    "flycatapult.png",
+    "camp9.png", "camp10.png", "camp11.png", 
+    "dialogelement_military3.png",
+/*
+    ];
+    "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
+    "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
+    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+    "empire2.png", "empire2_l.png", "upgrade.png",
+    "dialogelement_state3.png", "dialogelement_state4.png",
+    "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
+    "dialogelement_military2.png","dialogelement_state2.png","dialogelement_state3.png", "dialogelement_state4.png","soldier3_1.png","soldier3_2.png","soldier3_3.png", "magic_bar.png", "magic_big.png",
+    "buyelement20.png", "buyelement21.png",
+    "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
+     ];
+    */
+    //var images1 = [
+    "shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png",
+    "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
+    "object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
     "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
     "empire2.png", "empire2_l.png", "upgrade.png",
     "dialogelement_state3.png", "dialogelement_state4.png",
     "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
     "object39.png","object40.png","object41.png","room72.png","room73.png","room74.png","room75.png","room76.png","room77.png","fact27.png","fact28.png","fact29.png","fact30.png","fact31.png","fact32.png",
-    "camp6.png","camp7.png","camp8.png","dialogelement_military2.png","dialogelement_state2.png","dialogelement_state3.png", "dialogelement_state4.png","soldier3_1.png","soldier3_2.png","soldier3_3.png", "magic_bar.png", "magic_big.png",
+    "camp6.png","camp7.png","camp8.png",
+    "dialogelement_military2.png","dialogelement_state2.png","dialogelement_state3.png", "dialogelement_state4.png","soldier3_1.png","soldier3_2.png","soldier3_3.png", "magic_bar.png", "magic_big.png",
     "buyelement20.png", "buyelement21.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
     "medalcard0_1.png","medalcard0_2.png","medalcard0_3.png","medalcard0_4.png","medalcard0_5.png","medalcard1_1.png","medalcard1_2.png","medalcard1_3.png","medalcard1_4.png","medalcard1_5.png",
@@ -29,6 +57,7 @@ class ImageController{
     "water-1-7.png","water-1-8.png","water-1-9.png","water-1.png","water-2.png","water-3.png","water-4-1.png","water-4-2.png","water-4-3.png","water-4-4.png","water-4-5.png",
     "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png", "monsteravatar0.jpg", "monsteravatar1.jpg", "monsteravatar2.jpg", "monsteravatar3.jpg", "monsteravatar4.jpg", "monsteravatar5.jpg", "monsteravatar6.jpg", "selopen.png", "selclose.png"
     ];
+    /*
     const images2 = [
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
 "wartabperson.png","adddefence.png","attack_head.png","attackbeginelement.png", 
@@ -54,6 +83,8 @@ class ImageController{
 "warinfotab00.png","warinfotab01.png","warinfotab10.png","warinfotab11.png","warinfotab12.png","warmenulistback.png","warmenutab0.png",
 "warmenutab1.png","warrecord.png","warrecordcell.png","4.mp3", "adddefencetitle.png","adddefenceboard.jpg","nobattletab0.png","nobattletab1.png","wartabperson_b.png","wartabperson_r.png",
 "warlostleft.jpg","warwinelement2.jpg","warwinleft.jpg","warloseelement2.jpg","help2.png","defence.png","opbutton16.png"];
+*/
+    const images2 = ["help.png"];
     var images;
     var imageindex;
     var imagemax;

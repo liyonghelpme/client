@@ -1,4 +1,4 @@
-class Nestpetchange2 extends ContextObject{
+ class Catapult extends ContextObject{
     var objs;
     var left;
     var right;
@@ -8,12 +8,11 @@ class Nestpetchange2 extends ContextObject{
     var titlename;
     var objpath;
     var buildable;
-    const PAGEITEMS = 3;
+    const PAGEITEMS = 6;
     var objlevel;
-    var type;
-    function Nestpetchange2(t){
-        type=t;
-        contextname = "dialog-object-pets";
+    var Building;
+    function Catapult(){
+        contextname = "dialog-object-catapult";
         contextNode = null;
         objs = new Array(0);
         buildable = new Array(0);
@@ -24,55 +23,35 @@ class Nestpetchange2 extends ContextObject{
     function initdata(){
         pagemax = 1;
         objmax = 3;
-        titlename = "更改样式";
+        titlename = "选择投石车";
         objpath="pet";
     }
     
-    
     function getcell(i){
-        var cell = sprite("nesttab0.png");
-        //cell.addlabel(global.getname(objpath,i),null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
-        cell.addlabel(EXTEND_PETS_NAME[i],null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
-        //cell.addsprite(objpath+str(i)+".png").anchor(50,50).pos(94,66).size(67,67);
-        if(type.state==4)
+        var bd=global.request[contextLevel];
+        var cell = sprite("cataunsel.png");
+        cell.addlabel(CATA_NAME[i],null,20).anchor(50,50).pos(94,12).color(0,0,0,100);
+        //trace("catapult", bd.bid%3, i);
+        if(bd.bid%3 < i)
         {
-            var dragonpic = cell.addsprite().anchor(50,0).pos(94,38).scale(70);
-            spriteManager.getPic(EXTEND_NAME[i]+"-7.png", dragonpic);
+            var eggpic = cell.addsprite("move"+str(i+1)+"-1.png", GRAY).anchor(50,50).pos(94,87);
+            var lock = cell.addsprite("dialogelement_lock3.png").anchor(50, 50).pos(93, 109).size(180, 86);
+            buildable[i].update("ok",0);
         }
         else
         {
-            dragonpic = cell.addsprite().anchor(50,0).pos(94,38).scale(70);
-            spriteManager.getPic(EXTEND_NAME[i]+"-1-1.png", dragonpic);
-        }
-        
-
-        if(type.extendid==i){
-            cell.texture("nestpettab1.png");
-            cell.addlabel("当前宠物",null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
-        }
-        else{
-            cell.setevent(EVENT_TOUCH,beginPlant,i);
-            if(i>0){
-                var cl=0;
-                if(global.user.getValue("caesars") < 20){
-                    cl=100;
-                    buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",20-global.user.getValue("caesars"));
-                }
-                cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(70,155);
-                cell.addlabel(str(20),null,20).anchor(0,50).pos(92,155).color(cl,0,0,100);
-            }
-            else{
-                cell.addlabel("免费",null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
-            }
-        }
+            eggpic = cell.addsprite("move"+str(i+1)+"-1.png").anchor(50,50).pos(94,87);
+            cell.setevent(EVENT_TOUCH|EVENT_UNTOUCH,beginPlant,i);
+            buildable[i].update("ok",1);
+        }   
+        spriteManager.getPic("move"+str(i+1)+"-1.png", eggpic);
         return cell;
     }
 
     function paintNode(){
         pagenum = 1;
         contextNode = sprite("dialogback_plant.png").anchor(50,50).pos(400,240);
-        contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(650,5).setevent(EVENT_UNTOUCH,closedialog);
+       contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(650,5).setevent(EVENT_UNTOUCH,closedialog);
         contextNode.addlabel(titlename,null,40).anchor(50,50).pos(332,31);
         if(objmax > PAGEITEMS){
             left = contextNode.addsprite("left.png").anchor(25,50).pos(0,247).setevent(EVENT_TOUCH,choosePage,-1);
@@ -112,8 +91,19 @@ class Nestpetchange2 extends ContextObject{
     }
 
     function beginPlant(node,event,param){
-        if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog([EXTEND_PETS_NAME[param]+"每成长点会增加"+str(PETS_UP[type.objid]+EXTEND_UP[param])+"战斗力，确认更改样式吗？",param,6]),NonAutoPop);
+        if(event == EVENT_TOUCH)
+        {
+            node.texture("catasel.png");
+        }
+        else if(buildable[param].get("ok")==1 && event == EVENT_UNTOUCH){
+            node.texture("cataunsel.png");
+            /*
+            global.pushContext(self,new Warningdialog([PETS_NAME[param]+"初始战斗力："+str(PETS_POWER[param])+"，每成长点增加战斗力："+str(PETS_UP[param])+"。确定召唤？",param,6]),NonAutoPop);
+            */
+            //camp building
+            var bd=global.request[contextLevel];
+            global.popContext(null);
+            global.pushContext(null, new ProCatapult(param, bd), NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
@@ -121,15 +111,19 @@ class Nestpetchange2 extends ContextObject{
     }
     var objid;
     function reloadNode(re){
+        var bd=global.request[contextLevel].baseobj;
         objid=re;
-        global.http.addrequest(1,"changeAttr",["uid", "pid", "attr"],[global.userid,type.pid,re],self,"buyegg");
+        global.http.addrequest(1,"producecatapult",["user_id", "city_id", "gid_id", "cata_id", "type"],[global.userid, global.cityid, bd.posi[0]*RECTMAX+bd.posi[1], re],self,"buyegg");
     }
     
     function useaction(p,rc,c){
         if(p=="buyegg"){
-            trace(c);
-            if(objid>0){
-                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-20,-6);
+            global.user.changeValueAnimate2(global.context[0].ub,"exp",30,-6);
+            if(PETS_PRICE[objid]>0){
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money",-PETS_PRICE[objid],-6);
+            }
+            else{
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",PETS_PRICE[objid],-6);
             }
             global.popContext(objid);
         }

@@ -1,3 +1,4 @@
+import element.CataControl;
 class SoldierImage{
     var images;
     function SoldierImage(){
@@ -28,9 +29,13 @@ class Soldier{
     var jump;
     var state;
     var state2;
-    function Soldier(t,color,im){
+    var show;
+    var color;
+
+    function Soldier(t,c2,im, c){
         type=t;
-        colorstr = color;
+        color = c;
+        colorstr = c2;
         enemy=null;
         image=im;
         jump = 0;
@@ -39,6 +44,7 @@ class Soldier{
         mposi=null;
         state =-1;
         state2 =1;
+        show = 0;
         if(type==1){
             health = 7;
             atk=1;
@@ -59,6 +65,7 @@ class Soldier{
     
     function appear(f){
         body = sprite(image.getImage("animate_"+colorstr+"_left_"+str(type)+"_2.png")).anchor(50,100);
+        show = 1;
         body.color(0,0,0,0);
         body.prepare();
         jump = 4;
@@ -77,10 +84,15 @@ class Soldier{
     }
     
     function setenemy(e){
-        enemy = e;
-        if(e!=null){
+        if(enemy != e && e != null)
+        {
+            /*
             e.defencenum++;
+            if(enemy != null)
+                enemy.defencenum--;
+            */
         }
+        enemy = e;
     }
     
     function move(p){
@@ -137,6 +149,7 @@ class Soldier{
     function isdead(){
         if(health<=0){
             body.addaction(sequence(stop(),itexture(image.getImage("animate_"+colorstr+"_left_"+str(type)+"_4.png")),tintto(2000,0,0,0,0),callfunc(removeself)));
+            //enemy.defencenum--;
             return 1;
         }
         return 0;
@@ -180,75 +193,79 @@ class WarControl extends ContextObject{
         flagresult = 0;
         datadict = dl;
     }
-    function toInt(data)
-    {
-        if(type(data) == type(""))
-            return int(data)
-        return data;
-    }
+    var Record ;
     function formatstringtodata(dl){
-        trace("format", dl);
+        Record = dl;
+        //trace("format", dl);
         var data = dict();
-        var d;
-        if(type(dl)==type(""))
-            d= dl.split(",");
-        else if(type(dl)==type([]))
-            d=dl;
-        var leftself = toInt(d[1]);//attack split into int
-        if(leftself==1){
+        var d = dl;
+        //I attack or defence 
+        var leftself = 1-getWarrecordList("kind", d); 
+
+        if(leftself == 1){//I attack
             _self = "left";
             _enemy = "right";
-            data.update("leftwin",toInt(d[2]));
+            data.update("leftwin", getWarrecordList("win", d)); 
         }
-        else{
+        else{//I defence
             _self = "right";
             _enemy = "left";
-            data.update("leftwin",1-toInt(d[2]));
+            data.update("leftwin", 1-getWarrecordList("win", d));
         }
-        data.update("enemyuid",toInt(d[0]));
+        var kind = getWarrecordList("type", d);
+
         data.update("leftself",leftself);
-        data.update("reward",d[6]);
-        data.update("powerlost",toInt(d[3]));
-        data.update(_self+"power",toInt(d[4]));
-        data.update(_enemy+"power",toInt(d[5]));
+        if(kind == 0) //attack normal user
+            data.update("reward", getWarrecordList("reward", d));
+        else
+            data.update("reward", 
+            str(getWarrecordList("coinReward", d))+"!"+
+                +str(getWarrecordList("foodReward", d))+"!"+
+                +str(getWarrecordList("woodReward", d))+"!"+
+                +str(getWarrecordList("stoneReward", d))
+                );//reward
+        data.update("powerlost", getWarrecordList("lostPower", d));
+        data.update("leftpower", getWarrecordList("attFullPow", d));
+        data.update("rightpower", getWarrecordList("defFullPow", d));
         data.update(_self+"ppyid",ppy_userid());
-        data.update(_enemy+"ppyid",toInt(d[7]));//other ppyid
-        data.update(_self+"power2",toInt(d[8])+toInt(d[9]));
-        data.update(_enemy+"power2",toInt(d[12])+toInt(d[13]));
-        data.update(_self+"name",global.user.getValue("cityname"));
-        data.update(_enemy+"name",d[10]);
-        data.update(_self+"nob",global.user.getValue("nobility"));
-        data.update(_enemy+"nob",toInt(d[11]));
-        data.update(_self+"godpower",toInt(d[14]));
-        data.update(_enemy+"godpower",toInt(d[15]));
-        function toInt(data)
-        {
-            if(type(data) == type(""))
-                return int(data);
-            return data;
-        }
-        var defdata = toInt(d[16]);
-        if(defdata >= 0)
+        data.update(_enemy+"ppyid",getWarrecordList("otherUid", d));//other ppyid
+        data.update("leftpower2", getWarrecordList("attPurePow", d));
+        data.update("rightpower2", getWarrecordList("defPurePow", d));
+
+        data.update(_self+"name",global.user.getValue("cityname", d));
+
+        if(kind == 0)
+            data.update(_enemy+"name", getWarrecordList("eneEmpirename", d));
+        else
+            data.update(_enemy+"name", global.getEmptyName(getWarrecordList("empGid", d)));           
+        data.update(_self+"nob", global.user.getValue("nobility", d));
+        if(kind == 0)
+            data.update(_enemy+"nob", getWarrecordList("eneNobility", d));
+        else
+            data.update(_enemy+"nob", getWarrecordList("empLev", d));
+            
+        data.update("leftgodpower", getWarrecordList("attGod", d));
+        data.update("rightgodpower", getWarrecordList("defGod", d));
+        data.update("leftCatapult", getWarrecordList("attCatapult", d));
+        if(kind == 0)//attack normal user
         {
             data.update("monster", 0);
+            data.update("rightCatapult", getWarrecordList("defCatapult", d));
         }
-        else
+        else //attack Normal
         {
             data.update("monster", 1);
-            var level = -(defdata+1);
+            data.update("rightCatapult", 0);
+            var level = getWarrecordList("empLev", d);
             data.update("monLevel", level);
-            if(toInt(d[17]) <= 0)
+
+            if(getWarrecordList("otherUid", d) == "0")//empty Owner's ppyid = 0
                 data.update("noOwner", 1);
             else
                 data.update("noOwner", 0);
         }
-
-        if(len(d)>=17){
-            data.update("defence",toInt(d[16]));
-        }
-        else{
-            data.update("defence",global.user.getValue("citydefence"));   
-        }
+        leftCataPower = data.get("leftCatapult");
+        rightCataPower = data.get("rightCatapult");
         return data;
     }
     
@@ -386,16 +403,16 @@ class WarControl extends ContextObject{
                 rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
                 if(datadict.get("leftself")==1){
-                    contextNode.addlabel("派出战斗力："+str(datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel("派出战斗力："+str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
                     contextNode.addlabel("损失战斗力：",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("返回战斗力："+str(datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel("返回战斗力："+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
                 }
                 else{
-                    contextNode.addlabel("留守防御力："+str(datadict.get("defence")+datadict.get("powerlost")+datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                    contextNode.addlabel("留守防御力："+ str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
                     contextNode.addlabel("损失防御力：",null,20).pos(343,245).color(0,0,0,100);
                     contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel("剩余防御力："+str(datadict.get("defence")+datadict.get(_self+"power2")),null,20).pos(343,270).color(0,0,0,100);
+                    contextNode.addlabel("剩余防御力："+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
                     if(datadict.get("leftwin")==1){
                         contextNode.addlabel("损失银币：",null,20).pos(359,309).color(0,0,0,100);
                         contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
@@ -410,12 +427,18 @@ class WarControl extends ContextObject{
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
 
                 if(datadict.get("leftself") == 1){
-                    leftuser = element.addsprite("battleuserback0.png");
-                    rightuser= element.addsprite("battleuserback1.png").anchor(100,0).pos(800,0);
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback0.png", leftuser);
+                    rightuser= element.addsprite().anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback1.png", rightuser);
                 }
                 else{
-                    leftuser = element.addsprite("battleuserback1.png");
+                    leftuser = element.addsprite();
+                    spriteManager.getPic("battleuserback1.png", leftuser);
+
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
+                    spriteManager.getPic("battleuserback0.png", rightuser);
+
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
 
@@ -425,7 +448,9 @@ class WarControl extends ContextObject{
                 else
                 {
                     var level = datadict.get("monLevel");
-                    rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
+                    var monavt = rightuser.addsprite().pos(25, 19).size(50, 50);
+                    spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+
                 }
 
                 leftuser.add(label("攻击力："+str(datadict.get("leftpower")),null,16).anchor(0,50).pos(21,86),0,1);
@@ -477,6 +502,7 @@ class WarControl extends ContextObject{
     var images;
     var background;
     
+    var timer;
     function initanimate(showback,data){
         function getSoldierArray(p){
             var result = new Array(0);
@@ -512,18 +538,18 @@ class WarControl extends ContextObject{
         soldiers2 = getSoldierArray(data.get("rightpower"));
         for(var i=0;i<len(soldiers1);i++){
             if(leftself==1){
-                soldiers1[i] = new Soldier(soldiers1[i],"self",images);
+                soldiers1[i] = new Soldier(soldiers1[i],"self",images, 0);
             }
             else{
-                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images);
+                soldiers1[i] = new Soldier(soldiers1[i],"enemy",images, 0);
             }
         }
         for(i=0;i<len(soldiers2);i++){
-            if(leftself==0){
-                soldiers2[i] = new Soldier(soldiers2[i],"self",images);
+            if(leftself==0){//color = 0 at left
+                soldiers2[i] = new Soldier(soldiers2[i],"self",images, 1);
             }
             else{
-                soldiers2[i] = new Soldier(soldiers2[i],"enemy",images);
+                soldiers2[i] = new Soldier(soldiers2[i],"enemy",images, 1);
             }
         }
         if(leftwin==1){
@@ -536,28 +562,50 @@ class WarControl extends ContextObject{
                 soldiers2[i].health = soldiers2[i].health*3/2;
             }
         }
-        c_addtimer(100,animaterefresh);
         background = showback;
+        initCata();
+        timer = c_addtimer(100,animaterefresh);
+
     }
-    
+    function findNearCata(src)
+    {
+        var c;
+        c = src.color; 
+        //trace("nearCata", c);
+
+        var nearest = null;
+        var minlength = 100000;
+
+        var des = Cata;
+        for(var i = 0; i < len(des); i++)
+        {   
+            //trace("des", des[i].color, des[i].defencenum);
+            if(des[i].color != c  && des[i].health >= 0)//defence Num error
+            {
+                var length = abs(src.posi[0]-des[i].body.pos()[0])+abs(src.posi[1]-des[i].body.pos()[1]);
+                if(length<minlength){
+                    minlength=length;
+                    nearest = des[i];
+                }
+            }
+        }
+        //trace("near Cata", nearest, src.body.pos(), nearest.body.pos());
+        return nearest;
+    }
     function executeAnimate(src,des){
         var iswin=0;
+        var catWin = 0;
         if(len(des)==0){
             iswin=1;
         }
         var i;
-        if(iswin==1){
-            for(i=0;i<len(src);i++){
-                if(src[i].body!=null){
-                    src[i].win();
-                }
-            }
-            return 1;
-        }
+
         var f=0;
         if(src == soldiers2){
             f=1;
         }
+        
+        var FindCata = 0;
         for(i=0;i<len(src);i++){
             if(src[i].needjump()==1){
                 break;
@@ -568,12 +616,28 @@ class WarControl extends ContextObject{
                 break;
             }
             else{
-                src[i].body.removefromparent();
                 var e=findnearest(src[i],des);
+                if(e == null)
+                    e = findNearCata(src[i]);
+                if(e == null)   
+                    continue;
+                src[i].body.removefromparent();
+                FindCata = 1;
                 src[i].setenemy(e);
                 src[i].executeAction();
                 background.add(src[i].body,src[i].posi[1]);
             }
+        }
+
+        if(FindCata == 0)
+            catWin = 1;
+        if(iswin==1 && catWin == 1){
+            for(i=0;i<len(src);i++){
+                if(src[i].body!=null){
+                    src[i].win();
+                }
+            }
+            return 1;
         }
         return 0;
     }
@@ -597,22 +661,133 @@ class WarControl extends ContextObject{
     function check(src){
         for(var i=len(src)-1;i>=0;i--){
             src[i].defencenum=0;
+            //src[i].enemy.defencenum--;
             if(src[i].isdead()==1){
                 src.pop(i);
             }
         }
     }
-    
+    var stones;
+    var Cata;
+    var leftCataPower = 400;
+    var rightCataPower = 400;
+    var lastTime = 0;
+    function addStone(sta)
+    {
+        stones.append(sta);
+        background.add(sta.body);
+    }
+    function removeStone(sta)
+    {
+        stones.remove(sta);
+        sta.body.removefromparent();
+    }
+    function getCata(power)
+    {
+        var temp = [0, 0, 0];
+        if(power > 0)
+        {
+            if(power < 400)
+                temp = [(power+199)/200, 0, 0];
+            else if(power < 1000)
+                temp = [1, power/500, 0];
+            else
+                temp = [1, 1, 1];
+        }
+        return temp;
+    }
+    const yinit = 100;
+    function initCata()
+    {
+        //trace("initial catapult", leftCataPower, rightCataPower);
+        if(leftwin == 1)
+            leftCataPower *= 5;
+        else
+            rightCataPower *= 5;
+        var temp = getCata(leftCataPower);
+        Cata = [];
+        stones = [];
+        var ypos = yinit;
+        var dify = 100;
+        var p = temp[0]+temp[1]*2+temp[2]*4;
+        var ep = leftCataPower/p;
+        for(var j = 0; j < len(temp); j++)
+        {
+            for(var i = 0; i < temp[j]; i++)
+            {
+                Cata.append(new CataControl(j, [100, ypos], 0, ep*(1<<j), this));
+                ypos += dify;
+            }
+        }
+        temp = getCata(rightCataPower);
+        p = temp[0]+temp[1]*2+temp[2]*4;
+        if(p == 0)
+            ep = 0;
+        else
+            ep = rightCataPower/p;
+        ypos = yinit; 
+        for(j = 0; j < len(temp); j++)
+        {
+            for(i = 0; i < temp[j]; i++)
+            {
+                Cata.append(new CataControl(j, [700, ypos], 1, ep*(1<<j), this));
+                ypos += dify;
+            }
+        }
+        //back = node();
+        //trace("cata", len(Cata));
+        for(i = 0; i < len(Cata); i++)
+        {
+            background.add(Cata[i].body);
+            //trace("add i", i);
+        }
+    }
+    function checkCataDeath(c)
+    {
+        for(var i = 0; i < len(Cata); i++)
+        {
+            if(Cata[i].color == c && Cata[i].state != 3)//color death
+                return 0;
+        }
+        return 1;
+    }
+    var winyet=0;
     function animaterefresh(timer){
         check(soldiers1);
         check(soldiers2);
-        if(executeAnimate(soldiers1,soldiers2)==1||executeAnimate(soldiers2,soldiers1)==1){
-            timer.stop();
-            contextNode.addaction(sequence(delaytime(2000),callfunc(animateover)));
+        var diff;
+        if(lastTime == 0)
+        {
+            lastTime = time();
+            diff = 0;
+        }
+        else
+        {
+            var now = time();
+            diff = now - lastTime;
+            lastTime = now;
+        }
+        var i;
+        if(winyet == 0)
+        {
+            if(executeAnimate(soldiers1,soldiers2)==1 || executeAnimate(soldiers2,soldiers1)==1){
+                winyet = 1;
+                trace("win");
+                contextNode.addaction(sequence(delaytime(2000),callfunc(animateover)));
+            }
+        }
+        for(i = 0; i < len(Cata); i++)
+        {
+            Cata[i].update(diff);
+        }
+        for(i = 0; i < len(stones); i++)
+        {
+            stones[i].update(diff);
         }
     }
     
     function animateover(){
+        timer.stop();
         contextNode.visible(1);
     }
 }

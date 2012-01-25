@@ -23,6 +23,7 @@ class ResourceControl extends ContextObject{
         contextNode.addlabel(global.getStaticString("infpower")+global.getStaticString(":")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("cavpower")+global.getStaticString(":")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").pos(493,14).setevent(EVENT_UNTOUCH,closedialog);
+        trace("resource Control", rdata);
         var time=global.timer.currenttime-global.timer.times2c(rdata[9]);
         var tc = time/3600;
         var rc=RESOUCE_PRODUCT[rdata[2]];

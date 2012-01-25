@@ -65,7 +65,8 @@ class ObjControl extends ContextObject{
             else if(oi>41){
                 bl=100;
             }
-            objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
+            var objpng = objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
+            spriteManager.getPic("object"+str(oi)+".png", objpng);
             if(oi>=50){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
