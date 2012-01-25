@@ -86,9 +86,11 @@ class Soldier{
     function setenemy(e){
         if(enemy != e && e != null)
         {
+            /*
             e.defencenum++;
             if(enemy != null)
                 enemy.defencenum--;
+            */
         }
         enemy = e;
     }
@@ -147,7 +149,7 @@ class Soldier{
     function isdead(){
         if(health<=0){
             body.addaction(sequence(stop(),itexture(image.getImage("animate_"+colorstr+"_left_"+str(type)+"_4.png")),tintto(2000,0,0,0,0),callfunc(removeself)));
-            enemy.defencenum--;
+            //enemy.defencenum--;
             return 1;
         }
         return 0;

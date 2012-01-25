@@ -49,8 +49,11 @@ class Nobilitydialog extends ContextObject{
                 global.http.addrequest(1,"upgrademap",["userid"],[global.userid],global.context[0].warpage,"refresh");
                 for(var i=0;i<len(global.battlelist);i++){
                     if(global.battlelist[i][2]==1){
-                        global.soldiers[0] = global.soldiers[0]+global.battlelist[i][4];
-                        global.soldiers[1] = global.soldiers[1]+global.battlelist[i][5];
+                        //global.soldiers[0] = global.soldiers[0]+global.battlelist[i][4];
+                        //global.soldiers[1] = global.soldiers[1]+global.battlelist[i][5];
+                        ChangeSoldier(0, global.battlelist[i][4]);
+                        ChangeSoldier(1, global.battlelist[i][5]);
+
                     }
                 }
                 global.battlelist.clear();

@@ -40,7 +40,10 @@ class Monsterdialog extends ContextObject{
             element.addlabel("战斗力为："+str(mpower),null,20).anchor(50,50).pos(219,242).color(0,0,0,100);
             var warning=element.addlabel("",null,20).anchor(50,50).pos(219,285).color(100,0,0,100);
         
-            if(global.soldiers[0]+global.soldiers[1]<mpower){
+            var totalPower = global.soldiers[0]+global.soldiers[1];
+            if(totalPower < 0)
+                totalPower = MAX_INT;
+            if(totalPower < mpower){
                 warning.text("你的战斗力不足！");
                 flagdefeatable = 0;
             }
@@ -103,8 +106,10 @@ class Monsterdialog extends ContextObject{
                     m.addaction(sequence(stop(),delaytime(3500),itexture("monster_"+str(mtype)+"_dead.png"),delaytime(1000),animate(2500,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
                 c_addtimer(1000,defeatover,[m,data.get("powerlost",0),data.get("specialgoods","")],3500,1);
-                global.soldiers[0] = data.get("infantrypower",0);
-                global.soldiers[1] = data.get("cavalrypower",0);
+                //global.soldiers[0] = ;
+                //global.soldiers[1] = ;
+                SetSoldier(0, data.get("infantrypower",0));
+                SetSoldier(1, data.get("cavalrypower",0));
                 global.context[1].powerlabel.text(str(global.soldiers[0]+global.soldiers[1]));
                 global.card[mtype/3]++;
                 var cl = cardlevelnum.index(global.card[mtype/3]);
@@ -133,8 +138,10 @@ class Monsterdialog extends ContextObject{
             global.pushContext(self,new Refreshdialog(),NonAutoPop);
             return 0;
         }
-                global.soldiers[0] = data.get("infantrypower",0);
-                global.soldiers[1] = data.get("cavalrypower",0);
+                //global.soldiers[0] = data.get("infantrypower",0);
+                //global.soldiers[1] = data.get("cavalrypower",0);
+                SetSoldier(0, data.get("infantrypower",0));
+                SetSoldier(1, data.get("cavalrypower",0));
                 global.user.setValue("money",data.get("corn"));
                 global.user.setValue("exp",data.get("exp"));
                 global.user.setValue("power",global.soldiers[0]+global.soldiers[1]);

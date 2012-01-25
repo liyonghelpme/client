@@ -668,6 +668,7 @@ trace("warinfo",rc,c);
                     //trace("avatar head", mapUser);
                     //trace("user", user);
                     //trace("empty", empty);
+                    trace("warpage user", user);
                     u.addsprite(avatar_url(int(user[0]))).pos(5,5).size(40,40);
                 }
             }
@@ -943,7 +944,8 @@ trace("warinfo",rc,c);
     function releasenode(){
         baseNode.removefromparent();
         rightmenu.removefromparent();
-        left.get(0).removefromparent();
+        if(left.get(0) != null)
+            left.get(0).removefromparent();
         left.removefromparent();
         global.dialogscreen.add(left);
         global.screen.visible(1);

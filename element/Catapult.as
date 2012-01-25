@@ -102,6 +102,7 @@
             */
             //camp building
             var bd=global.request[contextLevel];
+            global.popContext(null);
             global.pushContext(null, new ProCatapult(param, bd), NonAutoPop);
         }
         else{

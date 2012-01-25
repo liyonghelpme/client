@@ -1224,6 +1224,7 @@ class CastlePage extends ContextObject{
             global.soldiers[2]=data.get("scout1_num",0);
             global.soldiers[3]=data.get("scout2_num",0);
             global.soldiers[4]=data.get("scout3_num",0);
+            CheckSoldiers();
             global.card = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var cardstr = data.get("monsterdefeat","0;0;0;0;0;0;0;0;0;0;0;0");
             var cards = cardstr.split(";");
@@ -1437,7 +1438,7 @@ class CastlePage extends ContextObject{
                     {
                         global.user.changeValue("caesars", bonus);
                     }
-                    //addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];
@@ -1762,7 +1763,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                             }
                         }
                     }
-                    if(global.context[1].contextname=="page-war"){
+                    if(global.currentLevel >= 1 && global.context[1].contextname=="page-war"){
                         global.context[1].refreshmap(1);
                         global.context[1].refreshlist();
                     }
@@ -1822,6 +1823,9 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 global.user.setValue("caesars",data.get("cae",global.user.getValue("caesars")));
                 global.soldiers[0] = data.get("inf",global.soldiers[0]);
                 global.soldiers[1] = data.get("cav",global.soldiers[1]);
+                CheckSoldiers();
+
+                global.user.setValue("catapult", data.get("catapult"));
                 if(warpage.inite==1){
                     var list = data.get("empty", []);
                     warpage.loadempty(list);
