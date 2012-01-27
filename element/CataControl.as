@@ -2,7 +2,7 @@ const UNIT = 1000;
 class Stone
 {
     var tar;
-    var bg;
+    var body;
     var speedY;
     var speedX;
     var acc;
@@ -11,13 +11,18 @@ class Stone
     var battle;
     var initY;
     var initPos;
-    function Stone(t, p, b)
+    var ene;
+    var attack;
+    function Stone(t, p, b, a)
     {
         battle = b;
-        tar = t.bg.pos();
-        bg = sprite("cataStone.png");
-        bg.pos(p);
-        bg.anchor(50, 50);
+        ene = t;
+        tar = t.body.pos();
+        attack = a;
+        body = sprite("cataStone.png");
+        spriteManager.getPic("cataStone", body);
+        body.pos(p);
+        body.anchor(50, 50);
         initPos = p;
 
         var dx = tar[0] - p[0];
@@ -38,10 +43,11 @@ class Stone
 
     function update(diff)
     {
-        var pos=bg.pos();
+        var pos=body.pos();
         if(pos[1] > (tar[1]-20))
        {
             battle.removeStone(this);            
+            ene.health -= attack;
             return;
         }
         lastTime += diff;
@@ -53,8 +59,8 @@ class Stone
         
         var dx = initPos[0] + speedX*lastTime/1000/UNIT;
         var dy = initPos[1] + speedY*lastTime/1000/UNIT + acc*lastTime/1000*lastTime/1000/UNIT/2;
-        bg.rotate(deg);
-        bg.pos(dx, dy);
+        body.rotate(deg);
+        body.pos(dx, dy);
 
         //trace(dx, dy);
 
@@ -65,7 +71,7 @@ class CataControl
     var attack;
     var health;
     var level;
-    var bg;
+    var body;
     var color;
     var state;
     var speed;
@@ -75,27 +81,32 @@ class CataControl
     var interval;
     var tar;
     var battle;
-    var beAttack;
+    //var beAttack;
     var scalex;
     var lastAttackTime;
     var attackInterval;
     var range;
     var attInter;
     var lastFrame;
+    var defencenum;
+    
+    var eneSoldier;
+    var deadTime;
     function CataControl(l, pos, c, p, b)
     {
         level = l;
         battle = b;
-        beAttack = 0;
-        bg = sprite("move"+str(l+1)+"-1.png");
-        bg.pos(pos);
-        bg.anchor(50, 50);
-        trace("pos", bg.pos());
+        //beAttack = 0;
+        defencenum = 0;
+        body = sprite("move"+str(l+1)+"-1.png");
+        body.pos(pos);
+        body.anchor(50, 50);
+        //trace("pos", body.pos());
         move = ["move"+str(l+1)+"-1.png", "move"+str(l+1)+"-2.png", "move"+str(l+1)+"-3.png", "move"+str(l+1)+"-4.png"];
-        post = ["move"+str(l+1)+"-1.png", "throw"+str(l+1)+"-1.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-1.png"];
+        post = ["move"+str(l+1)+"-1.png", "throw"+str(l+1)+"-1.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-2.png", "throw"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png", "move"+str(l+1)+"-1.png"];
         color = c;
-        attack = p;
-        health = p*10;
+        attack = 10;
+        health = 20;
         state = 0;//STOP
         speed = 50;
         lastTime = 0;
@@ -103,10 +114,39 @@ class CataControl
         attInter = 300;
         scalex = 100;
         range = 400;
+        deadTime = 200;
 
         attackInterval = 1000;
         lastAttackTime = attackInterval;
         lastFrame = -1;
+
+        
+        if(len(battle.soldiers1) > 0)
+        {
+            if(color == 0)
+                eneSoldier = battle.soldiers2;
+            else
+                eneSoldier = battle.soldiers1;
+            /*
+            if(battle.soldiers1[0].color != color )
+                eneSoldier = battle.soldiers1;
+            else
+                eneSoldier = battle.soldiers2;
+            */
+        }
+        else
+        {
+            if(color == 0)
+                eneSoldier = battle.soldiers2;
+            else
+                eneSoldier = battle.soldiers1;
+            /*
+            if(battle.soldiers2[0].color != color)
+                eneSoldier = battle.soldiers2;
+            else
+                eneSoldier = battle.soldiers1;
+            */
+        }
     }
     function distance(p1, p2)
     {
@@ -124,34 +164,63 @@ class CataControl
         {
             var mindis = 999999;
             var t = null;
-            for(var i = 0; i < len(battle.Cata); i++)
+            var i;
+            var ene;
+
+
+            for(i = 0; i < len(eneSoldier); i++)
             {
-                var ene = battle.Cata[i];
-                if(ene.color != color && ene.beAttack < 2 && ene.health >= 0)
-                {
-                    dis = distance(bg.pos(), ene.bg.pos());
+                ene = eneSoldier[i];
+                //trace("soldier ene", ene.body, ene.health);
+                if(ene.health >= 0 && ene.body != null)
+                {   
+                    dis = distance(body.pos(), ene.body.pos());
                     if(dis < mindis)
                     {
                         mindis = dis;
                         t = ene;
                     }
-               }
+                }
             }
             if(t != null)
             {
-                trace("dis", mindis);
                 state = 1;
                 lastTime = 0;
                 tar = t;
-                tar.beAttack += 1;
+                //trace("tar", tar.body.pos());
+            }
+            else
+            {
+                for(i = 0; i < len(battle.Cata); i++)
+                {
+                    ene = battle.Cata[i];
+                    if(ene.color != color  && ene.health >= 0)
+                    {
+                        dis = distance(body.pos(), ene.body.pos());
+                        if(dis < mindis)
+                        {
+                            mindis = dis;
+                            t = ene;
+                        }
+                   }
+                }
+                
+                if(t != null)
+                {
+                    //trace("dis", mindis);
+                    state = 1;
+                    lastTime = 0;
+                    tar = t;
+                    //tar.beAttack += 1;
+                }
             }
         }
         else if(state == 1)//MOVE
         {
             if(tar.health >= 0)
             {
-                dis = distance(tar.bg.pos(), bg.pos());
-                if(dis < range*range && bg.pos()[0] > 20 && bg.pos()[0] < 780)
+                dis = distance(tar.body.pos(), body.pos());
+                if(dis < range*range && body.pos()[0] > 20 && body.pos()[0] < 780)
                 {
                     lastTime = 0;
                     lastAttackTime = 0;
@@ -159,18 +228,18 @@ class CataControl
                 }
                 else
                 {
-                    var p1 = bg.pos();
-                    var p2 = tar.bg.pos();
+                    var p1 = body.pos();
+                    var p2 = tar.body.pos();
                     var mx = p2[0] - p1[0];
                     var my = p2[1] - p1[1];
                     
-                    trace("movex, movey", diff, sqrt(dis), mx, my);
+                    //trace("movex, movey", diff, sqrt(dis), mx, my);
                     mx = mx*100/sqrt(dis)*speed*diff/1000/100;
                     my = my*100/sqrt(dis)*speed*diff/1000/100;
-                    trace("movex, movey",  mx, my);
+                    //trace("movex, movey",  mx, my);
                     p1[0] += mx;
                     p1[1] += my;
-                    bg.pos(p1);
+                    body.pos(p1);
                 }
             }
             else
@@ -183,7 +252,7 @@ class CataControl
         {
             if(tar.health >= 0 )
             {
-                dis = distance(bg.pos(), tar.bg.pos());
+                dis = distance(body.pos(), tar.body.pos());
                 if(dis > (range+20)*(range+20))
                 {
                     state = 1;//trace
@@ -199,25 +268,26 @@ class CataControl
         {
             if(tar != null)
             {
-                tar.beAttack -= 1;
+                //tar.beAttack -= 1;
                 tar = null;
+                lastTime = 0;
             }
         }
         
         if(state == 1)
         {
-            var dx = tar.bg.pos()[0] - bg.pos()[0];
+            var dx = tar.body.pos()[0] - body.pos()[0];
             if(dx < 0)
             {
                 if(scalex != -100)
                 {
-                    bg.scale(-100, 100);
+                    body.scale(-100, 100);
                     scalex = -100;
                 }
             }
             else if(scalex != 100)
             {
-                bg.scale(100, 100);
+                body.scale(100, 100);
                 scalex = 100;
             }
              var frame = lastTime/interval;
@@ -226,51 +296,51 @@ class CataControl
                 frame = 0;
                 lastTime = 0;
              }
-             bg.texture(move[frame]);
+             body.texture(move[frame]);
         }
         else if(state == 2)
         {
-            dx = tar.bg.pos()[0] - bg.pos()[0];
+            dx = tar.body.pos()[0] - body.pos()[0];
             if(dx < 0)
             {   
                 if(scalex != -100)
                 {
-                    bg.scale(-100, 100);
+                    body.scale(-100, 100);
                     scalex = -100;
                 }
             }
             else if(scalex != 100)
             {
-                bg.scale(100, 100);
+                body.scale(100, 100);
                 scalex = 100;
             }
             frame = lastTime/attInter;
-            p1 = bg.pos();
+            p1 = body.pos();
             if(frame==1 && lastFrame != frame)
             {
                 if(dx < 0)
-                    bg.pos(p1[0]+10, p1[1]);
+                    body.pos(p1[0]+10, p1[1]);
                 else
-                    bg.pos(p1[0]-10, p1[1]);
+                    body.pos(p1[0]-10, p1[1]);
             }
             else if(frame == 2 && lastFrame != frame)//0 1 2 1 0 post stone
             {
 
                 if(dx >= 0)
                 {
-                    battle.addStone(new Stone(tar, [p1[0]-55+35, p1[1]-55], battle)); 
+                    battle.addStone(new Stone(tar, [p1[0]-55+35, p1[1]-55], battle, attack)); 
                 }
                 else
                 {
-                    battle.addStone(new Stone(tar, [p1[0]+55-35, p1[1]-55], battle)); 
+                    battle.addStone(new Stone(tar, [p1[0]+55-35, p1[1]-55], battle, attack)); 
                 }
             }
-            else if(frame == 4 && lastFrame != frame)
+            else if(frame == 5 && lastFrame != frame)
             {
                 if(dx < 0)
-                    bg.pos(p1[0]-10, p1[1]);
+                    body.pos(p1[0]-10, p1[1]);
                 else
-                    bg.pos(p1[0]+10, p1[1]);
+                    body.pos(p1[0]+10, p1[1]);
             }
             lastFrame = frame;
             if(frame >= len(post))
@@ -278,7 +348,14 @@ class CataControl
                 frame = 0;
                 lastTime = 0;
             }
-            bg.texture(post[frame]);
+            body.texture(post[frame]);
+        }
+        else if(state == 3)//dead time 0-500 100-0
+        {
+            if(lastTime <= deadTime)
+                body.color(100, 100, 100, 100-lastTime*100/deadTime);
+            else
+                body.removefromparent();
         }
     }
 }
@@ -295,12 +372,12 @@ class Battle
     function addStone(sta)
     {
         stones.append(sta);
-        back.add(sta.bg);
+        back.add(sta.body);
     }
     function removeStone(sta)
     {
         stones.remove(sta);
-        sta.bg.removefromparent();
+        sta.body.removefromparent();
     }
     function getCata(power)
     {
@@ -324,7 +401,7 @@ class Battle
         rightCataPower = data.get("rightCataPower");
         init();
     }
-    const yinit = 100;
+    const yinit = 150;
     function init()
     {
         var temp = getCata(leftCataPower);
@@ -355,11 +432,11 @@ class Battle
             }
         }
         back = node();
-        trace("cata", len(Cata));
+        //trace("cata", len(Cata));
         for(i = 0; i < len(Cata); i++)
         {
-            back.add(Cata[i].bg);
-            trace("add i", i);
+            back.add(Cata[i].body);
+            //trace("add i", i);
         }
     }
     function update()

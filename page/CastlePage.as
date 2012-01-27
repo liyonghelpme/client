@@ -734,8 +734,7 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
-            global.pushContext(self,warpage,NonAutoPop);
-            warpage.initialdata();
+            spriteManager.getWar();
         }
     }
 
@@ -1193,10 +1192,9 @@ class CastlePage extends ContextObject{
 
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
+            global.user.setValue("catapult", data.get("catapultnum", 0)); 
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
-            //if(now < 0)
-            //    now = 0;
             global.user.setValue("manatime", now);
             trace("mana", global.user.getValue("mana"));
             trace("manatime", global.user.getValue("manatime"));
@@ -1226,6 +1224,7 @@ class CastlePage extends ContextObject{
             global.soldiers[2]=data.get("scout1_num",0);
             global.soldiers[3]=data.get("scout2_num",0);
             global.soldiers[4]=data.get("scout3_num",0);
+            CheckSoldiers();
             global.card = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var cardstr = data.get("monsterdefeat","0;0;0;0;0;0;0;0;0;0;0;0");
             var cards = cardstr.split(";");
@@ -1729,90 +1728,82 @@ class CastlePage extends ContextObject{
             }
         }
     }
-    
+    //war 
+    //emptyResult  battleresult
     function addnewbattle(r,rc,c){
         if(rc!=0){
             var data = json_loads(c);
             if(data!=null&&data.get("id",1) == 1){
-                var bstr = data.get("battleresult");
-                var battles = bstr.split(";");
+                var battles = data.get("battleresult", []);
+                trace("addnewbattle", data);
+/*battleresult
+att/def  otheruid   att-win/lose  lostPower attFullPow  defFullPow attReward 
+0       uid         1/0
+defOtherid defEmpirename defNobility attGod defGod catapult defCatapult 
+*/
                 var nob = data.get("nobility");
                 var sub = data.get("minus",1);//next nobility need enemy
                 global.card[12] = nob+100*sub;
                 var alllist = [];
-                if(battles != ""){
+                trace("battles", battles);
+                if(type(battles) == type([])){
+                    trace("handle battleresult");
                     for(var i=0;i<len(battles);i++){
-                        if(battles[i] == "")
-                            continue;
-                        var btems=battles[i].split(",");
+                        var btems=battles[i];
+                        btems.insert(0, 0);//type
+                        btems.insert(1, 0);//readed
                         alllist.append(btems);
-                        if(btems[1]=="1"&&btems[2]=="1"&&warpage.inite==1){
+                        //attack and successful 
+                        if(getBattleResult("kind", btems) == 1 && getBattleResult("win", btems) == 1 && warpage.inite==1){
                             for(var j=len(warpage.atklist)-1;j>=0;j--){
-                                if(warpage.atklist[j][0]==btems[7]){
+                                if(warpage.atklist[j][0]== getBattleResult("defOtherid", btems)){
                                     warpage.atklist.pop(j)[8]=1;
                                     break;
                                 }
                             }
                         }
                     }
-                    if(global.context[1].contextname=="page-war"){
+                    if(global.currentLevel >= 1 && global.context[1].contextname=="page-war"){
                         global.context[1].refreshmap(1);
                         global.context[1].refreshlist();
                     }
                 }
 
+                trace("warrecordlist is allist at CastalPage finish War");
                 global.user.setValue("warrecordlist",alllist);
                 var alist = data.get("emptyResult");
-                trace("emptyResult", alist);
+                trace("emptyResult");
+/*
+eid  kind suc/fail       myotherid suc/fail  lostPower attFullPow defFullPow 
+    0att 1def 2send               1/0            
+defOtherid defEmpirename defNobility attGod defGod battle.catapult
+    0/others->mon/user 
+reward 
+*/
                 for(i=0;i<len(alist);i++){
-                    if(alist[i][1]==2){//ignore sendArmy to myEmpty
+                    if(getEmptyResult("kind", alist[i]) == 2){
+                        //ignore sendArmy to myEmpty
                         alist.pop(i);
                         i--;
                     }
                     else{
-                        //var leftpower = alist[i][3]+alist[i][4]+alist[i][5];
-                        //var leftgodpower = alist[i][6];
-                        //var rightpower = alist[i][11]+alist[i][12]+alist[i][13];
-                        //var rightgodpower = alist[i][14];
-                        //var leftppyid = alist[i][2];
-                        //var leftwin = alist[i][1];
-                        //-1 I defence my EMpty
-                        //-2 I attack otherEmpty
-                        //I defence emptyCity  
-//eneid  att/def suc/fail
-//messageid
-                        if(alist[i][2]!=str(ppy_userid())){
-                            alllist.append(
-                            [alist[i][0],0,1-alist[i][1],
-                            alist[i][11]+alist[i][12]-alist[i][15]-alist[i][16],
-                            alist[i][11]+alist[i][12]+alist[i][13],
-                            alist[i][3]+alist[i][4]+alist[i][5],
-                            str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),
-                            alist[i][2],alist[i][11],alist[i][12], alist[i][9],
-                            alist[i][10],alist[i][7],alist[i][8],alist[i][14],
-                            alist[i][6],-alist[i][19]-1, alist[i][17],alist[i][0]]);
-                        }
-                        else{
-                        //I attack EmptyCity
-                            alllist.append(
-                            [alist[i][0],1,alist[i][1],
-                            alist[i][3]+alist[i][4]-alist[i][7]-alist[i][8],
-                            alist[i][3]+alist[i][4]+alist[i][5],
-                            alist[i][11]+alist[i][12]+alist[i][13],
-                            str(alist[i][21])+"!"+str(alist[i][22])+"!"+str(alist[i][23])+"!"+str(alist[i][24]),
-                            alist[i][17],alist[i][7],alist[i][8], global.getEmptyName(alist[i][20]),
-                            alist[i][19],alist[i][15],alist[i][16],alist[i][6],
-                            alist[i][14],-alist[i][19]-1, alist[i][17],alist[i][0]]);
-                        }
+                        var empItems = alist[i];
+                        empItems.insert(0, 1);//type empty
+                        empItems.insert(1, 0);//readed
+                        alllist.append(empItems);
                     }
                 }
-                trace("alllist", alllist);
-                if(len(alllist)>0){
-                    
-                        var bdict = dict();
-                        bdict.update("name","battleresult");
-                        bdict.update("num",len(alllist));
-                        addcmd(bdict);
+/*battleresult alllist format
+empty/Normal    att/def  otheruid   att-win/lose  lostPower attFullPow  defFullPow attReward 
+0       uid         1/0
+defOtherid defEmpirename defNobility attGod defGod catapult defCatapult 
+*/
+                trace("alllist merge emptyResult and battleresult ");
+                if(len(alllist)>0){//new warresult
+                    var bdict = dict();
+                    bdict.update("name","battleresult");
+                    bdict.update("num",len(alllist));
+                    addcmd(bdict);
                 }
                 global.user.setValue("warrecordnum",len(alllist));
                 if(sub<=0){
@@ -1820,7 +1811,8 @@ class CastlePage extends ContextObject{
                     global.user.setValue("nobility",nob/3*3+2);
                     global.card[12] = nob;
                 }
-                if(nob>global.user.getValue("nobility") || global.card[12]<18){
+                if(nob>global.user.getValue("nobility") || global.card[12]<18)
+                {
                     global.user.setValue("nobility",nob);
                     var cmd = dict();
                     cmd.update("name","nobility");
@@ -1831,6 +1823,9 @@ class CastlePage extends ContextObject{
                 global.user.setValue("caesars",data.get("cae",global.user.getValue("caesars")));
                 global.soldiers[0] = data.get("inf",global.soldiers[0]);
                 global.soldiers[1] = data.get("cav",global.soldiers[1]);
+                CheckSoldiers();
+
+                global.user.setValue("catapult", data.get("catapult"));
                 if(warpage.inite==1){
                     var list = data.get("empty", []);
                     warpage.loadempty(list);
@@ -1879,7 +1874,11 @@ class CastlePage extends ContextObject{
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re >= 1000||re<0){
+        if(re == -2000)
+        {
+           spriteManager.DecideToDown(); 
+        }
+        else if(re >= 1000||re<0){
             if(re>1000){
                 re=re%1000;
             }

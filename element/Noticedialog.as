@@ -8,7 +8,7 @@ class Noticedialog extends ContextObject{
     var buttonlabel;
         //"特给予50凯撒币补偿您之前获得过的一键免费操作。感谢支持！"
     const newupdate = [
-        "第二级城堡上线啦！等级大于20，升级城堡可以增加5点魔法值上限，100人口上限。提示：点击城堡->点击五角星旁边的升级按钮"
+        "春节活动之兵工厂&投石车上线拉！25级以上的玩家可以建造罗！祝大家春节快乐！"
     ]; 
     function paintNode(){
         updatenum=-1;

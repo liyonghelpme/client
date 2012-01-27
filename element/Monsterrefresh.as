@@ -21,7 +21,9 @@ class Monsterrefresh extends ContextObject{
             var d=element.addsprite("monsterrefresh.jpg").pos(20,35);
             d.addlabel(global.getFormatString("monster_refresh_format",["[NAME]",global.user.getValue("cityname")]),null,20,FONT_NORMAL,200,0,ALIGN_LEFT).pos(15,17).color(0,0,0,100);
             d.addsprite("dialogelement_help.png").scale(150).pos(190,97).setevent(EVENT_UNTOUCH,gotohelp,"robfood");
-            element.addsprite("monster_"+str(maxlevel)+"_1.png").pos(280,65).scale(110);
+
+            var monpic = element.addsprite().pos(280,65).scale(110);
+            spriteManager.getPic("monster_"+str(maxlevel)+"_1.png", monpic);
         }
         return element;
     }

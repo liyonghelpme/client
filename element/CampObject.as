@@ -9,7 +9,15 @@ class CampObject extends BuildObject{
     override function objectinterface(s,p){
         if(s == 4){
             var p1 = baseobj.posi[0]*RECTMAX+baseobj.posi[1];
-            global.http.addrequest(0,"soldier",["user_id","city_id","grid_id"],[global.userid,global.cityid,p1],self,"state4over");
+            if(bid/3 <= 2)//produce soldier
+            {
+                global.http.addrequest(0,"soldier",["user_id","city_id","grid_id"],[global.userid,global.cityid,p1],self,"state4over");
+            }
+            else //produce catapult
+            {
+                global.http.addrequest(0,"harvestcatapult",["user_id","city_id","grid_id"],[global.userid,global.cityid,p1],self,"state4over");
+                
+            }
         }
         else if(s == 2){
             objid = p;
@@ -23,19 +31,26 @@ trace("soldier",rc,c);
         if(rc != 0 && json_loads(c).get("id")==1){
             state = 2;
             state2 =0;
-            var sid=bid/3;
-            objid = objid%9;
-            var slevel =[1,3,6];
-            var snum = SOLDIER_PERSON[sid]*slevel[objid%3];
-            global.user.changeValueAnimate(baseobj,"exp",SOLDIER_EXP[sid*9+objid],1);
-            if(time()/1000-begintime<3*86400){
-                if(sid == 2){
-                    sid = sid+objid/3;
+            if(bid/3 <= 2)
+            {
+                var sid=bid/3;
+                objid = objid%9;
+                var slevel =[1,3,6];
+                var snum = SOLDIER_PERSON[sid]*slevel[objid%3];
+                global.user.changeValueAnimate(baseobj,"exp",SOLDIER_EXP[sid*9+objid],1);
+                if(time()/1000-begintime<3*86400){
+                    if(sid == 2){
+                        sid = sid+objid/3;
+                    }
+                    else{
+                        snum = snum*SOLDIER_POWER[sid*3+objid/3];
+                    }
+                    global.changesoldiers(baseobj,sid,snum,-1);
                 }
-                else{
-                    snum = snum*SOLDIER_POWER[sid*3+objid/3];
-                }
-                global.changesoldiers(baseobj,sid,snum,-1);
+            }
+            else//harvest catapult
+            {
+                global.user.changeValueAnimate(baseobj, "catapult", CATA_ATTACK[objid], 1);
             }
         }
         lock = 0;
@@ -52,6 +67,7 @@ trace("soldier",rc,c);
         global.user.changeValueAnimate(baseobj,"exp",CAMP_EXP[bid],-2);
         state = 1;
         begintime = time()/1000;
+        trace("begin building time");
         lefttime = CAMP_TIME[bid];
         super.beginbuild();
     }
@@ -59,17 +75,27 @@ trace("soldier",rc,c);
     function state2over(r,rc,c){
 trace("training",rc,c);
         if(rc != 0 && json_loads(c).get("id")==1){
-            objid = objid%9;
-            var sid=bid/3;
-            var slevel =[1,3,6];
-            var snum = SOLDIER_PERSON[sid]*slevel[objid%3];
-            sid = sid*3+objid/3;
-            global.user.changeValueAnimate(baseobj,"money",- SOLDIER_PRICE[bid/3*9+objid],2);
-            global.user.changeValueAnimate(baseobj,"food",- SOLDIER_FOOD[sid]*snum,0);
-            global.user.changeValueAnimate(baseobj,"person",-snum,-2);
-            state = 3;
-            begintime = time()/1000;
-            lefttime = CAMP_TIME[bid];
+            if(bid/3 <= 2)//produce soldier
+            {
+                objid = objid%9;
+                var sid=bid/3;
+                var slevel =[1,3,6];
+                var snum = SOLDIER_PERSON[sid]*slevel[objid%3];
+                sid = sid*3+objid/3;
+                global.user.changeValueAnimate(baseobj,"money",- SOLDIER_PRICE[bid/3*9+objid],2);
+                global.user.changeValueAnimate(baseobj,"food",- SOLDIER_FOOD[sid]*snum,0);
+                global.user.changeValueAnimate(baseobj,"person",-snum,-2);
+                state = 3;
+                begintime = time()/1000;
+                lefttime = CAMP_TIME[bid];
+            }
+            else//produce catapult
+            {
+                trace("begin produce catapult");
+                state = 3;
+                begintime = time()/1000;
+                lefttime = CATA_TIME[objid]; 
+            }
         }
         lock = 0;
         setstate();
@@ -103,7 +129,13 @@ trace("training",rc,c);
 
     override function objectgettime(){
         if(state == 1) return CAMP_TIME[bid];
-        else if(state == 3) return SOLDIER_TIME[objid%3];
+        else if(state == 3)
+        {
+            if(bid/3 <= 2)
+                return SOLDIER_TIME[objid%3];
+            else
+                return CATA_TIME[objid];
+        }
         else return 0;
     }
 }

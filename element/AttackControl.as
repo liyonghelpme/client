@@ -8,6 +8,9 @@ class AttackControl extends ContextObject{
     var btime;
     var slabel;
     var timelabel;
+    var AttWithCata = 0;
+    const WithCata = -3000;
+    const NoCata = -3001;
     function AttackControl(g){
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
@@ -105,19 +108,31 @@ class AttackControl extends ContextObject{
         btime = 100*(bz+b1)/(2*bz)*atime/100;
         timelabel.text(global.gettimestr(btime));
     }
-    
+    function realAttack(p)
+    {
+        if(global.timer.times2c(global.user.getValue("nobattletime"))>global.timer.currenttime){
+            global.pushContext(null,Warningdialog([global.getStaticString("nobattle_whenattack"),1,1]),NonAutoPop);
+            return 0;
+        }
+        var eu=global.context[1].userdict.get(eid);
+        var euid=eu[1];
+        if(euid>=0){
+            euid=eu[5];
+        }
+        if(AttWithCata == 1)//attack with catapult
+            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], global.user.getValue("catapult")],self,"attackover");
+        else //attack without catapult
+            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 0],self,"attackover");
+    }
     function attack(){
         if(global.currentLevel == contextLevel){
-            if(global.timer.times2c(global.user.getValue("nobattletime"))>global.timer.currenttime){
-                global.pushContext(null,Warningdialog([global.getStaticString("nobattle_whenattack"),1,1]),NonAutoPop);
-                return 0;
-            }
-            var eu=global.context[1].userdict.get(eid);
-            var euid=eu[1];
-            if(euid>=0){
-                euid=eu[5];
-            }
-            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry"],[global.userid,euid,btime,soldiers[0],soldiers[1]],self,"attackover");
+            //-2000 spriteManager
+            //>= 0 what
+            //< 0 what
+            if(global.user.getValue("catapult") > 0)
+                global.pushContext(null, Warningdialog(["是否派出你的"+str(global.user.getValue("catapult"))+"投石车？", -3000, 1]), NonAutoPop); 
+            else
+                realAttack(0);
         }
     }
     
@@ -131,8 +146,12 @@ class AttackControl extends ContextObject{
         if(rc!=0){
             var data = json_loads(c);
             if(data.get("id",1)==1){//add battlelist
-                global.soldiers[0] = global.soldiers[0] - soldiers[0];
-                global.soldiers[1] = global.soldiers[1] - soldiers[1];
+                //global.soldiers[0] = global.soldiers[0] - soldiers[0];
+                //global.soldiers[1] = global.soldiers[1] - soldiers[1];
+                ChangeSoldier(0, -soldiers[0]);
+                ChangeSoldier(1, -soldiers[1]);
+                if(AttWithCata == 1)
+                    global.user.changeValue("catapult", -global.user.getValue("catapult"));
                 var empty = global.emptyCitiesInGlo.get(eid);
 
                 global.popContext(null);
@@ -178,13 +197,24 @@ class AttackControl extends ContextObject{
     }
     
     function reloadNode(re){
-        if(re==1){
+        if(re == -3000 || re == -3001)//attack without catapult
+        {
+            if(re == -3000)
+                AttWithCata = 1;
+            else
+                AttWithCata = 0;
+            realAttack(re);
+        }
+        else if(re==1){
             var eu=global.context[1].userdict.get(eid);
             var euid=eu[1];
             if(euid>=0){
                 euid=eu[5];
             }
-            global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry"],[global.userid,euid,btime,soldiers[0],soldiers[1]],self,"attackover");
+            if(AttWithCata == 0)
+                global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], 0],self,"attackover");
+            else
+                global.http.addrequest(1,"attack",["uid","enemy_id","timeneed","infantry","cavalry", "catapult"],[global.userid,euid,btime,soldiers[0],soldiers[1], global.user.getValue("catapult")],self,"attackover");
         }
     }
     

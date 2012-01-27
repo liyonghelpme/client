@@ -13,7 +13,6 @@ class ContextObject{
     }
     function getNode(){
         if(contextNode == null){
-        //    trace("getNode paint");
             self.paintNode();
         }
         return contextNode;

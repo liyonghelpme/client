@@ -27,8 +27,11 @@ class WarChoose extends ContextObject{
 
     function reloadNode(re){
         if(re==1){
+            global.context[0].entermap(0,0);
+            /*
             global.context[0].warpage.initialdata();
             global.image.begindownload(2);
+            */
         }
     }
 

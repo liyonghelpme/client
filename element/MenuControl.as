@@ -111,10 +111,16 @@ class MenuControl extends ContextObject{
                     grounds[i].objnode.color(50,50,60,100);
                     if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544 ||grounds[i].objectid>=545&&grounds[i].objectid<=546){
                         trace("draw light", grounds[i].objectid);
-                        grounds[i].contextNode.add(sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1),1,1);
+                        var lightpng = sprite("", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
+                        grounds[i].contextNode.add(lightpng,1,1);
+                        spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
+                        
+//                        grounds[i].contextNode.add(sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1),1,1);
                     }
                     else if(grounds[i].objectid==0){
-                        grounds[i].contextNode.add(sprite("empire"+str(grounds[i].empireLevel)+"_l.png").anchor(50,100).pos(269,283).size(524,398),1,1);
+                        lightpng = sprite().anchor(50,100).pos(269,283).size(524,398);
+                        grounds[i].contextNode.add(lightpng,1,1);
+                        spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
                     }
                 }
             }

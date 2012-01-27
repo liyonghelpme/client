@@ -93,8 +93,8 @@ class UserControl extends ContextObject{
             board.texture("ipod.png");
         }
         if(eudata[0]=="0"){
-            board.addsprite("monsteravatar"+str(eudata[2])+".jpg").pos(12,56).size(40,40);
-            //board.addsprite("nobi"+str(eudata[2]*3+eudata[6])+".png").pos(56,56);
+            var monavt = board.addsprite().pos(12,56).size(40,40);
+            spriteManager.getPic("monsteravatar"+str(eudata[2])+".jpg", monavt);
             board.addlabel(eudata[4],null,18).pos(100,56).color(0,0,0,100);
             board.addlabel(ENAME[eudata[2]],null,18).pos(100,77).color(0,0,0,100);
         }
@@ -202,8 +202,10 @@ class UserControl extends ContextObject{
             trace("cancelAttackEmpty", data, ebdata, global.battlelist);
             if(data.get("id")!=0){
                 global.battlelist.remove(ebdata);
-                global.soldiers[0]=global.soldiers[0]+ebdata[4];
-                global.soldiers[1]=global.soldiers[1]+ebdata[5];
+                //global.soldiers[0]=global.soldiers[0]+ebdata[4];
+                //global.soldiers[1]=global.soldiers[1]+ebdata[5];
+                ChangeSoldier(0, ebdata[4]);
+                ChangeSoldier(1, ebdata[5]);
                 global.context[1].refreshmap(1);
             }
         }
