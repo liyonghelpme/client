@@ -207,6 +207,8 @@ class UserControl extends ContextObject{
                 ChangeSoldier(0, ebdata[4]);
                 ChangeSoldier(1, ebdata[5]);
                 global.context[1].refreshmap(1);
+                var catapult = data.get("cat", 0);
+                global.user.setValue("catapult", catapult);
             }
         }
     }
