@@ -6,7 +6,7 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 63;
+    const objsmax = 69;
     const objlevel = [
 3, 5, 7, 10, 20, 30,
 25, 10, 6, 8, 6, 15, 20,
@@ -30,8 +30,8 @@ class ObjControl extends ContextObject{
     function ObjControl(){
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(63);
-        buildable = new Array(63);
+        objs = new Array(69);
+        buildable = new Array(69);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
