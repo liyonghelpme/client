@@ -1164,6 +1164,7 @@ class CastlePage extends ContextObject{
         var oid = input.text();
         input.removefromparent();
         but.removefromparent();
+        trace("login");
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[int(oid),0,md5(oid+"-0800717193")],self,"getidback");
     }
     function initialFactorys(page){
@@ -1177,6 +1178,7 @@ class CastlePage extends ContextObject{
         input = v_create(V_INPUT_VIEW, 100, 100, 200, 200);
         v_root().addview(input);
         but = page.addsprite("boxbutton1.png").pos(300, 100).setevent(EVENT_UNTOUCH, login);
+        trace("input otherid");
         //global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 

@@ -93,6 +93,7 @@ c_invoke(beginLoading,1000,null);
 function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
+    trace("initial factorys");
     castle.initialFactorys(backNode);
 }
 
