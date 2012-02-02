@@ -48,6 +48,8 @@ class CallbackSoldier extends ContextObject{
         soldiers[p] = soldiermaxs[p]*(x-79)/254;
         slabels[p].text(str(soldiers[p]));
         var tnum = soldiers[0]+soldiers[1];
+        if(tnum < 0)
+            tnum = MAX_INT;
         slabel.text(str(tnum));
         if(tnum == 0){
             contextNode.get(0).texture("boxbutton2.png");
@@ -76,8 +78,10 @@ class CallbackSoldier extends ContextObject{
         if(rc!=0){
             var data = json_loads(c);
             if(data.get("id",1)==1){
-                global.soldiers[0] = global.soldiers[0]+soldiers[0];
-                global.soldiers[1] = global.soldiers[1]+soldiers[1];
+                //global.soldiers[0] = global.soldiers[0]+soldiers[0];
+                //global.soldiers[1] = global.soldiers[1]+soldiers[1];
+                ChangeSoldier(0, soldiers[0]);
+                ChangeSoldier(1, soldiers[1]);
                 edata[7]=edata[7]-soldiers[0];
                 edata[8]=edata[8]-soldiers[1];
                 global.popContext(null);

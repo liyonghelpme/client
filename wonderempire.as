@@ -67,14 +67,17 @@ var backNode = node().size(800, 480).setevent(EVENT_TOUCH,donothing);
 var black = backNode.addsprite("dark.png").size(800, 480);
 var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
 var src = backNode.addsprite().anchor(50,50).pos(400,240);
-var lback = fetch("loadingback.jpg");
+
+//var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
+var lpng = "loadingback.jpg";
+var lback = fetch(lpng);
 var loadingstr = "";
 if(lback==null){
     src.texture("loadingback.jpg");
-    node().addaction(request("loading-chr.jpg",1,null));
+    node().addaction(request(lpng,1,null));
 }
 else{
-    src.texture(lback);
+    src.texture(lpng);
 }
 global.dialogscreen.add(backNode,0);
 backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
@@ -103,6 +106,14 @@ function setlogin(){
 }
 
 var curTime = 0;
+var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+for(var t = 0; t < len(allTex); t++)
+{
+    if(fetch(allTex[t]) == null)
+    {
+        node().addaction(request(allTex[t],1,null));
+    }
+}
 var curTex = 0;
 var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
 var oneceMax = 0;

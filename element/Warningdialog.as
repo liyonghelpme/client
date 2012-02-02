@@ -17,13 +17,32 @@ class Warningdialog extends ContextObject{
     }
     
     function excute(p){
-        global.popContext(info[1]);
+        if(p == 100)//attack with catapult
+            global.popContext(-3000);
+        else if(p == 101)//attack without catapult
+            global.popContext(-3001);
+        else
+            global.popContext(info[1]);
     }
     
     function gotohelp(n,e,p){
         global.pushContext(null,new TestWebControl(p),NonAutoPop);
     }
     
+    //info[1] array
+    //== 1 attackcontrol
+      //no need to return
+    //null inprotect attack
+    //null inattacking attack
+    //null wonyet attack
+    //null user upgrade attack 
+        //==param used for return for callback function catapult product/dragon
+        //==param dragon select egg
+    
+    //-2000 spritemanager
+    //-3000 attack whether use catapult 
+
+    //info dict
     function getelement(){
         if(element == null){
             element = node();
@@ -35,6 +54,11 @@ class Warningdialog extends ContextObject{
                     info[1] -= 1000;
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.usedefaultbutton(2,[global.getStaticString("call"),global.getStaticString("cancel")]);
+                }
+                else if(info[1] == -3000)
+                {
+                    element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+                    dialog.AttackUseCata([global.getStaticString("sendCatapult"), global.getStaticString("notSendCata")]);
                 }
                 else if(info[1]>=0){
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);

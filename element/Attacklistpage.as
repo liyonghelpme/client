@@ -32,6 +32,8 @@ class Attacklistpage extends ContextObject{
         }
         contextNode.addsprite("attack_head.png").pos(275,77);
         var power = global.soldiers[0]+global.soldiers[1];
+        if(power < 0)
+            power = MAX_INT;
         powertext = contextNode.addlabel(str(outnum)+"/"+str(power+outnum),null,20).anchor(0,50).pos(550,87).color(0,0,0,100);
         pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(512,412).color(0,0,0,100);

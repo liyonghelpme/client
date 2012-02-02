@@ -195,5 +195,6 @@
 ["getresource", "Collect"],
 ["quickSendArmy", "SpeedUp"],
 ["LevelNot", "Sorry, only users whose level great than 20 can upgrade castle."],
-["EmpireNotOpen", "Sorry, third level castle is not opened."]
+["EmpireNotOpen", "Sorry, third level castle is not opened."],
+["sendCatapult", "Dispatch"], ["notSendCata", "Not"]
 ]

@@ -269,6 +269,7 @@ class UserController{
         changeValue(key,value);
         if(ne.contextNode!=null){
             var ps = ne.contextNode.pos();
+            trace("changeValueAnimate", ps, ne.contextid);
             var x = ps[0]+ne.contextid*2;
             var y = ps[1]-ne.contextid*17-hi*17;
             var n = node().pos(x,y);
@@ -313,6 +314,7 @@ class UserController{
             ns = "+"+ns;
             f = 1;
         }
+        changeValue(key, value);
         n.addlabel(ns,null,40).color(100,f*100,0,100).anchor(0,50).pos(5,0);
         n.addaction(sequence(moveby(1000,0,-80),tintto(1000,0,0,0,0),callfunc(removeself)));
         bn.add(n.scale(80),20000);
@@ -325,13 +327,28 @@ class UserController{
             var key = items[i][0];
             var value = items[i][1];
             var cmpvalue = 0;
-            if(key=="labor" || key=="person"){
-                key = "person";
-                cmpvalue = getValue("labor");
+            if(key == "special")
+            {
+                var speItems = value.items();
+                for(var j = 0; j < len(speItems); j++)
+                {
+                    if(global.special[speItems[j][0]] < speItems[j][1])
+                    {
+                        buildable.update("ok", 0);
+                        buildable.update(GIFTNAME[speItems[j][0]], speItems[j][1]-global.special[speItems[j][0]]);
+                    }
+                }
             }
-            if(getValue(key)-value<cmpvalue){
-                buildable.update("ok",0);
-                buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+            else
+            {
+                if(key=="labor" || key=="person"){
+                    key = "person";
+                    cmpvalue = getValue("labor");
+                }
+                if(getValue(key)-value<cmpvalue){
+                    buildable.update("ok",0);
+                    buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                }
             }
         }
         trace("buildable", buildable);

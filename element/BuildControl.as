@@ -11,6 +11,8 @@ import element.Nestpetchange2;
 import element.Nestpetdialog;
 import element.WoodControl;
 import element.StoneControl;
+import element.ProCatapult;
+import element.Catapult;
 class BuildControl extends ContextObject{
     var place;
     var placeObj;
@@ -32,10 +34,12 @@ class BuildControl extends ContextObject{
         contextNode = sprite().pos(400,240);
         
         var beginx;
+        //not decorator
         if(placeObj.buildcontextname!="obj"){
             var back = sprite("buildcontrolback2.png").anchor(50,100).pos(0,9);
             contextNode.add(back,0,111);
             var bl=90;
+            //mode building kind
             if(placeObj.contextid == 3){
                 bl = 60;
                 if(mode == 3 && place.state==3){
@@ -93,11 +97,15 @@ class BuildControl extends ContextObject{
                     back.addlabel(labelstr,null,20).anchor(0,50).pos(18,158).color(56,1,1);
                 }
                 else{
+                    trace("mode, bid", mode, place.bid);
                     if(mode== 0){
                         buttons.append(6);
                     }
                     else if(mode == 2){
-                        buttons.append(place.bid/3+7);
+                        if(place.bid/3 < 3)//other camp
+                            buttons.append(place.bid/3+7);
+                        else//catapult stone
+                            buttons.append(26);
                     }
                     else if(mode == 3){
                         if(place.bid<5){
@@ -220,7 +228,7 @@ class BuildControl extends ContextObject{
         for(var k=0;k<len(buttons);k++){
             var filter = NORMAL;
             var buttonid = buttons[k];
-            if(buttonid>16&&buttonid%2==0){
+            if(buttonid>16&&buttonid%2==0 && buttonid != 26){//not catabutton
                 trace("wrong buttonid",buttonid);
                 buttons[k]=1-buttonid;
                 buttonid = buttons[k];
@@ -229,13 +237,14 @@ class BuildControl extends ContextObject{
                 buttonid=-buttonid;
                 filter = GRAY;
             }
+            trace("buttonid", buttonid);
             var bt = contextNode.addsprite("buttontab0.png",filter).pos(73*k+beginx,0);
             bt.addsprite("opbutton"+str(buttonid)+".png",filter).anchor(50,50).pos(46,46);
             bt.setevent(EVENT_TOUCH,buttonclicked,k);
             bt.setevent(EVENT_UNTOUCH,buttonclicked,k);
         }
     }
-
+    
     function buttonclicked(n,e,p){
         var filter = NORMAL;
         if(buttons[p]>16&&buttons[p]%2==0){
@@ -330,8 +339,19 @@ class BuildControl extends ContextObject{
                 else if(buttons[p] == 25){
                     spriteManager.getDragon(place);
                 }
-                else
-                    global.pushContext(place,new SoldierControl(buttons[p]-7,place.bid%3),NonAutoPop);
+                else//ip = 26
+                {
+                    //build object 
+                    //normal object
+                    if((place.bid%100)/3 < 3)//normal camp
+                    {
+                        global.pushContext(place,new SoldierControl(buttons[p]-7,place.bid%3),NonAutoPop);
+                    }
+                    else//car and weapon
+                    {
+                        global.pushContext(place,new Catapult(),NonAutoPop);
+                    }
+                }
             }
         }
     }

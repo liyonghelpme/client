@@ -33,8 +33,8 @@ class NormalObject extends ContextObject{
     var buildcontextname;
     var empireLevel;
     var empireLight;
+    //for empire building need baseobj
     var baseobj = null;
-
 
     function NormalObject(id,l,r){
         contextname = "object-build-normal";

@@ -1,11 +1,22 @@
-const buildcontext = [9000,2001,2002,2003,2004,3005,3006,
+import global.Data;
+const buildcontext = [
+//castal
+9000,
+//farm
+2001,2002,2003,2004,3005,3006,
+//house
 2100,2101,2102,2103,2104,2105,2106,2107,2108,2109,2110,2111,2112,2113,2114,2115,2116,2117,2118,2119,2120,2121,2122,2123,2124,2125,2126,2127,2128,2129,2130,2131,2132,2133,2134,2135,3136,3137,3138,3139,3140,3141,3142,3143,3144,3145,3146,3147,3148,3149,3150,3151,3152,3153,3154,3155,3156,3157,3158,3159,2160,2161,2162,2163,2164,2165,2166,2167,2168,2169,2170,2171,3172,3173,3174,3175,3176,3177,
-2200,2201,2202,2203,2204,2205,2206,2207,2208,
+//camp
+2200,2201,2202,2203,2204,2205,2206,2207,2208, 2209, 2210, 2211,
+//fact
 2300,2301,2302,2303,2304,2305,2306,2307,2308,2309,2310,2311,2312,2313,2314,2315,2316,2317,2318,2319,2320,2321,2322,2323,2324,2325,2326,3327,3328,3329,2330,2331,2332,
+//god
 2400,2401,2402,2403,2404,2405,2406,2407,2408,2409,2410,2411,2412,2413,2414,2415,2416,2417,2418,2419,2420,2421,2422,2423,2424,2425,2426,2427,2428,2429,
-//todo
+//decor
 1500,1501,1502,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1516,1517,1518,1519,1520,1521,1522,1523,1524,1525,1526,1527,1528,1529,1530,1531,1532,1533,1534,1535,1536,1537,1538,2539,2540,2541,1542,1543,2544,1545,1546,1547,1548,1549, 
 2550, 2551, 1552, 2553, 2554, 2555, 2556,
+1557, 1558, 1559, 2560, 1561, 1562,
+//statue
 2600,2601,2602,2603,2604,2605];
 const darkColorAlpha = 65;
 const AutoPop = 1;
@@ -19,6 +30,12 @@ const WARCHAT_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:
 const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
+
+//const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://localhost:8080/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
+
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
 const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
@@ -78,14 +95,20 @@ const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
 
-const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000];
-const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300];
-const CAMP_PERSON = [100,120,170,130,150,200,90,110,160];
-const CAMP_EXP = [5,10,20,15,20,35,7,15,30];
-const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400];
-const CAMP_USE = ["train infantry","train cavalry","train scout"];
+const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000, 20000, 45000, 100000];
+const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300, 400, -400, -100400];
+const CAMP_PERSON = [100,120,170,130,150,200,90,110,160, 200, 250, 300];
+const CAMP_EXP = [5,10,20,15,20,35,7,15,30, 20, 50, 100];
+const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400, 5*3600, 7*3600+1800, 10*3600];
+const CAMP_USE = ["train infantry","train cavalry","train scout", "train catapult"];
+const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4", 0, "20;a,8;b,8", "40;c,15;g,15"];
 
-const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4"];
+const CATA_ATTACK = [400, 1000, 2000];
+const CATA_PRICE = [10000, 50000, 100000];
+const CATA_SPECIAL = ["500;a,5;b,5", "-500;a,8;c,8", "-1000;g,12;i,12"];
+const CATA_TIME = [7200, 21600, 43200];
+const CATA_CAE = [20, 50, 100];
+const CATA_NAME=["Catapult lev1", "Catapult lev2", "Catapult lev3"];
 
 const SOLDIER_TIME = [7200,21600,43200];
 const SOLDIER_EXP = [5,8,13,9,15,21,16,25,34,10,15,20,30,40,50,60,75,90,3,6,9,5,8,13,9,15,21];
@@ -110,9 +133,11 @@ const EXTEND_UP=[0,3,3];
 
 
 const OBJ_PRICE = [10,20,30,50,-1,100,100,100,100,100,100,200,-3,400,600,800,1000,900,1200,2000,-5,1500,1500,1500,1600,1600,1600,1600,-3,-3,-3,-3,1800,1800,1800,2000,2000,2000,-10,5000,-5,-10,2000,2000,-10,-2,-5, -6, -7, -8, 
--88, -50, 5000, -45, 5000, 5000, -45];
+-88, -50, 5000, -45, 5000, 5000, -45, 
+100, -40, -42, 10000, -46, 5500];
 const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,60,65,65,65,65,150,150,150,150,70,70,70,80,80,80,300,90,150,300,30,30,300,120,150, 155, 160, 165,
--2, -1, 90, -1, 90, 90, -1];
+-2, -1, 90, -1, 90, 90, -1,
+10, -1, -1, 130, -1, 100];
 
 const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
 const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
@@ -215,8 +240,9 @@ if(sta != null)
 }
 
 var stringDict;
-sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
-sta = json_loads(sta);
+//sta = c_file_op(C_FILE_READ, c_res_file("dict.txt"));
+//sta = json_loads(sta);
+sta = Dicts;
 if(sta != null)
 {
     trace("pass dict");
@@ -233,8 +259,10 @@ var newupdate1;
 var godstr;
 var items;
 var SPYITEMS;
-sta = c_file_op(C_FILE_READ, c_res_file("others.txt"));
-sta = json_loads(sta);
+
+//sta = c_file_op(C_FILE_READ, c_res_file("others.txt"));
+//sta = json_loads(sta);
+sta = Others;
 if(sta != null)
 {
     trace("pass others");
@@ -275,8 +303,9 @@ var CAMPNAME;
 var OBJNAME;
 var MONSTERNAME;
 
-sta = c_file_op(C_FILE_READ, c_res_file("names.txt"));
-sta = json_loads(sta);
+//sta = c_file_op(C_FILE_READ, c_res_file("names.txt"));
+//sta = json_loads(sta);
+sta = Names;
 if(sta != null)
 {
     trace("pass name");
@@ -333,8 +362,78 @@ function destroynode(p){
         }
         p.addaction(stop());
         p.removefromparent();
-    }
+}
 
+var BattleKey;
+function InitBattleKey()
+{
+    var keys = [
+    "type", "readed",
+    "kind", "otherUid", "win", "lostPower", "attFullPow", "defFullPow", "attPurePow", "defPurePow", "reward", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "attCatapult", "defCatapult" 
+    ];
+    BattleKey = dict();
+    for(var i = 0; i < len(keys); i++)
+    {
+        BattleKey.update([[keys[i], i]]);
+    }
+}
+InitBattleKey();
+function getBattleResult(key, data)
+{
+    return data[BattleKey.get(key)];
+}
+function setBattleResult(key, value, data)
+{
+    data[BattleKey.get(key)] = value;
+}
+var EmptyResult;
+function InitEmptyResult()
+{
+    var keys =  [
+    "type", "readed",
+    "id", "kind", "otherUid", "win", "lostPower", "attFullPow", "defFullPow", "attPurePow", "defPurePow", "eneOtherid", "eneEmpirename", "eneNobility", "attGod", "defGod", "empInf", "empCav", "empLev", "empGid", "attCatapult", "coinReward", "foodReward", "woodReward", "stoneReward"
+    ];//coinGen foodGen woodGen stoneGen
+    EmptyResult = dict();
+    for(var i = 0; i < len(keys); i++)
+        EmptyResult.update([[keys[i], i]]);
+}
+InitEmptyResult();
+function getEmptyResult(key, data)
+{
+    return data[EmptyResult.get(key)];
+}
+function getEmptyResults(keys, data)
+{
+    var res = [];
+    for(var i = 0; i < len(keys); i++)
+    {
+        if(type(keys[i]) == type(""))
+            res.append(getEmptyResult(keys[i], data));
+        else
+            res.append(keys[i]);
+    }
+    return res;
+}
+function setEmptyResult(key, value, data)
+{
+   data[EmptyResult.get(key)] = value; 
+}
+function getWarrecordList(key, data)
+{
+    var kind = data[0];
+    //trace("war kind", key);
+    if(kind == 0)
+        return getBattleResult(key, data);
+    return getEmptyResult(key, data);
+}
+function setWarrecordList(key, value, data)
+{   
+    var kind = data[0];
+    if(kind == 0)//normal user
+        setBattleResult(key, value, data);
+    else
+        setEmptyResult(key, value, data);
+}
 import global.TimeController;
 
 class DataController{
@@ -557,6 +656,10 @@ class GlobalController{
 
     function changesoldiers(ne,b,value,hi){
         soldiers[b] = soldiers[b]+value;
+        if(soldiers[b] < 0)
+        {
+            soldiers[b] = MAX_INT;
+        }
         if(ne.contextNode!=null){
             var ps = ne.contextNode.pos();
             var x = ps[0]+ne.contextid*2;
@@ -655,31 +758,31 @@ class GlobalController{
     }
 
     function popContext(re){
-        if(re == -2000)//spriteManager warning dialog return
-        {
-            context[currentLevel].deleteContext();
-            context[currentLevel] = null;
-            currentLevel--;
-            white();
-            sp.DecideToDown();
-        }
-        else if(re == -999){
+        if(re == -999){//new user task 
             newcontext.deleteContext();
             flagnew = 0;
             context[currentLevel].getNode().focus(1);
             if(len(dark)>0)
                 dark[len(dark)-1].visible(1);
         }
-        else if(currentLevel > 0){
+        else 
+        {
+            if(currentLevel < 0)
+                return;
             context[currentLevel].deleteContext();
             context[currentLevel] = null;
             currentLevel--;
             white();
+            if(re == -2000)
+            {
+                sp.DecideToDown();
+                return;
+            }
             if(flagnew == 0)
                 context[currentLevel].getNode().focus(1);
             request[currentLevel+1].response(re);
-
         }
+
     }
     
     function getdatestr(seconds){
@@ -766,3 +869,23 @@ var global= new GlobalController();
 var spriteManager = new SpriteManager(global);
 spriteManager.self = spriteManager;
 global.sp = spriteManager;
+function CheckSoldiers()
+{
+    for(var i = 0; i < len(global.soldiers); i++)
+    {
+        if(global.soldiers[i] < 0)
+            global.soldiers[i] = MAX_INT;
+    }
+}
+function ChangeSoldier(c, value)
+{
+    global.soldiers[c] += value;
+    if(global.soldiers[c] < 0)
+        global.soldiers[c] = MAX_INT;
+}
+function SetSoldier(c, value)
+{
+    global.soldiers[c] = value;
+    if(global.soldiers[c] < 0)
+        global.soldiers[c] = MAX_INT;
+}

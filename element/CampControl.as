@@ -9,15 +9,15 @@ class CampControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
-    const objsmax = 3;
-    const objcontext = [2200,2206,2203];
-    const objlevel = [1,3,11];
+    const objsmax = 4;
+    const objcontext = [2200,2206,2203, 2209];
+    const objlevel = [1,3,11, 25];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
         contextNode = null;
-        objs = new Array(3);
-        buildable = new Array(3);
+        objs = new Array(4);
+        buildable = new Array(4);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -40,7 +40,6 @@ class CampControl extends ContextObject{
             objs[i].addlabel(global.getname("camp",objid),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
             var camp = objs[i].addsprite().anchor(50,100).pos(74,160);
             spriteManager.getPic("camp"+str(objid)+".png", camp);
-
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

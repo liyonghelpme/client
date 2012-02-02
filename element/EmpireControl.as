@@ -55,11 +55,15 @@ class EmpireControl extends ContextObject{
             for(var i=0;i<3;i++){
                 var flag = 0;
                 var flag1 = 0;
+                //show back
                 if(i==p){
+                    //dialogelement_military3
                     if(p == 2)
-                        flag = 2;
+                        flag = 3;
+                    //dialogelement_resource1
                     else if(p == 1)
                         flag = 1;
+                    //state
                     else
                     {
                         if(global.user.getValue("nobility") < 0)
@@ -68,6 +72,7 @@ class EmpireControl extends ContextObject{
                             flag = 4;
                     }
                 }
+                //head
                 else if(i>p) flag1 =1;
                 trace("flag", flag); 
                 tabs[i].texture(name[i]+str(flag)+".png",UPDATE_SIZE).pos(16,59*(i+1)+flag1*228-3);
@@ -144,9 +149,10 @@ class EmpireControl extends ContextObject{
         }
         else if(p==2){
             element.addlabel(str(global.soldiers[0]+global.soldiers[1]),null,20).anchor(0,50).pos(133,113).color(0,0,0,100);
-            for(i=0;i<2;i++){
-                element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(89+192*i,161).color(0,0,0,100);
-            }
+            //scout 
+            element.addlabel(str(global.soldiers[0]),null,20).anchor(0,50).pos(89,161).color(0,0,0,100);
+            element.addlabel(str(global.soldiers[1]),null,20).anchor(0,50).pos(223,161).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("catapult")),null,20).anchor(0,50).pos(379,161).color(0,0,0,100);
             for(i=2;i<5;i++){
                 element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(150*i-227,236).color(0,0,0,100);
             }

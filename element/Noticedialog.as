@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-        "抱歉，由于服务器故障，1月6号0点～12点无法登录。特给期间登录过的玩家补偿10个凯撒币，感谢大家的支持！"
+        "大家好，春节装饰上线啦！快去看看吧，大家春节继续快乐！"
     ]; 
     function paintNode(){
         updatenum=-1;

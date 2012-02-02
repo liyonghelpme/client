@@ -26,10 +26,11 @@ class Warrecordinfo extends ContextObject{
     
     function setinfo(info){
         data = info;
-        if(contextNode!=null){
+        if(contextNode!=null && contextNode.parent() != null){
             var p = contextNode.parent();
             contextNode.removefromparent();
             paintNode();
+            trace("parent son", p, contextNode);
             p.add(contextNode);
         }
     }

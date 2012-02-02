@@ -202,9 +202,13 @@ class UserControl extends ContextObject{
             trace("cancelAttackEmpty", data, ebdata, global.battlelist);
             if(data.get("id")!=0){
                 global.battlelist.remove(ebdata);
-                global.soldiers[0]=global.soldiers[0]+ebdata[4];
-                global.soldiers[1]=global.soldiers[1]+ebdata[5];
+                //global.soldiers[0]=global.soldiers[0]+ebdata[4];
+                //global.soldiers[1]=global.soldiers[1]+ebdata[5];
+                ChangeSoldier(0, ebdata[4]);
+                ChangeSoldier(1, ebdata[5]);
                 global.context[1].refreshmap(1);
+                var catapult = data.get("cat", 0);
+                global.user.setValue("catapult", catapult);
             }
         }
     }

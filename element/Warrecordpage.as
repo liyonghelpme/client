@@ -67,33 +67,36 @@ class Warrecordpage extends ContextObject{
         return data;
     }
     function getitem(index){
-        //trace("warrecordcell", datas[index]);
-        items[index] = sprite("warrecordcell"+str(datas[index][1])+".jpg").pos(270,80+index%PAGEITEMS*51);
-        //attack normal people
-        var defdata =  toInt(datas[index][16]);
-        if(defdata >= 0)
-        {
-            items[index].addsprite(avatar_url(toInt(datas[index][7]))).size(40,40).pos(10,6);
-        }
-        //attack emptyCity
-        else
-        {
-            var level = -(defdata+1);//-1make sure level < 0
-            if(int(datas[index][17]) <= 0)//monster ppyid
-            {
-                var monavt = items[index].addsprite().size(40,40).pos(10,6);
-                spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
-            }
-            else//user own emptyCity
-                items[index].addsprite(avatar_url(toInt(datas[index][17]))).size(40,40).pos(10,6);
+        trace("show warrecordcell", index);
 
+        trace("warrecord data", datas[index]);
+        items[index] = sprite("warrecordcell"+str(getWarrecordList("kind", datas[index]))+".jpg").pos(270,80+index%PAGEITEMS*51);
 
+        var kind = getWarrecordList("type", datas[index]);
+        if(kind == 0)//attack Normal People
+        {
+            items[index].addsprite(avatar_url(getWarrecordList("eneOtherid", datas[index]))).size(40,40).pos(10,6);
+            items[index].addlabel(getWarrecordList("eneEmpirename", datas[index]),null,18).pos(58,7).color(0,0,0,100);
         }
+        else//attack Empty
+        {
+            var level = getWarrecordList("empLev", datas[index]); 
+            var monavt = items[index].addsprite().size(40,40).pos(10,6);
+            spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+            items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
+        }
+        /*
+<<<<<<< HEAD
         items[index].addlabel(datas[index][10],null,18).pos(58,7).color(0,0,0,100);
         if(datas[index][0]==0){
             items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
+=======
+        */
+
+        if(getWarrecordList("readed",datas[index]) == 1){
+            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
         }
-        else{
+        else{//not readed 
             items[index].addsprite("wrbutton1.png").pos(296,8).setevent(EVENT_UNTOUCH,receivegift,index);
             items[index].addsprite("wrbutton0.png").pos(382,8).setevent(EVENT_UNTOUCH,receivegift,-index-1);
         }
@@ -114,7 +117,7 @@ class Warrecordpage extends ContextObject{
         record.flagresult = 1;
 
         global.pushContext(null,record,NonAutoPop);
-        datas[p][0]=0;
+        setWarrecordList("readed", 1, datas[p]);
         items[p].removefromparent();
         contextNode.add(getitem(p));
         removelist.append(p);
@@ -132,10 +135,10 @@ class Warrecordpage extends ContextObject{
             for(var i = 0; i < len(removelist);)
             {
                 var num = removelist[i];
-                if(len(datas[num]) > 18)//normal battleresult is length = 17
+                if(getWarrecordList("type", datas[num]) == 1)//remove Empty list
                 {
                     removelist.pop(i);
-                    removeEmpty.append(datas[num][18]);
+                    removeEmpty.append(getWarrecordList("id", datas[num]));
                 }
                 else
                     i++;

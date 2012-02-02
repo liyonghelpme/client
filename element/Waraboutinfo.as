@@ -27,16 +27,7 @@ class Waraboutinfo extends ContextObject{
         }
         else{
             pages = new Array(new Warrecordinfo(),new Warrecordlist(),new Warrecordlist());
-            //http_request(BASE_URL+"warrecord/"+str(global.userid),getrecordover);
-            //if(global.user.getValue("warrecord")!=0){
-                global.http.addrequest(1,"warrecord",["uid"],[global.userid],self,"getrecordover");
-            //}
-            //else{
-            //    var info = global.user.getValue("warrecord");
-            //    pages[0].setinfo(info);
-            //    pages[1].setinfo(info.get("wonlist"));
-            //    pages[2].setinfo(info.get("lostlist"));
-            //}
+            global.http.addrequest(1,"warrecord",["uid"],[global.userid],self,"getrecordover");
         }
         for(var i=0;i<len(pages);i++){
             var tab = contextNode.addsprite("dialogtab_warabout0.png").anchor(0,100).pos(i*121+279,58).setevent(EVENT_UNTOUCH,changePage,i);
