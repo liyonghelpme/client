@@ -10,11 +10,10 @@ class ImageController{
     "flycatapult.png",
     "camp9.png", "camp10.png", "camp11.png", 
     "dialogelement_military3.png",
-/*
-    ];
+
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
-    "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
+    //"1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg",
     "empire2.png", "empire2_l.png", "upgrade.png",
     "dialogelement_state3.png", "dialogelement_state4.png",
     "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
@@ -22,7 +21,7 @@ class ImageController{
     "buyelement20.png", "buyelement21.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
      ];
-    */
+/*
     //var images1 = [
     "shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png",
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
@@ -57,6 +56,8 @@ class ImageController{
     "water-1-7.png","water-1-8.png","water-1-9.png","water-1.png","water-2.png","water-3.png","water-4-1.png","water-4-2.png","water-4-3.png","water-4-4.png","water-4-5.png",
     "water-4-6.png","water-4-7.png","water-4-8.png","water-4-9.png","water-4.png","water-5.png","water-6.png","water-7.png","water-9.png","water-f1.png","water-f2.png","water-f3.png","water-f4.png", "monsteravatar0.jpg", "monsteravatar1.jpg", "monsteravatar2.jpg", "monsteravatar3.jpg", "monsteravatar4.jpg", "monsteravatar5.jpg", "monsteravatar6.jpg", "selopen.png", "selclose.png"
     ];
+*/
+
     /*
     const images2 = [
 "addallybound.jpg","allyelement.png","bindButton.png","cancelallyelement.png","friend_objadd.png","friend_objback2.png","friend_objnone.png","friendbutton2.png",
