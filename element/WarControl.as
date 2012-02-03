@@ -710,7 +710,11 @@ class WarControl extends ContextObject{
         var ypos = yinit;
         var dify = 100;
         var p = temp[0]+temp[1]*2+temp[2]*4;
-        var ep = leftCataPower/p;
+        var ep;
+        if(p == 0)
+            ep = 0;
+        else
+            ep = leftCataPower/p;
         for(var j = 0; j < len(temp); j++)
         {
             for(var i = 0; i < temp[j]; i++)
