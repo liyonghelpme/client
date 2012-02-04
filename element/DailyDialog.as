@@ -42,10 +42,10 @@ class DailyDialog extends ContextObject{
             ppy_postnewsfeed(ppy_username()+"登录了奇迹帝国领取了每日奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
         }
         if(bonus>0){
-            global.user.changeValueAnimate3(global.context[0].moneyb,"money",bonus,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"money",bonus,-6);
         }
         else{
-            global.user.changeValueAnimate3(global.context[0].moneyb,"caesars",-bonus,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-bonus,-6);
         }
         global.popContext(null);
     }
