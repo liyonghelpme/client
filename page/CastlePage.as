@@ -1310,6 +1310,7 @@ class CastlePage extends ContextObject{
                 contextNode.get(1).color(100,100,100,100);
                 contextNode.remove(0);
             }
+            //groundid gridid objectid producttime finish
             for(var x=0;x<len(objs);x++){
                 var objdata = objs[x].split(",");
                 if(len(objdata)!=5||objdata[4]==""){
@@ -1334,8 +1335,8 @@ class CastlePage extends ContextObject{
                 {
                     s.empireLevel = objid;
                 }
-                else if(gid>0&&gid<500||gid>=600){
-                    if(gid/100==4){
+                else if(gid>0&&gid<500||gid>=600){//not decoration
+                    if(gid/100==4){//god
                         if(gid<420){
                             objid=0;
                             if(finish != 0){
@@ -1366,17 +1367,20 @@ class CastlePage extends ContextObject{
                             global.user.setValueInArray("godlevel",(gid-400)/5,(gid-420)%5);
                         }
                     }
-                    if(time == 0){
-                        var state = 2;
+                    //state 0 1 2 3 4
+                    //0  1 building 2 finishBuilding 3 working 4 harvest enabled
+                    var state;
+                    if(time == 0){//finish Building 
+                        state = 2;
                     }
-                    else if(finish == 0){
+                    else if(finish == 0){//not finish Building 
                         state = 1;
                     }
-                    else state = 3;
-                    if(state == 2 && gid/100==3){
+                    else state = 3;//working
+                    if(state == 2 && gid/100==3){//factory time = 0 
                         state=1;
                     }
-                    if(time<=1){
+                    if(time<=1){//finish accelerate - one day 
                         time=btime-86400;
                     }
                     s.objnode.init(s.objnode,global);

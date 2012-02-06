@@ -19,7 +19,7 @@ class CampObject extends BuildObject{
                 
             }
         }
-        else if(s == 2){
+        else if(s == 2){//begin to working 
             objid = p;
             p1 = baseobj.posi[0]*RECTMAX+baseobj.posi[1];
             global.http.addrequest(0,"training",["user_id","city_id","grid_id","sid"],[global.userid,global.cityid,p1,objid+bid/3*9],self,"state2over");
