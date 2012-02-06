@@ -10,7 +10,7 @@ class RoomControl extends ContextObject{
     var flagmove;
     var objsmax = 26;
     const objlevel = [
-    25, 
+    3, 
     3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];
     const objcontext = [
     2178,

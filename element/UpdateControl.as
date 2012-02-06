@@ -45,7 +45,7 @@ class UpdateControl extends ContextObject{
             var objbid;
             var upbid;
             //empire Level up 
-            trace("obj", obj.bid, obj.empireLevel);
+            //trace("obj", obj.bid, obj.empireLevel);
             if(obj.baseobj == null)
             {
                 btype = 0;
