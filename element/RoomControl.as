@@ -8,15 +8,23 @@ class RoomControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
-    const objsmax = 26;
-    const objlevel = [3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];
-    const objcontext = [3172,3175,2100,2103,2106,2109,2112,2115,2118,2121,2160,2163,2166,2169,2124,2127,2130,2133,3136,3139,3142,3145,3148,3151,3154,3157];
+    var objsmax = 26;
+    const objlevel = [
+    25, 
+    3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];
+    const objcontext = [
+    2178,
+    3172,3175,2100,2103,2106,2109,2112,2115,2118,2121,2160,2163,2166,2169,2124,2127,2130,2133,3136,3139,3142,3145,3148,3151,3154,3157 ];
     var buildable;
     function RoomControl(){
         contextname = "element-build-room";
         contextNode = null;
-        objs = new Array(26);
-        buildable = new Array(26);
+        objs = range(0, len(objcontext));
+        buildable = range(0, len(objcontext));
+        objsmax = len(objcontext);
+
+        //objs = new Array(26);
+        //buildable = new Array(26);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -32,7 +40,7 @@ class RoomControl extends ContextObject{
             var hou = objs[i].addsprite().anchor(50,100).pos(74,160).scale(sc);
             spriteManager.getPic("room"+str(obji)+".png", hou);
             
-            if(i<2){
+            if(i<1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
             if(objlevel[i] > global.user.getValue("level")){
