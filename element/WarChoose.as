@@ -8,7 +8,7 @@ class WarChoose extends ContextObject{
     function paintNode(){
         buttons = [0];
         contextNode = node().pos(400,240);
-        if(global.user.getValue("level")<10){
+        if(global.user.getValue("level")<WarMode_Lev){
             buttons.append(2);
         }
         else{
@@ -20,7 +20,7 @@ class WarChoose extends ContextObject{
             bt.setevent(EVENT_TOUCH,buttonclicked,k);
             bt.setevent(EVENT_UNTOUCH,buttonclicked,k);
         }
-        if(buttons[1]==2&&global.user.getValue("level")<10){
+        if(buttons[1]==2&&global.user.getValue("level")<WarMode_Lev){
             bt.texture("warchoosebuttonback0.png",GRAY);
         }
     }

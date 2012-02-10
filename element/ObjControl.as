@@ -85,6 +85,11 @@ class ObjControl extends ContextObject{
                 var price = OBJ_PRICE[oi];
                 if(price < 0){
                     price = -price;
+                    if(add < 0)//add Magic discount 
+                    {
+                        price /= 2;
+                        objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+                    }
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
