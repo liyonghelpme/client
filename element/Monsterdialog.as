@@ -58,10 +58,13 @@ class Monsterdialog extends ContextObject{
         contextNode = dialog.getNode();
         dialog.usedefaultbutton(2,["攻击","返回"]);
         if(flagdefeatable == 0){
-            contextNode.get(0).addsprite("caesars_big.png").pos(6. 34).anchor(50, 50);
-            contextNode.get(0).addlabel("1", null, 24).color(0, 0, 0, 100).pos(31, 35);
-            //contextNode.get(0).texture("boxbutton2.png");
-            //contextNode.get(0).setevent(EVENT_UNTOUCH,null);
+            contextNode.get(0).addsprite("caesars_big.png").pos(6, 34).anchor(50, 50);
+            contextNode.get(0).addlabel("1", null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(20, 35);
+            if(global.user.getValue("caesars") < abs(DefeatMon_Cae))
+            {
+                contextNode.get(0).texture("boxbutton2.png");
+                contextNode.get(0).setevent(EVENT_UNTOUCH,null);
+            }
         }
     }
     
@@ -71,12 +74,10 @@ class Monsterdialog extends ContextObject{
             defeatmonster(0,1,"{'id':1,'infantrypower':30,'powerlost':0}");
         }
         else{
-            if(flagdefeatable == 0)
-            {
-                global.http.addrequest(1,"defeatmonster",["uid","gridid"],[global.userid,mid],self,"defeatmonster");
-            }
-            else
-                global.http.addrequest(1,"defeatmonster",["uid","gridid"],[global.userid,mid],self,"defeatmonster");
+            if(flagdefeatable == 0)//caesar
+                global.http.addrequest(1,"defeatmonster",["uid","gridid", "kind"],[global.userid,mid, 0],self,"defeatmonster");
+            else//coin
+                global.http.addrequest(1,"defeatmonster",["uid","gridid", "kind"],[global.userid,mid, 1],self,"defeatmonster");
         }
     }
     //finish Action 
@@ -94,10 +95,12 @@ class Monsterdialog extends ContextObject{
             var data = json_loads(c);
             if(data.get("id",1)!=0){
                 var m = global.context[1].baseNode.get(mid+8);//MapPage back monster 
+                trace("monster is", m);
                 var sid = "1";
                 if(mpower >= 70){
                     sid="2";
                 }
+                //Monster remove 
                 m.setevent(EVENT_UNTOUCH,null);
                 var s = m.addsprite("animate_self_left_"+sid+"_2.png").anchor(100,100).pos(-40,m.size()[1]).color(0,0,0,0);
                 s.addaction(sequence(tintto(1000,100,100,100,100),
@@ -114,9 +117,8 @@ class Monsterdialog extends ContextObject{
                     m.addaction(sequence(stop(),delaytime(3500),itexture("monster_"+str(mtype)+"_dead.png"),delaytime(1000),animate(2500,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
                 //Add specialgoods or lost 
+                trace("defeat data", data);
                 c_addtimer(1000,defeatover,[m,data.get("powerlost",0),data.get("specialgoods","")],3500,1);
-                //global.soldiers[0] = ;
-                //global.soldiers[1] = ;
                 SetSoldier(0, data.get("infantrypower",0));
                 SetSoldier(1, data.get("cavalrypower",0));
                 global.context[1].powerlabel.text(str(global.soldiers[0]+global.soldiers[1]));
@@ -195,9 +197,13 @@ class Monsterdialog extends ContextObject{
                     global.context[0].addcmd(cdict);
                 }
     }
-    function defeatover(timer,tick,m){
-        if(m[1] == 0){//X Y POsition add Exp or change Value  
-            global.user.changeValueAnimate2(m[0],"exp",10,0);
+    //monster, powerlost, specialgoods
+    function defeatover(timer,tick,m){//parameter powerlost == 0
+        trace("defeatover", timer, tick, m);
+        if(m[1] == 0){//X Y POsition add Exp or change Value no power lost 
+            if(flagdefeatable == 0)
+                global.user.changeValueAnimate2(m[0], "caesars", DefeatMon_Cae, -4);
+            global.user.changeValueAnimate2(m[0],"exp",10,0);//why animate 10
         }
         else{
             if(flagdefeatable == 1)
