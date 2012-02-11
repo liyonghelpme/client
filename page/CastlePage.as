@@ -611,6 +611,9 @@ class CastlePage extends ContextObject{
             }
             else{
                 var p = OBJ_PRICE[changes.objectid-500];
+                var add = OBJ_PERSON[changes.objectid-500];
+                if(add<0)
+                    p /= 2;
                 var cost = dict();
                 if(p<0){
                     global.user.changeValueAnimate(changes,"caesars",p,2);
@@ -620,7 +623,6 @@ class CastlePage extends ContextObject{
                     global.user.changeValueAnimate(changes,"money",-p,2);
                     cost.update("money",p);
                 }
-                var add = OBJ_PERSON[changes.objectid-500];
                 if(add > 0)
                     global.user.changeValueAnimate(changes,"personmax",add,0);
                 else
@@ -1225,7 +1227,10 @@ class CastlePage extends ContextObject{
             global.soldiers[3]=data.get("scout2_num",0);
             global.soldiers[4]=data.get("scout3_num",0);
             CheckSoldiers();
-            global.card = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            global.card = range(0, 21);//21 card
+            for(var ccount = 0; ccount < len(global.card); ccount++)
+                global.card[ccount] = 0;
+            //[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var cardstr = data.get("monsterdefeat","0;0;0;0;0;0;0;0;0;0;0;0");
             var cards = cardstr.split(";");
             for(var k=0;k<12&&k<len(cards);k++){
@@ -1472,10 +1477,7 @@ class CastlePage extends ContextObject{
                     bdict.update("num",data.get("wonNum"));
                     addcmd(bdict);
                 }
-                global.system.flagrob = data.get("foodlost");
-                if(global.system.flagrob==null){
-                    global.system.flagrob= 0;
-                }
+                global.system.flagrob = data.get("foodlost", 0);
                 global.user.setValue("newgift",data.get("giftnum",0));
             }
             initlock = 0;
@@ -1610,13 +1612,24 @@ class CastlePage extends ContextObject{
             if(newstate < 3&&global.flagnew == 0){
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
-            else{
+            else{//new user not popup foodlost
+                if(global.system.flagrob == 0 && global.flagnew == 0)
+                {
+                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
+                }
+                if(global.system.flagrob < 2 && global.flagnew == 0)
+                {
+                    global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
+                }
+
+                /*
                 if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
                 }
                 else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
                     global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
                 }
+                */
             }
             global.user.flaginit = 0;
             global.user.setValue("plantpage",1);
