@@ -121,6 +121,7 @@ class MenuControl extends ContextObject{
                         lightpng = sprite().anchor(50,100).pos(269,283).size(524,398);
                         grounds[i].contextNode.add(lightpng,1,1);
                         spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
+                        grounds[i].showYanhua();
                     }
                 }
             }
@@ -139,6 +140,9 @@ class MenuControl extends ContextObject{
                     if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544||grounds[i].objectid==0){
                         grounds[i].contextNode.remove(1);
                     }
+                    if(grounds[i].objectid == 0)
+                        grounds[i].contextNode.remove(1000);
+                        
                 }
             }
         }

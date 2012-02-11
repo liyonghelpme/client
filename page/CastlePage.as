@@ -612,6 +612,9 @@ class CastlePage extends ContextObject{
             }
             else{
                 var p = OBJ_PRICE[changes.objectid-500];
+                var add = OBJ_PERSON[changes.objectid-500];
+                if(add<0)
+                    p /= 2;
                 var cost = dict();
                 if(p<0){
                     global.user.changeValueAnimate(changes,"caesars",p,2);
@@ -621,7 +624,6 @@ class CastlePage extends ContextObject{
                     global.user.changeValueAnimate(changes,"money",-p,2);
                     cost.update("money",p);
                 }
-                var add = OBJ_PERSON[changes.objectid-500];
                 if(add > 0)
                     global.user.changeValueAnimate(changes,"personmax",add,0);
                 else
@@ -1239,7 +1241,10 @@ class CastlePage extends ContextObject{
             global.soldiers[3]=data.get("scout2_num",0);
             global.soldiers[4]=data.get("scout3_num",0);
             CheckSoldiers();
-            global.card = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+            global.card = range(0, 21);//21 card
+            for(var ccount = 0; ccount < len(global.card); ccount++)
+                global.card[ccount] = 0;
+            //[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
             var cardstr = data.get("monsterdefeat","0;0;0;0;0;0;0;0;0;0;0;0");
             var cards = cardstr.split(";");
             for(var k=0;k<12&&k<len(cards);k++){
@@ -1324,6 +1329,7 @@ class CastlePage extends ContextObject{
                 contextNode.get(1).color(100,100,100,100);
                 contextNode.remove(0);
             }
+            //groundid gridid objectid producttime finish
             for(var x=0;x<len(objs);x++){
                 var objdata = objs[x].split(",");
                 if(len(objdata)!=5||objdata[4]==""){
@@ -1348,8 +1354,8 @@ class CastlePage extends ContextObject{
                 {
                     s.empireLevel = objid;
                 }
-                else if(gid>0&&gid<500||gid>=600){
-                    if(gid/100==4){
+                else if(gid>0&&gid<500||gid>=600){//not decoration
+                    if(gid/100==4){//god
                         if(gid<420){
                             objid=0;
                             if(finish != 0){
@@ -1380,17 +1386,20 @@ class CastlePage extends ContextObject{
                             global.user.setValueInArray("godlevel",(gid-400)/5,(gid-420)%5);
                         }
                     }
-                    if(time == 0){
-                        var state = 2;
+                    //state 0 1 2 3 4
+                    //0  1 building 2 finishBuilding 3 working 4 harvest enabled
+                    var state;
+                    if(time == 0){//finish Building 
+                        state = 2;
                     }
-                    else if(finish == 0){
+                    else if(finish == 0){//not finish Building 
                         state = 1;
                     }
-                    else state = 3;
-                    if(state == 2 && gid/100==3){
+                    else state = 3;//working
+                    if(state == 2 && gid/100==3){//factory time = 0 
                         state=1;
                     }
-                    if(time<=1){
+                    if(time<=1){//finish accelerate - one day 
                         time=btime-86400;
                     }
                     s.objnode.init(s.objnode,global);
@@ -1482,10 +1491,7 @@ class CastlePage extends ContextObject{
                     bdict.update("num",data.get("wonNum"));
                     addcmd(bdict);
                 }
-                global.system.flagrob = data.get("foodlost");
-                if(global.system.flagrob==null){
-                    global.system.flagrob= 0;
-                }
+                global.system.flagrob = data.get("foodlost", 0);
                 global.user.setValue("newgift",data.get("giftnum",0));
             }
             initlock = 0;
@@ -1620,13 +1626,24 @@ class CastlePage extends ContextObject{
             if(newstate < 3&&global.flagnew == 0){
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
-            else{
+            else{//new user not popup foodlost
+                if(global.system.flagrob == 0 && global.flagnew == 0)
+                {
+                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
+                }
+                if(global.system.flagrob < 2 && global.flagnew == 0)
+                {
+                    global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
+                }
+
+                /*
                 if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
                 }
                 else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
                     global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
                 }
+                */
             }
             global.user.flaginit = 0;
             global.user.setValue("plantpage",1);

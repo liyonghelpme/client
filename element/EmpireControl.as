@@ -3,6 +3,7 @@ class EmpireControl extends ContextObject{
     var tabs;
     var element;
     var building;
+    const EmpireLevel = [20, 30];
     function EmpireControl(b){
         contextname = "dialog-castleinfo";
         contextNode = null;
@@ -11,7 +12,20 @@ class EmpireControl extends ContextObject{
     function upgradeEmpire(n, e, p, x, y, pos)
     {
         trace("empireLevel", building.empireLevel);
-        if(global.user.getValue("level") < 20)
+        if(building.empireLevel >= len(EmpireLevel))
+        {
+            global.pushContext(null, new Warningdialog(["对不起，更高级城堡尚未开放", null, 6]), NonAutoPop);
+        }
+        else if(global.user.getValue("level") < EmpireLevel[building.empireLevel])
+        {
+            global.pushContext(null, new Warningdialog(["对不起，等级"+str(EmpireLevel[building.empireLevel])+"才可以升级城堡", null, 6]), NonAutoPop);
+        }
+        else
+        {
+            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        }
+        /*
+        if(global.user.getValue("level") < 20)//
         {
             global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 6]), NonAutoPop);
         }
@@ -19,6 +33,7 @@ class EmpireControl extends ContextObject{
             global.pushContext(building, new UpdateControl(), NonAutoPop); 
         else
             global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 6]), NonAutoPop);
+        */
     }
 
     function paintNode(){
