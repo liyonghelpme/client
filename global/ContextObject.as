@@ -1,4 +1,5 @@
-import global.GlobalController;
+//import global.GlobalController;
+import global.INCLUDE;
 class ContextObject{
     var global;
     var contextLevel;

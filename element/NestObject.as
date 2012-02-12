@@ -1,4 +1,6 @@
 class NestObject extends BuildObject{
+    const Train_Mana = 2;
+    const Train_Power = 10;
     function NestObject(b){
         contextname = "object-build-nest";
         buildname = "build";
@@ -126,12 +128,14 @@ class NestObject extends BuildObject{
         health = c[5];
         helpfriends = json_loads("{'fr':"+c[7]+"}").get("fr");
         petname = c[8];
+        trainAttack = c[9];
         feeded = c[10]%2;
         extendid=c[11];
         substate=0;
         setstate();
         trainnum = c[9];
-        attack=PETS_POWER[objid]+trainnum+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
+        //initial power, trainAttack, (Egg Attribute+Kind Attri) * health
+        attack=PETS_POWER[objid]+trainAttack+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
         istrain=0;
         if(global.context[0].flagfriend==1)
             c_invoke(executeAnimate,1000,null);
@@ -149,6 +153,7 @@ class NestObject extends BuildObject{
     var bbid;
     var health;
     var petname;
+    var trainAttack;
     var attack;
     var feeded;
     var extendid;
@@ -272,14 +277,15 @@ class NestObject extends BuildObject{
     }
     
     function executeAnimate(){
-        if(contextNode==null){
+        if(contextNode==null){//not initial call 1000ms later
             c_invoke(executeAnimate,1000,null);
             return 0;
         }
         var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
-        trace("system time", stime);
-        if(contextNode.get(1)!=null){
-            if(state==3){
+        trace("dragon system time, state, health", stime, state, health);
+        if(contextNode.get(1)!=null){//dragon picture
+            //Dragon is an egg
+            if(state==3){//dragon State 0not 1active 2buyegg 3child 4young 5old 
                 var stt = health/17+1;
                 if(stt>3) stt=3;
                 var prestr = "egg-"+str(stt)+"-";
@@ -292,60 +298,62 @@ class NestObject extends BuildObject{
                     contextNode.get(1).addaction(sequence(stop(),repeat(delaytime(150),itexture(prestr+"1.png"),delaytime(150),itexture(prestr+"2.png"),delaytime(250),itexture(prestr+"3.png"),delaytime(100),itexture(prestr+"4.png"),delaytime(250),itexture(prestr+"5.png"),delaytime(150),itexture(prestr+"6.png"),delaytime(150),itexture(prestr+"7.png"),delaytime(150),itexture(prestr+"0.png"),2)));
                 }
             }
+            //dragon is young
             else if(state==4){
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
                     var talktime=0;
-                    //if(stime>=6&&stime<10 || stime>=11&&stime<14 || stime>=20||stime<6){
-                        var tback=contextNode.get(1).addsprite("talk.png").anchor(50,100).pos(95,15);
-                        tback.color(0,0,0,0);
-                        talktime=2000;
-                        var tlabel = tback.addlabel("",null,16,FONT_NORMAL,160,0,ALIGN_LEFT).pos(18,8).color(0,0,0,100);
-                        if(global.context[0].flagfriend==0){
-                            if(stime>=6&&stime<10){
-                                tlabel.text(global.getStaticString("nest_talk_morning"));
-                            }
-                            else if(stime>=11&&stime<14){
-                                tlabel.text(global.getStaticString("nest_talk_noon"));
-                            }
-                            else if(stime>=20||stime<6){
-                                tlabel.text(global.getStaticString("nest_talk_night"));
-                            }
-                            else{
-                                tlabel.text(global.getStaticString("nest_talk_other"));
-                            }
-                            if(istrain==1){
-                                var to=node();
-                                to.addaction(sequence(delaytime(10000),callfunc(train)));
-                                contextNode.get(1).subnodes()[0].add(to);
-                            }
+                    var tback=contextNode.get(1).addsprite("talk.png").anchor(50,100).pos(95,15);
+                    tback.color(0,0,0,0);
+                    talktime=2000;
+                    var tlabel = tback.addlabel("",null,16,FONT_NORMAL,160,0,ALIGN_LEFT).pos(18,8).color(0,0,0,100);
+                    if(global.context[0].flagfriend==0){//self train
+                        if(stime>=6&&stime<10){
+                            tlabel.text(global.getStaticString("nest_talk_morning"));
                         }
-                        else if(len(helpfriends)>=5||helpfriends.index(ppy_userid())!=-1){
-                                tlabel.text(global.getStaticString("nest_talk_feedover"));
+                        else if(stime>=11&&stime<14){
+                            tlabel.text(global.getStaticString("nest_talk_noon"));
+                        }
+                        else if(stime>=20||stime<6){
+                            tlabel.text(global.getStaticString("nest_talk_night"));
                         }
                         else{
-                                tlabel.text(global.getStaticString("nest_talk_notfeedover"));
+                            tlabel.text(global.getStaticString("nest_talk_other"));
                         }
-                        tback.addaction(sequence(stop(),delaytime(800),itintto(100,100,100,100),delaytime(talktime),callfunc(removeself)));
-                    //}
+                        //train action do 10s later building subnode
+                        if(istrain==1){
+                            var to=node();
+                            to.addaction(callfunc(train));
+                            contextNode.add(to);
+                            //to.addaction(sequence(delaytime(10000),callfunc(train)));
+                            //contextNode.get(1).subnodes()[0].add(to);
+                        }
+                    }
+                    else if(len(helpfriends)>=5||helpfriends.index(ppy_userid())!=-1){
+                            tlabel.text(global.getStaticString("nest_talk_feedover"));
+                    }
+                    else{
+                            tlabel.text(global.getStaticString("nest_talk_notfeedover"));
+                    }
+                    tback.addaction(sequence(stop(),delaytime(800),itintto(100,100,100,100),delaytime(talktime),callfunc(removeself)));
                     contextNode.get(1).subnodes()[0].addaction(sequence(itintto(0,0,0,0),delaytime(12000+talktime),itintto(100,100,100,100)));
                     spriteManager.getAnimation([prestr+"2.png",prestr+"3.png",prestr+"4.png", prestr+"5.png",prestr+"6.png",prestr+"7.png", prestr+"f1.png",prestr+"9.png",prestr+"f2.png",prestr+"f3.png",prestr+"f4.png"]);
                     contextNode.get(1).addaction(sequence(stop(),animate(800,prestr+"2.png",prestr+"3.png",prestr+"3.png",prestr+"4.png",UPDATE_SIZE),delaytime(talktime),repeat(animate(800,prestr+"5.png",prestr+"6.png",prestr+"7.png",prestr+"7.png"),animate(560,prestr+"f1.png",prestr+"f2.png",prestr+"f3.png",prestr+"f4.png",prestr+"f1.png",prestr+"f2.png",prestr+"f3.png",prestr+"f4.png",UPDATE_SIZE),delaytime(100),itexture(prestr+"9.png",UPDATE_SIZE),delaytime(300),itexture(prestr+"4.png",UPDATE_SIZE),delaytime(200),3),delaytime(200),itexture(prestr+"1.png",UPDATE_SIZE)));
 
                 }
             }
+            //dragon is grow up
             else if(state>=5){
                 prestr = EXTEND_NAME[extendid]+"-";
                 if(substate==0){
-                    //if(stime>=6&&stime<10 || stime>=11&&stime<14 || stime>=20||stime<6){
-                    if(health<285){
+                    if(health<285){//just talking need more food to train
                         tback=contextNode.get(1).addsprite("talk.png").anchor(50,100).pos(95,15);
                         talktime=2000;
                         tlabel = tback.addlabel(global.getStaticString("nest_talk_sleep"),null,16,FONT_NORMAL,160,0,ALIGN_LEFT).pos(18,8).color(0,0,0,100);
                         tback.addaction(sequence(delaytime(talktime),callfunc(removeself)));
                         contextNode.get(1).subnodes()[0].addaction(sequence(itintto(0,0,0,0),delaytime(2000+talktime),itintto(100,100,100,100)));
                     }
-                    else{
+                    else{//I can fly now
                         talktime=3000;
                         tback=contextNode.get(1).addsprite("talk.png").anchor(50,100).pos(95,15);
                         tback.color(0,0,0,0);
@@ -363,10 +371,12 @@ class NestObject extends BuildObject{
                             else{
                                 tlabel.text(global.getStaticString("nest_talk_other"));
                             }
-                            if(istrain==1){
+                            if(istrain==1){//after speak 22s then fly
                                 to=node();
-                                to.addaction(sequence(delaytime(22000),callfunc(train)));
-                                contextNode.get(1).subnodes()[0].add(to);
+                                to.addaction(callfunc(train));
+                                contextNode.add(to);
+                                //to.addaction(sequence(delaytime(22000),callfunc(train)));
+                                //contextNode.get(1).subnodes()[0].add(to);
                             }
                         }
                         else if(len(helpfriends)>=7||helpfriends.index(ppy_userid())!=-1){
@@ -395,6 +405,9 @@ class NestObject extends BuildObject{
     var helpfriends;
     
     function train(){
+        var ret = global.user.testCost(dict([["mana", Train_Mana]]));
+        if(ret == 0)//no Train at all
+            return;
         global.http.addrequest(0,"trainDragon",["uid", "gid", "cid"],[global.userid,baseobj.posi[0]*RECTMAX+baseobj.posi[1],global.cityid],self,"trainover"); 
     }
     
@@ -422,7 +435,7 @@ class NestObject extends BuildObject{
         }
         else if(state>=4){
             extendid = re;
-            attack=PETS_POWER[objid]+(PETS_UP[objid]+EXTEND_UP[extendid])*health+trainnum;
+            attack=PETS_POWER[objid]+(PETS_UP[objid]+EXTEND_UP[extendid])*health+trainAttack;
         }
         setstate();
     }
@@ -470,7 +483,7 @@ class NestObject extends BuildObject{
                 global.user.changeValueAnimate2(global.context[0].ub,"food",-20*hadd,-6);
             }
             health=health+hadd;
-            attack=PETS_POWER[objid]+trainnum+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
+            attack=PETS_POWER[objid]+trainAttack+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
             setstate();
             executeAnimate();
         }
@@ -480,9 +493,17 @@ class NestObject extends BuildObject{
             }
             else{
                 trainnum++;
-                attack=PETS_POWER[objid]+trainnum+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
-                global.user.changeValueAnimate3(contextNode,"power",1,0);
+                trainAttack += 10;
+                attack=PETS_POWER[objid]+trainAttack+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
+                global.user.changeValueAnimate3(contextNode,"power", Train_Power,0);
+                global.user.changeValueAnimate2(contextNode,"mana",-Train_Mana,-1);
             }
         }
+    }
+    function getAttack()
+    {
+        attack=PETS_POWER[objid]+trainAttack+(PETS_UP[objid]+EXTEND_UP[extendid])*health;
+        trace("getAttack", attack, trainAttack, health);
+        return attack;
     }
 }

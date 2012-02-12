@@ -1772,6 +1772,20 @@ att/def  otheruid   att-win/lose  lostPower attFullPow  defFullPow attReward
 0       uid         1/0
 defOtherid defEmpirename defNobility attGod defGod catapult defCatapult 
 */
+                var dragonAtt = data.get("dragonAtt");
+                var dragonHealth = data.get("dragonHealth");
+                trace("warresult dragon", dragonAtt, dragonHealth);
+                //normal object
+                for(var gc = 0; gc < len(grounds); gc++)
+                {
+                    if(grounds[gc].objectid == 1000)
+                    {
+                        grounds[gc].objnode.health = dragonHealth;
+                        grounds[gc].objnode.trainAttack = dragonAtt;
+                        break;
+                    }
+                }
+
                 var nob = data.get("nobility");
                 var sub = data.get("minus",1);//next nobility need enemy
                 global.card[12] = nob+100*sub;
