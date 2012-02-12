@@ -311,14 +311,18 @@ class SpriteManager
     }
     function getAnimation(pics)
     {
+        var arr = [];
         for(var i = 0; i < len(pics); i++)
         {
             var im = fetch(pics[i]);
             if(im == null)
             {
-                mainNode.addaction(request(pics[i], 0, finAni, null));
+                arr.append(im);
+                //mainNode.addaction(request(pics[i], 0, finAni, null));
             }
         }
+        if(len(arr) > 0)
+            getDownload(arr, finAni, 2);
     }
     function finAni(n, f, p)
     {
