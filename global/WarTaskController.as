@@ -19,12 +19,13 @@ class WarTaskController extends ContextObject{
         var wartaskfile = c_res_file("wartask.txt");
         if(wartaskfile == null)
             return;
-        var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
-        var wartask =  wartaskstr.split(";");
+        //var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
+        //var wartask =  wartaskstr.split(";");
+        var wartask = WarTasks;
         //trace("wartask", wartask);
         trace("wartask");
         for(var i=0;i<len(wartask);i++){
-            var taskobj = json_loads(wartask[i]);
+            var taskobj = wartask[i];//json_loads(wartask[i]);
             //trace("taskobj", taskobj);
             if(taskobj == null)
             {

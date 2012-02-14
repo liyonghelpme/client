@@ -17,21 +17,21 @@ class TaskController extends ContextObject{
         enternode.setevent(EVENT_UNTOUCH,entertask);
         tasktype =-1;
         tasklib = dict();
-        var taskfile = c_res_file("task.txt");
-        if(taskfile == null)
-            return;
-        var taskstr = c_file_op(C_FILE_READ,taskfile);
-        var taskstrs = taskstr.split(";");
-
+        //var taskfile = c_res_file("task.txt");
+        //if(taskfile == null)
+        //    return;
+        //var taskstr = c_file_op(C_FILE_READ,taskfile);
+        //var taskstrs = taskstr.split(";");
+        var taskstrs = Tasks;
         for(var i=0;i<len(taskstrs);i++){
             //trace("taskstr[i]", taskstrs[i]);
-            var taskobj = json_loads(taskstrs[i]);
-            if(taskobj==null){
-                trace("taskerr",i);
-            }
-            else{
-                tasklib.update(taskobj.get("id"),taskobj);
-            }
+            var taskobj = taskstrs[i];//json_loads(taskstrs[i]);
+            //if(taskobj==null){
+            //    trace("taskerr",i);
+            //}
+            //else{
+            tasklib.update(taskobj.get("id"),taskobj);
+            //}
         }
     }
     

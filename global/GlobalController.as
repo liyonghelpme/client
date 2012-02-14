@@ -231,8 +231,9 @@ const SHARE_URL="http://getmugua.com";
 */
 
 var staticString = ["loading", "loading"];
-var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
-sta = json_loads(sta);
+//var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
+//sta = json_loads(sta);
+var sta = Statics;
 if(sta != null)
 {
     trace("pass sta");

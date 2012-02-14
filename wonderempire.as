@@ -115,7 +115,6 @@ for(var t = 0; t < len(allTex); t++)
     }
 }
 var curTex = 0;
-var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
 var oneceMax = 0;
 var percentmax = 0;
     function loading(timer){
