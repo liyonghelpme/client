@@ -16,7 +16,7 @@ class WarTaskController extends ContextObject{
         enternode.setevent(EVENT_UNTOUCH,enterwartask);
         wartasktype =-1;
         wartasklib = dict();
-        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第10级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
+        wartasklib.update(0,json_loads("{'id':0,'type':0,'req':'warinfo','pair':[],'des':['开启战争模式','升到第6级之后可以开启战争模式，你将能与其他玩家一起角逐帝王之路！还在等什么？赶快升到第10级吧！！','开启战争模式','提示：首先点击地图按钮，再点击战争图标'],'checknum':1,'reward':[5000,10,0]}"));
         wartasklib.update(1,json_loads("{'id':1,'type':2,'req':'dialog-help','des':['查看帮助文档','战争系统有很多新的设定，快去看看有哪些新设定吧！','查看战争相关帮助文档'],'checknum':1,'reward':[100,5,0]}"));
         wartasklib.update(2,json_loads("{'id':2,'type':0,'req':'makeally','pair':[],'des':['好友结盟','与一个强大的好友结盟，等你与其他人作战时，盟友会给你援军哦！','与一个好友结盟'],'checknum':1,'reward':[500,10,0]}"));
         wartasklib.update(3,json_loads("{'id':3,'type':3,'req':'adddefence','des':['增加防御力','城墙防御力可以有效阻挡其他用户的进攻点击城堡再点击加号按钮增加防御力','增加100城墙防御力'],'checknum':100,'reward':[1000,15,0]}"));
