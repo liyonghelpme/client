@@ -37,6 +37,7 @@ class TimeController{
     }
 
     function timecontrol(){
+        //trace("timers, node, action, fps", sysinfo(21), sysinfo(24), sysinfo(23), getfps());
         currenttime = (time()-base_realtime)/1000+base_localtime;
         var length= len(timelist);
         for(var i=0;i<length;i++){

@@ -3,6 +3,7 @@ class EmpireControl extends ContextObject{
     var tabs;
     var element;
     var building;
+    const EmpireLevel = [20, 30];
     function EmpireControl(b){
         contextname = "dialog-territoryinfo";
         contextNode = null;
@@ -11,14 +12,18 @@ class EmpireControl extends ContextObject{
     function upgradeEmpire(n, e, p, x, y, pos)
     {
         trace("empireLevel", building.empireLevel);
-        if(global.user.getValue("level") < 20)
+        if(building.empireLevel >= len(EmpireLevel))
         {
-            global.pushContext(null, new Warningdialog([global.getStaticString("LevelNot"), null, 6]), NonAutoPop);
-        }
-        else if(building.empireLevel < 1)
-            global.pushContext(building, new UpdateControl(), NonAutoPop); 
-        else
             global.pushContext(null, new Warningdialog([global.getStaticString("EmpireNotOpen"), null, 6]), NonAutoPop);
+        }
+        else if(global.user.getValue("level") < EmpireLevel[building.empireLevel])
+        {
+            global.pushContext(null, new Warningdialog([global.getFormatString("LevelNot", ["[LEVEL]", str(EmpireLevel[building.empireLevel]) ] ), null, 6]), NonAutoPop);
+        }
+        else
+        {
+            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        }
     }
 
     function paintNode(){

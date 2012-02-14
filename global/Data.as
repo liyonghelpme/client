@@ -262,8 +262,8 @@ var Dicts =
 ["minussoldier", "Withdraw"], 
 ["getresource", "Collect"],
 ["quickSendArmy", "SpeedUp"],
-["LevelNot", "Sorry, only users whose level great than 20 can upgrade castle."],
-["EmpireNotOpen", "Sorry, third level castle is not opened."],
+["LevelNot", "Sorry, only users whose level great than Lv. [LEVEL] can upgrade castle."],
+["EmpireNotOpen", "Sorry, higher level castle is not opened."],
 ["sendCatapult", "Dispatch"], ["notSendCata", "Not"]
 ];
 

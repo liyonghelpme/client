@@ -170,7 +170,7 @@ class BuildControl extends ContextObject{
                         back.add(dragonpic,1,111);
                         back.addlabel(global.getStaticString("growing"),null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
-                    var l=back.addlabel(str(place.attack),null,20).anchor(100,50).pos(197,94).color(0,0,0,100);
+                    var l=back.addlabel(str(place.getAttack()),null,20).anchor(100,50).pos(197,94).color(0,0,0,100);
                     l.prepare();
                     back.addsprite("power.png").anchor(100,50).pos(195-l.size()[0],94);
                     namelabel.anchor(0,50).pos(18,123).text(place.petname).scale(90);
@@ -320,9 +320,10 @@ class BuildControl extends ContextObject{
                         }
                     }
                 }
-                else if(buttons[p] == 19){
+                else if(buttons[p] == 19){//train dragon do animation
+                    trace("train dragon", place.istrain);
                     place.istrain=1;
-                    place.executeAnimate();
+                    place.executeAnimate();//lock not train again
                     place.istrain=0;
                 }
                 else if(buttons[p] == -21){

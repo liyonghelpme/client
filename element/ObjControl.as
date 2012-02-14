@@ -6,21 +6,23 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 69;
+    var objsmax;
     const objlevel = [
+3, 5, 6, 8,    
 3, 5, 7, 10, 20, 30,
 25, 10, 6, 8, 6, 15, 20,
 2, 2, 2, 3, 3, 3, 4, 5, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 10, 11, 12, 13, 14, 15, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 25, 25, 25, 27, 30, 30, 32, 34, 37, 40, 40, 40, 40, 40];
-
     const objcontext = [
+2563, 2564, 2565, 2566,
 1557, 1558, 1559, 2560, 1561, 1562,
 2550, 2551, 1552, 2553, 2554, 2555, 2556, 
 1500, 1501, 1502, 2539, 2540, 2541, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1520, 1516, 1517, 1518, 1519, 1528, 1529, 1530, 1531, 1521, 1522, 1523, 1542, 1543, 1524, 1525, 1526, 1527, 1532, 1533, 1534, 1538, 2544, 1535, 1536, 1537, 2600, 2601, 1545, 2602, 2603, 2604, 2605, 1546, 1547, 1548, 1549];
     function ObjControl(){
+        objsmax = len(objcontext);
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(69);
-        buildable = new Array(69);
+        objs = range(0, objsmax);
+        buildable = range(0, objsmax);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -56,7 +58,7 @@ class ObjControl extends ContextObject{
             else if(oi>41){
                 bl=100;
             }
-            var objpng = objs[i].addsprite().anchor(50,50).pos(74,112).scale(bl);
+            var objpng = objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
             spriteManager.getPic("object"+str(oi)+".png", objpng);
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
@@ -71,6 +73,14 @@ class ObjControl extends ContextObject{
                 var price = OBJ_PRICE[oi];
                 if(price < 0){
                     price = -price;
+                    var oldPrice = price;
+                    if(add < 0)//add Magic discount 
+                    {
+                        price /= 2;
+                        objs[i].addsprite("discount.png", ARGB_8888).anchor(100,100).scale(150).pos(137,160);
+                        objs[i].addsprite("dis.png").anchor(100,100).anchor(50, 50).pos(80,210);
+                        objs[i].addlabel(str(oldPrice),null,16).pos(74,202).color(100,0,0,100);
+                    }
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
