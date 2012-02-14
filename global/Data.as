@@ -264,7 +264,11 @@ var Dicts =
 ["quickSendArmy", "SpeedUp"],
 ["LevelNot", "Sorry, only users whose level great than Lv. [LEVEL] can upgrade castle."],
 ["EmpireNotOpen", "Sorry, higher level castle is not opened."],
-["sendCatapult", "Dispatch"], ["notSendCata", "Not"]
+["sendCatapult", "Dispatch"], ["notSendCata", "Not"],
+["petNeedDownload", "Summon pet need to download pictures, sure to download?"],
+["warNeedDownload", "Enable War Mode need to download pictures, sure to download?"],
+["downloading", "Downloading pictures..."]
+
 ];
 
 var Names = dict([
@@ -277,7 +281,7 @@ var Names = dict([
 
 ["MONSTERNAME" , ["Snake Lev1","Snake Lev2","Snake Lev3","Boar Lev1","Boar Lev2","Boar Lev3","Wolf Lev1","Wolf Lev2","Wolf Lev3","Bear Lev1","Bear Lev2","Bear Lev3","Lion Lev1","Lion Lev2","Lion Lev3","Dragon Lev1","Dragon Lev2","Dragon Lev3","Snake King Lev1","Snake King Lev2","Snake King Lev3","Boar King Lev1","Boar King Lev2","Boar King Lev3","Wolf King Lev1","Wolf King Lev2","Wolf King Lev3","Bear King Lev1","Bear King Lev2","Bear King Lev3","Lion King Lev1","Lion King Lev2","Lion King Lev3","Dragon King Lev1","Dragon King Lev2","Dragon King Lev3"]],
 
-["PETS_NAME" , ["Silver Dragon Egg Lv. 1","Silver Dragon egg Lv. 2","Silver Dragon egg Lv. 3","Gold Dragon egg Lv. 1","Gold Dragon egg Lv. 2","Gold Dragon egg Lv. 3"]],
+["PETS_NAME" , ["Dragon Egg A Lv. 1","Dragon egg A Lv. 2","Dragon egg A Lv. 3","Dragon egg B Lv. 1","Dragon egg B Lv. 2","Dragon egg B Lv. 3"]],
 
 
 ["EXTEND_NAME" , ["earth","fire","water"]],
@@ -444,7 +448,7 @@ var WarTasks =
 [dict([[["req", "warinfo"], ["des", ["Unlock war mode", "You need reach to Lv. 10 to unlock war mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]]),
 dict([[["req", "dialog-help"], ["des", ["View HELP", "Learn about war mode by viewing HELP document", "view HELP about war"]], ["checknum", 1], ["reward", [100, 5, 0]], ["type", 2], ["id", 1]]]),
 dict([[["req", "makeally"], ["des", ["Ally with friends", "Ally with some friends, and they will help you by providing you with soldiers during a battle", "Ally with a friend"]], ["checknum", 1], ["pair", []], ["reward", [500, 10, 0]], ["type", 0], ["id", 2]]]),
-dict([[["req", "adddefence"], ["des", ["Increase defense", "Increase defence of wall hint: Tap on castle, and then tap "[+]" to upgrade defence", "add 100 defence"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]]),
+dict([[["req", "adddefence"], ["des", ["Increase defense", "Increase defence of wall hint: Tap on castle, and then tap \"[+]\" to upgrade defence", "add 100 defence"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]]),
 dict([[["req", "build"], ["des", ["Build scout camp", "Scout camps are used to train scouts", "build scout camp Lv. 1"]], ["checknum", 1], ["pair", ["ground_id", 206]], ["reward", [500, 8, 0]], ["type", 0], ["id", 4]]]),
 dict([[["req", "soldiers"], ["des", ["Train scout", "Scout can fetch enemy's information", "train scout Lv. 1"]], ["checknum", 9], ["pair", ["byte", 2, "objtype", 0]], ["reward", [800, 10, 0]], ["type", 1], ["id", 5]]]),
 dict([[["req", "detect"], ["des", ["Detect enemy", "If you want to win, it's better you know your enemy!", "detect enemy"]], ["checknum", 1], ["pair", []], ["reward", [300, 7, 0]], ["type", 0], ["id", 6]]]),
@@ -456,7 +460,7 @@ dict([[["req", "upgrademap"], ["des", ["Upgrade map", "If you defeat enough enem
 
 var Statics = 
 ["Reach to Lv. 10 to unlock war mode",
-"Once you have activated War Mode, you can't quit it, please read the HELP documentation for more information."
+"Once you have activated War Mode, you can't quit it, please read the HELP documentation for more information.",
 "Congrats, you won!",
 "Sorry, you were defeated.",
 "[ENAME] is too powerful, strengthen your military power and fight another day!",

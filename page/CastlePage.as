@@ -297,8 +297,8 @@ class CastlePage extends ContextObject{
         global.user.setValue("godtime",[-1,-1,-1,-1,-1,-1]);
         global.user.setValue("godlevel",[-1,-1,-1,-1,-1,-1]);
 
-        var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
-        loveButton.setevent(EVENT_UNTOUCH, loveShow);
+        //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
+        //loveButton.setevent(EVENT_UNTOUCH, loveShow);
     }
     function loveShow(n, e, p, x, y, points)
     {

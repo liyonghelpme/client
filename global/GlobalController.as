@@ -27,9 +27,10 @@ const NonAutoPop = 0;
 const NotAdd = 2;
 
 //const BASE_URL = "http://223.4.87.9:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
-const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
-const WARCHAT_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8003/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
+//const WARCHAT_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8003/";
+const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];

@@ -157,19 +157,7 @@ class SpriteManager
             else
             {
                 trace("down", arr[i]);
-                /*
-                if(notdownload == 0)
-                {
-                    timeisend = 0;
-                    global.timer.addlistener(global.timer.currenttime+99999, self);
-                    global.context[0].contextNode.parent().add(downloadNode);
-                    //downloadNode.addlabel("正在下载图片", null, 15, FONT_BOLD).pos(0, -20).color(0, 0, 0);
-
-                    //downloadNode.setevent(EVENT_UNTOUCH, showDia);
-                }
-                */
                 notdownload = 1;
-                //mainNode.addaction(request(arr[i], 0, finDownload));    
                 ToDown.append(arr[i]);
             }
         }   
@@ -186,23 +174,13 @@ class SpriteManager
             notdownload = 0;
             if(p == 0)//download war picture
             {
-                global.pushContext(global.context[0], Warningdialog(["开启战争模式需要下载相关图片，是否下载？", -2000, 3]), 0); 
+                global.pushContext(global.context[0], Warningdialog([global.getStatciString("warNeedDownload") , -2000, 3]), 0); 
             }
             else if(p == 1)//download dragon picture
             {
-                global.pushContext(global.context[0], Warningdialog(["召唤宠物需要下载相关图片，是否下载？", -2000, 6]), 0);        
+                global.pushContext(global.context[0], Warningdialog([global.getStatciString("petNeedDownload"), -2000, 6]), 0);        
             }
         }
-        /*
-        else
-        {
-            trace("start downloading", downloadLen);
-            timeisend = 0;
-            global.timer.addlistener(global.timer.currenttime+99999, self);
-            global.context[0].contextNode.parent().add(downloadNode);
-            downloadNode.setevent(EVENT_UNTOUCH, showDia);
-        }
-        */
     }
     function DecideToDown()
     {
@@ -220,7 +198,6 @@ class SpriteManager
         timeisend = 0;
         global.timer.addlistener(global.timer.currenttime+99999, self);
         global.context[0].contextNode.parent().add(downloadNode);
-        //downloadNode.addlabel("正在下载图片", null, 15, FONT_BOLD).pos(0, -20).color(0, 0, 0);
 
     }
     var progress = null;
@@ -230,7 +207,7 @@ class SpriteManager
     {
         if(showWord == 0)
         {
-            downloadNode.addlabel("正在下载图片...", null, 28, FONT_BOLD).pos(0, -40).color(0, 0, 0);
+            downloadNode.addlabel(global.getStatciString("downloading"), null, 28, FONT_BOLD).pos(0, -40).color(0, 0, 0);
             showWord = 10;
         }
         //global.pushContext(null, new Download(), 0)

@@ -7,7 +7,8 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-        "元宵节快乐！新上线了阁楼（民居），快去看看吧！"
+        //"元宵节快乐！新上线了阁楼（民居），快去看看吧！"
+        "Happy every day!"
     ]; 
     function paintNode(){
         updatenum=-1;
