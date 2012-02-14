@@ -50,8 +50,8 @@ class UpdateControl extends ContextObject{
             {
                 btype = 0;
                 objname= "empire";
-                objbid = obj.empireLevel+1;
-                upbid = obj.empireLevel + 2;
+                objbid = obj.empireLevel;
+                upbid = obj.empireLevel+1;
                 updatebid = 0;
             }
             else
@@ -83,21 +83,22 @@ class UpdateControl extends ContextObject{
             }
             
             trace("empire", objbid, upbid);
-            var hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
-            spriteManager.getPic(objname+str(objbid)+".png", hou1);
-            var hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
-            spriteManager.getPic(objname+str(upbid)+".png", hou2);
-            /*
+            var hou1;
+            var hou2;
             if(obj.baseobj == null)
             {
-
+                hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
-                back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
-                back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
-            */
             var i;
             var ok;
             var starnum;
