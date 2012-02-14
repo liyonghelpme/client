@@ -3,6 +3,7 @@ import page.WarPage;
 import element.WarChoose;
 import element.WarControl;
 import page.FriendControl;
+import element.Love;
 import element.BoxControl;
 import element.AllyControl;
 import element.TestWebControl;
@@ -290,6 +291,13 @@ class CastlePage extends ContextObject{
         box.init(box,global);
         global.user.setValue("godtime",[-1,-1,-1,-1,-1,-1]);
         global.user.setValue("godlevel",[-1,-1,-1,-1,-1,-1]);
+
+        var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
+        loveButton.setevent(EVENT_UNTOUCH, loveShow);
+    }
+    function loveShow(n, e, p, x, y, points)
+    {
+        global.pushContext(null, new Love(), NonAutoPop);
     }
     var leftbuttonnum;
     var rightbuttonnum;
