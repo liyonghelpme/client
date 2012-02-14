@@ -192,6 +192,7 @@ class WarControl extends ContextObject{
         flaganimate = 0;
         flagresult = 0;
         datadict = dl;
+        element = null;
     }
     var Record ;
     function formatstringtodata(dl){
