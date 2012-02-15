@@ -1,5 +1,5 @@
-import element.MonsterController;
-import element.Monsterdialog;
+//import element.MonsterController;
+//import element.Monsterdialog;
 class MapPage extends ContextObject{
 
     var lastpoint;

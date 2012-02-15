@@ -445,7 +445,7 @@ dict([[["req", "stone"], ["des", ["Collect marble", "Abundant resource will larg
 ];
 
 var WarTasks = 
-[dict([[["req", "warinfo"], ["des", ["Unlock war mode", "You need reach to Lv. 10 to unlock war mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]]),
+[dict([[["req", "warinfo"], ["des", ["Unlock war mode", "You need reach to Lv. 6 to unlock war mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]]),
 dict([[["req", "dialog-help"], ["des", ["View HELP", "Learn about war mode by viewing HELP document", "view HELP about war"]], ["checknum", 1], ["reward", [100, 5, 0]], ["type", 2], ["id", 1]]]),
 dict([[["req", "makeally"], ["des", ["Ally with friends", "Ally with some friends, and they will help you by providing you with soldiers during a battle", "Ally with a friend"]], ["checknum", 1], ["pair", []], ["reward", [500, 10, 0]], ["type", 0], ["id", 2]]]),
 dict([[["req", "adddefence"], ["des", ["Increase defense", "Increase defence of wall hint: Tap on castle, and then tap \"[+]\" to upgrade defence", "add 100 defence"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]]),
@@ -459,7 +459,7 @@ dict([[["req", "upgrademap"], ["des", ["Upgrade map", "If you defeat enough enem
 ];
 
 var Statics = 
-["Reach to Lv. 10 to unlock war mode",
+["Reach to Lv. 6 to unlock war mode",
 "Once you have activated War Mode, you can't quit it, please read the HELP documentation for more information.",
 "Congrats, you won!",
 "Sorry, you were defeated.",

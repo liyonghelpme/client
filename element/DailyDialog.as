@@ -4,6 +4,11 @@ class DailyDialog extends ContextObject{
         contextname = "dialog-reward-daily";
         contextNode = null;
         bonus = b;
+        trace("daily", global);
+        if(bonus > 0)
+            global.user.changeValue("money", -bonus);
+        else
+            global.user.changeValue("caesars", bonus);
     }
 
     function paintNode(){

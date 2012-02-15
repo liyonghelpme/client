@@ -463,7 +463,7 @@ function setWarrecordList(key, value, data)
     else
         setEmptyResult(key, value, data);
 }
-import global.TimeController;
+//import global.TimeController;
 
 class DataController{
     var datadict;
@@ -896,3 +896,6 @@ class GlobalController{
     }
 }
 var global = new GlobalController();
+var spriteManager = new SpriteManager(global);
+spriteManager.self = spriteManager;
+global.sp = spriteManager;
