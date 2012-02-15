@@ -19,6 +19,7 @@ class NewControl extends ContextObject{
     var noticetext;
     var opobj;
     var lock;
+    //accoriding to command pop up different dialog argument
     const newstrs = ["{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':'领地的发展离不开农业，种植些+粮食吧。点击空闲的【农田】'}",
     "{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'点击【种植】'}",
     "{'cp':[209,181],'cz':[240,240],'gtype':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'选择营养丰富的+【小麦】'}",

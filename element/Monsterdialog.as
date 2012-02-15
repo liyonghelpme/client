@@ -58,7 +58,7 @@ class Monsterdialog extends ContextObject{
         contextNode = dialog.getNode();
         dialog.usedefaultbutton(2,["攻击","返回"]);
         if(flagdefeatable == 0){
-            contextNode.get(0).addsprite("caesars_big.png").pos(6, 34).anchor(50, 50);
+            contextNode.get(0).addsprite("caesars_big.png").pos(0, 20).anchor(50, 50);
             contextNode.get(0).addlabel("1", null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(20, 35);
             if(global.user.getValue("caesars") < abs(DefeatMon_Cae))
             {

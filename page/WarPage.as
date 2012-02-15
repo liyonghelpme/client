@@ -1,8 +1,10 @@
+/*
 import element.UserControl;
 import element.ResourceControl;
 import element.NobattleControl;
 import element.Waraboutinfo;
 import element.Warchatdialog;
+*/
 class WarPage extends ContextObject{
 
     var lastpoint;
