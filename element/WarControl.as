@@ -490,6 +490,7 @@ class WarControl extends ContextObject{
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
                     }
                 }
+                spriteManager.getMusic("4.mp3");
                 global.system.pushmusic("4.mp3");
                 flaganimate=2;
             }

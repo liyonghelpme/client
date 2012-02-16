@@ -79,6 +79,7 @@ class CastlePage extends ContextObject{
     var friendinfolabel;
     var friendmoney;
 
+
     var allybutton;
     var friendbutton;
     var medalbutton;
@@ -1463,29 +1464,26 @@ class CastlePage extends ContextObject{
             box.setbox(-1,0,0);
             if(newstate == 3){
                 global.user.setValue("wonnum",data.get("wonNum",0));
+                global.user.setValue("newgift",data.get("giftnum",0));
+                global.system.flagrob = data.get("foodlost", 0);
+
                 var bonus = data.get("bonus",0);
 
+                //how to solve this problem ? 
+                //by random ? 
+                trace("get box", box.maxperson, global.system.flagrob);
+                if(box.maxperson == 0 && global.system.flagrob < 2){
+                    box.helpperson = 0;
+                    box.boxfriends = [];
+                    if(global.user.getValue("level")>=5 &&(global.task.taskid==-1||global.task.taskid>12)){
+                        box.maxperson = rand(5)+6;
+                        global.http.addrequest(0,"newtbox",["user_id","num"],[global.userid,box.maxperson],box,"setbox");
+                    }
+                }
+
                 if(bonus != 0){
-                    //if(global.card[15] == 5 || global.card[14] == 5)
-                    /*
-                    if(bonus > 0)
-                    {
-                        global.user.changeValue("money", -bonus);
-                    }
-                    else
-                    {
-                        global.user.changeValue("caesars", bonus);
-                    }
-                    */
-                    addcmd(dict([["name","notice"]]));
-                    if(box.maxperson==0){
-                        box.helpperson = 0;
-                        box.boxfriends = [];
-                        if(global.user.getValue("level")>=5 &&(global.task.taskid==-1||global.task.taskid>12)){
-                            box.maxperson = rand(5)+6;
-                            global.http.addrequest(0,"newtbox",["user_id","num"],[global.userid,box.maxperson],box,"setbox");
-                        }
-                    }
+                    //addcmd(dict([["name","notice"]]));
+
                     var bdict = dict();
                     bdict.update("name","daily");
                     bdict.update("bonus",bonus);
@@ -1507,8 +1505,7 @@ class CastlePage extends ContextObject{
                     bdict.update("num",data.get("wonNum"));
                     addcmd(bdict);
                 }
-                global.system.flagrob = data.get("foodlost", 0);
-                global.user.setValue("newgift",data.get("giftnum",0));
+
             }
             initlock = 0;
             friend.loaddata(global,friend);
