@@ -1465,7 +1465,7 @@ class CastlePage extends ContextObject{
                         global.user.changeValue("caesars", bonus);
                     }
                     */
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];
