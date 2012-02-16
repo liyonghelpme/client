@@ -56,7 +56,7 @@ class WarChoose extends ContextObject{
                     if(global.user.getValue("nobility")<0){
                         var tmp=new Warningdialog([global.getStaticString(1),1,3]);
                         global.pushContext(self,tmp,NonAutoPop);
-                        tmp.contextNode.addsprite("dialogelement_help.png").pos(248,125).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"warmode");
+                        tmp.contextNode.addsprite("dialogelement_help.png").pos(370, 230).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"warmode");
                     }
                     else{
                         global.context[0].entermap(0,0);

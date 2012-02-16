@@ -4,7 +4,7 @@ import element.QuickControl;
 import element.PlantControl;
 import element.UpdateControl;
 import element.SoldierControl;
-import element.Warningdialog;
+//import element.Warningdialog;
 import element.Saledialog;
 import element.Nestpetchange;
 import element.Nestpetchange2;

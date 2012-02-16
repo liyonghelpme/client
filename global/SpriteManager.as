@@ -172,13 +172,17 @@ class SpriteManager
             //SpriteManager warning !
             trace("warning dialog");
             notdownload = 0;
+            var warn;
             if(p == 0)//download war picture
             {
-                global.pushContext(global.context[0], Warningdialog([global.getStatciString("warNeedDownload") , -2000, 3]), 0); 
+                warn = new Warningdialog([global.getStaticString("warNeedDownload"), -2000, 3]);
+                global.pushContext(global.context[0],  warn, 0); 
             }
             else if(p == 1)//download dragon picture
             {
-                global.pushContext(global.context[0], Warningdialog([global.getStatciString("petNeedDownload"), -2000, 6]), 0);        
+                trace("pet downloading", global);
+                warn = new Warningdialog([global.getStaticString("petNeedDownload"), -2000, 6]);
+                global.pushContext(global.context[0], warn, 0);        
             }
         }
     }
@@ -207,7 +211,7 @@ class SpriteManager
     {
         if(showWord == 0)
         {
-            downloadNode.addlabel(global.getStatciString("downloading"), null, 28, FONT_BOLD).pos(0, -40).color(0, 0, 0);
+            downloadNode.addlabel(global.getStaticString("downloading"), null, 28, FONT_BOLD).pos(0, -40).color(0, 0, 0);
             showWord = 10;
         }
         //global.pushContext(null, new Download(), 0)

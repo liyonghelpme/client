@@ -456,7 +456,7 @@ class NestObject extends BuildObject{
             if(global.context[0].flagfriend==1){
                 helpfriends.append(ppy_userid());
                 global.user.changeValueAnimate2(global.context[0].friendnamelabel,"food",-20,-6);
-                global.user.changeValueAnimate2(global.context[0].moneyb,"money",1000,-6);
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money", FeedMoney,-6);
                 if(global.card[18]%10==3){
                     if(global.card[18]/10+1>=100){
                         var flevel = 4;

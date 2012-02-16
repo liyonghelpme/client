@@ -214,7 +214,7 @@ trace("helpopen",rc,c);
             if(helpperson>=maxperson){
                 //global.popContext(null);
             }
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",1000,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"money", OpenMoney,-6);
         }
         lock=0;
     }

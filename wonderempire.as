@@ -1,32 +1,12 @@
 import global.INCLUDE;
-/*
-import page.CastlePage;
-import element.Simpledialog;
-import element.MenuControl;
-import element.Feedbackdialog;
-import element.Medaldialog;
-import global.TaskController;
-import global.WarTaskController;
-import element.Levelupdialog;
-import global.HttpController;
-import global.UserController;
-import global.ImageController;
-<<<<<<< HEAD
-//import global.INCLUDE;
-=======
-*/
->>>>>>> 2ff92290b1d8bc4881db77fd8be30394bfbc474b
 
 var myid;
 if(ppy_connected()!=1){
     ppy_login();
 }
 global.self = global;
-<<<<<<< HEAD
-=======
 global.user = new UserController();
 global.user.global = global;
->>>>>>> 2ff92290b1d8bc4881db77fd8be30394bfbc474b
 
 global.system = new MenuControl();
 global.system.initwithconfig();
@@ -38,12 +18,6 @@ global.task = new TaskController();
 global.task.init(global.task,global);
 global.wartask = new WarTaskController();
 global.wartask.init(global.wartask,global);
-<<<<<<< HEAD
-
-global.user = new UserController();
-global.user.global = global;
-=======
->>>>>>> 2ff92290b1d8bc4881db77fd8be30394bfbc474b
 global.image = new ImageController();
 
 trace("init over");

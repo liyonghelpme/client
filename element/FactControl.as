@@ -7,8 +7,8 @@ class FactControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 11;
-    var objcontext = [2300, 2303, 2306, 3327, 2309, 2315, 2312, 2318, 2324, 2321, 2330];
-    var objlevel = [1, 4, 6, 7, 8, 14, 15, 21, 24, 29, 35];
+    var objcontext = [2300, 2303, 2306, 2309, 2330, 3327, 2315, 2312, 2318, 2324, 2321];
+    var objlevel = [1, 4, 6, 8, 10, 12, 14, 15, 21, 24, 29];
     function FactControl(){
         objsmax = len(objcontext);
         contextname ="element-build-fact";
@@ -33,7 +33,7 @@ class FactControl extends ContextObject{
             buildable[i] = dict([["ok",1]]);
             var oi = objcontext[i]%100;
             objs[i] = sprite("dialogelement2p.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
-            objs[i].addlabel(global.getname("fact",oi),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
+            objs[i].addlabel(global.getname("fact1",oi),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
             var b=100;
             if(objcontext[i]/1000==3) b=66;
             var fac = objs[i].addsprite().anchor(50,100).pos(74,160).scale(b);

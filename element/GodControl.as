@@ -7,9 +7,8 @@ class GodControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 7;
-    var objlevel = [10,8,12,16,20,25,30];
-    var objcontext = [-1000,0,1,3,2,20,25];//buildId
-    //const objname = ["God of wealth","God of population","God of war","God of harvest"];
+    var objlevel = [8,12, 15, 16,20,25,30];
+    var objcontext = [0,1,-1000, 3,2,20,25];//buildId
     function GodControl(){
         contextname = "element-build-god";
         contextNode = null;
@@ -42,7 +41,7 @@ class GodControl extends ContextObject{
         if(obji>=0){
             var god = objs[i].addsprite().scale(65).anchor(50,100).pos(74,195);
             spriteManager.getPic("shen"+str(obji)+".png", god);
-            objs[i].addlabel(global.getname("god",obji),null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
+            objs[i].addlabel(global.getname("god1",obji),null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
             /*
             if(obji>4){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
