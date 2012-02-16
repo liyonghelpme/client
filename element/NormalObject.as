@@ -119,7 +119,7 @@ class NormalObject extends ContextObject{
         if(empireLevel < 2)//Level 0 1 2
             return;
         spriteManager.getAnimation( ["yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png", "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png"]);
-        var yanhua = sprite("yan1.png").anchor(50, 100).pos(176, 0);
+        var yanhua = sprite("yan1.png").anchor(50, 100).pos(176, 100);
         contextNode.add(yanhua, 1, 1000);//z tag
         yanhua.addaction(repeat(
             animate(2000, "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png", "yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png" )

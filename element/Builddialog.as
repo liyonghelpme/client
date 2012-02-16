@@ -32,7 +32,7 @@ class Builddialog extends ContextObject{
         contextNode.setevent(EVENT_MOVE,nodemove);
         contextNode.setevent(EVENT_UNTOUCH,nodemove);
         if(global.flagnew==1){
-            global.lastpage[1]=78;
+            global.lastpage[1] = -60;
         }
         buildpages = new Array(new RoomControl(),new FactControl(),new FarmsControl(),new CampControl(),new GodControl(),new ObjControl(),new ExpandControl());
         var tabname = BUILD_TAB_NAME;
@@ -114,6 +114,8 @@ class Builddialog extends ContextObject{
         return 1;
     }
 
+    //page lastpage 0
+    //position lastpage 1
     function changePage(n,e,i){
         if(pageindex >= 0 && pageindex != i){
             buildpages[pageindex].getNode().removefromparent();

@@ -1,5 +1,6 @@
-import page.MapPage;
-import page.WarPage;
+//import page.MapPage;
+//import page.WarPage;
+/*
 import element.WarChoose;
 import element.WarControl;
 import page.FriendControl;
@@ -31,7 +32,7 @@ import element.Monsterrobfood;
 import element.ChargeMagic;
 import element.CheckTime;
 import element.MagicWarning;
-
+*/
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -565,6 +566,7 @@ class CastlePage extends ContextObject{
         else if(p == "addmana"){
             data = json_loads(c);
             trace("mana", data);
+            var now = time();
             if(data.get("id") == 1)
             {   
                 trace("add mana");
@@ -572,9 +574,12 @@ class CastlePage extends ContextObject{
                 var boundary = data.get("boundary");
                 global.user.setValue("mana", mana);
                 global.user.setValue("boundary", boundary);
-                var now = time();
                 global.user.setValue("manatime", now);
                 //initlock = 0;
+            }
+            else
+            {
+                global.user.setValue("manatime", now);
             }
             addManaLock = 0;
         }
@@ -1464,6 +1469,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //if(global.card[15] == 5 || global.card[14] == 5)
+                    /*
                     if(bonus > 0)
                     {
                         global.user.changeValue("money", -bonus);
@@ -1472,7 +1478,8 @@ class CastlePage extends ContextObject{
                     {
                         global.user.changeValue("caesars", bonus);
                     }
-                    addcmd(dict([["name","notice"]]));
+                    */
+                    //addcmd(dict([["name","notice"]]));
                     if(box.maxperson==0){
                         box.helpperson = 0;
                         box.boxfriends = [];

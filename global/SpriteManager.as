@@ -186,11 +186,11 @@ class SpriteManager
             notdownload = 0;
             if(p == 0)//download war picture
             {
-                global.pushContext(global.context[0], Warningdialog(["开启战争模式需要下载相关图片，是否下载？", -2000, 3]), 0); 
+                global.pushContext(global.context[0], new Warningdialog(["开启战争模式需要下载相关图片，是否下载？", -2000, 3]), 0); 
             }
             else if(p == 1)//download dragon picture
             {
-                global.pushContext(global.context[0], Warningdialog(["召唤宠物需要下载相关图片，是否下载？", -2000, 6]), 0);        
+                global.pushContext(global.context[0], new Warningdialog(["召唤宠物需要下载相关图片，是否下载？", -2000, 6]), 0);        
             }
         }
         /*

@@ -359,6 +359,7 @@ class NestObject extends BuildObject{
                         tback.color(0,0,0,0);
                         tlabel = tback.addlabel("",null,16,FONT_NORMAL,160,0,ALIGN_LEFT).pos(18,8).color(0,0,0,100);
                         if(global.context[0].flagfriend==0){
+                            trace("train dragon", global.context[0].flagfriend, istrain);
                             if(stime>=6&&stime<10){
                                 tlabel.text(global.getStaticString("nest_talk_morning"));
                             }

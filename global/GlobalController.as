@@ -224,7 +224,7 @@ const cardnum = 13;
 const NEWFLAG = 14;
     
 const staticString = [
-"你需要升到10级才能开启战争模式",
+"你需要升到6级才能开启战争模式",
 "开启战争模式之后暂时就不能退出咯，请查看帮助文档",
 "恭喜你抵挡住了[ENAME]的攻势，保卫了领地不被侵犯！",
 "[ENAME]兵力过于强大，你的军队不幸战败，快去加强你的军事力量吧！",
@@ -426,7 +426,7 @@ function setWarrecordList(key, value, data)
     else
         setEmptyResult(key, value, data);
 }
-import global.TimeController;
+//import global.TimeController;
 
 class DataController{
     var datadict;
@@ -853,3 +853,6 @@ class GlobalController{
     }
 }
 var global = new GlobalController();
+var spriteManager = new SpriteManager(global);
+spriteManager.self = spriteManager;
+global.sp = spriteManager;

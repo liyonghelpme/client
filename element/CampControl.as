@@ -1,4 +1,4 @@
-import global.ContextObject;
+//import global.ContextObject;
 class CampControl extends ContextObject{
     var objs;
     var left;

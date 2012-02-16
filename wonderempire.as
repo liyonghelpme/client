@@ -1,3 +1,5 @@
+import global.INCLUDE;
+/*
 import page.CastlePage;
 import element.Simpledialog;
 import element.MenuControl;
@@ -9,12 +11,16 @@ import element.Levelupdialog;
 import global.HttpController;
 import global.UserController;
 import global.ImageController;
+*/
 
 var myid;
 if(ppy_connected()!=1){
     ppy_login();
 }
 global.self = global;
+global.user = new UserController();
+global.user.global = global;
+
 global.system = new MenuControl();
 global.system.initwithconfig();
 global.system.pushmusic("0.mp3");
@@ -24,8 +30,6 @@ global.task = new TaskController();
 global.task.init(global.task,global);
 global.wartask = new WarTaskController();
 global.wartask.init(global.wartask,global);
-global.user = new UserController();
-global.user.global = global;
 global.image = new ImageController();
 
 trace("init over");

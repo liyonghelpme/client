@@ -38,7 +38,7 @@ class WarChoose extends ContextObject{
     function buttonclicked(n,e,p){
         if(global.currentLevel == contextLevel){
             var filter = NORMAL;
-            if(p==1&&global.user.getValue("level")<10){
+            if(p==1&&global.user.getValue("level")<WarMode_Lev){
                 filter = GRAY;
             }
             if(e==EVENT_TOUCH)
