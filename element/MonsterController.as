@@ -79,7 +79,6 @@ class MonsterController extends ContextObject{
         contextNode.addlabel(global.getStaticString("nextMonster"),null,20).pos(30,126).color(0,0,0,100);
         timelabel = contextNode.addlabel(global.gettimestr(endtime-time()/1000),null,20).pos(240,126).color(0,0,0,100);
         var btname = btname1;
-        //var btname = ["延迟一天","立即刷怪"];
         if(mlevel<40){
             bvalue=mlevel/10+1;
         }

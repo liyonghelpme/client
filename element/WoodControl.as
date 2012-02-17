@@ -110,7 +110,7 @@ class WoodControl extends ContextObject{
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
             if(WOOD_PRICE[param]<0){
-                global.pushContext(self,new Warningdialog([global.getStaticString("sureToBuy")+global.getname(objpath,param)+"？",param,6]),NonAutoPop);
+                global.pushContext(self,new Warningdialog([global.getStaticString("sureToBuy", ["[NAME]",global.getname(objpath,param) ]),param,6]),NonAutoPop);
             }
             else{
                 global.popContext(param);

@@ -133,7 +133,7 @@ class AttackControl extends ContextObject{
             //>= 0 what
             //< 0 what
             if(global.user.getValue("catapult") > 0)
-                global.pushContext(null, Warningdialog(["是否派出你的"+str(global.user.getValue("catapult"))+"投石车？", -3000, 1]), NonAutoPop); 
+                global.pushContext(null, Warningdialog([global.getFormatString("SendCata", ["[NUM]", str(global.user.getValue("catapult"))]), -3000, 1]), NonAutoPop); 
             else
                 realAttack(0);
         }

@@ -212,7 +212,7 @@ class ObjControl extends ContextObject{
         var oi = objcontext[param];
         var add = 1;
         oi %= 1000;
-        if(oi < 600)
+        if(oi < statueNum)
         {
             oi %= 100;
             add =  OBJ_PERSON[oi];

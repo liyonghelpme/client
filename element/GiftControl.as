@@ -60,7 +60,6 @@ class GiftControl extends ContextObject{
     function gagiftover(r,rc,c){
         trace("selectgift",rc,c);
         var ganname = ganname1;
-        //var ganame=["你每天只能赠送给同一个好友至多一个礼物哦^_^","你每天只能向同一个好友至多索要一个礼物哦^_^"];
         if(rc!=0 && json_loads(c).get("id")==0){
             global.pushContext(null,new Warningdialog([ganname[lock-1],-1,5]),NonAutoPop);
         }

@@ -48,7 +48,7 @@ const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
 const FARM_PERSON = [0,80,0,0,0,120,250];
 const FARM_EXP = [0,5,15,40,70,20,30];
 const FARM_FOOD = [0,0,0,0,0,600,1000];
-const FARM_USE = [0,"plant crops","plant crops（x1.2）","plant crops（x1.4）","plant crops（x1.6）","produce wood","produce stone"];
+const FARM_USE = [0,"plant crops","plant crops (x1.2)","plant crops (x1.4)","plant crops (x1.6)","produce wood","produce stone"];
 
 
 const PLANT_TIME = [600,2700,3600,9360,22680,14400,1800,5400,9000,11520,29160,25200];
@@ -89,8 +89,8 @@ const FACT_GAIN = [50, 150, 300, 360, 700, 1200, 300, 660, 1200, 680, 1300, 2200
 const FACT_FOOD = [20, 30, -70, 45, -100, -100100, 0, -120, -100120, 80, -150, -100150, 100, -170, -100170, 0, -200, -100200, 130, -210, -100210, 170, -230, -100230, 0, -250, -100250, 500, -250, -100250, 0, -150, -100150] ;
 const FACT_B_EXP = [3, 7, 11, 5, 9, 14, 15, 20, 25, 7, 9, 11, 9, 11, 13, 25, 30, 35, 20, 33, 45, 29, 45, 61, 35, 45, 60, 15, 20, 25, 23, 30, 39] ;
 const FACT_EXP = [1, 2, 5, 3, 5, 9, 5, 9, 15, 5, 9, 17, 12, 20, 29, 18, 28, 40, 10, 19, 30, 23, 34, 45, 30, 50, 70, 10, 18, 33, 12, 20, 35] ;
-const FACT_TIME = [600, 600, 600, 5400, 5400, 5400, 1800, 1800, 1800, 10440, 10440, 10440, 21600, 21600, 21600, 7200, 7200, 7200, 11160, 11160, 11160, 30600, 30600, 30600, 26280, 26280, 26280, 14400, 14400, 14400, 12, 3600, 3600] ;
-const FACT_PERSON = [20, 25, 35, 40, 50, 65, 0, 0, 0, 50, 65, 85, 70, 90, 115, 0, 0, 0, 90, 115, 145, 110, 140, 175, 0, 0, 0, 55, 73, 100, 3600, 130, 170] ;
+const FACT_TIME = [600, 600, 600, 5400, 5400, 5400, 1800, 1800, 1800, 10440, 10440, 10440, 21600, 21600, 21600, 7200, 7200, 7200, 11160, 11160, 11160, 30600, 30600, 30600, 26280, 26280, 26280, 14400, 14400, 14400, 3600, 3600, 3600] ;
+const FACT_PERSON = [20, 25, 35, 40, 50, 65, 0, 0, 0, 50, 65, 85, 70, 90, 115, 0, 0, 0, 90, 115, 145, 110, 140, 175, 0, 0, 0, 55, 73, 100, 0, 130, 170] ;
 const FACT_UP = [0, "3;a,1", "5;a,2;b,3", 0, "5;b,2;c,2", "8;c,2;d,3", 
 0, "10;b,2;c,2", "15;c,2;d,3", 0, "10;d,2;e,2", 
 "13;e,2;f,3", 0, "18;f,2;g,2", "24;g,2;h,3", 0, 
@@ -146,7 +146,6 @@ const PETS_UP = [5,6,10,7,12,17];
 
 const EXTEND_UP=[0,3,3];
 
-
 //discount sale price
 const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 100000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20];
 
@@ -173,6 +172,10 @@ const FILLER_W = 119;
 const FILLER_H = 13;
 const BUTTONFONTSIZE = 26;
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
+const UNLOCK = dict(
+[[1, ["object0.png", "object1.png", "object2.png", "room0.png", "room3.png", "room6.png", "room9.png", "camp0.png", "fact0.png", "plant1.png"]], [3, ["camp6.png", "plant2.png"]], [4, ["object3.png", "object61.png", "object66.png", "fact3.png"]], [5, ["object4.png", "object15.png", "room12.png", "room15.png", "room18.png", "room21.png", "plant3.png"]], [6, ["object5.png", "object6.png", "object7.png", "object8.png", "fact6.png"]], [7, ["object9.png", "object10.png", "plant4.png"]], [8, ["object11.png", "object12.png", "object53.png", "object54.png", "room60.png", "room63.png", "room66.png", "room69.png", "fact9.png", "shen0.png"]], [9, ["object13.png", "object55.png", "object56.png", "plant5.png"]], [10, ["object14.png", "object46.png", "object47.png", "object48.png", "object49.png", "room24.png", "room27.png", "room30.png", "room33.png", "fact30.png", "plant6.png"]], [11, ["object16.png", "object20.png", "camp3.png"]], [12, ["object17.png", "object50.png", "room72.png", "fact27.png", "shen1.png"]], [13, ["object18.png", "object45.png", "plant7.png"]], [14, ["object32.png", "fact15.png"]], [15, ["object19.png", "object33.png", "object34.png", "object44.png", "room36.png", "room39.png", "room42.png", "room45.png", "fact12.png"]], [16, ["object28.png", "object29.png", "object30.png", "object31.png", "object57.png", "shen3.png", "plant8.png"]], [17, ["object21.png", "object22.png", "object23.png", "object40.png"]], [18, ["object24.png", "object25.png", "object26.png", "object27.png", "object58.png", "room75.png"]], [19, ["object38.png"]], [20, ["object35.png", "object36.png", "object37.png", "object63.png", "room48.png", "room51.png", "room54.png", "room57.png", "shen2.png", "plant9.png"]], [21, ["object42.png", "object43.png", "object62.png", "fact18.png"]], [22, ["object51.png", "object52.png", "room78.png"]], [23, ["object64.png", "plant10.png"]], [24, ["object59.png", "object65.png", "fact24.png"]], [25, ["object39.png", "object41.png", "camp9.png", "shen20.png", "plant12.png"]], [26, ["plant11.png"]], [27, ["camp0.png"]], [29, ["fact21.png"]], [30, ["camp1.png", "shen25.png"]], [32, ["camp2.png"]], [34, ["camp3.png"]], [37, ["camp4.png"]], [40, ["camp5.png"]]]
+);
+/*
 const UNLOCK = [
 null,
 null,
@@ -216,6 +219,7 @@ null,
 "",
 "50,build605.png;90,object46.png;90,object47.png;90,object48.png;90,object49"
 ];
+*/
 
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
 
@@ -231,17 +235,6 @@ const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 const cardnum = 13;
 const NEWFLAG = 14;
 const SHARE_URL="http://getmugua.com";
-
-
-/*注：上面标点符号都是汉字， 请改成英文的标点符号！*/
-/*
-    function getEmptyName(gid){
-        var firstName = ["天","地", "人", "月", "秦", "赵", "齐", "楚", "阳", "牙","风", "雷", "火", "水", "木", "金", "山", "音", "伊"];
-        var secondName = ["明", "暗", "井", "景", "静", "迟", "车", "龙", "紫", "念", "宁", "凝", "幻", "北", "西", "东", "南", "隐"];
-        var lastName = ["国", "城", "郡", "谷", "邦", "县", "寨", "洞", "府"];
-        return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
-    }
-*/
 
 var staticString = ["loading", "loading"];
 //var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
@@ -578,6 +571,7 @@ class GlobalController{
         return stringDict.get(index,"");
     }
     
+    /*
     function getMedalString(index,pre,leftnum,medallevel){
         var medalstr = pre+" still need ";
 
@@ -593,14 +587,15 @@ class GlobalController{
 
         if(index == 13)
         {
-            medalstr += ",该卡每升一级将会增加一点魔法值上限.";
+            medalstr += global.getStaticString("CardAddOne");
         }
         else if(index < 12)
         {
-            medalstr += ",该卡升到紫金级别将会增加两点魔法值上限,其它级别不增加.";
+            medalstr += global.getStaticString("CardAddTwo");
         }
         return medalstr;
     }
+    */
     
     function getFormatString(index,pair){
         trace("format", index, pair);
@@ -615,10 +610,13 @@ class GlobalController{
         return rstr;
     }
 
+
     
+    /*
     function getMedalString2(who,cstr,ctype,clevel){
         return who+cstr+"才能获得"+cardprename[ctype]+cardlevelname[clevel]+"。该卡每升一级将会增加一点魔法值上";
     }
+    */
     
     function GlobalController(){
         flagshownew = 0;

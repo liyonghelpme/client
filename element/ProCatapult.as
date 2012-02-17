@@ -19,8 +19,8 @@ class ProCatapult extends ContextObject{
         contextNode = dialog.getNode();
         dialog.settitle("addCatapult.png");
         dialog.setclosebutton();
-        dialog.setbutton(1,336,256,"普通生产",0);
-        dialog.setbutton(4,336,331,"特殊生产",1);
+        dialog.setbutton(1,336,256, global.getStaticString("Produce"),0);
+        dialog.setbutton(4,336,331, global.getStaticString("Fast"),1);
     }
     
     var defencenum;
@@ -32,7 +32,7 @@ class ProCatapult extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            var tmp=element.addlabel("投石车仅适用于攻城，攻城时战斗力会提升 一倍。"+CATA_NAME[CataType]+"攻击力"+str(CATA_ATTACK[CataType]),null,20, FONT_NORMAL, 350, 0, ALIGN_LEFT).pos(50,53).color(0,0,0,100);
+            var tmp=element.addlabel(global.getFormatString("CataExplain", ["[NAME]", CATA_NAME[CataType], "[ATK]", str(CATA_ATTACK[CataType])]) ,null,20, FONT_NORMAL, 350, 0, ALIGN_LEFT).pos(50,53).color(0,0,0,100);
             var maxlist=[100,300,500,700,1000,3000,5000];
             defencemax=maxlist[global.user.getValue("nobility")/3];
             defencenum = 0;

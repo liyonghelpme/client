@@ -72,7 +72,7 @@ class Nestbuilddialog extends ContextObject{
                     xx=contextNode.addsprite("boxperson.png").pos(32+78*(i%5),103+107*(i/5));
                     if(list[i]<0 || list[i]==ppy_userid()){
                         xx.addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                        xx.addlabel("Me",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                        xx.addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                     }
                     else{
                         var fid = list[i];
@@ -136,7 +136,7 @@ trace("selfopen",rc,c);
                 evnodes[helpperson].remove(0);
                 evnodes[helpperson].texture("boxperson.png");
                 evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                evnodes[helpperson].addlabel("Me",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                evnodes[helpperson].addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                 evnodes[helpperson].setevent(EVENT_UNTOUCH,null);
                 helpperson++;
                 global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-1,-6);
@@ -205,7 +205,7 @@ trace("helpopen",rc,c);
         if(rc!=0 && json_loads(c).get("id")>0){
             evnodes[helpperson].texture("boxperson.png");
             evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-            evnodes[helpperson].addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+            evnodes[helpperson].addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
             helpperson++;
             boxfriends.append(ppy_userid());
             global.request[contextLevel].sreload();

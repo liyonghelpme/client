@@ -36,13 +36,36 @@ class Levelupdialog extends ContextObject{
             levelback.addlabel(str(250),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
         }
         var unlockobjs = new Array(0);
+        var level = global.user.getValue("level");
+        var un = UNLOCK.get(level, null);
+        if(un != null)
+        {   
+            unlockobjs = un;
+        }
+        /*
         if(global.user.getValue("level")<len(UNLOCK)&&UNLOCK[global.user.getValue("level")] != ""){
             unlockobjs = UNLOCK[global.user.getValue("level")].split(";");
         }
+        */
         for(var i=0;i<len(unlockobjs);i++){
+            var obj = unlockobjs[i];
+            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%3*88+144,212+i/3*75);
+            var sp = levelback.addsprite(obj).anchor(50,50).pos(i%3*88+144,212+i/3*75).scale(int(obj[0]));
+            sp.prepare();
+            var sx = 100;
+            var sy = 100;
+            var oldSize = sp.size();
+            if(oldSize[0] > 67)
+                sx = 67*100/oldSize[0];
+            if(oldSize[1] > 67)
+                sy = 67*100/oldSize[1];
+            sx = min(sx, sy);
+            sp.scale(sx);
+            /*
             var obj = unlockobjs[i].split(",");
             levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%3*88+144,212+i/3*75);
             levelback.addsprite(obj[1]).anchor(50,50).pos(i%3*88+144,212+i/3*75).scale(int(obj[0]));
+            */
         }
     }
     

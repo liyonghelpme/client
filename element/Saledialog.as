@@ -20,7 +20,7 @@ class Saledialog extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("pic6.jpg").anchor(50,50).pos(80,120);
-            element.addlabel(global.getStaticString("sureTosell")+global.getname(info.buildcontextname,info.objectid%100)+"？",null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(264,124).color(0,0,0,100);
+            element.addlabel(global.getFormatString("sureTosell", ["[NAME]", global.getname(info.buildcontextname,info.objectid%100)]),null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(264,124).color(0,0,0,100);
         }
         return element;
     }

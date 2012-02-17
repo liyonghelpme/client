@@ -222,7 +222,6 @@ class CastlePage extends ContextObject{
     
     function opensendmsg(){
         if(cpid==0){
-            global.pushContext(null,new Warningdialog(["圈子置顶帖已经恢复啦！凯撒留言功能关闭，如果有建议或是反馈可以去圈子的反馈板块留言哦，熊哥会第一时间解决的！感谢支持！",null,6]),NonAutoPop);
         }
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);

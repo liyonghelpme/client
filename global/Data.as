@@ -59,11 +59,11 @@ var Others = dict([
 
 var Dicts = 
 [
-["build_defence_format","Build a [BUILD] will add [DEFENCE] to castle defense, are you sure you want to build?(click castle to view def)"],
+["build_defence_format","Build a [BUILD] will add [DEFENCE] to castle defense, are you sure you want to build?"],
 
 ["money","silver"],["caesars","gold"],["food","food"],["labor","Idle population"],["person","population"],["stone","stone"],["wood","wood"],["caesar","Caesar"],
 
-["share","Share"],["back","Back"],["change","Done"],["ok","yes"],["send","send"],["cancel","cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","Help"],["close","close"],["openbox","Open"],["askforhelp","Ask friend"],
+["share","Share"],["back","Back"],["change","Done"],["ok","yes"],["send","send"],["cancel","Cancel"],["system","system"],["devine","Display"],["retry","Retry"],["help","Help"],["close","close"],["openbox","Open"],["askforhelp","Ask friend"],
 
 ["loading_str","loading..."],["self","me"],
 
@@ -206,11 +206,11 @@ var Dicts =
 ["choosePet", "Choose pet"], ["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Are you sure to summon?"],
 ["inProtect", "Protecting"], ["attNoProtect", "You can't enable protection mode during attacking period"],
 ["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congrats! [NAME] has upgraded to lev [LEVEL], come on to build your own miracle empire!"], ["goInNewMap", ", you will find more powerful players in higher level map."], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
-["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase "],["acc", "Quicken"],
+["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase [NAME]?"],["acc", "Quicken"],
 ["leftTime", "Time left "], ["noBattle", "War mode unable"], ["winNum", "wins"], ["netRefresh", "data exception because of net problem,please try again"], ["fresh", "refresh"],
 ["fightAdd", "Hint: soilders have extra fighting capacity in fortress"],
 ["peopUp", " population"], 
-["sureTosell", "Are you sure to sell "],
+["sureTosell", "Are you sure to sell [NAME]?"],
 ["sell", "Sell"], 
 ["toDetect", "use on detecting"], 
 ["unitPower", "unit fighting"],
@@ -267,8 +267,19 @@ var Dicts =
 ["sendCatapult", "Dispatch"], ["notSendCata", "Not"],
 ["petNeedDownload", "Summon pet need to download pictures, sure to download?"],
 ["warNeedDownload", "Enable War Mode need to download pictures, sure to download?"],
-["downloading", "Downloading pictures..."]
-
+["downloading", "Downloading pictures..."],
+["SendCata", "Do you want to dispatch your [NUM] catapults?"],
+["Buy", "Buy"],
+["sureBuyMana", "Are you sure to buy [NUM] mana?"],
+["ChooseCata", "Choose Catapult"],
+["Me", "Me"],
+["ItGrowUp", "It grows up!"],
+["Produce", "Produce"],
+["Fast", "Fast"],
+["CataExplain", "Catapults only can be used when attack others, and at that time it will have extra ATK. [NAME] ATK [ATK]"],
+["CardAddOne", "when the card upgrade, your magic capacity will add one."],
+["CardAddTwo", "when the card upgrade to top level, your magic capacity will add two."],
+["", ""]
 ];
 
 var Names = dict([

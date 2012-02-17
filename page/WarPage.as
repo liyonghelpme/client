@@ -599,7 +599,6 @@ trace("warinfo",rc,c);
             rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(113+RIGHTOFF,114+60).color(0,0,0,100);
             rightmenu.addlabel(global.getStaticString("tab_fortress"),null,16).anchor(50,100).pos(173+RIGHTOFF,114+60).color(0,0,0,100);
         }
-        //rightmenu.addlable("要塞", null, 16).anchor(50, 100).pos(183+RIGHTOFF, 114+60).color(0,0,0);
         left.add(sprite("backbutton.png").anchor(0,100).pos(0,480).setevent(EVENT_UNTOUCH,goback),0,0);
         refreshlist();
         contextNode.add(sprite("warchatbutton3.png").anchor(50,50).pos(37,71).setevent(EVENT_UNTOUCH,changewarchat),10,10);
