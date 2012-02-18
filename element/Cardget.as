@@ -51,7 +51,7 @@ class Cardget extends ContextObject{
             {
                 endstr += global.getStaticString("MonsterCardGet");
             }
-            element.addlabel(global.getStaticString("youGet")+cardprename[cardid]+cardlevelname[cardlevel]+". "+endstr,null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+            element.addlabel(global.getFormatString("youGet", ["[NAME]",cardprename[cardid]+cardlevelname[cardlevel], "[END]", endstr]),null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
         }
         return element;
     }

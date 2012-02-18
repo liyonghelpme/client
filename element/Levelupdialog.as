@@ -33,24 +33,15 @@ class Levelupdialog extends ContextObject{
             levelback.addsprite("caesars_big.png").anchor(50,50).pos(260,137).size(24,24);
             levelback.addlabel(str(level/10),null,24).anchor(0,50).pos(276,137).color(0,0,0,100);
             levelback.addsprite("personlimit.png").anchor(50,50).pos(360,137).size(22,24);
-            levelback.addlabel(str(250),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
+            levelback.addlabel(str(LevAddPer),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
         }
-        var unlockobjs = new Array(0);
         var userlevel = global.user.getValue("level");
-        var un = UNLOCK.get(userlevel, null);
-        if(un != null)
-        {   
-            unlockobjs = un;
-        }
-        /*
-        if(global.user.getValue("level")<len(UNLOCK)&&UNLOCK[global.user.getValue("level")] != ""){
-            unlockobjs = UNLOCK[global.user.getValue("level")].split(";");
-        }
-        */
-        for(var i=0;i<len(unlockobjs);i++){
+        var unlockobjs = UNLOCK.get(userlevel, []);
+        var rowNum = 4;
+        for(var i=0; i<len(unlockobjs) && i<8 ;i++){
             var obj = unlockobjs[i];
-            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%3*88+144,212+i/3*75);
-            var sp = levelback.addsprite(obj).anchor(50,50).pos(i%3*88+144,212+i/3*75).scale(int(obj[0]));
+            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%rowNum*88+136,212+i/rowNum*75);
+            var sp = levelback.addsprite(obj).anchor(50,50).pos(i%rowNum*88+144,212+i/rowNum*75).scale(int(obj[0]));
             sp.prepare();
             var sx = 100;
             var sy = 100;
@@ -61,11 +52,6 @@ class Levelupdialog extends ContextObject{
                 sy = 67*100/oldSize[1];
             sx = min(sx, sy);
             sp.scale(sx);
-            /*
-            var obj = unlockobjs[i].split(",");
-            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%3*88+144,212+i/3*75);
-            levelback.addsprite(obj[1]).anchor(50,50).pos(i%3*88+144,212+i/3*75).scale(int(obj[0]));
-            */
         }
     }
     
@@ -73,8 +59,9 @@ class Levelupdialog extends ContextObject{
         global.popContext(null);
         var level = global.user.getValue("level");
         global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
+        trace("level", LevAddPer, level);
         if(level%10==0){
-            global.user.changeValueAnimate2(global.context[0].ub,"personmax",250,-6);
+            global.user.changeValueAnimate2(global.context[0].ub,"personmax", LevAddPer, -6);
             global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-6);
         }
         if(p==1){
