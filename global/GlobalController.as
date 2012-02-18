@@ -26,9 +26,9 @@ const NonAutoPop = 0;
 const NotAdd = 2;
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
-//const BASE_URL = "http://223.4.87.9:8000/";
+const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 //const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
@@ -245,7 +245,7 @@ const staticString = [
 "[WHO]还需要战胜[NUM]个用户才能升级到[CARD]，该卡每升级一级将会增加一点魔法值上限。",
 "你的店铺正在工作，无法一键收税",
 "恭喜你获得了该紫金卡片，你的魔法值上限增加了两点",
-"恭喜，嫦娥卡升到紫金级别，魔法值上限增加了5",
+"恭喜，嫦娥卡升到紫金级别，魔法值上限增加了1",
 "把丰收之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
 "把财富之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
 "抱歉，你已经访问过所有好友了！",
