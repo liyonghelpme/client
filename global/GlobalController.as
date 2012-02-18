@@ -151,9 +151,9 @@ const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400,
 
 const OBJ_PERSON = [5, 5, 5, 7, 15, 13, 13, 13, 13, 18, 18, 13, 40, 15, 15, 12, 17, 18, 67, 50, 45, 40, 40, 90, 41, 41, 93, 93, 45, 45, 91, 91, 19, 19, 90, 65, 100, 65, 150, 45, 90, -1, 110, 110, 99, 89, 44, 44, 85, 85, -1, -1, 70, 80, 43, 60, 93, 91, 46, 24, 130, 40, 21, -1, 110, -3, 100];
 
-const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
-const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
-const STATUE_PERSON=[20,40,80,60,120,100];
+const STATUE_PRICE = [10000, -10, 20000, -20, 50000, -50];
+const STATUE_DEFENCE=[600,700,1150,1300,3000,3200];
+const STATUE_PERSON=[10,10,10,10,10,10];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
 const DIALOG_BASE_X = 100-74;
 const DIALOG_BASE_Y = 112+22;
@@ -173,7 +173,8 @@ const FILLER_H = 13;
 const BUTTONFONTSIZE = 26;
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
 const UNLOCK = dict(
-[[1, ["object0.png", "object1.png", "object2.png", "room0.png", "room3.png", "room6.png", "room9.png", "camp0.png", "fact0.png", "plant1.png"]], [3, ["camp6.png", "plant2.png"]], [4, ["object3.png", "object61.png", "object66.png", "fact3.png"]], [5, ["object4.png", "object15.png", "room12.png", "room15.png", "room18.png", "room21.png", "plant3.png"]], [6, ["object5.png", "object6.png", "object7.png", "object8.png", "fact6.png"]], [7, ["object9.png", "object10.png", "plant4.png"]], [8, ["object11.png", "object12.png", "object53.png", "object54.png", "room60.png", "room63.png", "room66.png", "room69.png", "fact9.png", "shen0.png"]], [9, ["object13.png", "object55.png", "object56.png", "plant5.png"]], [10, ["object14.png", "object46.png", "object47.png", "object48.png", "object49.png", "room24.png", "room27.png", "room30.png", "room33.png", "fact30.png", "plant6.png"]], [11, ["object16.png", "object20.png", "camp3.png"]], [12, ["object17.png", "object50.png", "room72.png", "fact27.png", "shen1.png"]], [13, ["object18.png", "object45.png", "plant7.png"]], [14, ["object32.png", "fact15.png"]], [15, ["object19.png", "object33.png", "object34.png", "object44.png", "room36.png", "room39.png", "room42.png", "room45.png", "fact12.png"]], [16, ["object28.png", "object29.png", "object30.png", "object31.png", "object57.png", "shen3.png", "plant8.png"]], [17, ["object21.png", "object22.png", "object23.png", "object40.png"]], [18, ["object24.png", "object25.png", "object26.png", "object27.png", "object58.png", "room75.png"]], [19, ["object38.png"]], [20, ["object35.png", "object36.png", "object37.png", "object63.png", "room48.png", "room51.png", "room54.png", "room57.png", "shen2.png", "plant9.png"]], [21, ["object42.png", "object43.png", "object62.png", "fact18.png"]], [22, ["object51.png", "object52.png", "room78.png"]], [23, ["object64.png", "plant10.png"]], [24, ["object59.png", "object65.png", "fact24.png"]], [25, ["object39.png", "object41.png", "camp9.png", "shen20.png", "plant12.png"]], [26, ["plant11.png"]], [27, ["camp0.png"]], [29, ["fact21.png"]], [30, ["camp1.png", "shen25.png"]], [32, ["camp2.png"]], [34, ["camp3.png"]], [37, ["camp4.png"]], [40, ["camp5.png"]]]
+[[1, ["object0.png", "object1.png", "object2.png", "room0.png", "room3.png", "room6.png", "room9.png", "camp0.png", "fact0.png", "plant1.png"]], [3, ["camp6.png", "plant2.png"]], [4, ["object3.png", "object61.png", "object66.png", "fact3.png"]], [5, ["object4.png", "object15.png", "room12.png", "room15.png", "room18.png", "room21.png", "plant3.png"]], [6, ["object5.png", "object6.png", "object7.png", "object8.png", "fact6.png"]], [7, ["object9.png", "object10.png", "plant4.png"]], [8, ["object11.png", "object12.png", "object53.png", "object54.png", "room60.png", "room63.png", "room66.png", "room69.png", "fact9.png", "shen0.png"]], [9, ["object13.png", "object55.png", "object56.png", "plant5.png"]], [10, ["object14.png", "object46.png", "object47.png", "object48.png", "object49.png", "room24.png", "room27.png", "room30.png", "room33.png", "fact30.png", "plant6.png"]], [11, ["object16.png", "object20.png", "camp3.png"]], [12, ["object17.png", "object50.png", "room72.png", "camp0.png", "camp1.png", "fact27.png", "shen1.png"]], [13, ["object18.png", "object45.png", "camp2.png", "camp3.png", "plant7.png"]], [14, ["object32.png", "fact15.png"]], [15, ["object19.png", "object33.png", "object34.png", "object44.png", "room36.png", "room39.png", "room42.png", "room45.png", "camp4.png", "camp5.png", "fact12.png"]], [16, ["object28.png", "object29.png", "object30.png", "object31.png", "object57.png", "shen3.png", "plant8.png"]], [17, ["object21.png", "object22.png", "object23.png", "object40.png"]], [18, ["object24.png", "object25.png", "object26.png", "object27.png", "object58.png", "room75.png"]], [19, ["object38.png"]], [20, ["object35.png", "object36.png", "object37.png", "object63.png", "room48.png", "room51.png", "room54.png", "room57.png", "shen2.png", "plant9.png"]], [21, ["object42.png", "object43.png", "object62.png", "fact18.png"]], [22, ["object51.png", "object52.png", "room78.png"]], [23, ["object64.png", "plant10.png"]], [24, ["object59.png", "object65.png", "fact24.png"]], [25, ["object39.png", "object41.png", "camp9.png", "shen20.png", "plant12.png"]], [26, ["plant11.png"]], [29, ["fact21.png"]], [30, ["shen25.png"]]]
+
 );
 /*
 const UNLOCK = [
@@ -457,7 +458,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","Dragon Nest"]]);
+        var build = dict([["size",3],["level",15],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
 
         builddict.update(1000,build);
         sizedict = dict();

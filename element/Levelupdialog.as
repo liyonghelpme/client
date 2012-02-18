@@ -36,8 +36,8 @@ class Levelupdialog extends ContextObject{
             levelback.addlabel(str(250),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
         }
         var unlockobjs = new Array(0);
-        var level = global.user.getValue("level");
-        var un = UNLOCK.get(level, null);
+        var userlevel = global.user.getValue("level");
+        var un = UNLOCK.get(userlevel, null);
         if(un != null)
         {   
             unlockobjs = un;

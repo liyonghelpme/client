@@ -917,8 +917,8 @@ class CastlePage extends ContextObject{
         }
         else{
             favatar.texture(avatar_url(cpid));
-            //if(fb.parent() == null)
-            //    fmenu.add(fb.pos(-114,0),-1,-1);
+            if(fb.parent() == null)
+                fmenu.add(fb.pos(-114,0),-1,-1);
         }
         pagedict.update(cpid,contextNode.pos());
         var f = global.getfriend(cpid);
