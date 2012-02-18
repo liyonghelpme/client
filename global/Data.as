@@ -255,7 +255,7 @@ var Dicts =
 ["NobZijin", "Your magic capacity will increase 1 when card level up."],
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"],
 ["Download", "Downloading"],
-["LackMagic", "Sorry, you lack magic value. Do you want to fill it up right now?"],
+["LackMagic", "Sorry, your magic isn't enough,fill it up now? Tips:every 5 mins will recover 1 magic."],
 ["infpower", "Infantry: "], 
 ["cavpower", "Cavalry: "],
 ["addsoldier", "Reinforce"], 

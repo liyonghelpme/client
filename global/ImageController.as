@@ -1,5 +1,8 @@
 class ImageController{
     const images1 = [
+    "down_back.png", "down_filter.png",
+    "small_downback.png", "small_downbar.png",
+
     "move1-1.png", "move1-2.png", "move1-3.png", "move1-4.png", 
     "move2-1.png", "move2-2.png", "move2-3.png", "move2-4.png",
     "move3-1.png", "move3-2.png", "move3-3.png", "move3-4.png",

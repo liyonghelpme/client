@@ -18,7 +18,6 @@ class MagicWarning extends ContextObject{
             element = node();
             element.addsprite("pic6.jpg").anchor(50, 50).pos(80, 120);
             element.addlabel(global.getStaticString("LackMagic"), null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
-            //element.addsprite("caesars_big.png").size(32, 32).anchor(0, 50).pos(148, 105);
         }
         return element;
     }
