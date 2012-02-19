@@ -50,7 +50,6 @@ class SpriteManager
 "warinfotab10.png","warinfotab11.png", "warinfotab12.png",
 "warmenulistback.png","warmenutab0.png","warmenutab1.png",
 "warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
-"4.mp3", 
 "nobattletab0.png","nobattletab1.png",
 "warlostleft.jpg",
 "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",

@@ -9,6 +9,9 @@ class RoomControl extends ContextObject{
     var lastx;
     var flagmove;
     var objsmax = 26;
+    //新民居 会影响新手任务箭头的问题 需要 在这里设定
+    //400 是居中位置
+    //设置方法， 可以根据编号动态设定
     const objlevel = [
     3, 
     3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];

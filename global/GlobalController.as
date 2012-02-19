@@ -301,7 +301,7 @@ const stringDict=dict([
 ["gift_element0","[NAME]赠送你礼物[GIFT]"],
 ["gift_element1","[NAME]向你索取礼物[GIFT]"],
 ["monster_refresh_format","哈哈哈，[NAME]领主，献出你的粮食吧，否则你们将永不得安宁！"],
-["monster_foodwilllost","下次登录之前还没有把怪兽消灭，怪兽会抢夺你的粮食哦！"],
+["monster_foodwilllost","下次登录之前还没有把怪兽消灭，怪兽会抢夺你的粮食哦！ 进入地图消灭它们吧！"],
 ["warrecord_notice_format","你的领地发生了[NUM]场战争，观看可以知道士兵损失详细情况，是否观看？"],
 ["war_newmap_notice","恭喜你进入了新的地图！提示：不要太快进入更高等级的地图哦，先暗中积攒兵力吧^_^"],
 ["spy_notice","注：侦察级别越高，获得的信息越多哦！"],["spy_unknown","未侦察到"],["spy_result_format","你损失了[NUM]个侦察兵，获取了[WHO]的情报："],
