@@ -46,7 +46,10 @@ class WarPage extends ContextObject{
     var emptyCities;
     var myEmpty;
     var mapUser = null;
+
+    var Back;
     function WarPage(){
+        Back = 0;
         contextname = "page-war";
         contextNode = null;
         rightmenu = null;
