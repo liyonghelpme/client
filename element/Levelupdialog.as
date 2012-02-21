@@ -51,7 +51,7 @@ class Levelupdialog extends ContextObject{
         var level = global.user.getValue("level");
         global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
         if(level%10==0){
-            global.user.changeValueAnimate2(global.context[0].ub,"personmax",250,-6);
+            global.user.changeValueAnimate2(global.context[0].ub,"personmax", LevUpPop,-6);
             global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-6);
         }
         if(p==1){

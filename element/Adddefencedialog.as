@@ -13,8 +13,8 @@ class Adddefencedialog extends ContextObject{
         contextNode = dialog.getNode();
         dialog.settitle("adddefencetitle.png");
         dialog.setclosebutton();
-        dialog.setbutton(1,336,256,"普通增加",1);
-        dialog.setbutton(4,336,331,"快速增加",0);
+        dialog.setbutton(1,336,256, global.getStaticString("genAdd"),1);
+        dialog.setbutton(4,336,331, global.getStaticString("fastAdd"),0);
     }
     
     var defencenum;
@@ -26,7 +26,7 @@ class Adddefencedialog extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            var tmp=element.addlabel("你所选择要增加的防御力：",null,20).pos(44,53).color(0,0,0,100);
+            var tmp=element.addlabel(global.getStaticString("chooseDefence"),null,20).pos(44,53).color(0,0,0,100);
             tmp.prepare();
             defencenumlabel = element.addlabel("0",null,20).pos(50+tmp.size()[0],53).color(0,0,0,100);
             var maxlist=[100,300,500,700,1000,3000,5000];
