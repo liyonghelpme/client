@@ -1,5 +1,7 @@
 class Levelupdialog extends ContextObject{
-    function Levelupdialog(){
+    var data;
+    function Levelupdialog(d){
+        data = d;
         trace("level init");
         contextname = "dialog-reward-levelup";
         contextNode = null;
@@ -38,10 +40,12 @@ class Levelupdialog extends ContextObject{
         var userlevel = global.user.getValue("level");
         var unlockobjs = UNLOCK.get(userlevel, []);
         var rowNum = 4;
+        var initX = 136;
+        var initY = 212;
         for(var i=0; i<len(unlockobjs) && i<8 ;i++){
             var obj = unlockobjs[i];
-            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%rowNum*88+136,212+i/rowNum*75);
-            var sp = levelback.addsprite(obj).anchor(50,50).pos(i%rowNum*88+144,212+i/rowNum*75).scale(int(obj[0]));
+            levelback.addsprite("dialogelement_objunlock.png").anchor(50,50).pos(i%rowNum*88+initX,initY+i/rowNum*75);
+            var sp = levelback.addsprite(obj).anchor(50,50).pos(i%rowNum*88+initX,initY+i/rowNum*75).scale(int(obj[0]));
             sp.prepare();
             var sx = 100;
             var sy = 100;
@@ -56,13 +60,21 @@ class Levelupdialog extends ContextObject{
     }
     
     function closedialog(node,event,p){
+        /*
+        if(global.flagnew == 0)
+        {
+            global.user.setValue("money", data.get("coin"));
+            global.user.setValue("caesars", data.get("cae"));
+            global.user.setValue("personmax", data.get("pop"));
+        }
+        */
         global.popContext(null);
         var level = global.user.getValue("level");
-        global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
+        global.user.changeValueAnimate3(global.context[0].moneyb,"money",level*200,-8);
         trace("level", LevAddPer, level);
         if(level%10==0){
-            global.user.changeValueAnimate2(global.context[0].ub,"personmax", LevAddPer, -6);
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-6);
+            global.user.changeValueAnimate3(global.context[0].ub,"personmax", LevAddPer, -6);
+            global.user.changeValueAnimate3(global.context[0].moneyb,"caesars",level/10,-6);
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");

@@ -25,7 +25,7 @@ class UpnewsControl extends ContextObject{
         newspage = contextNode.addlabel(global.getStaticString("loading"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         length = len(items);
-        pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = max(length/PAGEITEMS, 1);
         choosePage(0,0,0);
     }
     

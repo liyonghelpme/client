@@ -64,7 +64,7 @@ class SpyControl extends ContextObject{
         else{
             if(global.soldiers[2+selecttab]<6){
                 var buildable = dict([["ok",0]]);
-                buildable.update(global.getname("soldier",6+selecttab),6-global.soldiers[2+selecttab]);
+                buildable.update(global.getname("soldier1",6+selecttab),6-global.soldiers[2+selecttab]);
                 global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
                 return 0;
             }

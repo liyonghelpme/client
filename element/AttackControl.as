@@ -149,8 +149,6 @@ class AttackControl extends ContextObject{
         if(rc!=0){
             var data = json_loads(c);
             if(data.get("id",1)==1){//add battlelist
-                //global.soldiers[0] = global.soldiers[0] - soldiers[0];
-                //global.soldiers[1] = global.soldiers[1] - soldiers[1];
                 ChangeSoldier(0, -soldiers[0]);
                 ChangeSoldier(1, -soldiers[1]);
                 if(AttWithCata == 1)

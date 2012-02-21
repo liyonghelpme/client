@@ -31,12 +31,14 @@ class MapPage extends ContextObject{
     var level;
     var selfgid;
     var left;
+    var Back;
     const mplace=[[963,93],[232,272],[216,704],[1192,825],[1362,676],[1387,316],[805,822],[1000,487],[590,646],[618,153]];
     var initlock;
     var subnobility;
     var monstercontroller;
     var lastclicktime;
     function MapPage(){
+        Back = 0;
         lastclicktime = 0;
         contextname = "page-map";
         contextNode = null;
@@ -97,7 +99,7 @@ class MapPage extends ContextObject{
                 fly.addsprite(avatar_url(ppy_userid())).size(38,38).pos(15,11);
                 var name = global.user.getValue("cityname");
                 if(len(name)>9){
-                    name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+".."
+                    name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
                 }
                 fly.addlabel(name,null,16).anchor(50,0).pos(32,52).color(0,0,0,100);
                 fly.color(50,50,50,50);
@@ -244,9 +246,11 @@ trace("warinfo",rc,c);
                 return 0;
             }
             if(p == selfgid && global.flagnew == 0)
-                goback();/*
+                goback();
+            /*
             else
-                global.pushContext(self,new UserControl(p),AutoPop);*/
+                global.pushContext(self,new UserControl(p),AutoPop);
+            */
         }
     }
 
@@ -281,6 +285,9 @@ trace("warinfo",rc,c);
         global.pushContext(null,new TestWebControl(p),NonAutoPop);
     }
     function goback(){
+        if(Back == 1)
+            return;
+        Back = 1;
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){
             wartabvisible(0,0,0,0,0);
@@ -448,16 +455,19 @@ trace("warinfo",rc,c);
         contextNode = null;
         baseNode.removefromparent();
         baseNode = null;
-        global.system.popmusic();/*
+        global.system.popmusic();
+        /*
         for(var i=0;i<pn*pn;i++){
             if(placedict.get(i)!=null){
                 removeplace(i/pn,i%pn);
             }
-        }*/
+        }
+        */
         global.screen.visible(1);
         left.removefromparent();
         monstercontroller.close();
         initlock=0;
         mode= 0;
+        Back = 0;
     }
 }

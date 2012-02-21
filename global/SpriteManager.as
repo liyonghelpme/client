@@ -5,6 +5,7 @@ class SpriteManager
     var downloadNode;
     var self;
     var animate = [];
+    var downStartTime;
     /*
     var animate = [
 "animate_self_left_2_4.png","animate_enemy_1_1.png","dialogback_attack.png",
@@ -50,7 +51,6 @@ class SpriteManager
 "warinfotab10.png","warinfotab11.png", "warinfotab12.png",
 "warmenulistback.png","warmenutab0.png","warmenutab1.png",
 "warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
-"4.mp3", 
 "nobattletab0.png","nobattletab1.png",
 "warlostleft.jpg",
 "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
@@ -191,6 +191,7 @@ class SpriteManager
     {
         if(notdownload == 1)
             return;
+        downStartTime = time();//1000*20
         notdownload = 1;
         trace("decide to download");
         mainNode.addaction(request(ToDown[0], 0, finDownload));
@@ -248,13 +249,15 @@ class SpriteManager
         showWord -= 1;
         if(showWord < 0 )
             showWord = 0;
-        /*
-        if(progress != null)
+        var cur = time();
+        if((cur-downStartTime) > 15*1000)
         {
-            progress.size((totalLen-downloadLen)*144/totalLen, 18);
-            pronumber.text(str(totalLen-downloadLen)+"/"+str(totalLen));
+            ToDown = [];
+            downloadLen = 0;
+
+            mainNode.stop(); 
+            finDownload(null, 0, null);
         }
-        */
     }
     function getNewVersion(name, force, param)
     {

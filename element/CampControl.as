@@ -243,7 +243,9 @@ class CampControl extends ContextObject{
     }
 
     function reloadNode(re){
+        global.popContext(objcontext[re]);
     }
+
 
     function deleteContext(){
         contextNode.addaction(stop());

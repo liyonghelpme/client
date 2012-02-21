@@ -90,7 +90,7 @@ class TaskController extends ContextObject{
             }
             enternode.addaction(repeat(animate(800,"task1.png","task2.png","task3.png","task2.png",ARGB_8888)));
         }
-        trace("loadTask", taskid, global.context[0].maxperson );
+        //trace("loadTask", taskid, global.context[0].maxperson );
         if(taskid==12 && global.context[0].box.maxperson==0){
             global.context[0].box.maxperson = 1;
             global.context[0].box.helpperson = 0;

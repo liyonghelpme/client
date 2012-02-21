@@ -44,7 +44,7 @@ const hmaxs = [3, 5, 7, 7];
 //const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
-const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
+const FARM_PRICE = [0,1000,-20,-50,-100,10000,28500];
 const FARM_PERSON = [0,80,0,0,0,120,250];
 const FARM_EXP = [0,5,15,40,70,20,30];
 const FARM_FOOD = [0,0,0,0,0,600,1000];
@@ -110,16 +110,16 @@ const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
 
-const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000, 20000, 45000, 100000];
+const CAMP_PRICE = [4000,9000,20000,12000,25000,50000,6000,12000,25000, 10000, 25000, 50000];
 const CAMP_FOOD = [130,-200,-100200,320,-500,-100500,150,-300,-100300, 400, -400, -100400];
 const CAMP_PERSON = [100,120,170,130,150,200,90,110,160, 200, 250, 300];
 const CAMP_EXP = [5,10,20,15,20,35,7,15,30, 20, 50, 100];
 const CAMP_TIME = [3600,11520,22680,7200,14760,28440,10800,21600,32400, 5*3600, 7*3600+1800, 10*3600];
 const CAMP_USE = ["train infantry","train cavalry","train scout", "train catapult"];
-const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4", 0, "20;a,8;b,8", "40;c,15;g,15"];
+const CAMP_UP = [0,"5;a,3","10;b,3;c,4",0,"7;b,3","15;c,3;d,4",0,"3;c,3","7;d,3;e,4", 0, "29;a,8;b,8", "69;c,15;g,15"];
 
 const CATA_ATTACK = [400, 1000, 2000];
-const CATA_PRICE = [10000, 50000, 100000];
+const CATA_PRICE = [10000, 20000, 100000];
 const CATA_SPECIAL = ["500;a,5;b,5", "-500;a,8;c,8", "-1000;g,12;i,12"];
 const CATA_TIME = [7200, 21600, 43200];
 const CATA_CAE = [20, 50, 100];
@@ -147,7 +147,7 @@ const PETS_UP = [5,6,10,7,12,17];
 const EXTEND_UP=[0,3,3];
 
 //discount sale price
-const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 100000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20];
+const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 10000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20];
 
 const OBJ_PERSON = [5, 5, 5, 7, 15, 13, 13, 13, 13, 18, 18, 13, 40, 15, 15, 12, 17, 18, 67, 50, 45, 40, 40, 90, 41, 41, 93, 93, 45, 45, 91, 91, 19, 19, 90, 65, 100, 65, 150, 45, 90, -1, 110, 110, 99, 89, 44, 44, 85, 85, -1, -1, 70, 80, 43, 60, 93, 91, 46, 24, 130, 40, 21, -1, 110, -3, 100];
 
@@ -310,6 +310,7 @@ var GONAME;
 var GONAME1;
 var INVITE_STR;
 var SOLDIER_NAME;
+var SOLDIER_NAME1;
 var EXTEND_NAME;
 var CAMPNAME;
 var CAMPNAME1;
@@ -345,6 +346,7 @@ if(sta != null)
     GONAME1 = sta.get("GONAME1");
     INVITE_STR = sta.get("INVITE_STR");
     SOLDIER_NAME = sta.get("SOLDIER_NAME");
+    SOLDIER_NAME1 = sta.get("SOLDIER_NAME1");
     EXTEND_NAME = sta.get("EXTEND_NAME");
     CAMPNAME = sta.get("CAMPNAME");
     CAMPNAME1 = sta.get("CAMPNAME1");
@@ -601,9 +603,9 @@ class GlobalController{
     */
     
     function getFormatString(index,pair){
-        trace("format", index, pair);
+        //trace("format", index, pair);
         var rstr = getStaticString(index);
-        trace("static string", rstr);
+        //trace("static string", rstr);
         for(var i=0;i<len(pair);i=i+2){
             var rep = pair[i+1];
             if(type(rep) != type(""))
@@ -651,6 +653,7 @@ class GlobalController{
         dataname.update("farm",FARMNAME);
         dataname.update("obj",OBJNAME);
         dataname.update("soldier",SOLDIER_NAME);
+        dataname.update("soldier1",SOLDIER_NAME);
         dataname.update("plant",PLANTNAME);
         dataname.update("stone",STONENAME);
         dataname.update("wood",WOONAME);

@@ -11,10 +11,10 @@ class UpdateControl extends ContextObject{
     var buildable;
     const EmpireCoin = [0,100000, 500000];
     const EmpireFood = [0,1000, 5000];
-    const EmpirePeople = [0,100, 500];
+    const EmpirePeople = [0, 100, 500];
     const EmpireSpe = ["","100;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
-    const EmpirePopUp = [0,100, 500];
-    const EmpireMana = [0, 5, 8];
+    const EmpirePopUp = [0, 0, 0];
+    const EmpireMana = [0, 5, 5];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
@@ -232,7 +232,7 @@ class UpdateControl extends ContextObject{
             if(person > 0){
                 if(person > global.user.getValue("person")-global.user.getValue("labor")){
                     buildable[1].update("ok",0);
-                    buildable[1].update(global.getStaticString("labpr"),person-global.user.getValue("person")+global.user.getValue("labor"));
+                    buildable[1].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
                     buildable[0].update("ok",0);
                     buildable[0].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
                     cl=100;

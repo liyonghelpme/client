@@ -109,9 +109,9 @@ class MenuControl extends ContextObject{
                 }
                 else{
                     grounds[i].objnode.color(50,50,60,100);
-                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544 ||grounds[i].objectid>=545&&grounds[i].objectid<=546){
-                        trace("draw light", grounds[i].objectid);
-                        var lightpng = sprite("", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
+                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=549){
+                        //trace("draw light", grounds[i].objectid);
+                        var lightpng = sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
                         grounds[i].contextNode.add(lightpng,1,1);
                         spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
                     }

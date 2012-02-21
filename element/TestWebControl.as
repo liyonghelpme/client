@@ -56,7 +56,7 @@ class TestWebControl extends ContextObject{
         if(mode==0){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
-            web.openurl("static_mycircles_circle?cid=3222");
+            web.openurl("static_mycircles_circle?cid=3476573");
         }
         else if(mode==1){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);

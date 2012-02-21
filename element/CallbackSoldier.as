@@ -34,7 +34,7 @@ class CallbackSoldier extends ContextObject{
             mb.addlabel(str(0),null,20).anchor(100,50).pos(-4,16).color(0,0,0,100);
             mb.addlabel(str(soldiermaxs[i]),null,20).anchor(0,50).pos(417,16).color(0,0,0,100);
             mb.add(sprite("moveblock.png").anchor(50,50).pos(79,16),1,0);
-            slabels[i] = mb.addlabel("0",null,16).anchor(0,50).pos(59,-21).color(0,0,0,100);
+            slabels[i] = mb.addlabel("0",null,16).anchor(0,50).pos(120,-21).color(0,0,0,100);
         }
         csnum(mb,EVENT_TOUCH,0,70);
     }

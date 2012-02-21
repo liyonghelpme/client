@@ -86,6 +86,9 @@ class Builddialog extends ContextObject{
     {
         buildpages[pageindex].getNode().addaction(imoveby(800*dir,0));
         buildpages[pageindex].refreshpage();
+        //0 which otheris position
+        trace("pageindex", pageindex);
+        global.lastpage[pageindex+1] = buildpages[pageindex].getNode().pos()[0];
     }
     function nodemove(n,e,param,x,y){
         if(contextLevel >= global.currentLevel){
@@ -130,6 +133,7 @@ class Builddialog extends ContextObject{
             buildtabs[i].get(1).scale(120);
             buildtabs[i].get(2).visible(1);
         }
+        global.lastpage[0] = i;
     }
 
     function closedialog(node,event){

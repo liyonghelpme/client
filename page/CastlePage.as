@@ -600,7 +600,7 @@ class CastlePage extends ContextObject{
             if(tid>-1 && global.task.tasktype == -1){
                 global.task.inittask(tid,0);
             }
-            addcmd(dict([["name","levup"]]));
+            addcmd(dict([["name","levup"], ["data", data]]));
         }
     }
 
@@ -630,11 +630,13 @@ class CastlePage extends ContextObject{
             else{
                 var p = OBJ_PRICE[changes.objectid-500];
                 var add = OBJ_PERSON[changes.objectid-500];
+                /*
                 if(add<0 && p < 0)
                 {
                     p -= 1;
                     p /= 2;
                 }
+                */
                 var cost = dict();
                 if(p<0){
                     global.user.changeValueAnimate(changes,"caesars",p,2);
@@ -2025,7 +2027,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             global.pushContext(self,new Nobilitydialog(),NonAutoPop);
         }
         else if(name == "levup"){
-            global.pushContext(self,new Levelupdialog(),NonAutoPop);
+            global.pushContext(self,new Levelupdialog(cmd.get("data")),NonAutoPop);
         }
         else if(name == "monsterfood"){
             global.pushContext(self,new Monsterrobfood(cmd.get("food")),NonAutoPop);

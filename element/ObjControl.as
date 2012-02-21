@@ -74,6 +74,7 @@ class ObjControl extends ContextObject{
                     price = -price;
                     var oldPrice = price;
 
+                    /*
                     if(add < 0)//add Magic discount 
                     {
                         price += 1;
@@ -83,6 +84,7 @@ class ObjControl extends ContextObject{
                         objs[i].addsprite("dis.png").anchor(100,100).anchor(50, 50).pos(80,210);
                         objs[i].addlabel(str(oldPrice),null,16).pos(74,202).color(100,0,0,100);
                     }
+                    */
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
@@ -284,6 +286,7 @@ class ObjControl extends ContextObject{
                             global.pushContext(self,new Warningdialog([global.getFormatString("build_defence_format",["[BUILD]",STATUE_NAME[objcontext[param]%100],"[DEFENCE]",str(STATUE_DEFENCE[objcontext[param]%100])]),param,5]),NonAutoPop);
                         }
                     }
+                    global.lastpage[6] = contextNode.pos()[0];
                 }
                 else{
                     choosepage();
