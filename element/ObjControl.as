@@ -230,7 +230,7 @@ class ObjControl extends ContextObject{
             oi %= 100;
             add =  OBJ_PERSON[oi];
         }
-        trace("select oi", oi, add);
+        //trace("select oi", oi, add);
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
                 lasttime = time();
