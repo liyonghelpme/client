@@ -67,6 +67,10 @@ class GiftControl extends ContextObject{
         {
             global.pushContext(null, new Warningdialog([global.getStaticString("sendSuc"), null, 6]), NonAutoPop);
         }
+        else
+        {   
+            global.pushContext(null,new Warningdialog([global.getStaticString("sendSuc"),-1,5]),NonAutoPop);
+        }
         lock = 0;
     }
 

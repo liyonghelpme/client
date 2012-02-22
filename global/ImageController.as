@@ -1,5 +1,6 @@
 class ImageController{
     const images1 = [
+    "zzz1.png", "zzz3.png", 
     "down_back.png", "down_filter.png",
     "small_downback.png", "small_downbar.png",
 
@@ -16,7 +17,7 @@ class ImageController{
     "dis.png", "discount.png", "empire3.png", "empire3_l.png",
     "yan1.png", "yan2.png", "yan3.png", "yan4.png",
     "yan5.png", "yan6.png", "yan7.png", "yan8.png",
-    "yan9.png", "yan10.png", "yan11.png", "yan12.png",
+    "yan9.png", "yan10.png", "yan11.png", "yan12.png", "yan13.png",
     "love_in.png", "love_back.png", "lover.png",
 
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",

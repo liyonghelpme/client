@@ -131,8 +131,16 @@ class TaskController extends ContextObject{
             contextNode.addlabel(global.getStaticString("taskShare"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
             contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,200).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
-            element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
-            element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            if(taskreward[0] > 0)
+            {
+                element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
+                element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            }
+            else
+            {
+                element.addsprite("caesars_big.png").anchor(50,50).pos(30,172).size(32,32);
+                element.addlabel(str(-taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            }
             element.addsprite("exp.png").anchor(50,50).pos(158,172);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,172).color(0,0,0,100);
             setbutton(4,256,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,taskcomplete,1);
@@ -145,8 +153,18 @@ class TaskController extends ContextObject{
                 element.addlabel(taskdes[3],null,18,FONT_NORMAL,234,0,ALIGN_LEFT).anchor(100,100).color(43,75,0,100).pos(240,185);
             }
             element.addlabel(taskdes[2]+"  "+str(taskstep)+"/"+str(tasknum),null,20,FONT_NORMAL,240,0,ALIGN_LEFT).pos(13,30).color(0,0,0,100);
-            element.addsprite("money_big.png").anchor(50,50).pos(30,247).size(32,32);
-            element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+
+            if(taskreward[0] > 0)
+            {
+                element.addsprite("money_big.png").anchor(50,50).pos(30,247).size(32,32);
+                element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+            }
+            else
+            {
+                element.addsprite("caesars_big.png").anchor(50,50).pos(30,247).size(32,32);
+                element.addlabel(str(-taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+            }
+
             element.addsprite("exp.png").anchor(50,50).pos(158,247);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,247).color(0,0,0,100);
             setbutton(1,256,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog);
@@ -212,7 +230,11 @@ class TaskController extends ContextObject{
     
     function taskaccomplished(r,rc,c){
         if(rc>0&&json_loads(c).get("id",1)!=0){
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",taskreward[0],-6);
+            if(taskreward[0] > 0)
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money",taskreward[0],-6);
+            else
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-taskreward[0],-6);
+                
             global.user.changeValueAnimate2(global.context[0].ub,"exp",taskreward[1],-6);
             inittask(json_loads(c).get("task",-1),0);
         }
