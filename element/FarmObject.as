@@ -222,7 +222,8 @@ trace("plant",rc,c);
                 plantNode.texture("plant"+str(objid+1)+"_4.png").size(102,64).anchor(45,103);
             }
             else{
-                plantNode.texture("plant_fail.png").size(102,64).anchor(45,103);
+                if(global.context[0].flagfriend == 0)
+                    plantNode.texture("plant_fail.png").size(102,64).anchor(45,103);
             }
         }
     }

@@ -17,7 +17,7 @@ class MagicWarning extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("pic6.jpg").anchor(50, 50).pos(80, 120);
-            element.addlabel("抱歉你的魔法值不足，是否充满？", null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
+            element.addlabel("抱歉，你的魔法值不足。是否充满？提示：魔法值每5分钟自动回复1点", null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
         }
         return element;
     }

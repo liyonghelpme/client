@@ -1,5 +1,9 @@
 class ImageController{
     const images1 = [
+    "zzz1.png", "zzz3.png", 
+    "down_back.png", "down_filter.png",
+    "small_downback.png", "small_downbar.png",
+
     "move1-1.png", "move1-2.png", "move1-3.png", "move1-4.png", 
     "move2-1.png", "move2-2.png", "move2-3.png", "move2-4.png",
     "move3-1.png", "move3-2.png", "move3-3.png", "move3-4.png",
@@ -13,8 +17,8 @@ class ImageController{
     "dis.png", "discount.png", "empire3.png", "empire3_l.png",
     "yan1.png", "yan2.png", "yan3.png", "yan4.png",
     "yan5.png", "yan6.png", "yan7.png", "yan8.png",
-    "yan9.png", "yan10.png", "yan11.png", "yan12.png",
-    "love_in.png", "love_back.png", "lover.png",
+    "yan9.png", "yan10.png", "yan11.png", "yan12.png", "yan13.png",
+    //"love_in.png", "love_back.png", "lover.png",
 
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",

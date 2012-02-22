@@ -46,7 +46,10 @@ class WarPage extends ContextObject{
     var emptyCities;
     var myEmpty;
     var mapUser = null;
+
+    var Back;
     function WarPage(){
+        Back = 0;
         contextname = "page-war";
         contextNode = null;
         rightmenu = null;
@@ -925,6 +928,9 @@ trace("warinfo",rc,c);
         }
     }
     function goback(){
+        if(Back == 1)
+            return;
+        Back = 1;
         contextname = "";
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){
@@ -996,5 +1002,6 @@ trace("warinfo",rc,c);
         left.removefromparent();
         initlock=0;
         mode= 0;
+        Back = 0;
     }
 }

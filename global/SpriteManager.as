@@ -16,6 +16,7 @@ class SpriteManager
 "animate_self_left_0_9.png","animate_self_left_0_10.png","animate_self_left_0_11.png","animate_self_left_0_12.png","animate_self_left_0_13.png","animate_self_left_1_4.png"];
     */
     var warpic = [
+"4.mp3", "0.mp3", "3.mp3",
 "wartabperson.png", "wartabperson_b.png", "wartabperson_r.png", 
 "attack_head.png","attackbeginelement.png", 
 "battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",
@@ -49,7 +50,6 @@ class SpriteManager
 "warinfotab10.png","warinfotab11.png", "warinfotab12.png",
 "warmenulistback.png","warmenutab0.png","warmenutab1.png",
 "warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
-"4.mp3", 
 "nobattletab0.png","nobattletab1.png",
 "warlostleft.jpg",
 "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
@@ -308,6 +308,12 @@ class SpriteManager
         {
             mainNode.addaction(request(name, 0, getImage, sp));
         }
+    }
+    function getMusic(name)
+    {
+        if(notdownload == 1)
+            return;
+        node().addaction(request("4.mp3"));
     }
     function getAnimation(pics)
     {

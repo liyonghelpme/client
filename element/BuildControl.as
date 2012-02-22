@@ -97,7 +97,7 @@ class BuildControl extends ContextObject{
                     back.addlabel(labelstr,null,20).anchor(0,50).pos(18,158).color(56,1,1);
                 }
                 else{
-                    trace("mode, bid", mode, place.bid);
+                    //trace("mode, bid", mode, place.bid);
                     if(mode== 0){
                         buttons.append(6);
                     }
@@ -229,7 +229,7 @@ class BuildControl extends ContextObject{
             var filter = NORMAL;
             var buttonid = buttons[k];
             if(buttonid>16&&buttonid%2==0 && buttonid != 26){//not catabutton
-                trace("wrong buttonid",buttonid);
+                //trace("wrong buttonid",buttonid);
                 buttons[k]=1-buttonid;
                 buttonid = buttons[k];
             }
@@ -237,7 +237,7 @@ class BuildControl extends ContextObject{
                 buttonid=-buttonid;
                 filter = GRAY;
             }
-            trace("buttonid", buttonid);
+            //trace("buttonid", buttonid);
             var bt = contextNode.addsprite("buttontab0.png",filter).pos(73*k+beginx,0);
             bt.addsprite("opbutton"+str(buttonid)+".png",filter).anchor(50,50).pos(46,46);
             bt.setevent(EVENT_TOUCH,buttonclicked,k);
@@ -320,7 +320,7 @@ class BuildControl extends ContextObject{
                     }
                 }
                 else if(buttons[p] == 19){//train dragon do animation
-                    trace("train dragon", place.istrain);
+                    //trace("train dragon", place.istrain);
                     place.istrain=1;
                     place.executeAnimate();//lock not train again
                     place.istrain=0;
