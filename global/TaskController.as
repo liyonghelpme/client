@@ -128,7 +128,7 @@ class TaskController extends ContextObject{
         contextNode = sprite("taskback1.png").anchor(50,50).pos(373,240);
         contextNode.addlabel(taskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(taskstep >= tasknum){
-            contextNode.addlabel("恭喜你完成了任务！快去与好友分享吧！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
+            contextNode.addlabel("恭喜你完成了任务！分享有100银币奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
             contextNode.addlabel("点击分享将会有奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
             if(taskreward[0] > 0)
