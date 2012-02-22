@@ -62,7 +62,7 @@ const stringDict=dict([
 ["makeAlly", "结盟"], ["cancelAlly", "确定取消与[NAME]的结盟？"],
 ["punish", "惩罚："], ["allyUp", "你的盟友数已经达到上限。"],
 ["add", "增加"], ["addAlly", "增加一个盟友位"], 
-["sendSuc", ", "请求发送成功！"],
+["sendSuc",  "请求发送成功！"],
 
 ]);
 

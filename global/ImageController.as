@@ -18,7 +18,7 @@ class ImageController{
     "yan1.png", "yan2.png", "yan3.png", "yan4.png",
     "yan5.png", "yan6.png", "yan7.png", "yan8.png",
     "yan9.png", "yan10.png", "yan11.png", "yan12.png", "yan13.png",
-    "love_in.png", "love_back.png", "lover.png",
+    //"love_in.png", "love_back.png", "lover.png",
 
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
     "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
