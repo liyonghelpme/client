@@ -24,10 +24,9 @@ class Warrecordpage extends ContextObject{
     function paintNode(){
         contextNode = node();
         var outnum = 0;
-        datas = global.user.getValue("warrecordlist");
+        datas = global.user.getValue("warrecordlist", []);
         length = len(datas);
-        //pagemax = (length-1)/PAGEITEMS+1;
-        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         for(var i=0;i<length;i++)
             items.append(null);
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,414).color(0,0,0,100);

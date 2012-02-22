@@ -6,6 +6,38 @@ class SpriteManager
     var self;
     var animate = [];
     var downStartTime;
+
+    //Download 
+    const LoadingPic = [
+        "down_back.png", "down_filter.png",
+        "small_downback.png", "small_downbar.png",
+
+        "move1-1.png", "move1-2.png", "move1-3.png", "move1-4.png", 
+        "move2-1.png", "move2-2.png", "move2-3.png", "move2-4.png",
+        "move3-1.png", "move3-2.png", "move3-3.png", "move3-4.png",
+        "throw1-1.png", "throw1-2.png",
+        "throw2-1.png", "throw2-2.png",
+        "throw3-1.png", "throw3-2.png",
+        "cataStone.png", "catasel.png", "cataunsel.png", "opbutton26.png", 
+        "flycatapult.png",
+        "camp9.png", "camp10.png", "camp11.png", 
+        "dialogelement_military3.png",
+        "dis.png", "discount.png", "empire3.png", "empire3_l.png",
+        "yan1.png", "yan2.png", "yan3.png", "yan4.png",
+        "yan5.png", "yan6.png", "yan7.png", "yan8.png",
+        "yan9.png", "yan10.png", "yan11.png", "yan12.png",
+        "love_in.png", "love_back.png", "lover.png",
+
+        "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
+        "flyboundary.png", "personboard1.png", "flymana.png", "magic_bar.png", "mana_bar.png", "magic_big.png",
+        "empire2.png", "empire2_l.png", "upgrade.png",
+        "dialogelement_state3.png", "dialogelement_state4.png",
+        "chargeBack.png", "chargeLeft.jpg", "timeLeft.png",
+        "dialogelement_military2.png","dialogelement_state2.png","dialogelement_state3.png", "dialogelement_state4.png","soldier3_1.png","soldier3_2.png","soldier3_3.png", "magic_bar.png", "magic_big.png",
+        "buyelement20.png", "buyelement21.png",
+        "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
+     ];
+
     /*
     var animate = [
 "animate_self_left_2_4.png","animate_enemy_1_1.png","dialogback_attack.png",
@@ -16,46 +48,49 @@ class SpriteManager
 "animate_self_left_0_2.png","animate_self_left_0_3.png","animate_self_left_0_4.png","animate_self_left_0_5.png","animate_self_left_0_6.png","animate_self_left_0_8.png",
 "animate_self_left_0_9.png","animate_self_left_0_10.png","animate_self_left_0_11.png","animate_self_left_0_12.png","animate_self_left_0_13.png","animate_self_left_1_4.png"];
     */
+
+
     var warpic = [
-"4.mp3", "0.mp3", "3.mp3",
-"wartabperson.png", "wartabperson_b.png", "wartabperson_r.png", 
-"attack_head.png","attackbeginelement.png", 
-"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",
-"defence_head.png","defenceback.jpg",
-"dialogback_warabout.png","dialogtab_warabout0.png", "dialogtab_warabout1.png", 
-"flagother.png", "flagempty.png", 
-"mapelement0.png","mapelement1.png","mapelement2.png","mapelement3.png",
-"mapempirelv1.png", "mapempirelv1_self.png", 
-"mapempirelv2.png", "mapempirelv2_self.png",
-"mapempirelv3.png","mapempirelv3_self.png",
-"mapempirelv4.png","mapempirelv4_self.png",
-"mapempirelv5.png","mapempirelv5_self.png",
-"mapempirelv6.png","mapempirelv6_self.png",
-"mapempirelv7.png","mapempirelv7_self.png",
-"mapobj0lv1.png","mapobj0lv2.png","mapobj0lv3.png",
-"mapobj1lv1.png","mapobj1lv2.png","mapobj1lv3.png",
-"mapobj2lv1.png","mapobj2lv2.png","mapobj2lv3.png",
-"mapobj3lv1.png","mapobj3lv2.png","mapobj3lv3.png",
-"mapobj4lv1.png","mapobj4lv2.png","mapobj4lv3.png",
-"moveback.png","moveblock.png",
-"nobi0.png","nobi1.png","nobi2.png","nobi3.png","nobi4.png","nobi5.png","nobi6.png","nobi7.png","nobi8.png","nobi9.png","nobi10.png","nobi11.png","nobi12.png","nobi13.png","nobi14.png","nobi15.png","nobi16.png","nobi17.png","nobi18.png",
-"opbutton12.png","opbutton13.png","opbutton14.png","opbutton15.png",
-"spyback.jpg",
-"spyelement0.png","spyelement1.png","spyelement2.png","spyelement3.png",
-"spyresultback.jpg","spytab0.png","spytab1.png",
-"warabout0.png","warabout1.png", 
-"warbutton00.png","warbutton01.png",
-"warbutton10.png","warbutton11.png",
-"warbutton20.png","warbutton21.png",
-"warinfotab00.png","warinfotab01.png", "warinfotab02.png",
-"warinfotab10.png","warinfotab11.png", "warinfotab12.png",
-"warmenulistback.png","warmenutab0.png","warmenutab1.png",
-"warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
-"nobattletab0.png","nobattletab1.png",
-"warlostleft.jpg",
-"warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
-"warloseelement.jpg", "warloseelement2.jpg",
-];
+    "4.mp3", "0.mp3", "3.mp3",
+    "wartabperson.png", "wartabperson_b.png", "wartabperson_r.png", 
+    "attack_head.png","attackbeginelement.png", 
+    "battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",
+    "defence_head.png","defenceback.jpg",
+    "dialogback_warabout.png","dialogtab_warabout0.png", "dialogtab_warabout1.png", 
+    "flagother.png", "flagempty.png", 
+    "mapelement0.png","mapelement1.png","mapelement2.png","mapelement3.png",
+    "mapempirelv1.png", "mapempirelv1_self.png", 
+    "mapempirelv2.png", "mapempirelv2_self.png",
+    "mapempirelv3.png","mapempirelv3_self.png",
+    "mapempirelv4.png","mapempirelv4_self.png",
+    "mapempirelv5.png","mapempirelv5_self.png",
+    "mapempirelv6.png","mapempirelv6_self.png",
+    "mapempirelv7.png","mapempirelv7_self.png",
+    "mapobj0lv1.png","mapobj0lv2.png","mapobj0lv3.png",
+    "mapobj1lv1.png","mapobj1lv2.png","mapobj1lv3.png",
+    "mapobj2lv1.png","mapobj2lv2.png","mapobj2lv3.png",
+    "mapobj3lv1.png","mapobj3lv2.png","mapobj3lv3.png",
+    "mapobj4lv1.png","mapobj4lv2.png","mapobj4lv3.png",
+    "moveback.png","moveblock.png",
+    "nobi0.png","nobi1.png","nobi2.png","nobi3.png","nobi4.png","nobi5.png","nobi6.png","nobi7.png","nobi8.png","nobi9.png","nobi10.png","nobi11.png","nobi12.png","nobi13.png","nobi14.png","nobi15.png","nobi16.png","nobi17.png","nobi18.png",
+    "opbutton12.png","opbutton13.png","opbutton14.png","opbutton15.png",
+    "spyback.jpg",
+    "spyelement0.png","spyelement1.png","spyelement2.png","spyelement3.png",
+    "spyresultback.jpg","spytab0.png","spytab1.png",
+    "warabout0.png","warabout1.png", 
+    "warbutton00.png","warbutton01.png",
+    "warbutton10.png","warbutton11.png",
+    "warbutton20.png","warbutton21.png",
+    "warinfotab00.png","warinfotab01.png", "warinfotab02.png",
+    "warinfotab10.png","warinfotab11.png", "warinfotab12.png",
+    "warmenulistback.png","warmenutab0.png","warmenutab1.png",
+    "warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
+    "nobattletab0.png","nobattletab1.png",
+    "warlostleft.jpg",
+    "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
+    "warloseelement.jpg", "warloseelement2.jpg",
+    ];
+
     var DragonPic = [
     "earth-1-10.png", "earth-1-11.png", "earth-1-12.png", "earth-1-13.png",
     "earth-1-1.png", "earth-1-2.png", "earth-1-3.png", "earth-1-4.png", 
@@ -195,12 +230,7 @@ class SpriteManager
         notdownload = 1;
         trace("decide to download");
         mainNode.addaction(request(ToDown[0], 0, finDownload));
-        /*
-        for(var i = 0; i < len(ToDown); i++)
-        {
 
-        }
-        */
         timeisend = 0;
         global.timer.addlistener(global.timer.currenttime+99999, self);
         global.context[0].contextNode.parent().add(downloadNode);
@@ -228,6 +258,7 @@ class SpriteManager
     }
     function finDownload(name, force, param)
     {
+        downStartTime = time();
         downloadLen--;
         ToDown.pop(0);
         if(len(ToDown) > 0)
@@ -249,6 +280,7 @@ class SpriteManager
         showWord -= 1;
         if(showWord < 0 )
             showWord = 0;
+        /*
         var cur = time();
         if((cur-downStartTime) > 15*1000)
         {
@@ -258,6 +290,7 @@ class SpriteManager
             mainNode.stop(); 
             finDownload(null, 0, null);
         }
+        */
     }
     function getNewVersion(name, force, param)
     {

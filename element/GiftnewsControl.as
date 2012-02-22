@@ -26,7 +26,7 @@ class GiftnewsControl extends ContextObject{
         newspage = contextNode.addlabel(global.getStaticString("loading_str"),null,30).anchor(50,50).pos(290,227).color(0,0,0,100);
         pagemax = 1;
         length = global.user.getValue("newgift");
-        pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         items = global.user.getValue("buffgift");
         if(items == 0){
             items = new Array(0);

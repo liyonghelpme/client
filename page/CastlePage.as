@@ -1620,7 +1620,7 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 ) //&& initlock == 0)
+        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
         {
             addManaLock = 1;
             trace("manatime", now, global.user.getValue("manatime"));
@@ -1635,9 +1635,10 @@ class CastlePage extends ContextObject{
                 global.user.setValue("manatime", now);
             }
         }
+
         if(initlock == 0){
             initlock = -1;
-            if(newstate < 3&&global.flagnew == 0){
+            if(newstate < 3 && global.flagnew == 0){
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
             else{//new user not popup foodlost
@@ -1649,15 +1650,6 @@ class CastlePage extends ContextObject{
                 {
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
                 }
-
-                /*
-                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
-                    global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
-                }
-                else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
-                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
-                }
-                */
             }
             global.user.flaginit = 0;
             global.user.setValue("plantpage",1);

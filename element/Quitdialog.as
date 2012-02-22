@@ -13,8 +13,19 @@ class Quitdialog extends ContextObject{
     }
 
     function closedialog(node,event,p){
-        if(p==1) quitgame();
-        else global.popContext(null);
+        if(p==1){
+            quitgame();
+        }
+        else{
+            trace("new?", global.flagnew);
+            if(global.flagnew == 1)
+            {
+                contextNode.removefromparent();
+            }
+            else
+                global.popContext(null);
+            global.Quit = 0;
+        }
     }
 
     function deleteContext(){

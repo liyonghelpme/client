@@ -20,7 +20,6 @@ class NewControl extends ContextObject{
     var opobj;
     var lock;
     function NewControl(n){
-        //n=2;
         contextNode = null;
         opobj = null;
         posi = [0,0];
@@ -29,7 +28,7 @@ class NewControl extends ContextObject{
         newstate = n;
         strnum = strstate[n];
         newstr = newstrs[strnum];
-        trace("newstr", newstr);
+        //trace("newstr", newstr);
         contextname = "control-newuser";
     }
     
@@ -53,9 +52,19 @@ class NewControl extends ContextObject{
         }
         trace(cmd,param);
     }
-    
     function keydownevent(n,e,p,kc){
-        return 1;
+        if(kc == 4)
+        {
+            if(global.Quit == 0)
+            {
+                global.Quit = 1;
+                var quit = new Quitdialog();
+                quit.self = quit;
+                global.shotscreen.add(quit.getNode());
+                //global.pushContext(self, new Quitdialog(), NewQuit);
+            }
+        }
+        return 0;
     }
     
     function paintNode(){
@@ -63,8 +72,8 @@ class NewControl extends ContextObject{
         contextNode = sprite();
         contextNode.setevent(EVENT_KEYDOWN,keydownevent);
         circle =contextNode.addsprite("circle.png").anchor(50,50);
-        //pn.setevent(EVENT_HITTEST,ctest);
         circle.setevent(EVENT_UNTOUCH,ctest);
+
         point = contextNode.addsprite("point1.png").anchor(50,100);
         point.addaction(repeat(animate(700,"point1.png","point2.png","point3.png","point4.png","point5.png")));
         girl = sprite();
@@ -74,7 +83,7 @@ class NewControl extends ContextObject{
         if(newstate == 0){
             var back = sprite("storyback.png").setevent(EVENT_UNTOUCH,donothing);
             contextNode.add(back,3);
-            var content= back.addsprite("storytext.png",ARGB_8888).anchor(50,0).pos(400,480);
+            var content = back.addsprite("storytext.png",ARGB_8888).anchor(50,0).pos(400,480);
             back.addsprite("storybacktop.png",ARGB_8888);
             back.addsprite("storybackbottom.png",ARGB_8888).anchor(0,100).pos(0,480);
             back.addsprite("skip3.png").anchor(100,100).pos(790,470).setevent(EVENT_UNTOUCH,rm);
@@ -96,15 +105,15 @@ class NewControl extends ContextObject{
             var mx = PBX+posi[0]*(-34)+posi[1]*30+sizeid*2;
             var my = PBY-1+posi[0]*17+posi[1]*16-(33*sizeid+1)/2;
             var p = global.context[0].contextNode.node2world(mx,my);
-            trace(p);
+            //trace(p);
             global.context[0].nodeMove(mp[0]-p[0],mp[1]-p[1]);
         }
         else{
             //if(opobj!=null){
-            trace(mp);
+            //trace(mp);
             var ep = global.context[1].mplace[7];
             p = global.context[1].baseNode.node2world(ep[0],ep[1]);
-            trace(p);
+            //trace(p);
             global.context[1].nodeMove(mp[0]-p[0],mp[1]-p[1]);
             //}
         }
@@ -133,30 +142,6 @@ class NewControl extends ContextObject{
         }
         setnotice(flag);
     }
-    
-    function colorWords(str, width, ew)
-    {
-        var words = str.split(" ");
-        var lines = [];
-        var sum = 0;
-        var l = "";
-        for(var i = 0; i < len(words); i++)
-        {
-            sum = len(l) + len(words[i])+1;
-            if(sum*ew > width)
-            {
-                lines.append(l);
-                l = words[i];
-                sum = 0;
-            }
-            else
-            {
-                l += " "+words[i]; 
-            }
-        }
-        lines.append(l);
-        return lines;
-    }
         
     function setnotice(flag){
         var strs = noticetext.split("+");
@@ -174,7 +159,7 @@ class NewControl extends ContextObject{
                     trace("lines ", li);
                     for(var j = 0; j < len(li); j++)
                     {
-                        trace("newline", li[j]);
+                        //trace("newline", li[j]);
                         if(li[j].rfind("[") == -1)
                         {
                             notice.addlabel(li[j],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*j).color(0,0,0,100);
@@ -184,23 +169,13 @@ class NewControl extends ContextObject{
                             var end = li[j].split("]");
                             var begin = end[0].split("[");
                             var lenb = len(begin[0]);
-                            trace("begin end", begin, end);
+                            //trace("begin end", begin, end);
                             var pre = notice.addlabel(begin[0],null,20).pos(40,30+24*j).color(0,0,0,100);
                             var mid = notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*8, 30+24*j).color(100,0,0,100);
                             notice.addlabel(end[1],null,20).pos(40+(len(end[0]))/1*10,30+24*j).color(0,0,0,100);
 
                         }
                     }
-                
-                    /*
-                    var end = strs[i].split("]");
-                    var begin = end[0].split("[");
-                    notice.addlabel(begin[0],null,20).pos(40,30+24*i).color(0,0,0,100);
-                    //chinese utf8 len = 3
-                    //english character len = 1
-                    notice.addlabel("["+begin[1]+"]",null,20).pos(40+len(begin[0])/1*20,30+24*i).color(100,0,0,100);
-                    notice.addlabel(end[1],null,20).pos(60+len(end[0])/3*20,30+24*i).color(0,0,0,100);
-                    */
                 }
             }
         }
@@ -240,6 +215,8 @@ class NewControl extends ContextObject{
     }
     
     function ctest(n,e,p,x,y){
+        if(global.Quit == 1)
+            return;
         var dtime = 0;
         var offx = x-400;
         var offy = y-240;
@@ -350,6 +327,8 @@ class NewControl extends ContextObject{
     }
     
     function checkinit(timer){
+        if(global.Quit == 1)
+            return;
         if(global.context[1].initlock != -1){
             return 0;
         }

@@ -21,13 +21,7 @@ const buildcontext = [
 //statue
 2600,2601,2602,2603,2604,2605];
 
-const darkColorAlpha = 65;
-const AutoPop = 1;
-const NonAutoPop = 0;
-const NotAdd = 2;
 
-const FeedMoney = 100;
-const OpenMoney = 100;
 
 //const BASE_URL = "http://223.4.87.9:8000/";
 const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
@@ -481,6 +475,8 @@ class DataController{
 
 
 class GlobalController{
+    var Quit;
+
     var emptyCitiesInGlo = null;
     var mapUsers = null;
     var self;
@@ -624,6 +620,7 @@ class GlobalController{
     */
     
     function GlobalController(){
+        Quit = 0;
         flagshownew = 0;
         lockpage = null;
         var s = getscene();
@@ -746,10 +743,12 @@ class GlobalController{
             dark[len(dark)-1].visible(1);
     }
 
+    var newQuit = null;
     function pushContext(re,co,auto){
         if(currentLevel>=0 && context[currentLevel].contextname.rfind("control")==0){
             popContext(null);
         }
+        //New Control no black
         if(auto == NotAdd){
             flagnew = 1;
             newcontext = co;
@@ -768,19 +767,28 @@ class GlobalController{
         co.contextLevel = currentLevel;
         if(auto == NotAdd)
             shotscreen.add(co.getNode());
+        else if(auto == NewQuit)
+        {
+            shotscreen.add(co.getNode());
+            newQuit = co;
+        }
         else if(currentLevel == 0)
             screen.add(co.getNode());
         else
             dialogscreen.add(co.getNode());
+        
+        //NewControl
         if(flagnew == 0 || auto == NotAdd)
             co.getNode().focus(1);
+        
         context[0].hiddentime = 10;
+
+        //Handle task
         if(task.tasktype==2){
             if(task.taskreq == co.contextname){
                 task.inctaskstep(1);
             }
         }
-        //trace("wartask", wartask.wartasktype, wartask.wartaskreq, co.contextname);
         if(wartask.wartasktype==2){
             if(wartask.wartaskreq == co.contextname){
                 wartask.incwartaskstep(1);
@@ -789,7 +797,11 @@ class GlobalController{
     }
 
     function popContext(re){
-        if(re == -999){//new user task 
+        if(re == NewQuitPop)
+        {
+            newQuit.deleteContext();
+        }
+        else if(re == NewPop){//new user task 
             newcontext.deleteContext();
             flagnew = 0;
             context[currentLevel].getNode().focus(1);
@@ -804,7 +816,7 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(re == -2000)
+            if(re == DownLoadPop)
             {
                 sp.DecideToDown();
                 return;

@@ -39,7 +39,7 @@ class Defencelistpage extends ContextObject{
         var dtext=contextNode.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(593,87).color(0,0,0,100);
         global.user.initText("citydefence",dtext);
         contextNode.addsprite("adddefence.png").anchor(50,50).pos(695,87).setevent(EVENT_UNTOUCH,adddefence);
-        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,414).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,414).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(547,414).setevent(EVENT_UNTOUCH,choosePage,1);

@@ -101,11 +101,6 @@ class ImageController{
     var needloading;
     function ImageController(){
         needloading=-1;
-        /*if(sysinfo(21)>=3){
-            var taskfile = c_res_file("resfile.txt");
-            var taskstr = c_file_op(C_FILE_READ,taskfile);
-            images1 = taskstr.split(",");
-        }*/
         node().addaction(request("build600.png",1,null));
         node().addaction(request("build601.png",1,null));
     }

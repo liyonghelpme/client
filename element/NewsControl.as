@@ -31,7 +31,7 @@ class NewsControl extends ContextObject{
     function setlength(r,rc,c){
         if(rc!=0){
             length = json_loads(c).get("id",0);
-            pagemax = (length-1)/PAGEITEMS+1;
+            pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
             choosePage(0,0,0);
         }
     }

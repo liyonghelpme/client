@@ -280,6 +280,7 @@ var Dicts =
 ["CataExplain", "Catapults only can be used when attack others, and at that time it will have extra ATK. [NAME] ATK [ATK]"],
 ["CardAddOne", "when the card upgrade, your magic capacity will add one."],
 ["CardAddTwo", "when the card upgrade to top level, your magic capacity will add two."],
+["sendSuc", "request successfully sent!"],
 ["", ""]
 ];
 
@@ -362,14 +363,14 @@ var Tasks =
 [dict([["req", "build"], ["des", ["Build Farmland!", "You need more food to support your population.", "Build ordinary farmland"]], ["checknum", 1], ["lev", 3], ["pair", ["ground_id", 1]], ["reward", [200, 5, 0]], ["type", 0], ["id", 0]]),
 dict([["req", "planting"], ["des", ["Plant wheat", "You need more food to support your people.", "planting wheat", "Tip:Click on a free plot of farmland, then tap the seed icon and choose wheat"]], ["checknum", 3], ["lev", 3], ["pair", ["object_id", 0, "type", 0]], ["reward", [300, 15, 0]], ["type", 0], ["id", 1]]),
 dict([["req", "money"], ["des", ["Collect taxes ", "Come on!Let's go collecting taxes from stores", "collecting taxes from bakery"]], ["checknum", 100], ["lev", 3], ["pair", ["bid", 0]], ["reward", [200, 15, 0]], ["type", 1], ["id", 2]]),
-dict([["req", "dialog-territoryinfo"], ["des", ["Check Territory Info", "It is important to be familiar with your territory and supplies. Click on your castle to check your stats.", "Check Territory Information", "hint:click castle to check your territory information"]], ["checknum", 1], ["lev", 3], ["reward", [100, 5, 0]], ["type", 2], ["id", 3]]),
+dict([["req", "dialog-territoryinfo"], ["des", ["Check Territory Info", "Be familiar with your territory. Click on your castle.", "Check Territory Information", "hint:click castle to check your territory information"]], ["checknum", 1], ["lev", 3], ["reward", [100, 5, 0]], ["type", 2], ["id", 3]]),
 dict([["req", "dialog-help"], ["des", ["View HELP!", "Have a question? Just ask! View HELP for some tips, and you may even get a pleasant surprise.", "View HELP!", "Tip: click the menu icon, then click the help icon"]], ["checknum", 1], ["lev", 3], ["reward", [100, 5, 0]], ["type", 2], ["id", 4]]),
 dict([["req", "soldiers"], ["des", ["Training Infantry!", "There are many dangers lurking outside, train soldiers to defend your territory!", "training infantry", "hint:click free infantry camp first, then click infantry icon"]], ["checknum", 30], ["lev", 4], ["pair", ["btype", 0, "objtype", 0]], ["reward", [500, 20, 0]], ["type", 1], ["id", 5]]),
 dict([["req", "defeatmonster"], ["checknum", 1], ["des", ["Defeat monsters", "Defeat monsters,for the glory!", "defeat monsters", "hint:first click the map icon,then choose one monster to attack"]], ["lev", 4], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 6]]),
 dict([["req", "expand"], ["des", ["Expand your territory", "The larger your territory is, the stronger your empire is!", "expand your territory", "hint:click the building dialog box, then click the expand button on the right to choose the expansion type"]], ["checknum", 1], ["lev", 4], ["pair", []], ["reward", [600, 20, 0]], ["type", 0], ["id", 7]]),
 dict([["req", "getfriend"], ["des", ["Visit Caesar's territory", "Visit Caesar's territory to gain rewards!", "visit Caesar's territory", "hint:click Caesar's icon in the friends list"]], ["checknum", 1], ["lev", 5], ["pair", ["otherid", 0]], ["reward", [150, 5, 0]], ["type", 0], ["id", 8]]),
 dict([["req", "dialog-circle"], ["des", ["Add friends", "Make Friends and Grow Stronger!", "add friends in Circle", "hint:click the friends list first,then click the circle icon."]], ["checknum", 1], ["lev", 5], ["reward", [700, 10, 0]], ["type", 2], ["id", 9]]),
-dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "Help out your friends, send them gifts!", "send a gift", "hint:visit your friend's territory and tap the gift icon on the right to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]),
+dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "Help out your friends, send them gifts!", "send a gift", "hint:visit your friend's territory and tap the gift icon on the left to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]),
 dict([["req", "selectgift"], ["des", ["Request Gift", "Ask for help when you need it!", "request a gift", "Hint: visit your friends' territory and tap the gift icon on the right, choose a gift and ask for it"]], ["checknum", 1], ["lev", 5], ["pair", ["askorgive", 1]], ["reward", [300, 10, 0]], ["type", 0], ["id", 11]]),
 dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint:click the treasure chest on the left,you can ask your friends for help,or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]),
 dict([["des", ["Rate", "If you enjoy the Miracle empire, please rate it in Android Market, in return, you will get some Caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [800, 30, 0]], ["type", 3], ["id", 13]]),
@@ -384,7 +385,7 @@ dict([["req", "planting"], ["checknum", 4], ["des", ["Plant corns", "You need mo
 dict([["req", "build"], ["des", ["Summon Goddess", "God statues are very useful; they can perform magic and help in other ways!", "summon harvest Goddess", "hint:click the building icon first,then click the miracle page to build Goddess of harvest"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 400]], ["reward", [1000, 40, 0]], ["type", 0], ["id", 28]]),
 dict([["req", "godbless"], ["des", ["Perform magic", "Use a God statue's magic, let's see what happens!", "harvest Goddess performs magic"]], ["checknum", 1], ["lev", 8], ["pair", ["godtype", 0]], ["reward", [1000, 30, 1]], ["type", 0], ["id", 29]]),
 dict([["req", "planting"], ["des", ["Plant pineapple", "You need more food to support your people.", "plant pineapple"]], ["checknum", 6], ["lev", 8], ["pair", ["object_id", 3, "type", 0]], ["reward", [1200, 36, 0]], ["type", 0], ["id", 30]]),
-dict([["req", "build"], ["des", ["Build house", "You have more strength in numbers. Try to increase your population. Build more homes for people to live in!", "build a Magical Manor"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 160]], ["reward", [1000, 50, 1]], ["type", 0], ["id", 31]]),
+dict([["req", "build"], ["des", ["Build house", "You have more strength in numbers. Build more homes for people to live in!", "build a Magical Manor"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 160]], ["reward", [1000, 50, 1]], ["type", 0], ["id", 31]]),
 dict([["checknum", 1], ["des", ["Show your territory", "Take a screenshot of your territory and share your picture with your friends.", "screenshot and share", "hint:click menu button first and then click screenshot button"]], ["lev", 8], ["reward", [800, 30, 0]], ["type", 5], ["id", 32]]),
 dict([["des", ["Help friends", "Help your friends out(e.g. remove pests from their farmland, and you will be rewarded.", "eliminate negative state for friends", "hint:visit your friends' territory and help them killing worms, weeding,repairing or cleaning"]], ["checknum", 1], ["lev", 9], ["reward", [1200, 40, 0]], ["type", 6], ["id", 35]]),
 dict([["req", "updatebuilding"], ["des", ["Upgrade bakery", "Advanced building will largely encourage the development of your territory!", "upgrade a normal bakery"]], ["checknum", 1], ["lev", 9], ["pair", ["ground_id", 301]], ["reward", [1000, 40, 0]], ["type", 0], ["id", 36]]),
@@ -526,5 +527,24 @@ var Statics =
 "You can only feed a dragon once a day^_^",
 "[NAME]'s dragon has been fed by [NUM] friends, thanks for helping^_^"
 ];
+
+
+const darkColorAlpha = 65;
+const AutoPop = 1;
+const NonAutoPop = 0;
+const NotAdd = 2;
+const NewQuit = 3;
+
+const NewPop = -999;
+const DownLoadPop = -2000;
+const NewQuitPop = -5000;
+
+
+const FeedMoney = 100;
+const OpenMoney = 100;
+
+const InCastalPage = 0;
+const screenWidth = 800;
+const screenHeight = 450;
 
 

@@ -31,7 +31,7 @@ class Rankingpage extends ContextObject{
         else{
             length = len(global.ppyuserdict)-2;
         }
-        pagemax = (length+1)/PAGEITEMS+1;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         items = global.user.getValue("buffpage"+str(mode*2+type));
         if(items == 0){
             items = new Array(0);
