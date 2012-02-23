@@ -64,7 +64,8 @@ const stringDict=dict([
 ["punish", "惩罚："], ["allyUp", "你的盟友数已经达到上限。"],
 ["add", "增加"], ["addAlly", "增加一个盟友位"], 
 ["sendSuc",  "请求发送成功！"],
-
+["downloading", "正在下载图片..."],
+["", ""],
 ]);
 
 

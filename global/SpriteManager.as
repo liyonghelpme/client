@@ -98,24 +98,6 @@ class SpriteManager
 
         downloadNode = sprite("small_downback.png").pos(700, 240);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
-
-        /*
-        var vf = c_res_file("version");
-        if(vf == null)
-        {
-            node().addaction(request("version", 1, getNewVersion));
-        }
-        else
-        {
-            //version code != new version code
-            var ver = c_file_open(C_FILE_READ, c_res_file("version"));
-            ver = json_loads(ver);
-            if(ver != null)
-            {
-                oldEdition = ver.get("id");
-            }
-        }
-        */
     }
 
     var totalLen;
@@ -156,7 +138,10 @@ class SpriteManager
     function getDownload(arr, callback, p)
     {
         if(notdownload == 1)
+        {
+            global.pushContext(null, new Warningdialog([global.getStaticString("downloading"), null, 6]), 0);
             return;
+        }
         ToDown = [];
         trace("get download");
         var downloadLen = len(arr);
