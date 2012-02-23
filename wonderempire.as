@@ -1,17 +1,4 @@
 import global.INCLUDE;
-/*
-import page.CastlePage;
-import element.Simpledialog;
-import element.MenuControl;
-import element.Feedbackdialog;
-import element.Medaldialog;
-import global.TaskController;
-import global.WarTaskController;
-import element.Levelupdialog;
-import global.HttpController;
-import global.UserController;
-import global.ImageController;
-*/
 
 var myid;
 if(ppy_connected()!=1){
@@ -98,6 +85,8 @@ function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
     castle.initialFactorys(backNode);
+    //fetch 1000 pictures 
+    //spriteManager.getAllPic();
 }
 
 function setlogin(){
@@ -112,12 +101,14 @@ for(var t = 0; t < len(allTex); t++)
         node().addaction(request(allTex[t],1,null));
     }
 }
+
+
 var curTex = 0;
 var oneceMax = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
-            if(backNode.get() < 3)
+            if(backNode.get() < 3)//New user show this pictures
             {
                 curTime += 1;
                 src.texture(allTex[curTex]);

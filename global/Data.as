@@ -110,3 +110,9 @@ const staticString = [
 "该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
 "每天你只能帮同一个好友喂养一次^_^",
 "[NAME]的宠物已经有[NUM]个好友喂养过了，谢谢帮忙^_^"];
+
+const DownWarPic = 0;
+const DownPetPic = 1;
+const DownAllPic = 2;
+const DownWarn = -2000;
+const DownAniPic = 3;

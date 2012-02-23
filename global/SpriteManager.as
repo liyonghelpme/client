@@ -1,10 +1,3 @@
-class SpriteManager
-{
-    var oldEdition;
-    var global;
-    var downloadNode;
-    var self;
-    var animate = [];
     /*
     var animate = [
 "animate_self_left_2_4.png","animate_enemy_1_1.png","dialogback_attack.png",
@@ -15,47 +8,57 @@ class SpriteManager
 "animate_self_left_0_2.png","animate_self_left_0_3.png","animate_self_left_0_4.png","animate_self_left_0_5.png","animate_self_left_0_6.png","animate_self_left_0_8.png",
 "animate_self_left_0_9.png","animate_self_left_0_10.png","animate_self_left_0_11.png","animate_self_left_0_12.png","animate_self_left_0_13.png","animate_self_left_1_4.png"];
     */
-    var warpic = [
-"4.mp3", "0.mp3", "3.mp3",
-"wartabperson.png", "wartabperson_b.png", "wartabperson_r.png", 
-"attack_head.png","attackbeginelement.png", 
-"battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",
-"defence_head.png","defenceback.jpg",
-"dialogback_warabout.png","dialogtab_warabout0.png", "dialogtab_warabout1.png", 
-"flagother.png", "flagempty.png", 
-"mapelement0.png","mapelement1.png","mapelement2.png","mapelement3.png",
-"mapempirelv1.png", "mapempirelv1_self.png", 
-"mapempirelv2.png", "mapempirelv2_self.png",
-"mapempirelv3.png","mapempirelv3_self.png",
-"mapempirelv4.png","mapempirelv4_self.png",
-"mapempirelv5.png","mapempirelv5_self.png",
-"mapempirelv6.png","mapempirelv6_self.png",
-"mapempirelv7.png","mapempirelv7_self.png",
-"mapobj0lv1.png","mapobj0lv2.png","mapobj0lv3.png",
-"mapobj1lv1.png","mapobj1lv2.png","mapobj1lv3.png",
-"mapobj2lv1.png","mapobj2lv2.png","mapobj2lv3.png",
-"mapobj3lv1.png","mapobj3lv2.png","mapobj3lv3.png",
-"mapobj4lv1.png","mapobj4lv2.png","mapobj4lv3.png",
-"moveback.png","moveblock.png",
-"nobi0.png","nobi1.png","nobi2.png","nobi3.png","nobi4.png","nobi5.png","nobi6.png","nobi7.png","nobi8.png","nobi9.png","nobi10.png","nobi11.png","nobi12.png","nobi13.png","nobi14.png","nobi15.png","nobi16.png","nobi17.png","nobi18.png",
-"opbutton12.png","opbutton13.png","opbutton14.png","opbutton15.png",
-"spyback.jpg",
-"spyelement0.png","spyelement1.png","spyelement2.png","spyelement3.png",
-"spyresultback.jpg","spytab0.png","spytab1.png",
-"warabout0.png","warabout1.png", 
-"warbutton00.png","warbutton01.png",
-"warbutton10.png","warbutton11.png",
-"warbutton20.png","warbutton21.png",
-"warinfotab00.png","warinfotab01.png", "warinfotab02.png",
-"warinfotab10.png","warinfotab11.png", "warinfotab12.png",
-"warmenulistback.png","warmenutab0.png","warmenutab1.png",
-"warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
-"nobattletab0.png","nobattletab1.png",
-"warlostleft.jpg",
-"warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
-"warloseelement.jpg", "warloseelement2.jpg",
-];
-    var DragonPic = [
+class SpriteManager
+{
+    var oldEdition;
+    var global;
+    var downloadNode;
+    var self;
+    var animate = [];
+
+    const businessPic = ["room63.png"];
+
+    const warpic = [
+    "4.mp3", "0.mp3", "3.mp3",
+    "wartabperson.png", "wartabperson_b.png", "wartabperson_r.png", 
+    "attack_head.png","attackbeginelement.png", 
+    "battle1.png","battle2.png","battle3.png","battle4.png","battle5.png","battle6.png","battle7.png","battle8.png","battle9.png",
+    "defence_head.png","defenceback.jpg",
+    "dialogback_warabout.png","dialogtab_warabout0.png", "dialogtab_warabout1.png", 
+    "flagother.png", "flagempty.png", 
+    "mapelement0.png","mapelement1.png","mapelement2.png","mapelement3.png",
+    "mapempirelv1.png", "mapempirelv1_self.png", 
+    "mapempirelv2.png", "mapempirelv2_self.png",
+    "mapempirelv3.png","mapempirelv3_self.png",
+    "mapempirelv4.png","mapempirelv4_self.png",
+    "mapempirelv5.png","mapempirelv5_self.png",
+    "mapempirelv6.png","mapempirelv6_self.png",
+    "mapempirelv7.png","mapempirelv7_self.png",
+    "mapobj0lv1.png","mapobj0lv2.png","mapobj0lv3.png",
+    "mapobj1lv1.png","mapobj1lv2.png","mapobj1lv3.png",
+    "mapobj2lv1.png","mapobj2lv2.png","mapobj2lv3.png",
+    "mapobj3lv1.png","mapobj3lv2.png","mapobj3lv3.png",
+    "mapobj4lv1.png","mapobj4lv2.png","mapobj4lv3.png",
+    "moveback.png","moveblock.png",
+    "nobi0.png","nobi1.png","nobi2.png","nobi3.png","nobi4.png","nobi5.png","nobi6.png","nobi7.png","nobi8.png","nobi9.png","nobi10.png","nobi11.png","nobi12.png","nobi13.png","nobi14.png","nobi15.png","nobi16.png","nobi17.png","nobi18.png",
+    "opbutton12.png","opbutton13.png","opbutton14.png","opbutton15.png",
+    "spyback.jpg",
+    "spyelement0.png","spyelement1.png","spyelement2.png","spyelement3.png",
+    "spyresultback.jpg","spytab0.png","spytab1.png",
+    "warabout0.png","warabout1.png", 
+    "warbutton00.png","warbutton01.png",
+    "warbutton10.png","warbutton11.png",
+    "warbutton20.png","warbutton21.png",
+    "warinfotab00.png","warinfotab01.png", "warinfotab02.png",
+    "warinfotab10.png","warinfotab11.png", "warinfotab12.png",
+    "warmenulistback.png","warmenutab0.png","warmenutab1.png",
+    "warrecord.png","warrecordcell.png", "warrecordcell0.jpg", "warrecordcell1.jpg", 
+    "nobattletab0.png","nobattletab1.png",
+    "warlostleft.jpg",
+    "warwinelement.jpg", "warwinelement2.jpg", "warwinleft.jpg",
+    "warloseelement.jpg", "warloseelement2.jpg",
+    ];
+    const DragonPic = [
     "earth-1-10.png", "earth-1-11.png", "earth-1-12.png", "earth-1-13.png",
     "earth-1-1.png", "earth-1-2.png", "earth-1-3.png", "earth-1-4.png", 
     "earth-1-5.png", "earth-1-6.png", "earth-1-7.png", "earth-1-8.png", 
@@ -87,6 +90,7 @@ class SpriteManager
     var mainNode = node();
     var notdownload = 0;
     var downbar;
+
     function SpriteManager(g)
     {
         global = g;
@@ -95,6 +99,7 @@ class SpriteManager
         downloadNode = sprite("small_downback.png").pos(700, 240);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
 
+        /*
         var vf = c_res_file("version");
         if(vf == null)
         {
@@ -110,18 +115,28 @@ class SpriteManager
                 oldEdition = ver.get("id");
             }
         }
+        */
     }
-    var downloadLen;
+
     var totalLen;
     function warBack()
     {
         global.pushContext(global.context[0],global.context[0].warpage,0);
         global.context[0].warpage.initialdata();
     }
+    function doNothing()
+    {
+        
+    }
+    function getAllPic()
+    {
+        var arr = [] + businessPic + warpic + DragonPic;
+        getDownload(arr, doNothing, DownAllPic);
+    }
     function getWar()
     {
-        var arr = animate + warpic;
-        getDownload(arr, warBack, 0);
+        var arr = [] + warpic;
+        getDownload(arr, warBack, DownWarPic);
     }
 
     var dragonPlace;
@@ -134,8 +149,8 @@ class SpriteManager
     {
         trace("getDragon");
         dragonPlace = place;
-        var arr = DragonPic;
-        getDownload(arr, dragonBack, 1);
+        var arr = [] + DragonPic;
+        getDownload(arr, dragonBack, DownPetPic);
     }
     var ToDown = [];
     function getDownload(arr, callback, p)
@@ -144,37 +159,29 @@ class SpriteManager
             return;
         ToDown = [];
         trace("get download");
-        downloadLen = len(arr);
+        var downloadLen = len(arr);
         totalLen = downloadLen;
         var i;
-        for(i = 0; i < len(arr); i++)
+        
+        var needToDown = 0;
+        for(i = 0; i < len(arr); )
         {
-            var im = fetch(arr[i]);
+            var im = fetch(arr[0]);
             if(im != null)
             {
                 downloadLen--;
+                arr.pop(0);
             }
             else
             {
-                trace("down", arr[i]);
-                /*
-                if(notdownload == 0)
-                {
-                    timeisend = 0;
-                    global.timer.addlistener(global.timer.currenttime+99999, self);
-                    global.context[0].contextNode.parent().add(downloadNode);
-                    //downloadNode.addlabel("正在下载图片", null, 15, FONT_BOLD).pos(0, -20).color(0, 0, 0);
-
-                    //downloadNode.setevent(EVENT_UNTOUCH, showDia);
-                }
-                */
-                notdownload = 1;
-                //mainNode.addaction(request(arr[i], 0, finDownload));    
-                ToDown.append(arr[i]);
+                trace("down", arr[0]);
+                needToDown = 1;
+                ToDown = arr;
+                break;
             }
         }   
 
-        if(notdownload == 0)
+        if(needToDown == 0)
         {
             trace("no need download");
             callback();
@@ -183,45 +190,44 @@ class SpriteManager
         {
             //SpriteManager warning !
             trace("warning dialog");
-            notdownload = 0;
-            if(p == 0)//download war picture
+            if(p == DownWarPic)//download war picture
             {
-                global.pushContext(global.context[0], new Warningdialog(["开启战争模式需要下载相关图片，是否下载？", -2000, 3]), 0); 
+                global.pushContext(global.context[0], new Warningdialog(["开启战争模式需要下载相关图片，是否下载？", DownWarn, 3]), 0); 
             }
-            else if(p == 1)//download dragon picture
+            else if(p == DownPetPic)//download dragon picture
             {
-                global.pushContext(global.context[0], new Warningdialog(["召唤宠物需要下载相关图片，是否下载？", -2000, 6]), 0);        
+                global.pushContext(global.context[0], new Warningdialog(["召唤宠物需要下载相关图片，是否下载？", DownWarn, 6]), 0);        
+            }
+            //when it's safe to download ?
+            else if(p == DownAllPic)
+            {
+                downloadAllPic();
+            }
+            else if(p == DownAniPic)
+            {
+                DecideToDown();
             }
         }
-        /*
-        else
-        {
-            trace("start downloading", downloadLen);
-            timeisend = 0;
-            global.timer.addlistener(global.timer.currenttime+99999, self);
-            global.context[0].contextNode.parent().add(downloadNode);
-            downloadNode.setevent(EVENT_UNTOUCH, showDia);
-        }
-        */
     }
+    //When need to download All
+    function downloadAllPic()
+    {
+        trace("download All Pic", len(ToDown));
+        DecideToDown(); 
+    }
+    
     function DecideToDown()
     {
         if(notdownload == 1)
             return;
         notdownload = 1;
         trace("decide to download");
-        mainNode.addaction(request(ToDown[0], 0, finDownload));
-        /*
-        for(var i = 0; i < len(ToDown); i++)
-        {
 
-        }
-        */
+        mainNode.addaction(request(ToDown[0], 0, finDownload));
         timeisend = 0;
         global.timer.addlistener(global.timer.currenttime+99999, self);
-        global.context[0].contextNode.parent().add(downloadNode);
-        //downloadNode.addlabel("正在下载图片", null, 15, FONT_BOLD).pos(0, -20).color(0, 0, 0);
-
+        //where to show
+        global.castalPage.menu.add(downloadNode);
     }
     var progress = null;
     var pronumber = null;
@@ -245,12 +251,23 @@ class SpriteManager
     }
     function finDownload(name, force, param)
     {
-        downloadLen--;
         ToDown.pop(0);
-        if(len(ToDown) > 0)
-            mainNode.addaction(request(ToDown[0], 0, finDownload));
-            
-        if(downloadLen <= 0)//close download
+
+        while(len(ToDown) > 0)
+        {
+            var exi = fetch(ToDown[0]);
+            if(exi == null)
+            {
+                trace("download", ToDown[0]);
+                mainNode.addaction(request(ToDown[0], 0, finDownload));
+                break;
+            }
+            else
+            {
+                ToDown.pop(0);
+            }
+        }   
+        if(len(ToDown) <= 0)//close download
         {
             notdownload = 0;
             timeisend = 1;
@@ -261,48 +278,25 @@ class SpriteManager
     var timeisend = 0;
     function timerefresh()
     {
-        var rate = (totalLen-downloadLen)*48/totalLen;
+        var rate = (totalLen-len(ToDown))*48/totalLen;
         downbar.size(rate, 30);
         showWord -= 1;
         if(showWord < 0 )
             showWord = 0;
-        /*
-        if(progress != null)
-        {
-            progress.size((totalLen-downloadLen)*144/totalLen, 18);
-            pronumber.text(str(totalLen-downloadLen)+"/"+str(totalLen));
-        }
-        */
-    }
-    function getNewVersion(name, force, param)
-    {
-        /*
-        var ver = c_file_open(C_FILE_READ, c_res_file("version"));
-        if(ver == null)
-            return;
-
-        ver = json_loads(ver);
-        var newEdition = ver.get("id");
-        trace("getNew version old, new", oldEdition, newEdition);
-        if(oldEdition != newEdition)
-        {
-            var files = ver.get("files");
-            for(var i = 0; i < len(files); i++)
-            {
-                node().addaction(request(files[i], 1, update))
-            }
-        }
-        */
     }
     function update(name, force, param)
     {
     }
     function getPic(name, sp)
     {
+        if(notdownload == 1)
+            return;
+        notdownload = 1;
         var im = fetch(name);
         if(im != null)
         {
             sp.texture(im);
+            notdownload = 0;
         }
         else
         {
@@ -324,18 +318,17 @@ class SpriteManager
             if(im == null)
             {
                 arr.append(im);
-                //mainNode.addaction(request(pics[i], 0, finAni, null));
             }
         }
         if(len(arr) > 0)
-            getDownload(arr, finAni, 2);
+            getDownload(arr, finAni, DownAniPic);
     }
     function finAni(n, f, p)
     {
     }
     function getImage(name, force, sp)
     {
-        //sp.stop();
         sp.texture(name);
+        notdownload = 0;
     }
 }
