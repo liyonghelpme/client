@@ -1592,7 +1592,8 @@ class CastlePage extends ContextObject{
         if(global.user.getValue("petanimate")!=0){
             global.user.getValue("petanimate").executeAnimate();
         }
-        spriteManager.getAllPic();
+        spriteManager.downloadAllPic();
+        //spriteManager.getAllPic();
     }
 
     function getobjectby(x,y){
@@ -1922,9 +1923,13 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re == -2000)
+        if(re == DownWarn)
         {
-           spriteManager.DecideToDown(); 
+            spriteManager.DecideToDown(); 
+        }
+        else if(re == ShowDownYet)
+        {
+            spriteManager.showDownNow();
         }
         else if(re >= 1000||re<0){
             if(re>1000){

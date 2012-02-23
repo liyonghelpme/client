@@ -36,8 +36,8 @@ class FactControl extends ContextObject{
             objs[i].addlabel(global.getname("fact",oi),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
             var b=100;
             if(objcontext[i]/1000==3) b=66;
-            var fac = objs[i].addsprite().anchor(50,100).pos(74,160).scale(b);
-            spriteManager.getPic("fact"+str(oi)+".png", fac);
+            var fac = objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
+            //spriteManager.getPic("fact"+str(oi)+".png", fac);
             
 //            objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
             if(i<1){

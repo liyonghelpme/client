@@ -69,7 +69,7 @@ else{
 }
 global.dialogscreen.add(backNode,0);
 backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
-var loadbar = fetch("loadingbar2.png")
+var loadbar = fetch("loadingbar.png")
 if(loadbar == null)
 {
     backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
@@ -77,7 +77,7 @@ if(loadbar == null)
 }
 else
 {   
-    backNode.add(sprite("loadingbar2.png").pos(0,450).size(1,12),0,2);
+    backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
 }
 c_invoke(beginLoading,1000,null);
 
@@ -86,7 +86,7 @@ function beginLoading(){
     global.image.begindownload(1);
     castle.initialFactorys(backNode);
     //fetch 1000 pictures 
-    //spriteManager.getAllPic();
+    spriteManager.getAllPic();
 }
 
 function setlogin(){

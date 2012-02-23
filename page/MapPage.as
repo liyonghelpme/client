@@ -123,16 +123,16 @@ class MapPage extends ContextObject{
         for(var k=0;k<len(monsters);k++){
             baseNode.remove(8+k);
             if(monsters[k]!=-1){
-                var m = sprite().anchor(50,50).pos(mplace[k]);
-                spriteManager.getPic("monster_"+str(monsters[k])+"_1.png", m);
+                var m = sprite("monster_"+str(monsters[k])+"_1.png").anchor(50,50).pos(mplace[k]);
+                //spriteManager.getPic("monster_"+str(monsters[k])+"_1.png", m);
                 var mtype = monsters[k]/3;
                 var ml=monstercontroller.mbaselevel[k];
                 var the4th ="2";
                 if(mtype == 4 || mtype == 9){
                     the4th="4";
                 }
-                var temp = sprite();
-                spriteManager.getAnimation(["monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"]);
+                //var temp = sprite();
+                //spriteManager.getAnimation(["monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"]);
                 m.addaction(sequence(delaytime(rand(8000)),repeat(animate(1000,"monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"),delaytime(3000))));
                 m.setevent(EVENT_UNTOUCH,beatmonster,k);
                 m.prepare();

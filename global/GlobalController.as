@@ -405,6 +405,7 @@ class GlobalController{
     var sp;
 
     var castalPage = null;
+    var inWarMap = 0;
 
 
     function lock(){
