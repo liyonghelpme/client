@@ -144,6 +144,7 @@ class CastlePage extends ContextObject{
         timeisend=0;
         initlock=0;
         needlock=0;
+        global.castalPage = this;
     }
 
     override function paintNode(){
@@ -287,6 +288,7 @@ class CastlePage extends ContextObject{
         
         leftmenu = menu.addnode().anchor(0,100).pos(-287,470);
         rightmenu = menu.addnode().anchor(100,100).pos(945,470);
+
         topmenu.add(global.task.enternode.pos(50,250));
         topmenu.add(global.wartask.enternode.pos(50,330));
         menu.add(box.boxbutton);
@@ -576,7 +578,6 @@ class CastlePage extends ContextObject{
                 global.user.setValue("mana", mana);
                 global.user.setValue("boundary", boundary);
                 global.user.setValue("manatime", now);
-                //initlock = 0;
             }
             else
             {
@@ -1605,6 +1606,8 @@ class CastlePage extends ContextObject{
         if(global.user.getValue("petanimate")!=0){
             global.user.getValue("petanimate").executeAnimate();
         }
+        spriteManager.downloadAllPic();
+        //spriteManager.getAllPic();
     }
 
     function getobjectby(x,y){
@@ -1620,15 +1623,15 @@ class CastlePage extends ContextObject{
         global.timer.addlistener(time()/1000+86400,self);
     }
     var addManaLock = 0;
+    var downAllPic = 0;
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 ) //&& initlock == 0)
+        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
         {
             addManaLock = 1;
             trace("manatime", now, global.user.getValue("manatime"));
             trace("increase mana");
-            //initlock = -1;
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
             if(mana < boundary)
@@ -1638,6 +1641,13 @@ class CastlePage extends ContextObject{
                 global.user.setValue("manatime", now);
             }
         }
+        /*
+        if(downAllPic == 0)
+        {
+            downAllPic = 1;
+            spriteManager.downloadAllPic();
+        }
+        */
         if(initlock == 0){
             initlock = -1;
             if(newstate < 3&&global.flagnew == 0){
@@ -1652,15 +1662,6 @@ class CastlePage extends ContextObject{
                 {
                     global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
                 }
-
-                /*
-                if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==1){
-                    global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
-                }
-                else if(warmap.monstercontroller.monsternum>0 && global.system.flagrob==0){
-                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
-                }
-                */
             }
             global.user.flaginit = 0;
             global.user.setValue("plantpage",1);
@@ -1936,9 +1937,13 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re == -2000)
+        if(re == DownWarn)
         {
-           spriteManager.DecideToDown(); 
+            spriteManager.DecideToDown(); 
+        }
+        else if(re == ShowDownYet)
+        {
+            spriteManager.showDownNow();
         }
         else if(re >= 1000||re<0){
             if(re>1000){

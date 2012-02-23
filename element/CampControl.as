@@ -45,8 +45,8 @@ class CampControl extends ContextObject{
             objs[i] = sprite("dialogelement2u.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
             objs[i].addlabel(global.getname("camp",objid),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
 //            objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
-            var camp = objs[i].addsprite().anchor(50,100).pos(74,160);
-            spriteManager.getPic("camp"+str(objid)+".png", camp);
+            var camp = objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
+            //spriteManager.getPic("camp"+str(objid)+".png", camp);
             
             /*
             if(i==3){//catapult

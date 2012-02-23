@@ -404,6 +404,9 @@ class GlobalController{
     var flagshownew;
     var sp;
 
+    var castalPage = null;
+    var inWarMap = 0;
+
 
     function lock(){
         if(lockpage==null){
@@ -658,7 +661,7 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(re == -2000)
+            if(re == DownWarn)
             {
                 sp.DecideToDown();
                 return;
@@ -666,14 +669,7 @@ class GlobalController{
             if(flagnew == 0)
                 context[currentLevel].getNode().focus(1);
             request[currentLevel+1].response(re);
-            /*
-            if(currentLevel > 0)
-            {
-                return;
-            }
-            */
         }
-
     }
     
     function getdatestr(seconds){

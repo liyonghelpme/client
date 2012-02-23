@@ -327,7 +327,7 @@ trace("warinfo",rc,c);
             if(m==0){//blue flag white flag
                 flagn.texture("flagother.png").anchor(0,100).pos(117,125);
                 if(user[1]>-1&&user[8]==1 || user[1]==-1&&user[5]==selfgid){//self gid != 0
-                    spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
+                    //spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
                     flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
                 }
                 else if(user[1]<=-1&&user[0]=="0"){
@@ -931,6 +931,7 @@ trace("warinfo",rc,c);
         if(Back == 1)
             return;
         Back = 1;
+        global.inWarMap = 0;
         contextname = "";
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){

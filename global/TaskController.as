@@ -16,11 +16,15 @@ class TaskController extends ContextObject{
         enternode.setevent(EVENT_UNTOUCH,entertask);
         tasktype =-1;
         tasklib = dict();
+        /*
         var taskfile = c_res_file("task.txt");
         var taskstr = c_file_op(C_FILE_READ,taskfile);
         var taskstrs = taskstr.split(";");
-        for(var i=0;i<len(taskstrs);i++){
-            var taskobj = json_loads(taskstrs[i]);
+        */
+        var taskstrs = Tasks;
+        for(var i=0; i<len(taskstrs); i++){
+            //var taskobj = json_loads(taskstrs[i]);
+            var taskobj = taskstrs[i];
             if(taskobj==null){
                 trace("taskerr",i);
             }
@@ -128,8 +132,8 @@ class TaskController extends ContextObject{
         contextNode = sprite("taskback1.png").anchor(50,50).pos(373,240);
         contextNode.addlabel(taskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(taskstep >= tasknum){
-            contextNode.addlabel("恭喜你完成了任务！分享有100银币奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
-            contextNode.addlabel("点击分享将会有奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
+            contextNode.addlabel("恭喜你完成了任务！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
+            contextNode.addlabel("分享有100银币奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
             if(taskreward[0] > 0)
             {
