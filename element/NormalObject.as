@@ -141,7 +141,7 @@ class NormalObject extends ContextObject{
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
                 if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=549){
-                    trace("draw light", objectid);
+                    //trace("draw light", objectid);
 //                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
                     var lightpng = sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
                     //spriteManager.getPic("object"+str(objectid-500)+"_l.png", lightpng);
