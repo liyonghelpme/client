@@ -89,15 +89,15 @@ class UpdateControl extends ContextObject{
             {
                 hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
                 hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
             var i;
             var ok;

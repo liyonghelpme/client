@@ -30,9 +30,9 @@ const OpenReward = 100;
 const FeedReward = 100;
 const LevUpPop = 100;
 
-//const BASE_URL = "http://223.4.87.9:8000/";
+const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 //const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
@@ -166,7 +166,7 @@ const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,
 
 const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
 const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
-const STATUE_PERSON=[20,40,80,60,120,100];
+const STATUE_PERSON=[10, 10, 10, 10, 10, 10];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
 const STATUE_NAME = ["蛇女","野猪勇士","狂狼斗士","暴熊武士","雄狮战士","龙枪勇士"];
 
@@ -403,6 +403,9 @@ class GlobalController{
     var lockpage;
     var flagshownew;
     var sp;
+
+    var castalPage = null;
+    var inWarMap = 0;
 
 
     function lock(){
@@ -658,7 +661,7 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(re == -2000)
+            if(re == DownWarn)
             {
                 sp.DecideToDown();
                 return;
@@ -666,14 +669,7 @@ class GlobalController{
             if(flagnew == 0)
                 context[currentLevel].getNode().focus(1);
             request[currentLevel+1].response(re);
-            /*
-            if(currentLevel > 0)
-            {
-                return;
-            }
-            */
         }
-
     }
     
     function getdatestr(seconds){

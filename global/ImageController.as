@@ -1,4 +1,6 @@
 class ImageController{
+    const images1 = ["downStart.png"];
+    /*
     const images1 = [
     "zzz1.png", "zzz3.png", 
     "down_back.png", "down_filter.png",
@@ -30,8 +32,9 @@ class ImageController{
     "buyelement20.png", "buyelement21.png",
     "dialogback_info.png","dialogtab_info0.png","dialogtab_info1.png","infobutton0.png","infobutton1.png","infocell0.jpg","infocell1.jpg","infotab0.png","infotab1.png",
      ];
+     */
 /*
-    //var images1 = [
+    var images1 = [
     "shen25.png","shen26.png", "shen27.png", "shen28.png","shen29.png",
     "defence_bubble.png", "friend_objback1s.png","new.png","opbutton9.png",
     "object42.png","object43.png","object44.png","object42_l.png","object43_l.png","object44_l.png","object45.png", "object46.png", "object45_l.png","object46_l.png", "object47.png", "object47_l.png", "object48.png", "object48_l.png", "object49.png", "object49_l.png",
