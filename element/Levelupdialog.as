@@ -70,11 +70,11 @@ class Levelupdialog extends ContextObject{
         */
         global.popContext(null);
         var level = global.user.getValue("level");
-        global.user.changeValueAnimate3(global.context[0].moneyb,"money",level*200,-8);
+        global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
         trace("level", LevAddPer, level);
         if(level%10==0){
-            global.user.changeValueAnimate3(global.context[0].ub,"personmax", LevAddPer, -6);
-            global.user.changeValueAnimate3(global.context[0].moneyb,"caesars",level/10,-6);
+            global.user.changeValueAnimate2(global.context[0].ub,"personmax", LevAddPer, -6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-6);
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
