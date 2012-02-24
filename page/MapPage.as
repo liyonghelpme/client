@@ -104,7 +104,7 @@ class MapPage extends ContextObject{
                 em.add(fly,0,2);
                 
         var flagn = em.addsprite("flagother.png").anchor(0,100).pos(117,125);
-        spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
+        //spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
         flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
 
         refreshmonster();

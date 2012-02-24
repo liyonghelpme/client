@@ -55,10 +55,13 @@ class SpriteManager
         }
         return 1;
     }
+    var checking = 0;
     function getAllPic()
     {
+        checking = 1;
         var arr = [] + businessPic + warpic + DragonPic;
         getDownload(arr, doNothing, DownAllPic);
+        checking = 0;
     }
     function getWar()
     {
@@ -117,21 +120,28 @@ class SpriteManager
         
         var needToDown = 0;
         var pass = 0;
-        for(i = 0; i < len(arr); )
+        for(i = 0; i < len(arr); i++)
         {
-            var im = fetch(arr[0]);
+            var im = fetch(arr[i]);
+            /*
             if(im != null)
             {
-                arr.pop(0);
+                //arr.pop(0);
                 //pass++;
                 //if(pass == len(businessPic))//for get business
                 //    break;
             }
             else
+            */
+            //If pictures need to Down just down it all 
+            if(im == null)
             {
-                trace("down", arr[0]);
+                trace("down", arr[i]);
                 needToDown = 1;
+                //ToDown = arr;
+                index = i;
                 ToDown = arr;
+                //ToDown.append(arr[i])
                 break;
             }
         }   
@@ -181,16 +191,21 @@ class SpriteManager
     {
         Downloading = 0;
     }
+    var index = 0;
     var Downloading = 0; 
     function DecideToDown()
     {
         if(notdownload == 1)
             return;
+        if(index >= len(ToDown))
+            return;
+
         notdownload = 1;
         trace("decide to download");
 
         Downloading = 1;
-        mainNode.addaction(request(ToDown[0], 0, clearDownload));
+
+        mainNode.addaction(request(ToDown[index], 0, clearDownload));
         timeisend = 0;
         global.timer.addlistener(global.timer.currenttime+99999, self);
         //where to show
@@ -215,17 +230,6 @@ class SpriteManager
     var progress = null;
     var pronumber = null;
     var showWord = 0;
-    /*
-    function showDia(n, e, x, y, pos)
-    {
-        if(showWord == 0)
-        {
-            downloadNode.addlabel("正在下载图片...", null, 28, FONT_BOLD).pos(0, -40).color(0, 0, 0);
-            showWord = 10;
-        }
-        //global.pushContext(null, new Download(), 0)
-    }
-    */
     function monBack()
     {
         global.pushContext(null,global.context[0].warmap,0);//NonAutoPop
@@ -240,23 +244,25 @@ class SpriteManager
 
     function finDownload(name, force, param)
     {
-        ToDown.pop(0);
-        while(len(ToDown) > 0)
+        //ToDown.pop(0);
+        index++;
+        while(index < len(ToDown))
         {
-            var exi = fetch(ToDown[0]);
+            var exi = fetch(ToDown[index]);
             if(exi == null)
             {
-                trace("download", ToDown[0]);
+                trace("download", ToDown[index]);
                 Downloading = 1;
-                mainNode.addaction(request(ToDown[0], 0, clearDownload));
+                mainNode.addaction(request(ToDown[index], 0, clearDownload));
                 break;
             }
             else
             {
-                ToDown.pop(0);
+                //ToDown.pop(0);
+                index++;
             }
         }   
-        if(len(ToDown) <= 0)//close download
+        if(index >= len(ToDown))//close download
         {
             notdownload = 0;
             timeisend = 1;
@@ -272,7 +278,7 @@ class SpriteManager
     var timeisend = 0;
     function timerefresh()
     {
-        var rate = (totalLen-len(ToDown))*48/totalLen;
+        var rate = index*48/totalLen;
         downbar.size(rate, 30);
         showWord -= 1;
         if(showWord < 0 )

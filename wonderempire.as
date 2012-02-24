@@ -141,7 +141,7 @@ var percentmax = 0;
             {
                 backNode.remove(1); 
                 backNode.remove(2);
-                if(oneceMax == 1)
+                if(oneceMax == 1 && spriteManager.checking == 0)
                 {
                     timer.stop();
                     global.context[0].initialControls();
