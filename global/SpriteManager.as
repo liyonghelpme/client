@@ -25,6 +25,9 @@ class SpriteManager
     var totalLen;
     function warBack()
     {
+        trace("war back");
+        if(global.inWarMap == 1)
+            return;
         global.inWarMap = 1;
         global.pushContext(global.context[0],global.context[0].warpage,0);
         global.context[0].warpage.initialdata();

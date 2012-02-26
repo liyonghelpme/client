@@ -1,10 +1,3 @@
-/*
-import element.UserControl;
-import element.ResourceControl;
-import element.NobattleControl;
-import element.Waraboutinfo;
-import element.Warchatdialog;
-*/
 class WarPage extends ContextObject{
 
     var lastpoint;
@@ -70,6 +63,7 @@ class WarPage extends ContextObject{
     }
 
     function paintNode(){
+        trace("show warpage");
         global.system.pushmusic("3.mp3");
         contextNode = sprite("wartexture.png",ARGB_8888).size(800,480).anchor(50,50).pos(-400,240);
         baseNode = contextNode.addsprite().color(0,0,0,0);
@@ -109,7 +103,7 @@ class WarPage extends ContextObject{
                 if(flagisinit==1){
                     global.user.setValue("nobility",0);
                     global.context[0].refreshbuttons();
-                    global.pushContext(null,self,NonAutoPop);
+                    //global.pushContext(null,self,NonAutoPop);
                 }
             }
             percent = percent+4+rand(3);
@@ -931,7 +925,7 @@ trace("warinfo",rc,c);
         if(Back == 1)
             return;
         Back = 1;
-        global.inWarMap = 0;
+
         contextname = "";
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){
@@ -943,6 +937,7 @@ trace("warinfo",rc,c);
         baseNode.addaction(sequence(tintto(600,0,0,0,0),callfunc(releasenode)));
         contextNode.addaction(sequence(delaytime(600),moveby(600,-733,0),moveby(400,-67,0)));
         left.addaction(sequence(delaytime(1200),moveby(400,-67,0),callfunc(releasecontext)));
+        global.inWarMap = 0;
     }
     
     function releasecontext(){

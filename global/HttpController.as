@@ -101,7 +101,6 @@ class HttpController extends ContextObject{
             retrylist = new Array(0);
         }
     }
-    //"服务器正在维护中，请稍后访问"
     const noticestr = ["貌似断网了，请检查是否有网络连接","网络连接遇到了问题，请稍候再试"];
     function getelement(){
         var element = node();

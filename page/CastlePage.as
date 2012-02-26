@@ -1,38 +1,5 @@
-//import page.MapPage;
-//import page.WarPage;
-/*
-import element.WarChoose;
-import element.WarControl;
-import page.FriendControl;
-import element.Love;
-import element.BoxControl;
-import element.AllyControl;
-import element.TestWebControl;
-import element.TestInputControl;
-import element.ClockObject;
-import element.VisitObject;
-import element.Builddialog;
-import element.NormalObject;
-import element.BuildControl;
-import element.GiftControl;
-import element.DailyDialog;
-import element.GiftDialog;
-import element.Quitdialog;
-import element.BuyControl;
-import element.Cardget;
-import element.NewControl;
-import element.Infodialog;
-import element.Expandover;
-import element.Visitreward;
-import element.Wonbonus;
-import element.Chatdialog;
-import element.Noticedialog;
-import element.Nobilitydialog;
-import element.Monsterrobfood;
-import element.ChargeMagic;
-import element.CheckTime;
-import element.MagicWarning;
-*/
+import element.Act;
+import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -226,6 +193,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     
+    var actButton;
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
@@ -235,9 +203,12 @@ class CastlePage extends ContextObject{
         else{
             menu.color(100,100,100,100);
         }
+
         contextNode.parent().add(menu,1);
 
+        
         fmenu = menu.addsprite().visible(0);
+        actButton = menu.addsprite("plant1.png").pos(710, 240).anchor(50, 50).setevent(EVENT_UNTOUCH, showAct);
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
@@ -298,6 +269,10 @@ class CastlePage extends ContextObject{
 
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
+    }
+    function showAct(n, e, p, x, y, points)
+    {
+        global.pushContext(null, new Act(), NonAutoPop);
     }
     function loveShow(n, e, p, x, y, points)
     {
@@ -411,7 +386,7 @@ class CastlePage extends ContextObject{
                     global.pushContext(self,global.system,NonAutoPop);
                 }
                 else if(p==2){
-                    if(global.flagnew!=1){
+                    if(global.flagnew == 0){
                         global.pushContext(self,new WarChoose(),AutoPop);
                     }
                     else{
@@ -754,6 +729,7 @@ class CastlePage extends ContextObject{
     }
 
     function entermap(n,e){
+        trace("enter map page");
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
             spriteManager.getWar();
@@ -778,16 +754,18 @@ class CastlePage extends ContextObject{
                 cpid = p;
                 popdata();
                 pausepos = pagedict.get(cpid);
-                if(p==ppy_userid()){
+                if(p==ppy_userid()){//back
                     flagfriend = 0;
                     topmenu.visible(1);
                     leftmenu.visible(1);
                     rightmenu.visible(1);
                     fmenu.visible(0);
+                    actButton.visible(1);
                 }
-                else{
+                else{//go to friend
                     flagfriend = 1;
                     fmenu.visible(1);
+                    actButton.visible(0);
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
                     }
@@ -1215,6 +1193,8 @@ class CastlePage extends ContextObject{
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
             global.user.setValue("catapult", data.get("catapultnum", 0)); 
+            global.user.setValue("actFood", data.get("actFood", 0));
+
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
             global.user.setValue("manatime", now);
