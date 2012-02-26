@@ -1,10 +1,3 @@
-/*
-import element.UserControl;
-import element.ResourceControl;
-import element.NobattleControl;
-import element.Waraboutinfo;
-import element.Warchatdialog;
-*/
 class WarPage extends ContextObject{
 
     var lastpoint;
@@ -109,7 +102,7 @@ class WarPage extends ContextObject{
                 if(flagisinit==1){
                     global.user.setValue("nobility",0);
                     global.context[0].refreshbuttons();
-                    global.pushContext(null,self,NonAutoPop);
+                    //global.pushContext(null,self,NonAutoPop);
                 }
             }
             percent = percent+4+rand(3);
