@@ -402,10 +402,10 @@ class CastlePage extends ContextObject{
                             grounds[i].objnode.stateNode.visible(0);
                         changes.append(grounds[i].posi[0]*RECTMAX+grounds[i].posi[1]);
                     }
-                    leftmenu.visible(0);
-                    rightmenu.visible(0);
-                    topmenu.visible(0);
+
+                    hideHomeMenu();
                     box.boxbutton.visible(0);
+
                     lastmode = mode;
                     sizeModeft(mode,PS_MAX);
                     planback0 = menu.addsprite("buildno.png").anchor(100,100).pos(790,470).size(70,70).setevent(EVENT_UNTOUCH,planover,0);
@@ -467,9 +467,8 @@ class CastlePage extends ContextObject{
             changes = null;
             flagbuild = 0;
             blocknode.visible(0);
-            leftmenu.visible(1);
-            rightmenu.visible(1);
-            topmenu.visible(1);
+            showHomeMenu();
+
             for(var i=0;i<len(grounds);i++){
                 if(grounds[i].objectid >0&& grounds[i].objectid<500||grounds[i].objectid>=600&&grounds[i].objectid<700)
                     grounds[i].objnode.stateNode.visible(global.system.flagnotice);
@@ -586,9 +585,9 @@ class CastlePage extends ContextObject{
                 changes.objnode.setstate();
                 flagbuild = 0;
                 blocknode.visible(0);
-                leftmenu.visible(1);
-                rightmenu.visible(1);
-                topmenu.visible(1);
+
+                showHomeMenu();
+
                 for(var i=0;i<len(grounds);i++){
                     if(grounds[i].objectid >0&& grounds[i].objectid<500 || grounds[i].objectid >= 600 && grounds[i].objectid <= 700 )
                         grounds[i].objnode.stateNode.visible(global.system.flagnotice);
@@ -718,9 +717,8 @@ class CastlePage extends ContextObject{
             if(grounds[i].objectid >0&& grounds[i].objectid<500||grounds[i].objectid>=600&&grounds[i].objectid<700)
                 grounds[i].objnode.stateNode.visible(global.system.flagnotice);
         }
-        leftmenu.visible(1);
-        rightmenu.visible(1);
-        topmenu.visible(1);
+        showHomeMenu();
+
         box.setbox(-1,0,0);
         planback0.removefromparent();
         planback0 = null;
@@ -756,11 +754,9 @@ class CastlePage extends ContextObject{
                 pausepos = pagedict.get(cpid);
                 if(p==ppy_userid()){//back
                     flagfriend = 0;
-                    topmenu.visible(1);
-                    leftmenu.visible(1);
-                    rightmenu.visible(1);
+                    showHomeMenu();
+
                     fmenu.visible(0);
-                    actButton.visible(1);
                 }
                 else{//go to friend
                     flagfriend = 1;
@@ -783,9 +779,7 @@ class CastlePage extends ContextObject{
                         friendinfolabel.parent().get(1).texture("nobi"+str(ccard[12]%100)+".png").size(25,25);
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
-                    topmenu.visible(0);
-                    leftmenu.visible(0);
-                    rightmenu.visible(0);
+                    hideHomeMenu();
                 }
                 box.setbox(-1,0,0);
                 self.resume();
@@ -868,6 +862,20 @@ class CastlePage extends ContextObject{
         friendpredict.update(p,1);
         global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"addprefriend");
     }
+    function showHomeMenu()
+    {
+        topmenu.visible(1);
+        leftmenu.visible(1);
+        rightmenu.visible(1);
+        actButton.visible(1);
+    }
+    function hideHomeMenu()
+    {
+        topmenu.visible(0);
+        leftmenu.visible(0);
+        rightmenu.visible(0);
+        actButton.visible(0);
+    }
     function getfriendover(data){
         friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
@@ -898,9 +906,8 @@ class CastlePage extends ContextObject{
         friendmoney = data.get("money");
         f.update("empirename",ename);
         
-        topmenu.visible(0);
-        leftmenu.visible(0);
-        rightmenu.visible(0);
+        hideHomeMenu();
+
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
@@ -1954,9 +1961,9 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 if(grounds[ii].objectid >0 && grounds[ii].objectid<500||grounds[ii].objectid>=600&&grounds[ii].objectid<700)
                     grounds[ii].objnode.stateNode.visible(0);
             }
-            leftmenu.visible(0);
-            rightmenu.visible(0);
-            topmenu.visible(0);
+
+            hideHomeMenu();
+
             box.boxbutton.visible(0);
             if(mode<50 || flagoff==1){
                 var c = changes.getNode().pos();
