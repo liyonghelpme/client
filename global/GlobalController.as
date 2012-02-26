@@ -32,10 +32,6 @@ const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
 
-//const BASE_URL = "http://223.4.87.9:8000/";
-//const BASE_URL = "http://localhost:8080/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
-//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 const FARM_PRICE = [0,1000,-20,-50,-100,10000,28500];
@@ -149,6 +145,7 @@ const STATUE_PRICE = [10000, -10, 20000, -20, 50000, -50];
 const STATUE_DEFENCE=[600,700,1150,1300,3000,3200];
 const STATUE_PERSON=[10,10,10,10,10,10];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
+
 const DIALOG_BASE_X = 100-74;
 const DIALOG_BASE_Y = 112+22;
 const DIALOG_OFF_X = 161;
@@ -526,6 +523,9 @@ class GlobalController{
     var flagshownew;
     var sp;
 
+    var castalPage = null;
+    var inWarMap = 0;
+
 
     function lock(){
         if(lockpage==null){
@@ -816,7 +816,7 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(re == DownLoadPop)
+            if(re == DownWarn)
             {
                 sp.DecideToDown();
                 return;
@@ -825,7 +825,6 @@ class GlobalController{
                 context[currentLevel].getNode().focus(1);
             request[currentLevel+1].response(re);
         }
-
     }
     
     function getdatestr(seconds){

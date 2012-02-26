@@ -13,11 +13,11 @@ var Others = dict([
 ["newupdate1", ["Your territory change to night mode from 8 p.m to 6 a.m automatically. Click menu button->night scene to close"]],
 
 ["godstr", [
-    "crops yield increase 20%","population recruited increase 20%","tax from stores increase 20%","fighting capacity increase 5%",
-    "crops yield increase 40%","population recruited increase 40%","tax from stores increase 40%","fighting capacity increase 10%",
-    "crops yield increase 60%","population recruited increase 60%","tax from stores increase 60%","fighting capacity increase 15%",
-    "crops yield increase 80%","population recruited increase 80%","tax from stores increase 80%","fighting capacity increase 20%",
-    "crops yield increase 100%","population recruited increase 100%","tax from stores increase 100%","fighting capacity increase 25%",
+    "crops yield increase 20%","population recruited increase 20%","tax from stores increase 20%","Soldier's ATK increase 5%",
+    "crops yield increase 40%","population recruited increase 40%","tax from stores increase 40%","Soldier's ATK increase 10%",
+    "crops yield increase 60%","population recruited increase 60%","tax from stores increase 60%","Soldier's ATK increase 15%",
+    "crops yield increase 80%","population recruited increase 80%","tax from stores increase 80%","Soldier's ATK increase 20%",
+    "crops yield increase 100%","population recruited increase 100%","tax from stores increase 100%","Soldier's ATK increase 25%",
     "rewards for visiting friends, increase 5 coins","rewards for visiting friends, increase 10 coins","rewards for visiting friends, increase 20 coins","rewards for visiting friends, increase 30 coins","rewards for visiting friends, increase 50 coins",
     "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense"]],
 
@@ -88,7 +88,7 @@ var Dicts =
 ["nest_getup_format","[NAME][DESCRIBE]'s current growing point is:[HEALTH], property:[PROPERTY], ATK: [ATTACK]"],
 
 ["nest_pet_name","Enter your pet's name:"],
-["nest_pet_name_warning","You can only change your pet's name once"],
+["nest_pet_name_warning","Name can't be changed after done."],
 
 ["nest_gotohelp","check the HELP document for more information on how to raise your dragon"],
 
@@ -174,7 +174,7 @@ var Dicts =
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"],
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
 ["cancelAlly", "Are you sure to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"],
-["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "producing"], ["stoning", "mining"], ["proDefing", "defending producting"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"], ["population", "the Goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your fighting capacity by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
+["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "producing"], ["stoning", "mining"], ["proDefing", "producting"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"], ["population", "the Goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your soldier's ATK by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
 ["dragon", "You can summon your own pet after building Dragon Nest."], 
 ["godBless", "[GOD] can perform magic, are you sure to summon [GOD]?"], 
 ["call", "Summon"], ["coin", "coin"], ["freePeople", "idle people"], ["food", "food"], ["zijin", "Your magic capacity will +1 when upgrade."], ["freeZijin", "Your magic capacity will +1 when upgrade."], ["youGet", "Congrats! You get [NAME]! [END]"], 
@@ -209,7 +209,7 @@ var Dicts =
 ["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congrats! [NAME] has upgraded to lev [LEVEL], come on to build your own miracle empire!"], ["goInNewMap", ", you will find more powerful players in higher level map."], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
 ["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase [NAME]?"],["acc", "Quicken"],
 ["leftTime", "Time left "], ["noBattle", "War mode unable"], ["winNum", "wins"], ["netRefresh", "data exception because of net problem,please try again"], ["fresh", "refresh"],
-["fightAdd", "Hint: soilders have extra fighting capacity in fortress"],
+["fightAdd", "Hint: soilders have extra ATK in fortress"],
 ["peopUp", " population capacity"], 
 ["sureTosell", "Are you sure to sell [NAME]?"],
 ["sell", "Sell"], 
@@ -223,7 +223,7 @@ var Dicts =
 ["viewWar", "watching"],
 ["skip", "Skip"], 
 ["sendArmy", "<g>+ has send his army to attack your territory"],
-["godInc", "Hint: your enemy's fighting capacity will increase a regular porpotion +<b> <b>"],
+["godInc", "Hint: your enemy's soldier's ATK will increase a regular porpotion +<b> <b>"],
 ["howDef", "*How to strengthen defence"],
 ["youNeed", "You need more"],
 ["speNeed", "not enough special material"], 
@@ -281,7 +281,10 @@ var Dicts =
 ["CardAddOne", "when the card upgrade, your magic capacity will add one."],
 ["CardAddTwo", "when the card upgrade to top level, your magic capacity will add two."],
 ["sendSuc", "request successfully sent!"],
-["", ""]
+["downloading", "Downloading files..."],
+["downMusic", "You should download 800K music files before enjoy music. Sure to download?"],
+["showDownNow", "To have good game experience, you need download 3M pictures. Sure to download?"],
+["", ""],
 ];
 
 var Names = dict([
@@ -373,7 +376,7 @@ dict([["req", "dialog-circle"], ["des", ["Add friends", "Make Friends and Grow S
 dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "Help out your friends, send them gifts!", "send a gift", "hint:visit your friend's territory and tap the gift icon on the left to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]),
 dict([["req", "selectgift"], ["des", ["Request Gift", "Ask for help when you need it!", "request a gift", "Hint: visit your friends' territory and tap the gift icon on the right, choose a gift and ask for it"]], ["checknum", 1], ["lev", 5], ["pair", ["askorgive", 1]], ["reward", [300, 10, 0]], ["type", 0], ["id", 11]]),
 dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint:click the treasure chest on the left,you can ask your friends for help,or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]),
-dict([["des", ["Rate", "If you enjoy the Miracle empire, please rate it in Android Market, in return, you will get some Caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [800, 30, 0]], ["type", 3], ["id", 13]]),
+dict([["des", ["Rate", "If you enjoy the Miracle empire, please rate it in Android Market, in return, you will get some Caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]),
 dict([["req", "updatebuilding"], ["des", ["Upgrade cottage", "Upgrading your building will increase their production efficiency.", "upgrade cottage", "hint:click a normal cottage first and then click the upgrade icon"]], ["checknum", 1], ["lev", 6], ["pair", ["ground_id", 101]], ["reward", [500, 20, 0]], ["type", 0], ["id", 14]]),
 dict([["req", "person"], ["des", ["Increase Population!", "A larger population leads to a more powerful empire.", "increase population", "hint:click a free dwelling house first,then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]),
 dict([["req", "build"], ["des", ["Build house", "More population your have,more powerful you will be!", "build normal house"]], ["checknum", 2], ["lev", 6], ["pair", ["ground_id", 112]], ["reward", [400, 25, 0]], ["type", 0], ["id", 16]]),
@@ -548,3 +551,14 @@ const screenWidth = 800;
 const screenHeight = 450;
 
 
+const DownWarPic = 0;
+const DownPetPic = 1;
+const DownAllPic = 2;
+const DownWarn = -2000;
+const DownAniPic = 3;
+const DownMusic = 4;
+const ShowDownYet = -10000;
+
+const NotDownload = -1;
+
+const ManaChargeTime = 300000;

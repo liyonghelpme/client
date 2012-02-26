@@ -89,15 +89,15 @@ class UpdateControl extends ContextObject{
             {
                 hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
                 hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
             var i;
             var ok;
@@ -259,7 +259,7 @@ class UpdateControl extends ContextObject{
             cl=0;
             if(costcaesars>global.user.getValue("caesars")){
                 buildable[0].update("ok",0);
-                buildable[0].update(global.getStaticString("caesars"),costcaesars-global.user.getValue("caesars"));
+                buildable[0].update(global.getStaticString("caesar"),costcaesars-global.user.getValue("caesars"));
                 cl=100;
             }
             element.addlabel(upspec[0],null,18).anchor(0,50).pos(82,390).color(cl,0,0,100);

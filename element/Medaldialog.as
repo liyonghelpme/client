@@ -51,15 +51,15 @@ class MedalControl extends ContextObject{
             }
             obj.addlabel(cardprename[ci],null,18).anchor(50,0).pos(62,10).color(23,20,3,100);
             if(ci<6){
-                var m=sprite().anchor(0,100).pos(29,128);
-                spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
+                var m=sprite("monster_"+str(ci*3+clevel/2)+"_1.png").anchor(0,100).pos(29,128);
+                //spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
                 m.prepare();
                 var ms = m.size();
                 m.size(70,ms[1]*70/ms[0]);
             }
             else if(ci<12){
-                m=sprite().anchor(50,100).pos(62,128);
-                spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
+                m=sprite("monster_"+str(ci*3+clevel/2)+"_1.png").anchor(50,100).pos(62,128);
+                //spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
             }
             var medal;
             if(clevel==0){
@@ -69,8 +69,8 @@ class MedalControl extends ContextObject{
                     obj.add(m);
                 }
                 else{
-                    medal = obj.addsprite().pos(3,32).color(40,40,40,100);
-                    spriteManager.getPic("medalcard"+str(ci-13)+"_1.png", medal);
+                    medal = obj.addsprite("medalcard"+str(ci-13)+"_1.png").pos(3,32).color(40,40,40,100);
+                    //spriteManager.getPic("medalcard"+str(ci-13)+"_1.png", medal);
                 }
             }
             else{
@@ -80,9 +80,8 @@ class MedalControl extends ContextObject{
                     obj.add(m);
                 }
                 else if(ci!=12){
-                    medal = obj.addsprite().pos(3,32);
-                    spriteManager.getPic("medalcard"+str(ci-13)+"_"+str(clevel)+".png", medal);
-                    
+                    medal = obj.addsprite("medalcard"+str(ci-13)+"_"+str(clevel)+".png").pos(3,32);
+                    //spriteManager.getPic("medalcard"+str(ci-13)+"_"+str(clevel)+".png", medal);
                 }
                 else{
                     obj.addsprite("medalnob.png").pos(3,32);

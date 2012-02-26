@@ -44,7 +44,7 @@
             cell.setevent(EVENT_TOUCH|EVENT_UNTOUCH,beginPlant,i);
             buildable[i].update("ok",1);
         }   
-        spriteManager.getPic("move"+str(i+1)+"-1.png", eggpic);
+        //spriteManager.getPic("move"+str(i+1)+"-1.png", eggpic);
         return cell;
     }
 

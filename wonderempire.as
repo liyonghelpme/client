@@ -79,8 +79,7 @@ if(loadbar == null)
 }
 else
 {   
-    loadbar = sprite("loadingbar.png").pos(0,450).size(1,12);
-    backNode.add(loadbar,0,2);
+    backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
 }
 c_invoke(beginLoading,1000,null);
 
@@ -88,6 +87,8 @@ function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
     castle.initialFactorys(backNode);
+    //fetch 1000 pictures 
+    spriteManager.getAllPic();
 }
 
 function setlogin(){
@@ -103,6 +104,8 @@ for(var t = 0; t < len(allTex); t++)
         node().addaction(request(allTex[t],1,null));
     }
 }
+
+
 var curTex = 0;
 var oneceMax = 0;
 var percentmax = 0;

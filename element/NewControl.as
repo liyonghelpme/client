@@ -50,7 +50,7 @@ class NewControl extends ContextObject{
                 opobj = global.context[0].getobjectby(nposi[0],nposi[1]);
             }
         }
-        trace(cmd,param);
+        //trace(cmd,param);
     }
     function keydownevent(n,e,p,kc){
         if(kc == 4)
@@ -95,7 +95,7 @@ class NewControl extends ContextObject{
         function rm(x){
             x.parent().removefromparent();
         }
-        trace("newcontrol initover");
+        //trace("newcontrol initover");
     }
     
     function loadnode(){
@@ -145,18 +145,18 @@ class NewControl extends ContextObject{
         
     function setnotice(flag){
         var strs = noticetext.split("+");
-        trace("strs", strs);
+        //trace("strs", strs);
         notice.removefromparent();
         notice = contextNode.addsprite("dialogback_new"+str(flag)+".png").anchor(50,50).pos(tp);
         if(flag == 1){
             for(var i=0;i<len(strs);i++){
-                trace(" i strs", i, strs[i]);
+                //trace(" i strs", i, strs[i]);
                 if(strs[i].rfind("[")==-1){
                     notice.addlabel(strs[i],null,20, FONT_NORMAL, 300, 200, ALIGN_LEFT).pos(40,30+24*i).color(0,0,0,100);
                 }
                 else{
                     var li = colorWords(strs[i], 300, 10);
-                    trace("lines ", li);
+                    //trace("lines ", li);
                     for(var j = 0; j < len(li); j++)
                     {
                         //trace("newline", li[j]);
@@ -294,7 +294,7 @@ class NewControl extends ContextObject{
     }
     
     function newcomplete(r,rc,c){
-        trace("newcomplete",rc,c);
+        //trace("newcomplete",rc,c);
         contextNode.visible(1);
         newstate++;
         global.context[0].newstate = newstate;

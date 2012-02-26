@@ -33,9 +33,11 @@ class MenuControl extends ContextObject{
                 configstr = "11";
             }
         }
-        flagmusic = int(configstr[0]);
+
+        //flagmusic = int(configstr[0]);
         flagnotice = int(configstr[1]);
         fp = null;
+        flagmusic = 0;
         rewriteconfig();
         music = null;
     }
@@ -52,7 +54,8 @@ class MenuControl extends ContextObject{
         musiclist.append(name);
         if(flagmusic == 1){
             music = createaudio(name);
-            music.play(-1);
+            if(music != null)
+                music.play(-1);
         }
     }
     
@@ -63,7 +66,8 @@ class MenuControl extends ContextObject{
         musiclist.pop();
         if(flagmusic == 1 && len(musiclist)>0){
             music = createaudio(musiclist[len(musiclist)-1]);
-            music.play(-1);
+            if(music != null)
+                music.play(-1);
         }
     }
 
@@ -112,12 +116,12 @@ class MenuControl extends ContextObject{
                     if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=549){
                         var lightpng = sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
+                        //spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
                     }
                     else if(grounds[i].objectid==0){
-                        lightpng = sprite().anchor(50,100).pos(269,283).size(524,398);
+                        lightpng = sprite("empire"+str(grounds[i].empireLevel)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
+                        //spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
                         grounds[i].showYanhua();
                     }
                 }
@@ -197,18 +201,45 @@ class MenuControl extends ContextObject{
             global.pushContext(null,new Quitdialog(),NonAutoPop);
         }
     }
+    function changeMusic()
+    {
+        flagmusic = 1-flagmusic;
+
+        musicbutton.texture("musicbutton"+str(flagmusic)+".png");
+        rewriteconfig();
+        if(flagmusic == 1){
+            music = createaudio(musiclist[len(musiclist)-1]);
+            if(music != null)
+                music.play(-1);
+        }
+        else{
+            music.stop();
+        }
+    }
     function switchmusic(n,e){
         if(global.currentLevel == contextLevel){
+            if(flagmusic == 0)
+            {
+                spriteManager.getMusic(this);
+            }
+            else
+            {
+                changeMusic();
+            }
+            /*
             flagmusic = 1-flagmusic;
+
             musicbutton.texture("musicbutton"+str(flagmusic)+".png");
             rewriteconfig();
             if(flagmusic == 1){
                 music = createaudio(musiclist[len(musiclist)-1]);
-                music.play(-1);
+                if(music != null)
+                    music.play(-1);
             }
             else{
                 music.stop();
             }
+            */
         }
     }
 

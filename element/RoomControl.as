@@ -54,7 +54,7 @@ class RoomControl extends ContextObject{
             objs[i] = sprite("dialogelement2p.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
             objs[i].addlabel(global.getname("room1",obji),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
 
-            var hou = objs[i].addsprite().anchor(50,100).pos(74,160).scale(sc);
+            var hou = objs[i].addsprite("room"+str(obji)+".png").anchor(50,100).pos(74,160).scale(sc);
             spriteManager.getPic("room"+str(obji)+".png", hou);
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");

@@ -93,7 +93,7 @@ class UserControl extends ContextObject{
         }
         //monster fort
         if(eudata[0]=="0"){
-            var monavt = board.addsprite().pos(12,56).size(40,40);
+            var monavt = board.addsprite("monsteravatar"+str(eudata[2])+".jpg").pos(12,56).size(40,40);
             spriteManager.getPic("monsteravatar"+str(eudata[2])+".jpg", monavt);
             board.addlabel(eudata[4],null,18).pos(56,56).color(0,0,0,100);
             board.addlabel(ENAME[eudata[2]],null,18).pos(56,77).color(0,0,0,100);

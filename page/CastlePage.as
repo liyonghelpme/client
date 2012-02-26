@@ -1,38 +1,3 @@
-//import page.MapPage;
-//import page.WarPage;
-/*
-import element.WarChoose;
-import element.WarControl;
-import page.FriendControl;
-import element.Love;
-import element.BoxControl;
-import element.AllyControl;
-import element.TestWebControl;
-import element.TestInputControl;
-import element.ClockObject;
-import element.VisitObject;
-import element.Builddialog;
-import element.NormalObject;
-import element.BuildControl;
-import element.GiftControl;
-import element.DailyDialog;
-import element.GiftDialog;
-import element.Quitdialog;
-import element.BuyControl;
-import element.Cardget;
-import element.NewControl;
-import element.Infodialog;
-import element.Expandover;
-import element.Visitreward;
-import element.Wonbonus;
-import element.Chatdialog;
-import element.Noticedialog;
-import element.Nobilitydialog;
-import element.Monsterrobfood;
-import element.ChargeMagic;
-import element.CheckTime;
-import element.MagicWarning;
-*/
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -147,6 +112,7 @@ class CastlePage extends ContextObject{
         timeisend=0;
         initlock=0;
         needlock=0;
+        global.castalPage = this;
     }
 
     override function paintNode(){
@@ -291,6 +257,7 @@ class CastlePage extends ContextObject{
         
         leftmenu = menu.addnode().anchor(0,100).pos(-287,470);
         rightmenu = menu.addnode().anchor(100,100).pos(945,470);
+
         topmenu.add(global.task.enternode.pos(50,250));
         topmenu.add(global.wartask.enternode.pos(50,330));
         menu.add(box.boxbutton);
@@ -579,7 +546,6 @@ class CastlePage extends ContextObject{
                 global.user.setValue("mana", mana);
                 global.user.setValue("boundary", boundary);
                 global.user.setValue("manatime", now);
-                //initlock = 0;
             }
             else
             {
@@ -630,13 +596,6 @@ class CastlePage extends ContextObject{
             else{
                 var p = OBJ_PRICE[changes.objectid-500];
                 var add = OBJ_PERSON[changes.objectid-500];
-                /*
-                if(add<0 && p < 0)
-                {
-                    p -= 1;
-                    p /= 2;
-                }
-                */
                 var cost = dict();
                 if(p<0){
                     global.user.changeValueAnimate(changes,"caesars",p,2);
@@ -1602,6 +1561,7 @@ class CastlePage extends ContextObject{
         if(global.user.getValue("petanimate")!=0){
             global.user.getValue("petanimate").executeAnimate();
         }
+        spriteManager.downloadAllPic();
     }
 
     function getobjectby(x,y){
@@ -1617,15 +1577,15 @@ class CastlePage extends ContextObject{
         global.timer.addlistener(time()/1000+86400,self);
     }
     var addManaLock = 0;
+    var downAllPic = 0;
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
+        if((now - global.user.getValue("manatime")) > ManaChargeTime && addManaLock == 0 )
         {
             addManaLock = 1;
             trace("manatime", now, global.user.getValue("manatime"));
             trace("increase mana");
-            //initlock = -1;
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
             if(mana < boundary)
@@ -1635,7 +1595,6 @@ class CastlePage extends ContextObject{
                 global.user.setValue("manatime", now);
             }
         }
-
         if(initlock == 0){
             initlock = -1;
             if(newstate < 3 && global.flagnew == 0){
@@ -1925,9 +1884,13 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re == -2000)
+        if(re == DownWarn)
         {
-           spriteManager.DecideToDown(); 
+            spriteManager.DecideToDown(); 
+        }
+        else if(re == ShowDownYet)
+        {
+            spriteManager.showDownNow();
         }
         else if(re >= 1000||re<0){
             if(re>1000){

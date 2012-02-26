@@ -39,14 +39,9 @@ class GodControl extends ContextObject{
         objs[i] =sprite("dialogelement2l.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
         var obji = objcontext[i];
         if(obji>=0){
-            var god = objs[i].addsprite().scale(65).anchor(50,100).pos(74,195);
+            var god = objs[i].addsprite("shen"+str(obji)+".png").scale(65).anchor(50,100).pos(74,195);
             spriteManager.getPic("shen"+str(obji)+".png", god);
             objs[i].addlabel(global.getname("god1",obji),null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
-            /*
-            if(obji>4){
-                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            }
-            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
