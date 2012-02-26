@@ -58,9 +58,9 @@ class Adddefencedialog extends ContextObject{
         move.pos(x,po[1]);
         defencenum = defencemax*(x-60)/235;
         defencenumlabel.text(str(defencenum));
-        cmlabel.text(str(defencenum*100));
-        cflabel.text(str(defencenum*5));
-        cclabel.text(str((defencenum+99)/100));
+        cmlabel.text(str(defencenum*AddDefCoin));
+        cflabel.text(str(defencenum*AddDefFood));
+        cclabel.text(str((defencenum+AddDefCae-1)/AddDefCae));
         if(defencenum == 0){
             contextNode.get(0).texture("boxbutton2.png");
             contextNode.get(1).texture("boxbutton2.png");
@@ -97,11 +97,11 @@ class Adddefencedialog extends ContextObject{
                     global.wartask.incwartaskstep(defencenum);
                 }
                 if(costtype==0){
-                    global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-(defencenum+99)/100,-6);
+                    global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-(defencenum+AddDefCae-1)/AddDefCae,-6);
                 }
                 else{
-                    global.user.changeValueAnimate2(global.context[0].moneyb,"money",-defencenum*100,-6);
-                    global.user.changeValueAnimate2(global.context[0].ub,"food",-defencenum*5,-6);
+                    global.user.changeValueAnimate2(global.context[0].moneyb,"money",-defencenum*AddDefCoin,-6);
+                    global.user.changeValueAnimate2(global.context[0].ub,"food",-defencenum*AddDefFood,-6);
                 }
             }
         }

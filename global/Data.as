@@ -174,7 +174,7 @@ var Dicts =
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"],
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
 ["cancelAlly", "Are you sure to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"],
-["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producting"], ["training", "Training"], ["planting", "Planting"], ["wooding", "producing"], ["stoning", "mining"], ["proDefing", "producting"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"], ["population", "the Goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your soldier's ATK by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
+["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint:Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producing"], ["training", "Training"], ["planting", "Planting"], ["wooding", "producing"], ["stoning", "mining"], ["proDefing", "producing"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"], ["population", "the Goddess of population can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your soldier's ATK by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
 ["dragon", "You can summon your own pet after building Dragon Nest."], 
 ["godBless", "[GOD] can perform magic, are you sure to summon [GOD]?"], 
 ["call", "Summon"], ["coin", "coin"], ["freePeople", "idle people"], ["food", "food"], ["zijin", "Your magic capacity will +1 when upgrade."], ["freeZijin", "Your magic capacity will +1 when upgrade."], ["youGet", "Congrats! You get [NAME]! [END]"], 
@@ -562,3 +562,6 @@ const ShowDownYet = -10000;
 const NotDownload = -1;
 
 const ManaChargeTime = 300000;
+const AddDefCae = 25;
+const AddDefCoin = 50;
+const AddDefFood = 5;
