@@ -581,3 +581,9 @@ const ManaChargeTime = 300000;
 const AddDefCae = 25;
 const AddDefCoin = 50;
 const AddDefFood = 5;
+
+const GenVisMana = 25;
+const AccVisMana = 33;
+
+const OneKeyMana = 10;
+const ChargeMana = 5;

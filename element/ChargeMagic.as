@@ -94,7 +94,7 @@ class ChargeMagic extends ContextObject{
         if(flagquick == 0){
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
-            costcae = (boundary-mana+2)/5;
+            costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             qlabel.text(str(mana)+"/"+str(boundary));
