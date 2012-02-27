@@ -65,6 +65,16 @@ class SpriteManager
         var down = [] + Music;
         getDownload(down, downMusic, DownMusic);
     }
+    function checkMusic()
+    {
+        for(var i = 0; i < len(Music); i++)
+        {
+            var im = fetch(Music[i]);
+            if(im == null)
+                return 0;
+        }
+        return 1;
+    }
     function check(arr)
     {
         for(var i = 0; i < len(arr); i++)

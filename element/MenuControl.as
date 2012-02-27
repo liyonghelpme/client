@@ -26,18 +26,21 @@ class MenuControl extends ContextObject{
     //config: flagmusic,flagnotice
     function initwithconfig(){
         var fp = c_file_open("config"+str(ppy_userid()),1);
-        var configstr = "11";
+        var configstr = "01";
         if(c_file_exist(fp) != 0){
             configstr = c_file_op(C_FILE_READ,fp);
             if(len(configstr)!=2){
-                configstr = "11";
+                configstr = "01";
             }
         }
 
-        //flagmusic = int(configstr[0]);
+        flagmusic = int(configstr[0]);
+        var ret = spriteManager.checkMusic();
+        if(ret == 0)
+            flagmusic = 0;
+
         flagnotice = int(configstr[1]);
         fp = null;
-        flagmusic = 0;
         rewriteconfig();
         music = null;
     }
@@ -226,20 +229,6 @@ class MenuControl extends ContextObject{
             {
                 changeMusic();
             }
-            /*
-            flagmusic = 1-flagmusic;
-
-            musicbutton.texture("musicbutton"+str(flagmusic)+".png");
-            rewriteconfig();
-            if(flagmusic == 1){
-                music = createaudio(musiclist[len(musiclist)-1]);
-                if(music != null)
-                    music.play(-1);
-            }
-            else{
-                music.stop();
-            }
-            */
         }
     }
 
