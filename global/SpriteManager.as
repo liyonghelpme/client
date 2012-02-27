@@ -17,9 +17,26 @@ class SpriteManager
     {
         global = g;
         oldEdition = -1;
-        askToDown = sprite("downStart.png").pos(710, 240);
-        downloadNode = sprite("small_downback.png").pos(700, 240);
+        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
+        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
+    }
+
+    function showDownIcon()
+    {
+        if(notdownload == 1)
+        {
+            askToDown.visible(1);
+            downloadNode.visible(1);
+        }
+    }
+    function hideDownIcon()
+    {
+        if(notdownload == 1)
+        {
+            askToDown.visible(0);
+            downloadNode.visible(0);
+        }
     }
 
     var totalLen;
@@ -63,7 +80,9 @@ class SpriteManager
     {
         checking = 1;
         var arr = [] + businessPic + warpic + DragonPic;
-        getDownload(arr, doNothing, DownAllPic);
+        var im = fetch(businessPic[len(businessPic)-1]);
+        if(im == null)
+            getDownload(arr, doNothing, DownAllPic);
         checking = 0;
     }
     function getWar()

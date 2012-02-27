@@ -6,10 +6,9 @@ class Act extends ContextObject{
 
     function paintNode(){
         contextNode = sprite("actIntro.jpg").anchor(50,50).pos(400,240);
-        contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(740, 35).setevent(EVENT_UNTOUCH,closedialog);
-        contextNode.addsprite("rewardCup.png").anchor(100, 100).pos(720, 440).setevent(EVENT_UNTOUCH, checkRank);
+        contextNode.addsprite("builddialogclose.png").anchor(50,50).pos(758, 38).setevent(EVENT_UNTOUCH,closedialog);
+        contextNode.addsprite("rewardCup.png").anchor(50, 50).pos(728, 412).setevent(EVENT_UNTOUCH, checkRank);
     }
-
 
     function closedialog(node,event,p){
         global.popContext(null);
