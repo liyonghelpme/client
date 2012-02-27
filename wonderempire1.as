@@ -1,20 +1,12 @@
-import page.CastlePage;
-import element.Simpledialog;
-import element.MenuControl;
-import element.Feedbackdialog;
-import element.Medaldialog;
-import global.TaskController;
-import global.WarTaskController;
-import element.Levelupdialog;
-import global.HttpController;
-import global.UserController;
-import global.ImageController;
+import global.INCLUDE;
 
 var myid;
 if(ppy_connected()!=1){
     ppy_login();
 }
 global.self = global;
+global.user = new UserController();
+
 global.system = new MenuControl();
 global.system.initwithconfig();
 global.system.pushmusic("0.mp3");
@@ -24,8 +16,6 @@ global.task = new TaskController();
 global.task.init(global.task,global);
 global.wartask = new WarTaskController();
 global.wartask.init(global.wartask,global);
-global.user = new UserController();
-global.user.global = global;
 global.image = new ImageController();
 
 trace("init over");
@@ -78,7 +68,7 @@ else{
 }
 global.dialogscreen.add(backNode,0);
 backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
-var loadbar = fetch("loadingbar2.png")
+var loadbar = fetch("loadingbar.png")
 if(loadbar == null)
 {
     backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
@@ -86,14 +76,16 @@ if(loadbar == null)
 }
 else
 {   
-    backNode.add(sprite("loadingbar2.png").pos(0,450).size(1,12),0,2);
+    backNode.add(sprite("loadingbar.png").pos(0,450).size(1,12),0,2);
 }
 c_invoke(beginLoading,1000,null);
 
 function beginLoading(){
     c_addtimer(500,loading);
     global.image.begindownload(1);
-    castle.initialFactorys(page);
+    castle.initialFactorys(backNode);
+    //fetch 1000 pictures 
+    spriteManager.getAllPic();
 }
 
 function setlogin(){
@@ -101,12 +93,21 @@ function setlogin(){
 }
 var curTime = 0;
 var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+for(var t = 0; t < len(allTex); t++)
+{
+    if(fetch(allTex[t]) == null)
+    {
+        node().addaction(request(allTex[t],1,null));
+    }
+}
+
+
 var curTex = 0;
 var oneceMax = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
-            if(backNode.get() < 3)
+            if(backNode.get() < 3)//New user show this pictures
             {
                 curTime += 1;
                 src.texture(allTex[curTex]);
@@ -139,7 +140,7 @@ var percentmax = 0;
             {
                 backNode.remove(1); 
                 backNode.remove(2);
-                if(oneceMax == 1)
+                if(oneceMax == 1 && spriteManager.checking == 0)
                 {
                     timer.stop();
                     global.context[0].initialControls();

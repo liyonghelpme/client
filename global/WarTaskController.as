@@ -27,20 +27,6 @@ class WarTaskController extends ContextObject{
         wartasklib.update(8,json_loads("{'id':8,'type':0,'req':'addallyupbound','pair':[],'des':['增加盟友位','你可以通过增加盟友位置来与更多的好友结盟','增加盟友位'],'checknum':1,'reward':[1500,20,0]}"));
         wartasklib.update(9,json_loads("{'id':9,'type':2,'req':'dialog-nobility','pair':[],'des':['升级爵位','爵位越高可以前往越高等级的地图','升级爵位'],'checknum':1,'reward':[2000,25,0]}"));
         wartasklib.update(10,json_loads("{'id':10,'type':0,'req':'upgrademap','pair':[],'des':['进入高级地图','打败一定数量的敌人可以进入到更高级的地图',' 进入更高一级地图'],'checknum':1,'reward':[2000,25,0]}"));
-        /*
-        var wartaskfile = c_res_file("wartask.txt");
-        var wartaskstr = c_file_op(C_FILE_READ,wartaskfile);
-        var wartaskstrs = wartaskstr.split(";");
-        for(var i=0;i<len(wartaskstrs);i++){
-            var wartaskobj = json_loads(wartaskstrs[i]);
-            if(wartaskobj==null){
-                trace("wartaskerr",i);
-            }
-            else{
-                wartasklib.update(wartaskobj.get("id"),wartaskobj);
-            }
-        }
-        */
     }
     
     function initwartask(p,s){

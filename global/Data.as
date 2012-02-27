@@ -124,6 +124,10 @@ const DownMusic = 4;
 const ShowDownYet = -10000;
 
 const NotDownload = -1;
+const UseCata = -3000;
+const AttWithCata = 100;
+const AttNoCata = 101;
+const NoCata = -3001;
 
 const Tasks = 
 [

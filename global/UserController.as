@@ -139,7 +139,7 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
-    var global;
+    
     function UserController(){
         userinfo = dict();
         handledict = dict();
