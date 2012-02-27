@@ -27,11 +27,8 @@ class WarChoose extends ContextObject{
 
     function reloadNode(re){
         if(re==1){
+            trace("enter war map 1");
             global.context[0].entermap(0,0);
-            /*
-            global.context[0].warpage.initialdata();
-            global.image.begindownload(2);
-            */
         }
     }
 
@@ -59,6 +56,7 @@ class WarChoose extends ContextObject{
                         tmp.contextNode.addsprite("dialogelement_help.png").pos(355, 25).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"warmode");
                     }
                     else{
+                        trace("enter war map2");
                         global.context[0].entermap(0,0);
                     }
                 }

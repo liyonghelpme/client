@@ -305,7 +305,7 @@ class NewControl extends ContextObject{
     function checkfinish(){
         contextNode.color(100,100,100,100);
         if(strnum == len(newstrs)){
-            global.popContext(-999);
+            global.popContext(NewPop);
             global.context[0].warmap.monstercontroller.initdata(null,global.timer.base_systime+1800+time()/1000-global.timer.base_localtime);
             global.task.inittask(0,0);
             global.wartask.initwartask(0,0);
@@ -313,6 +313,7 @@ class NewControl extends ContextObject{
             global.context[0].addcmd(cm);
             global.lastpage[1]=400;
             global.user.changeValue("money",3000);
+            spriteManager.showDownIcon();
             return 0;
         }
         else if(newstrs[strnum]== ""){

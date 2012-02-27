@@ -37,12 +37,12 @@ class Simpledialog extends ContextObject{
     }
     
     function closedialog(n,e,p){
-        if(p == 100)//attack with catapult 
+        if(p == AttWithCata)//attack with catapult 
         {
             //warning dialog 
             dialogelement.excute(p);
         }
-        else if(p == 101)//attack without catapult
+        else if(p == AttNoCata)//attack without catapult
         {
             dialogelement.excute(p);
         }

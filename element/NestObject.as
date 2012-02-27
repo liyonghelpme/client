@@ -249,7 +249,6 @@ class NestObject extends BuildObject{
                         destroynode(contextNode.get(1));
                     }
                     s = sprite(petstr+"-1-1.png").anchor(50,50).pos(contextNode.size()[0]/2,contextNode.size()[1]/2);
-                    //spriteManager.getPic(petstr+"-1-1.png", s);
                     s.addsprite("zzz1.png").anchor(50,100).pos(125,0).addaction(repeat(animate(1600,"zzz2.png","zzz3.png","","zzz1.png")));
                     contextNode.add(s,1,1);
                 }
@@ -281,7 +280,7 @@ class NestObject extends BuildObject{
             return 0;
         }
         var stime=global.timer.timec2s(global.timer.currenttime)%86400/3600;
-        trace("dragon system time, state, health", stime, state, health);
+        //trace("dragon system time, state, health", stime, state, health);
         if(contextNode.get(1)!=null){//dragon picture
             //Dragon is an egg
             if(state==3){//dragon State 0not 1active 2buyegg 3child 4young 5old 
@@ -289,12 +288,17 @@ class NestObject extends BuildObject{
                 if(stt>3) stt=3;
                 var prestr = "egg-"+str(stt)+"-";
                 if(health<34){
-                    //spriteManager.getAnimation([prestr+"1.png",prestr+"2.png",prestr+"3.png",prestr+"0.png"]);
                     contextNode.get(1).addaction(sequence(stop(),repeat(animate(600,prestr+"1.png",prestr+"2.png",prestr+"3.png",prestr+"0.png"),3)));
                 }
                 else{
-                    //spriteManager.getAnimation([prestr+"1.png", prestr+"2.png", prestr+"3.png", prestr+"4.png", prestr+"5.png", prestr+"6.png", prestr+"7.png", prestr+"0.png"]);
                     contextNode.get(1).addaction(sequence(stop(),repeat(delaytime(150),itexture(prestr+"1.png"),delaytime(150),itexture(prestr+"2.png"),delaytime(250),itexture(prestr+"3.png"),delaytime(100),itexture(prestr+"4.png"),delaytime(250),itexture(prestr+"5.png"),delaytime(150),itexture(prestr+"6.png"),delaytime(150),itexture(prestr+"7.png"),delaytime(150),itexture(prestr+"0.png"),2)));
+                }
+                if(global.context[0].flagfriend==0){//self train
+                    if(istrain==1){
+                        var to=node();
+                        to.addaction(callfunc(train));
+                        contextNode.add(to);
+                    }
                 }
             }
             //dragon is young
@@ -321,11 +325,9 @@ class NestObject extends BuildObject{
                         }
                         //train action do 10s later building subnode
                         if(istrain==1){
-                            var to=node();
+                            to=node();
                             to.addaction(callfunc(train));
                             contextNode.add(to);
-                            //to.addaction(sequence(delaytime(10000),callfunc(train)));
-                            //contextNode.get(1).subnodes()[0].add(to);
                         }
                     }
                     else if(len(helpfriends)>=5||helpfriends.index(ppy_userid())!=-1){

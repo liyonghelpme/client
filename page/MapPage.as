@@ -116,7 +116,7 @@ class MapPage extends ContextObject{
     }
     
     function refreshmonster(){
-        if(global.flagnew ==1){
+        if(global.flagnew == 1){
             var monsters = [-1,-1,-1,-1,-1,-1,-1,0,-1,-1];
         }
         else{

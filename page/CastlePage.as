@@ -193,6 +193,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     
+    var actButton;
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
@@ -202,9 +203,12 @@ class CastlePage extends ContextObject{
         else{
             menu.color(100,100,100,100);
         }
+
         contextNode.parent().add(menu,1);
 
+        
         fmenu = menu.addsprite().visible(0);
+        //actButton = menu.addsprite("plant1.png").pos(710, 240).anchor(50, 50).setevent(EVENT_UNTOUCH, showAct);
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
@@ -268,10 +272,16 @@ class CastlePage extends ContextObject{
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
     }
+    /*
+    function showAct(n, e, p, x, y, points)
+    {
+        global.pushContext(null, new Act(), NonAutoPop);
+    }
     function loveShow(n, e, p, x, y, points)
     {
         global.pushContext(null, new Love(), NonAutoPop);
     }
+    */
     var leftbuttonnum;
     var rightbuttonnum;
     function refreshbuttons(){
@@ -380,7 +390,7 @@ class CastlePage extends ContextObject{
                     global.pushContext(self,global.system,NonAutoPop);
                 }
                 else if(p==2){
-                    if(global.flagnew!=1){
+                    if(global.flagnew == 0){
                         global.pushContext(self,new WarChoose(),AutoPop);
                     }
                     else{
@@ -716,6 +726,7 @@ class CastlePage extends ContextObject{
     }
 
     function entermap(n,e){
+        trace("enter map page");
         hiddentime =10;
         if(contextLevel >= global.currentLevel){
             spriteManager.getWar();
@@ -729,6 +740,7 @@ class CastlePage extends ContextObject{
     }
     
     function getfriend(p){
+        trace("getfriend", p);
         hiddentime =10;
         if(p==null||p == cpid){
             return 0;
@@ -740,16 +752,21 @@ class CastlePage extends ContextObject{
                 cpid = p;
                 popdata();
                 pausepos = pagedict.get(cpid);
-                if(p==ppy_userid()){
+                if(p==ppy_userid()){//back
                     flagfriend = 0;
                     topmenu.visible(1);
                     leftmenu.visible(1);
                     rightmenu.visible(1);
                     fmenu.visible(0);
+                    //actButton.visible(1);
+                    spriteManager.showDownIcon();
                 }
-                else{
+                else{//go to friend
                     flagfriend = 1;
                     fmenu.visible(1);
+                    trace("remove Down Icon");
+                    spriteManager.removeDownIcon();
+                    //actButton.visible(0);
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
                         //msgbut.removefromparent();
@@ -892,6 +909,8 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
+        spriteManager.removeDownIcon();
+
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
@@ -1169,6 +1188,10 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             newstate = data.get("newstate",3);
+            if(newstate < 3)
+                global.InNew = 1;
+            else
+                global.InNew = 0;
             LoadPage.put(newstate);
             LoadPage = null;
             if(data.get("ppyname")!=ppy_username()){
@@ -1184,6 +1207,8 @@ class CastlePage extends ContextObject{
             global.user.setValue("mana", data.get("mana", 0));
             global.user.setValue("boundary", data.get("boundary", 0));
             global.user.setValue("catapult", data.get("catapultnum", 0)); 
+            global.user.setValue("actFood", data.get("actFood", 0));
+
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
             global.user.setValue("manatime", now);
@@ -1598,6 +1623,7 @@ class CastlePage extends ContextObject{
         if(initlock == 0){
             initlock = -1;
             if(newstate < 3 && global.flagnew == 0){
+                trace("update flagnew", global.flagnew);
                 global.pushContext(self,new NewControl(newstate),NotAdd);
             }
             else{//new user not popup foodlost

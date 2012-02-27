@@ -12,7 +12,7 @@ class UpdateControl extends ContextObject{
     const EmpireCoin = [0,100000, 500000];
     const EmpireFood = [0,1000, 5000];
     const EmpirePeople = [0, 100, 500];
-    const EmpireSpe = ["","100;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
     const EmpirePopUp = [0, 0, 0];
     const EmpireMana = [0, 5, 5];
 
@@ -157,6 +157,7 @@ class UpdateControl extends ContextObject{
             var food;
             var person;
             var upspec;
+            trace("btype", btype);
             if(btype == 0)
             {
                 money = EmpireCoin[upbid];
@@ -233,8 +234,12 @@ class UpdateControl extends ContextObject{
                 if(person > global.user.getValue("person")-global.user.getValue("labor")){
                     buildable[1].update("ok",0);
                     buildable[1].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
-                    buildable[0].update("ok",0);
-                    buildable[0].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
+
+                    if(btype != 0)
+                    {
+                        buildable[0].update("ok",0);
+                        buildable[0].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
+                    }
                     cl=100;
                 }
                 element.addsprite("person.png").anchor(50,50).size(32,30).pos(57,269);

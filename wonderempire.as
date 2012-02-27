@@ -6,7 +6,6 @@ if(ppy_connected()!=1){
 }
 global.self = global;
 global.user = new UserController();
-global.user.global = global;
 
 global.system = new MenuControl();
 global.system.initwithconfig();

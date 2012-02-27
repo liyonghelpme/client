@@ -46,6 +46,9 @@ class Calldialog extends ContextObject{
         dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,[global.getStaticString("call"), global.getStaticString("cancel")]);
+        if(info < 0)
+            dialog.usedefaultbutton(2,[global.getStaticString("Build"), global.getStaticString("cancel")]);
+        else
+            dialog.usedefaultbutton(2,[global.getStaticString("call"), global.getStaticString("cancel")]);
     }
 }

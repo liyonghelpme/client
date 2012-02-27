@@ -98,7 +98,9 @@ trace("harvest",rc,c);
             else{
                 global.user.changeValueAnimate(baseobj,"exp",PLANT_EXP[objid],-1);
                 if(time()/1000-begintime<3*86400){
-                    global.user.changeValueAnimate(baseobj,"food",PLANT_FOOD[objid]*(bid+4)/5*bl/10,1);
+                    var incFood = PLANT_FOOD[objid]*(bid+4)/5*bl/10;
+                    global.user.changeValueAnimate(baseobj,"food", incFood,1);
+                    global.user.changeValue("accFood", incFood);
                 }
             }
             state2= 0;

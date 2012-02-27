@@ -31,6 +31,9 @@ const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
+const OpenReward = 1000;
+const FeedReward = 1000;
+const LevUpPop = 100;
 
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
@@ -473,6 +476,7 @@ class DataController{
 
 class GlobalController{
     var Quit;
+    var InNew = 0;
 
     var emptyCitiesInGlo = null;
     var mapUsers = null;
@@ -525,6 +529,8 @@ class GlobalController{
 
     var castalPage = null;
     var inWarMap = 0;
+
+    var foodRankData = null;
 
 
     function lock(){
@@ -650,7 +656,7 @@ class GlobalController{
         dataname.update("farm",FARMNAME);
         dataname.update("obj",OBJNAME);
         dataname.update("soldier",SOLDIER_NAME);
-        dataname.update("soldier1",SOLDIER_NAME);
+        dataname.update("soldier1",SOLDIER_NAME1);
         dataname.update("plant",PLANTNAME);
         dataname.update("stone",STONENAME);
         dataname.update("wood",WOONAME);
@@ -751,6 +757,7 @@ class GlobalController{
         //New Control no black
         if(auto == NotAdd){
             flagnew = 1;
+            InNew = 1;
             newcontext = co;
         }
         else{
@@ -804,6 +811,7 @@ class GlobalController{
         else if(re == NewPop){//new user task 
             newcontext.deleteContext();
             flagnew = 0;
+            InNew = 0;
             context[currentLevel].getNode().focus(1);
             if(len(dark)>0)
                 dark[len(dark)-1].visible(1);
