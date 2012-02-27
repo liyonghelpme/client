@@ -46,7 +46,7 @@ class UpdateControl extends ContextObject{
             var upbid;
             //empire Level up 
             //trace("obj", obj.bid, obj.empireLevel);
-            if(obj.baseobj == null)
+            if(obj.baseobj == null)//Empire is normalObject no baseobj
             {
                 btype = 0;
                 objname= "empire";
@@ -353,7 +353,7 @@ class UpdateControl extends ContextObject{
             }
             else
                 target = obj.baseobj;
-            if(updatetype == 1){
+            if(updatetype == 1){//by money
                 var k=costdict.keys();
                 for(i=0;i<len(k);i++){
                     trace("change Value animate2");
@@ -365,7 +365,8 @@ class UpdateControl extends ContextObject{
             }
             else{
                 global.user.changeValueAnimate(target,"caesars",-costcaesars,0);
-                if(costdict.get("labor",0)!=0){
+                //not Empire
+                if(costdict.get("labor",0)!=0 && obj.baseobj != null){
                     global.user.changeValueAnimate(target,"labor",-costdict.get("labor"),2);
                 }
             }

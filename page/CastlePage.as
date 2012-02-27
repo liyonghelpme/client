@@ -193,7 +193,6 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     
-    var actButton;
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
@@ -208,7 +207,6 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("plant1.png").pos(710, 240).anchor(50, 50).setevent(EVENT_UNTOUCH, showAct);
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
@@ -406,10 +404,10 @@ class CastlePage extends ContextObject{
                             grounds[i].objnode.stateNode.visible(0);
                         changes.append(grounds[i].posi[0]*RECTMAX+grounds[i].posi[1]);
                     }
-                    leftmenu.visible(0);
-                    rightmenu.visible(0);
-                    topmenu.visible(0);
+
+                    hideHomeMenu();
                     box.boxbutton.visible(0);
+
                     lastmode = mode;
                     sizeModeft(mode,PS_MAX);
                     planback0 = menu.addsprite("buildno.png").anchor(100,100).pos(790,470).size(70,70).setevent(EVENT_UNTOUCH,planover,0);
@@ -471,9 +469,8 @@ class CastlePage extends ContextObject{
             changes = null;
             flagbuild = 0;
             blocknode.visible(0);
-            leftmenu.visible(1);
-            rightmenu.visible(1);
-            topmenu.visible(1);
+            showHomeMenu();
+
             for(var i=0;i<len(grounds);i++){
                 if(grounds[i].objectid >0&& grounds[i].objectid<500||grounds[i].objectid>=600&&grounds[i].objectid<700)
                     grounds[i].objnode.stateNode.visible(global.system.flagnotice);
@@ -590,9 +587,9 @@ class CastlePage extends ContextObject{
                 changes.objnode.setstate();
                 flagbuild = 0;
                 blocknode.visible(0);
-                leftmenu.visible(1);
-                rightmenu.visible(1);
-                topmenu.visible(1);
+
+                showHomeMenu();
+
                 for(var i=0;i<len(grounds);i++){
                     if(grounds[i].objectid >0&& grounds[i].objectid<500 || grounds[i].objectid >= 600 && grounds[i].objectid <= 700 )
                         grounds[i].objnode.stateNode.visible(global.system.flagnotice);
@@ -715,9 +712,8 @@ class CastlePage extends ContextObject{
             if(grounds[i].objectid >0&& grounds[i].objectid<500||grounds[i].objectid>=600&&grounds[i].objectid<700)
                 grounds[i].objnode.stateNode.visible(global.system.flagnotice);
         }
-        leftmenu.visible(1);
-        rightmenu.visible(1);
-        topmenu.visible(1);
+        showHomeMenu();
+
         box.setbox(-1,0,0);
         planback0.removefromparent();
         planback0 = null;
@@ -754,19 +750,15 @@ class CastlePage extends ContextObject{
                 pausepos = pagedict.get(cpid);
                 if(p==ppy_userid()){//back
                     flagfriend = 0;
-                    topmenu.visible(1);
-                    leftmenu.visible(1);
-                    rightmenu.visible(1);
+                    showHomeMenu();
+
                     fmenu.visible(0);
-                    //actButton.visible(1);
-                    spriteManager.showDownIcon();
                 }
                 else{//go to friend
                     flagfriend = 1;
                     fmenu.visible(1);
                     trace("remove Down Icon");
                     spriteManager.removeDownIcon();
-                    //actButton.visible(0);
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
                         //msgbut.removefromparent();
@@ -786,9 +778,7 @@ class CastlePage extends ContextObject{
                         friendinfolabel.parent().get(1).texture("nobi"+str(ccard[12]%100)+".png").size(25,25);
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
-                    topmenu.visible(0);
-                    leftmenu.visible(0);
-                    rightmenu.visible(0);
+                    hideHomeMenu();
                 }
                 box.setbox(-1,0,0);
                 self.resume();
@@ -871,6 +861,21 @@ class CastlePage extends ContextObject{
         friendpredict.update(p,1);
         global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"addprefriend");
     }
+    function showHomeMenu()
+    {
+        topmenu.visible(1);
+        leftmenu.visible(1);
+        rightmenu.visible(1);
+        spriteManager.addDownIcon();
+        spriteManager.showDownIcon();
+    }
+    function hideHomeMenu()
+    {
+        topmenu.visible(0);
+        leftmenu.visible(0);
+        rightmenu.visible(0);
+        spriteManager.hideDownIcon();
+    }
     function getfriendover(data){
         friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
@@ -906,10 +911,7 @@ class CastlePage extends ContextObject{
         friendmoney = data.get("money");
         f.update("empirename",ename);
         
-        topmenu.visible(0);
-        leftmenu.visible(0);
-        rightmenu.visible(0);
-        spriteManager.removeDownIcon();
+        hideHomeMenu();
 
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
@@ -1961,9 +1963,9 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 if(grounds[ii].objectid >0 && grounds[ii].objectid<500||grounds[ii].objectid>=600&&grounds[ii].objectid<700)
                     grounds[ii].objnode.stateNode.visible(0);
             }
-            leftmenu.visible(0);
-            rightmenu.visible(0);
-            topmenu.visible(0);
+
+            hideHomeMenu();
+
             box.boxbutton.visible(0);
             if(mode<50 || flagoff==1){
                 var c = changes.getNode().pos();

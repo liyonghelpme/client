@@ -17,9 +17,26 @@ class SpriteManager
     {
         global = g;
         oldEdition = -1;
-        askToDown = sprite("downStart.png").anchor(0, 50).pos(720, 250);
-        downloadNode = sprite("small_downback.png").anchor(0, 50).pos(710, 250);
+        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
+        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
+    }
+
+    function showDownIcon()
+    {
+        if(notdownload == 1)
+        {
+            askToDown.visible(1);
+            downloadNode.visible(1);
+        }
+    }
+    function hideDownIcon()
+    {
+        if(notdownload == 1)
+        {
+            askToDown.visible(0);
+            downloadNode.visible(0);
+        }
     }
 
     var totalLen;
@@ -206,12 +223,12 @@ class SpriteManager
         //where to show
         trace("sprite flagnew", global.InNew);
         if(global.InNew == 0)
-            showDownIcon();
+            addDownIcon();
     }
     var showing = 0;
-    function showDownIcon()
+    function addDownIcon()
     {
-        if(notdownload == 1)
+        if(notdownload == 1 && showing == 0)
         {
             showing = 1;
             global.castalPage.menu.add(askToDown);
