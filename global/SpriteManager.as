@@ -118,6 +118,7 @@ class SpriteManager
 
     function getDragon(place)
     {
+        
         if(downDragonYet == 1 && notdownload == 0)
         {
             dragonBack();
@@ -244,7 +245,7 @@ class SpriteManager
 
         mainNode.addaction(request(ToDown[index], 0, clearDownload));
         timeisend = 0;
-        global.timer.addlistener(global.timer.currenttime+99999, self);
+        global.timer.addlistener(time()/1000+24*3600, self);
         //where to show
         trace("sprite flagnew", global.InNew);
         if(global.InNew == 0)
@@ -296,7 +297,7 @@ class SpriteManager
     {
         getDownload(animate, monBack, 2);
     }
-    var lastTime = 0;
+    var lastTime = time();
     var curTime = 0;
     var BlockTime = 700;
 
@@ -339,6 +340,7 @@ class SpriteManager
         if(showWord < 0 )
             showWord = 0;
         curTime = time();
+        //trace("refresh sprite", curTime, lastTime);
         if((curTime - lastTime) > BlockTime && Downloading == 0)
         {
             lastTime = curTime;
