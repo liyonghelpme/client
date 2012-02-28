@@ -260,7 +260,7 @@ class SpriteManager
     {
         getDownload(animate, monBack, 2);
     }
-    var lastTime = 0;
+    var lastTime = time();
     var curTime = 0;
     var BlockTime = 700;
 
