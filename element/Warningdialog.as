@@ -17,10 +17,10 @@ class Warningdialog extends ContextObject{
     }
     
     function excute(p){
-        if(p == 100)//attack with catapult
-            global.popContext(-3000);
-        else if(p == 101)//attack without catapult
-            global.popContext(-3001);
+        if(p == AttWithCata)//attack with catapult
+            global.popContext(UseCata);
+        else if(p == AttNoCata)//attack without catapult
+            global.popContext(NoCata);
         else
             global.popContext(info[1]);
     }
@@ -48,7 +48,7 @@ class Warningdialog extends ContextObject{
             element = node();
             if(type(info)==2){
                 element.addsprite("pic"+str(info[2])+".jpg").anchor(50,50).pos(80,120);
-                if(info[1] == -3000)
+                if(info[1] == UseCata)
                 {
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.AttackUseCata(["使用", "不使用"]);

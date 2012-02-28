@@ -26,14 +26,14 @@ const NonAutoPop = 0;
 const NotAdd = 2;
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
-const OpenReward = 100;
-const FeedReward = 100;
+const OpenReward = 1000;
+const FeedReward = 1000;
 const LevUpPop = 100;
 
+//const BASE_URL = "http://223.4.87.9:9002/";
 const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
-//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -406,6 +406,8 @@ class GlobalController{
 
     var castalPage = null;
     var inWarMap = 0;
+
+    var foodRankData = null;
 
 
     function lock(){

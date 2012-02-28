@@ -27,11 +27,8 @@ class WarChoose extends ContextObject{
 
     function reloadNode(re){
         if(re==1){
+            trace("enter war map 1");
             global.context[0].entermap(0,0);
-            /*
-            global.context[0].warpage.initialdata();
-            global.image.begindownload(2);
-            */
         }
     }
 
@@ -51,10 +48,11 @@ class WarChoose extends ContextObject{
                 else if(buttons[p] == 1){
                     if(global.user.getValue("nobility")<0){
                         var tmp=new Warningdialog([global.getStaticString(1),1,3]);
-                        global.pushContext(self,tmp,NonAutoPop);
+                        global.pushContext(self,tmp,NonAutoPop);//warning gointo war
                         tmp.contextNode.addsprite("dialogelement_help.png").pos(248,125).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"warmode");
                     }
                     else{
+                        trace("enter war map2");
                         global.context[0].entermap(0,0);
                     }
                 }
