@@ -17,8 +17,8 @@ class SpriteManager
     {
         global = g;
         oldEdition = -1;
-        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
-        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
+        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+2*MenuDifY);
+        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+2*MenuDifY);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
     }
 

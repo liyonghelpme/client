@@ -761,7 +761,6 @@ class CastlePage extends ContextObject{
                 else{//go to friend
                     flagfriend = 1;
                     fmenu.visible(1);
-                    actButton.visible(0);
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
                     }
