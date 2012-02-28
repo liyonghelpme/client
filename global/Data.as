@@ -273,7 +273,7 @@ var Dicts =
 ["quickSendArmy", "SpeedUp"],
 ["LevelNot", "Sorry, you need to upgrade to Lv. [LEVEL] to upgrade your castle."],
 ["EmpireNotOpen", "Sorry, higher level castle is not opened."],
-["sendCatapult", "Dispatch"], ["notSendCata", "Not"],
+["sendCatapult", "Dispatch"], ["notSendCata", "No"],
 ["petNeedDownload", "Summon pet need to download pictures, sure to download?"],
 ["warNeedDownload", "Enter into war map need to download pictures, sure to download?"],
 ["downloading", "Downloading pictures..."],
@@ -587,3 +587,5 @@ const AccVisMana = 33;
 
 const OneKeyMana = 10;
 const ChargeMana = 5;
+
+const CallDragon = 1000;

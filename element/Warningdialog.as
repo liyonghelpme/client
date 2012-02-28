@@ -49,18 +49,13 @@ class Warningdialog extends ContextObject{
             //dragon info[1]+1000
             if(type(info)==2){
                 element.addsprite("pic"+str(info[2])+".jpg").anchor(50,50).pos(80,120);
-            /*
-<<<<<<< HEAD
-                if(info[1] >= 1000)
-=======
-            */
-                if(info[1] == UseCata)
+                if(info[1] >= CallDragon)
                 {
-                    info[1] -= 1000;
+                    info[1] -= CallDragon;
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.usedefaultbutton(2,[global.getStaticString("call"),global.getStaticString("cancel")]);
                 }
-                else if(info[1] == -3000)
+                else if(info[1] == UseCata)
                 {
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.AttackUseCata([global.getStaticString("sendCatapult"), global.getStaticString("notSendCata")]);

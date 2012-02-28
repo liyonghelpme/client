@@ -13,6 +13,9 @@ class SpriteManager
     var askToDown;
     var downLoadType = NotDownload;
 
+    var downDragonYet = 0;
+    var downWarYet = 0;
+
     function SpriteManager(g)
     {
         global = g;
@@ -97,6 +100,12 @@ class SpriteManager
     }
     function getWar()
     {
+        if(downWarYet == 1 && notdownload == 0)
+        {
+            warBack();
+            return;
+        }
+        downWarYet = 1;
         var arr = [] + warpic;
         getDownload(arr, warBack, DownWarPic);
     }
@@ -109,9 +118,15 @@ class SpriteManager
 
     function getDragon(place)
     {
+        if(downDragonYet == 1 && notdownload == 0)
+        {
+            dragonBack();
+            return;
+        }
         trace("getDragon");
         dragonPlace = place;
         var arr = [] + DragonPic;
+        downDragonYet = 1;
         getDownload(arr, dragonBack, DownPetPic);
     }
     var ToDown = [];

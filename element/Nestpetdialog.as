@@ -105,7 +105,7 @@
 
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog([global.getFormatString("callDragonDia", ["[NAME]", PETS_NAME[param], "[POWER]", str(PETS_POWER[param]), "[ADD]",  str(PETS_UP[param])]),param+1000,6]),NonAutoPop);
+            global.pushContext(self,new Warningdialog([global.getFormatString("callDragonDia", ["[NAME]", PETS_NAME[param], "[POWER]", str(PETS_POWER[param]), "[ADD]",  str(PETS_UP[param])]),param+CallDragon,6]),NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);

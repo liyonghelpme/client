@@ -155,6 +155,7 @@ class CastlePage extends ContextObject{
     }
         
 
+    //get friend of ppy_userid
     function goback(n,e){
         if(friend.flist!=null){
             friend.flagmove=0;
@@ -795,6 +796,7 @@ class CastlePage extends ContextObject{
                     waitfriend = p;
                 }
                 else{
+                    trace("getfriend", global.userid, p, 0);
                     global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"getfriend");
                 }
             }
