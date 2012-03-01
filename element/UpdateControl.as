@@ -11,9 +11,15 @@ class UpdateControl extends ContextObject{
     var buildable;
     const EmpireCoin = [0,100000, 500000];
     const EmpireFood = [0,1000, 5000];
+<<<<<<< HEAD
     const EmpirePeople = [0, 100, 500];
     const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
     const EmpirePopUp = [0, 0, 0];
+=======
+    const EmpirePeople = [0,100, 500];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
+    const EmpirePopUp = [0,100, 500];
+>>>>>>> 3c3ef9a9c6dfff975511869da9ec8aca34b3cd85
     const EmpireMana = [0, 5, 5];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];

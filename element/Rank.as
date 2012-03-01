@@ -7,7 +7,7 @@ class Rank extends ContextObject{
 
     function paintNode(){
         contextNode = sprite("foodRank.jpg").anchor(50,50).pos(400,240);
-        contextNode.addsprite("builddialogclose.png").anchor(100, 0).pos(740, 35).setevent(EVENT_TOUCH,closedialog);
+        contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
         if(global.foodRankData != null)
@@ -34,25 +34,26 @@ class Rank extends ContextObject{
         nameNode = contextNode.addnode();
         trace("rankData", data);
         var top = data.get("top");
-        var initX = 294;
-        var initY = 135;
-        var headInitX = 216 - initX;
-        var headInitY = 129 - initY;
+        var initX = 293;
+        var initY = 121;
+        var headInitX = 200 - initX;
+        var headInitY = 116 - initY;
 
-        var nameInitX = 213 - initX;
-        var nameInitY = 150 - initY;
+        var nameInitX = 200 - initX;
+        var nameInitY = 153 - initY;
 
 
-        var difX = 310;
-        var difY = 66;
+        var difX = 608 - initX;
+        var difY = 220 - initY;
 
         var curX = initX;
         var curY = initY;
         //otherid food name
         trace("show rank head");
-        for(var i = 0; i < len(top) && i < 10; i++)
+        var colNum = 4;
+        for(var i = 0; i < len(top) && i < 2*colNum; i++)
         {
-            if(i/5 == 1)
+            if(i == colNum)
             {
                 curX = initX + difX;
                 curY = initY;
@@ -60,18 +61,21 @@ class Rank extends ContextObject{
             var head = nameNode.addsprite(avatar_url(top[i][0])).anchor(50, 50).pos(curX+headInitX, curY+headInitY);
             head.prepare();
             var oldSize = head.size();
-            var s = min(3000/oldSize[0], 3000/oldSize[1]);
+            var s = min(5000/oldSize[0], 5000/oldSize[1]);
             head.scale(s);
 
-            nameNode.addlabel(str(top[i][1]), null, 30).anchor(0, 50).pos(curX, curY).color(0, 0, 0, 100);
-            nameNode.addlabel(str(top[i][2]), null, 10).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
+            nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(curX, curY).color(0, 0, 0, 100);
+            nameNode.addlabel(str(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
+
             curY += difY;
         }
 
-        //order 
+        //order food 
         var myrank = data.get("myrank")[0]+1;
+        var food = data.get("myrank")[1];
         trace("show rank user", myrank);
-        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(286, 70).color(0, 0, 0, 100);
+        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(245, 47).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(625, 47).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

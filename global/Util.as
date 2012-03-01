@@ -1,3 +1,43 @@
+var TipShow = 0;
+function showTip()
+{
+    var level = global.user.getValue("level");
+
+    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var con = "[0]";
+    if(c_file_exist(fp) != 0)
+    {
+        con = c_file_op(C_FILE_READ, fp);
+    }
+    var res = json_loads(con);
+    if(res == null)
+    {
+        res = [0];
+    }
+    var tip = Tips.get(level);
+
+    trace("showTip", level);
+    if(tip != null && res[0] == 0 && TipShow == 0)
+    {
+        TipShow = 1;
+        global.castalPage.menu.add(global.castalPage.tipButton);
+    }
+}
+function clearTip()
+{
+    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    c_file_op(C_FILE_WRITE, fp, "[0]");
+}
+function removeTip()
+{
+    if(TipShow == 1)
+    {
+        global.castalPage.tipButton.removefromparent();
+        var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+        c_file_op(C_FILE_WRITE, fp, "[1]");
+        TipShow = 0;
+    }
+}
 function CheckSoldiers()
 {
     for(var i = 0; i < len(global.soldiers); i++)
@@ -56,6 +96,7 @@ function showWord(text)
         Wordtex = null;
     }
 }
+
 
 
 var businessPic =  ["room63.png", "plant_fail.png", "object49.png", "defenceback.png", "nobi2.png", "object43_l.png", "monster_2_3.png", "opbutton5.png", "plant4_3.png", "room25.png", "room17.png", "room33.png", "plant8_3.png", "object18.png", "camp1.png", "monster_5_2.png", "plant12_3.png", "plant3_4.png", "room7.png", "gift2.png", "room44.png", "plant11_3.png", "soldier3_2.png", "plant9.png", "plant3_3.png", "object58.png", "personfail.png", "room35.png", "room34.png", "monster_1_1.png", "plant4_4.png", "room30.png", "monster_8_2.png", "object14_l.png", "monster_5_1.png", "object54.png", "room29.png", "room27.png", "object16.png", "object42.png", "monster_6_1.png", "object26.png", "object14.png", "room39.png", "monster_2_2.png", "object23.png", "monster_10_2.png", "room22.png", "object65.png", "room32.png", "gift8.png", "plant12_4.png", "plant7_3.png", "monster_12_1.png", "factfail.png", "room28.png", "medalcard1_2.png", "blessing8.png", "room53.png", "monster_4_3.png", "monster_12_3.png", "medalcard5_1.png", "monster_12_2.png", "object21.png", "room54.png", "plant11.png", "opbutton13.png", "gift4.png", "room68.png", "object51.png", "soldier3_3.png", "fact27.png", "room45.png", "dialogback_warabout.png", "plant9_3.png", "room5.png", "attack.png", "shen25.png", "build602.png", "medalcard0_2.png", "medalcard0_1.png", "camp4.png", "object30.png", "defence_bubble.png", "object62.png", "opbutton15.png", "object11.png", "plant7_4.png", "plant5_over.png", "medalcard1_3.png", "monster_14_1.png", "object13.png", "selclose.png", "monster_4_2.png", "plant10_4.png", "defenceback.jpg", "nobattletab1.png", "object46.png", "object32.png", "monster_1_3.png", "room13.png", "warabout0.png", "room37.png", "watch.png", "zzz1.png", "room16.png", "soldierfail.png", "plant7.png", "monster_14_4.png", "object12_l.png", "blessing1.png", "monster_5_3.png", "moveback.png", "soldier2_2.png", "soldier2_3.png", "plant10_3.png", "fact2.png", "dialogback_attack.png", "shen20.png", "warmenutab0.png", "gift5.png", "object24.png", "object44.png", "plant5_4.png", "monster_6_3.png", "selopen.png", "object13_l.png", "fact18.png", "monster_10_3.png", "petrenamepic.jpg", "room20.png", "room14.png", "blessing3.png", "room40.png", "medalcard2_2.png", "object45_l.png", "warmenulistback.png", "room58.png", "dialogelement_state1.png", "room4.png", "object47_l.png", "room2.png", "monster_13_1.png", "gift6.png", "blessing9.png", "plant_2.png", "plant7_over.png", "room60.png", "object41.png", "object59.png", "plant5_3.png", "object29.png", "room49.png", "room26.png", "monster_13_3.png", "monster_8_1.png", "monster_15_1.png", "object44_l.png", "monster_13_2.png", "camp2.png", "blessing7.png", "nobi1.png", "plant10_over.png", "moveblock.png", "camp9.png", "wood.png", "soldier3_1.png", "plant6_4.png", "object17.png", "object37.png", "room72.png", "loadingbar2.png", "room66.png", "fact15.png", "cataStone.png", "object60.png", "object48.png", "room69.png", "object16_l.png", "object50.png", "build604.png", "personboard.png", "opbutton4.png", "dialogtab_warabout0.png", "warchatbutton1.png", "zzz3.png", "blessing5.png", "object20.png", "object49_l.png", "room56.png", "object47.png", "object28.png", "defence_head.png", "object38.png", "monster_11_2.png", "monster_12_4.png", "room67.png", "plant11_4.png", "room78.png", "room11.png", "object63.png", "monster_3_2.png", "object66.png", "object39.png", "room48.png", "catasel.png", "dialogelement_military2.png", "gift12.png", "dialogelement_military1.png", "medalcard1_1.png", "plant10.png", "monster_3_3.png", "gift7.png", "medalcard5_3.png", "fact12.png", "room8.png", "room75.png", "spytab1.png", "nobattletab0.png", "monster_14_3.png", "monster_11_3.png", "plant9_4.png", "monster_15_2.png", "blessing2.png", "object46_l.png", "blessing4.png", "room59.png", "plant9_over.png", "dialogelement_state2.png", "room55.png", "plant8_over.png", "monster_4_1.png", "monster_11_1.png", "object12.png", "object33.png", "room38.png", "monster_8_3.png", "room24.png", "gift10.png", "camp11.png", "cataunsel.png", "new2.png", "nobi0.png", "build603.png", "0.mp3", "plant6_over.png", "warlostleft.jpg", "medalcard0_3.png", "warmenutab1.png", "monster_1_2.png", "plant8.png", "object36.png", "dialogtab_warabout1.png", "object56.png", "monster_2_1.png", "warchatbutton.png", "object25.png", "fact21.png", "object64.png", "room42.png", "plant3_over.png", "room31.png", "fact24.png", "object19.png", "fact1.png", "plant12.png", "object53.png", "monster_14_2.png", "avatar_caesar.png", "build605.png", "gift1.png", "room43.png", "room46.png", "room47.png", "medalcard5_2.png", "monster_9_2.png", "room19.png", "gift3.png", "plant8_4.png", "object48_l.png", "monster_10_1.png", "pic0.png", "title.png", "log.png", "warchatbutton4.png", "train.png", "monster_6_2.png", "camp5.png", "room41.png", "camp8.png", "fact5.png", "monster_9_3.png", "object43.png", "object40.png", "room36.png", "object42_l.png", "object45.png", "object55.png", "fact4.png", "plant4_over.png", "room10.png", "monster_9_1.png", "monster_7_2.png", "zzz2.png", "addCatapult.png", "object34.png", "camp7.png", "soldier2_1.png", "warchatbutton2.png", "monster_7_3.png", "room57.png", "monster_3_1.png", "devineback.jpg", "room51.png", "room50.png", "medalcard2_1.png", "medalcard2_3.png", "monster_13_4.png", "object27.png", "object22.png", "object31.png", "gift9.png", "warabout1.png", "room1.png", "room23.png", "warloseelement.jpg", "object52.png", "plant12_over.png", "plant11_over.png", "camp10.png", "blessing6.png", "warchatbutton3.png", "monster_7_1.png", "gift11.png", "plant6_3.png", "build601.png", "room52.png", "object35.png", "warloseelement2.jpg", "fact22.png", "rain6.png", "monster_20_2.png", "opbutton25.png", "monster_21_1.png", "shen28.png", "wood1.png", "wrbutton0.png", "shen21.png", "opbutton19.png", "room61.png", "stone2.png", "monster_29_dead.png", "monster_20_3.png", "monster_18_dead.png", "opbutton21.png", "monster_31_3.png", "shen26.png", "monster14.png", "yan11.png", "yan10.png", "monster_26_1.png", "shen5.png", "rain1.png", "medalcard1_4.png", "monster_19_2.png", "shen16.png", "monster23.png", "shen15.png", "fact32.png", "opbutton17.png", "opbutton18.png", "shen11.png", "yan17.png", "monster_31_1.png", "yan13.png", "rain2.png", "monster_16_1.png", "room74.png", "medalcard5_5.png", "monster_23_dead.png", "fact31.png", "monster_33_1.png", "yan1.png", "monster_28_2.png", "wood3.png", "fact29.png", "medalcard1_5.png", "monster22.png", "room64.png", "yan7.png", "monster_25_3.png", "monster_34_dead.png", "monster_19_dead.png", "monster_28_4.png", "monster_18_2.png", "monster_18_3.png", "shen23.png", "monster12.png", "room70.png", "room71.png", "monster_24_3.png", "shen24.png", "shen14.png", "shen18.png", "monster_20_1.png", "monster_18_1.png", "monster_20_dead.png", "monster_29_2.png", "monster_17_3.png", "monster_22_2.png", "wrbutton1.png", "yan12.png", "monster_30_3.png", "rain3.png", "medalcard5_4.png", "monster21.png", "monster_31_dead.png", "monster_28_dead.png", "room73.png", "monster_33_2.png", "monster_34_1.png", "fact8.png", "monster_32_dead.png", "monster_28_3.png", "wood2.png", "monster_30_2.png", "monster_22_dead.png", "fact14.png", "monster_34_3.png", "monster_26_dead.png", "fact17.png", "monster_25_2.png", "fact25.png", "monster_33_3.png", "monster_24_dead.png", "monster_21_3.png", "monster_29_4.png", "medalcard0_4.png", "monster_35_3.png", "monster_23_3.png", "monster_27_4.png", "medalcard2_5.png", "medalcard2_4.png", "room65.png", "opbutton12.png", "fact23.png", "yan4.png", "stone4.png", "woodover.png", "monster_32_2.png", "yan14.png", "monster02.png", "monster_29_1.png", "wood5.png", "monster_35_dead.png", "monster_24_1.png", "fact28.png", "shen10.png", "monster_23_1.png", "monster_27_2.png", "monster_27_3.png", "yan9.png", "room79.png", "yan6.png", "opbutton10.png", "room80.png", "yan2.png", "opbutton14.png", "empire3_l.png", "monster11.png", "monster_17_1.png", "monster13.png", "monster_26_2.png", "monster_29_3.png", "monster_16_3.png", "stone3.png", "monster_27_1.png", "stone.png", "empire3.png", "monster_27_dead.png", "monster_24_2.png", "monster_28_1.png", "monster_21_2.png", "monster_34_2.png", "medalcard0_5.png", "rain5.png", "room62.png", "fact11.png", "shen17.png", "monster_25_1.png", "monster_26_3.png", "monster_19_3.png", "monster_15_3.png", "shen22.png", "shen8.png", "monster_21_dead.png", "nobi3.png", "monster_22_3.png", "monster_31_2.png", "monster03.png", "empire2.png", "wood4.png", "fact13.png", "shen13.png", "fact20.png", "stone6.png", "nobi4.png", "fact7.png", "shen29.png", "monster_25_dead.png", "monster_16_2.png", "monster_30_dead.png", "room76.png", "stone5.png", "fact26.png", "monster_32_3.png", "yan15.png", "yan5.png", "shen6.png", "shen7.png", "fact10.png", "shen12.png", "shen19.png", "room77.png", "fact19.png", "resourcefail.png", "shen27.png", "shen9.png", "monster_32_1.png", "monster_17_2.png", "monster_23_2.png", "shen4.png", "stoneover.png", "empire2_l.png", "monster_30_1.png", "rain4.png", "fact16.png", "monster_19_1.png", "yan3.png", "monster_35_2.png", "yan16.png", "yan8.png", "monster_33_dead.png", "stone1.png", "monster01.png", "monster_22_1.png", "wood6.png", "monster_35_1.png"] ;

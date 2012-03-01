@@ -31,6 +31,7 @@ import element.Monsterrobfood;
 import element.ChargeMagic;
 import element.CheckTime;
 import element.MagicWarning;
+import element.Tip;
 
 import page.MapPage;
 import element.MonsterController;

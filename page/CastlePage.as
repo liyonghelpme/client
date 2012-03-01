@@ -194,6 +194,8 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     
+    //var actButton;
+    var tipButton;
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
@@ -208,6 +210,9 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
+        //actButton = menu.addsprite("actPlant.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
+
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
         fback = fmenu.addsprite("planover.png").anchor(100,0).pos(780,10).setevent(EVENT_UNTOUCH,goback);
         var b = fmenu.addsprite("friendboard.png");
@@ -271,16 +276,10 @@ class CastlePage extends ContextObject{
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
     }
-    /*
-    function showAct(n, e, p, x, y, points)
+    function showTipDia(n, e, p, x, y, points)
     {
-        global.pushContext(null, new Act(), NonAutoPop);
+        global.pushContext(null, new Tip(), NonAutoPop);
     }
-    function loveShow(n, e, p, x, y, points)
-    {
-        global.pushContext(null, new Love(), NonAutoPop);
-    }
-    */
     var leftbuttonnum;
     var rightbuttonnum;
     function refreshbuttons(){
@@ -759,7 +758,7 @@ class CastlePage extends ContextObject{
                     flagfriend = 1;
                     fmenu.visible(1);
                     trace("remove Down Icon");
-                    spriteManager.removeDownIcon();
+                    //spriteManager.removeDownIcon();
                     if(cpid==0){
                         favatar.texture("avatar_caesar.png");
                         //msgbut.removefromparent();
@@ -868,7 +867,9 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        spriteManager.addDownIcon();
+        //spriteManager.addDownIcon();
+        //actButton.visible(1);
+        tipButton.visible(1);
         spriteManager.showDownIcon();
     }
     function hideHomeMenu()
@@ -876,8 +877,11 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
+        //actButton.visible(0);
+        tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
+
     function getfriendover(data){
         friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
@@ -1471,7 +1475,7 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    //addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name","notice"]]));
 
                     var bdict = dict();
                     bdict.update("name","daily");
@@ -1591,6 +1595,7 @@ class CastlePage extends ContextObject{
             global.user.getValue("petanimate").executeAnimate();
         }
         spriteManager.downloadAllPic();
+        showTip();
     }
 
     function getobjectby(x,y){
