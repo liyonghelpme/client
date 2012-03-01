@@ -72,7 +72,8 @@ class TestWebControl extends ContextObject{
         else if(mode==3){
             web = v_create(V_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
-            web.openurl("http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result");
+            web.openurl(RateURL);
+            //web.openurl("http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result");
         }
         else if(mode==4){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);

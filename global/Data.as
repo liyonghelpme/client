@@ -589,3 +589,5 @@ const OneKeyMana = 10;
 const ChargeMana = 5;
 
 const CallDragon = 1000;
+const RateURL = "http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result";
+
