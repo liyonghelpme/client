@@ -7,11 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-<<<<<<< HEAD
         "Happy every day!"
-=======
-        "种植大赛上线拉！前100名用户将会获得10凯撒币奖励，前1000名会获得1凯撒币，详情请见圈子。"
->>>>>>> 3c3ef9a9c6dfff975511869da9ec8aca34b3cd85
     ]; 
     function paintNode(){
         updatenum=-1;
