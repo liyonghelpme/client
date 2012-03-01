@@ -1475,7 +1475,7 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
 
                     var bdict = dict();
                     bdict.update("name","daily");

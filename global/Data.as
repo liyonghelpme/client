@@ -369,7 +369,7 @@ var Names = dict([
 
  ["BUILD_TAB_NAME",["House","Store","Recource","Military","Miracle","Decoration","Expand"]],
 
- ["INVITE_STR",["papaya games", "enjoy Miracle Empire with me", "come on to help me defeat enemies and build your own empire!", "Miracle Empire is a big,gorgeous SNS game. You can download from Android market, https://market.android.com/details?id,com.papaya.wonderempire1_cn"]]
+ ["INVITE_STR",["papaya games", "enjoy Miracle Empire with me", "come on to help me defeat enemies and build your own empire!", "Miracle Empire is a big,gorgeous SNS game. You can download from Android market, https://market.android.com/details?id=com.papaya.miracle_beta1"]]
 
 ]);
 
@@ -388,7 +388,7 @@ dict([["req", "dialog-circle"], ["des", ["Add friends", "More friends will bring
 dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "You can send free gifts to your friends.", "send a gift", "hint:visit your friend's territory and tap the gift icon on the left to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]),
 dict([["req", "selectgift"], ["des", ["Request Gift", "Your friends can send free gift to you.", "request a gift", "Hint: visit your friends' territory and tap the gift icon on the left, choose a gift and ask for it"]], ["checknum", 1], ["lev", 5], ["pair", ["askorgive", 1]], ["reward", [300, 10, 0]], ["type", 0], ["id", 11]]),
 dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint:click the treasure chest on the left,you can ask your friends for help,or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]),
-dict([["des", ["Rate", "If you enjoy the Miracle Empire, please give it 5 stars in Android Market, thanks!In return, you will get 10 caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [800, 30, 0]], ["type", 3], ["id", 13]]),
+dict([["des", ["Rate", "If you enjoy Miracle Empire, plz give it 5 stars in Market,thx! In return, you will get 10 caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]),
 dict([["req", "updatebuilding"], ["des", ["Upgrade cottage", "Upgrading your building will increase their production efficiency.", "upgrade cottage", "hint:click a normal cottage first and then click the upgrade icon"]], ["checknum", 1], ["lev", 6], ["pair", ["ground_id", 101]], ["reward", [500, 20, 0]], ["type", 0], ["id", 14]]),
 dict([["req", "person"], ["des", ["Increase Population!", "House can recruit people. People can build builings, trained to soldiers.", "increase population", "hint:click a free dwelling house first,then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]),
 dict([["req", "build"], ["des", ["Build house", "House can recruit people. People can build builings, trained to soldiers.", "build normal house"]], ["checknum", 2], ["lev", 6], ["pair", ["ground_id", 112]], ["reward", [400, 25, 0]], ["type", 0], ["id", 16]]),
@@ -589,7 +589,10 @@ const OneKeyMana = 10;
 const ChargeMana = 5;
 
 const CallDragon = 1000;
-const RateURL = "http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result";
+//const RateURL = "http://market.android.com/details?id=com.papaya.miracle_beta1&feature=search_result";
+
+const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
+
 
 
 const Tips = dict([
