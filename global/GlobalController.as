@@ -33,11 +33,19 @@ const OpenReward = 1000;
 const FeedReward = 1000;
 const LevUpPop = 10;
 
-const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
+
+const DISK_MONEY = [3000];
+const DISK_PERSON = [30];
+const DISK_LEV = [3];
+const DISK_TIME = [45*60];
+const DISK_NAME = ["幸运龙盘"];
+
+
 
 const FARM_PRICE = [0,1000,-10,-15,-20,10000,28500];
 //const FARM_SALE = [0,375,750,1125,1500,2500,7125];
@@ -333,6 +341,7 @@ function setWarrecordList(key, value, data)
 }
 //import global.TimeController;
 
+
 class DataController{
     var datadict;
     var sizedict;
@@ -341,6 +350,7 @@ class DataController{
         builddict = dict();
         var build = dict([["size",3],["level",10],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
         builddict.update(1000,build);
+
         sizedict = dict();
         for(var i=len(buildcontext)-1;i>=0;i--){
             sizedict.update(buildcontext[i]%1000,buildcontext[i]/1000);
@@ -520,6 +530,7 @@ class GlobalController{
         dataname.update("stone",STONENAME);
         dataname.update("wood",WOONAME);
         dataname.update("statue",STATUE_NAME);
+        dataname.update("disk", DISK_NAME);
         timer =null;
         data = new DataController();
         ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","凯撒"]])]]);

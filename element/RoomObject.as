@@ -7,10 +7,10 @@ class RoomObject extends BuildObject{
     }
 
     override function objectinterface(s,p){
-        if(s == 4){
+        if(s == FINISH_WORKING){
             global.http.addrequest(0,"finipop",["user_id","city_id","grid_id"],[global.userid,global.cityid,baseobj.posi[0]*RECTMAX+baseobj.posi[1]],self,"state4over");
         }
-        else if(s==2){
+        else if(s == FINISH_BUILDING){
             var buildable = dict([["ok",1]]);
             var pr = ROOM_FOOD[bid];
             var pname = "food";
@@ -38,7 +38,7 @@ class RoomObject extends BuildObject{
     function state4over(r,rc,c){
 //trace("finipop",rc,c);
         if(rc != 0){
-            state = 2;
+            state = FINISH_BUILDING;
             state2 = 0;
             global.user.changeValueAnimate(baseobj,"exp",ROOM_EXP[bid],0);
             if(time()/1000-begintime<3*86400){
@@ -64,7 +64,7 @@ class RoomObject extends BuildObject{
             }
         }
         global.user.changeValueAnimate(baseobj,"exp",ROOM_B_EXP[bid],-2);
-        state = 1;
+        state = BUILDING;
         begintime = time()/1000;
         lefttime = ROOM_B_TIME[bid];
         super.beginbuild();
@@ -74,7 +74,7 @@ class RoomObject extends BuildObject{
 //trace("population",rc,c);
         if(rc != 0 && json_loads(c).get("id",1)==1){
             global.user.changeValueAnimate(baseobj,"food", - ROOM_FOOD[bid],0);
-            state = 3;
+            state = WORKING;
             begintime = time()/1000;
             lefttime = ROOM_TIME[bid];
         }
@@ -85,7 +85,7 @@ class RoomObject extends BuildObject{
     override function objectsetstate(){
         var baseoff = baseobj.contextid*33;
         var buildoff = contextNode.size()[1]*2/3;
-        if(state == 4){
+        if(state == FINISH_WORKING){
             if(time()/1000-begintime<3*86400){
                 stateNode.texture("personSuccess.png",UPDATE_SIZE).pos(baseoff+1,baseoff-buildoff);
             }
@@ -93,7 +93,7 @@ class RoomObject extends BuildObject{
                 stateNode.texture("personfail.png",UPDATE_SIZE).pos(baseoff+1,baseoff-buildoff);
             }
         }
-        else if(state == 2){
+        else if(state == FINISH_BUILDING){
             stateNode.texture("zzz.png",UPDATE_SIZE).pos(baseoff+1,baseoff-buildoff);
             flagquick =0;
         }
@@ -108,8 +108,8 @@ class RoomObject extends BuildObject{
     }
 
     override function objectgettime(){
-        if(state == 1) return ROOM_B_TIME[bid];
-        else if(state == 3) return ROOM_TIME[bid];
+        if(state == BUILDING) return ROOM_B_TIME[bid];
+        else if(state == WORKING) return ROOM_TIME[bid];
         else return 0;
     }
 }
