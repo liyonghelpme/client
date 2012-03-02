@@ -3,6 +3,7 @@ class Levelupdialog extends ContextObject{
         trace("level init");
         contextname = "dialog-reward-levelup";
         contextNode = null;
+
     }
 
     function paintNode(){
@@ -12,6 +13,8 @@ class Levelupdialog extends ContextObject{
             global.dark[len(global.dark)-1].visible(1);
         }
         var level = global.user.getValue("level");
+        clearTip();
+        showTip();
         contextNode = sprite("dialogback_normal.png").anchor(50,50).pos(400,240);
         if(level>3){
             contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(257,400).setevent(EVENT_TOUCH,closedialog,1);
@@ -33,7 +36,7 @@ class Levelupdialog extends ContextObject{
             levelback.addsprite("caesars_big.png").anchor(50,50).pos(260,137).size(24,24);
             levelback.addlabel(str(level/10),null,24).anchor(0,50).pos(276,137).color(0,0,0,100);
             levelback.addsprite("personlimit.png").anchor(50,50).pos(360,137).size(22,24);
-            levelback.addlabel(str(250),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
+            levelback.addlabel(str(LevUpPop),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
         }
         var unlockobjs = new Array(0);
         if(global.user.getValue("level")<len(UNLOCK)&&UNLOCK[global.user.getValue("level")] != ""){

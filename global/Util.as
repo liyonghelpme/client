@@ -1,3 +1,43 @@
+var TipShow = 0;
+function showTip()
+{
+    var level = global.user.getValue("level");
+
+    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var con = "[0]";
+    if(c_file_exist(fp) != 0)
+    {
+        con = c_file_op(C_FILE_READ, fp);
+    }
+    var res = json_loads(con);
+    if(res == null)
+    {
+        res = [0];
+    }
+    var tip = Tips.get(level);
+
+    trace("showTip", level);
+    if(tip != null && res[0] == 0 && TipShow == 0)
+    {
+        TipShow = 1;
+        global.castalPage.menu.add(global.castalPage.tipButton);
+    }
+}
+function clearTip()
+{
+    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    c_file_op(C_FILE_WRITE, fp, "[0]");
+}
+function removeTip()
+{
+    if(TipShow == 1)
+    {
+        global.castalPage.tipButton.removefromparent();
+        var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+        c_file_op(C_FILE_WRITE, fp, "[1]");
+        TipShow = 0;
+    }
+}
 function CheckSoldiers()
 {
     for(var i = 0; i < len(global.soldiers); i++)

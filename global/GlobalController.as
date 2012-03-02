@@ -18,7 +18,10 @@ const buildcontext = [
 1557, 1558, 1559, 2560, 1561, 1562,
 2563, 2564, 2565, 2566,
 //statue
-2600,2601,2602,2603,2604,2605];
+2600,2601,2602,2603,2604,2605,
+//dragon disk
+2700,
+];
 
 const darkColorAlpha = 65;
 const AutoPop = 1;
@@ -28,12 +31,11 @@ const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
 const OpenReward = 1000;
 const FeedReward = 1000;
-const LevUpPop = 100;
+const LevUpPop = 10;
 
-//const BASE_URL = "http://223.4.87.9:9002/";
 const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -107,7 +109,7 @@ const GOD_B_TIME = [7200,21600,43200,64800,86400];
 const GOD_B_PRICE = [10000,20000,50000,100000,500000];
 const GOD_UP = [0,"5","10","15","30"];
 const GOD_FOOD = [500,1000,2000,5000,10000];
-const GOD_PERSON_MAX = [100,200,300,400,500];
+const GOD_PERSON_MAX = [100,110,120,130,140];
 const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
@@ -138,7 +140,7 @@ const MONSTER_POWER = [20,30,41,25,37,49,28,42,56,33,49,65,40,58,77,50,75,100,42
 
 const EXPAND_LEVEL=[4,7,10,15,20,25,30,40,50,60];
 const EXPAND_MONEY=[10000,50000,100000,500000,1000000,1500000,2000000,2500000,3000000,5000000];
-const EXPAND_CAESARS=[1,3,5,7,10,15,20,27,37,50];
+const EXPAND_CAESARS=[5,10,20,40,60,80,110,140,170,200];
 const EXPAND_FRIEND=[1,10,30,60,100,150,210,280,360,450];
 const EXPAND_EXP=[10,20,50,90,140,200,330,580,740,920];
 
@@ -337,7 +339,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
+        var build = dict([["size",3],["level",10],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
         builddict.update(1000,build);
         sizedict = dict();
         for(var i=len(buildcontext)-1;i>=0;i--){

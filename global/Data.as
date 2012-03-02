@@ -46,7 +46,7 @@ const stringDict=dict([
 ["message_send_success","发送成功！"],["text_empire_name","请输入帝国名称："],
 ["update_normal","普通升级"],["update_caesars","快速升级"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
 ["onekey_plant","一键播种"],["onekey_harvest","一键收获"],["onekey_product","一键收税"],["onekey_visit_normal","一键普通访问"],["onekey_visit_inc","一键累计访问"],["onekey_title","一键操作"],
-["onekey_gotohelp","查看帮助及如何免费使用？"],
+["onekey_gotohelp","查看帮助及如何使用？"],
 ["tab_fighting","作战中"],["tab_attackable","可攻打"],["tab_fortress", "要塞"],
 ["nobattle_fail_whenhasattack","抱歉，正在进攻其他玩家时不能开启保护模式"],
 ["nobattle_whenattack","在保护期中攻打其他玩家，保护状态将会终止"],
@@ -106,7 +106,7 @@ const staticString = [
 "还需要帮助好友打开[NUM]个宝箱",
 "还需要帮助好友喂养[NUM]次宠物",
 "需要升到[NUM]级",
-"你现在可以永久免费使用一键普通访问好友功能咯！",
+"你增加魔法值上限啦！",
 "[NAME]晒出了自己领地的截图，大家快来围观吧！",
 "",
 "http://getmugua.com",
@@ -240,3 +240,12 @@ dict([["req", "build"],["des", ["开垦精灵农田","特殊农田可以大大�
 dict([["req", "stone"],["des", ["采集石英","木材和石材用户建筑升级，投石车等物品的建造","采集石英"]],["checknum", 300],["lev", 30],["pair", ["objid", 5]],["reward", [6200, 480, 1]],["type", 1],["id", 123]]),
 dict([["req", "stone"],["des", ["采集大理石","木材和石材用户建筑升级，投石车等物品的建造","采集大理石"]],["checknum", 200],["lev", 30],["pair", ["objid", 4]],["reward", [4000, 320, 0]],["type", 1],["id", 124]])
 ];
+
+
+const Tips = dict([
+[8, "第8级可以开始建造神像罗！神像可以施展神迹增加产量。满级神像还有一键操作哦！"],
+[10, "第10级可以开始建造龙巢罗，龙巢可以召唤宠物，宠物长大之后会帮助你战斗！"],
+[12, "第12级可以建筑雕像罗，兽神施展神迹之后雕像会生产防御力！"],
+[20, "第20级可以升级城堡罗，升级城堡会增加5点魔法值上限！"],
+[30, "30级可以升级第三等级城堡（夜晚会有烟花特效），也可以建造兽神，它施展神迹会让雕像生产防御力！"],
+]);
