@@ -1345,8 +1345,10 @@ class CastlePage extends ContextObject{
                 var g = int(objdata[1]);
                 i = g/RECTMAX;
                 j = g%RECTMAX;
+                // ground_id grid_id object_id, producttime finish
                 var s = new NormalObject(gid,i,j);
                 s.init(s,global);
+
                 grounds.append(s);
                 var objid;
                 var time;
