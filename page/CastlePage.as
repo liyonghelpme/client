@@ -1410,7 +1410,13 @@ class CastlePage extends ContextObject{
                     else if(finish == 0)
                         state = BUILDING;
                     else 
-                        state = WORKING;
+                    {
+                        var KindID = gid/100;
+                        if(KindID == DISK)
+                            state = FINISH_BUILDING;
+                        else
+                            state = WORKING;
+                    }
 
                     if(state == FINISH_BUILDING && gid/100== FACT){//factory time = 0 
                         state = BUILDING;
@@ -1450,7 +1456,7 @@ class CastlePage extends ContextObject{
                         time=btime;
                         global.http.addrequest(0,"getPets",["uid","cid"],[global.userid,global.cityid],self,"getmypets");
                     }
-                    else if(gid < STATUE_ID){
+                    else if(gid/100 != STATUE){//STATUE DRAGON NAME diff
                         if(gid == 424 && ccard[18] == 0)
                             ccard[18] = 1;
                         gid=gid%100;

@@ -56,7 +56,7 @@ class GodControl extends ContextObject{
             }
             else
             {
-                if(global.user.getValue("hasDict") == 0)
+                if(global.user.getValue("hasDisk", 0) == 0)
                     objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, beginbuild, i);
                 else
                 {
