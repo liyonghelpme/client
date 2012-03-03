@@ -13,6 +13,7 @@ class GodControl extends ContextObject{
     function GodControl(){
         contextname = "element-build-god";
         contextNode = null;
+        objsmax = len(objlevel);
         objs = [];
         buildable = [];
         for(var i = 0; i < objsmax; i++)
