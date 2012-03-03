@@ -48,7 +48,12 @@ class Warningdialog extends ContextObject{
             element = node();
             if(type(info)==2){
                 element.addsprite("pic"+str(info[2])+".jpg").anchor(50,50).pos(80,120);
-                if(info[1] == UseCata)
+                if(info[1] == DiskShare)
+                {
+                    element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+                    dialog.usedefaultbutton(2, [global.getStaticString("share"), global.getStaticString("ok")]);
+                }
+                else if(info[1] == UseCata)
                 {
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.AttackUseCata(["使用", "不使用"]);

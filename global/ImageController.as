@@ -1,5 +1,6 @@
 class ImageController{
-    const images1 = ["downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png"];
+    const images1 = ["downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png", "disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png"];
+
     /*
     const images1 = [
     "zzz1.png", "zzz3.png", 

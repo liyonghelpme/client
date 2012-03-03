@@ -1226,7 +1226,10 @@ class CastlePage extends ContextObject{
 
             global.user.setValue("person",data.get("population",570));
             global.user.setValue("labor",data.get("labor_num",390));
-            global.user.setValue("personmax",data.get("popupbound",1500));
+            global.user.setValue("personmax",data.get("popupbound", 1500));
+            var goods = data.get("goods", dict());
+            goods = goods.get("0", 0);
+            global.user.setValue("dragonStone", goods)
             global.allymax = data.get("allyupbound",1);
             if(newstate<3){
             	global.user.setValue("nobility",-3);
@@ -1356,6 +1359,10 @@ class CastlePage extends ContextObject{
                 objid = int(objdata[2]);
                 time = int(objdata[3]);
                 finish = int(objdata[4]);
+                if(gid/100 ==  DISK)
+                {
+                    global.user.setValue("hasDisk", 1);
+                }
                 if(gid == CASTAL)
                 {
                     s.empireLevel = objid;
@@ -1396,13 +1403,20 @@ class CastlePage extends ContextObject{
                     }
                     //state 0 1 2 3 4
                     //0  1 building 2 finishBuilding 3 working 4 harvest enabled
-                    /*
+                    var state;
                     if(time == 0 ){//finish Building 
                         state = FINISH_BUILDING;
                     }
-                    */
+                    else if(finish == 0)
+                        state = BUILDING;
+                    else 
+                        state = WORKING;
 
-                    var state;
+                    if(state == FINISH_BUILDING && gid/100== FACT){//factory time = 0 
+                        state = BUILDING;
+                    }
+
+                    /*
                     //CASTAL FARM ROOM CAMP FACT GOD DECORATION  STATUE DISK  DRAGON  
                     if(gid/100 == DECORATION || gid/100 == CASTAL || gid == DRAGON_ID)//no need to building
                     {
@@ -1414,11 +1428,12 @@ class CastlePage extends ContextObject{
                     else
                     {
                         var KindID = gid/100;
-                        if(KindID == DISK || (KindID == ROOM || KindID == CAMP) && objid == -1)
+                        if(KindID == DISK || (KindID == ROOM || KindID == CAMP || KindID == STATUE) && objid == -1)
                             state = FINISH_BUILDING;
                         else
                             state = WORKING;//working
                     }
+                    */
                     /*
                     if(state == FINISH_BUILDING && gid/100== FACT){//factory time = 0 
                         state = BUILDING;
@@ -1435,7 +1450,9 @@ class CastlePage extends ContextObject{
                         time=btime;
                         global.http.addrequest(0,"getPets",["uid","cid"],[global.userid,global.cityid],self,"getmypets");
                     }
-                    else if(gid<DRAGON_ID){
+                    else if(gid < STATUE_ID){
+                        if(gid == 424 && ccard[18] == 0)
+                            ccard[18] = 1;
                         gid=gid%100;
                     }
                     //btime Current System Time
@@ -1639,6 +1656,7 @@ class CastlePage extends ContextObject{
             trace("increase mana");
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
+
             if(mana < boundary)
                 global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
             else

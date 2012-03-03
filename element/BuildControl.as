@@ -14,6 +14,7 @@ import element.StoneControl;
 import element.ProCatapult;
 import element.Catapult;
 import element.DiskExplain;
+import element.Disk;
 class BuildControl extends ContextObject{
     var place;
     var placeObj;
@@ -230,7 +231,7 @@ class BuildControl extends ContextObject{
             back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(71,55).scale(bl);
             beginx = -83;
         }
-        if(placeObj.objectid < DRAGON_ID && mode != GOD_INDEX)
+        if(placeObj.objectid < DRAGON_ID && mode != GOD_INDEX && mode != DISK_INDEX)
             buttons.append(SELL_BUTTON);
         for(var k=0;k<len(buttons);k++){
             var filter = NORMAL;
@@ -349,9 +350,11 @@ class BuildControl extends ContextObject{
                 }
                 else if(buttons[p] == DISK_BUTTON)
                 {
+                   global.pushContext(place, new Disk(), NonAutoPop); 
                 }
                 else if(buttons[p] == INFO_BUTTON)
                 {
+                    global.pushContext(place, new DiskExplain(), NonAutoPop);
                 }
                 else//ip = 26
                 {

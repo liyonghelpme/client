@@ -185,7 +185,8 @@ class TaskController extends ContextObject{
     function gotoMacket(){
         inctaskstep(1);
         //global.pushContext(null,new TestWebControl(3),NonAutoPop);
-        openUrl("http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating");
+        //openUrl("http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating");
+        openUrl(RateURL);
     }
     
     function reloadNode(re){

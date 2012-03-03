@@ -118,7 +118,8 @@ class Monsterdialog extends ContextObject{
                 }
                 //Add specialgoods or lost 
                 trace("defeat data", data);
-                c_addtimer(1000,defeatover,[m,data.get("powerlost",0),data.get("specialgoods","")],3500,1);
+                c_addtimer(1000,defeatover,[m,data.get("powerlost",0), data.get("specialgoods",""), data.get("goods")],3500,1);
+
                 SetSoldier(0, data.get("infantrypower",0));
                 SetSoldier(1, data.get("cavalrypower",0));
                 global.context[1].powerlabel.text(str(global.soldiers[0]+global.soldiers[1]));
@@ -197,7 +198,7 @@ class Monsterdialog extends ContextObject{
                     global.context[0].addcmd(cdict);
                 }
     }
-    //monster, powerlost, specialgoods
+    //monster, powerlost, specialgoods, goods
     function defeatover(timer,tick,m){//parameter powerlost == 0
         trace("defeatover", timer, tick, m);
         if(m[1] == 0){//X Y POsition add Exp or change Value no power lost 
@@ -227,16 +228,28 @@ class Monsterdialog extends ContextObject{
             }
             global.user.changeValueAnimate2(m[0],"exp",exp,0);
             global.user.changeValueAnimate2(m[0],"money",money,-2);
+
+            var specs = m[2].split("!");
+            var le = len(specs);
+            var si = m[0].size();
+            var i = 0;
             if(m[2] != ""){
-                var specs = m[2].split("!");
-                var le = len(specs);
-                var si = m[0].size();
-                for(var i=0;i<le;i++){
+                for(i=0; i<le; i++){
                     global.special[int(specs[i])]++;
                     var s=sprite("gift"+str(int(specs[i])+1)+".png").anchor(50,100).scale(50).color(0,0,0,0);
                     m[0].add(s.pos(-15*le+i*50+si[0]/2,si[1]),-1);
                     s.addaction(sequence(tintto(500,100,100,100,100),delaytime(3000),tintto(1000,0,0,0,0)));
                 }
+            }
+
+            var goods = m[3];
+            trace("goods", goods);
+            if(goods == 1)
+            {
+                global.user.changeValue("dragonStone", 1);
+                goods = sprite("opbutton27.png").anchor(50, 100).scale(60).color(0, 0, 0, 0);
+                m[0].add(goods.pos(-15*le+i*50+si[0]/2,si[1]),-1);
+                goods.addaction(sequence(tintto(500,100,100,100,100),delaytime(3000),tintto(1000,0,0,0,0)));
             }
         }
     }

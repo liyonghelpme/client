@@ -106,7 +106,7 @@ class Nestbuilddialog extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(ppy_username()+"获得了能召唤宠物的龙巢，但是需要你们的帮助才能打开，快去帮助它吧！","http://getmugua.com");
+        ppy_postnewsfeed(ppy_username()+"获得了能召唤宠物的龙巢，但是需要你们的帮助才能打开，快去帮助它吧！", ShareURL);
     }
     
     function completeopen(n,e){
@@ -243,7 +243,7 @@ trace("helpopen",rc,c);
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"成功地激活了他的龙巢，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"成功地激活了他的龙巢，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL);
         }
     }
     function deleteContext(){

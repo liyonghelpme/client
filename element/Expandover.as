@@ -19,7 +19,7 @@ class Expandover extends ContextObject{
         global.popContext(null);
         if(p!=null){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"扩建了自己的领地，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"扩建了自己的领地，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL);
         }
     }
 

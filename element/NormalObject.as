@@ -548,25 +548,25 @@ trace("sell",r,rc,c);
             var m=0;
             var p=0;
             var obj = 0;
-            if(ot==0){
+            if(ot==FARM){
                 m = FARM_PRICE[oi];
                 p = FARM_PERSON[oi];
             }
-            else if(ot==1){
+            else if(ot==ROOM){
                 m = ROOM_PRICE[oi/3*3];
                 ol = oi%3;
             }
-            else if(ot==2){
+            else if(ot==CAMP){
                 m = CAMP_PRICE[oi/3*3];
                 p = CAMP_PERSON[oi];
                 ol = oi%3;
             }
-            else if(ot==3){
+            else if(ot==FACT){
                 m = FACT_PRICE[oi/3*3];
                 p = FACT_PERSON[oi];
                 ol = oi%3;
             }
-            else if(ot==4){
+            else if(ot==GOD){
                 var ott;
                 if(oi<20) ott=oi%4;
                 else ott=oi/5;
@@ -578,9 +578,14 @@ trace("sell",r,rc,c);
                 }
                 p = -GOD_PERSON_MAX[ol];
             }
-            else if(ot==6){
+            else if(ot==STATUE){
                 m = STATUE_PRICE[oi];
                 p = STATUE_PERSON[oi];
+            }
+            else if(ot == DISK)
+            {
+                m = DISK_MONEY[0];
+                p = DISK_PERSON[0];
             }
             else{
                 obj = 1;

@@ -20,7 +20,7 @@ class Visitreward extends ContextObject{
 
     function closedialog(node,event,p){
         if(p==1){
-            ppy_postnewsfeed(ppy_username()+"访问好友获得了奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"访问好友获得了奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL);
         }
         global.popContext(null);
     }

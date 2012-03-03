@@ -150,3 +150,27 @@ const CHANGE_BUTTON = 21;
 const EGG_STATE = 3;
 const DRAGON_STATE = 4;
 
+//1 1 20 30 20 10 5 5 8
+var DiskRewards = [
+    dict([["boundary", 1]]), //1
+    dict([["caesars", 9]]),//1
+    dict([["food", 99]]), //20
+    dict([["spe", 1]]), //30
+    dict([["money", 999]]), //20
+    dict([["dragonStone", 1]]),//10
+    dict([["food", 999]]),//5
+    dict([["caesars", 1]]),//5
+    dict([["money", 9999]]),//8
+];
+var DiskGoods = [
+    "恭喜你，你的魔法值上限增加1点！",
+    "恭喜你，你得到了9凯撒币！",
+    "恭喜你，你得到了99粮食！",
+    "恭喜你，你得到了特殊物品木条！",
+    "恭喜你，你得到了999银币！",
+    "恭喜你，你得到了一块仙龙石！",
+    "恭喜你，你得到了999粮食！",
+    "恭喜你，你得到了1凯撒币！",
+    "恭喜你，你得到了9999银币",
+];
+

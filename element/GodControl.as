@@ -8,7 +8,7 @@ class GodControl extends ContextObject{
     var buildable;
     var objsmax = 7;
     var objlevel = [3,10,8,12,16,20,25,30];
-    var objcontext = [2700,-1000,0,1,3,2,20,25];//buildId
+    var objcontext = [3700,-1000,0,1,3,2,20,25];//buildId
     //const objname = ["God of wealth","God of population","God of war","God of harvest"];
     function GodControl(){
         contextname = "element-build-god";
@@ -56,7 +56,14 @@ class GodControl extends ContextObject{
             }
             else
             {
-                objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH,beginbuild,i);
+                if(global.user.getValue("hasDict") == 0)
+                    objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, beginbuild, i);
+                else
+                {
+                    objs[i].color(60,60,60,100);
+                    objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, null, i);
+                }
+                    
                 var color = 0;
                 if(global.user.getValue("money") < DISK_MONEY[0])
                 {
@@ -70,6 +77,7 @@ class GodControl extends ContextObject{
                 objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
                 objs[i].addlabel(str(DISK_PERSON[0]),null,16).pos(34,244).color(0,0,0,100);
             }
+            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             
         }
         else if(obji>=0){
@@ -77,9 +85,11 @@ class GodControl extends ContextObject{
         
             //objs[i].addsprite("shen"+str(obji)+".png").scale(65).anchor(50,100).pos(74,195);
             objs[i].addlabel(global.getname("god",obji),null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
+            /*
             if(obji>4){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -122,7 +132,7 @@ class GodControl extends ContextObject{
             var sc=100;
             if(data.get("size")==3) sc=66;
             objs[i].addsprite("build"+str(-obji)+".png").anchor(50,100).pos(74,160).scale(sc);
-            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            //objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             if(data.get("level") > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(data.get("level")),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -243,7 +253,8 @@ class GodControl extends ContextObject{
                         var oid = objcontext[param];
                         if((oid%1000)/100 == DISK)
                         {
-                            global.popContext(oid); 
+                            global.pushContext(self,new Calldialog(objcontext[param]),NonAutoPop);
+                            //global.popContext(oid); 
                         }
                         else
                             global.pushContext(self,new Calldialog(objcontext[param]),NonAutoPop);
