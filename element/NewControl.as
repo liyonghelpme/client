@@ -313,7 +313,7 @@ class NewControl extends ContextObject{
             global.context[0].addcmd(cm);
             global.lastpage[1]=400;
             global.user.changeValue("money",3000);
-            spriteManager.showDownIcon();
+            spriteManager.addDownIcon();
             return 0;
         }
         else if(newstrs[strnum]== ""){
