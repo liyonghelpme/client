@@ -25,10 +25,10 @@ const buildcontext = [
 ];
 
 
-//const BASE_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
-//const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
-const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
+const BASE_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
+//const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 
 const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
