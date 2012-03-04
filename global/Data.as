@@ -298,6 +298,7 @@ var Dicts =
 ["showDownNow", "To have good game experience, you need download 3M pictures. Sure to download?"],
 
 ["Build", "Build"],
+["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Come on to build it!"],
 ["", ""],
 ];
 
@@ -504,7 +505,8 @@ dict([["req", "upgrademap"], ["des", ["Upgrade map", "If you defeat enough enemi
 ];
 
 var Statics = 
-["Reach to Lv. 6 to unlock war mode",
+[
+"Reach to Lv. 6 to unlock war mode",
 "Once you have activated War Mode, you can't quit it, please read the HELP documentation for more information.",
 "Congrats, you won!",
 "Sorry, you were defeated.",
@@ -579,6 +581,7 @@ const UseCata = -3000;
 const AttWithCata = 100;
 const AttNoCata = 101;
 const NoCata = -3001;
+const DiskShare = -4000;
 
 const ManaChargeTime = 300000;
 const AddDefCae = 25;

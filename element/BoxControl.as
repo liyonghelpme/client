@@ -173,7 +173,11 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
+<<<<<<< HEAD
             ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]), NewsURL);
+=======
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),ShareURL);
+>>>>>>> 0158021affe25a9da38a97671c18615dc82d60ca
         }
     }
 
@@ -198,12 +202,20 @@ class BoxControl extends ContextObject{
             global.user.changeValueAnimate2(global.context[0].ub,"exp",v,-6);
             contextNode.addsprite("exp.png").pos(104,242);
             contextNode.addlabel(str(v),null,30).pos(170,242).color(0,0,0,100);
-            var goods = json_loads(c).get("specialgoods");
-            for(var i=0;i<2;i++){
+            var data = json_loads(c);
+            var goods = data.get("specialgoods");
+            for(var i=0;i<len(goods);i++){
                 var gi = goods[i];
                 global.special[gi]++;
                 var block=contextNode.addsprite("specialblock.png").pos(255+78*i,196);
                 block.addsprite("gift"+str(gi+1)+".png").anchor(50,50).pos(32,32).scale(60);
+            }
+            goods = data.get("goods");
+            if(goods == 1)
+            {
+                global.user.changeValue("dragonStone", 1);
+                block=contextNode.addsprite("specialblock.png").pos(255+78*i,196);
+                block.addsprite("opbutton27.png").anchor(50,50).pos(32,32).scale(60);
             }
             maxperson = 0;
             helpperson = 0;

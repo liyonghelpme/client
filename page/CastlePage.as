@@ -984,24 +984,32 @@ class CastlePage extends ContextObject{
             {
                 s.empireLevel = int(objdata[2]);
             }
-            if(gid>0&&gid<500||gid>=600){
+            if(gid>0 && gid < 500||gid>=600){
                 var objid = int(objdata[2]);
                 var time = int(objdata[3]);
                 var finish = int(objdata[4]);
+                var KindID = gid/100;
+
+                var state;
                 if(time == 0){
-                    var state = 2;
+                    state = FINISH_BUILDING;
                 }
                 else if(finish == 0){
-                    state = 1;
+                    state = BUILDING;
                 }
-                else state = 3;
+                else {
+                    if(KindID == DISK)
+                        state = FINISH_BUILDING;
+                    else
+                        state = WORKING;
+                }
                 if(gid>=1000&&gid<1100){
                     state=0;
                     objid=-1;
                     time=btime;
                     global.http.addrequest(0,"getPets",["uid","cid"],[cuid,ccid],self,"getmypets");
                 }
-                else if(gid<600){
+                else if(gid<600 || KindID == DISK){
                     if(gid==424&&ccard[18]==0){
                         ccard[18]=1;
                     }
@@ -1230,7 +1238,10 @@ class CastlePage extends ContextObject{
 
             global.user.setValue("person",data.get("population",570));
             global.user.setValue("labor",data.get("labor_num",390));
-            global.user.setValue("personmax",data.get("popupbound",1500));
+            global.user.setValue("personmax",data.get("popupbound", 1500));
+            var goods = data.get("goods", dict());
+            goods = goods.get("0", 0);
+            global.user.setValue("dragonStone", goods)
             global.allymax = data.get("allyupbound",1);
             if(newstate<3){
             	global.user.setValue("nobility",-3);
@@ -1349,8 +1360,10 @@ class CastlePage extends ContextObject{
                 var g = int(objdata[1]);
                 i = g/RECTMAX;
                 j = g%RECTMAX;
+                // ground_id grid_id object_id, producttime finish
                 var s = new NormalObject(gid,i,j);
                 s.init(s,global);
+
                 grounds.append(s);
                 var objid;
                 var time;
@@ -1358,12 +1371,18 @@ class CastlePage extends ContextObject{
                 objid = int(objdata[2]);
                 time = int(objdata[3]);
                 finish = int(objdata[4]);
-                if(gid == 0)
+                if(gid/100 ==  DISK)
+                {
+                    global.user.setValue("hasDisk", 1);
+                }
+                if(gid == CASTAL)
                 {
                     s.empireLevel = objid;
+                    var cp = contextNode.node2world(PBX+i*(-34)+j*30,PBY-181+i*17+j*16);
+                    nodeMove(400-cp[0],240-cp[1]);
                 }
-                else if(gid>0&&gid<500||gid>=600){//not decoration
-                    if(gid/100==4){//god
+                else if(gid/100 != DECORATION){//not decoration
+                    if(gid/100 == GOD){//god
                         if(gid<420){
                             objid=0;
                             if(finish != 0){
@@ -1397,42 +1416,74 @@ class CastlePage extends ContextObject{
                     //state 0 1 2 3 4
                     //0  1 building 2 finishBuilding 3 working 4 harvest enabled
                     var state;
-                    if(time == 0){//finish Building 
-                        state = 2;
+                    if(time == 0 ){//finish Building 
+                        state = FINISH_BUILDING;
+                    }
+                    else if(finish == 0)
+                        state = BUILDING;
+                    else 
+                    {
+                        var KindID = gid/100;
+                        if(KindID == DISK)
+                            state = FINISH_BUILDING;
+                        else
+                            state = WORKING;
+                    }
+
+                    if(state == FINISH_BUILDING && gid/100== FACT){//factory time = 0 
+                        state = BUILDING;
+                    }
+
+                    /*
+                    //CASTAL FARM ROOM CAMP FACT GOD DECORATION  STATUE DISK  DRAGON  
+                    if(gid/100 == DECORATION || gid/100 == CASTAL || gid == DRAGON_ID)//no need to building
+                    {
+                        state = FINISH_BUILDING;
                     }
                     else if(finish == 0){//not finish Building 
-                        state = 1;
+                        state = BUILDING;
                     }
-                    else state = 3;//working
-                    if(state == 2 && gid/100==3){//factory time = 0 
-                        state=1;
+                    else
+                    {
+                        var KindID = gid/100;
+                        if(KindID == DISK || (KindID == ROOM || KindID == CAMP || KindID == STATUE) && objid == -1)
+                            state = FINISH_BUILDING;
+                        else
+                            state = WORKING;//working
                     }
-                    if(time<=1){//finish accelerate - one day 
+                    */
+                    /*
+                    if(state == FINISH_BUILDING && gid/100== FACT){//factory time = 0 
+                        state = BUILDING;
+                    }
+                    */
+                    if(time <= ACC_TIME){//finish accelerate - one day 
                         time=btime-86400;
                     }
                     s.objnode.init(s.objnode,global);
-                    if(gid>=1000&&gid<1100){
+                    if(gid >= DRAGON_ID && gid < 1100){
                         global.user.setValue("build"+str(gid),1);
                         state=0;
                         objid=-1;
                         time=btime;
                         global.http.addrequest(0,"getPets",["uid","cid"],[global.userid,global.cityid],self,"getmypets");
                     }
-                    else if(gid<600){
+                    else if(gid/100 != STATUE){//STATUE DRAGON NAME diff
+                        if(gid == 424 && ccard[18] == 0)
+                            ccard[18] = 1;
                         gid=gid%100;
                     }
+                    //btime Current System Time
+                    //time StartTime 
+
                     s.objnode.loaddata(state,gid,objid,btime-time);
                     s.objnode.state2 = state2dict.get(g,0);
                     s.objnode.setstate();
-                    if(gid<1000){
-                        if(s.objnode.state%2==1){
+
+                    if(gid<DRAGON_ID){
+                        if(s.objnode.state == BUILDING || s.objnode.state == WORKING)
                             s.objnode.timerefresh();
-                        }
                     }
-                }
-                else if(gid==0){
-                    var cp = contextNode.node2world(PBX+i*(-34)+j*30,PBY-181+i*17+j*16);
-                    nodeMove(400-cp[0],240-cp[1]);
                 }
             }
             friend.flist2 = new Array(0);
@@ -1468,7 +1519,10 @@ class CastlePage extends ContextObject{
                 if(box.maxperson == 0 && global.system.flagrob < 2){
                     box.helpperson = 0;
                     box.boxfriends = [];
-                    if(global.user.getValue("level")>=5 &&(global.task.taskid==-1||global.task.taskid>12)){
+
+                    if(global.user.getValue("level")>=5)
+                    //&&(global.task.taskid==-1||global.task.taskid>12))
+                    {
                         box.maxperson = rand(5)+6;
                         global.http.addrequest(0,"newtbox",["user_id","num"],[global.userid,box.maxperson],box,"setbox");
                     }
@@ -1622,6 +1676,7 @@ class CastlePage extends ContextObject{
             trace("increase mana");
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
+
             if(mana < boundary)
                 global.http.addrequest(0,"addmana",["userid"],[global.userid],self,"addmana");
             else
@@ -1707,9 +1762,9 @@ class CastlePage extends ContextObject{
         }
         if(flagbuild == 0){
             for(i=0;i<len(grounds);i++){
-                if(grounds[i].objectid >0 && grounds[i].objectid<500||grounds[i].objectid>=600&&grounds[i].objectid<700){
+                if(grounds[i].objectid >0 && grounds[i].objectid<DECORATION_ID|| grounds[i].objectid >= STATUE_ID && grounds[i].objectid < DRAGON_ID){
                     var obj = grounds[i].objnode;
-                    if(obj.state == 1 || obj.state == 3){
+                    if(obj.state == BUILDING || obj.state == WORKING){
                         obj.timerefresh();
                     }
                 }
@@ -1927,12 +1982,12 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         {
             spriteManager.showDownNow();
         }
-        else if(re >= 1000||re<0){
-            if(re>1000){
-                re=re%1000;
+        else if(re >= DRAGON_ID || re< 0){
+            if(re > DRAGON_ID){//other building
+                re = re%1000;
             }
             else{
-                re=-re;
+                re = -re;
             }
             var ctpos = contextNode.world2node(400,240);
             lastcenter = [ctpos[0],ctpos[1]];
@@ -1959,6 +2014,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 flagoff = 1;
                 posy = global.rect-1;
             }
+            trace("beginBuild", re, posy, posx);
+            //object id
             changes = new NormalObject(re,posy,posx);
             changes.flagnew = 1;
             changes.init(changes,global);
@@ -1966,7 +2023,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             changes.resetgrid();
             blocknode.visible(1);
             flagbuild = 2;
-            for(var ii=0;ii<len(grounds);ii++){
+
+            for(var ii=0;ii<len(grounds);ii++){//begin building
                 if(grounds[ii].objectid >0 && grounds[ii].objectid<500||grounds[ii].objectid>=600&&grounds[ii].objectid<700)
                     grounds[ii].objnode.stateNode.visible(0);
             }
@@ -1981,11 +2039,11 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 sizeModeft(mode,50);
             }
         }
-        else if(re>=900){
-            expandtype = re-900;
+        else if(re >= EXPAND_ID){
+            expandtype = re-EXPAND_ID;
             global.http.addrequest(1,"expand",["user_id","city_id","type"],[global.userid,global.cityid,expandtype],self,"expandover");
         }
-        else if(re==800){
+        else if(re == WARABOUT){
             global.pushContext(null,new Waraboutinfo(0),NonAutoPop);
         }
         return 0;

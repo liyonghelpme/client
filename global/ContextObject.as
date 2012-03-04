@@ -7,6 +7,7 @@ class ContextObject{
         //trace("context object init", contextname);
         //contextname = "not init";
         //contextNode = null;
+        self = this;
     }
     function getNode(){
         if(contextNode == null){

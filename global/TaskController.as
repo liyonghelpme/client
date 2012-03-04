@@ -181,7 +181,6 @@ class TaskController extends ContextObject{
     function gotoMacket(){
         inctaskstep(1);
         openUrl(RateURL);
-        //openUrl("http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating");
     }
     
     function reloadNode(re){

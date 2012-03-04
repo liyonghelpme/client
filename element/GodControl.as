@@ -7,11 +7,12 @@ class GodControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 7;
-    var objlevel = [8, 12, 10, 16,20,25,30];
-    var objcontext = [0, 1, -1000, 3,2,20,25];//buildId
+    var objlevel = [3, 8, 10, 12,16,20,25,30];
+    var objcontext = [3700, 0, -1000, 1,3,2,20,25];//buildId
     function GodControl(){
         contextname = "element-build-god";
         contextNode = null;
+        objsmax = len(objlevel);
         objs = [];
         buildable = [];
         for(var i = 0; i < objsmax; i++)
@@ -36,12 +37,57 @@ class GodControl extends ContextObject{
     
     function getcell(i){//a column
         buildable[i] = dict([["ok",1]]);
-        objs[i] =sprite("dialogelement2l.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
+        objs[i] = sprite("dialogelement2l.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
         var obji = objcontext[i];
-        if(obji>=0){
+        var index = (obji%1000)/100;
+        trace("index", index, obji);
+        if(index == DISK)
+        {
+            var disk = objs[i].addsprite("disk0.png").anchor(50,100).pos(74,160);
+            disk.prepare();
+            var oldSize = disk.size();
+            var sx = min(120*100/oldSize[0], 140*100/oldSize[1]);
+            disk.scale(sx);
+            objs[i].addlabel(DISK_NAME[0],null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
+            if(DISK_LEV[0] > global.user.getValue("level"))
+            {
+                objs[i].texture("dialogelement_lock2.png");
+                objs[i].addlabel(DISK_LEV[0],null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
+            }
+            else
+            {
+                if(global.user.getValue("hasDisk", 0) == 0)
+                    objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, beginbuild, i);
+                else
+                {
+                    objs[i].color(60,60,60,100);
+                    objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, null, i);
+                }
+                    
+                var color = 0;
+                if(global.user.getValue("money") < DISK_MONEY[0])
+                {
+                    buildable[i].update("ok", 0);
+                    buildable[i].update(global.getStaticString("money"), DISK_MONEY[0]-global.user.getValue("money"));
+                    color = 100;
+                }
+                objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
+
+                objs[i].addlabel(str(DISK_MONEY[0]),null,16).pos(34,202).color(color,0,0,100);
+                objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
+                objs[i].addlabel(str(DISK_PERSON[0]),null,16).pos(34,244).color(0,0,0,100);
+            }
+            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            
+        }
+        else if(obji>=0){
             var god = objs[i].addsprite("shen"+str(obji)+".png").scale(65).anchor(50,100).pos(74,195);
-            spriteManager.getPic("shen"+str(obji)+".png", god);
             objs[i].addlabel(global.getname("god1",obji),null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
+            /*
+            if(obji>4){
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -84,9 +130,7 @@ class GodControl extends ContextObject{
             var sc=100;
             if(data.get("size")==3) sc=66;
             objs[i].addsprite("build"+str(-obji)+".png").anchor(50,100).pos(74,160).scale(sc);
-            /*
-            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            */
+            //objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             if(data.get("level") > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(data.get("level")),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -204,7 +248,14 @@ class GodControl extends ContextObject{
                         global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
-                        global.pushContext(self,new Calldialog(objcontext[param]),NonAutoPop);
+                        var oid = objcontext[param];
+                        if((oid%1000)/100 == DISK)
+                        {
+                            global.pushContext(self,new Calldialog(objcontext[param]),NonAutoPop);
+                            //global.popContext(oid); 
+                        }
+                        else
+                            global.pushContext(self,new Calldialog(objcontext[param]),NonAutoPop);
                     }
                 }
                 else{

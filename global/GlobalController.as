@@ -19,7 +19,10 @@ const buildcontext = [
 1557, 1558, 1559, 2560, 1561, 1562,
 1563, 1564, 2565, 2566,
 //statue
-2600,2601,2602,2603,2604,2605];
+2600,2601,2602,2603,2604,2605,
+//dragon disk
+3700,
+];
 
 
 const BASE_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8000/";
@@ -34,6 +37,14 @@ const OpenReward = 1000;
 const FeedReward = 1000;
 const LevUpPop = 10;
 
+
+
+
+const DISK_MONEY = [3000];
+const DISK_PERSON = [30];
+const DISK_LEV = [3];
+const DISK_TIME = [45*60];
+const DISK_NAME = ["Dragon Wheel"];
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 const FARM_PRICE = [0,1000,-20,-50,-100,10000,28500];
@@ -230,7 +241,6 @@ const GRAY =m_color(30,59,11,0,0, 30,59,11,0,0, 30,59,11,0,0, 0,0,0,100,0);
 const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 const cardnum = 13;
 const NEWFLAG = 14;
-//const SHARE_URL="http://getmugua.com";
 
 var staticString = ["loading", "loading"];
 //var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));
@@ -449,6 +459,7 @@ function setWarrecordList(key, value, data)
 }
 //import global.TimeController;
 
+
 class DataController{
     var datadict;
     var sizedict;
@@ -458,6 +469,7 @@ class DataController{
         var build = dict([["size",3],["level",10],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
 
         builddict.update(1000,build);
+
         sizedict = dict();
         for(var i=len(buildcontext)-1;i>=0;i--){
             sizedict.update(buildcontext[i]%1000,buildcontext[i]/1000);
@@ -660,6 +672,7 @@ class GlobalController{
         dataname.update("stone",STONENAME);
         dataname.update("wood",WOONAME);
         dataname.update("statue",STATUE_NAME);
+        dataname.update("disk", DISK_NAME);
         timer =null;
         data = new DataController();
         ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","Caesar"]])]]);

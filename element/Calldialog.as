@@ -23,6 +23,9 @@ class Calldialog extends ContextObject{
         if(info<0){
             global.popContext(info);
         }
+        else if((info%1000)/100 == DISK){
+            global.popContext(info);
+        }
         else{
             global.popContext(info+2400);
         }
@@ -35,8 +38,17 @@ class Calldialog extends ContextObject{
             if(info<0){
                 element.addlabel(global.getStaticString("dragon"),null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
             }
+/*
+<<<<<<< HEAD
             else{
                 element.addlabel(global.getFormatString("godBless", ["[GOD]", global.getname("god", info), "[GOD]", global.getname("god", info)]),null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
+=======
+*/
+            else if((info%1000)/100 == DISK){
+                element.addlabel(global.getStaticString("PlayDragon"), null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
+            }
+            else {
+                element.addlabel(global.getFormatString("godBless", ["[GOD]", global.getname("god", info), "[GOD]", global.getname("god", info)]), null,20,FONT_NORMAL,220,0,ALIGN_LEFT).anchor(50,50).pos(268,120).color(0,0,0,100);
             }
         }
         return element;
