@@ -141,15 +141,15 @@ var DiskRewards = [
     dict([["money", 9999]]),//8
 ];
 var DiskGoods = [
-    "Congrats! Your magic boundary +1!",
+    "Congrats! Your magic capacity add 1!",
     "Congrats! You get 9 caesars!",
-    "Congrats! You get 99 food!",
-    "Congrats! You get lumber!",
-    "Congrats! You get 999 coin!",
+    "Congrats! You get 99 crops!",
+    "Congrats! You get 1 lumber!",
+    "Congrats! You get 999 silvers!",
     "Congrats! You get 1 Dragon Stone!",
-    "Congrats! You get 999 food!",
+    "Congrats! You get 999 crops!",
     "Congrats! You get 1 caesars!",
-    "Congrats! You get 9999 coin!",
+    "Congrats! You get 9999 silvers!",
 ];
 
 function colorWords(str, width, ew)

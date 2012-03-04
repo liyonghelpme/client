@@ -12,7 +12,7 @@ class DiskExplain extends ContextObject{
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(225, 234).setevent(EVENT_UNTOUCH,closedialog);
         contextNode.addlabel(global.getStaticString("ok"), null, 30).anchor(50, 50).pos(225, 234);
 
-        showLabel = contextNode.addlabel("使用仙龙石或者凯撒币可以玩幸运龙盘，打怪或者打开宝箱有一定概率得到仙龙石。", null, 25, FONT_NORMAL, 309, 0, ALIGN_LEFT).anchor(0, 50).pos(100, 110).color(0, 0, 0, 100);
+        showLabel = contextNode.addlabel(global.getStaticString("HowDra"), null, 25, FONT_NORMAL, 309, 0, ALIGN_LEFT).anchor(0, 50).pos(100, 110).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){
