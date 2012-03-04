@@ -299,6 +299,12 @@ var Dicts =
 
 ["Build", "Build"],
 ["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Come on to build it!"],
+["OrdStart", "Ord Start"],
+["SpeStart", "Spe Start"],
+["PlayingDra", "[NAME] is playing Dragon Wheel, come on to join us in Miracle Empire!"],
+["DraNot", "Sorry, you don't have enough Dragon stone, you can get it for free by opening treasure chest or killing monsters!"],
+["CaeNot", "Sorry, you don't have enough caesars!"],
+["HowDra", "You can use Dragon Stone or caesars to play Dragon Wheel. Tip: Dragon Stone can be obtained by opening treasure chesk or killing monsters."],
 ["", ""],
 ];
 
@@ -595,7 +601,6 @@ const OneKeyMana = 10;
 const ChargeMana = 5;
 
 const CallDragon = 1000;
-//const RateURL = "http://market.android.com/details?id=com.papaya.miracle_beta1&feature=search_result";
 
 
 

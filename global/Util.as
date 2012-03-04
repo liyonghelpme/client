@@ -141,15 +141,15 @@ var DiskRewards = [
     dict([["money", 9999]]),//8
 ];
 var DiskGoods = [
-    "恭喜你，你的魔法值上限增加1点！",
-    "恭喜你，你得到了9凯撒币！",
-    "恭喜你，你得到了99粮食！",
-    "恭喜你，你得到了特殊物品木条！",
-    "恭喜你，你得到了999银币！",
-    "恭喜你，你得到了一块仙龙石！",
-    "恭喜你，你得到了999粮食！",
-    "恭喜你，你得到了1凯撒币！",
-    "恭喜你，你得到了9999银币",
+    "Congrats! Your magic boundary +1!",
+    "Congrats! You get 9 caesars!",
+    "Congrats! You get 99 food!",
+    "Congrats! You get lumber!",
+    "Congrats! You get 999 coin!",
+    "Congrats! You get 1 Dragon Stone!",
+    "Congrats! You get 999 food!",
+    "Congrats! You get 1 caesars!",
+    "Congrats! You get 9999 coin!",
 ];
 
 function colorWords(str, width, ew)

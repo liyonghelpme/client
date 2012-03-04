@@ -33,12 +33,7 @@ class Disk extends ContextObject{
 
 
         but1 = contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(685, 151).setevent(EVENT_UNTOUCH, startGame, 0);
-        contextNode.addlabel("普通开始", null, 20).anchor(50, 50).pos(695, 151);
-        /*
-
-        moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
-        moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
-        */
+        contextNode.addlabel("OrdStart", null, 20).anchor(50, 50).pos(695, 151);
 
         var stone = but1.addsprite("opbutton27.png").anchor(50, 50).pos(0, 19);
         stoneNum = stone.addlabel(str(global.user.getValue("dragonStone")), null, 26, FONT_BOLD).pos(40, 30).color(0, 0, 0, 100);
@@ -47,7 +42,7 @@ class Disk extends ContextObject{
 
 
         but2 = contextNode.addsprite("boxbutton4.png").anchor(50, 50).pos(685, 250).setevent(EVENT_UNTOUCH, startGame, 1);
-        contextNode.addlabel("特殊开始", null, 20).anchor(50, 50).pos(695, 250);
+        contextNode.addlabel("SpeStart", null, 20).anchor(50, 50).pos(695, 250);
 
         var cae = but2.addsprite("caesars_big.png").scale(150).anchor(50, 50).pos(0, 19);
         //22 13 + base
@@ -92,8 +87,7 @@ class Disk extends ContextObject{
     {
         if(re == DiskShare)
         {
-            ppy_postnewsfeed(ppy_username()+"正在玩幸运龙盘， 赶快加入奇迹帝国一起玩吧!");
-            //global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
+            ppy_postnewsfeed(global.getFormatString("playingDra", ["[NAME]", ppy_username()]));
         }
     }
     var finish = 0;
@@ -105,7 +99,7 @@ class Disk extends ContextObject{
             need = global.user.getValue("dragonStone")
             if(need < 1)
             {
-                global.pushContext(null, new Warningdialog(["抱歉，仙龙石不足！ 可以通过杀怪和开宝箱来免费获得仙龙石。", null, 6]), NonAutoPop);
+                global.pushContext(null, new Warningdialog([global.getStaticString("DraNot"), null, 6]), NonAutoPop);
                 return;
             }
         }
@@ -114,7 +108,7 @@ class Disk extends ContextObject{
             need = global.user.getValue("caesars");
             if(need < 1)
             {
-                global.pushContext(null, new Warningdialog(["抱歉，凯撒币不足！", null, 6]), NonAutoPop)
+                global.pushContext(null, new Warningdialog([global.getStaticString("CaeNot"), null, 6]), NonAutoPop)
                 return;
             }
         }
