@@ -38,10 +38,10 @@ class Petstate4 extends ContextObject{
         if(p!=null){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
             if(build.state==4){
-                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_1")]),SHARE_URL);
+                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_1")]), NewsURL);
             }
             else{
-                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_2")]),SHARE_URL);
+                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_2")]), NewsURL);
             }
         }
     }

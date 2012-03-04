@@ -151,7 +151,7 @@ class BoxControl extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]),SHARE_URL);
+        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]), NewsURL);
     }
 
     function completeopen(n,e){
@@ -173,7 +173,7 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),SHARE_URL);
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]), NewsURL);
         }
     }
 

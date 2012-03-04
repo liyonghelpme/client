@@ -20,7 +20,7 @@ class Visitreward extends ContextObject{
 
     function closedialog(node,event,p){
         if(p==1){
-            ppy_postnewsfeed(global.getFormatString("visitReward", ["[NAME]", ppy_username()]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("visitReward", ["[NAME]", ppy_username()]), NewsURL);
         }
         global.popContext(null);
     }

@@ -59,7 +59,7 @@ class Cardget extends ContextObject{
         if(p==1){
             global.popContext(null);
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("youPost", ["[NAME]", ppy_username(), "[CARD]", cardprename[cardid], "[CARDLEV]", cardlevelname[cardlevel]]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("youPost", ["[NAME]", ppy_username(), "[CARD]", cardprename[cardid], "[CARDLEV]", cardlevelname[cardlevel]]), NewsURL);
         }
     }
     

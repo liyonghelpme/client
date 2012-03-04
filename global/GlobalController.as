@@ -230,7 +230,7 @@ const GRAY =m_color(30,59,11,0,0, 30,59,11,0,0, 30,59,11,0,0, 0,0,0,100,0);
 const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 const cardnum = 13;
 const NEWFLAG = 14;
-const SHARE_URL="http://getmugua.com";
+//const SHARE_URL="http://getmugua.com";
 
 var staticString = ["loading", "loading"];
 //var sta = c_file_op(C_FILE_READ, c_res_file("static.txt"));

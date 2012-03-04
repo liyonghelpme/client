@@ -333,7 +333,7 @@ class WarControl extends ContextObject{
     function closedialog(n,e,p){
         global.popContext(null);
         if(p==1){
-            ppy_postnewsfeed(global.getFormatString(10+2*datadict.get("leftself")+datadict.get("leftwin"),["[USERNAME]",ppy_username(),"[ENAME]",datadict.get(_enemy+"name")]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString(10+2*datadict.get("leftself")+datadict.get("leftwin"),["[USERNAME]",ppy_username(),"[ENAME]",datadict.get(_enemy+"name")]),  NewsURL);
         }
     }
     

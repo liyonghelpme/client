@@ -106,7 +106,7 @@ class Nestbuilddialog extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(ppy_username()+global.getStaticString("getDragon"),"http://getmugua.com");
+        ppy_postnewsfeed(ppy_username()+global.getStaticString("getDragon"), NewsURL);
     }
     
     function completeopen(n,e){
@@ -243,7 +243,7 @@ trace("helpopen",rc,c);
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("dragonPost", ["[NAME]", ppy_username()]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("dragonPost", ["[NAME]", ppy_username()]), NewsURL);
         }
     }
     function deleteContext(){
