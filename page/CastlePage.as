@@ -984,24 +984,32 @@ class CastlePage extends ContextObject{
             {
                 s.empireLevel = int(objdata[2]);
             }
-            if(gid>0&&gid<500||gid>=600){
+            if(gid>0 && gid < 500||gid>=600){
                 var objid = int(objdata[2]);
                 var time = int(objdata[3]);
                 var finish = int(objdata[4]);
+                var KindID = gid/100;
+
+                var state;
                 if(time == 0){
-                    var state = 2;
+                    state = FINISH_BUILDING;
                 }
                 else if(finish == 0){
-                    state = 1;
+                    state = BUILDING;
                 }
-                else state = 3;
+                else {
+                    if(KindID == DISK)
+                        state = FINISH_BUILDING;
+                    else
+                        state = WORKING;
+                }
                 if(gid>=1000&&gid<1100){
                     state=0;
                     objid=-1;
                     time=btime;
                     global.http.addrequest(0,"getPets",["uid","cid"],[cuid,ccid],self,"getmypets");
                 }
-                else if(gid<600){
+                else if(gid<600 || KindID == DISK){
                     if(gid==424&&ccard[18]==0){
                         ccard[18]=1;
                     }
@@ -1507,7 +1515,10 @@ class CastlePage extends ContextObject{
                 if(box.maxperson == 0 && global.system.flagrob < 2){
                     box.helpperson = 0;
                     box.boxfriends = [];
-                    if(global.user.getValue("level")>=5 &&(global.task.taskid==-1||global.task.taskid>12)){
+
+                    if(global.user.getValue("level")>=5)
+                    //&&(global.task.taskid==-1||global.task.taskid>12))
+                    {
                         box.maxperson = rand(5)+6;
                         global.http.addrequest(0,"newtbox",["user_id","num"],[global.userid,box.maxperson],box,"setbox");
                     }
