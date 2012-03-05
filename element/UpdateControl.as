@@ -12,9 +12,9 @@ class UpdateControl extends ContextObject{
     const EmpireCoin = [0,100000, 500000];
     const EmpireFood = [0,1000, 5000];
     const EmpirePeople = [0,100, 500];
-    const EmpireSpe = ["","100;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
     const EmpirePopUp = [0,100, 500];
-    const EmpireMana = [0, 5, 8];
+    const EmpireMana = [0, 5, 5];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
@@ -89,15 +89,15 @@ class UpdateControl extends ContextObject{
             {
                 hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
                 hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
                 hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
-                spriteManager.getPic(objname+str(objbid)+".png", hou1);
-                spriteManager.getPic(objname+str(upbid)+".png", hou2);
+                //spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
             var i;
             var ok;

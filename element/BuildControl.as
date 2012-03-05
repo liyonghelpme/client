@@ -97,7 +97,7 @@ class BuildControl extends ContextObject{
                     back.addlabel(labelstr,null,20).anchor(0,50).pos(18,158).color(56,1,1);
                 }
                 else{
-                    trace("mode, bid", mode, place.bid);
+                    //trace("mode, bid", mode, place.bid);
                     if(mode== 0){
                         buttons.append(6);
                     }
@@ -150,23 +150,23 @@ class BuildControl extends ContextObject{
                     var stt = place.health/(max/3);
                     if(stt>2) stt=2;
                     if(place.state==3){
-                        var eggpic = sprite().anchor(50,0).pos(107,7);
-                        spriteManager.getPic("egg-"+str(stt+1)+".png", eggpic);
+                        var eggpic = sprite("egg-"+str(stt+1)+".png").anchor(50,0).pos(107,7);
+                        //spriteManager.getPic("egg-"+str(stt+1)+".png", eggpic);
                         back.add(eggpic,1,111);
 
                         back.addlabel("孵化中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
                     else if(place.state==4){
                         var pstr = EXTEND_NAME[place.extendid]+"-";
-                        var dragonpic = sprite().anchor(50,0).pos(107,7).scale(70);
-                        spriteManager.getPic(pstr+"7.png", dragonpic);
+                        var dragonpic = sprite(pstr+"7.png").anchor(50,0).pos(107,7).scale(70);
+                        //spriteManager.getPic(pstr+"7.png", dragonpic);
                         back.add(dragonpic,1,111);
                         back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
                     else if(place.state >= 5){
                         pstr = EXTEND_NAME[place.extendid]+"-";
-                        dragonpic = sprite().anchor(50,50).pos(107,57).scale(70);
-                        spriteManager.getPic(pstr+"1-1.png", dragonpic);
+                        dragonpic = sprite(pstr+"1-1.png").anchor(50,50).pos(107,57).scale(70);
+                        //spriteManager.getPic(pstr+"1-1.png", dragonpic);
                         back.add(dragonpic,1,111);
                         back.addlabel("成长中",null,18).anchor(100,50).pos(197,123).color(1,17,56);
                     }
@@ -229,7 +229,7 @@ class BuildControl extends ContextObject{
             var filter = NORMAL;
             var buttonid = buttons[k];
             if(buttonid>16&&buttonid%2==0 && buttonid != 26){//not catabutton
-                trace("wrong buttonid",buttonid);
+                //trace("wrong buttonid",buttonid);
                 buttons[k]=1-buttonid;
                 buttonid = buttons[k];
             }
@@ -237,7 +237,7 @@ class BuildControl extends ContextObject{
                 buttonid=-buttonid;
                 filter = GRAY;
             }
-            trace("buttonid", buttonid);
+            //trace("buttonid", buttonid);
             var bt = contextNode.addsprite("buttontab0.png",filter).pos(73*k+beginx,0);
             bt.addsprite("opbutton"+str(buttonid)+".png",filter).anchor(50,50).pos(46,46);
             bt.setevent(EVENT_TOUCH,buttonclicked,k);
@@ -320,7 +320,7 @@ class BuildControl extends ContextObject{
                     }
                 }
                 else if(buttons[p] == 19){//train dragon do animation
-                    trace("train dragon", place.istrain);
+                    //trace("train dragon", place.istrain);
                     place.istrain=1;
                     place.executeAnimate();//lock not train again
                     place.istrain=0;

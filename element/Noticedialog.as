@@ -8,7 +8,7 @@ class Noticedialog extends ContextObject{
     var buttonlabel;
         //"特给予50凯撒币补偿您之前获得过的一键免费操作。感谢支持！"
     const newupdate = [
-        "情人节快乐，新上线了4个情人节装饰，快去看看吧！"
+        "种植大赛上线拉！前100名用户将会获得10凯撒币奖励，前1000名会获得1凯撒币，详情请见圈子。"
     ]; 
     function paintNode(){
         updatenum=-1;

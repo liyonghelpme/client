@@ -12,8 +12,8 @@ class BuyControl extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite().anchor(50,50).pos(400,240);
-        spriteManager.getPic("dialogback_buy.png", contextNode);
+        contextNode = sprite("dialogback_buy.png").anchor(50,50).pos(400,240);
+        //spriteManager.getPic("dialogback_buy.png", contextNode);
         selecttab = -1;
         for(var i=0;i<5;i++){
             var num = buystr[i].split("+");

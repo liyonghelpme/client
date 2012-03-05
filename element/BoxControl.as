@@ -266,7 +266,7 @@ trace("helpopen",rc,c);
             setbox(-1,0,0);
             contextNode.get(1).texture("boxbutton2.png");
             flaghelp = 0;
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",1000,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"money", OpenReward,-6);
             if(global.card[18]%10==2){
                 if(global.card[18]/10+1>=100){
                     var bdict = dict();

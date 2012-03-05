@@ -118,7 +118,7 @@ class NormalObject extends ContextObject{
     {
         if(empireLevel < 2)//Level 0 1 2
             return;
-        spriteManager.getAnimation( ["yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png", "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png"]);
+        //spriteManager.getAnimation( ["yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png", "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png"]);
         var yanhua = sprite("yan1.png").anchor(50, 100).pos(176, 100);
         contextNode.add(yanhua, 1, 1000);//z tag
         yanhua.addaction(repeat(
@@ -135,16 +135,16 @@ class NormalObject extends ContextObject{
         var classid = objectid/100;
         if(classid==5){
 //            objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
-            objnode = sprite("", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
-            spriteManager.getPic("object"+str(objectid-500)+".png", objnode);
+            objnode = sprite("object"+str(objectid-500)+".png", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
+            //spriteManager.getPic("object"+str(objectid-500)+".png", objnode);
             
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
-                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544||objectid>=545&&objectid<=549){
-                    trace("draw light", objectid);
+                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=549){
+                    //trace("draw light", objectid);
 //                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
-                    var lightpng = sprite("", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
-                    spriteManager.getPic("object"+str(objectid-500)+"_l.png", lightpng);
+                    var lightpng = sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
+                    //spriteManager.getPic("object"+str(objectid-500)+"_l.png", lightpng);
                     contextNode.add(lightpng, 1, 1);
                 }
             }

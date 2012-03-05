@@ -18,7 +18,10 @@ const buildcontext = [
 1557, 1558, 1559, 2560, 1561, 1562,
 2563, 2564, 2565, 2566,
 //statue
-2600,2601,2602,2603,2604,2605];
+2600,2601,2602,2603,2604,2605,
+//dragon disk
+2700,
+];
 
 const darkColorAlpha = 65;
 const AutoPop = 1;
@@ -26,10 +29,13 @@ const NonAutoPop = 0;
 const NotAdd = 2;
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
+const OpenReward = 1000;
+const FeedReward = 1000;
+const LevUpPop = 10;
+
 const BASE_URL = "http://223.4.87.9:8000/";
 //const BASE_URL = "http://localhost:8080/";
 //const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
-//const BASE_URL = "http://ec2-204-236-163-214.us-west-1.compute.amazonaws.com:8000/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -103,7 +109,7 @@ const GOD_B_TIME = [7200,21600,43200,64800,86400];
 const GOD_B_PRICE = [10000,20000,50000,100000,500000];
 const GOD_UP = [0,"5","10","15","30"];
 const GOD_FOOD = [500,1000,2000,5000,10000];
-const GOD_PERSON_MAX = [250,500,750,1000,1250];
+const GOD_PERSON_MAX = [100,110,120,130,140];
 const GOD_EXP = [50,100,170,250,350];
 
 const BLESS_CAESARS = [15, 23, 30, 18, 26, 40, 21, 29, 50, 24, 32, 60, 27, 35, 70];
@@ -134,7 +140,7 @@ const MONSTER_POWER = [20,30,41,25,37,49,28,42,56,33,49,65,40,58,77,50,75,100,42
 
 const EXPAND_LEVEL=[4,7,10,15,20,25,30,40,50,60];
 const EXPAND_MONEY=[10000,50000,100000,500000,1000000,1500000,2000000,2500000,3000000,5000000];
-const EXPAND_CAESARS=[1,3,5,7,10,15,20,27,37,50];
+const EXPAND_CAESARS=[5,10,20,40,60,80,110,140,170,200];
 const EXPAND_FRIEND=[1,10,30,60,100,150,210,280,360,450];
 const EXPAND_EXP=[10,20,50,90,140,200,330,580,740,920];
 
@@ -162,7 +168,7 @@ const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,
 
 const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
 const STATUE_DEFENCE=[600,700,950,1200,1600,2500];
-const STATUE_PERSON=[20,40,80,60,120,100];
+const STATUE_PERSON=[10, 10, 10, 10, 10, 10];
 const STATUE_TIME = [7200,14400,21600,28800,36000,43200];
 const STATUE_NAME = ["蛇女","野猪勇士","狂狼斗士","暴熊武士","雄狮战士","龙枪勇士"];
 
@@ -222,109 +228,8 @@ const NORMAL = m_color(100,0,0,0,0, 0,100,0,0,0, 0,0,100,0,0, 0,0,0,100,0);
 //const scale_node = sprite().addaction(repeat(scaleto(750,1),
 const cardnum = 13;
 const NEWFLAG = 14;
-    
-const staticString = [
-"你需要升到6级才能开启战争模式",
-"开启战争模式之后暂时就不能退出咯，请查看帮助文档",
-"恭喜你抵挡住了[ENAME]的攻势，保卫了领地不被侵犯！",
-"[ENAME]兵力过于强大，你的军队不幸战败，快去加强你的军事力量吧！",
-"[ENAME]兵力过于强大，回去厉兵秣马，来日再战！",
-"恭喜你战胜了[ENAME]，你离帝王宝座又近了一步！",
-"如何提高战斗力",
-"[USERNAME]进入新的地图啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]升级为[NOBNAME]啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]的领地升级啦，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]成功战胜侵略者，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"[USERNAME]被YYYY[ENAME]打败了，赶快加入帮助[USERNAME]复仇吧！",
-"[USERNAME]的大军被击退，赶快加入与[USERNAME]一起侵略其他领地吧！",
-"[USERNAME]战胜了[ENAME]，赶快加入与[USERNAME]一起打造属于自己的奇迹帝国吧！",
-"你需要升到15级才能使用一键操作",
-"你没有空闲的农田，不能使用一键操作",
-"你的农作物正在生长，无法一键收获",
-"[WHO]的[TYPE]数需要达到[NUM]才能升到下一等级。该卡每升一级将会增加1点魔法上限！",
-"[WHO]还需要战胜[NUM]个用户才能升级到[CARD]，该卡每升级一级将会增加一点魔法值上限。",
-"你的店铺正在工作，无法一键收税",
-"恭喜你获得了该紫金卡片，你的魔法值上限增加了两点",
-"恭喜，嫦娥卡升到紫金级别，魔法值上限增加了5",
-"把丰收之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
-"把财富之神升到紫金级别，该卡每升一级将会增加一点魔法值上限。",
-"抱歉，你已经访问过所有好友了！",
-"每天宠物前100次训练才会增加1点战斗力哦！",
-"你一键访问了[NUM]个好友，获得了[MONEY]银币奖励",
-"升级友谊之神到紫金级别",
-"还差[NUM]个好友",
-"还需要帮助好友打开[NUM]个宝箱",
-"还需要帮助好友喂养[NUM]次宠物",
-"需要升到[NUM]级",
-"你现在可以永久免费使用一键普通访问好友功能咯！",
-"[NAME]晒出了自己领地的截图，大家快来围观吧！",
-"",
-"http://getmugua.com",
-"每天自己只能喂养一次，好友可以帮忙继续喂养。假如当天自己或好友都没喂养，成长点会下降哦！",
-"该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
-"每天你只能帮同一个好友喂养一次^_^",
-"[NAME]的宠物已经有[NUM]个好友喂养过了，谢谢帮忙^_^"];
 const SPYITEMS =["获胜次数：","参战次数：","士兵战斗力：","盟友战斗力：","城堡防御力："];
 const SHARE_URL="http://getmugua.com";
-const stringDict=dict([
-["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
-["mana", "魔法值"],
-["money","银币"],["caesars","凯撒币"],["food","粮食"],["labor","空闲人口"],["person","人口"],["personmax","人口上限"],["stone","石头"],["wood","木材"],["caesar","凯撒"],
-["share","分享"],["back","返回"],["change","修改"],["ok","确定"],["send","发送"],["cancel","取消"],["system","系统"],["devine","施展"],["retry","重试"],["help","帮忙"],["close","关闭"],["openbox","打开宝箱"],["askforhelp","求助好友"],
-["attack","攻打"],["defence_power","防御力："],["emptyDefence", "未加成防御力"],["infpower","步兵战斗力"],["cavpower","骑兵战斗力"],["addsoldier","增兵"],["minussoldier","撤兵"],["getresource","运回资源"],["quick","加速"],["quickSendArmy", "增兵加速"],
-["loading_str","正在载入，请稍候……"],["self","我"],
-["request_done","该请求已处理"],
-["friend_notload","抱歉，现在无法获得您的好友信息"],["friend_ally_notice","你可以访问好友和好友结盟，盟友会帮你战斗哦！"],["friend_invite","快来和我一起创造奇迹吧！"],["friend_invite_success","邀请成功！"],
-["nest_style_cannotchange","宠物正在进化中，这个时候不可以更换哦！"],
-["nest_talk_morning","早安，美好的一天又开启咯~"],["nest_talk_noon","午安，好饿呀，快点喂食吧~"],["nest_talk_night","晚安，早睡早起，睡觉啦~"],
-["nest_talk_other","每次训练我都会更加强大，快训练我吧！"],["nest_talk_feedover","我已经吃饱啦，感谢前来喂养"],["nest_talk_notfeedover","快喂养我吧，我还可以继续被喂养哦~"],
-["nest_talk_sleep","我还要适应成长，喂养到285点，我就可以飞翔咯！"],
-["nest_getup_1","孵化成功啦！它是一条土属性龙。"],["nest_getup_2","成长为少年龙啦！"],
-["nest_getup_format","[NAME][DESCRIBE]目前成长点为：[HEALTH]，属性为：[PROPERTY]，战斗力为：[ATTACK]"],
-["nest_pet_name","请输入宠物名称："],["nest_pet_name_warning","命名之后不能更改，请慎重命名"],
-["nest_gotohelp","为了更好地体验宠物系统，请查看帮助文档"],
-["box_str_1","快帮我打开这个宝箱，"],["box_str_2","大家一起分享宝藏吧！"],["box_str_3","城堡里突然飘来一只<g>神秘宝箱<g>！！+快邀请好友一起开启吧！！+有神秘礼物等着你哦！"],
-["god_bless_over","你已经施展过神迹了！"],
-["share_format","[NAME][DESCRIBE]，赶快加入与[NAME]一起打造属于自己的奇迹帝国吧！"],
-["share_box_format","[NAME]获得了一只神秘的宝箱，但是需要你们的帮助才能打开，快去帮助TA吧！"],
-["share_petup_1","成功孵化出宠物"],["share_petup_2","的幼龙长大啦"],
-["share_openbox","打开了一只神秘宝箱"],
-["default_petname","我的宠物"],
-["news_nonews","还没有任何消息哦！"],
-["news_element0","<b>[NAME]<b>访问了你的领地"],
-["news_element1","<b>[NAME]<b>帮助你打理城堡"],
-["news_element2","<b>[NAME]<b>赠送了你礼物"],
-["news_element3","你战胜了<b>[NAME]<b>"],
-["news_element4","<b>[NAME]<b>战胜了你"],
-["news_element5","<b>[NAME]<b>帮助你打开宝箱"],
-["news_element6","<b>[NAME]<b>帮助你喂养了宠物"],
-["gift_element0","[NAME]赠送你礼物[GIFT]"],
-["gift_element1","[NAME]向你索取礼物[GIFT]"],
-["monster_refresh_format","哈哈哈，[NAME]领主，献出你的粮食吧，否则你们将永不得安宁！"],
-["monster_foodwilllost","下次登录之前还没有把怪兽消灭，怪兽会抢夺你的粮食哦！"],
-["warrecord_notice_format","你的领地发生了[NUM]场战争，观看可以知道士兵损失详细情况，是否观看？"],
-["war_newmap_notice","恭喜你进入了新的地图！提示：不要太快进入更高等级的地图哦，先暗中积攒兵力吧^_^"],
-["spy_notice","注：侦察级别越高，获得的信息越多哦！"],["spy_unknown","未侦察到"],["spy_result_format","你损失了[NUM]个侦察兵，获取了[WHO]的情报："],
-["spy_result2_noenemy","未发现有进攻这个城堡的军队"],["spy_result2_format","已有[NUM]支军队正在进攻这个城堡，最快抵达时间为[TIME]以后"],
-["spy_result2_mode3_format","总计战斗力为[NUM]"],
-["chat_empty","内容为空，无法发送！"],["chat_wordlimit","字数超过30个汉字，无法发送！"],["chat_nettimeout","超时了，你的消息发送失败"],
-["text_wordlimit_format","限[NUM]个汉字！"],["text_cannotset","不能改成这个名字！"],["text_nettimeout","抱歉，因网络原因本次改名失败！"],
-["text_message_send","请输入留言内容："],["text_empty","内容不能为空"],["text_chat_nettimeout","抱歉，发送失败，请重新发送^_^"],
-["message_send_success","发送成功！"],["text_empire_name","请输入帝国名称："],
-["update_normal","普通升级"],["update_caesars","快速升级"],["update_warning","该建筑正在运作，如果升级将会导致运作中断，确认升级？"],
-["onekey_plant","一键播种"],["onekey_harvest","一键收获"],["onekey_product","一键收税"],["onekey_visit_normal","一键普通访问"],["onekey_visit_inc","一键累计访问"],["onekey_title","一键操作"],
-["onekey_gotohelp","查看帮助及如何免费使用？"],
-["tab_fighting","作战中"],["tab_attackable","可攻打"],["tab_fortress", "要塞"],
-["nobattle_fail_whenhasattack","抱歉，正在进攻其他玩家时不能开启保护模式"],
-["nobattle_whenattack","在保护期中攻打其他玩家，保护状态将会终止"],
-["attack_whenattacked","你已经在进攻他了哦！"],["attack_whennobattle","该玩家的领地正在受保护中"],["attack_whenwon","你已经征服他了哦！"],["attack_whenupdated","抱歉，该玩家已经升级到更高等级的地图。"],
-["attack_cancel","是否撤消本次进攻？你的战斗力将立即回到城堡。"],["attacktime","行军时间"],["attacktime_notice","*骑兵比重越大，行军时间越短"],
-["state_attacking","进攻中"],["state_defencing","防御中"],["state_fighting","正在交战"],["state_adding","增兵中"],
-["net_state_1","貌似断网了，请检查是否有网络连接"],["net_state_2","网络连接遇到了问题，请稍候再试"],
-["master","领主："],[":","："],
-["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
-["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
-]);
 
 const WarMode_Lev = 6;
 
@@ -434,7 +339,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
+        var build = dict([["size",3],["level",10],["price",100000],["food",1000],["exp",0],["personmax",100],["name","龙巢"]]);
         builddict.update(1000,build);
         sizedict = dict();
         for(var i=len(buildcontext)-1;i>=0;i--){
@@ -500,6 +405,11 @@ class GlobalController{
     var lockpage;
     var flagshownew;
     var sp;
+
+    var castalPage = null;
+    var inWarMap = 0;
+
+    var foodRankData = null;
 
 
     function lock(){
@@ -755,7 +665,7 @@ class GlobalController{
             context[currentLevel] = null;
             currentLevel--;
             white();
-            if(re == -2000)
+            if(re == DownWarn)
             {
                 sp.DecideToDown();
                 return;
@@ -763,14 +673,7 @@ class GlobalController{
             if(flagnew == 0)
                 context[currentLevel].getNode().focus(1);
             request[currentLevel+1].response(re);
-            /*
-            if(currentLevel > 0)
-            {
-                return;
-            }
-            */
         }
-
     }
     
     function getdatestr(seconds){

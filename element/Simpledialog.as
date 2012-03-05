@@ -37,12 +37,12 @@ class Simpledialog extends ContextObject{
     }
     
     function closedialog(n,e,p){
-        if(p == 100)//attack with catapult 
+        if(p == AttWithCata)//attack with catapult 
         {
             //warning dialog 
             dialogelement.excute(p);
         }
-        else if(p == 101)//attack without catapult
+        else if(p == AttNoCata)//attack without catapult
         {
             dialogelement.excute(p);
         }
@@ -68,8 +68,8 @@ class Simpledialog extends ContextObject{
     }
     
     function paintNode(){
-        contextNode = sprite().anchor(50,50).pos(400,240);
-        spriteManager.getPic(dialogpic[dialogtype], contextNode);
+        contextNode = sprite(dialogpic[dialogtype]).anchor(50,50).pos(400,240);
+        //spriteManager.getPic(dialogpic[dialogtype], contextNode);
         contextNode.setevent(EVENT_KEYDOWN,dialogkeydown);
         contextNode.add(dialogelement.getelement(),0);
     }
