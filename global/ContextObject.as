@@ -12,6 +12,7 @@ class ContextObject{
         //contextNode = null;
         //trace("main context ", contextname);
         //this.global = global;
+        self = this;
     }
     function getNode(){
         if(contextNode == null){

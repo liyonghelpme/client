@@ -55,7 +55,7 @@ class Cardget extends ContextObject{
         if(p==1){
             global.popContext(null);
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"获得了"+cardprename[cardid]+cardlevelname[cardlevel]+"，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"获得了"+cardprename[cardid]+cardlevelname[cardlevel]+"，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL, null);
         }
     }
     

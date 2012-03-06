@@ -1,3 +1,6 @@
+const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
+const ShareURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
+
 const stringDict=dict([
 ["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
 ["mana", "魔法值"],
@@ -109,7 +112,7 @@ const staticString = [
 "你增加魔法值上限啦！",
 "[NAME]晒出了自己领地的截图，大家快来围观吧！",
 "",
-"http://getmugua.com",
+ShareURL,
 "每天自己只能喂养一次，好友可以帮忙继续喂养。假如当天自己或好友都没喂养，成长点会下降哦！",
 "该宠物蛋即将孵化，等孵化之后才能继续喂养，感谢帮忙^_^",
 "每天你只能帮同一个好友喂养一次^_^",
@@ -128,6 +131,7 @@ const UseCata = -3000;
 const AttWithCata = 100;
 const AttNoCata = 101;
 const NoCata = -3001;
+const DiskShare = -4000;
 
 const Tasks = 
 [

@@ -144,6 +144,7 @@ class UserController{
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
+        //setValue("hasDisk", 0);
     }
     
     function initText(name,l){
