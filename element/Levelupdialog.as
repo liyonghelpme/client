@@ -59,7 +59,7 @@ class Levelupdialog extends ContextObject{
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"升到第"+str(global.user.getValue("level"))+"级啦，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL);
+            ppy_postnewsfeed(ppy_username()+"升到第"+str(global.user.getValue("level"))+"级啦，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL, null);
         }
     }
 

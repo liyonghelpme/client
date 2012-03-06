@@ -29,7 +29,7 @@ class Wonbonus extends ContextObject{
         global.popContext(null);
         if(p!=null){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"从殖民地获取了进攻奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL);
+            ppy_postnewsfeed(ppy_username()+"从殖民地获取了进攻奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL, null);
         }
     }
 

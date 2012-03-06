@@ -92,7 +92,7 @@ class Disk extends ContextObject{
     {
         if(re == DiskShare)
         {
-            ppy_postnewsfeed(ppy_username()+"正在玩幸运龙盘， 赶快加入奇迹帝国一起玩吧!");
+            ppy_postnewsfeed(ppy_username()+"正在玩幸运龙盘， 赶快加入奇迹帝国一起玩吧!", ShareURL, null);
             //global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
         }
     }
