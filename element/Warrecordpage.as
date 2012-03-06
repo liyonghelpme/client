@@ -80,8 +80,8 @@ class Warrecordpage extends ContextObject{
         else//attack Empty
         {
             var level = getWarrecordList("empLev", datas[index]); 
-            var monavt = items[index].addsprite().size(40,40).pos(10,6);
-            spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+            var monavt = items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
+            //spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
             items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
         }
 

@@ -39,6 +39,7 @@ class BuildObject extends ContextObject{
         slabel = null;
     }
 
+    //state, ground_id, object_id, buildingTime-currentTime
     function loaddata(s,id,oid,b){
        // trace("set statue state", s, id, oid, b);
         state = s;
@@ -54,8 +55,6 @@ class BuildObject extends ContextObject{
     function paintNode(){
         //trace("paint statue");
         contextNode = sprite(buildname+str(bid)+".png",ALPHA_TOUCH);
-        spriteManager.getPic(buildname+str(bid)+".png", contextNode);
-        
         contextNode.setevent(EVENT_HITTEST,objSelected);
         contextNode.setevent(EVENT_MOVE,objSelected);
         contextNode.setevent(EVENT_UNTOUCH,objSelected);
@@ -67,7 +66,7 @@ class BuildObject extends ContextObject{
     }
 
     //state:
-    //
+
     function objSelected(n,e,p,x,y,ps){
        // trace("touch object", n, e, p, x, y, ps);
         if(contextLevel >= global.currentLevel && lock ==0 ){
@@ -144,10 +143,10 @@ class BuildObject extends ContextObject{
                 return 0;
             }
             lock = 1;
-            if(state == 4){
-                objectinterface(4,null);
+            if(state == FINISH_WORKING){
+                objectinterface(FINISH_WORKING, null);
             }
-            else if(state==3 &&state2 != 3 && state2 != 0){
+            else if(state==WORKING &&state2 != 3 && state2 != 0){
                 global.http.addrequest(0,"eliminusstate",["uid","city_id","grid_id"],[global.userid,global.context[0].ccid,baseobj.posi[0]*RECTMAX+baseobj.posi[1]],self,"eliminus");
             }
             else if(state != 0){
@@ -179,9 +178,9 @@ class BuildObject extends ContextObject{
     }
 
     function reloadNode(re){
-        if(re!= null && state == 2){
+        if(re!= null && state == FINISH_BUILDING){
             lock=1;
-            objectinterface(2,re);
+            objectinterface(FINISH_BUILDING, re);
         }
         setstate();
     }
@@ -203,9 +202,9 @@ class BuildObject extends ContextObject{
         if(contextNode == null){
             return 0;
         }
-        if(state == 1)
+        if(state == BUILDING)
             contextNode.color(40,40,40,100);
-        else if(state > 1){
+        else if(state > BUILDING){
             if(global.system.flagnight==0){
                 contextNode.color(50,50,60,100);
             }
@@ -250,7 +249,7 @@ class BuildObject extends ContextObject{
             stateNode.color(100,100,100,100);
         }
         if(state > 0){
-            if(state == 1){
+            if(state == BUILDING){
                 stateNode.size(102,20).texture("buildingback.png").pos(baseobj.contextid*33+1,baseobj.contextid*33-contextNode.size()[1]);
                 if(buildindex == 4 && bid%4!=1&&bid<20){
                     stateNode.pos(baseobj.contextid*33+1,baseobj.contextid*33-contextNode.size()[1]+54);
@@ -278,7 +277,7 @@ class BuildObject extends ContextObject{
             }
             stateNode.texture();
         }
-        if(global.context[0].flagfriend == 1 && (state!=3||(state2!=1 && state2!=2))){
+        if(global.context[0].flagfriend == 1 && (state != WORKING || (state2!=1 && state2!=2))){
             stateNode.visible(0);
         }
         else{
@@ -325,7 +324,7 @@ class BuildObject extends ContextObject{
             updatestate();
         }
         else if(lefttime <= 0){
-            if(state == 1 && lock==0){
+            if(state == BUILDING && lock==0){
                 lock = 1;
                 if(global.context[0].flagfriend==0){
                     global.http.addrequest(0,"finish_building",["user_id","city_id","grid_id"],[global.userid,global.cityid,baseobj.posi[0]*RECTMAX+baseobj.posi[1]],self,"buildfinish");
@@ -334,14 +333,14 @@ class BuildObject extends ContextObject{
                     buildfinish(0,1,"{'id':1}");
                 }
             }
-            else if(state == 1)
+            else if(state == BUILDING)
                 lefttime = 0;
             else
                 updatestate();
         }
-        else if(state == 1)
+        else if(state == BUILDING)
             sreload();
-        else if(state == 3 && state2==0 && mstate+4*(lefttime-1)/alltime <4){
+        else if(state == WORKING && state2==0 && mstate+4*(lefttime-1)/alltime <4){
             refreshminus();
         }
     }
@@ -397,7 +396,7 @@ class BuildObject extends ContextObject{
 
     function updatestate(){
         state2=0;
-        if(state < 4)
+        if(state < FINISH_WORKING)
             state = state+1;
         setstate();
     }

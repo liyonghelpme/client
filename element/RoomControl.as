@@ -9,6 +9,9 @@ class RoomControl extends ContextObject{
     var lastx;
     var flagmove;
     var objsmax = 26;
+    //新民居 会影响新手任务箭头的问题 需要 在这里设定
+    //400 是居中位置
+    //设置方法， 可以根据编号动态设定
     const objlevel = [
     3, 
     3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];
@@ -37,12 +40,14 @@ class RoomControl extends ContextObject{
             var obji = objcontext[i]%100;
             objs[i] = sprite("dialogelement2p.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
             objs[i].addlabel(global.getname("room",obji),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
-            var hou = objs[i].addsprite().anchor(50,100).pos(74,160).scale(sc);
-            spriteManager.getPic("room"+str(obji)+".png", hou);
+            var hou = objs[i].addsprite("room"+str(obji)+".png").anchor(50,100).pos(74,160).scale(sc);
+            //spriteManager.getPic("room"+str(obji)+".png", hou);
             
+            /*
             if(i<1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

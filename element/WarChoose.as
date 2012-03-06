@@ -8,7 +8,7 @@ class WarChoose extends ContextObject{
     function paintNode(){
         buttons = [0];
         contextNode = node().pos(400,240);
-        if(global.user.getValue("level")<10){
+        if(global.user.getValue("level")<WarMode_Lev){
             buttons.append(2);
         }
         else{
@@ -20,25 +20,22 @@ class WarChoose extends ContextObject{
             bt.setevent(EVENT_TOUCH,buttonclicked,k);
             bt.setevent(EVENT_UNTOUCH,buttonclicked,k);
         }
-        if(buttons[1]==2&&global.user.getValue("level")<10){
+        if(buttons[1]==2&&global.user.getValue("level")<WarMode_Lev){
             bt.texture("warchoosebuttonback0.png",GRAY);
         }
     }
 
     function reloadNode(re){
         if(re==1){
+            trace("enter war map 1");
             global.context[0].entermap(0,0);
-            /*
-            global.context[0].warpage.initialdata();
-            global.image.begindownload(2);
-            */
         }
     }
 
     function buttonclicked(n,e,p){
         if(global.currentLevel == contextLevel){
             var filter = NORMAL;
-            if(p==1&&global.user.getValue("level")<10){
+            if(p==1&&global.user.getValue("level")<WarMode_Lev){
                 filter = GRAY;
             }
             if(e==EVENT_TOUCH)
@@ -51,10 +48,11 @@ class WarChoose extends ContextObject{
                 else if(buttons[p] == 1){
                     if(global.user.getValue("nobility")<0){
                         var tmp=new Warningdialog([global.getStaticString(1),1,3]);
-                        global.pushContext(self,tmp,NonAutoPop);
+                        global.pushContext(self,tmp,NonAutoPop);//warning gointo war
                         tmp.contextNode.addsprite("dialogelement_help.png").pos(248,125).scale(150).setevent(EVENT_UNTOUCH,gotohelp,"warmode");
                     }
                     else{
+                        trace("enter war map2");
                         global.context[0].entermap(0,0);
                     }
                 }

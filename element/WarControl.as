@@ -192,6 +192,7 @@ class WarControl extends ContextObject{
         flaganimate = 0;
         flagresult = 0;
         datadict = dl;
+        element = null;
     }
     var Record ;
     function formatstringtodata(dl){
@@ -332,7 +333,7 @@ class WarControl extends ContextObject{
     function closedialog(n,e,p){
         global.popContext(null);
         if(p==1){
-            ppy_postnewsfeed(global.getFormatString(10+2*datadict.get("leftself")+datadict.get("leftwin"),["[USERNAME]",ppy_username(),"[ENAME]",datadict.get(_enemy+"name")]),"http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString(10+2*datadict.get("leftself")+datadict.get("leftwin"),["[USERNAME]",ppy_username(),"[ENAME]",datadict.get(_enemy+"name")]), ShareURL, null);
         }
     }
     
@@ -427,17 +428,17 @@ class WarControl extends ContextObject{
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
 
                 if(datadict.get("leftself") == 1){
-                    leftuser = element.addsprite();
-                    spriteManager.getPic("battleuserback0.png", leftuser);
-                    rightuser= element.addsprite().anchor(100,0).pos(800,0);
-                    spriteManager.getPic("battleuserback1.png", rightuser);
+                    leftuser = element.addsprite("battleuserback0.png");
+                    //spriteManager.getPic("battleuserback0.png", leftuser);
+                    rightuser= element.addsprite("battleuserback1.png").anchor(100,0).pos(800,0);
+                    //spriteManager.getPic("battleuserback1.png", rightuser);
                 }
                 else{
-                    leftuser = element.addsprite();
-                    spriteManager.getPic("battleuserback1.png", leftuser);
+                    leftuser = element.addsprite("battleuserback1.png");
+                    //spriteManager.getPic("battleuserback1.png", leftuser);
 
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
-                    spriteManager.getPic("battleuserback0.png", rightuser);
+                    //spriteManager.getPic("battleuserback0.png", rightuser);
 
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
@@ -448,8 +449,8 @@ class WarControl extends ContextObject{
                 else
                 {
                     var level = datadict.get("monLevel");
-                    var monavt = rightuser.addsprite().pos(25, 19).size(50, 50);
-                    spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
+                    var monavt = rightuser.addsprite("monsteravatar"+str(level)+".jpg").pos(25, 19).size(50, 50);
+                    //spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
 
                 }
 
@@ -490,6 +491,7 @@ class WarControl extends ContextObject{
                         r.addaction(sequence(delaytime(1500),repeat(animate(2000,"rain1.png","rain2.png","rain3.png","rain4.png","rain5.png","rain6.png"),2),callfunc(removeself)));
                     }
                 }
+                spriteManager.getMusic("4.mp3");
                 global.system.pushmusic("4.mp3");
                 flaganimate=2;
             }

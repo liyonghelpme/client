@@ -4,6 +4,11 @@ class DailyDialog extends ContextObject{
         contextname = "dialog-reward-daily";
         contextNode = null;
         bonus = b;
+        trace("daily", global);
+        if(bonus > 0)
+            global.user.changeValue("money", -bonus);
+        else
+            global.user.changeValue("caesars", bonus);
     }
 
     function paintNode(){
@@ -39,13 +44,16 @@ class DailyDialog extends ContextObject{
     function closedialog(node,event,p){
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"登录了奇迹帝国领取了每日奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"登录了奇迹帝国领取了每日奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL, null);
         }
-        if(bonus>0){
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",bonus,-6);
-        }
-        else{
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-bonus,-6);
+        if(global.flagnew == 0)
+        {
+            if(bonus>0){
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money",bonus,-6);
+            }
+            else{
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-bonus,-6);
+            }
         }
         global.popContext(null);
     }

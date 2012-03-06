@@ -139,11 +139,12 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
-    var global;
+    
     function UserController(){
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
+        //setValue("hasDisk", 0);
     }
     
     function initText(name,l){

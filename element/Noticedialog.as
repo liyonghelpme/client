@@ -6,9 +6,8 @@ class Noticedialog extends ContextObject{
     var updatenum;
     var showlabel;
     var buttonlabel;
-        //"特给予50凯撒币补偿您之前获得过的一键免费操作。感谢支持！"
     const newupdate = [
-        "元宵节快乐！新上线了阁楼（民居），快去看看吧！"
+        "大家好！奇迹建筑之幸运龙盘上线啦！建造幸运龙盘可以玩大转盘游戏！还在等什么？赶快去建造吧！"
     ]; 
     function paintNode(){
         updatenum=-1;

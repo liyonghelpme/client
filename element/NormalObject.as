@@ -10,6 +10,7 @@ import element.NestObject;
 import element.PetRename;
 import element.Petstate4;
 import element.Nestbuilddialog;
+import element.DragonDisk;
 import element.BuildObject;
 class NormalObject extends ContextObject{
     var contextid;
@@ -36,6 +37,7 @@ class NormalObject extends ContextObject{
     //for empire building need baseobj
     var baseobj = null;
 
+    //ground_id, x row, y row
     function NormalObject(id,l,r){
         contextname = "object-build-normal";
         empireLevel = 0;
@@ -52,53 +54,65 @@ class NormalObject extends ContextObject{
         objnode= null;
     }
     
+    //contextId 1 4 9 size of building
+    //
     override function init(s,g){
         self = s;
         global = g;
+        //Size contextid
         if(contextid==0){
             contextid=global.data.getSize(objectid);
         }
+        //classId 0 1 2 3 4 5 6 7 10
         var classid = objectid/100;
         //trace(contextid,objectid);
-        if(classid==5){
+        
+        if(classid==DECORATION){
             objnode=null;
             buildcontextname = "obj";
         }
         else if(objectid>0){
-            if(classid == 1){
+            if(classid == ROOM){
                 buildcontextname = "room";
                 objnode = new RoomObject(self);
                 classid=objectid%100;
             }
-            else if(classid == 3){
+            else if(classid == FACT){
                 buildcontextname = "fact";
                 objnode = new FactObject(self);
                 classid=objectid%100;
             }
-            else if(classid == 2){
+            else if(classid == CAMP){
                 buildcontextname = "camp";
                 objnode = new CampObject(self);
                 classid=objectid%100;
             }
-            else if(classid == 0){
+            else if(classid == FARM){
                 buildcontextname = "farm";
                 objnode = new FarmObject(self);
                 classid=objectid%100;
             }
-            else if(classid == 4){
+            else if(classid == GOD){
                 buildcontextname = "god";
                 objnode = new GodObject(self);
                 classid=objectid%100;
             }
-            else if(classid==6){
+            else if(classid==STATUE){
                 buildcontextname = "statue";
                 objnode = new StatueObject(self);
                 classid=objectid;
             }
-            else if(classid == 10){
+            else if(classid == DRAGON){
                 buildcontextname = "nest";
                 objnode = new NestObject(self);
-                classid=objectid;
+                classid = objectid;
+            }
+            else if(classid == DISK)
+            {
+                trace("init Disk", classid);
+                buildcontextname = "disk";
+                objnode = new DragonDisk(self);
+                classid = objectid%100;
             }
             objnode.init(objnode,global);
             objnode.loaddata(0,classid,0,0);
@@ -114,21 +128,33 @@ class NormalObject extends ContextObject{
             changemap(1);
     }
 
+    function showYanhua()
+    {
+        if(empireLevel < 2)//Level 0 1 2
+            return;
+        //spriteManager.getAnimation( ["yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png", "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png"]);
+        var yanhua = sprite("yan1.png").anchor(50, 100).pos(176, 100);
+        contextNode.add(yanhua, 1, 1000);//z tag
+        yanhua.addaction(repeat(
+            animate(2000, "yan1.png", "yan2.png", "yan3.png", "yan4.png", "yan5.png", "yan6.png", "yan7.png", "yan8.png", "yan9.png", "yan10.png", "yan11.png", "yan12.png", "yan13.png", "yan14.png", "yan15.png", "yan16.png", "yan17.png" )
+            ));
+    }
+    function removeYanhua()
+    {
+        contextNode.remove(1000);
+    }
+
     function paintNode(){
         contextNode = sprite().anchor(47,100).pos(PBX+posi[0]*(-34)+posi[1]*30,PBY-1+posi[0]*17+posi[1]*16).size(64*contextid-2,33*contextid+1);
         var classid = objectid/100;
-        if(classid==5){
-//            objnode = sprite("object"+str(objectid-500)+".png",ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
-            objnode = sprite("", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
-            spriteManager.getPic("object"+str(objectid-500)+".png", objnode);
+        if(classid == DECORATION){
+            objnode = sprite("object"+str(objectid-500)+".png", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
             
             if(global.system.flagnight==0){
                 objnode.color(50,50,60,100);
-                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=544||objectid>=545&&objectid<=549){
-                    trace("draw light", objectid);
-//                    contextNode.add(sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1),1,1);
-                    var lightpng = sprite("", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
-                    spriteManager.getPic("object"+str(objectid-500)+"_l.png", lightpng);
+                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=549){
+                    //trace("draw light", objectid);
+                    var lightpng = sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
                     contextNode.add(lightpng, 1, 1);
                 }
             }
@@ -155,6 +181,7 @@ class NormalObject extends ContextObject{
                 objnode.color(50,50,60,100);
                 empireLight = sprite("empire"+str(empireLevel+1)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
                 contextNode.add(empireLight,1,1);
+                showYanhua();
             }
             else{
                 objnode.color(100,100,100,100);
@@ -277,7 +304,7 @@ class NormalObject extends ContextObject{
 
     function objclicked(n,e,p,x,y,ps){
         if(contextLevel >= global.currentLevel && lock ==0 ){
-            if(global.context[0].flagbuild!=0){
+            if(global.context[0].flagbuild != 0){
                 return objSelected(n,e,p,x,y);
             }
             if(global.context[0].flagfriend == 1)
@@ -521,25 +548,25 @@ trace("sell",r,rc,c);
             var m=0;
             var p=0;
             var obj = 0;
-            if(ot==0){
+            if(ot==FARM){
                 m = FARM_PRICE[oi];
                 p = FARM_PERSON[oi];
             }
-            else if(ot==1){
+            else if(ot==ROOM){
                 m = ROOM_PRICE[oi/3*3];
                 ol = oi%3;
             }
-            else if(ot==2){
+            else if(ot==CAMP){
                 m = CAMP_PRICE[oi/3*3];
                 p = CAMP_PERSON[oi];
                 ol = oi%3;
             }
-            else if(ot==3){
+            else if(ot==FACT){
                 m = FACT_PRICE[oi/3*3];
                 p = FACT_PERSON[oi];
                 ol = oi%3;
             }
-            else if(ot==4){
+            else if(ot==GOD){
                 var ott;
                 if(oi<20) ott=oi%4;
                 else ott=oi/5;
@@ -551,9 +578,14 @@ trace("sell",r,rc,c);
                 }
                 p = -GOD_PERSON_MAX[ol];
             }
-            else if(ot==6){
+            else if(ot==STATUE){
                 m = STATUE_PRICE[oi];
                 p = STATUE_PERSON[oi];
+            }
+            else if(ot == DISK)
+            {
+                m = DISK_MONEY[0];
+                p = DISK_PERSON[0];
             }
             else{
                 obj = 1;

@@ -31,7 +31,7 @@ class StatueObject extends BuildObject{
     }
     override function objectsetstate(){
         if(state == 4){
-            spriteManager.getAnimation(["defence_bubble.png"]);
+            //spriteManager.getAnimation(["defence_bubble.png"]);
             stateNode.texture("defence_bubble.png",UPDATE_SIZE).pos(baseobj.contextid*33+1,baseobj.contextid*33-contextNode.size()[1]*2/3);
 
         }

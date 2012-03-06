@@ -9,12 +9,12 @@ class UpdateControl extends ContextObject{
     var updatetype;
     var updatebid;
     var buildable;
-    const EmpireCoin = [0,100000];
-    const EmpireFood = [0,1000];
-    const EmpirePeople = [0,100];
-    const EmpireSpe = ["","100;a,30;b,30;c,30"];
-    const EmpirePopUp = [0,100];
-    const EmpireMana = [0, 5];
+    const EmpireCoin = [0,100000, 500000];
+    const EmpireFood = [0,1000, 5000];
+    const EmpirePeople = [0,100, 500];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
+    const EmpirePopUp = [0,100, 500];
+    const EmpireMana = [0, 5, 5];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
@@ -51,7 +51,8 @@ class UpdateControl extends ContextObject{
                 btype = 0;
                 objname= "empire";
                 objbid = obj.empireLevel;
-                upbid = obj.empireLevel + 1;
+                upbid = obj.empireLevel+1;
+                updatebid = 0;
             }
             else
             {
@@ -81,21 +82,23 @@ class UpdateControl extends ContextObject{
                 }
             }
             
-            var hou1 = back.addsprite().anchor(50,50).pos(56,70).scale(bl1);
-            spriteManager.getPic(objname+str(objbid)+".png", hou1);
-            var hou2 = back.addsprite().anchor(50,50).pos(231,65).scale(bl2);
-            spriteManager.getPic(objname+str(upbid)+".png", hou2);
-            /*
+            trace("empire", objbid, upbid);
+            var hou1;
+            var hou2;
             if(obj.baseobj == null)
             {
-
+                hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                //spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
-                back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
-                back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                //spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
-            */
             var i;
             var ok;
             var starnum;
@@ -309,6 +312,8 @@ class UpdateControl extends ContextObject{
                 obj.bid = updatebid%100;
                 obj.baseobj.objectid = updatebid;
             }
+            //friend god upgrade change card level 
+            trace("global card", global.card);
             if(global.card[18]%10==0 && updatebid==424){
                 var flevel=1+10*(len(global.ppyuserdict)-2);
                 if(flevel/10>=100){
@@ -327,12 +332,14 @@ class UpdateControl extends ContextObject{
             else
             {
                 obj.objnode.texture("empire"+str(obj.empireLevel+1)+".png");
+                //Normal Object not empire
                 if(global.system.flagnight==0){
                     obj.contextNode.get(1).texture("empire"+str(obj.empireLevel+1)+"_l.png");
+                    obj.showYanhua();
                 }
             }
             var target;
-            //because empire' parent is normalobject
+            //because empire" parent is normalobject
             //but other buildings is buildObject
             //use base obj == null to check which is!
             if(obj.baseobj == null)
