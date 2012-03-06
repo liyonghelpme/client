@@ -487,6 +487,7 @@ class DataController{
 
 class GlobalController{
     var Quit;
+    var TooMany = 0;
     var InNew = 0;
 
     var emptyCitiesInGlo = null;

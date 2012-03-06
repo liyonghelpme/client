@@ -151,7 +151,7 @@ class BoxControl extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]), NewsURL);
+        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]), NewsURL, null);
     }
 
     function completeopen(n,e){

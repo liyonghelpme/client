@@ -88,7 +88,7 @@ class Nobilitydialog extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString(7+global.user.getValue("nobility")%3,["[USERNAME]",ppy_username(),"[NOBNAME]", NOBNAME[global.user.getValue("nobility")]]), NewsURL);
+            ppy_postnewsfeed(global.getFormatString(7+global.user.getValue("nobility")%3,["[USERNAME]",ppy_username(),"[NOBNAME]", NOBNAME[global.user.getValue("nobility")]]), NewsURL, null);
         }
     }
 }

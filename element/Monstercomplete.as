@@ -23,7 +23,7 @@ class Monstercomplete extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("killAll", ["[NAME]", ppy_username()]), NewsURL);
+            ppy_postnewsfeed(global.getFormatString("killAll", ["[NAME]", ppy_username()]), NewsURL, null);
         }
     }
     

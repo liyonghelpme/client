@@ -87,7 +87,7 @@ class Disk extends ContextObject{
     {
         if(re == DiskShare)
         {
-            ppy_postnewsfeed(global.getFormatString("PlayingDra", ["[NAME]", ppy_username()]));
+            ppy_postnewsfeed(global.getFormatString("PlayingDra", ["[NAME]", ppy_username()]), NewsURL, null);
         }
     }
     var finish = 0;

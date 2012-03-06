@@ -1,3 +1,4 @@
+import element.TooManyUser;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -1204,10 +1205,26 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             newstate = data.get("newstate",3);
+            if(newstate == 0)
+            {
+                var today = data.get("today");
+                var todayNum = today.get("todayNum", 0);
+                var totalNum = today.get("totalNum", 0);
+                if(totalNum >= 6000 && todayNum >= 100)
+                {
+                    global.TooMany = 1;
+                }
+            }
+
             if(newstate < 3)
                 global.InNew = 1;
             else
                 global.InNew = 0;
+            if(global.TooMany == 1)
+            {
+                var tooMany = new TooManyUser();
+                LoadPage.add(tooMany.getNode())
+            }
             LoadPage.put(newstate);
             LoadPage = null;
             if(data.get("ppyname")!=ppy_username()){
@@ -1554,7 +1571,8 @@ class CastlePage extends ContextObject{
                 }
 
             }
-            initlock = 0;
+            if(global.TooMany == 0)
+                initlock = 0;
             friend.loaddata(global,friend);
             friend.loadourdata();
             menu.add(friend.friendback);
@@ -1686,22 +1704,29 @@ class CastlePage extends ContextObject{
         }
         if(initlock == 0){
             initlock = -1;
-            if(newstate < 3 && global.flagnew == 0){
-                trace("update flagnew", global.flagnew);
-                global.pushContext(self,new NewControl(newstate),NotAdd);
+            if(global.TooMany == 1)
+            {
+                global.pushContext(null, new TooManyUser(), NonAutoPop);
             }
-            else{//new user not popup foodlost
-                if(global.system.flagrob == 0 && global.flagnew == 0)
-                {
-                    global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
+            else
+            {
+                if(newstate < 3 && global.flagnew == 0){
+                    trace("update flagnew", global.flagnew);
+                    global.pushContext(self,new NewControl(newstate),NotAdd);
                 }
-                if(global.system.flagrob < 2 && global.flagnew == 0)
-                {
-                    global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
+                else{//new user not popup foodlost
+                    if(global.system.flagrob == 0 && global.flagnew == 0)
+                    {
+                        global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
+                    }
+                    if(global.system.flagrob < 2 && global.flagnew == 0)
+                    {
+                        global.http.addrequest(0,"foodlost",["uid"],[global.userid],self,"foodlost");
+                    }
                 }
+                global.user.flaginit = 0;
+                global.user.setValue("plantpage",1);
             }
-            global.user.flaginit = 0;
-            global.user.setValue("plantpage",1);
         }
         else if(initlock<-1){
             initlock++;
