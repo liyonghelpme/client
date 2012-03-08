@@ -209,7 +209,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        actButton = menu.addsprite("actPlant.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        //actButton = menu.addsprite("actPlant.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
@@ -873,7 +873,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        actButton.visible(1);
+        //actButton.visible(1);
         tipButton.visible(1);
         spriteManager.showDownIcon();
     }
@@ -882,7 +882,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        actButton.visible(0);
+        //actButton.visible(0);
         tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
@@ -1525,7 +1525,7 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
 
                     var bdict = dict();
                     bdict.update("name","daily");
