@@ -9,12 +9,12 @@ class Tip extends ContextObject{
         contextNode = sprite("dialogback_expand.png", ARGB_8888).anchor(50,50).pos(400,300);
         contextNode.addsprite("girl1.png").anchor(50, 100).pos(0, 310).size(191, 409);
 
+
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(225-140/2, 234).setevent(EVENT_UNTOUCH, checkFAQ);
-        contextNode.addlabel("FAQ", null, 30).anchor(50, 50).pos(225-140/2, 234);
+        contextNode.addlabel("FAQ", null, 25).anchor(50, 50).pos(225-140/2, 234);
 
-
-        contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(225+140/2, 234).setevent(EVENT_UNTOUCH,closedialog);
-        contextNode.addlabel(global.getStaticString("ok"), null, 30).anchor(50, 50).pos(225+140/2, 234);
+        contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(225+140/2, 234).setevent(EVENT_UNTOUCH,closedialog);
+        contextNode.addlabel(global.getStaticString("ok"), null, 25).anchor(50, 50).pos(225+140/2, 234);
 
 
 

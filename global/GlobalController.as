@@ -33,9 +33,10 @@ const OpenReward = 1000;
 const FeedReward = 1000;
 const LevUpPop = 10;
 
-//const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
-const HELP_URL = "http://uhz000738.chinaw3.com/#";
+const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const HELP_URL = "http://223.4.87.9/#";
+//const HELP_URL = "http://uhz000738.chinaw3.com/#";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
