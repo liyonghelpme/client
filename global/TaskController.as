@@ -204,7 +204,7 @@ class TaskController extends ContextObject{
         enternode.visible(0);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"完成了"+taskdes[0]+"任务，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+"完成了"+taskdes[0]+"任务，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！", ShareURL, null);
         }
         global.http.addrequest(0,"taskaccomplished",["uid"],[global.userid],self,"taskaccomplished");
     }

@@ -1,5 +1,7 @@
-const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
-const ShareURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
+//const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
+const RateURL = "market://details?id=com.papaya.wonderempire1_cn";
+const ShareURL = "market://details?id=com.papaya.wonderempire1_cn";
+//const ShareURL = "http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating";
 
 const stringDict=dict([
 ["build_defence_format","建造[BUILD]会增加[DEFENCE]城堡防御力，确定建造？（防御力数据可以点击城堡查看）"],
