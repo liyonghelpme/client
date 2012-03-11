@@ -35,6 +35,7 @@ const LevUpPop = 10;
 
 //const BASE_URL = "http://223.4.87.9:8000/";
 const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const HELP_URL = "http://uhz000738.chinaw3.com/#";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 
@@ -642,6 +643,10 @@ class GlobalController{
             screen.add(co.getNode());
         else
             dialogscreen.add(co.getNode());
+        if(flagnew == 1 && auto == NonAutoPop)
+        {
+            clearShotScreen();
+        }
         if(flagnew == 0 || auto == NotAdd)
             co.getNode().focus(1);
         context[0].hiddentime = 10;
@@ -668,6 +673,11 @@ class GlobalController{
         }
         else 
         {
+            
+            if(flagnew == 1)
+            {
+                setShotScreen();
+            }
             if(currentLevel < 0)
                 return;
             context[currentLevel].deleteContext();

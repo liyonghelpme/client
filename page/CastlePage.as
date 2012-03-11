@@ -1241,6 +1241,7 @@ class CastlePage extends ContextObject{
             global.allymax = data.get("allyupbound",1);
             if(newstate<3){
             	global.user.setValue("nobility",-3);
+                setShotScreen();
           	}
           	else{
             	global.user.setValue("nobility",data.get("nobility",-1)*3+data.get("subno",0));
@@ -1681,13 +1682,6 @@ class CastlePage extends ContextObject{
                 global.user.setValue("manatime", now);
             }
         }
-        /*
-        if(downAllPic == 0)
-        {
-            downAllPic = 1;
-            spriteManager.downloadAllPic();
-        }
-        */
         if(initlock == 0){
             initlock = -1;
             if(newstate < 3&&global.flagnew == 0){
@@ -1857,7 +1851,12 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                         btems.insert(1, 0);//readed
                         alllist.append(btems);
                         //attack and successful 
+                        if(getBattleResult("kind", btems) == 0 && getBattleResult("win", btems) == 1 && warpage.inite == 1)
+                        {
+                            warpage.occupyEne(btems);
+                        }
                         if(getBattleResult("kind", btems) == 1 && getBattleResult("win", btems) == 1 && warpage.inite==1){
+                    
                             for(var j=len(warpage.atklist)-1;j>=0;j--){
                                 if(warpage.atklist[j][0]== getBattleResult("defOtherid", btems)){
                                     warpage.atklist.pop(j)[8]=1;
