@@ -1715,7 +1715,8 @@ class CastlePage extends ContextObject{
                     global.pushContext(self,new NewControl(newstate),NotAdd);
                 }
                 else{//new user not popup foodlost
-                    if(global.system.flagrob == 0 && global.flagnew == 0)
+                    var monNum = warmap.monstercontroller.monsternum;
+                    if(global.system.flagrob == 0 && global.flagnew == 0 && monNum != 0)
                     {
                         global.pushContext(null,new Warningdialog([global.getStaticString("monster_foodwilllost"),null,1]),NonAutoPop);
                     }

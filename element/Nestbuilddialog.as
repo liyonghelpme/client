@@ -29,8 +29,7 @@ class Nestbuilddialog extends ContextObject{
         }
         head.addlabel(name,null,16).anchor(50,50).pos(33,69).color(0,0,0,100);
         if(mode == 1){
-            head.addlabel(global.getStaticString("activeDra"),null,20, FONT_NORMAL, 300, 0).pos(103,19).color(0,0,0,100);
-            //head.addlabel(global.getStaticString("letsShare"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
+            head.addlabel(global.getStaticString("activeDra"),null,20, FONT_NORMAL, 200, 0).pos(103,19).color(0,0,0,100);
         }
         else{
             global.addtext(head,103,19,global.getStaticString("askForAct"),18);

@@ -161,7 +161,7 @@ class WarTaskController extends ContextObject{
         enternode.visible(0);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+global.getStaticString("complete")+wartaskdes[0]+", " + global.getStaticString("playWithme"),"http://getmugua.com");
+            ppy_postnewsfeed(ppy_username()+global.getStaticString("complete")+wartaskdes[0]+", " + global.getStaticString("playWithme"), NewsURL, null);
         }
         global.http.addrequest(0,"wartaskaccomplished",["uid"],[global.userid],self,"wartaskaccomplished");
     }

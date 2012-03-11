@@ -1,5 +1,7 @@
-const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
-const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
+//const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
+const RateURL = "market://details?id=com.papaya.miracle_beta1";
+const NewsURL = "market://details?id=com.papaya.miracle_beta1";
+//const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
 
 var Others = dict([
 ["SPYITEMS", ["win:", "fight:", "soldier force:", "ally force:", "defence:"]],
@@ -101,7 +103,7 @@ var Dicts =
 
 ["god_bless_over","you have already performed magic!"],
 
-["share_format","[NAME][DESCRIBE],Come on!join [NAME] and build your own miracle empire together!"],
+["share_format","[NAME][DESCRIBE], Come on! join [NAME] and build your own miracle empire together!"],
 
 ["share_box_format","[NAME] has got a mysterious treasure chest,but he(she) can't unlock it without your help,Let's go and help him(her)!"],
 
@@ -147,7 +149,7 @@ var Dicts =
 
 ["update_normal","Ordinary"],["update_caesars","Fast"],["update_warning", "The building is occupied. Upgrading will interupt the operation,are you sure?"],
 
-["onekey_plant","One-step plantint"],["onekey_harvest","One-step harvesting"],["onekey_product","One-step collect taxes"],["onekey_visit_normal","One-step ordinary visit"],["onekey_visit_inc","One-step accumulated visit"],["onekey_title","One-step operation"],
+["onekey_plant","One-step planting"],["onekey_harvest","One-step harvesting"],["onekey_product","One-step collect taxes"],["onekey_visit_normal","One-step ordinary visit"],["onekey_visit_inc","One-step accumulated visit"],["onekey_title","One-step operation"],
 
 ["onekey_gotohelp","How to use it?"],
 
@@ -174,7 +176,7 @@ var Dicts =
 ["resource_get_format","This fortress products [MONEY] coins, [FOOD] foods, [WOOD] woods, [STONE] stones per hour. Time left to harvest [TIME]"],
 ["quit", "Quit"],["back", "Back"],
 
-["sendFight", "Sent forces"], ["totalFight", "Total ATK"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defense"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defence"], ["retry", "Retry"], 
+["sendFight", "Sent forces:"], ["totalFight", "Total ATK"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defense"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defence"], ["retry", "Retry"], 
 ["cancel", "Cancel"], ["netFail1", "It seems off network, check network connect please."], ["netFail2", "Network connect error, try again later."], ["taskShare", "Congrats, you finish this task!"], ["shareReward", "Share with your friends to get 100 silvers."],["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come create miracles with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary"], ["fastAdd", "Fast"], ["chooseDefence", "Defense incrense you choose:"], ["youLeft", "Left "], ["allyNum", " Ally number"], ["sureToally", "Sure to ally with him/her?"], 
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"],
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
@@ -213,9 +215,9 @@ var Dicts =
 ["spy_result2_mode3_format", "Total ATK [NUM]"],
 
 ["choosePet", "Choose pet"], ["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Are you sure to summon?"],
-["inProtect", "Protecting"], ["attNoProtect", "You can't enable protection mode during attacking period"],
+["inProtect", "Protecting"], ["attNoProtect", "You can't enable protec mode while attacking others."],
 ["openProtect", "enable protection"], ["colonial", "colonial "], ["levelUp", "Congrats! [NAME] has upgraded to lev [LEVEL], come on to build your own miracle empire!"], ["goInNewMap", ", you will find more powerful players in higher level map."], ["cityLevelUp", ",your territory is level up!"], ["oneLevel", ", you need more experiences to upgrade your territory!"], ["next", "Next"],
-["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase [NAME]?"],["acc", "Quicken"],
+["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure to purchase [NAME]?"],["acc", "SpeedUp"],
 ["leftTime", "Time left "], ["noBattle", "War mode unable"], ["winNum", "wins"], ["netRefresh", "data exception because of net problem,please try again"], ["fresh", "refresh"],
 
 ["fightAdd", "Hint: soilders have extra ATK in fortress"],
@@ -519,10 +521,10 @@ var Statics =
 "[ENAME] is too powerful, strengthen your military power and fight another day!",
 "Congrats! you have defeated [ENAME],go on fighting and gain glory!",
 "How to add power",
-"[USERNAME] has entered a new map. Come on; Let's build our own miracle empire with [USERNAME]!",
-"[USERNAME]has upgraded to [NOBNAME], Come on; Let's build our own miracle empire with [USERNAME]!",
-"[USERNAME] has upgraded the territory, Come on; Let's build our own miracle empire with [USERNAME]!",
-"[USERNAME] has defeated the invaders, Come on; Let's build our own miracle empire with [USERNAME]!",
+"[USERNAME] has entered a new map. Come on, Let's build our own miracle empire with [USERNAME]!",
+"[USERNAME]has upgraded to [NOBNAME], Come on, Let's build our own miracle empire with [USERNAME]!",
+"[USERNAME] has upgraded the territory, Come on, Let's build our own miracle empire with [USERNAME]!",
+"[USERNAME] has defeated the invaders, Come on, Let's build our own miracle empire with [USERNAME]!",
 "[USERNAME] is defeated by [ENAME], Let's go and get revenge for [USERNAME]!",
 "[USERNAME]'s army has been defeated, gather your troops and help [USERNAME] out!",
 "[USERNAME] has defeated [ENAME], Let's build our own miracle empire with [USERNAME]!",

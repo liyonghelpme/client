@@ -260,6 +260,10 @@ class SpriteManager
             global.castalPage.menu.add(askToDown);
             trace("show To Down");
             askToDown.setevent(EVENT_UNTOUCH, showToDown)
+            if(downWarYet == 1)
+            {
+                showDownNow(); 
+            }
         }
     }
     function removeDownIcon()
@@ -274,6 +278,8 @@ class SpriteManager
     }
     function showDownNow()
     {
+        if(showDown == 1)
+            return;
         showDown = 1;
         global.castalPage.menu.add(downloadNode);
         askToDown.removefromparent();

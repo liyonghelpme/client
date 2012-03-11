@@ -173,7 +173,7 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]), NewsURL);
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]), NewsURL, null);
         }
     }
 
@@ -289,6 +289,13 @@ trace("helpopen",rc,c);
                 }
                 global.http.addrequest(0,"changecard",["userid","cardnum","type"],[global.userid,global.card[18],4],self,null);
             }
+        }
+        else
+        {
+            boxfriends.append(str(ppy_userid()));
+            setbox(-1,0,0);
+            contextNode.get(1).texture("boxbutton2.png");
+            flaghelp = 0;
         }
         lock=0;
     }
