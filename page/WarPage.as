@@ -1,5 +1,4 @@
 class WarPage extends ContextObject{
-
     var lastpoint;
     var lastlength;
     var lastclicktime=0;
@@ -86,6 +85,33 @@ class WarPage extends ContextObject{
         contextNode.add(left,1);
     }
     
+
+    //blockid = x*pn+y,  map = baseNode.get(10000+blockid) empire= map.get(k) flag = empire.get(2)
+    //for(var k=0;k<8;k++){
+    //        var user = userdict.get(blockid*8+k,null);
+    function occupyEne(b)
+    {
+        var eneid = getBattleResult("otherUid", b);
+        var gid = mapUser.get(eneid, [-1, -1, -1, -1, -1, -1])[3];
+        trace("occupyEne", b, mapUser.get(eneid));
+        /*
+        if(gid != -1)
+        {
+            var blockid = gid / 8;
+            var k = gid%8;
+
+            var map = baseNode.get(10000+blockid, dict());
+            var empire = map.get(k);
+
+            trace("blockid", gid, blockid, k, map, empire);
+            if(empire != null)
+            {
+                var flag = empire.get(2);
+                flag.texture("flag1.png");
+            }
+        }
+        */
+    }
     function keydownhandle(n,e,p,kc){
         if(kc==4){
             nodemovewithgid(selfgid);
@@ -103,7 +129,6 @@ class WarPage extends ContextObject{
                 if(flagisinit==1){
                     global.user.setValue("nobility",0);
                     global.context[0].refreshbuttons();
-                    //global.pushContext(null,self,NonAutoPop);
                 }
             }
             percent = percent+4+rand(3);
@@ -354,10 +379,12 @@ trace("warinfo",rc,c);
         
 
 
+    //blockid = x*pn+y,  map = baseNode.get(10000+blockid) empire= map.get(k) flag = empire.get(2)
+
     function addplace(x,y){
         var s=sprite(getimage("warback.png"),ARGB_8888).size(1204,724).pos(1200*y,720*x);
         var blockid=x*pn+y;
-        baseNode.add(s,10000-blockid);
+        baseNode.add(s,10000-blockid, blockid+10000);
         placedict.update(blockid,s);
         var objlist = [0,0,1,2,2,3+abs(boolrand(3,y)%2),4-abs(boolrand(4,x)%2)];
         var objlev = [0,0,0,0,0,0,0,0];

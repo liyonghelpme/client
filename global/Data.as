@@ -423,7 +423,7 @@ dict([["req", "wood"], ["des", ["Collect maple woods", "Wood and stone can be us
 dict([["checknum", 5], ["des", ["Invite friends", "More friends will bring more visit rewards...", "invite your friends to join", "hint:enter your friends' list and invite your friends,you can also click menu to invite"]], ["lev", 10], ["reward", [3000, 70, 1]], ["type", 4], ["id", 41]]),
 dict([["req", "completely"], ["des", ["Charge", "You can get bonus rewards for recharging your caesars.", "charge and gain the rewards"]], ["checknum", 1], ["lev", 10], ["pair", []], ["reward", [1000, 200, 1]], ["type", 0], ["id", 42]]),
 dict([["req", "build"], ["des", ["Build brick roads", "Decoration can increase population and magic capacity.", "build brick roads"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 500]], ["reward", [600, 30, 0]], ["type", 0], ["id", 43]]),
-dict([["req", "build"], ["des", ["Build parterres", "Decoration can increase population and magic capacity.", "build parterres"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 505]], ["reward", [600, 60, 0]], ["type", 0], ["id", 44]]),
+dict([["req", "build"], ["des", ["Build Flowerbed", "Decoration can increase population and magic capacity.", "build Flowerbed"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 505]], ["reward", [600, 60, 0]], ["type", 0], ["id", 44]]),
 dict([["req", "build"], ["des", ["Build golden roads", "Decoration can increase population and magic capacity.", "build golden roads"]], ["checknum", 3], ["lev", 11], ["pair", ["ground_id", 504]], ["reward", [1800, 50, 1]], ["type", 0], ["id", 45]]),
 dict([["req", "build"], ["des", ["Build villa", "House can recruit people. People can build builings, trained to soldiers.", "build a villa"]], ["checknum", 2], ["lev", 11], ["pair", ["ground_id", 124]], ["reward", [1200, 30, 0]], ["type", 0], ["id", 46]]),
 dict([["req", "build"], ["checknum", 1], ["des", ["Build vine lamp", "Decoration can increase population and magic capacity.", "build vine lamp"]], ["lev", 11], ["pair", ["ground_id", 512]], ["reward", [1200, 30, 1]], ["type", 0], ["id", 47]]),
@@ -607,11 +607,19 @@ const CallDragon = 1000;
 
 
 
-
 const Tips = dict([
-[8, "You can build god statue now! God statue can perform magic to increase yield. Top Lv statue has one-step operation!"],
-[10, "You can build dragon nest now! Dragon nest can summon pet, pet will help you fight!"],
-[12, "You can build Warrior statue now! This statue can increase castle DTF under Beast God's magic."],
+[3, "Night mode will be opened after 8pm everyday, light decors will lighten your empire! You can close it at settings option."],
+[4, "Click castle to see your territory's info, such as attack power, magic value, resource number, etc."],
+[5, "Some decors can add population capacity, others can add magic capacity."],
+[6, "You can unlock war mode now! After unlocking, you can attack other users for more resources, honor, etc."],
+[7, "How to get more silvers&free caesars? Click FAQ button please."],
+[8, "You can build Harvest Goddess now! She performing magic can increase crop's yield, she also can  one-step harvesting&planting"],
+[9, "After building Dragon wheel, you can use dragon stone to get free caesars!"],
+[10, "You can build Dragon nest now! After building it, you can summon pet, which will help you fight when it grows."],
+[11, "You can build lumber mill now! Wood is a necessity for upgrading buildings!"],
+[12, "You can build Liberty Goddess now! She performing magic can increase population recruit number."],
+[13, "Tip: Defeat other users, you can get many silvers, aslo have probability to get caesars. "],
+
 [20, "You can upgrade your castle now! Upgrade your castle to Lv.2, your magic capacity will +5!"],
 [30, "You can upgrade your castle to Lv.3 now！You can also build beast god now, which can perform magic to let warrior statue produce castle DTF."]
 ]);

@@ -22,7 +22,7 @@ class Disk extends ContextObject{
         lock = 0;
         Degree = 360/len(DiskRewards);
 
-        global.timer.addlistener(global.timer.currenttime+MAX_INT, this);
+        global.timer.addlistener(-1, this);
     }
 
     function paintNode(){

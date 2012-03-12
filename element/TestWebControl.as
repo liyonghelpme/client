@@ -67,7 +67,6 @@ class TestWebControl extends ContextObject{
             web = v_create(V_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
             web.openurl(HELP_URL+"#"+helpstr);
-            //web.openurl("http://223.4.85.114/#"+helpstr);
         }
         else if(mode==3){
             web = v_create(V_WEB_VIEW,4,65,791,411);

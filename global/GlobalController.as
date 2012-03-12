@@ -29,8 +29,9 @@ const BASE_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8000/";
 //const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
+const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
+//const HELP_URL = "http://uhz000738.chinaw3.com/"
 
-const HELP_URL = "http://uhz000738.chinaw3.com/"
 const hmax = [51,201,831, 9999];
 const hmaxs = [3, 5, 7, 7];
 const OpenReward = 1000;
@@ -796,14 +797,13 @@ class GlobalController{
             screen.add(co.getNode());
         else
             dialogscreen.add(co.getNode());
-        
-        //NewControl
+        if(flagnew == 1 && auto == NonAutoPop)
+        {
+            clearShotScreen();
+        }
         if(flagnew == 0 || auto == NotAdd)
             co.getNode().focus(1);
-        
         context[0].hiddentime = 10;
-
-        //Handle task
         if(task.tasktype==2){
             if(task.taskreq == co.contextname){
                 task.inctaskstep(1);
@@ -831,6 +831,11 @@ class GlobalController{
         }
         else 
         {
+            
+            if(flagnew == 1)
+            {
+                setShotScreen();
+            }
             if(currentLevel < 0)
                 return;
             context[currentLevel].deleteContext();
