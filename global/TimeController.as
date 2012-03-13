@@ -52,7 +52,11 @@ class TimeController{
                 timelist[i][0] = timelist[i][1].endtime;
                 trace("refresh");
             }
-            if(timelist[i][0]>currenttime){
+            if(timelist[i][0] == -1)
+            {
+                timelist[i][1].timerefresh();
+            }
+            else if(timelist[i][0]>currenttime){
                 timelist[i][1].timerefresh();
             }
             else{
