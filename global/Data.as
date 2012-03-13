@@ -609,16 +609,16 @@ const CallDragon = 1000;
 
 const Tips = dict([
 [3, "Night mode will be opened after 8pm everyday, light decors will lighten your empire! You can close it at settings option."],
-[4, "Click castle to see your territory's info, such as attack power, magic value, resource number, etc."],
-[5, "Some decors can add population capacity, others can add magic capacity."],
-[6, "You can unlock war mode now! After unlocking, you can attack other users for more resources, honor, etc."],
+[4, "Click castle to see your territory's info, such as attack power, special articles, magic value, resource number, etc."],
+[5, "Some decors can enlarge population capacity, others can enlarge magic capacity."],
+[6, "You can unlock war mode now! Then you can attack other users for more resources, honor, etc."],
 [7, "How to get more silvers&free caesars? Click FAQ button please."],
-[8, "You can build Harvest Goddess now! She performing magic can increase crop's yield, she also can  one-step harvesting&planting"],
+[8, "You can build Harvest Goddess now! Her performing of magic can greatly increase crop's yield, she can also one-step harvesting&planting"],
 [9, "After building Dragon wheel, you can use dragon stone to get free caesars!"],
-[10, "You can build Dragon nest now! After building it, you can summon pet, which will help you fight when it grows."],
+[10, "You can build Dragon nest now! After building it, you can summon pet, which will help you fight when it grows up."],
 [11, "You can build lumber mill now! Wood is a necessity for upgrading buildings!"],
-[12, "You can build Liberty Goddess now! She performing magic can increase population recruit number."],
-[13, "Tip: Defeat other users, you can get many silvers, aslo have probability to get caesars. "],
+[12, "You can build Liberty Goddess now! Her performing of magic can help increase population recruit number."],
+[13, "Tip: You will be given many silvers as reward as well as have probability to won caesars by defeating other users."],
 
 [20, "You can upgrade your castle now! Upgrade your castle to Lv.2, your magic capacity will +5!"],
 [30, "You can upgrade your castle to Lv.3 now！You can also build beast god now, which can perform magic to let warrior statue produce castle DTF."]
