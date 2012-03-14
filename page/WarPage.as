@@ -383,7 +383,7 @@ trace("warinfo",rc,c);
     //blockid = x*pn+y,  map = baseNode.get(10000+blockid) empire= map.get(k) flag = empire.get(2)
 
     function addplace(x,y){
-        var s=sprite(getimage("warback.png"),ARGB_8888).size(1204,724).pos(1200*y,720*x);
+        var s=sprite("warback.png",ARGB_8888).size(1204,724).pos(1200*y,720*x);
         var blockid=x*pn+y;
         baseNode.add(s,10000-blockid, blockid+10000);
         placedict.update(blockid,s);
@@ -407,16 +407,16 @@ trace("warinfo",rc,c);
                 var em;
                 if(isemp == null)
                 {
-                    em = sprite(getimage("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png")).anchor(50,50).pos(eplace[k]).scale(85);
+                    em = sprite("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png").anchor(50,50).pos(eplace[k]).scale(85);
                 }
                 else
                 {
-                    em = sprite(getimage("mapempirelv"+str((user[2]*3+4)/3)+".png")).anchor(50, 50).pos(eplace[k]).scale(85);
+                    em = sprite("mapempirelv"+str((user[2]*3+4)/3)+".png").anchor(50, 50).pos(eplace[k]).scale(85);
                 }
                 s.add(em,2,k);
-                var flagn = sprite(getimage("flagother.png")).anchor(0,100).pos(117,125);
+                var flagn = sprite("flagother.png").anchor(0,100).pos(117,125);
                 em.add(flagn,2,2);
-                var fly = sprite(getimage("mapelement0.png")).anchor(50,50).pos(35,0);
+                var fly = sprite("mapelement0.png").anchor(50,50).pos(35,0);
                 if(user[0]!="0"){
                     fly.addsprite(avatar_url(int(user[0]))).size(38,38).pos(15,11);
                 }
@@ -446,7 +446,7 @@ trace("warinfo",rc,c);
                 }
             }
             if(objlev[k] > 0){
-                s.add(sprite(getimage("mapobj"+str(objlist[k])+"lv"+str(objlev[k])+".png")).anchor(50,50).pos(oplace[k]),1);
+                s.add(sprite("mapobj"+str(objlist[k])+"lv"+str(objlev[k])+".png").anchor(50,50).pos(oplace[k]),1);
             }
         }
     }
