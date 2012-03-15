@@ -17,11 +17,11 @@ class Battleresultdialog extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            var backpic = element.addsprite().anchor(50,0).pos(219,10);
-            spriteManager.getPic("battleresultback.jpg", backpic);
+            var backpic = element.addsprite("battleresultback.jpg").anchor(50,0).pos(219,10);
+            //spriteManager.getPic("battleresultback.jpg", backpic);
 
             element.addlabel("",null,30).anchor(50,50).pos(219,55);
-            element.addlabel("你战胜了",null,30).anchor(50,50).pos(219,67);
+            element.addlabel(global.getStaticString("youWin"),null,30).anchor(50,50).pos(219,67);
         }
         return element;
     }
@@ -30,7 +30,7 @@ class Battleresultdialog extends ContextObject{
         dialog = new Simpledialog(0,self);
         dialog.self = dialog;
         dialog.global = global;
-        dialog.setconfig(0,2,"攻打！");
+        dialog.setconfig(0,2, global.getStaticString("attackIt"));
         contextNode = dialog.getNode();
     }
     

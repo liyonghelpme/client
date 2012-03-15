@@ -6,32 +6,21 @@ class ObjControl extends ContextObject{
     var lastx;
     var buildable;
     var flagmove;
-    const objsmax = 69;
-    const objlevel = [
-3, 5, 7, 10, 20, 30,
-25, 10, 6, 8, 6, 15, 20,
-2, 2, 2, 3, 3, 3, 4, 5, 6, 6, 6, 6, 6, 6, 7, 8, 9, 10, 10, 11, 12, 13, 14, 15, 15, 15, 15, 15, 16, 16, 16, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 25, 25, 25, 27, 30, 30, 32, 34, 37, 40, 40, 40, 40, 40];
-/* 
-    const objlevel = [
-25, 10, 6, 8, 6, 15, 20,
-27,30,32,34,37,40,
-30, 40, 40, 40, 40, 17,17,20,2,2,2,3,3,3,4,5,6,6,6,6,6,6,7,8,9,10,10,11,12,13,14,15,15,15,15,15,16,16,16,18,18,18,18,19,19,19,19,25,25,25];
-*/
-    const objcontext = [
-1557, 1558, 1559, 2560, 1561, 1562,
-2550, 2551, 1552, 2553, 2554, 2555, 2556, 
-1500, 1501, 1502, 2539, 2540, 2541, 1503, 1504, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 1513, 1514, 1515, 1520, 1516, 1517, 1518, 1519, 1528, 1529, 1530, 1531, 1521, 1522, 1523, 1542, 1543, 1524, 1525, 1526, 1527, 1532, 1533, 1534, 1538, 2544, 1535, 1536, 1537, 2600, 2601, 1545, 2602, 2603, 2604, 2605, 1546, 1547, 1548, 1549];
-/*
-    const objcontext = [
-2550, 2551, 1552, 2553, 2554, 2555, 2556, 
-2600,2601,2602,2603,2604,2605, 
-1545, 1546, 1547,1548,1549, 1542,1543,2544,1500,1501,1502,2539,2540,2541,1503,1504,1505,1506,1507,1508,1509,1510,1511,1512,1513,1514,1515,1520,1516,1517,1518,1519,1528,1529,1530,1531,1521,1522,1523,1524,1525,1526,1527,1532,1533,1534,1538,1535,1536,1537];
-*/
+    var objsmax;
+    const objcontext = [1500, 1501, 1502, 1503, 1561, 2566, 1504, 1515, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 2553, 2554, 1513, 2555, 2556, 1514, 1546, 1547, 1548, 1549, 
+    //2560, 
+    1516, 1520, 1517, 2550, 1518, 1545, 1532, 1519, 1533, 1534, 2544, 1528, 1529, 1530, 1531, 1557, 1521, 1522, 1523, 2540, 1524, 1525, 1526, 1527, 1558, 1538, 1535, 1536, 1537, 1563, 1542, 1543, 1562, 2551, 1552, 1564, 1559, 2565, 2539, 2541];
+
+    const objlevel = [1, 1, 1, 4, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 
+    //10, 
+    11, 11, 12, 12, 13, 13, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 20, 20, 20, 20, 21, 21, 21, 22, 22, 23, 24, 24, 25, 25];
+
     function ObjControl(){
+        objsmax = len(objcontext);
         contextname = "element-build-object";
         contextNode = null;
-        objs = new Array(69);
-        buildable = new Array(69);
+        objs = range(0, objsmax);
+        buildable = range(0, objsmax);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -68,10 +57,7 @@ class ObjControl extends ContextObject{
                 bl=100;
             }
             var objpng = objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
-            spriteManager.getPic("object"+str(oi)+".png", objpng);
-            if(oi>=57){
-                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            }
+            //spriteManager.getPic("object"+str(oi)+".png", objpng);
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -85,6 +71,8 @@ class ObjControl extends ContextObject{
                 var price = OBJ_PRICE[oi];
                 if(price < 0){
                     price = -price;
+                    var oldPrice = price;
+
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
@@ -97,13 +85,11 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("银币",price-global.user.getValue("money"));
+                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
                 }
-
-                //var add =  OBJ_PERSON[oi];
                 if(add < 0)
                 {
                     add = -add;
@@ -117,16 +103,11 @@ class ObjControl extends ContextObject{
         else if(oi<700){
             oi=oi%100;
             objs[i] = sprite("dialogelement2d2.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
-            objs[i].addlabel(STATUE_NAME[oi],null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
+            objs[i].addlabel(STATUE_NAME[oi],null,16, FONT_NORMAL, 100, 100).anchor(50,0).pos(74,10).color(0,0,0,100);
             if(objcontext[i]/1000==2){
                  bl=75;
             }
             objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112).scale(bl);
-            /*
-            if(oi<6){
-                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            }
-            */
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -143,7 +124,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -152,7 +133,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("银币",price-global.user.getValue("money"));
+                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -162,7 +143,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("空闲人口",nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -221,12 +202,12 @@ class ObjControl extends ContextObject{
         var oi = objcontext[param];
         var add = 1;
         oi %= 1000;
-        if(oi < 600)
+        if(oi < statueNum)
         {
             oi %= 100;
             add =  OBJ_PERSON[oi];
         }
-        trace("select oi", oi, add);
+        //trace("select oi", oi, add);
         if(global.currentLevel <= 1){
             if(e == EVENT_TOUCH){
                 lasttime = time();
@@ -293,6 +274,7 @@ class ObjControl extends ContextObject{
                             global.pushContext(self,new Warningdialog([global.getFormatString("build_defence_format",["[BUILD]",STATUE_NAME[objcontext[param]%100],"[DEFENCE]",str(STATUE_DEFENCE[objcontext[param]%100])]),param,5]),NonAutoPop);
                         }
                     }
+                    global.lastpage[6] = contextNode.pos()[0];
                 }
                 else{
                     choosepage();

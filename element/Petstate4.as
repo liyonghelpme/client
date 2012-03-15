@@ -17,7 +17,7 @@ class Petstate4 extends ContextObject{
         }
         else
         {
-            contextNode.addlabel("它成长啦！",null,26,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,114).color(0,0,0,100);
+            contextNode.addlabel(global.getStaticString("ItGrowUp"),null,26,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,114).color(0,0,0,100);
             
         }
         //contextNode.addsprite("dialogelement_help.png").scale(150).pos(334,166).setevent(EVENT_UNTOUCH,gotohelp,"colony");
@@ -38,10 +38,10 @@ class Petstate4 extends ContextObject{
         if(p!=null){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
             if(build.state==4){
-                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_1")]),SHARE_URL);
+                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_1")]), NewsURL, null);
             }
             else{
-                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_2")]),SHARE_URL);
+                ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_getup_2")]), NewsURL, null);
             }
         }
     }

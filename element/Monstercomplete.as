@@ -23,7 +23,7 @@ class Monstercomplete extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"消灭了所有怪物保卫了领地和财产安全，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("killAll", ["[NAME]", ppy_username()]), NewsURL, null);
         }
     }
     
@@ -56,6 +56,6 @@ class Monstercomplete extends ContextObject{
         var dialog = new Simpledialog(0,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["分享","返回"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("share"), global.getStaticString("back")]);
     }
 }

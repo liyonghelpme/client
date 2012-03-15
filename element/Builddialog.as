@@ -32,7 +32,7 @@ class Builddialog extends ContextObject{
         contextNode.setevent(EVENT_MOVE,nodemove);
         contextNode.setevent(EVENT_UNTOUCH,nodemove);
         if(global.flagnew==1){
-            global.lastpage[1]=78;
+            global.lastpage[1] = -60;
         }
         buildpages = new Array(new RoomControl(),new FactControl(),new FarmsControl(),new CampControl(),new GodControl(),new ObjControl(),new ExpandControl());
         var tabname = BUILD_TAB_NAME;
@@ -44,9 +44,10 @@ class Builddialog extends ContextObject{
             buildpages[i].global = global;
             buildtabs.append(tab);
         }
-        //catapult new
+        /*
         buildtabs[3].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         buildtabs[5].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
+        */
         contextNode.add(sprite("dialogback_left.png",ARGB_8888).pos(0,97),1);
         contextNode.add(sprite("dialogback_right.png",ARGB_8888).anchor(100,0).pos(800,97),1);
         changePage(0,0,global.lastpage[0]);
@@ -85,6 +86,9 @@ class Builddialog extends ContextObject{
     {
         buildpages[pageindex].getNode().addaction(imoveby(800*dir,0));
         buildpages[pageindex].refreshpage();
+        //0 which otheris position
+        trace("pageindex", pageindex);
+        global.lastpage[pageindex+1] = buildpages[pageindex].getNode().pos()[0];
     }
     function nodemove(n,e,param,x,y){
         if(contextLevel >= global.currentLevel){
@@ -113,6 +117,8 @@ class Builddialog extends ContextObject{
         return 1;
     }
 
+    //page lastpage 0
+    //position lastpage 1
     function changePage(n,e,i){
         if(pageindex >= 0 && pageindex != i){
             buildpages[pageindex].getNode().removefromparent();
@@ -127,6 +133,7 @@ class Builddialog extends ContextObject{
             buildtabs[i].get(1).scale(120);
             buildtabs[i].get(2).visible(1);
         }
+        global.lastpage[0] = i;
     }
 
     function closedialog(node,event){

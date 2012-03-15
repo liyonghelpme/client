@@ -4,14 +4,19 @@ class DailyDialog extends ContextObject{
         contextname = "dialog-reward-daily";
         contextNode = null;
         bonus = b;
+        trace("daily", global);
+        if(bonus > 0)
+            global.user.changeValue("money", -bonus);
+        else
+            global.user.changeValue("caesars", bonus);
     }
 
     function paintNode(){
         contextNode = sprite("dialogback_normal.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(257,400).setevent(EVENT_TOUCH,closedialog,1);
-        contextNode.addlabel("分享",null,BUTTONFONTSIZE).anchor(50,50).pos(257,400);
+        contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(257,400);
         contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(417,400).setevent(EVENT_TOUCH,closedialog,null);
-        contextNode.addlabel("返回",null,BUTTONFONTSIZE).anchor(50,50).pos(417,400);
+        contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(417,400);
         var dailyback = contextNode.addsprite("dialogback_daily.jpg").pos(163,40);
         var s = [3000,5000,8000,12000,-2];
         for(var i=0;i<5;i++)
@@ -39,13 +44,16 @@ class DailyDialog extends ContextObject{
     function closedialog(node,event,p){
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"登录了奇迹帝国领取了每日奖励，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("loginBonus", ["[NAME]", ppy_username()]), NewsURL, null);
         }
-        if(bonus>0){
-            global.user.changeValueAnimate3(global.context[0].moneyb,"money",bonus,-6);
-        }
-        else{
-            global.user.changeValueAnimate3(global.context[0].moneyb,"caesars",-bonus,-6);
+        if(global.flagnew == 0)
+        {
+            if(bonus>0){
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money",bonus,-6);
+            }
+            else{
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-bonus,-6);
+            }
         }
         global.popContext(null);
     }

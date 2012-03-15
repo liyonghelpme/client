@@ -9,12 +9,12 @@ class UpdateControl extends ContextObject{
     var updatetype;
     var updatebid;
     var buildable;
-    const EmpireCoin = [0,100000];
-    const EmpireFood = [0,1000];
-    const EmpirePeople = [0,100];
-    const EmpireSpe = ["","100;a,30;b,30;c,30"];
-    const EmpirePopUp = [0,100];
-    const EmpireMana = [0, 5];
+    const EmpireCoin = [0,100000, 500000];
+    const EmpireFood = [0,1000, 5000];
+    const EmpirePeople = [0, 100, 500];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
+    const EmpirePopUp = [0, 0, 0];
+    const EmpireMana = [0, 5, 5];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
@@ -45,13 +45,14 @@ class UpdateControl extends ContextObject{
             var objbid;
             var upbid;
             //empire Level up 
-            trace("obj", obj.bid, obj.empireLevel);
-            if(obj.baseobj == null)
+            //trace("obj", obj.bid, obj.empireLevel);
+            if(obj.baseobj == null)//Empire is normalObject no baseobj
             {
                 btype = 0;
                 objname= "empire";
                 objbid = obj.empireLevel;
-                upbid = obj.empireLevel + 1;
+                upbid = obj.empireLevel+1;
+                updatebid = 0;
             }
             else
             {
@@ -81,21 +82,23 @@ class UpdateControl extends ContextObject{
                 }
             }
             
-            var hou1 = back.addsprite().anchor(50,50).pos(56,70).scale(bl1);
-            spriteManager.getPic(objname+str(objbid)+".png", hou1);
-            var hou2 = back.addsprite().anchor(50,50).pos(231,65).scale(bl2);
-            spriteManager.getPic(objname+str(upbid)+".png", hou2);
-            /*
+            trace("empire", objbid, upbid);
+            var hou1;
+            var hou2;
             if(obj.baseobj == null)
             {
-
+                hou1 = back.addsprite(objname+str(objbid+1)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid+1)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                //spriteManager.getPic(objname+str(objbid+1)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid+1)+".png", hou2);
             }
             else
             {
-                back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
-                back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                hou1 = back.addsprite(objname+str(objbid)+".png").anchor(50,50).pos(56,70).scale(bl1);
+                hou2 = back.addsprite(objname+str(upbid)+".png").anchor(50,50).pos(231,65).scale(bl2);
+                //spriteManager.getPic(objname+str(objbid)+".png", hou1);
+                //spriteManager.getPic(objname+str(upbid)+".png", hou2);
             }
-            */
             var i;
             var ok;
             var starnum;
@@ -154,6 +157,7 @@ class UpdateControl extends ContextObject{
             var food;
             var person;
             var upspec;
+            trace("btype", btype);
             if(btype == 0)
             {
                 money = EmpireCoin[upbid];
@@ -229,9 +233,13 @@ class UpdateControl extends ContextObject{
             if(person > 0){
                 if(person > global.user.getValue("person")-global.user.getValue("labor")){
                     buildable[1].update("ok",0);
-                    buildable[1].update(global.getStaticString("labpr"),person-global.user.getValue("person")+global.user.getValue("labor"));
-                    buildable[0].update("ok",0);
-                    buildable[0].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
+                    buildable[1].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
+
+                    if(btype != 0)
+                    {
+                        buildable[0].update("ok",0);
+                        buildable[0].update(global.getStaticString("labor"),person-global.user.getValue("person")+global.user.getValue("labor"));
+                    }
                     cl=100;
                 }
                 element.addsprite("person.png").anchor(50,50).size(32,30).pos(57,269);
@@ -256,7 +264,7 @@ class UpdateControl extends ContextObject{
             cl=0;
             if(costcaesars>global.user.getValue("caesars")){
                 buildable[0].update("ok",0);
-                buildable[0].update(global.getStaticString("caesars"),costcaesars-global.user.getValue("caesars"));
+                buildable[0].update(global.getStaticString("caesar"),costcaesars-global.user.getValue("caesars"));
                 cl=100;
             }
             element.addlabel(upspec[0],null,18).anchor(0,50).pos(82,390).color(cl,0,0,100);
@@ -309,6 +317,8 @@ class UpdateControl extends ContextObject{
                 obj.bid = updatebid%100;
                 obj.baseobj.objectid = updatebid;
             }
+            //friend god upgrade change card level 
+            trace("global card", global.card);
             if(global.card[18]%10==0 && updatebid==424){
                 var flevel=1+10*(len(global.ppyuserdict)-2);
                 if(flevel/10>=100){
@@ -327,12 +337,14 @@ class UpdateControl extends ContextObject{
             else
             {
                 obj.objnode.texture("empire"+str(obj.empireLevel+1)+".png");
+                //Normal Object not empire
                 if(global.system.flagnight==0){
                     obj.contextNode.get(1).texture("empire"+str(obj.empireLevel+1)+"_l.png");
+                    obj.showYanhua();
                 }
             }
             var target;
-            //because empire' parent is normalobject
+            //because empire" parent is normalobject
             //but other buildings is buildObject
             //use base obj == null to check which is!
             if(obj.baseobj == null)
@@ -341,7 +353,7 @@ class UpdateControl extends ContextObject{
             }
             else
                 target = obj.baseobj;
-            if(updatetype == 1){
+            if(updatetype == 1){//by money
                 var k=costdict.keys();
                 for(i=0;i<len(k);i++){
                     trace("change Value animate2");
@@ -353,7 +365,8 @@ class UpdateControl extends ContextObject{
             }
             else{
                 global.user.changeValueAnimate(target,"caesars",-costcaesars,0);
-                if(costdict.get("labor",0)!=0){
+                //not Empire
+                if(costdict.get("labor",0)!=0 && obj.baseobj != null){
                     global.user.changeValueAnimate(target,"labor",-costdict.get("labor"),2);
                 }
             }

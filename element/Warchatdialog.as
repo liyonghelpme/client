@@ -42,7 +42,7 @@ class Warchatdialog{
             web.visible(0);
         //web = v_create(V_INPUT_VIEW,13,14,446,40);
         //v_root().addview(web);
-        pid=http_request("http://223.4.85.114:8003/recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
+        pid=http_request(WARCHAT_URL+"recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
         return contextNode;
     }
     
@@ -67,7 +67,7 @@ class Warchatdialog{
         }
         else{
             web.text("");
-            http_request("http://223.4.85.114:8003/send?uid="+str(uid)+"&name="+uri_encode(name)+"&cid="+str(cid)+"&text="+st,sendover);
+            http_request(WARCHAT_URL+"send?uid="+str(uid)+"&name="+uri_encode(name)+"&cid="+str(cid)+"&text="+st,sendover);
         }
     }
     
@@ -190,7 +190,7 @@ class Warchatdialog{
             return;
         }
         if(rc==0){
-            pid=http_request("http://223.4.85.114:8003/recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
+            pid=http_request(WARCHAT_URL+"recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
         }
         else{
             var data = json_loads(c);
@@ -206,7 +206,7 @@ class Warchatdialog{
                     exportbutton.addaction(repeat(animate(1200,"warchatbutton2.png","warchatbutton3.png","warchatbutton4.png","warchatbutton3.png","warchatbutton2.png","warchatbutton1.png",ARGB_8888)));
                 }
             }
-            pid=http_request("http://223.4.85.114:8003/recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
+            pid=http_request(WARCHAT_URL+"recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
         }
     }
     

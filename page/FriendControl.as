@@ -512,6 +512,7 @@ class FriendControl{
         }
     }
     
+    //view apart from data 
     function getfnode(i){
         var nd;
         var param;
@@ -543,7 +544,7 @@ class FriendControl{
                     }
                     nd.add(sprite(avatar_url(per.get("id"))).pos(13,9).size(50,50),0,1);
                 }
-                var name = per.get("name");
+                var name = per.get("name");//flist1 data not right 0 1 2 3
                 if(len(name)>9){
                     name = substring(name,0,6)+"..";
                 }
@@ -697,7 +698,7 @@ class FriendControl{
             if(flist1[i].get("id")==ppyid){
                 trace("find",i);
                 flist1.pop(i);
-                var db = c_opendb(0,"friendinvited");
+                var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
                 db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();

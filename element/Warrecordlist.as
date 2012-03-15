@@ -23,12 +23,12 @@ class Warrecordlist extends ContextObject{
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,384).color(0,0,0,100);
         left = contextNode.addsprite("warabout_left.png").anchor(100,50).pos(463,384).setevent(EVENT_UNTOUCH,choosePage,-1);
         right= contextNode.addsprite("warabout_right.png").anchor(0,50).pos(547,384).setevent(EVENT_UNTOUCH,choosePage,1);
-        contextNode.addlabel("注：每次进入新的战场，该列表将清空",null,20).pos(313,414).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("clearList"),null,20).pos(313,414).color(0,0,0,100);
         choosePage(0,0,0);
     }
 
     function choosePage(n,e,po){
-        if(pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(pagenum == 1 && po == -1 || pagenum >= pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)
@@ -67,7 +67,7 @@ class Warrecordlist extends ContextObject{
         for(var i=0;i<length;i++){
             items.append(null);
         }
-        pagemax = (length+PAGEITEMS-1)/PAGEITEMS;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         if(pagemax==0) pagemax=1;
     }
     

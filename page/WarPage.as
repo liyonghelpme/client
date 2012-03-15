@@ -1,10 +1,4 @@
-import element.UserControl;
-import element.ResourceControl;
-import element.NobattleControl;
-import element.Waraboutinfo;
-import element.Warchatdialog;
 class WarPage extends ContextObject{
-
     var lastpoint;
     var lastlength;
     var lastclicktime=0;
@@ -44,7 +38,10 @@ class WarPage extends ContextObject{
     var emptyCities;
     var myEmpty;
     var mapUser = null;
+
+    var Back;
     function WarPage(){
+        Back = 0;
         contextname = "page-war";
         contextNode = null;
         rightmenu = null;
@@ -65,6 +62,7 @@ class WarPage extends ContextObject{
     }
 
     function paintNode(){
+        trace("show warpage");
         global.system.pushmusic("3.mp3");
         contextNode = sprite("wartexture.png",ARGB_8888).size(800,480).anchor(50,50).pos(-400,240);
         baseNode = contextNode.addsprite().color(0,0,0,0);
@@ -87,6 +85,33 @@ class WarPage extends ContextObject{
         contextNode.add(left,1);
     }
     
+
+    //blockid = x*pn+y,  map = baseNode.get(10000+blockid) empire= map.get(k) flag = empire.get(2)
+    //for(var k=0;k<8;k++){
+    //        var user = userdict.get(blockid*8+k,null);
+    function occupyEne(b)
+    {
+        var eneid = getBattleResult("otherUid", b);
+        var gid = mapUser.get(eneid, [-1, -1, -1, -1, -1, -1])[3];
+        trace("occupyEne", b, mapUser.get(eneid));
+        /*
+        if(gid != -1)
+        {
+            var blockid = gid / 8;
+            var k = gid%8;
+
+            var map = baseNode.get(10000+blockid, dict());
+            var empire = map.get(k);
+
+            trace("blockid", gid, blockid, k, map, empire);
+            if(empire != null)
+            {
+                var flag = empire.get(2);
+                flag.texture("flag1.png");
+            }
+        }
+        */
+    }
     function keydownhandle(n,e,p,kc){
         if(kc==4){
             nodemovewithgid(selfgid);
@@ -104,7 +129,6 @@ class WarPage extends ContextObject{
                 if(flagisinit==1){
                     global.user.setValue("nobility",0);
                     global.context[0].refreshbuttons();
-                    global.pushContext(null,self,NonAutoPop);
                 }
             }
             percent = percent+4+rand(3);
@@ -241,7 +265,6 @@ trace("warinfo",rc,c);
                     atklist.append(empty);//show all emptyCites
                     if(list[emp][1] == global.userid)
                         myEmpty.append(list[emp]);
-                    //userdict.update(list[emp][2], empty);
                 }
 
                 loadempty(list);
@@ -322,7 +345,7 @@ trace("warinfo",rc,c);
             if(m==0){//blue flag white flag
                 flagn.texture("flagother.png").anchor(0,100).pos(117,125);
                 if(user[1]>-1&&user[8]==1 || user[1]==-1&&user[5]==selfgid){//self gid != 0
-                    spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
+                    //spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
                     flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
                 }
                 else if(user[1]<=-1&&user[0]=="0"){
@@ -356,10 +379,12 @@ trace("warinfo",rc,c);
         
 
 
+    //blockid = x*pn+y,  map = baseNode.get(10000+blockid) empire= map.get(k) flag = empire.get(2)
+
     function addplace(x,y){
-        var s=sprite(getimage("warback.png"),ARGB_8888).size(1204,724).pos(1200*y,720*x);
+        var s=sprite("warback.png",ARGB_8888).size(1204,724).pos(1200*y,720*x);
         var blockid=x*pn+y;
-        baseNode.add(s,10000-blockid);
+        baseNode.add(s,10000-blockid, blockid+10000);
         placedict.update(blockid,s);
         var objlist = [0,0,1,2,2,3+abs(boolrand(3,y)%2),4-abs(boolrand(4,x)%2)];
         var objlev = [0,0,0,0,0,0,0,0];
@@ -381,16 +406,16 @@ trace("warinfo",rc,c);
                 var em;
                 if(isemp == null)
                 {
-                    em = sprite(getimage("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png")).anchor(50,50).pos(eplace[k]).scale(85);
+                    em = sprite("mapempirelv"+str((user[6]+user[2]*3+4)/3)+".png").anchor(50,50).pos(eplace[k]).scale(85);
                 }
                 else
                 {
-                    em = sprite(getimage("mapempirelv"+str((user[2]*3+4)/3)+".png")).anchor(50, 50).pos(eplace[k]).scale(85);
+                    em = sprite("mapempirelv"+str((user[2]*3+4)/3)+".png").anchor(50, 50).pos(eplace[k]).scale(85);
                 }
                 s.add(em,2,k);
-                var flagn = sprite(getimage("flagother.png")).anchor(0,100).pos(117,125);
+                var flagn = sprite("flagother.png").anchor(0,100).pos(117,125);
                 em.add(flagn,2,2);
-                var fly = sprite(getimage("mapelement0.png")).anchor(50,50).pos(35,0);
+                var fly = sprite("mapelement0.png").anchor(50,50).pos(35,0);
                 if(user[0]!="0"){
                     fly.addsprite(avatar_url(int(user[0]))).size(38,38).pos(15,11);
                 }
@@ -420,7 +445,7 @@ trace("warinfo",rc,c);
                 }
             }
             if(objlev[k] > 0){
-                s.add(sprite(getimage("mapobj"+str(objlist[k])+"lv"+str(objlev[k])+".png")).anchor(50,50).pos(oplace[k]),1);
+                s.add(sprite("mapobj"+str(objlist[k])+"lv"+str(objlev[k])+".png").anchor(50,50).pos(oplace[k]),1);
             }
         }
     }
@@ -598,7 +623,6 @@ trace("warinfo",rc,c);
             rightmenu.addlabel(global.getStaticString("tab_attackable"),null,16).anchor(50,100).pos(113+RIGHTOFF,114+60).color(0,0,0,100);
             rightmenu.addlabel(global.getStaticString("tab_fortress"),null,16).anchor(50,100).pos(173+RIGHTOFF,114+60).color(0,0,0,100);
         }
-        //rightmenu.addlable("要塞", null, 16).anchor(50, 100).pos(183+RIGHTOFF, 114+60).color(0,0,0);
         left.add(sprite("backbutton.png").anchor(0,100).pos(0,480).setevent(EVENT_UNTOUCH,goback),0,0);
         refreshlist();
         contextNode.add(sprite("warchatbutton3.png").anchor(50,50).pos(37,71).setevent(EVENT_UNTOUCH,changewarchat),10,10);
@@ -681,25 +705,25 @@ trace("warinfo",rc,c);
             u.setevent(EVENT_MOVE,nodemovewithgidevent);
                 lists[0].add(u.pos(5,15+i0*54));
                 if(global.battlelist[i][0]>global.timer.currenttime){
-                    u.addlabel(global.gettimestr(global.battlelist[i][0]-global.timer.currenttime),null,16).pos(105,25);
+                    u.addlabel(global.gettimestr(global.battlelist[i][0]-global.timer.currenttime),null,13).pos(120,25);
                     if(global.battlelist[i][2]==1){
                         u.texture("wartabperson_b.png");
                         trace(userdict.get(global.battlelist[i][3])[1]);
                         if(int(userdict.get(global.battlelist[i][3])[0]) != ppy_userid())
                         {
-                            u.addlabel(global.getStaticString("state_attacking"),null,16).pos(50,25);
+                            u.addlabel(global.getStaticString("state_attacking"),null,13).pos(50,25);
                         }
                         else{
-                            u.addlabel(global.getStaticString("state_adding"),null,16).pos(50,25);
+                            u.addlabel(global.getStaticString("state_adding"),null,13).pos(50,25);
                         }
                     }
                     else{
                         u.texture("wartabperson_r.png");
-                        u.addlabel(global.getStaticString("state_defencing"),null,16).pos(50,25);
+                        u.addlabel(global.getStaticString("state_defencing"),null,13).pos(50,25);
                     }
                 }
                 else{
-                        u.addlabel(global.getStaticString("state_fighting"),null,16).pos(50,25).color(0,0,0,100);
+                        u.addlabel(global.getStaticString("state_fighting"),null,13).pos(50,25).color(0,0,0,100);
                 }
                 i0++;
         }
@@ -718,7 +742,7 @@ trace("warinfo",rc,c);
             }
             else{
                 u.addsprite(avatar_url(int(udata[0]))).pos(5,5).size(40,40);
-                u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,16).anchor(100,100).pos(172,45).color(0,0,0,100);
+                u.addlabel(NOBNAME[udata[2]*3+udata[6]],null,14).anchor(100,100).pos(172,45).color(0,0,0,100);
             }
             u.addlabel(udata[4],null,16).pos(50,5).color(0,0,0,100);
 
@@ -923,6 +947,10 @@ trace("warinfo",rc,c);
         }
     }
     function goback(){
+        if(Back == 1)
+            return;
+        Back = 1;
+
         contextname = "";
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){
@@ -934,6 +962,7 @@ trace("warinfo",rc,c);
         baseNode.addaction(sequence(tintto(600,0,0,0,0),callfunc(releasenode)));
         contextNode.addaction(sequence(delaytime(600),moveby(600,-733,0),moveby(400,-67,0)));
         left.addaction(sequence(delaytime(1200),moveby(400,-67,0),callfunc(releasecontext)));
+        global.inWarMap = 0;
     }
     
     function releasecontext(){
@@ -984,6 +1013,7 @@ trace("warinfo",rc,c);
     }
 
     function deleteContext(){
+        trace("remove war page");
         contextNode.removefromparent();
         contextNode = null;
         baseNode.removefromparent();
@@ -994,5 +1024,6 @@ trace("warinfo",rc,c);
         left.removefromparent();
         initlock=0;
         mode= 0;
+        Back = 0;
     }
 }

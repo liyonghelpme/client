@@ -24,7 +24,7 @@ class Nestpetchange2 extends ContextObject{
     function initdata(){
         pagemax = 1;
         objmax = 3;
-        titlename = "更改样式";
+        titlename = global.getStaticString("changeMode");
         objpath="pet";
     }
     
@@ -48,7 +48,7 @@ class Nestpetchange2 extends ContextObject{
 
         if(type.extendid==i){
             cell.texture("nestpettab1.png");
-            cell.addlabel("当前宠物",null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
+            cell.addlabel(global.getStaticString("curPet"),null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
         }
         else{
             cell.setevent(EVENT_TOUCH,beginPlant,i);
@@ -57,13 +57,13 @@ class Nestpetchange2 extends ContextObject{
                 if(global.user.getValue("caesars") < 20){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",20-global.user.getValue("caesars"));
+                    buildable[i].update(global.getStaticString("caesar"),20-global.user.getValue("caesars"));
                 }
                 cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(70,155);
                 cell.addlabel(str(20),null,20).anchor(0,50).pos(92,155).color(cl,0,0,100);
             }
             else{
-                cell.addlabel("免费",null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
+                cell.addlabel(global.getStaticString("freeFee"),null,20).anchor(50,50).pos(94,155).color(0,0,0,100);
             }
         }
         return cell;
@@ -113,7 +113,7 @@ class Nestpetchange2 extends ContextObject{
 
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
-            global.pushContext(self,new Warningdialog([EXTEND_PETS_NAME[param]+"每成长点会增加"+str(PETS_UP[type.objid]+EXTEND_UP[param])+"战斗力，确认更改样式吗？",param,6]),NonAutoPop);
+            global.pushContext(self,new Warningdialog([global.getFormatString("petAtt", ["[NAME]", EXTEND_PETS_NAME[param], "[POWER]", str(PETS_UP[type.objid]+EXTEND_UP[param])]),param,6]),NonAutoPop);
         }
         else{
             global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);

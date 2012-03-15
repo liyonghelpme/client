@@ -3,17 +3,6 @@ class Devinedialog extends ContextObject{
     var selecttab;
     var element;
     var buildid;
-
-    const godstr = [
-    "农作物产量增加20%","民居招募人口数量增加20%","店铺税收增加20%","士兵战斗力增加5%",
-    "农作物产量增加40%","民居招募人口数量增加40%","店铺税收增加40%","士兵战斗力增加10%",
-    "农作物产量增加60%","民居招募人口数量增加60%","店铺税收增加60%","士兵战斗力增加15%",
-    "农作物产量增加80%","民居招募人口数量增加80%","店铺税收增加80%","士兵战斗力增加20%",
-    "农作物产量增加100%","民居招募人口数量增加100%","店铺税收增加100%","士兵战斗力增加25%",
-    "访问好友奖励增加5银币","访问好友奖励增加10银币","访问好友奖励增加20银币","访问好友奖励增加30银币","访问好友奖励增加50银币",
-    "怪兽雕像增加城堡防御力", "怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力","怪兽雕像增加城堡防御力"];
-    const timestr = ["持续1小时","持续6小时","持续24小时"];
-
     function Devinedialog(){
         contextname = "dialog-build-devine";
         contextNode = null;
@@ -26,8 +15,8 @@ class Devinedialog extends ContextObject{
             buildid = global.request[global.currentLevel].bid;
             element = node();
             element.addsprite("devineback.jpg").anchor(50,0).pos(219,10);
-            element.addlabel("神迹",null,30).anchor(50,50).pos(219,43).color(0,0,0,100);
-            element.addlabel("在神迹有效时间内，"+godstr[buildid],null,16).anchor(50,50).pos(219,75).color(0,0,0,100);
+            element.addlabel(global.getStaticString("godShow"),null,30).anchor(50,50).pos(219,43).color(0,0,0,100);
+            element.addlabel(godstr[buildid],null,16).anchor(50,50).pos(219,75).color(0,0,0,100);
             selecttab = -1;
             
             var level = [10, 12, 14, 16, 20];
@@ -55,7 +44,7 @@ class Devinedialog extends ContextObject{
         var dialog = new Simpledialog(0,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["施展","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("show"), global.getStaticString("cancel")]);
     }
 
     function choosetab(n,e,p){

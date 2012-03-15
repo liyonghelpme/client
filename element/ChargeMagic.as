@@ -17,9 +17,10 @@ class ChargeMagic extends ContextObject{
     }
 
     function getelement(){
+        flagquick = 0;
         if(element == null){
             element = node();
-            element.addlabel("充满魔法值", null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(225, 58);
+            element.addlabel(global.getStaticString("fullfilMana"), null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(225, 58);
             element.addsprite("objectblock.png").anchor(50,50).pos(109, 121);
             element.addsprite("chargeLeft.jpg").anchor(50, 50).pos(109, 121);
 
@@ -38,7 +39,7 @@ class ChargeMagic extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["充满","取消"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("fullfil"), global.getStaticString("cancel")]);
         var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
@@ -89,17 +90,18 @@ class ChargeMagic extends ContextObject{
         global.popContext(null);
     }
     function timerefresh(){
+        trace("flagquick", flagquick);
         if(flagquick == 0){
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
-            costcae = (boundary-mana+2)/3;
+            costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             qlabel.text(str(mana)+"/"+str(boundary));
             trace("charge mana", mana, boundary);
             qfiller.size(mana * 144/boundary,18);
             var lefttime = (boundary - mana)*300;
-            timelabel.text("剩余时间 "+global.gettimestr(lefttime));
+            timelabel.text(global.getStaticString("leftTime")+global.gettimestr(lefttime));
         }
         else if(flagquick < 2){
             flagquick++;

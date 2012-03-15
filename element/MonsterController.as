@@ -76,9 +76,9 @@ class MonsterController extends ContextObject{
         contextNode = sprite("mapleftmenuback.png").anchor(50,0);
         contextNode.add(sprite("mapleftmenubutton.png").anchor(50,50).pos(180,172),0,1);
         contextNode.setevent(EVENT_UNTOUCH,monsterbarvisible);
-        contextNode.addlabel("下一波怪兽来袭倒计时",null,20).pos(30,126).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("nextMonster"),null,20).pos(30,126).color(0,0,0,100);
         timelabel = contextNode.addlabel(global.gettimestr(endtime-time()/1000),null,20).pos(240,126).color(0,0,0,100);
-        var btname = ["延迟一天","立即刷怪"];
+        var btname = btname1;
         if(mlevel<40){
             bvalue=mlevel/10+1;
         }
@@ -98,7 +98,7 @@ class MonsterController extends ContextObject{
         else if(e==EVENT_UNTOUCH){
             n.texture("mapleftmenutab0.png");
                 if(global.user.getValue("caesars")<bvalue){
-                    global.pushContext(null,new Warningdialog(dict([["ok",0],["凯撒币",bvalue-global.user.getValue("caesars")]])),NonAutoPop);
+                    global.pushContext(null,new Warningdialog(dict([["ok",0],[global.getStaticString("caesar"),bvalue-global.user.getValue("caesars")]])),NonAutoPop);
                     return 0;
                 }
                 if(p==0){
@@ -202,7 +202,7 @@ class MonsterController extends ContextObject{
     function timeend(){
         if(endtime != 0){
             if(isShown == 1){
-                timelabel.text("马上来临");
+                timelabel.text(global.getStaticString("comeSoon"));
             }
             var mstr = refreshmonsters();
             global.http.addrequest(0,"monsterrefresh",["userid","monsterstr"],[global.userid,mstr],self,"refreshover");

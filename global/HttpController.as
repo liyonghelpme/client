@@ -80,8 +80,8 @@ class HttpController extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.setbutton(1,117,228,"重试",1);
-        dialog.setbutton(2,286,228,"取消",0);
+        dialog.setbutton(1,117,228,global.getStaticString("retry"),1);
+        dialog.setbutton(2,286,228,global.getStaticString("cancel"),0);
     }
     
     function excute(p){
@@ -101,12 +101,10 @@ class HttpController extends ContextObject{
             retrylist = new Array(0);
         }
     }
-    //"服务器正在维护中，请稍后访问"
-    const noticestr = ["貌似断网了，请检查是否有网络连接","网络连接遇到了问题，请稍候再试"];
     function getelement(){
         var element = node();
         element.addsprite("networkelement.jpg").pos(19,50);
-        element.addlabel(noticestr[flag_netstate-1],null,20,FONT_NORMAL,200,0,ALIGN_LEFT).pos(156,60).color(0,0,0,100);
+        element.addlabel(global.getStaticString("netFail1"),null,20,FONT_NORMAL,200,0,ALIGN_LEFT).pos(156,60).color(0,0,0,100);
         return element;
     }
     

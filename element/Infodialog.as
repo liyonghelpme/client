@@ -25,7 +25,9 @@ class Infodialog extends ContextObject{
             pages[i].init(pages[i],global);
             tabs.append(tab);
         }
+        /*
         tabs[3].add(sprite("new.png").anchor(100,0).pos(108,-2),3,3);
+        */
         changePage(0,0,0);
     }
     

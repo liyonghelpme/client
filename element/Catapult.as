@@ -23,7 +23,7 @@
     function initdata(){
         pagemax = 1;
         objmax = 3;
-        titlename = "选择投石车";
+        titlename = global.getStaticString("ChooseCata");
         objpath="pet";
     }
     
@@ -44,7 +44,7 @@
             cell.setevent(EVENT_TOUCH|EVENT_UNTOUCH,beginPlant,i);
             buildable[i].update("ok",1);
         }   
-        spriteManager.getPic("move"+str(i+1)+"-1.png", eggpic);
+        //spriteManager.getPic("move"+str(i+1)+"-1.png", eggpic);
         return cell;
     }
 
@@ -97,9 +97,6 @@
         }
         else if(buildable[param].get("ok")==1 && event == EVENT_UNTOUCH){
             node.texture("cataunsel.png");
-            /*
-            global.pushContext(self,new Warningdialog([PETS_NAME[param]+"初始战斗力："+str(PETS_POWER[param])+"，每成长点增加战斗力："+str(PETS_UP[param])+"。确定召唤？",param,6]),NonAutoPop);
-            */
             //camp building
             var bd=global.request[contextLevel];
             global.popContext(null);

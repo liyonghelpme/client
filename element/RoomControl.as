@@ -8,15 +8,39 @@ class RoomControl extends ContextObject{
     var lasttime;
     var lastx;
     var flagmove;
-    const objsmax = 26;
-    const objlevel = [3,3,1,1,1,1,5,5,5,5,8,8,8,8,10,10,10,10,15,15,15,15,20,20,20,20];
-    const objcontext = [3172,3175,2100,2103,2106,2109,2112,2115,2118,2121,2160,2163,2166,2169,2124,2127,2130,2133,3136,3139,3142,3145,3148,3151,3154,3157];
+
+    var objsmax = 26;
+    //新民居 会影响新手任务箭头的问题 需要 在这里设定
+    //400 是居中位置
+    //设置方法， 可以根据编号动态设定
+    const objlevel = [
+    1,1,1,1,
+    5,5,5,5,
+    8,8,8,8,
+    10,10,10,10,
+    12,
+    15,15,15,15,
+    18,
+    20,20,20,20,
+    22];
+    const objcontext = [
+    2100,2103,2106,2109, 
+    2112,2115,2118,2121,
+    2160,2163,2166,2169,
+    2124,2127,2130,2133,
+    3172,
+    3136,3139,3142,3145,
+    3175,
+    3148,3151,3154,3157,
+    2178];
     var buildable;
     function RoomControl(){
         contextname = "element-build-room";
         contextNode = null;
-        objs = new Array(26);
-        buildable = new Array(26);
+        objs = range(0, len(objcontext));
+        buildable = range(0, len(objcontext));
+        objsmax = len(objcontext);
+
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -28,13 +52,16 @@ class RoomControl extends ContextObject{
             if(objcontext[i]>=3000) sc = 66;
             var obji = objcontext[i]%100;
             objs[i] = sprite("dialogelement2p.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
-            objs[i].addlabel(global.getname("room",obji),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
-            var hou = objs[i].addsprite().anchor(50,100).pos(74,160).scale(sc);
-            spriteManager.getPic("room"+str(obji)+".png", hou);
+            objs[i].addlabel(global.getname("room1",obji),null,16).anchor(50,0).pos(74,10).color(0,0,0,100);
+
+            var hou = objs[i].addsprite("room"+str(obji)+".png").anchor(50,100).pos(74,160).scale(sc);
+            //spriteManager.getPic("room"+str(obji)+".png", hou);
             
-            if(i<2){
+            /*
+            if(i<1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -50,7 +77,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -59,7 +86,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("银币",price-global.user.getValue("money"));
+                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -70,7 +97,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("粮食",food-global.user.getValue("food"));
+                        buildable[i].update(global.getStaticString("food"),food-global.user.getValue("food"));
                     }
                     objs[i].addsprite("food.png").size(29,33).pos(80,195);
                     objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);

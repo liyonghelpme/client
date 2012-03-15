@@ -22,7 +22,7 @@ class StoneControl extends ContextObject{
         pagemax = 1;
         objmax = 6;
         objlevel = [18,22,24,27,30,30];
-        titlename = "选择石材";
+        titlename = global.getStaticString("chooseStone");
         objpath="stone";
     }
     
@@ -43,7 +43,7 @@ class StoneControl extends ContextObject{
                 if(global.user.getValue("caesars") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                    buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
                 }
                 cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(13,125);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,125).color(cl,0,0,100);
@@ -54,7 +54,7 @@ class StoneControl extends ContextObject{
                 if(global.user.getValue("money") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",price-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
                 }
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,125).color(cl,0,0,100);
             }
@@ -111,7 +111,7 @@ class StoneControl extends ContextObject{
     function beginPlant(node,event,param){
         if(buildable[param].get("ok")==1){
             if(STONE_PRICE[param]<0){
-                global.pushContext(self,new Warningdialog(["确定购买"+global.getname(objpath,param)+"？",param,6]),NonAutoPop);
+                global.pushContext(self,new Warningdialog([global.getFormatString("sureToBuy", ["[NAME]",global.getname(objpath,param) ]),param,6]),NonAutoPop);
             }
             else{
                 global.popContext(param);

@@ -31,13 +31,13 @@ class OnekeyController extends ContextObject{
             costs = [0,0,0];
             if(mode == 0 || mode == 1)
             {
-                costs[0] = 10;
-                costs[1] = 10;
+                costs[0] = OneKeyMana;
+                costs[1] = OneKeyMana;
             }
             else
             {
-                costs[0] = 25;
-                costs[1] = 60;
+                costs[0] = GenVisMana;
+                costs[1] = AccVisMana;
             }
             element = node();
             element.addsprite("devineback.jpg").anchor(50,0).pos(219,30);

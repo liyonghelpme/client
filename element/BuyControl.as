@@ -12,8 +12,8 @@ class BuyControl extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite().anchor(50,50).pos(400,240);
-        spriteManager.getPic("dialogback_buy.png", contextNode);
+        contextNode = sprite("dialogback_buy.png").anchor(50,50).pos(400,240);
+        //spriteManager.getPic("dialogback_buy.png", contextNode);
         selecttab = -1;
         for(var i=0;i<5;i++){
             var num = buystr[i].split("+");
@@ -23,7 +23,7 @@ class BuyControl extends ContextObject{
                 tabs[i].addlabel(num[1],null,20).anchor(50,50).pos(90,73).color(0,0,0,100);
                 //tabs[i].addsprite("temp"+str(i)+".png").pos(73,61);
             }
-            tabs[i].addlabel(num[2],null,18).anchor(50,50).pos(35,175).color(0,0,0,100);
+            tabs[i].addlabel(num[2],null,18).anchor(50,50).pos(25,175).color(0,0,0,100);
         }
         choosetab(0,0,0);
         ppy_query("papayas",null,setpapayas);
@@ -31,9 +31,9 @@ class BuyControl extends ContextObject{
         w.addaction(waitaction1);
         contextNode.add(w,1,10);
         contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(261,349).setevent(EVENT_UNTOUCH,buycaesars).size(119,43);
-        contextNode.addlabel("购买",null,BUTTONFONTSIZE).anchor(50,50).pos(261,349);
+        contextNode.addlabel(global.getStaticString("shopping"),null,BUTTONFONTSIZE).anchor(50,50).pos(261,349);
         contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(457,349).setevent(EVENT_UNTOUCH,closedialog).size(119,43);
-        contextNode.addlabel("取消",null,BUTTONFONTSIZE).anchor(50,50).pos(457,349);
+        contextNode.addlabel(global.getStaticString("cancel"),null,BUTTONFONTSIZE).anchor(50,50).pos(457,349);
         contextNode.setevent(EVENT_KEYDOWN,dialogkeydown);
     }
     function dialogkeydown(n,e,p,kc){
@@ -58,7 +58,7 @@ class BuyControl extends ContextObject{
     function buycaesars(n,e){
         global.popContext(null);
         var num = buystr[selecttab].split("+");
-        start_payment("购买凯撒币","购买"+str(int(num[0])+int(num[1]))+"个凯撒币","",int(num[2]),buycaesars2);
+        start_payment(global.getStaticString("buyCaesar"), global.getStaticString("buyCaesar")+str(int(num[0])+int(num[1])),"",int(num[2]),buycaesars2);
     }
     
     function buycaesars2(pid, ret, tid, receipt, param){

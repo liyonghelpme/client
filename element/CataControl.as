@@ -20,7 +20,7 @@ class Stone
         tar = t.body.pos();
         attack = a;
         body = sprite("cataStone.png");
-        spriteManager.getPic("cataStone", body);
+        //spriteManager.getPic("cataStone", body);
         body.pos(p);
         body.anchor(50, 50);
         initPos = p;

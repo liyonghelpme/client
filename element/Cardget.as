@@ -23,16 +23,15 @@ class Cardget extends ContextObject{
             mb.addlabel(cardprename[cardid]+cardlevelname[cardlevel],null,16).anchor(50,0).pos(62,10).color(0,0,0,100);
             mb.addsprite("medaltab"+str(cardlevel)+".png").pos(3,32);
             if(cardid<6){
-                var m=sprite().anchor(0,100).pos(29,128);
-                spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
+                var m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(0,100).pos(29,128);
+                //spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
                 m.prepare();
                 var ms = m.size();
                 m.size(70,ms[1]*70/ms[0]);
             }
             else if(cardid<12){
-                m=sprite().anchor(50,100).pos(62,128);
-                spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
-
+                m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(50,100).pos(62,128);
+                //spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
             }
             else{
                 m=sprite("medalcard"+str(cardid-13)+"_"+str(cardlevel)+".png").pos(3,32);
@@ -41,13 +40,17 @@ class Cardget extends ContextObject{
             var endstr = "!";
             if(cardid>13&&cardid<18){
                 if(cardlevel<5){
-                    endstr = "。该卡每升级一级增加1点魔法值上限。";
+                    endstr = global.getStaticString("zijin");
                 }
                 else{
-                    endstr = "。该卡每升级一级增加1点魔法值上限。";
+                    endstr = global.getStaticString("freeZijin");
                 }
             }
-            element.addlabel("恭喜你获得了"+cardprename[cardid]+cardlevelname[cardlevel]+endstr,null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+            else
+            {
+                endstr += global.getStaticString("MonsterCardGet");
+            }
+            element.addlabel(global.getFormatString("youGet", ["[NAME]",cardprename[cardid]+cardlevelname[cardlevel], "[END]", endstr]),null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
         }
         return element;
     }
@@ -56,7 +59,7 @@ class Cardget extends ContextObject{
         if(p==1){
             global.popContext(null);
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"获得了"+cardprename[cardid]+cardlevelname[cardlevel]+"，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("youPost", ["[NAME]", ppy_username(), "[CARD]", cardprename[cardid], "[CARDLEV]", cardlevelname[cardlevel]]), NewsURL, null);
         }
     }
     
@@ -64,6 +67,6 @@ class Cardget extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,["分享","确定"]);
+        dialog.usedefaultbutton(2,[global.getStaticString("share"),global.getStaticString("ok")]);
     }
 }

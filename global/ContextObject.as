@@ -1,6 +1,4 @@
-import global.GlobalController;
 class ContextObject{
-    var global;
     var contextLevel;
     var contextNode = null;
     var contextname;
@@ -9,7 +7,7 @@ class ContextObject{
         //trace("context object init", contextname);
         //contextname = "not init";
         //contextNode = null;
-        //trace("main context ", contextname);
+        self = this;
     }
     function getNode(){
         if(contextNode == null){
@@ -20,7 +18,6 @@ class ContextObject{
     function init(s,g){
         //trace("initnode", s, g);
         self = s;
-        global = g;
     }
     function response(p){
         //trace("response to p", p);

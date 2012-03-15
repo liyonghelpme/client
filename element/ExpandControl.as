@@ -43,7 +43,7 @@ class ExpandControl extends ContextObject{
                 obj.addsprite("tfriend.png").anchor(100,50).pos(89,242);
                 if(EXPAND_FRIEND[obji]>len(global.ppyuserdict)-2){
                     buildable[i].update("ok",0);
-                    buildable[i].update("好友",EXPAND_FRIEND[obji]-len(global.ppyuserdict)+2);
+                    buildable[i].update(global.getStaticString("friend"),EXPAND_FRIEND[obji]-len(global.ppyuserdict)+2);
                     cl = 100;
                 }
                 obj.addlabel("x"+str(EXPAND_FRIEND[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
@@ -52,7 +52,7 @@ class ExpandControl extends ContextObject{
                 obj.addsprite("caesars_big.png").anchor(100,50).pos(89,242);
                 if(EXPAND_CAESARS[obji]>global.user.getValue("caesars")){
                     buildable[i].update("ok",0);
-                    buildable[i].update("凯撒币",EXPAND_CAESARS[obji]-global.user.getValue("caesars"));
+                    buildable[i].update(global.getStaticString("caesar"),EXPAND_CAESARS[obji]-global.user.getValue("caesars"));
                     cl = 100;
                 }
                 obj.addlabel("x"+str(EXPAND_CAESARS[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
@@ -61,14 +61,14 @@ class ExpandControl extends ContextObject{
                 obj.addsprite("money_big.png").anchor(50,50).pos(39,229).size(20,20);
                 if(EXPAND_MONEY[obji]>global.user.getValue("money")){
                     buildable[i].update("ok",0);
-                    buildable[i].update("银币",EXPAND_MONEY[obji]-global.user.getValue("money"));
+                    buildable[i].update(global.getStaticString("coin"),EXPAND_MONEY[obji]-global.user.getValue("money"));
                     cl = 100;
                 }
                 obj.addlabel(str(EXPAND_MONEY[obji]),null,20).anchor(0,50).pos(68,229).color(cl,0,0,100);
                 cl =0;
                 if(EXPAND_LEVEL[obji]>global.user.getValue("level")){
                     buildable[i].update("ok",0);
-                    buildable[i].update("等级",EXPAND_LEVEL[obji]-global.user.getValue("level"));
+                    buildable[i].update(global.getStaticString("level"),EXPAND_LEVEL[obji]-global.user.getValue("level"));
                     cl = 100;
                 }
                 obj.addsprite("tlevel.png").anchor(50,50).pos(39,249);

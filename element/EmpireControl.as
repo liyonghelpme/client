@@ -3,25 +3,31 @@ class EmpireControl extends ContextObject{
     var tabs;
     var element;
     var building;
+    const EmpireLevel = [20, 30];
     function EmpireControl(b){
-        contextname = "dialog-castleinfo";
+        contextname = "dialog-territoryinfo";
         contextNode = null;
         building = b;
     }
     function upgradeEmpire(n, e, p, x, y, pos)
     {
         trace("empireLevel", building.empireLevel);
-        if(global.user.getValue("level") < 20)
+        if(building.empireLevel >= len(EmpireLevel))
         {
-            global.pushContext(null, new Warningdialog(["对不起，等级20才可以升级城堡", null, 6]), NonAutoPop);
+            global.pushContext(null, new Warningdialog([global.getStaticString("EmpireNotOpen"), null, 6]), NonAutoPop);
         }
-        else if(building.empireLevel < 1)
-            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        else if(global.user.getValue("level") < EmpireLevel[building.empireLevel])
+        {
+            global.pushContext(null, new Warningdialog([global.getFormatString("LevelNot", ["[LEVEL]", str(EmpireLevel[building.empireLevel]) ] ), null, 6]), NonAutoPop);
+        }
         else
-            global.pushContext(null, new Warningdialog(["对不起，第三级城堡尚未开放", null, 6]), NonAutoPop);
+        {
+            global.pushContext(building, new UpdateControl(), NonAutoPop); 
+        }
     }
 
     function paintNode(){
+        contextname = "dialog-territoryinfo";
         index = -1;
         element = sprite();
         tabs = new Array(3);
@@ -97,6 +103,9 @@ class EmpireControl extends ContextObject{
     {
         global.pushContext(null, new CheckTime(), NonAutoPop);
     }
+    var rate;
+    var manabar;
+    var manalab;
     function getelement(p){
         element = node();
         if(p==0){
@@ -105,30 +114,30 @@ class EmpireControl extends ContextObject{
                 offy=56;
             }
             else{
-                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(200,offy).color(0,0,0,100);
+                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(220,offy).color(0,0,0,100);
                 global.user.initText("citydefence",cdl);
                 element.addsprite("adddefence2.png").pos(312,offy-15).setevent(EVENT_UNTOUCH,adddefence);
             }
-            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(180,offy+36).color(0,0,0,100);
-            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(200,offy+72).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(200,offy+107).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(255,offy+142).color(0,0,0,100);
+            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(230,offy+36).color(0,0,0,100);
+            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(252,offy+72).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(340,offy+142).color(0,0,0,100);
             //element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
-            var rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
+            rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){
 
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 242).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 242).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(414, 235).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(351, 235).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 242).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 242).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(420, 235).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(367, 235).setevent(EVENT_UNTOUCH, checkTime);
             }
             else
             {
-                element.addsprite("magic_bar.png").anchor(0, 0).pos(196, 224).size(rate, 18);
-                element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(258, 224).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(414, 217).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(351, 217).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 223).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 223).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(420, 217).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(367, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
         }
         else if(p==1){
@@ -153,7 +162,18 @@ class EmpireControl extends ContextObject{
                 element.addlabel(str(global.soldiers[i]),null,20).anchor(0,50).pos(150*i-227,236).color(0,0,0,100);
             }
         }
+        global.timer.addlistener(global.timer.currenttime+999999, self);
         return element;
+    }
+    var timeisend = 0;
+    function timeend()
+    {
+    }
+    function timerefresh()
+    {
+        rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
+        manabar.size(rate, 18);
+        manalab.text(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")));
     }
     function closedialog(n,e){
         global.popContext(null);
@@ -161,5 +181,6 @@ class EmpireControl extends ContextObject{
 
     function deleteContext(){
         contextNode.removefromparent();
+        timeisend = 1;
     }
 }

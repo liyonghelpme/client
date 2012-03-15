@@ -10,27 +10,23 @@ class TaskController extends ContextObject{
     var enternode;
     var tasklib;
     function TaskController(){
+        trace("init task controller");
         contextNode = null;
         contextname = "dialog-task";
         enternode = sprite("task0.png").anchor(50,50);
         enternode.setevent(EVENT_UNTOUCH,entertask);
         tasktype =-1;
         tasklib = dict();
-        var taskfile = c_res_file("task.txt");
-        var taskstr = c_file_op(C_FILE_READ,taskfile);
-        var taskstrs = taskstr.split(";");
+        var taskstrs = Tasks;
         for(var i=0;i<len(taskstrs);i++){
-            var taskobj = json_loads(taskstrs[i]);
-            if(taskobj==null){
-                trace("taskerr",i);
-            }
-            else{
-                tasklib.update(taskobj.get("id"),taskobj);
-            }
+            //trace("taskstr[i]", taskstrs[i]);
+            var taskobj = taskstrs[i];//json_loads(taskstrs[i]);
+            tasklib.update(taskobj.get("id"),taskobj);
         }
     }
     
     function inittask(p,s){
+        trace("inittask", p, s);
         if(p==null || p==-1){
             tasktype = -1;
             taskid = -1;
@@ -38,6 +34,7 @@ class TaskController extends ContextObject{
         }
         else{
             loadtask(p,s);
+            trace("task id", taskid);
             if(taskid<0){
                 tasktype = -1;
                 enternode.visible(0);
@@ -59,6 +56,7 @@ class TaskController extends ContextObject{
     }
     
     function loadtask(id,step){
+        trace("load task", id, step);
         if(tasklib.get(id)==null){
             taskid = -1;
             tasktype = -1;
@@ -77,6 +75,7 @@ class TaskController extends ContextObject{
             step = int(step);
         }
         taskstep=step;
+        trace("taskstep", taskstep, tasknum);
         if(taskstep>=tasknum){
             enternode.addaction(sequence(stop(),itexture("task0.png")));
             var tmp = sprite("taskover0.png").pos(33,47);
@@ -91,7 +90,8 @@ class TaskController extends ContextObject{
             }
             enternode.addaction(repeat(animate(800,"task1.png","task2.png","task3.png","task2.png",ARGB_8888)));
         }
-        if(taskid==12 && taskstep == 0 && global.context[0].box.maxperson==0){
+        //trace("loadTask", taskid, global.context[0].maxperson );
+        if(taskid==12 && global.context[0].box.maxperson==0){
             global.context[0].box.maxperson = 1;
             global.context[0].box.helpperson = 0;
             global.context[0].box.boxfriends = [];
@@ -128,15 +128,23 @@ class TaskController extends ContextObject{
         contextNode = sprite("taskback1.png").anchor(50,50).pos(373,240);
         contextNode.addlabel(taskdes[0],null,40,FONT_BOLD).anchor(50,50).pos(334,60).color(0,0,0,100);
         if(taskstep >= tasknum){
-            contextNode.addlabel("恭喜你完成了任务！快去与好友分享吧！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
-            contextNode.addlabel("点击分享将会有奖励哦！",null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,182).color(12,72,80,100);
+            contextNode.addlabel(global.getStaticString("taskShare"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
+            contextNode.addlabel(global.getStaticString("shareReward"),null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,200).color(12,72,80,100);
             var element = contextNode.addsprite("taskover.png").pos(310,96);
-            element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
-            element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            if(taskreward[0] > 0)
+            {
+                element.addsprite("money_big.png").anchor(50,50).pos(30,172).size(32,32);
+                element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            }
+            else
+            {
+                element.addsprite("caesars_big.png").anchor(50,50).pos(30,172).size(32,32);
+                element.addlabel(str(-taskreward[0]),null,30).anchor(0,50).pos(50,172).color(0,0,0,100);
+            }
             element.addsprite("exp.png").anchor(50,50).pos(158,172);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,172).color(0,0,0,100);
-            setbutton(4,256,407,"分享").setevent(EVENT_UNTOUCH,taskcomplete,1);
-            setbutton(1,498,407,"完成").setevent(EVENT_UNTOUCH,taskcomplete,null);
+            setbutton(4,256,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,taskcomplete,1);
+            setbutton(1,498,407,global.getStaticString("complete")).setevent(EVENT_UNTOUCH,taskcomplete,null);
         }
         else{
             contextNode.addlabel(taskdes[1],null,20,FONT_NORMAL,120,0,ALIGN_LEFT).pos(171,110).color(27,21,9,100);
@@ -145,12 +153,22 @@ class TaskController extends ContextObject{
                 element.addlabel(taskdes[3],null,18,FONT_NORMAL,234,0,ALIGN_LEFT).anchor(100,100).color(43,75,0,100).pos(240,185);
             }
             element.addlabel(taskdes[2]+"  "+str(taskstep)+"/"+str(tasknum),null,20,FONT_NORMAL,240,0,ALIGN_LEFT).pos(13,30).color(0,0,0,100);
-            element.addsprite("money_big.png").anchor(50,50).pos(30,247).size(32,32);
-            element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+
+            if(taskreward[0] > 0)
+            {
+                element.addsprite("money_big.png").anchor(50,50).pos(30,247).size(32,32);
+                element.addlabel(str(taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+            }
+            else
+            {
+                element.addsprite("caesars_big.png").anchor(50,50).pos(30,247).size(32,32);
+                element.addlabel(str(-taskreward[0]),null,30).anchor(0,50).pos(50,247).color(0,0,0,100);
+            }
+
             element.addsprite("exp.png").anchor(50,50).pos(158,247);
             element.addlabel(str(taskreward[1]),null,30).anchor(0,50).pos(200,247).color(0,0,0,100);
-            setbutton(1,256,407,"确定").setevent(EVENT_UNTOUCH,closedialog);
-            setbutton(2,498,407,"放弃").setevent(EVENT_UNTOUCH,taskgiveup);
+            setbutton(1,256,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog);
+            setbutton(2,498,407,global.getStaticString("giveup")).setevent(EVENT_UNTOUCH,taskgiveup);
         }
         contextNode.setevent(EVENT_KEYDOWN,keydown);
     }
@@ -162,8 +180,7 @@ class TaskController extends ContextObject{
     
     function gotoMacket(){
         inctaskstep(1);
-        //global.pushContext(null,new TestWebControl(3),NonAutoPop);
-        openUrl("http://papayamobile.com/a/mr?p=com.papaya.wonderempire1_cn&referrer=in_game_rating");
+        openUrl(RateURL);
     }
     
     function reloadNode(re){
@@ -173,7 +190,7 @@ class TaskController extends ContextObject{
     }
     
     function taskgiveup(){
-        global.pushContext(self,new Warningdialog(["放弃任务将失去一次额外奖励的机会哦",1,5]),NonAutoPop);
+        global.pushContext(self,new Warningdialog([global.getStaticString("giveupwarn"),1,5]),NonAutoPop);
     }
     
     function taskcomplete(n,e,p){
@@ -181,7 +198,7 @@ class TaskController extends ContextObject{
         enternode.visible(0);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"完成了"+taskdes[0]+"任务，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("taskFinishPost", ["[NAME]", ppy_username(), "[TASK]", taskdes[0]]), NewsURL, null);
         }
         global.http.addrequest(0,"taskaccomplished",["uid"],[global.userid],self,"taskaccomplished");
     }
@@ -213,7 +230,11 @@ class TaskController extends ContextObject{
     
     function taskaccomplished(r,rc,c){
         if(rc>0&&json_loads(c).get("id",1)!=0){
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",taskreward[0],-6);
+            if(taskreward[0] > 0)
+                global.user.changeValueAnimate2(global.context[0].moneyb,"money",taskreward[0],-6);
+            else
+                global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-taskreward[0],-6);
+                
             global.user.changeValueAnimate2(global.context[0].ub,"exp",taskreward[1],-6);
             inittask(json_loads(c).get("task",-1),0);
         }

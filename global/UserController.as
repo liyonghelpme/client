@@ -139,11 +139,12 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
-    var global;
+    
     function UserController(){
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
+        //setValue("hasDisk", 0);
     }
     
     function initText(name,l){
@@ -314,7 +315,7 @@ class UserController{
             ns = "+"+ns;
             f = 1;
         }
-        changeValue(key, value);
+        //changeValue(key, value);
         n.addlabel(ns,null,40).color(100,f*100,0,100).anchor(0,50).pos(5,0);
         n.addaction(sequence(moveby(1000,0,-80),tintto(1000,0,0,0,0),callfunc(removeself)));
         bn.add(n.scale(80),20000);

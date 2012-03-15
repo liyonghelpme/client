@@ -5,6 +5,7 @@ class TestWebControl extends ContextObject{
     var helpstr;
     var initm;
     function TestWebControl(m){
+        initm = m;
         contextname = "dialog-web";
         contextNode = null;
         lock =0;
@@ -55,7 +56,7 @@ class TestWebControl extends ContextObject{
         if(mode==0){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
-            web.openurl("static_mycircles_circle?cid=3222");
+            web.openurl("static_mycircles_circle?cid=3476573");
         }
         else if(mode==1){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);
@@ -65,13 +66,13 @@ class TestWebControl extends ContextObject{
         else if(mode==2){
             web = v_create(V_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
-            web.openurl("http://223.4.87.9/#"+helpstr);
-            //web.openurl("http://223.4.85.114/#"+helpstr);
+            web.openurl(HELP_URL+"#"+helpstr);
         }
         else if(mode==3){
             web = v_create(V_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
-            web.openurl("http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result");
+            web.openurl(RateURL);
+            //web.openurl("http://market.android.com/details?id=com.papaya.wonderempire1_cn&feature=search_result");
         }
         else if(mode==4){
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);

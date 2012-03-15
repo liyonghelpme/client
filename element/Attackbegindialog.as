@@ -24,8 +24,8 @@ class Attackbegindialog extends ContextObject{
         if(element == null){
             element = node();
             element.addsprite("attackbeginelement.png").anchor(100,0).pos(394,10);
-            element.addlabel("你的军队已经出征啦！",null,24).pos(32,35).color(0,0,0,100);
-            element.addlabel("注：与敌方战斗时，主帅在线会增加士兵战斗力!",null,20,FONT_NORMAL,344,0,ALIGN_LEFT).pos(30,159).color(0,0,0,100);
+            element.addlabel(global.getStaticString("attackNow"),null,24).pos(32,35).color(0,0,0,100);
+            element.addlabel(global.getStaticString("hintPower"),null,20,FONT_NORMAL,344,0,ALIGN_LEFT).pos(30,159).color(0,0,0,100);
             timelabel=element.addlabel("",null,30).anchor(50,50).pos(202,127).color(0,0,0,100);
             global.timer.addlistener(endtime,self);
         }
@@ -36,7 +36,7 @@ class Attackbegindialog extends ContextObject{
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(1,"确定");
+        dialog.usedefaultbutton(1,global.getStaticString("ok"));
     }
     
     function deleteContext(){

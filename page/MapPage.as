@@ -1,5 +1,5 @@
-import element.MonsterController;
-import element.Monsterdialog;
+//import element.MonsterController;
+//import element.Monsterdialog;
 class MapPage extends ContextObject{
 
     var lastpoint;
@@ -31,12 +31,14 @@ class MapPage extends ContextObject{
     var level;
     var selfgid;
     var left;
+    var Back;
     const mplace=[[963,93],[232,272],[216,704],[1192,825],[1362,676],[1387,316],[805,822],[1000,487],[590,646],[618,153]];
     var initlock;
     var subnobility;
     var monstercontroller;
     var lastclicktime;
     function MapPage(){
+        Back = 0;
         lastclicktime = 0;
         contextname = "page-map";
         contextNode = null;
@@ -97,14 +99,14 @@ class MapPage extends ContextObject{
                 fly.addsprite(avatar_url(ppy_userid())).size(38,38).pos(15,11);
                 var name = global.user.getValue("cityname");
                 if(len(name)>9){
-                    name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+".."
+                    name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
                 }
                 fly.addlabel(name,null,16).anchor(50,0).pos(32,52).color(0,0,0,100);
                 fly.color(50,50,50,50);
                 em.add(fly,0,2);
                 
         var flagn = em.addsprite("flagother.png").anchor(0,100).pos(117,125);
-        spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
+        //spriteManager.getAnimation(["flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png"]);
         flagn.addaction(repeat(animate(1000,"flag1.png","flag2.png","flag3.png","flag4.png","flag5.png","flag6.png",UPDATE_SIZE)));
 
         refreshmonster();
@@ -114,7 +116,7 @@ class MapPage extends ContextObject{
     }
     
     function refreshmonster(){
-        if(global.flagnew ==1){
+        if(global.flagnew == 1){
             var monsters = [-1,-1,-1,-1,-1,-1,-1,0,-1,-1];
         }
         else{
@@ -123,16 +125,16 @@ class MapPage extends ContextObject{
         for(var k=0;k<len(monsters);k++){
             baseNode.remove(8+k);
             if(monsters[k]!=-1){
-                var m = sprite().anchor(50,50).pos(mplace[k]);
-                spriteManager.getPic("monster_"+str(monsters[k])+"_1.png", m);
+                var m = sprite("monster_"+str(monsters[k])+"_1.png").anchor(50,50).pos(mplace[k]);
+                //spriteManager.getPic("monster_"+str(monsters[k])+"_1.png", m);
                 var mtype = monsters[k]/3;
                 var ml=monstercontroller.mbaselevel[k];
                 var the4th ="2";
                 if(mtype == 4 || mtype == 9){
                     the4th="4";
                 }
-                var temp = sprite();
-                spriteManager.getAnimation(["monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"]);
+                //var temp = sprite();
+                //spriteManager.getAnimation(["monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"]);
                 m.addaction(sequence(delaytime(rand(8000)),repeat(animate(1000,"monster_"+str(monsters[k])+"_2.png","monster_"+str(monsters[k])+"_3.png","monster_"+str(monsters[k])+"_"+the4th+".png","monster_"+str(monsters[k])+"_1.png"),delaytime(3000))));
                 m.setevent(EVENT_UNTOUCH,beatmonster,k);
                 m.prepare();
@@ -244,9 +246,11 @@ trace("warinfo",rc,c);
                 return 0;
             }
             if(p == selfgid && global.flagnew == 0)
-                goback();/*
+                goback();
+            /*
             else
-                global.pushContext(self,new UserControl(p),AutoPop);*/
+                global.pushContext(self,new UserControl(p),AutoPop);
+            */
         }
     }
 
@@ -281,6 +285,9 @@ trace("warinfo",rc,c);
         global.pushContext(null,new TestWebControl(p),NonAutoPop);
     }
     function goback(){
+        if(Back == 1)
+            return;
+        Back = 1;
         contextNode.add(node().size(800,480).setevent(EVENT_HITTEST,donothing));
         if(rightmenu.pos()[0]==800){
             wartabvisible(0,0,0,0,0);
@@ -448,16 +455,19 @@ trace("warinfo",rc,c);
         contextNode = null;
         baseNode.removefromparent();
         baseNode = null;
-        global.system.popmusic();/*
+        global.system.popmusic();
+        /*
         for(var i=0;i<pn*pn;i++){
             if(placedict.get(i)!=null){
                 removeplace(i/pn,i%pn);
             }
-        }*/
+        }
+        */
         global.screen.visible(1);
         left.removefromparent();
         monstercontroller.close();
         initlock=0;
         mode= 0;
+        Back = 0;
     }
 }

@@ -30,7 +30,7 @@ class SpyControl extends ContextObject{
             for(var i=0;i<4;i++){
                 tabs[i] = element.addsprite("spytab0.png").pos(35+i%2*247,130+i/2*117).setevent(EVENT_UNTOUCH,choosetab,i);
                 tabs[i].addsprite("spyelement"+str(i)+".png").anchor(50,50).pos(120,55);
-                tabs[i].addlabel(str(snum[i]),null,20).anchor(0,50).pos(152,89).color(0,0,0,100);
+                tabs[i].addlabel(str(snum[i]),null,20).anchor(0,50).pos(160,89).color(0,0,0,100);
             }
             choosetab(0,0,0);
         }
@@ -64,7 +64,7 @@ class SpyControl extends ContextObject{
         else{
             if(global.soldiers[2+selecttab]<6){
                 var buildable = dict([["ok",0]]);
-                buildable.update(global.getname("soldier",6+selecttab),6-global.soldiers[2+selecttab]);
+                buildable.update(global.getname("soldier1",6+selecttab),6-global.soldiers[2+selecttab]);
                 global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
                 return 0;
             }

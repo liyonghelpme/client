@@ -13,8 +13,8 @@ class Adddefencedialog extends ContextObject{
         contextNode = dialog.getNode();
         dialog.settitle("adddefencetitle.png");
         dialog.setclosebutton();
-        dialog.setbutton(1,336,256,"普通增加",1);
-        dialog.setbutton(4,336,331,"快速增加",0);
+        dialog.setbutton(1,336,256, global.getStaticString("genAdd"),1);
+        dialog.setbutton(4,336,331, global.getStaticString("fastAdd"),0);
     }
     
     var defencenum;
@@ -26,7 +26,7 @@ class Adddefencedialog extends ContextObject{
     function getelement(){
         if(element == null){
             element = node();
-            var tmp=element.addlabel("你所选择要增加的防御力：",null,20).pos(44,53).color(0,0,0,100);
+            var tmp=element.addlabel(global.getStaticString("chooseDefence"),null,20).pos(44,53).color(0,0,0,100);
             tmp.prepare();
             defencenumlabel = element.addlabel("0",null,20).pos(50+tmp.size()[0],53).color(0,0,0,100);
             var maxlist=[100,300,500,700,1000,3000,5000];
@@ -58,9 +58,9 @@ class Adddefencedialog extends ContextObject{
         move.pos(x,po[1]);
         defencenum = defencemax*(x-60)/235;
         defencenumlabel.text(str(defencenum));
-        cmlabel.text(str(defencenum*100));
-        cflabel.text(str(defencenum*5));
-        cclabel.text(str((defencenum+99)/100));
+        cmlabel.text(str(defencenum*AddDefCoin));
+        cflabel.text(str(defencenum*AddDefFood));
+        cclabel.text(str((defencenum+AddDefCae-1)/AddDefCae));
         if(defencenum == 0){
             contextNode.get(0).texture("boxbutton2.png");
             contextNode.get(1).texture("boxbutton2.png");
@@ -97,11 +97,11 @@ class Adddefencedialog extends ContextObject{
                     global.wartask.incwartaskstep(defencenum);
                 }
                 if(costtype==0){
-                    global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-(defencenum+99)/100,-6);
+                    global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-(defencenum+AddDefCae-1)/AddDefCae,-6);
                 }
                 else{
-                    global.user.changeValueAnimate2(global.context[0].moneyb,"money",-defencenum*100,-6);
-                    global.user.changeValueAnimate2(global.context[0].ub,"food",-defencenum*5,-6);
+                    global.user.changeValueAnimate2(global.context[0].moneyb,"money",-defencenum*AddDefCoin,-6);
+                    global.user.changeValueAnimate2(global.context[0].ub,"food",-defencenum*AddDefFood,-6);
                 }
             }
         }

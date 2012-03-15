@@ -29,17 +29,16 @@ class Nestbuilddialog extends ContextObject{
         }
         head.addlabel(name,null,16).anchor(50,50).pos(33,69).color(0,0,0,100);
         if(mode == 1){
-            head.addlabel("快帮我激活这个建筑，",null,20).pos(103,19).color(0,0,0,100);
-            head.addlabel("大家一起分享吧！",null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
+            head.addlabel(global.getStaticString("activeDra"),null,20, FONT_NORMAL, 200, 0).pos(103,19).color(0,0,0,100);
         }
         else{
-            global.addtext(head,103,19,"快去求助好友激活龙巢吧！",18);
+            global.addtext(head,103,19,global.getStaticString("askForAct"),18);
         }
         contextNode.add(head,0,0);
         contextNode.add(sprite("dialogback_white.png").pos(21,92),0,3);
         contextNode.add(sprite("boxbutton1.png").pos(50,330),0,1);
         if(mode == 1){
-            contextNode.get(1).addlabel("帮忙",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+            contextNode.get(1).addlabel(global.getStaticString("helpMe"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
             if(list.index(ppy_userid())==-1 && helpperson<maxperson){
                 flaghelp = 1;
                 contextNode.get(1).setevent(EVENT_UNTOUCH,helpopenbox);
@@ -50,17 +49,17 @@ class Nestbuilddialog extends ContextObject{
             }
         }
         else{
-            contextNode.get(1).add(label("求助好友",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19),0,1);
+            contextNode.get(1).add(label(global.getStaticString("askFri"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19),0,1);
             if(helpperson != maxperson){
                 contextNode.get(1).setevent(EVENT_UNTOUCH,askforhelp);
             }
             else{
-                contextNode.get(1).get(1).text("激活");
+                contextNode.get(1).get(1).text(global.getStaticString("active"));
                 contextNode.get(1).setevent(EVENT_UNTOUCH,completeopen);
             }
         }
         contextNode.add(sprite("boxbutton2.png").pos(270,330).setevent(EVENT_UNTOUCH,closedialog),0,2);
-        contextNode.get(2).addlabel("关闭",null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        contextNode.get(2).addlabel(global.getStaticString("close"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
         var l = contextNode.addlabel("",null,30).pos(133,37).color(0,0,0,100);
         evnodes = new Array(0);
         var xx;
@@ -72,13 +71,13 @@ class Nestbuilddialog extends ContextObject{
                     xx=contextNode.addsprite("boxperson.png").pos(32+78*(i%5),103+107*(i/5));
                     if(list[i]<0 || list[i]==ppy_userid()){
                         xx.addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                        xx.addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                        xx.addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                     }
                     else{
                         var fid = list[i];
                         var fn = global.getfriend(fid);
                         name = fn.get("name");
-                        if(name == null) name = "未知";
+                        if(name == null) name = global.getStaticString("unknown");
                         if(len(name)>9)
                             name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
                         xx.addlabel(name,null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
@@ -106,7 +105,7 @@ class Nestbuilddialog extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(ppy_username()+"获得了能召唤宠物的龙巢，但是需要你们的帮助才能打开，快去帮助它吧！","http://getmugua.com");
+        ppy_postnewsfeed(ppy_username()+global.getStaticString("getDragon"), NewsURL, null);
     }
     
     function completeopen(n,e){
@@ -136,7 +135,7 @@ trace("selfopen",rc,c);
                 evnodes[helpperson].remove(0);
                 evnodes[helpperson].texture("boxperson.png");
                 evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-                evnodes[helpperson].addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+                evnodes[helpperson].addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                 evnodes[helpperson].setevent(EVENT_UNTOUCH,null);
                 helpperson++;
                 global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-1,-6);
@@ -150,7 +149,7 @@ trace("selfopen",rc,c);
                 else{
                     //global.popContext(null);
                     contextNode.get(1).texture("boxbutton1.png");
-                    contextNode.get(1).get(1).text("激活");
+                    contextNode.get(1).get(1).text(global.getStaticString("active"));
                     contextNode.get(1).setevent(EVENT_UNTOUCH,completeopen);
                 }
             }
@@ -169,14 +168,14 @@ trace("selfopen",rc,c);
             contextNode = sprite("dialogback_expand.png",ARGB_8888).anchor(50,50).pos(400,300);
             contextNode.addsprite("girl1.png").anchor(50,100).pos(0,310).size(191,409);
             //contextNode.addsprite("expandfont.jpg").anchor(0,50).pos(100,100);
-            contextNode.addlabel("恭喜你激活了你的龙巢，你可以召唤宠物啦！",null,28,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,115).color(0,0,0,100);
+            contextNode.addlabel(global.getStaticString("callPet"),null,28,FONT_BOLD,308,0,ALIGN_LEFT).anchor(0,50).pos(100,115).color(0,0,0,100);
             contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(150,234).setevent(EVENT_UNTOUCH,closedialog,1);
-            contextNode.addlabel("分享",null,BUTTONFONTSIZE).anchor(50,50).pos(150,234);
+            contextNode.addlabel(global.getStaticString("share"),null,BUTTONFONTSIZE).anchor(50,50).pos(150,234);
             contextNode.addsprite("boxbutton2.png").anchor(50,50).pos(300,234).setevent(EVENT_UNTOUCH,closedialog,null);
-            contextNode.addlabel("返回",null,BUTTONFONTSIZE).anchor(50,50).pos(300,234);
+            contextNode.addlabel(global.getStaticString("back"),null,BUTTONFONTSIZE).anchor(50,50).pos(300,234);
             pn.add(contextNode);
             global.request[contextLevel].state=2;
-            global.request[contextLevel].petname = "我的宠物";
+            global.request[contextLevel].petname = global.getStaticString("myPet");
             global.request[contextLevel].setstate();
            /* contextNode.addsprite("money_big.png").size(32,32).pos(110,191);
             var v=2000+50*global.user.getValue("level");
@@ -205,7 +204,7 @@ trace("helpopen",rc,c);
         if(rc!=0 && json_loads(c).get("id")>0){
             evnodes[helpperson].texture("boxperson.png");
             evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
-            evnodes[helpperson].addlabel("我",null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
+            evnodes[helpperson].addlabel(global.getStaticString("Me"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
             helpperson++;
             boxfriends.append(ppy_userid());
             global.request[contextLevel].sreload();
@@ -214,7 +213,7 @@ trace("helpopen",rc,c);
             if(helpperson>=maxperson){
                 //global.popContext(null);
             }
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",1000,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"money", OpenMoney,-6);
         }
         lock=0;
     }
@@ -243,7 +242,7 @@ trace("helpopen",rc,c);
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(ppy_username()+"成功地激活了他的龙巢，赶快加入与"+ppy_username()+"一起打造属于自己的奇迹帝国吧！","http://getmugua.com");
+            ppy_postnewsfeed(global.getFormatString("dragonPost", ["[NAME]", ppy_username()]), NewsURL, null);
         }
     }
     function deleteContext(){

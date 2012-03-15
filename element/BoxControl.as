@@ -73,12 +73,12 @@ class BoxControl extends ContextObject{
                 name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
             }
             head.addlabel(name,null,16).anchor(50,50).pos(33,72).color(0,0,0,100);
-            head.addlabel(global.getStaticString("box_str_1"),null,20).pos(103,19).color(0,0,0,100);
-            head.addlabel(global.getStaticString("box_str_2"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
+            head.addlabel(global.getStaticString("box_str_1"),null,20,FONT_NORMAL, 200, 0).pos(103,19).color(0,0,0,100);
+            //head.addlabel(global.getStaticString("box_str_2"),null,20).anchor(100,100).pos(308,69).color(0,0,0,100);
         }
         else{
             head = sprite("boxelement0.png").pos(17,11);
-            global.addtext(head,93,3,global.getStaticString("box_str_3"),20);
+            head.addlabel(global.getStaticString("box_str_3"), null, 20, FONT_NORMAL, 300, 0).pos(93, 3).color(0, 0, 0, 100);
         }
         contextNode.add(head,0,0);
         contextNode.add(sprite("dialogback_white.png").pos(21,92),0,3);
@@ -151,7 +151,7 @@ class BoxControl extends ContextObject{
     
     function askforhelp(){
         global.popContext(null);
-        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]),SHARE_URL);
+        ppy_postnewsfeed(global.getFormatString("share_box_format",["[NAME]",ppy_username()]), NewsURL, null);
     }
 
     function completeopen(n,e){
@@ -163,7 +163,7 @@ class BoxControl extends ContextObject{
 
     function getelement(){
         var element = node();
-        element.addsprite("boxelement2.jpg").pos(106,19);
+        element.addsprite("boxelement2.jpg").pos(86,19);
         var w=element.addsprite("boxreward.png").anchor(50,0).pos(220,144);
         element.addsprite("girl1.png").anchor(50,100).pos(0,375).size(191,409);
         return element;
@@ -173,7 +173,7 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),SHARE_URL);
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]), NewsURL, null);
         }
     }
 
@@ -198,12 +198,20 @@ class BoxControl extends ContextObject{
             global.user.changeValueAnimate2(global.context[0].ub,"exp",v,-6);
             contextNode.addsprite("exp.png").pos(104,242);
             contextNode.addlabel(str(v),null,30).pos(170,242).color(0,0,0,100);
-            var goods = json_loads(c).get("specialgoods");
-            for(var i=0;i<2;i++){
+            var data = json_loads(c);
+            var goods = data.get("specialgoods");
+            for(var i=0;i<len(goods);i++){
                 var gi = goods[i];
                 global.special[gi]++;
                 var block=contextNode.addsprite("specialblock.png").pos(255+78*i,196);
                 block.addsprite("gift"+str(gi+1)+".png").anchor(50,50).pos(32,32).scale(60);
+            }
+            goods = data.get("goods");
+            if(goods == 1)
+            {
+                global.user.changeValue("dragonStone", 1);
+                block=contextNode.addsprite("specialblock.png").pos(255+78*i,196);
+                block.addsprite("opbutton27.png").anchor(50,50).pos(32,32).scale(60);
             }
             maxperson = 0;
             helpperson = 0;
@@ -266,7 +274,7 @@ trace("helpopen",rc,c);
             setbox(-1,0,0);
             contextNode.get(1).texture("boxbutton2.png");
             flaghelp = 0;
-            global.user.changeValueAnimate2(global.context[0].moneyb,"money",1000,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"money", OpenMoney,-6);
             if(global.card[18]%10==2){
                 if(global.card[18]/10+1>=100){
                     var bdict = dict();
@@ -281,6 +289,13 @@ trace("helpopen",rc,c);
                 }
                 global.http.addrequest(0,"changecard",["userid","cardnum","type"],[global.userid,global.card[18],4],self,null);
             }
+        }
+        else
+        {
+            boxfriends.append(str(ppy_userid()));
+            setbox(-1,0,0);
+            contextNode.get(1).texture("boxbutton2.png");
+            flaghelp = 0;
         }
         lock=0;
     }

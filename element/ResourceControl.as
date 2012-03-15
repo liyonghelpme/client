@@ -9,7 +9,7 @@ class ResourceControl extends ContextObject{
     var btime;
     var slabel;
     var timelabel;
-    const RESOUCE_PRODUCT=[[1000,10,1,1,6],[3000,30,3,3,5],[5000,50,5,5,4],[10000,100,10,10,3],[50000,500,50,50,2],[100000,1000,100,100,1]];
+    const RESOUCE_PRODUCT=[[100,10,1,1,6],[200,20,3,3,5],[300,30,4,4,4],[400,40,5,5,3],[500,50,25,25,2],[1000,100,50,50,1]];
     function ResourceControl(g){
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
@@ -20,8 +20,8 @@ class ResourceControl extends ContextObject{
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("resourceelement.jpg").pos(11,11);
         contextNode.addlabel(ENAME[rdata[2]]+global.getStaticString(":")+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("infpower")+global.getStaticString(":")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("cavpower")+global.getStaticString(":")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("infpower")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("cavpower")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").pos(493,14).setevent(EVENT_UNTOUCH,closedialog);
         trace("resource Control", rdata);
         var time=global.timer.currenttime-global.timer.times2c(rdata[9]);
@@ -40,7 +40,7 @@ class ResourceControl extends ContextObject{
             contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr(0)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
             
         //contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+rdata[9]-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
-        contextNode.addlabel("注：驻扎在要塞的士兵，其战斗力将获得加成", null, 18).pos(28,348).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("fightAdd"), null, 18).pos(28,348).color(0,0,0,100);
         contextNode.addsprite("help2.png").pos(489,342).setevent(EVENT_UNTOUCH,gotohelp,"fortress");
         var button;
         var ebindex=-1;

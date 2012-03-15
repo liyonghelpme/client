@@ -98,7 +98,9 @@ trace("harvest",rc,c);
             else{
                 global.user.changeValueAnimate(baseobj,"exp",PLANT_EXP[objid],-1);
                 if(time()/1000-begintime<3*86400){
-                    global.user.changeValueAnimate(baseobj,"food",PLANT_FOOD[objid]*(bid+4)/5*bl/10,1);
+                    var incFood = PLANT_FOOD[objid]*(bid+4)/5*bl/10;
+                    global.user.changeValueAnimate(baseobj,"food", incFood,1);
+                    global.user.changeValue("accFood", incFood);
                 }
             }
             state2= 0;
@@ -222,7 +224,8 @@ trace("plant",rc,c);
                 plantNode.texture("plant"+str(objid+1)+"_4.png").size(102,64).anchor(45,103);
             }
             else{
-                plantNode.texture("plant_fail.png").size(102,64).anchor(45,103);
+                if(global.context[0].flagfriend == 0)
+                    plantNode.texture("plant_fail.png").size(102,64).anchor(45,103);
             }
         }
     }

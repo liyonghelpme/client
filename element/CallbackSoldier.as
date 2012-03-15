@@ -19,8 +19,8 @@ class CallbackSoldier extends ContextObject{
         soldiers = [0,0];
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("attackelement.jpg").pos(11,11);
-        contextNode.addlabel(str(soldiermaxs[0]+soldiermaxs[1]),null,20).anchor(0,50).pos(120,99).color(0,0,0,100);
-        slabel = contextNode.addlabel(str(0),null,20).anchor(0,50).pos(383,99).color(0,0,0,100);
+        contextNode.addlabel(str(soldiermaxs[0]+soldiermaxs[1]),null,20).anchor(0,50).pos(134,99).color(0,0,0,100);
+        slabel = contextNode.addlabel(str(0),null,20).anchor(0,50).pos(374,99).color(0,0,0,100);
         
         var bt = sprite("boxbutton1.png").anchor(50,50).pos(142,420).setevent(EVENT_UNTOUCH,attack);
         contextNode.add(bt,2,0);
@@ -34,7 +34,7 @@ class CallbackSoldier extends ContextObject{
             mb.addlabel(str(0),null,20).anchor(100,50).pos(-4,16).color(0,0,0,100);
             mb.addlabel(str(soldiermaxs[i]),null,20).anchor(0,50).pos(417,16).color(0,0,0,100);
             mb.add(sprite("moveblock.png").anchor(50,50).pos(79,16),1,0);
-            slabels[i] = mb.addlabel("0",null,16).anchor(0,50).pos(59,-21).color(0,0,0,100);
+            slabels[i] = mb.addlabel("0",null,16).anchor(0,50).pos(120,-21).color(0,0,0,100);
         }
         csnum(mb,EVENT_TOUCH,0,70);
     }

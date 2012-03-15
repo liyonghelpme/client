@@ -31,13 +31,13 @@ class NewsControl extends ContextObject{
     function setlength(r,rc,c){
         if(rc!=0){
             length = json_loads(c).get("id",0);
-            pagemax = (length-1)/PAGEITEMS+1;
+            pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
             choosePage(0,0,0);
         }
     }
 
     function choosePage(n,e,po){
-        if(lock==1 || pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(lock==1 || pagenum == 1 && po == -1 || pagenum >= pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)

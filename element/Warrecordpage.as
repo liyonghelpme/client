@@ -24,9 +24,9 @@ class Warrecordpage extends ContextObject{
     function paintNode(){
         contextNode = node();
         var outnum = 0;
-        datas = global.user.getValue("warrecordlist");
+        datas = global.user.getValue("warrecordlist", []);
         length = len(datas);
-        pagemax = (length-1)/PAGEITEMS+1;
+        pagemax = max((length+PAGEITEMS-1)/PAGEITEMS, 1);
         for(var i=0;i<length;i++)
             items.append(null);
         pagetext = contextNode.addlabel("1/1",null,20).anchor(50,50).pos(505,414).color(0,0,0,100);
@@ -36,7 +36,7 @@ class Warrecordpage extends ContextObject{
     }
 
     function choosePage(n,e,po){
-        if(pagenum == 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(pagenum == 1 && po == -1 || pagenum >= pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)
@@ -79,14 +79,31 @@ class Warrecordpage extends ContextObject{
         }
         else//attack Empty
         {
-            var level = getWarrecordList("empLev", datas[index]); 
-            var monavt = items[index].addsprite().size(40,40).pos(10,6);
-            spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
-            items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
+            var att = getWarrecordList("kind", datas[index]);
+            //I attack empty
+            if(att == 0)
+            {
+                var level = getWarrecordList("empLev", datas[index]); 
+                var monavt = items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
+                items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
+            }
+            //other attack my Empty
+            else
+            {
+                items[index].addsprite(avatar_url(getWarrecordList("eneOtherid", datas[index]))).size(40,40).pos(10,6);
+                items[index].addlabel(getWarrecordList("eneEmpirename", datas[index]),null,18).pos(58,7).color(0,0,0,100);
+            }
         }
+        /*
+<<<<<<< HEAD
+        items[index].addlabel(datas[index][10],null,18).pos(58,7).color(0,0,0,100);
+        if(datas[index][0]==0){
+            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
+=======
+        */
 
         if(getWarrecordList("readed",datas[index]) == 1){
-            items[index].addlabel("该请求已处理",null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
+            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
         }
         else{//not readed 
             items[index].addsprite("wrbutton1.png").pos(296,8).setevent(EVENT_UNTOUCH,receivegift,index);

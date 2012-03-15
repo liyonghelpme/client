@@ -37,6 +37,7 @@ class TimeController{
     }
 
     function timecontrol(){
+        //trace("timers, node, action, fps", sysinfo(21), sysinfo(24), sysinfo(23), getfps());
         currenttime = (time()-base_realtime)/1000+base_localtime;
         var length= len(timelist);
         for(var i=0;i<length;i++){
@@ -50,6 +51,11 @@ class TimeController{
                 timelist[i][1].timeisend=0;
                 timelist[i][0] = timelist[i][1].endtime;
                 trace("refresh");
+            }
+            if(timelist[i][0] == -1)
+            {
+                timelist[i][1].timerefresh();
+                continue;
             }
             if(timelist[i][0]>currenttime){
                 timelist[i][1].timerefresh();
