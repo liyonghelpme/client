@@ -213,6 +213,7 @@ class WarControl extends ContextObject{
             _enemy = "left";
             data.update("leftwin", 1-getWarrecordList("win", d));
         }
+        //0 normal 1 emptyCity
         var kind = getWarrecordList("type", d);
 
         data.update("leftself",leftself);
@@ -233,9 +234,12 @@ class WarControl extends ContextObject{
         data.update("leftpower2", getWarrecordList("attPurePow", d));
         data.update("rightpower2", getWarrecordList("defPurePow", d));
 
-        data.update(_self+"name",global.user.getValue("cityname", d));
-
-        if(kind == 0)
+        if(kind == 0 || leftself == 1)//normal
+            data.update(_self+"name",global.user.getValue("cityname", d));
+        else
+            data.update(_self+"name", global.getEmptyName(getWarrecordList("empGid", d)));
+            
+        if(kind == 0 || leftself == 0)
             data.update(_enemy+"name", getWarrecordList("eneEmpirename", d));
         else
             data.update(_enemy+"name", global.getEmptyName(getWarrecordList("empGid", d)));           
