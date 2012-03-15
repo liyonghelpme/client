@@ -16,7 +16,7 @@ function showTip()
     }
     var tip = Tips.get(level);
 
-    trace("showTip", level);
+    trace("showTip", level, tip);
     if(tip != null && res[0] == 0 && TipShow == 0)
     {
         TipShow = 1;
@@ -57,6 +57,14 @@ function SetSoldier(c, value)
     global.soldiers[c] = value;
     if(global.soldiers[c] < 0)
         global.soldiers[c] = MAX_INT;
+}
+function setShotScreen()
+{
+    global.shotscreen.setevent(EVENT_TOUCH|EVENT_UNTOUCH|EVENT_MULTI_TOUCH|EVENT_MULTI_UNTOUCH|EVENT_MOVE, donothing);
+}
+function clearShotScreen()
+{
+    global.shotscreen.setevent(EVENT_TOUCH|EVENT_MOVE|EVENT_UNTOUCH|EVENT_MULTI_TOUCH|EVENT_MULTI_UNTOUCH, null);
 }
 
 /*

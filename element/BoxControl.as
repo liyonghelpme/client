@@ -173,7 +173,7 @@ class BoxControl extends ContextObject{
         global.popContext(null);
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");
-            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),ShareURL);
+            ppy_postnewsfeed(global.getFormatString("share_format",["[NAME]",ppy_username(),"[DESCRIBE]",global.getStaticString("share_openbox")]),ShareURL, null);
         }
     }
 

@@ -347,5 +347,6 @@ class NewControl extends ContextObject{
         contextNode.removefromparent();
         contextNode.addaction(stop());
         contextNode = null;
+        clearShotScreen();
     }
 }

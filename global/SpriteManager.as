@@ -13,12 +13,13 @@ class SpriteManager
     var askToDown;
     var downLoadType = NotDownload;
 
+    var IconPos = 1;
     function SpriteManager(g)
     {
         global = g;
         oldEdition = -1;
-        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+2*MenuDifY);
-        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+2*MenuDifY);
+        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+IconPos*MenuDifY);
+        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+IconPos*MenuDifY);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
     }
 
@@ -85,8 +86,10 @@ class SpriteManager
             getDownload(arr, doNothing, DownAllPic);
         checking = 0;
     }
+    var getWarYet = 0;
     function getWar()
-    {
+    {   
+        getWarYet = 1;
         var arr = [] + warpic;
         getDownload(arr, warBack, DownWarPic);
     }
@@ -234,9 +237,15 @@ class SpriteManager
         global.castalPage.menu.add(askToDown);
         askToDown.setevent(EVENT_UNTOUCH, showToDown)
         //global.castalPage.menu.add(downloadNode);
+        if(getWarYet == 1)
+        {
+            showDownNow(); 
+        }
     }
     function showDownNow()
     {
+        if(showDown == 1)
+            return;
         showDown = 1;
         global.castalPage.menu.add(downloadNode);
         askToDown.removefromparent();
