@@ -33,8 +33,8 @@ const OpenReward = 1000;
 const FeedReward = 1000;
 const LevUpPop = 10;
 
-const BASE_URL = "http://223.4.87.9:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+//const BASE_URL = "http://223.4.87.9:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 const HELP_URL = "http://223.4.87.9/#";
 //const HELP_URL = "http://uhz000738.chinaw3.com/#";
 
@@ -638,16 +638,26 @@ class GlobalController{
         co.global = self;
         co.self = co;
         co.contextLevel = currentLevel;
+        //trace("current lev", currentLevel, flagnew, co.contextname);
         if(auto == NotAdd)
             shotscreen.add(co.getNode());
         else if(currentLevel == 0)
+        {
             screen.add(co.getNode());
+        }
+        else if(flagnew == 1 && (co.contextname == "dialog-reward-levelup" || co.contextname == "dialog-rename"))//newUser pop dialog at dialogscreen 
+        {
+            trace("add shot");
+            shotscreen.add(co.getNode());
+        }
         else
             dialogscreen.add(co.getNode());
+        /*
         if(flagnew == 1 && auto == NonAutoPop)
         {
             clearShotScreen();
         }
+        */
         if(flagnew == 0 || auto == NotAdd)
             co.getNode().focus(1);
         context[0].hiddentime = 10;
@@ -674,11 +684,12 @@ class GlobalController{
         }
         else 
         {
-            
+            /* 
             if(flagnew == 1)
             {
                 setShotScreen();
             }
+            */
             if(currentLevel < 0)
                 return;
             context[currentLevel].deleteContext();
