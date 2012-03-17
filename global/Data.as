@@ -307,6 +307,8 @@ var Dicts =
 ["DraNot", "Sorry, you don't have enough Dragon stone, you can get it for free by opening treasure chest or killing monsters!"],
 ["CaeNot", "Sorry, you don't have enough caesars!"],
 ["HowDra", "You can use Dragon Stone or caesars to play Dragon Wheel. Tip: Dragon Stone can be obtained by opening treasure chesk or killing monsters."],
+["drumReward", "Click drum icon to get extra silvers during fight! You click [NUM] times and get [MONEY] silvers in the fight!"],
+["drumFeed", "[NAME] click drum [NUM] times and get [MONEY] silvers as reward, come on to join Miracle Empire!"],
 ["", ""],
 ];
 

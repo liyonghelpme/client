@@ -10,17 +10,17 @@ class WarReward extends ContextObject{
 
     function paintNode(){
         contextNode = sprite("dialogback_b.png").anchor(50,50).pos(400,240);
-        contextNode.addlabel("战斗期间点击战鼓会有额外奖励！本次战斗你共点击"+str(num)+"次，获得"+str(num*kind)+"银币奖励！", null, 25, FONT_NORMAL, 300, 0, ALIGN_LEFT).pos(58, 61).color(0, 0, 0, 100);
+        contextNode.addlabel(global.getFormatString("drumReward", ["[NUM]",str(num), "[MONEY]", str(num*kind)]), null, 25, FONT_NORMAL, 300, 0, ALIGN_LEFT).pos(58, 61).color(0, 0, 0, 100);
         contextNode.addsprite("boxbutton1.png").pos(103, 224).anchor(50, 50).setevent(EVENT_UNTOUCH, share);
         contextNode.addsprite("boxbutton2.png").pos(278, 224).anchor(50, 50).setevent(EVENT_UNTOUCH, close);
-        contextNode.addlabel("分享", null, 25).pos(103, 224).anchor(50, 50);
-        contextNode.addlabel("确定", null, 25).pos(278, 224).anchor(50, 50);
+        contextNode.addlabel(global.getStaticString("share"), null, 25).pos(103, 224).anchor(50, 50);
+        contextNode.addlabel(global.getStaticString("ok"), null, 25).pos(278, 224).anchor(50, 50);
 
     }
     function share()
     {
         global.popContext();
-        ppy_postnewsfeed(ppy_username()+"战斗期间敲打了"+str(num)+"次战鼓，获得了"+str(num*kind)+"银币！赶快加入奇迹帝国与Ta一起战斗吧!", ShareURL, null);
+        ppy_postnewsfeed(global.getFormatString("drumFeed", ["[NAME]",ppy_username(), "[NUM]",str(num) , "[MONEY]", str(num*kind) ]), NewsURL, null);
     }
     function close()
     {
