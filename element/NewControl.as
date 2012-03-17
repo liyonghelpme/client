@@ -130,13 +130,11 @@ class NewControl extends ContextObject{
             global.context[0].nodeMove(mp[0]-p[0],mp[1]-p[1]);
         }
         else{
-            //if(opobj!=null){
             trace(mp);
             var ep = global.context[1].mplace[7];
             p = global.context[1].baseNode.node2world(ep[0],ep[1]);
             trace(p);
             global.context[1].nodeMove(mp[0]-p[0],mp[1]-p[1]);
-            //}
         }
         circle.pos(cp).scale(cz[0]*5/2,cz[1]*5/2);
         point.pos(cp[0],cp[1]-cz[1]/2);
@@ -204,17 +202,22 @@ class NewControl extends ContextObject{
         }
     }
     
+    var changing = 0;
     function nextstate(n,e){
-    	if(n!=0){
+    	if(n!=0 && lock == 0){
     	    lock=1;
     	    var strs = noticetext.split("+");
             global.user.changeValueAnimate2(global.context[0].moneyb,"money",int(strs[1]),-6);
             global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",int(strs[2]),-4);
             global.user.changeValueAnimate2(global.context[0].ub,"exp",int(strs[3]),-4);
     	}
-    	strnum++;
-        contextNode.color(0,0,0,0);
-        c_addtimer(1000,checkfinish,null,1000,1);
+        if(changing == 0)
+        {
+            changing = 1;
+            strnum++;
+            contextNode.color(0,0,0,0);
+            c_addtimer(1000,checkfinish,null,1000,1);
+        }
     }
     
     function ctest(n,e,p,x,y){
@@ -261,7 +264,8 @@ class NewControl extends ContextObject{
                 opobj.baseobj.statenode.removefromparent();
                 global.context[0].buildovertrue(0,1,"{'id':1}");
             }
-            else if(cmd == "attack"){/*
+            else if(cmd == "attack"){
+            /*
                 dtime = 17000;
                 global.popContext(null);
                 var bat=new WarControl(0);
@@ -269,7 +273,8 @@ class NewControl extends ContextObject{
                 bat.flagresult= 1;
                 bat.datadict = dict([["leftself",1],["leftwin",1],["getmoney",0],["getexp",0],["spec",""],["leftpower",100000],["rightpower",100000],["leftppyid",ppy_userid()],["rightppyid",0],
                 ["leftpower2",60],["rightpower2",0],["leftname","我"],["rightname","邪恶的城主"],["leftnob",0],["rightnob",0],["leftgodpower",0],["rightgodpower",0]]);
-                global.pushContext(null,bat,NonAutoPop);*/
+                global.pushContext(null,bat,NonAutoPop);
+            */
                 global.context[2].excute(1);
                 dtime = 5000;
             }
@@ -333,6 +338,7 @@ class NewControl extends ContextObject{
         loadstr();
         loadnode();
         lock=0;
+        changing = 0;
     }
     
     function checkinit(timer){
