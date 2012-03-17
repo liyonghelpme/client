@@ -62,7 +62,7 @@ const stringDict=dict([
 ["master","领主："],[":","："],
 ["user_notoccupy","未征服"],["user_occupy","已征服"],["user_protected","保护中"],["user_fighting","正在交战"],["user_attacking","进攻中"],
 ["resource_get_format","该要塞每小时生产银币[MONEY]，粮食[FOOD]，木材[WOOD]，石头[STONE]，下一次生产结束倒计时：[TIME]"],
-["goSee", "去看看"], ["IKnow", "知道了"], ["genAdd", "普通增加"], ["fastAdd", "快速增加"], ["chooseDefence", "你所选择要增加的防御里："], 
+["goSee", "去看看"], ["IKnow", "知道了"], ["genAdd", "普通增加"], ["fastAdd", "快速增加"], ["chooseDefence", "你所选择要增加的防御力："], 
 ["youLeft", "你还剩[NUM]个盟友名额。"], ["sureToally", "你确定与Ta结盟吗？"],
 ["allyOk", "在你战斗时，盟军将会提供你士兵援助。请慎重结盟，取消结盟会消耗凯撒币的哦！"],
 ["makeAlly", "结盟"], ["cancelAlly", "确定取消与[NAME]的结盟？"],
