@@ -448,9 +448,8 @@ class WarControl extends ContextObject{
                 contextNode.visible(0);
                 contextNode.add(sprite("dark.png").size(820,500).anchor(50,50).pos(335,233).color(0,0,0,darkColorAlpha),-1);
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
-                dragon = element.addsprite("drum.png").pos(43, 418).anchor(50, 50).scale(100).setevent(EVENT_TOUCH|EVENT_UNTOUCH, obtainMoney);
+                dragon = element.addsprite("drum.png").pos(73, 418).anchor(50, 50).scale(100).setevent(EVENT_TOUCH|EVENT_UNTOUCH, obtainMoney);
                 touchNums = 0; 
-
 
                 if(datadict.get("leftself") == 1){
                     leftuser = element.addsprite("battleuserback0.png");

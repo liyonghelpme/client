@@ -33,8 +33,8 @@ const OpenReward = 1000;
 const FeedReward = 1000;
 const LevUpPop = 10;
 
-//const BASE_URL = "http://223.4.87.9:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
+const BASE_URL = "http://223.4.87.9:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 const HELP_URL = "http://223.4.87.9/#";
 //const HELP_URL = "http://uhz000738.chinaw3.com/#";
 
