@@ -305,6 +305,7 @@ class WarControl extends ContextObject{
             }
             global.popContext(null);
             global.pushContext(null,self,NonAutoPop);
+
         }
     }
 
@@ -346,6 +347,7 @@ class WarControl extends ContextObject{
             global.http.addrequest(1, "warReward", ["uid", "times", "addV"], [global.userid, touchNums, addV], self, "warreward");
             keepTou = touchNums;
             touchNums = 0;
+            //dragon.removefromparent();
         }
     }
     function useaction(p, rc, c)
@@ -441,6 +443,7 @@ class WarControl extends ContextObject{
                     contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                 }
             }
+
             setbutton(1,356,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,closedialog,1);
             setbutton(2,498,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog,null);
             if(flaganimate==1){
@@ -517,7 +520,7 @@ class WarControl extends ContextObject{
         }
     }
     var touchNums = 0;
-    var dragon;
+    var dragon = null;
     var addV = 10;
     function obtainMoney(n, e, p, x, y, points)
     {
@@ -847,6 +850,11 @@ class WarControl extends ContextObject{
     }
     
     function animateover(){
+        if(dragon != null)
+        {
+            dragon.removefromparent();
+            dragon = null;
+        }
         timer.stop();
         contextNode.visible(1);
     }
