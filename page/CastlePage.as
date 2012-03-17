@@ -885,11 +885,13 @@ class CastlePage extends ContextObject{
     function getfriendover(data){
         friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
+            /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
                 if((fi-2) >= len(friend.flist1))
                     continue;
                 addprefriend(friend.flist1[fi-2].get("id"));
             }
+            */
         }
         cpid = int(data.get("id"));
         cuid = data.get("frienduserid");
