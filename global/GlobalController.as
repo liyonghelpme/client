@@ -17,6 +17,7 @@ const buildcontext = [
 2550, 2551, 1552, 2553, 2554, 2555, 2556,
 1557, 1558, 1559, 2560, 1561, 1562,
 2563, 2564, 2565, 2566,
+1567, 1568, 1569,
 //statue
 2600,2601,2602,2603,2604,2605,
 //dragon disk
@@ -168,11 +169,13 @@ const EXPAND_EXP=[10,20,50,90,140,200,330,580,740,920];
 const OBJ_PRICE = [10,20,30,50,-1,100,100,100,100,100,100,200,-3,400,600,800,1000,900,1200,2000,-5,1500,1500,1500,1600,1600,1600,1600,-3,-3,-3,-3,1800,1800,1800,2000,2000,2000,-10,5000,-5,-10,2000,2000,-10,-2,-5, -6, -7, -8, 
 -88, -50, 5000, -45, 5000, 5000, -45, 
 100, -40, -42, 10000, -46, 5500,
--5, 900, -40, -2];
+-5, 900, -40, -2,
+-25, 10000, 9000];
 const OBJ_PERSON = [5,5,5,5,50,6,6,6,6,6,6,8,170,15,20,25,30,35,40,50,300,60,60,60,65,65,65,65,150,150,150,150,70,70,70,80,80,80,300,90,150,300,30,30,300,120,150, 155, 160, 165,
 -2, -1, 90, -1, 90, 90, -1,
 10, -1, -1, 130, -1, 100,
 150, 30, -1, 100,
+130, 72, 70,
 ];
 
 const STATUE_PRICE = [80000,-8,120000,-12,200000,-20];
@@ -211,8 +214,38 @@ const GONAME = ["丰收之神（青铜）","人口之神（青铜）","财富之
 //todo
 const OBJNAME = ["砖石路","格子路","彩砖路","石头路","黄金路","白心花坛","红心花坛","粉心花坛","黄心花坛","蓝心花坛","紫心花坛","草坪","精灵灯","普通路灯","高杆路灯","吊灯","心形花灯","路牌","椅子","普通水井","魔法水井","紫色花丛","红色花丛","橙色花丛","深绿忘忧草","黄色忘忧草","绿色忘忧草","蓝色忘忧草","粉色樱花树","紫色樱花树","淡紫樱花树","红色樱花树","橙色灌木","黄色灌木","绿色灌木","春天枫树","夏天枫树","秋天枫树","天使雕像","月兔送福","丰收月饼台","吉祥兔儿神","红色糖果灯","金色糖果灯","南瓜灯", "玫瑰花灯", "蓝色感恩灯", "绿色感恩灯", "金色感恩灯", "紫色感恩灯", "圣诞老人", "精致圣诞树", "普通圣诞树", "精致雪人", "普通雪人", "麋鹿一", "麋鹿二",
 "棕榈树", "红灯笼", "水晶石碑", "太庙楼", "十字架", "小亭",
-"丘比特", "玫瑰花丛", "玫瑰园", "爱情树"];
-const UNLOCK = [null,null,"90,object0.png;90,object1.png;90,object2.png","50,plant2.png","50,fact3.png;90,object3.png","90,object4.png;50,room12.png;50,plant3.png","90,object5.png;50,fact6.png","90,object11.png;50,plant4.png","90,object12.png;50,room60.png;25,shen0.png;50,fact9.png","90,object13.png;50,plant5.png","90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png","90,object15.png;50,camp3.png","90,object16.png;25,shen1.png","90,object17.png;50,plant7.png","90,object18.png;90,wood1.png;50,fact15.png","90,object19.png;90,object28.png;33,room36.png;50,fact12.png","90,object21.png;50,plant8.png;25,shen3.png","90,wood2.png","90,object24.png;33,farm6.png","90,object32.png;90,object38.png","50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png","50,fact18.png;90,wood3.png","90,stone1.png","50,plant10.png","50,fact24.png;90,stone2.png","90,object35.png;50,plant12.png;90,wood5.png","50,plant11.png","90,stone3.png","90,wood4.png","50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
+"丘比特", "玫瑰花丛", "玫瑰园", "爱情树",
+"埃及塔", "大象灯", "马灯",
+];
+const UNLOCK = 
+[null,
+null,
+"90,object0.png;90,object1.png;90,object2.png",
+"50,plant2.png","50,fact3.png;90,object3.png",
+"90,object4.png;50,room12.png;50,plant3.png",
+"90,object5.png;50,fact6.png",
+"90,object11.png;50,plant4.png",
+"90,object12.png;50,room60.png;25,shen0.png;50,fact9.png",
+"90,object13.png;50,plant5.png",
+"90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png",
+"90,object15.png;50,camp3.png",
+"90,object16.png;25,shen1.png",
+"90,object17.png;50,plant7.png",
+"90,object18.png;90,wood1.png;50,fact15.png",
+"90,object19.png;90,object28.png;33,room36.png;50,fact12.png",
+"90,object21.png;50,plant8.png;25,shen3.png",
+"90,wood2.png","90,object24.png;33,farm6.png",
+"90,object32.png;90,object38.png",
+"50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png",
+"50,fact18.png;90,wood3.png",
+"90,stone1.png",
+"50,plant10.png",
+"50,fact24.png;90,stone2.png",
+"90,object35.png;50,plant12.png;90,wood5.png",
+"50,plant11.png",
+"90,stone3.png;50,object67.png",
+"90,wood4.png;50,object68.png;50,object69.png",
+"50,fact21.png","90,stone5.png;50,farm4.png;90,stone4.png"];
 const nobilityname = ["平民","男爵","子爵","伯爵","侯爵","公爵","帝王"];
 const NOBNAME = ["三等平民","二等平民","一等平民","三等男爵","二等男爵","一等男爵","三等子爵","二等子爵","一等子爵","三等伯爵","二等伯爵","一等伯爵","三等侯爵","二等侯爵","一等侯爵","三等公爵","二等公爵","一等公爵","帝王"]
 const PLANTNAME=["小麦","胡萝卜","玉米","菠萝","茄子","西红柿","青椒","南瓜","水蜜桃","西瓜","芒果","草莓"];

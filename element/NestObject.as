@@ -168,7 +168,7 @@ class NestObject extends BuildObject{
         else if(state==1)
             contextNode.color(40,40,40,100);
         else{
-            if(global.system.flagnight==0){
+            if(global.system.flagnight==0 && global.system.enableNight){
                 contextNode.color(50,50,60,100);
             }
             else{

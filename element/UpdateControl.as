@@ -333,7 +333,7 @@ class UpdateControl extends ContextObject{
             {
                 obj.objnode.texture("empire"+str(obj.empireLevel+1)+".png");
                 //Normal Object not empire
-                if(global.system.flagnight==0){
+                if(global.system.flagnight==0 && global.system.enableNight){
                     obj.contextNode.get(1).texture("empire"+str(obj.empireLevel+1)+"_l.png");
                     obj.showYanhua();
                 }

@@ -7,8 +7,14 @@ class FactControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 11;
-    var objcontext = [2330,3327,2300,2303,2306,2309,2315,2312,2318,2324,2321];
-    var objlevel = [35, 7,1,4,6,8,14,15,21,24,29];
+    var objcontext = 
+    [2300, 2303, 2306, 3327, 2309, 2315, 2312, 2318, 2324, 2321, 2330];
+    //[2330,3327,2300,2303,2306,2309,2315,2312,2318,2324,2321];
+    var objlevel = 
+    [1, 4, 6, 7, 8, 14, 15, 21, 24, 29, 35];
+    //[35, 7,1,4,6,8,14,15,21,24,29];
+
+
     function FactControl(){
         objsmax = len(objcontext);
         contextname ="element-build-fact";
@@ -40,9 +46,11 @@ class FactControl extends ContextObject{
             //spriteManager.getPic("fact"+str(oi)+".png", fac);
             
 //            objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
+            /*
             if(i<1){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
+            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

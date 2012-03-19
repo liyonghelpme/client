@@ -78,7 +78,7 @@ class GodControl extends ContextObject{
                 objs[i].addsprite("personlimit.png").size(20,20).pos(10,244);
                 objs[i].addlabel(str(DISK_PERSON[0]),null,16).pos(34,244).color(0,0,0,100);
             }
-            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            //objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             
         }
         else if(obji>=0){

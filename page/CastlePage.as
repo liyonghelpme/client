@@ -121,7 +121,7 @@ class CastlePage extends ContextObject{
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);
         contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
         contextNode.add(node(),20000,1);
-        if(global.system.flagnight==0){
+        if(global.system.flagnight==0 && global.system.enableNight){
             contextNode.texture("800480night.jpg");
             contextNode.add(sprite("dark.png").color(6,6,12,40).size(PAGE_W,PAGE_H),0,0);
             contextNode.get(1).color(50,50,60,100);
@@ -198,7 +198,7 @@ class CastlePage extends ContextObject{
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
-        if(global.system.flagnight==0){
+        if(global.system.flagnight==0 && global.system.enableNight == 1){
             menu.color(50,50,60,100);
         }
         else{
@@ -1333,12 +1333,15 @@ class CastlePage extends ContextObject{
             var hour=btime%86400/3600;
             if(hour<6||hour>=20){
                 global.system.flagnight=0;
-                menu.color(50,50,60,100);
-                if(contextNode.get(0)==null){
-                    contextNode.add(sprite("dark.png").color(6,6,12,40).size(PAGE_W,PAGE_H),0,0);
+                if(global.system.enableNight)
+                {
+                    menu.color(50,50,60,100);
+                    if(contextNode.get(0)==null){
+                        contextNode.add(sprite("dark.png").color(6,6,12,40).size(PAGE_W,PAGE_H),0,0);
+                    }
+                    contextNode.texture("800480night.jpg");
+                    contextNode.get(1).color(50,50,60,100);
                 }
-                contextNode.texture("800480night.jpg");
-                contextNode.get(1).color(50,50,60,100);
             }
             else{
                 global.system.flagnight=1;
@@ -1718,7 +1721,7 @@ class CastlePage extends ContextObject{
             if(global.currentLevel +global.flagnew== 0)
                 hiddentime = hiddentime-1;
             if(hidden==1){
-                if(global.system.flagnight==0){
+                if(global.system.flagnight==0 && global.system.enableNight){
                     menu.addaction(sequence(callfunc(menuvisible),tintto(1000,50,50,60,100)));
                 }
                 else{
@@ -2237,7 +2240,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);
         contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
         contextNode.add(node(),20000,1);
-        if(global.system.flagnight==0){
+        if(global.system.flagnight==0 && global.system.enableNight){
             contextNode.texture("800480night.jpg");
             contextNode.add(sprite("dark.png").color(6,6,12,40).size(PAGE_W,PAGE_H),0,0);
             contextNode.get(1).color(50,50,60,100);

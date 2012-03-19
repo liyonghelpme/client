@@ -13,6 +13,7 @@ class MenuControl extends ContextObject{
     var musiclist;
     var bigbutton;
     var smallbutton;
+    var enableNight;
 
     function MenuControl(){
         contextname = "dialog-system";
@@ -21,21 +22,23 @@ class MenuControl extends ContextObject{
         musiclist=new Array(0);
         flagrob = 0;
         flagnight=0;
+        enableNight = 0;
     }
 
     //config: flagmusic,flagnotice
     function initwithconfig(){
         var fp = c_file_open("config"+str(ppy_userid()),1);
-        var configstr = "11";
+        var configstr = "111";
         if(c_file_exist(fp) != 0){
             configstr = c_file_op(C_FILE_READ,fp);
-            if(len(configstr)!=2){
-                configstr = "11";
+            if(len(configstr)!=3){
+                configstr = "111";
             }
         }
 
         //flagmusic = int(configstr[0]);
         flagnotice = int(configstr[1]);
+        enableNight = int(configstr[2]);
         fp = null;
         flagmusic = 0;
         rewriteconfig();
@@ -44,7 +47,7 @@ class MenuControl extends ContextObject{
     
     function rewriteconfig(){
         var fp = c_file_open("config"+str(ppy_userid()),1);
-        c_file_op(C_FILE_WRITE,fp,str(flagmusic)+str(flagnotice));
+        c_file_op(C_FILE_WRITE,fp,str(flagmusic)+str(flagnotice)+str(enableNight));
     }
     
     function pushmusic(name){
@@ -71,11 +74,12 @@ class MenuControl extends ContextObject{
         }
     }
 
+    //flagnight && enableNight = night
     function paintNode(){
         contextNode = sprite("dialogback_menu.png").anchor(50,50).pos(400,240).size(439,383);
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(423,13).setevent(EVENT_UNTOUCH,closedialog);
         //refreshbutton = contextNode.addsprite("refreshbutton.png").pos(17,76).setevent(EVENT_UNTOUCH,refreshuser);
-        contextNode.addsprite("nightbutton"+str(flagnight)+".png").pos(17,76).setevent(EVENT_UNTOUCH,changenight);
+        contextNode.addsprite("nightbutton"+str(1-enableNight)+".png").pos(17,76).setevent(EVENT_UNTOUCH,changenight);
         musicbutton = contextNode.addsprite("musicbutton"+str(flagmusic)+".png").pos(154,76).setevent(EVENT_UNTOUCH,switchmusic);
         noticebutton = contextNode.addsprite("noticebutton"+str(flagnotice)+".png").pos(291,76).setevent(EVENT_UNTOUCH,switchnotice);
         screenbutton = contextNode.addsprite("screenbutton.png").pos(17,213).setevent(EVENT_UNTOUCH,screenshot);
@@ -99,10 +103,11 @@ class MenuControl extends ContextObject{
     }
     
     function changenight(n){
-        flagnight=1-flagnight;
-        n.texture("nightbutton"+str(flagnight)+".png");
+        enableNight = 1- enableNight;
+        n.texture("nightbutton"+str(1-enableNight)+".png");
         var grounds = global.context[0].grounds;
-        if(flagnight==0){
+        rewriteconfig();
+        if(enableNight && flagnight == 0){
             global.context[0].contextNode.texture("800480night.jpg");
             global.context[0].menu.color(50,50,60,100);
             global.context[0].contextNode.get(1).color(50,50,60,100);
@@ -113,18 +118,16 @@ class MenuControl extends ContextObject{
                 }
                 else{
                     grounds[i].objnode.color(50,50,60,100);
-                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=549){
-                        //trace("draw light", grounds[i].objectid);
+                    //if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=549 || grounds[i].objectid >= 567 && grounds[i].objectid <= 569){
+                    if(checkNightBuild(grounds[i].objectid))
+                    {
                         var lightpng = sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        //spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
                         
-//                        grounds[i].contextNode.add(sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1),1,1);
                     }
                     else if(grounds[i].objectid==0){
                         lightpng = sprite("empire"+str(grounds[i].empireLevel)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        //spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
                         grounds[i].showYanhua();
                     }
                 }
@@ -141,7 +144,9 @@ class MenuControl extends ContextObject{
                 }
                 else{
                     grounds[i].objnode.color(100,100,100,100);
-                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544||grounds[i].objectid==0){
+                    //if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544||grounds[i].objectid==0){
+                    if(checkNightBuild(grounds[i].objectid))
+                    {
                         grounds[i].contextNode.remove(1);
                     }
                     if(grounds[i].objectid == 0)
@@ -229,20 +234,6 @@ class MenuControl extends ContextObject{
             {
                 changeMusic();
             }
-            /*
-            flagmusic = 1-flagmusic;
-
-            musicbutton.texture("musicbutton"+str(flagmusic)+".png");
-            rewriteconfig();
-            if(flagmusic == 1){
-                music = createaudio(musiclist[len(musiclist)-1]);
-                if(music != null)
-                    music.play(-1);
-            }
-            else{
-                music.stop();
-            }
-            */
         }
     }
 

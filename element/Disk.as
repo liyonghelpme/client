@@ -20,11 +20,11 @@ class Disk extends ContextObject{
         contextname = "dialog-disk";
         contextNode = null;
         lock = 0;
-        Degree = 360/len(DiskRewards);
+        Degree = 360/len(DiskRewards[0]);
 
         global.timer.addlistener(-1, this);
     }
-
+    var state = 0;
     function paintNode(){
         contextNode = sprite("diskback.jpg", ARGB_8888).anchor(50,50).pos(400,240);
         disk = contextNode.addsprite("dragonDisk.png").anchor(50, 50).pos(274, 225);
@@ -57,19 +57,80 @@ class Disk extends ContextObject{
 
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(752, 47).setevent(EVENT_UNTOUCH, closedialog);
 
+        contextNode.addsprite("changeDisk.png").pos(713, 404).anchor(50, 50).setevent(EVENT_UNTOUCH, refreshDisk).scale(80);
+        showWord = contextNode.addlabel("", null, 20, FONT_NORMAL, 200, 0, ALIGN_LEFT).pos(535, 281).color(100, 0, 0, 100);
 
     }
-        
+    var showWord = null;
+    var play = 1;
+    function refreshDisk()
+    {
+        if(lock == 0)
+        {
+            lock = 1;
+            state += 1;
+            state %= 3;
+            if(state == 0)
+            {
+                play = 1;
+                disk.texture("dragonDisk.png");
+                showWord.visible(0);
+                but1.texture("boxbutton1.png");
+                but2.texture("boxbutton4.png");
+            }
+            else if(state == 1)
+            {
+
+                disk.texture("powDisk.png");
+                var nob = global.user.getValue("nobility");
+                play = 1;
+                showWord.visible(0);
+                but1.texture("boxbutton1.png");
+                but2.texture("boxbutton4.png");
+                if(nob < 3)
+                {
+                    play = 0;
+                    showWord.text("你需要升级到男爵才可以使用战斗力转盘，开启战争模式可以提升爵位！");
+                    showWord.visible(1);
+                    but1.texture("boxbutton2.png");
+                    but2.texture("boxbutton2.png");
+                }
+                    
+            }
+            else
+            {
+                disk.texture("caeDisk.png");
+                play = 1;
+                nob = global.user.getValue("nobility");
+                showWord.visible(0);
+                but1.texture("boxbutton1.png");
+                but2.texture("boxbutton4.png");
+                if(nob < 6)
+                {
+                    play = 0;
+                    showWord.text("你需要升级到子爵才可以使用凯撒币转盘，开启战争模式可以提升爵位！");
+                    showWord.visible(1);
+                    but1.texture("boxbutton2.png");
+                    but2.texture("boxbutton2.png");
+                }
+            }
+
+            lock = 0;
+        }
+    }
     var timeisend = 0;
     function timerefresh()
     {   
         if(lock == 1 && finish == 1)
         {
-            var rew = DiskRewards[result];
+            var rew = DiskRewards[state][result];
             rew = rew.items()[0];
             if(rew[0] != "spe")
             {
-                global.user.changeValueAnimate2(global.context[0].moneyb, rew[0], rew[1], -2);
+                if(rew[0] != "power")
+                    global.user.changeValueAnimate2(global.context[0].moneyb, rew[0], rew[1], -2);
+                else
+                    ChangeSoldier(0, rew[1]);
             }
             else
             {
@@ -80,7 +141,7 @@ class Disk extends ContextObject{
             stoneNum1.text(str(global.user.getValue("dragonStone")));
             caeNum.text(str(global.user.getValue("caesars")));
             caeNum1.text(str(global.user.getValue("caesars")));
-            global.pushContext(this, new Warningdialog([DiskGoods[result], DiskShare, 6]), NonAutoPop);
+            global.pushContext(this, new Warningdialog([DiskGoods[state][result], DiskShare, 6]), NonAutoPop);
 
             finish = 0;
             lock = 0;
@@ -100,12 +161,16 @@ class Disk extends ContextObject{
     function startGame(n, e, p, x, y, points)
     {
         var need;
+        if(lock == 1 || play == 0)
+            return;
+        lock = 1;
         if(p == 0)
         {
             need = global.user.getValue("dragonStone")
             if(need < 1)
             {
                 global.pushContext(null, new Warningdialog(["抱歉，仙龙石不足！ 可以通过杀怪和开宝箱来免费获得仙龙石。", null, 6]), NonAutoPop);
+                lock = 0;
                 return;
             }
         }
@@ -115,15 +180,16 @@ class Disk extends ContextObject{
             if(need < 1)
             {
                 global.pushContext(null, new Warningdialog(["抱歉，凯撒币不足！", null, 6]), NonAutoPop)
+                lock = 0;
                 return;
             }
         }
-        if(lock == 1)
-            return;
-        lock = 1;
+
         finish = 0;
         kind = p;
-        global.http.addrequest(0, "goodsc/startDragon", ["uid", "kind"], [global.userid, p], this, "start");
+        global.http.addrequest(0, "goodsc/startDragon", ["uid", "kind"], [global.userid, state*1000+kind], this, "start");
+        but1.texture("boxbutton2.png");
+        but2.texture("boxbutton2.png");
         
     }
 
@@ -151,8 +217,7 @@ class Disk extends ContextObject{
                 var rot = 360*6-Degree*result;
                 trace("result", c, rot, disk.rotate());
                 disk.rotate(180);
-                but1.texture("boxbutton2.png");
-                but2.texture("boxbutton2.png");
+
 
                 disk.addaction(expio(rotateby(PopTime, rot)) );
                 c_invoke(finishRot, PopTime+200, null);
@@ -160,6 +225,8 @@ class Disk extends ContextObject{
             else
             {
                 lock = 0;
+                but1.texture("boxbutton1.png");
+                but2.texture("boxbutton4.png");
             }
         }
     }

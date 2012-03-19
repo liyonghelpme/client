@@ -150,9 +150,11 @@ class NormalObject extends ContextObject{
         if(classid == DECORATION){
             objnode = sprite("object"+str(objectid-500)+".png", ALPHA_TOUCH).anchor(0,100).pos(0,33*contextid+1);
             
-            if(global.system.flagnight==0){
+            if(global.system.flagnight==0 && global.system.enableNight){
                 objnode.color(50,50,60,100);
-                if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=549){
+                //if(objectid>=512&&objectid<=516 ||objectid>=542&&objectid<=549 || objectid >= 567 && objectid <= 569){
+                if(checkNightBuild(objectid))
+                {
                     //trace("draw light", objectid);
                     var lightpng = sprite("object"+str(objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*contextid+1);
                     contextNode.add(lightpng, 1, 1);
@@ -177,7 +179,7 @@ class NormalObject extends ContextObject{
         else if(contextid == 9){
             contextNode.size(530,283).anchor(50,100);
             objnode = sprite("empire"+str(empireLevel+1)+".png",ALPHA_TOUCH).anchor(50,100).pos(269,283).size(524,398);
-            if(global.system.flagnight==0){
+            if(global.system.flagnight==0 && global.system.enableNight){
                 objnode.color(50,50,60,100);
                 empireLight = sprite("empire"+str(empireLevel+1)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
                 contextNode.add(empireLight,1,1);
