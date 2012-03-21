@@ -204,7 +204,7 @@ class BuildObject extends ContextObject{
         if(state == BUILDING)
             contextNode.color(40,40,40,100);
         else if(state > BUILDING){
-            if(global.system.flagnight==0){
+            if(global.system.flagnight == 0 && global.system.enableNight){
                 contextNode.color(50,50,60,100);
             }
             else{
@@ -241,7 +241,7 @@ class BuildObject extends ContextObject{
             }
             return 0;
         }
-        if(global.system.flagnight==0){
+        if(global.system.flagnight==0 && global.system.enableNight){
             stateNode.color(50,50,60,100);
         }
         else{

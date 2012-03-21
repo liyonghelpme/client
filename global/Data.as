@@ -309,7 +309,8 @@ var Dicts =
 ["HowDra", "You can use Dragon Stone or caesars to play Dragon Wheel. Tip: Dragon Stone can be obtained by opening treasure chesk or killing monsters."],
 ["drumReward", "Click drum icon to get extra silvers during fight! You click [NUM] times and get [MONEY] silvers in the fight!"],
 ["drumFeed", "[NAME] click drum [NUM] times and get [MONEY] silvers as reward, come on to join Miracle Empire!"],
-["", ""],
+["lev1Disk", "You should upgrade to Baron to play this kind of Dragon wheel."],
+["lev2Disk", "You should upgrade to Knight to play this kind of Dragon Wheel."],
 ];
 
 var Names = dict([
@@ -358,7 +359,8 @@ var Names = dict([
 "Lawn","Vine Lamp","Street Lamp","Lamp Post1","Lamp Post2","Flower Lamp","Guideboard","Bench","Well" ,"Magic Well","Purple Flowers","Red Flowers","Orange Flowers","Dark Green Nepenthe","Yellow Nepenthe","Green Nepenthe","Blue Nepenthe","Pink Cherry Tree","Purple Cherry Tree","Lavender Cherry Tree","Red Cherry Tree","Orange Shrubs","Yellow Shrubs","Green Shrubs","Spring Maple Tree","Summer Maple Tree","Autumn Maple Tree","Angel Statue","Rabbit","Moon cakes","Moon Festival Rabbit","Red Candy Lamp","Golden Candy Lamp","Jack-O'-Lantern", "Rose lantern", "Blue Gem latern", "Green Gem latern", "Golden Gem latern", "Purple Gem latern",
 "Santa", "Elegant Xmas tree", "Xmas tree", "Elegant Snowmen", "Snowmen", "Elegant Reindeer", "Reindeer",
 "Palm Tree", "Red Lantern", "Stele", "Tai Miao", "Cross", "Pavilion",
-"Cupid", "Rose Flowers", "Rose Garden", "Love Tree"]],
+"Cupid", "Rose Flowers", "Rose Garden", "Love Tree",
+"Egypt Tower", "Elephant Lamp", "Horse Lamp", ]],
 
 
 ["nobilityname" , ["Civilian", "Baron", "Knight","Count","Bishop","Duke","Emperor"]],
@@ -402,7 +404,7 @@ dict([["req", "dialog-circle"], ["des", ["Add friends", "More friends will bring
 dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "You can send free gifts to your friends.", "send a gift", "hint:visit your friend's territory and tap the gift icon on the left to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]),
 dict([["req", "selectgift"], ["des", ["Request Gift", "Your friends can send free gift to you.", "request a gift", "Hint: visit your friends' territory and tap the gift icon on the left, choose a gift and ask for it"]], ["checknum", 1], ["lev", 5], ["pair", ["askorgive", 1]], ["reward", [300, 10, 0]], ["type", 0], ["id", 11]]),
 dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint:click the treasure chest on the left,you can ask your friends for help,or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]),
-dict([["des", ["Rate", "If you enjoy Miracle Empire, plz give it 5 stars in Market,thx! In return, you will get 10 caesars!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]),
+dict([["des", ["Rate", "If you love our game, help us by rating on Android Market!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]),
 dict([["req", "updatebuilding"], ["des", ["Upgrade cottage", "Upgrading your building will increase their production efficiency.", "upgrade cottage", "hint:click a normal cottage first and then click the upgrade icon"]], ["checknum", 1], ["lev", 6], ["pair", ["ground_id", 101]], ["reward", [500, 20, 0]], ["type", 0], ["id", 14]]),
 dict([["req", "person"], ["des", ["Increase Population!", "House can recruit people. People can build buildings, trained to soldiers.", "increase population", "hint:click a free dwelling house first,then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]),
 dict([["req", "build"], ["des", ["Build house", "House can recruit people. People can build buildings, trained to soldiers.", "build normal house"]], ["checknum", 2], ["lev", 6], ["pair", ["ground_id", 112]], ["reward", [400, 25, 0]], ["type", 0], ["id", 16]]),
@@ -423,7 +425,7 @@ dict([["req", "build"], ["des", ["Build Farmlands", "Crystal farmland can increa
 dict([["req", "build"], ["checknum", 1], ["des", ["Build lumber mill", "Wood and stone can be used to upgrade your buildings and produce weapons.", "build a lumber mill"]], ["lev", 10], ["pair", ["ground_id", 5]], ["reward", [1500, 50, 0]], ["type", 0], ["id", 39]]),
 dict([["req", "wood"], ["des", ["Collect maple woods", "Wood and stone can be used to upgrade your buildings and produce weapons.", "collect maple woods"]], ["checknum", 30], ["lev", 10], ["pair", ["objid", 0]], ["reward", [1500, 60, 0]], ["type", 1], ["id", 40]]),
 dict([["checknum", 5], ["des", ["Invite friends", "More friends will bring more visit rewards...", "invite your friends to join", "hint:enter your friends' list and invite your friends,you can also click menu to invite"]], ["lev", 10], ["reward", [3000, 70, 1]], ["type", 4], ["id", 41]]),
-dict([["req", "completely"], ["des", ["Charge", "You can get bonus rewards for recharging your caesars.", "charge and gain the rewards"]], ["checknum", 1], ["lev", 10], ["pair", []], ["reward", [1000, 200, 1]], ["type", 0], ["id", 42]]),
+dict([["req", "completepay"], ["des", ["Charge", "You can get bonus rewards for recharging your caesars.", "charge and gain the rewards"]], ["checknum", 1], ["lev", 10], ["pair", []], ["reward", [1000, 200, 1]], ["type", 0], ["id", 42]]),
 dict([["req", "build"], ["des", ["Build brick roads", "Decoration can increase population and magic capacity.", "build brick roads"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 500]], ["reward", [600, 30, 0]], ["type", 0], ["id", 43]]),
 dict([["req", "build"], ["des", ["Build Flowerbed", "Decoration can increase population and magic capacity.", "build Flowerbed"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 505]], ["reward", [600, 60, 0]], ["type", 0], ["id", 44]]),
 dict([["req", "build"], ["des", ["Build golden roads", "Decoration can increase population and magic capacity.", "build golden roads"]], ["checknum", 3], ["lev", 11], ["pair", ["ground_id", 504]], ["reward", [1800, 50, 1]], ["type", 0], ["id", 45]]),

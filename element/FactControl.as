@@ -37,7 +37,6 @@ class FactControl extends ContextObject{
             var b=100;
             if(objcontext[i]/1000==3) b=66;
             var fac = objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
-            //spriteManager.getPic("fact"+str(oi)+".png", fac);
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
