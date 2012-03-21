@@ -538,7 +538,9 @@ class CastlePage extends ContextObject{
             if(data.get("id")==1){
                 var pets = data.get("pets");
                 for(var i=0;i<len(pets);i++){
-                    getobjectby(pets[i][2]/RECTMAX,pets[i][2]%RECTMAX).loadpets(pets[i]);
+                    var draBuild = getobjectby(pets[i][2]/RECTMAX,pets[i][2]%RECTMAX);
+                    if(draBuild != null)
+                        draBuild.loadpets(pets[i]);
                 }
             }
         }
