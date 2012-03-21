@@ -9,7 +9,7 @@ class ResourceControl extends ContextObject{
     var btime;
     var slabel;
     var timelabel;
-    const RESOUCE_PRODUCT=[[1000,10,1,1,6],[3000,30,3,3,5],[5000,50,5,5,4],[10000,100,10,10,3],[50000,500,50,50,2],[100000,1000,100,100,1]];
+    const RESOUCE_PRODUCT=[[100,10,1,1,6],[200,20,3,3,5],[300,30,4,4,4],[400,40,5,5,3],[500,50,25,25,2],[1000,100,50,50,1]];
     function ResourceControl(g){
         contextname = "dialog-battle-choosesoldier";
         contextNode = null;
