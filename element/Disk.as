@@ -141,7 +141,8 @@ class Disk extends ContextObject{
             stoneNum1.text(str(global.user.getValue("dragonStone")));
             caeNum.text(str(global.user.getValue("caesars")));
             caeNum1.text(str(global.user.getValue("caesars")));
-            global.pushContext(this, new Warningdialog([DiskGoods[state][result], DiskShare, 6]), NonAutoPop);
+            var showWords = "恭喜你！你得到了"+str(DiskRewards[state][result][1])+global.getStaticString(DiskRewards[state][result][0]);
+            global.pushContext(this, new Warningdialog([showWords, DiskShare, 6]), NonAutoPop);
 
             finish = 0;
             lock = 0;

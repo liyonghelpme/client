@@ -200,6 +200,7 @@ var DiskRewards = [
     ],
 
 ];
+/*
 var DiskGoods = [
     [
     "恭喜你，你的魔法值上限增加1点！",
@@ -236,4 +237,4 @@ var DiskGoods = [
     ],
 
 ];
-
+*/
