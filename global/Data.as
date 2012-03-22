@@ -311,6 +311,13 @@ var Dicts =
 ["drumFeed", "[NAME] click drum [NUM] times and get [MONEY] silvers as reward, come on to join Miracle Empire!"],
 ["lev1Disk", "You should upgrade to Baron to play this kind of Dragon wheel."],
 ["lev2Disk", "You should upgrade to Knight to play this kind of Dragon Wheel."],
+["spe", "lumber"],
+["boundary", "magic capacity"],
+["dragonStone", "Dragon Stone"],
+["power", "soldiers"],
+["", ""],
+["", ""],
+
 ];
 
 var Names = dict([
