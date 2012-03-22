@@ -72,6 +72,10 @@ const stringDict=dict([
 ["downloading", "正在下载相关文件..."],
 ["downMusic", "开启音乐需要下载800K左右音乐文件，是否下载？"],
 ["showDownNow", "为了更好的体验游戏，你需要下载3M左右的图片，建议使用wifi，是否下载？"],
+["boundary", "魔法值上限"],
+["spe", "特殊物品木条"],
+["dragonStone", "仙龙石"],
+["power", "战斗力"],
 ["", ""],
 
 ]);
