@@ -1213,10 +1213,12 @@ class CastlePage extends ContextObject{
                 var today = data.get("today");
                 var todayNum = today.get("todayNum", 0);
                 var totalNum = today.get("totalNum", 0);
+                /*
                 if(totalNum >= 6000 && todayNum >= 100)
                 {
                     global.TooMany = 1;
                 }
+                */
             }
 
             if(newstate < 3)

@@ -137,7 +137,7 @@ class Disk extends ContextObject{
             caeNum.text(str(global.user.getValue("caesars")));
             caeNum1.text(str(global.user.getValue("caesars")));
             var items = DiskRewards[state][result].items();
-            var showWords = "Congrats！ You get "+str(items[0][1])+global.getStaticString(items[0][0]);
+            var showWords = "Congrats！ You get "+str(items[0][1])+" "+global.getStaticString(items[0][0]);
             trace(DiskRewards[state][result][1], global.getStaticString(DiskRewards[state][result][0]));
             global.pushContext(this, new Warningdialog([showWords, DiskShare, 6]), NonAutoPop);
 
