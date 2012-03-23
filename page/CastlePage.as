@@ -1213,12 +1213,25 @@ class CastlePage extends ContextObject{
                 var today = data.get("today");
                 var todayNum = today.get("todayNum", 0);
                 var totalNum = today.get("totalNum", 0);
+                /*
                 if(totalNum >= 6000 && todayNum >= 100)
                 {
                     global.TooMany = 1;
                 }
+                */
             }
 
+            var tp24 = data.get("tp24", 0);
+            if(tp24 == 1)
+            {
+               finishTJAction("3dbc399f-0922-472c-bf51-ae7935be3ce8"); 
+            }
+            var loginYet = data.get("loginYet", 1);
+            if(loginYet == 0)
+            {
+                //show cae add
+                addcmd(dict([["name","oldUser"]]));
+            }
             if(newstate < 3)
                 global.InNew = 1;
             else
@@ -2157,6 +2170,10 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "chat"){
             if(cpid!=0)
                 global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
+        }
+        else if(name == "oldUser")
+        {
+            global.pushContext(null, new Warningdialog([global.getStaticString("oldUser"), null, 1]), NonAutoPop);
         }
     }
     var reqlock=0;

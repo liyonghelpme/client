@@ -315,7 +315,7 @@ var Dicts =
 ["boundary", "magic capacity"],
 ["dragonStone", "Dragon Stone"],
 ["power", "soldiers"],
-["", ""],
+["oldUser", "Welcome back to Miracle Empire! You get 10 caesars!"],
 ["", ""],
 
 ];
@@ -631,7 +631,7 @@ const Tips = dict([
 [12, "You can build Liberty Goddess now! Her performing of magic can help increase population recruit number."],
 [13, "Tip: You will be given many silvers as reward as well as have probability to won caesars by defeating other users."],
 
-[20, "You can upgrade your castle now! Upgrade your castle to Lv.2, your magic capacity will +5!"],
-[30, "You can upgrade your castle to Lv.3 now！You can also build beast god now, which can perform magic to let warrior statue produce castle DTF."]
+[20, "You can upgrade your castle now! Upgrade your castle to Lv. 2, your magic capacity will +5!"],
+[30, "You can upgrade your castle to Lv. 3 now！You can also build beast god now, which can perform magic to let warrior statue produce castle DTF."]
 ]);
 

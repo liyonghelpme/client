@@ -107,6 +107,9 @@ for(var t = 0; t < len(allTex); t++)
 
 var curTex = 0;
 var oneceMax = 0;
+var NewPicTime = 2000;
+var SwitchTime = 4;
+var TotalTime = 10;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
@@ -115,12 +118,12 @@ var percentmax = 0;
                 curTime += 1;
                 src.texture(allTex[curTex]);
                 tar.texture(allTex[(curTex+1)%len(allTex)]);
-                if(curTime == 4 && oneceMax == 0 && curTex < (len(allTex)-1))
+                if(curTime == SwitchTime && oneceMax == 0 && curTex < (len(allTex)-1))
                 {
-                    src.addaction(fadeout(2000));
-                    tar.addaction(fadein(2000));
+                    src.addaction(fadeout(NewPicTime));
+                    tar.addaction(fadein(NewPicTime));
                 }
-                if(curTime >= 8)
+                if(curTime >= TotalTime)
                 {
                     curTime = 0;
                     curTex += 1;
