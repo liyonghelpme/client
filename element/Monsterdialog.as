@@ -217,15 +217,15 @@ class Monsterdialog extends ContextObject{
             var l = global.user.getValue("level");
             if(l<9){
                 exp = (mpower+3)/4;
-                money=(mpower+1)/2*30;
+                money=(mpower+1)/2*5;
             }
             else if(l<15){
                 exp = (mpower*2+4)/5;
-                money=(mpower*3+4)/5*30;
+                money=(mpower*3+4)/5*5;
             }
             else{
                 exp = (mpower+1)/2;
-                money=(mpower*13+19)/20*30;
+                money=(mpower*13+19)/20*5;
             }
             global.user.changeValueAnimate2(m[0],"exp",exp,0);
             global.user.changeValueAnimate2(m[0],"money",money,-2);

@@ -27,9 +27,9 @@ class MagicWarning extends ContextObject{
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
         dialog.usedefaultbutton(2,[global.getStaticString("fullfil"), global.getStaticString("cancel")]);
-        var cae = sprite("mana_big.png").anchor(50,50).pos(56,228).size(40,40);
+        var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
-        cae.addsprite("caesars_big.png").size(32, 32).pos(0, 10);
+        //cae.addsprite("caesars_big.png").size(32, 32).pos(0, 10).size(40, 40);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
         contextNode.add(cae,4);
         timerefresh();

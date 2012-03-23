@@ -18,6 +18,7 @@ const buildcontext = [
 2550, 2551, 1552, 2553, 2554, 2555, 2556,
 1557, 1558, 1559, 2560, 1561, 1562,
 1563, 1564, 2565, 2566,
+1567, 1568, 1569,
 //statue
 2600,2601,2602,2603,2604,2605,
 //dragon disk
@@ -151,9 +152,11 @@ const PETS_UP = [5,6,10,7,12,17];
 const EXTEND_UP=[0,3,3];
 
 //discount sale price
-const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 10000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20];
+const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 10000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20,
+-25, 10000, 9000];
 
-const OBJ_PERSON = [5, 5, 5, 7, 15, 13, 13, 13, 13, 18, 18, 13, 40, 15, 15, 12, 17, 18, 67, 50, 45, 40, 40, 90, 41, 41, 93, 93, 45, 45, 91, 91, 19, 19, 90, 65, 100, 65, 150, 45, 90, -1, 110, 110, 99, 89, 44, 44, 85, 85, -1, -1, 70, 80, 43, 60, 93, 91, 46, 24, 130, 40, 21, -1, 110, -3, 100];
+const OBJ_PERSON = [5, 5, 5, 7, 15, 13, 13, 13, 13, 18, 18, 13, 40, 15, 15, 12, 17, 18, 67, 50, 45, 40, 40, 90, 41, 41, 93, 93, 45, 45, 91, 91, 19, 19, 90, 65, 100, 65, 150, 45, 90, -1, 110, 110, 99, 89, 44, 44, 85, 85, -1, -1, 70, 80, 43, 60, 93, 91, 46, 24, 130, 40, 21, -1, 110, -3, 100,
+130, 72, 70];
 
 const STATUE_PRICE = [10000, -10, 20000, -20, 50000, -50];
 const STATUE_DEFENCE=[600,700,1150,1300,3000,3200];
@@ -180,54 +183,9 @@ const LevAddPer = 100;
 
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
 const UNLOCK = dict(
-[[1, ["object0.png", "object1.png", "object2.png", "room0.png", "room3.png", "room6.png", "room9.png", "camp0.png", "fact0.png", "plant1.png"]], [3, ["camp6.png", "plant2.png"]], [4, ["object3.png", "object61.png", "object66.png", "fact3.png"]], [5, ["object4.png", "object15.png", "room12.png", "room15.png", "room18.png", "room21.png", "plant3.png"]], [6, ["object5.png", "object6.png", "object7.png", "object8.png", "fact6.png"]], [7, ["object9.png", "object10.png", "plant4.png"]], [8, ["object11.png", "object12.png", "object53.png", "object54.png", "room60.png", "room63.png", "room66.png", "room69.png", "fact9.png", "shen0.png"]], [9, ["object13.png", "object55.png", "object56.png", "plant5.png"]], [10, ["object14.png", "object46.png", "object47.png", "object48.png", "object49.png", "room24.png", "room27.png", "room30.png", "room33.png", "fact30.png", "plant6.png"]], [11, ["object16.png", "object20.png", "camp3.png"]], [12, ["object17.png", "object50.png", "room72.png", "camp0.png", "camp1.png", "fact27.png", "shen1.png"]], [13, ["object18.png", "object45.png", "camp2.png", "camp3.png", "plant7.png"]], [14, ["object32.png", "fact15.png"]], [15, ["object19.png", "object33.png", "object34.png", "object44.png", "room36.png", "room39.png", "room42.png", "room45.png", "camp4.png", "camp5.png", "fact12.png"]], [16, ["object28.png", "object29.png", "object30.png", "object31.png", "object57.png", "shen3.png", "plant8.png"]], [17, ["object21.png", "object22.png", "object23.png", "object40.png"]], [18, ["object24.png", "object25.png", "object26.png", "object27.png", "object58.png", "room75.png"]], [19, ["object38.png"]], [20, ["object35.png", "object36.png", "object37.png", "object63.png", "room48.png", "room51.png", "room54.png", "room57.png", "shen2.png", "plant9.png"]], [21, ["object42.png", "object43.png", "object62.png", "fact18.png"]], [22, ["object51.png", "object52.png", "room78.png"]], [23, ["object64.png", "plant10.png"]], [24, ["object59.png", "object65.png","camp9.png", "fact24.png"]], [25, ["object39.png", "object41.png",  "shen20.png", "plant12.png"]], [26, ["plant11.png"]], [29, ["fact21.png"]], [31, ["shen25.png"]]]
+[[1, ["object0.png", "object1.png", "object2.png", "room0.png", "room3.png", "room6.png", "room9.png", "camp0.png", "fact0.png", "plant1.png"]], [3, ["camp6.png", "plant2.png"]], [4, ["object3.png", "object61.png", "object66.png", "fact3.png"]], [5, ["object4.png", "object15.png", "room12.png", "room15.png", "room18.png", "room21.png", "plant3.png"]], [6, ["object5.png", "object6.png", "object7.png", "object8.png", "fact6.png"]], [7, ["object9.png", "object10.png", "plant4.png"]], [8, ["object11.png", "object12.png", "object53.png", "object54.png", "room60.png", "room63.png", "room66.png", "room69.png", "fact9.png", "shen0.png"]], [9, ["object13.png", "object55.png", "object56.png", "plant5.png"]], [10, ["object14.png", "object46.png", "object47.png", "object48.png", "object49.png", "room24.png", "room27.png", "room30.png", "room33.png", "fact30.png", "plant6.png"]], [11, ["object16.png", "object20.png", "camp3.png"]], [12, ["object17.png", "object50.png", "room72.png", "camp0.png", "camp1.png", "fact27.png", "shen1.png"]], [13, ["object18.png", "object45.png", "camp2.png", "camp3.png", "plant7.png"]], [14, ["object32.png", "fact15.png"]], [15, ["object19.png", "object33.png", "object34.png", "object44.png", "room36.png", "room39.png", "room42.png", "room45.png", "camp4.png", "camp5.png", "fact12.png"]], [16, ["object28.png", "object29.png", "object30.png", "object31.png", "object57.png", "shen3.png", "plant8.png"]], [17, ["object21.png", "object22.png", "object23.png", "object40.png"]], [18, ["object24.png", "object25.png", "object26.png", "object27.png", "object58.png", "room75.png"]], [19, ["object38.png"]], [20, ["object35.png", "object36.png", "object37.png", "object63.png", "room48.png", "room51.png", "room54.png", "room57.png", "shen2.png", "plant9.png"]], [21, ["object42.png", "object43.png", "object62.png", "fact18.png"]], [22, ["object51.png", "object52.png", "room78.png"]], [23, ["object64.png", "plant10.png"]], [24, ["object59.png", "object65.png","camp9.png", "fact24.png"]], [25, ["object39.png", "object41.png",  "shen20.png", "plant12.png"]], [26, ["plant11.png", "object67.png"]], [27, ["object68.png", "object69.png"]], [29, ["fact21.png"]], [31, ["shen25.png"]]]
 
 );
-/*
-const UNLOCK = [
-null,
-null,
-"90,object0.png;90,object1.png;90,object2.png",
-"50,plant2.png",
-"50,fact3.png;90,object3.png",
-"90,object4.png;50,room12.png;50,plant3.png",
-"90,object5.png;50,fact6.png",
-"90,object11.png;50,plant4.png",
-"90,object12.png;50,room60.png;25,shen0.png;50,fact9.png",
-"90,object13.png;50,plant5.png",
-"90,object14.png;90,object20.png;50,farm2.png;50,plant6.png;50,room24.png;33,farm5.png",
-"90,object15.png;50,camp3.png",
-"90,object16.png;25,shen1.png",
-"90,object17.png;50,plant7.png",
-"90,object18.png;90,wood1.png;50,fact15.png",
-"90,object19.png;90,object28.png;33,room36.png;50,fact12.png",
-"90,object21.png;50,plant8.png;25,shen3.png",
-"90,wood2.png",
-"90,object24.png;33,farm6.png",
-"90,object32.png;90,object38.png",
-"50,farm3.png;50,plant9.png;33,room48.png;25,shen2.png",
-"50,fact18.png;90,wood3.png",
-"90,stone1.png",
-"50,plant10.png",
-"50,fact24.png;90,stone2.png",
-"90,object35.png;50,plant12.png;90,wood5.png",
-"50,plant11.png",
-"90,stone3.png",
-"90,wood4.png",
-"50,fact21.png",
-"90,stone5.png;50,farm4.png;90,stone4.png",
-"",
-"50,build602.png",
-"",
-"50,build603.png",
-"",
-"",
-"50,build604.png",
-"",
-"",
-"50,build605.png;90,object46.png;90,object47.png;90,object48.png;90,object49"
-];
-*/
 
 const waitaction1 = repeat(animate(2000,"wait1.png","wait2.png","wait3.png","wait4.png","wait5.png","wait6.png","wait7.png","wait8.png","wait9.png","wait10.png","wait11.png","wait12.png","wait13.png","wait14.png","wait15.png","wait16.png","wait17.png","wait18.png","wait19.png","wait20.png"));
 
@@ -786,6 +744,7 @@ class GlobalController{
         co.global = self;
         co.self = co;
         co.contextLevel = currentLevel;
+        //trace("current lev", currentLevel, flagnew, co.contextname);
         if(auto == NotAdd)
             shotscreen.add(co.getNode());
         else if(auto == NewQuit)
@@ -794,13 +753,22 @@ class GlobalController{
             newQuit = co;
         }
         else if(currentLevel == 0)
+        {
             screen.add(co.getNode());
+        }
+        else if(flagnew == 1 && (co.contextname == "dialog-reward-levelup" || co.contextname == "dialog-rename"))//newUser pop dialog at dialogscreen 
+        {
+            trace("add shot");
+            shotscreen.add(co.getNode());
+        }
         else
             dialogscreen.add(co.getNode());
+        /*
         if(flagnew == 1 && auto == NonAutoPop)
         {
             clearShotScreen();
         }
+        */
         if(flagnew == 0 || auto == NotAdd)
             co.getNode().focus(1);
         context[0].hiddentime = 10;
@@ -831,11 +799,12 @@ class GlobalController{
         }
         else 
         {
-            
+            /* 
             if(flagnew == 1)
             {
                 setShotScreen();
             }
+            */
             if(currentLevel < 0)
                 return;
             context[currentLevel].deleteContext();

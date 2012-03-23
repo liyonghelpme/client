@@ -1,4 +1,8 @@
 var TipShow = 0;
+function checkNightBuild(bid)
+{
+    return bid>=512&&bid<=516 || bid>=542&&bid<=549 || bid >= 567 && bid <= 569;
+}
 function showTip()
 {
     var level = global.user.getValue("level");
@@ -138,6 +142,7 @@ const DRAGON_STATE = 4;
 
 //1 1 20 30 20 10 5 5 8
 var DiskRewards = [
+    [
     dict([["boundary", 1]]), //1
     dict([["caesars", 9]]),//1
     dict([["food", 99]]), //20
@@ -147,19 +152,32 @@ var DiskRewards = [
     dict([["food", 999]]),//5
     dict([["caesars", 1]]),//5
     dict([["money", 9999]]),//8
-];
-var DiskGoods = [
-    "Congrats! Your magic capacity add 1!",
-    "Congrats! You get 9 caesars!",
-    "Congrats! You get 99 crops!",
-    "Congrats! You get 1 lumber!",
-    "Congrats! You get 999 silvers!",
-    "Congrats! You get 1 Dragon Stone!",
-    "Congrats! You get 999 crops!",
-    "Congrats! You get 1 caesars!",
-    "Congrats! You get 9999 silvers!",
-];
+    ],
 
+    [
+    dict([["money", 99]]),
+    dict([["food", 999]]),
+    dict([["power", 999]]),
+    dict([["money", 9]]),
+    dict([["food", 99]]),
+    dict([["power", 9]]),
+    dict([["money", 999]]),
+    dict([["food", 9]]),
+    dict([["power", 99]]),
+    ],
+    [
+    dict([["money", 99]]),
+    dict([["food", 999]]),
+    dict([["caesars", 9]]),
+    dict([["money", 9999]]),
+    dict([["food", 99]]),
+    dict([["caesars", 1]]),
+    dict([["money", 999]]),
+    dict([["food", 9]]),
+    dict([["caesars", 99]]),
+    ],
+
+];
 function colorWords(str, width, ew)
 {
     var words = str.split(" ");
@@ -197,6 +215,44 @@ function showWord(text)
         Wordtex = null;
     }
 }
+/*
+var DiskGoods = [
+    [
+    "Congrats! Your magic capacity add 1!",
+    "Congrats! You get 9 caesars!",
+    "Congrats! You get 99 crops!",
+    "Congrats! You get 1 lumber!",
+    "Congrats! You get 999 silvers!",
+    "Congrats! You get 1 Dragon Stone!",
+    "Congrats! You get 999 crops!",
+    "Congrats! You get 1 caesars!",
+    "Congrats! You get 9999 silvers!",
+    ],
+    [
+    "Congrats! You get 99 silvers!",
+    "Congrats! You get 999 crops!",
+    "Congrats! You get 999 soldiers!",
+    "Congrats! You get 9 silvers!",
+    "Congrats! You get 99 crops!",
+    "Congrats! You get 9 soldiers!",
+    "Congrats! You get 999 silvers!",
+    "Congrats! You get 9 crops!",
+    "Congrats! You get 99 soldiers!",
+    ],
+    [
+    "Congrats! You get 99 silvers!",
+    "Congrats! You get 999 crops!",
+    "Congrats! You get 9 caesars!",
+    "Congrats! You get 9999 silvers!",
+    "Congrats! You get 99 crops!",
+    "Congrats! You get 1 caesars!",
+    "Congrats! You get 999 silvers!",
+    "Congrats! You get 9 crops!",
+    "Congrats! You get 99 caesars!",
+    ],
+];
+*/
+
 
 
 

@@ -16,12 +16,13 @@ class SpriteManager
     var downDragonYet = 0;
     var downWarYet = 0;
 
+    var IconPos = 1;
     function SpriteManager(g)
     {
         global = g;
         oldEdition = -1;
-        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
-        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY);
+        askToDown = sprite("downStart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+IconPos*MenuDifY);
+        downloadNode = sprite("small_downback.png").anchor(100, 0).pos(RightMenuAlign, MenuY+IconPos*MenuDifY);
         downbar = downloadNode.addsprite("small_downbar.png").pos(13, 33).size(0, 30);
     }
 
@@ -98,6 +99,7 @@ class SpriteManager
             getDownload(arr, doNothing, DownAllPic);
         checking = 0;
     }
+    var getWarYet = 0;
     function getWar()
     {
         if(downWarYet == 1 && notdownload == 0)

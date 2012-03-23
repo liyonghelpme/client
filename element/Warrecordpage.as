@@ -79,10 +79,20 @@ class Warrecordpage extends ContextObject{
         }
         else//attack Empty
         {
-            var level = getWarrecordList("empLev", datas[index]); 
-            var monavt = items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
-            //spriteManager.getPic("monsteravatar"+str(level)+".jpg", monavt);
-            items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
+            var att = getWarrecordList("kind", datas[index]);
+            //I attack empty
+            if(att == 0)
+            {
+                var level = getWarrecordList("empLev", datas[index]); 
+                var monavt = items[index].addsprite("monsteravatar"+str(level)+".jpg").size(40,40).pos(10,6);
+                items[index].addlabel(global.getEmptyName(getWarrecordList("empGid", datas[index])) ,null,18).pos(58,7).color(0,0,0,100);
+            }
+            //other attack my Empty
+            else
+            {
+                items[index].addsprite(avatar_url(getWarrecordList("eneOtherid", datas[index]))).size(40,40).pos(10,6);
+                items[index].addlabel(getWarrecordList("eneEmpirename", datas[index]),null,18).pos(58,7).color(0,0,0,100);
+            }
         }
         /*
 <<<<<<< HEAD
