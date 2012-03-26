@@ -215,43 +215,6 @@ function showWord(text)
         Wordtex = null;
     }
 }
-/*
-var DiskGoods = [
-    [
-    "Congrats! Your magic capacity add 1!",
-    "Congrats! You get 9 caesars!",
-    "Congrats! You get 99 crops!",
-    "Congrats! You get 1 lumber!",
-    "Congrats! You get 999 silvers!",
-    "Congrats! You get 1 Dragon Stone!",
-    "Congrats! You get 999 crops!",
-    "Congrats! You get 1 caesars!",
-    "Congrats! You get 9999 silvers!",
-    ],
-    [
-    "Congrats! You get 99 silvers!",
-    "Congrats! You get 999 crops!",
-    "Congrats! You get 999 soldiers!",
-    "Congrats! You get 9 silvers!",
-    "Congrats! You get 99 crops!",
-    "Congrats! You get 9 soldiers!",
-    "Congrats! You get 999 silvers!",
-    "Congrats! You get 9 crops!",
-    "Congrats! You get 99 soldiers!",
-    ],
-    [
-    "Congrats! You get 99 silvers!",
-    "Congrats! You get 999 crops!",
-    "Congrats! You get 9 caesars!",
-    "Congrats! You get 9999 silvers!",
-    "Congrats! You get 99 crops!",
-    "Congrats! You get 1 caesars!",
-    "Congrats! You get 999 silvers!",
-    "Congrats! You get 9 crops!",
-    "Congrats! You get 99 caesars!",
-    ],
-];
-*/
 
 
 

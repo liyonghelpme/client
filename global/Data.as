@@ -28,38 +28,38 @@ var Others = dict([
     "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense","the statue of monsters will strengthen the defense"]],
 
 ["newstr", [
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Territory's development needs agriculture, click the free [farmland]\"}",   
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' Click [plant]'}",   
-"{'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'Choose  [wheat]'}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Crop's growth need long time,but we can  accelerate it. Click the busy [farmland]\"}",   
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Click [accelerate]'}",   
-"{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':\"Accelerate crops' growth.\"}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"Your people need food, tap on the idle farmland.\"}",   
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':' Tap the plant icon.'}",   
+"{'cp':[209,181],'cz':[240,240],'type':1,'posi':[17,8],'cmd':'state2over','param':0,'tp':[600,140],'text':'Plant your first crop by tapping on wheat.'}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'select','param':0,'tp':[600,140],'text':\"It takes time to grow crops, but we can accelerate growth time, start by tapping on the busy farmland.\"}",   
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'btclick','param':0,'tp':[600,140],'text':'Tap the clock.'}",   
+"{'cp':[314,342],'cz':[160,60],'gtype':0,'posi':[17,8],'cmd':'speed','param':0,'tp':[600,140],'text':\"Tap Speed Up to accelerate your crop\'s growth\"}",   
 "{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[17,8],'cmd':'state4over','param':0,'tp':[600,140],'text':'Harvest wheat.'}",   
 
 "",
 
 "{'gtype':2,'posi':[17,8],'cmd':'harvest','param':0,'tp':[400,240],'text':'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
-"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"Territory's development needs population, build residential to recruit more people. Click [Build Icon]\"}",   
-"{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Choose  [cottage] '}",   
-"{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':\"Click [yes] after choosing cottage's build location.\"}", 
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'Wow! This residential has recruited people,  click [cottage] to receive them!'}",   
-"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Click a free cottage.'}",    
-"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Click [recruit]'}",   
-"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people. But your territory also needs money, click [bakery]  to collect tax!'}",   
+"{'cp':[35,435],'cz':[80,80],'gtype':1,'posi':[14,13],'cmd':'mclick','param':4,'tp':[200,140],'text':\"An empire needs people to construct buildings and become soldiers. Build home for people to live in. Tap on the Build Icon.\"}",   
+"{'cp':[100,250],'cz':[160,280],'gtype':1,'posi':[14,13],'cmd':'pop','param':2100,'mp':[400,240],'tp':[400,140],'text':' Tap cottage '}",   
+"{'cp':[445,75],'cz':[80,80],'gtype':0,'posi':[14,13],'cmd':'build','param':1,'mp':[400,180],'tp':[600,340],'text':\"Choose a plot of land to build it and tap yes when ready.\"}", 
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state4over','param':0,'tp':[600,140],'text':'People have already moved into this home. Tap on the cottage to recruit them for work.'}",   
+"{'cp':[400,300],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'select','param':0,'tp':[600,140],'text':'Tap on an empty cottage.'}",    
+"{'cp':[328,288],'cz':[120,120],'gtype':0,'posi':[14,15],'cmd':'state2over','param':1,'tp':[600,140],'text':'Tap the recruit icon'}",   
+"{'cp':[400,300],'cz':[160,160],'gtype':0,'posi':[14,10],'cmd':'state4over','param':0,'tp':[600,140],'text':'Your cottage has recruited people, but your empire is also going to need money. Tap on bakery to collect tax from it.'}",   
 
 "",
 
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +Population and business related tasks completed!'}",   
-"{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are  [monsters] robbing your crops in your territory, go to kill them!'}",   
-"{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':'Click [map] to view your territory nearby situation.'}",   
-"{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Click [monster]'}",   
-"{'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'Click [attack]'}",   
-"{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you win! Click [castle] to return your territory.'},",    
-"{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'In the end, give your territory a unique name! Click left-upper  [info bar]'}",   
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Task Two completed+1500+2+10+ Next step +You have recruited people and collected taxes.'}",   
+"{'cp':[106,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':5,'tp':[200,140],'text':'There are monsters pillaging your crops. Kill them and protect your territory.'}",   
+"{'cp':[177,435],'cz':[80,80],'gtype':5,'posi':[14,10],'cmd':'mclick','param':2,'tp':[200,140],'text':\"Tap on the map to see what's going on around you.\"}",   
+"{'cp':[650,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'monster','param':15,'tp':[600,140],'mp':[650,360],'text':'Tap on the monster to attack it.'}",   
+"{'cp':[310,386],'cz':[160,80],'gtype':5,'posi':0,'cmd':'attack','param':1,'tp':[200,140],'mp':[650,360],'text':'Tap attack'}",   
+"{'cp':[450,360],'cz':[120,120],'gtype':4,'posi':0,'cmd':'goback','tp':[600,140],'mp':[650,360],'text':'Congrats, you won! Click on your castle to return to your territory.'},",    
+"{'cp':[120,40],'cz':[240,80],'gtype':0,'posi':[14,10],'cmd':'rename','param':0,'tp':[600,340],'text':'Let everyone know whose territory this is. Give your empire a name!'}",   
 
 "",
 
-"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':'Novice task completed +2000+3+15+Ok+Congrats!You will be a great emperor!'}"]]
+"{'gtype':2,'posi':[14,10],'cmd':'state4over','param':0,'tp':[400,240],'text':\"Novice task completed +2000+3+15+Ok+Congrats!You\'re on your way to becoming a great emperor!\"}"]]
 
 ]);
 
@@ -159,7 +159,7 @@ var Dicts =
 ["nobattle_whenattack", "Attacking will end protect mode"],
 ["attack_whenattacked", "You are already attacking that person"],
 ["attack_whenupdated", "Sorry, player has gone to new map"],
-["attack_whenwon", "Sorry, you have conquered the castal."],
+["attack_whenwon", "Sorry, you have conquered the castle."],
 ["attack_cancel", "Do you really want to cancel the battle?"],
 ["attack_time", "Time"], 
 ["attacktime_notice", "*More cavalry, time shorter"],
@@ -350,8 +350,8 @@ var Names = dict([
 
 ["FACTNAME1" , ["Bakery","Bakery","Bakery","Fruit shop","Fruit shop","Fruit shop","Butcher shop","Butcher shop","Butcher shop","Restaurant","Restaurant","Restaurant","Clinic","Clinic","Clinic","Book Store","Book Store","Book Store","Clothing Store","Clothing Store","Clothing Store","Jewelers","Jewelers","Jewelers","Casino","Casino","Casino","Dojo","Dojo","Dojo", "Fish Market", "Fish Market", "Fish Market"]],
 
-["CAMPNAME" , ["Infantry Camp Lv. 1","Infantry Camp Lv. 2","Infantry Camp Lv. 3","Cavalry Camp Lv. 1","Cavalry Camp Lv. 2","Cavalry Camp Lv. 3","Scout Camp Lv. 1","Scout Camp Lv. 2","Scout Camp Lv. 3", "Arsenal Lv. 1", "Arsenal Lv. 2", "Arsenal Lv. 3"]],
-["CAMPNAME1" , ["Infantry Camp","Infantry Camp","Infantry Camp","Cavalry Camp","Cavalry Camp","Cavalry Camp","Scout Camp","Scout Camp","Scout Camp", "Arsenal", "Arsenal", "Arsenal"]],
+["CAMPNAME" , ["Infantry Camp Lv. 1","Infantry Camp Lv. 2","Infantry Camp Lv. 3","Cavalry Camp Lv. 1","Cavalry Camp Lv. 2","Cavalry Camp Lv. 3","Scout Camp Lv. 1","Scout Camp Lv. 2","Scout Camp Lv. 3", "Workshop Lv. 1", "Workshop Lv. 2", "Workshop Lv. 3"]],
+["CAMPNAME1" , ["Infantry Camp","Infantry Camp","Infantry Camp","Cavalry Camp","Cavalry Camp","Cavalry Camp","Scout Camp","Scout Camp","Scout Camp", "Workshop", "Workshop", "Workshop"]],
 
 ["FARMNAME" , ["","Ordinary Farmland","Crystal Farmland","Gem Farmland","Elf Farmland","Lumber Mill","Stone Quarry"]],
 
@@ -525,7 +525,7 @@ dict([["req", "upgrademap"], ["des", ["Upgrade map", "If you defeat enough enemi
 
 var Statics = 
 [
-"Reach to Lv. 6 to unlock war mode",
+"Reach to Lv. 10 to unlock war mode",
 "Once you have activated War Mode, you can't quit it, please read the HELP documentation for more information.",
 "Congrats, you won!",
 "Sorry, you were defeated.",
@@ -619,19 +619,29 @@ const CallDragon = 1000;
 
 
 const Tips = dict([
-[3, "Night mode will be opened after 8pm everyday, light decors will lighten your empire! You can close it at settings option."],
-[4, "Click castle to see your territory's info, such as attack power, special articles, magic value, resource number, etc."],
-[5, "Some decors can enlarge population capacity, others can enlarge magic capacity."],
-[6, "You can unlock war mode now! Then you can attack other users for more resources, honor, etc."],
-[7, "How to get more silvers&free caesars? Click FAQ button please."],
-[8, "You can build Harvest Goddess now! Her performing of magic can greatly increase crop's yield, she can also one-step harvesting&planting"],
-[9, "After building Dragon wheel, you can use dragon stone to get free caesars!"],
-[10, "You can build Dragon nest now! After building it, you can summon pet, which will help you fight when it grows up."],
-[11, "You can build lumber mill now! Wood is a necessity for upgrading buildings!"],
-[12, "You can build Liberty Goddess now! Her performing of magic can help increase population recruit number."],
-[13, "Tip: You will be given many silvers as reward as well as have probability to won caesars by defeating other users."],
+[3, "Night mode begins everyday at 8 pm. Having lamps and other light decorations will come in handy then. You can toggle night mode under the settings option."],
+[4, "Click on your castle to see your territory's info. Here you can view your attack power, special articles, magic, resources, etc."],
+[5, "Decoration are great for your empire! They can increase your population and magic capacity too!"],
 
-[20, "You can upgrade your castle now! Upgrade your castle to Lv. 2, your magic capacity will +5!"],
-[30, "You can upgrade your castle to Lv. 3 now！You can also build beast god now, which can perform magic to let warrior statue produce castle DTF."]
+[7, "Want to get more silver and/or free caesars? Tap the FAQ button."],
+[8, "You can build Harvest Goddess statue now! The statue can perform magic that will increase your crops' yield as well as one-step harvesting and planting."],
+[9, "Build the Dragon Wheel and then use the Dragon Stone to get FREE caesars."],
+[10, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."],
+
+[11, "Build a lumber mill. Wood is a necessary resource for upgrading buildings."],
+[12, "Build the Population Goddess statue! She can perform magic that increases your population recruitment number."],
+[13, "Tip: You will be given silver as a reward, and you will have a higher probability of winning!"],
+[14, "Cavalry's speed is higher than infantry's."],
+[15, "You can build Dragon nest now. A dragon nest will allow you to raise a pet dragon. When it reaches adulthood, it can help you fight in battles."],
+//[15, "Dragons help defend your empire. You can also train it to increase its ATK."],
+[16, "Build the War God statue! He can perform magic that will increase your ATK power during battles."],
+[18, "Build a stone quarry. Stone is necessary to upgrade buildings."],
+[19, "There are forts scatter around the world map. When you occupy a fort it will produce resouces for you every hour."],
+[20, "You can upgrade your castle to Lv. 2! Upgrading will increase your magic capacity by 5, and your population capacity by 100."],
+[21, "Build the Wealth God Statue! He can perform magic that will increase the taxes that you collect from your shops."],
+[24, "Build a workshop! Workshops produce military weapons."],
+[30, "You can upgrade your castle to lv. 3! Upgrading will increase your magic capacity by 5, and your population capacity by 100."],
+[31, "Build the Beast God Statue! He can perform magic that will increase the defence of your castle."]
+
 ]);
 

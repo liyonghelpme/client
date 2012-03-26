@@ -1,4 +1,6 @@
 import element.TooManyUser;
+import element.Score;
+import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -78,6 +80,7 @@ class CastlePage extends ContextObject{
     var fb;
     var inpos = -140;
     var LoadPage;
+    var rankYet = 1;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -194,8 +197,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    
-    //var actButton;
+     var actButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -211,7 +213,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("actPlant.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
@@ -276,6 +278,21 @@ class CastlePage extends ContextObject{
 
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
+    }
+    function addHeart()
+    {
+        if(rankYet == 0)
+        {
+            //rankYet = 1;
+            setRankYet();
+            trace("rankHeart", global.userid, cuid);
+            global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeart");
+        }
+    }
+    function showAct()
+    {
+        global.pushContext(null, new Score(), NonAutoPop);
+        //global.pushContext(null, new Rank(), NonAutoPop);
     }
     function showTipDia(n, e, p, x, y, points)
     {
@@ -567,6 +584,12 @@ class CastlePage extends ContextObject{
         {
             changeBoundary();
         }
+        else if(p == "rankHeart")
+        {
+            f = global.getfriend(cpid);
+            global.pushContext(null, new Warningdialog(["If "+f.get("empirename")+" is beautiful, you can give "+f.get("name")+" scores. You can only give 1 score to the same friend one day.", null, 4]), NonAutoPop);
+
+        }
     }
     
     function levelup(r,rc,c){
@@ -738,14 +761,17 @@ class CastlePage extends ContextObject{
         friendbutton.texture("friendbutton"+str(friend.friendmode)+".png");
     }
     
+    var curFriend = -1;
     function getfriend(p){
         trace("getfriend", p);
+        curFriend = p;
         hiddentime =10;
         if(p==null||p == cpid){
             return 0;
         }
         else{
             pushdata();
+            //visit yet!
             if(pagedict.get(p,null)!=null){
                 self.pause();
                 cpid = p;
@@ -754,6 +780,7 @@ class CastlePage extends ContextObject{
                 if(p==ppy_userid()){//back
                     flagfriend = 0;
                     showHomeMenu();
+                    //actButton.texture("heart.png");
 
                     fmenu.visible(0);
                 }
@@ -782,6 +809,9 @@ class CastlePage extends ContextObject{
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
                     hideHomeMenu();
+                    if(cpid != 0)
+                        actButton.visible(1);
+                    //actButton.texture("heartPlus.png");
                 }
                 box.setbox(-1,0,0);
                 self.resume();
@@ -790,7 +820,7 @@ class CastlePage extends ContextObject{
                 return 0;
             }
             
-            if(p!=ppy_userid()){
+            if(p!=ppy_userid()){//not visit yet
                 pid = p;
                 global.flock();
                 needlock=1;
@@ -811,21 +841,27 @@ class CastlePage extends ContextObject{
             var mtime=null;
             var mi=-1;
             for(var i=0;i<len(datadict);i++){
-                if(items[i][0]!=ppy_userid()&&(mtime==null||items[i][1][10]<mtime)){
+                if(items[i][0] != ppy_userid())
+                {
+                //if(items[i][0]!=ppy_userid()&&(mtime==null||items[i][1][10]<mtime)){
                     mtime = items[i][1][10];
                     mi = items[i][0];
+                    break;
                 }
             }
             datadict.pop(mi);
             pagedict.pop(mi);
         }
-        var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode);
+
+        var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode, rankYet);
         datadict.update(cpid,data);
         pagedict.update(cpid,contextNode.pos());
     }
 
     function popdata(){
         var data = datadict.get(cpid);
+        rankYet = data[12];
+        trace("pop Rank Yet", rankYet);
         grounds = data[0];
         box.helpperson = data[2];
         box.maxperson = data[3];
@@ -870,7 +906,9 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        //actButton.visible(1);
+        actButton.visible(1);
+        actButton.texture("heart.png");
+        actButton.setevent(EVENT_UNTOUCH, showAct);
         tipButton.visible(1);
         spriteManager.showDownIcon();
     }
@@ -879,13 +917,44 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        //actButton.visible(0);
+        actButton.visible(0);
+        if(rankYet == 0)
+            actButton.texture("heartPlus.png");
+        else 
+            actButton.texture("heartPlus.png", GRAY);
+        actButton.setevent(EVENT_UNTOUCH, addHeart);
         tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
 
+
+    //var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode, rankYet);
+    function setRankYet()
+    {
+        rankYet = 1;
+        actButton.texture("heartPlus.png", GRAY); 
+        var fri = datadict.get(cpid);
+
+        if(fri != null)
+        {
+            fri[12] = 1;        
+        }
+        //friendpredict.update(int(f.get("id")),f);
+        fri = friendpredict.get(cpid);
+        if(fri != null)
+        {
+            fri["rankYet"] = 1;
+        }
+    }
     function getfriendover(data){
+        var fitems = friendpredict.items();
+        if(len(fitems) >= 2)
+        {
+            friendpredict.pop(fitems[0][0]);
+        }
+        trace("perFri len", len(fitems));
         friendpredict.update(pid,data);
+
         if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
@@ -895,6 +964,8 @@ class CastlePage extends ContextObject{
             }
             */
         }
+        rankYet = data.get("rankYet", 0); 
+        trace("first rank", rankYet, data);
         cpid = int(data.get("id"));
         cuid = data.get("frienduserid");
         ccid = data.get("city_id");
@@ -922,6 +993,11 @@ class CastlePage extends ContextObject{
         f.update("empirename",ename);
         
         hideHomeMenu();
+        actButton.visible(1);
+        if(rankYet == 1)
+        {
+            actButton.texture("heartPlus.png", GRAY); 
+        }
 
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
@@ -1195,7 +1271,7 @@ class CastlePage extends ContextObject{
         pagedict = dict();
         pagedict.update(cpid,contextNode.pos());
         initlock = 1;
-        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
+        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),1,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 
     var statestr="";
@@ -1225,6 +1301,7 @@ class CastlePage extends ContextObject{
             if(tp24 == 1)
             {
                finishTJAction("3dbc399f-0922-472c-bf51-ae7935be3ce8"); 
+               trace("finish tp");
             }
             var loginYet = data.get("loginYet", 1);
             if(loginYet == 0)

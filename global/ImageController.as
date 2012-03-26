@@ -1,6 +1,6 @@
     //"downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png", 
 class ImageController{
-    const images1 = ["disk0.png"];
+    const images1 = ["disk0.png", "heart.png", "heartPlus.png", "rankHeart.png"];
     //"disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png", "drum.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "object67.png", "object67_l.png", "object68.png", "object68_l.png", "object69.png", "object69_l.png"];
     const images2 = ["help.png"];
     var images;

@@ -6,7 +6,7 @@ class Rank extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite("foodRank.jpg").anchor(50,50).pos(400,240);
+        contextNode = sprite("rankHeart.jpg").anchor(50,50).pos(400,240);
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
@@ -28,6 +28,11 @@ class Rank extends ContextObject{
             }
         }
     }
+    var pos = 
+    [
+    300, 122, 300, 200, 300, 298, 300, 398, 
+    613, 122, 613, 200, 613, 298, 613, 398];
+
     function showData(data)
     {
         nameNode.removefromparent();
@@ -65,6 +70,7 @@ class Rank extends ContextObject{
             head.scale(s);
 
             nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(curX, curY).color(0, 0, 0, 100);
+            //nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(pos[i*2], pos[i*2+1]).color(0, 0, 0, 100);
             nameNode.addlabel(str(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
 
             curY += difY;
@@ -74,8 +80,8 @@ class Rank extends ContextObject{
         var myrank = data.get("myrank")[0]+1;
         var food = data.get("myrank")[1];
         trace("show rank user", myrank);
-        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(245, 47).color(0, 0, 0, 100);
-        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(625, 47).color(0, 0, 0, 100);
+        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(642, 56).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

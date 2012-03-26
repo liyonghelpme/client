@@ -7,7 +7,7 @@ class GodControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 7;
-    var objlevel = [3, 8, 10, 12,16,20,25,31];
+    var objlevel = [3, 8, 15, 12,16,20,25,31];
     var objcontext = [3700, 0, -1000, 1,3,2,20,25];//buildId
     function GodControl(){
         contextname = "element-build-god";

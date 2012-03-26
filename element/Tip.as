@@ -20,7 +20,7 @@ class Tip extends ContextObject{
 
         var level = global.user.getValue("level");
         var str = Tips.get(level, "");
-        showLabel = contextNode.addlabel(str, null, 25, FONT_NORMAL, 309, 0, ALIGN_LEFT).anchor(0, 50).pos(100, 110).color(0, 0, 0, 100);
+        showLabel = contextNode.addlabel(str, null, 20, FONT_NORMAL, 309, 0, ALIGN_LEFT).anchor(0, 50).pos(100, 110).color(0, 0, 0, 100);
     }
     function checkFAQ()
     {

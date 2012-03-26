@@ -319,7 +319,7 @@ if(sta != null)
     MONSTERNAME = sta.get("MONSTERNAME");
 }
 
-const WarMode_Lev = 6;
+const WarMode_Lev = 10;
 
 var image=dict();    
 function getimage(str){
@@ -428,7 +428,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",10],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
+        var build = dict([["size",3],["level",15],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
 
         builddict.update(1000,build);
 

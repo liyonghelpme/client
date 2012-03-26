@@ -16,7 +16,7 @@ class SpriteManager
     var downDragonYet = 0;
     var downWarYet = 0;
 
-    var IconPos = 1;
+    var IconPos = 2;
     function SpriteManager(g)
     {
         global = g;
