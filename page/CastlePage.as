@@ -535,7 +535,7 @@ class CastlePage extends ContextObject{
                 friendpredict.clear();
             }
             f = json_loads(c);
-            friendpredict.update(int(f.get("id")),f);
+            //friendpredict.update(int(f.get("id")),f);
         }
         else if(p=="getmypets"){
             var data=json_loads(c);
@@ -867,7 +867,7 @@ class CastlePage extends ContextObject{
         if(p==null||p==ppy_userid()||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
             return 0;
         }
-        friendpredict.update(p,1);
+        //friendpredict.update(p,1);
         global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"addprefriend");
     }
     function showHomeMenu()
@@ -890,7 +890,7 @@ class CastlePage extends ContextObject{
     }
 
     function getfriendover(data){
-        friendpredict.update(pid,data);
+        //friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
