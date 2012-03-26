@@ -1220,6 +1220,8 @@ class CastlePage extends ContextObject{
                 }
                 */
             }
+            var deadDay = data.get("deadDay", 7);
+            addcmd(dict([["name","deadDay"], ["num", deadDay]]));
 
             if(newstate < 3)
                 global.InNew = 1;
@@ -2159,6 +2161,11 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "chat"){
             if(cpid!=0)
                 global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
+        }
+        else if(name == "deadDay")
+        {
+            var num = cmd.get("num");
+            global.pushContext(null, new Warningdialog(["There are "+str(num)+" days left, the game will close.", null, 1]), NonAutoPop);
         }
     }
     var reqlock=0;
