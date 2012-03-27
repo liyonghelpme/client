@@ -885,7 +885,7 @@ class CastlePage extends ContextObject{
     }
 
     function getfriendover(data){
-        friendpredict.update(pid,data);
+        //friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
@@ -1221,7 +1221,7 @@ class CastlePage extends ContextObject{
                 */
             }
             var deadDay = data.get("deadDay", 7);
-            addcmd(dict([["name","deadDay"], ["num", deadDay]]));
+            //addcmd(dict([["name","deadDay"], ["num", deadDay]]));
 
             if(newstate < 3)
                 global.InNew = 1;
