@@ -64,6 +64,7 @@ class BuyControl extends ContextObject{
     function buycaesars2(pid, ret, tid, receipt, param){
         if(ret==1){
             var num = buystr[selecttab].split("+");
+            trace("buy caesars", tid, receipt, num[2]);
             global.http.addrequest(0,"completepay",["uid","tid","papapas","signature"],[global.userid,tid,int(num[2]),receipt],self,"buyover");
         }
     }

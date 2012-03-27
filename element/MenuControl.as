@@ -207,17 +207,21 @@ class MenuControl extends ContextObject{
         pid = con.get("pid");
         trace("pid", pid, con);
 
-        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]),global.getStaticString(35), pid);
+        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]), NewsURL, pid, postSuc, null);
         global.context[0].menu.visible(1);
         if(global.task.tasktype==5){
             global.task.inctaskstep(1);
         }
     }
+    function postSuc()
+    {
+        trace("post suc");
+    }
 
     /*
     function shotover(n,b,p){
         trace("shotover",p);
-        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]),global.getStaticString(35),b.bitmap2bytes("png"));
+        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]), NewURL, b.bitmap2bytes("png"));
         global.context[0].menu.visible(1);
         if(global.task.tasktype==5){
             global.task.inctaskstep(1);
