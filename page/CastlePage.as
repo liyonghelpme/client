@@ -1,6 +1,7 @@
 import element.TooManyUser;
 import element.Score;
 import element.Rank;
+import element.OldUser;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -2250,7 +2251,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         }
         else if(name == "oldUser")
         {
-            global.pushContext(null, new Warningdialog([global.getStaticString("oldUser"), null, 1]), NonAutoPop);
+            global.pushContext(null, new OldUser(), NonAutoPop);
+            //global.pushContext(null, new Warningdialog([global.getStaticString("oldUser"), null, 1]), NonAutoPop);
         }
     }
     var reqlock=0;
