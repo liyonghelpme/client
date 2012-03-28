@@ -215,6 +215,7 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
@@ -232,7 +233,7 @@ class CastlePage extends ContextObject{
         friendinfolabel = b.addlabel("",null,14).color(0,0,0,100).anchor(0,50).pos(0,50).pos(95,45);
         friendmoney = 0;
         /*以上要改*/
-        allybutton = fmenu.addsprite("bindButton.png").anchor(100,0).pos(780,210).setevent(EVENT_UNTOUCH,ally);
+        allybutton = fmenu.addsprite("bindButton.png").anchor(100,0).pos(780, MenuY).setevent(EVENT_UNTOUCH,ally);
         giftbutton=fmenu.addsprite("giftButton.png").pos(20,280).setevent(EVENT_UNTOUCH,gotoGift);
         medalbutton = fmenu.addsprite("medalIcon.png").pos(20,140).setevent(EVENT_UNTOUCH,gotomedal);
         favatar = b.addsprite().pos(12,8).size(50,50);
@@ -588,7 +589,7 @@ class CastlePage extends ContextObject{
         else if(p == "rankHeart")
         {
             f = global.getfriend(cpid);
-            global.pushContext(null, new Warningdialog(["If "+f.get("empirename")+" is beautiful, you can give "+f.get("name")+" scores. You can only give 1 score to the same friend one day.", null, 4]), NonAutoPop);
+            global.pushContext(null, new Warningdialog(["If "+f.get("empirename")+" is beautiful, you can give "+f.get("name")+" scores. You can only give 1 score to the same friend per day.", null, 4]), NonAutoPop);
 
         }
     }
@@ -948,6 +949,7 @@ class CastlePage extends ContextObject{
         }
     }
     function getfriendover(data){
+        /*
         var fitems = friendpredict.items();
         if(len(fitems) >= 2)
         {
@@ -956,6 +958,8 @@ class CastlePage extends ContextObject{
         trace("perFri len", len(fitems));
         friendpredict.update(pid,data);
 
+        */
+        //friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
@@ -966,7 +970,7 @@ class CastlePage extends ContextObject{
             */
         }
         rankYet = data.get("rankYet", 0); 
-        trace("first rank", rankYet, data);
+        //trace("first rank", rankYet, data);
         cpid = int(data.get("id"));
         cuid = data.get("frienduserid");
         ccid = data.get("city_id");
@@ -994,7 +998,8 @@ class CastlePage extends ContextObject{
         f.update("empirename",ename);
         
         hideHomeMenu();
-        actButton.visible(1);
+        if(cpid != 0)
+            actButton.visible(1);
         if(rankYet == 1)
         {
             actButton.texture("heartPlus.png", GRAY); 
@@ -1297,6 +1302,8 @@ class CastlePage extends ContextObject{
                 }
                 */
             }
+            var deadDay = data.get("deadDay", 7);
+            //addcmd(dict([["name","deadDay"], ["num", deadDay]]));
 
             var tp24 = data.get("tp24", 0);
             if(tp24 == 1)
@@ -1811,6 +1818,7 @@ class CastlePage extends ContextObject{
                 if(newstate < 3 && global.flagnew == 0){
                     trace("update flagnew", global.flagnew);
                     global.pushContext(self,new NewControl(newstate),NotAdd);
+                    actButton.visible(0);
                 }
                 else{//new user not popup foodlost
                     var monNum = warmap.monstercontroller.monsternum;

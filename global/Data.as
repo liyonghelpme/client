@@ -9,7 +9,7 @@ var Others = dict([
 ["items" , []],//update News information
 ["timestr", ["1 hour","6 hours","24 hours"]],
 
-["ganname1", ["You can only send every friend one gift one day", "You can ask for gift from every friend once a day"]],
+["ganname1", ["You can only send every friend one gift per day", "You can ask for gift from every friend once a day"]],
 
 ["btname1", ["Delay", "Refresh"]],
 

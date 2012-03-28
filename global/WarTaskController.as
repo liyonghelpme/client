@@ -16,11 +16,8 @@ class WarTaskController extends ContextObject{
         enternode.setevent(EVENT_UNTOUCH,enterwartask);
         wartasktype =-1;
         wartasklib = dict();
-        var wartaskfile = c_res_file("wartask.txt");
-        if(wartaskfile == null)
-            return;
         var wartask = WarTasks;
-        trace("wartask");
+        //trace("wartask");
         for(var i=0;i<len(wartask);i++){
             var taskobj = wartask[i];//json_loads(wartask[i]);
             //trace("taskobj", taskobj);
@@ -62,6 +59,7 @@ class WarTaskController extends ContextObject{
     }
     
     function loadwartask(id,step){
+        trace("wartask", id, step);
         if(wartasklib.get(id)==null){
             wartaskid = -1;
             wartasktype = -1;

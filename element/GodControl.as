@@ -43,16 +43,18 @@ class GodControl extends ContextObject{
         trace("index", index, obji);
         if(index == DISK)
         {
+
             var disk = objs[i].addsprite("disk0.png").anchor(50,100).pos(74,160);
             disk.prepare();
             var oldSize = disk.size();
             var sx = min(120*100/oldSize[0], 140*100/oldSize[1]);
             disk.scale(sx);
             objs[i].addlabel(DISK_NAME[0],null,16).pos(74,10).anchor(50,0).color(0,0,0,100);
+            trace("index", index, obji);
             if(DISK_LEV[0] > global.user.getValue("level"))
             {
                 objs[i].texture("dialogelement_lock2.png");
-                objs[i].addlabel(DISK_LEV[0],null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
+                objs[i].addlabel(str(DISK_LEV[0]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
             }
             else
             {
@@ -63,6 +65,7 @@ class GodControl extends ContextObject{
                     objs[i].color(60,60,60,100);
                     objs[i].setevent(EVENT_TOUCH | EVENT_MOVE | EVENT_UNTOUCH, null, i);
                 }
+                trace("index", index, obji);
                     
                 var color = 0;
                 if(global.user.getValue("money") < DISK_MONEY[0])
@@ -71,6 +74,7 @@ class GodControl extends ContextObject{
                     buildable[i].update(global.getStaticString("money"), DISK_MONEY[0]-global.user.getValue("money"));
                     color = 100;
                 }
+                trace("index", index, obji);
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
 
                 objs[i].addlabel(str(DISK_MONEY[0]),null,16).pos(34,202).color(color,0,0,100);

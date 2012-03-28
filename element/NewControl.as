@@ -313,6 +313,7 @@ class NewControl extends ContextObject{
             global.wartask.initwartask(0,0);
             var cm = dict([["name","daily"],["bonus",3000]]);
             global.context[0].addcmd(cm);
+            global.context[0].actButton.visible(1);
             global.lastpage[1]=400;
             global.user.changeValue("money",3000);
             spriteManager.addDownIcon();

@@ -114,30 +114,30 @@ class EmpireControl extends ContextObject{
                 offy=56;
             }
             else{
-                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(220,offy).color(0,0,0,100);
+                var cdl=element.addlabel(str(global.user.getValue("citydefence")),null,20).anchor(0,50).pos(240,offy).color(0,0,0,100);
                 global.user.initText("citydefence",cdl);
-                element.addsprite("adddefence2.png").pos(312,offy-15).setevent(EVENT_UNTOUCH,adddefence);
+                element.addsprite("adddefence2.png").pos(400,offy-15).setevent(EVENT_UNTOUCH,adddefence);
             }
-            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(230,offy+36).color(0,0,0,100);
-            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(252,offy+72).color(0,0,0,100);
+            element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(260,offy+36).color(0,0,0,100);
+            element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(260,offy+72).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(340,offy+142).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(300,offy+142).color(0,0,0,100);
             //element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
             rate = global.user.getValue("mana")*140/global.user.getValue("boundary");
             if(global.user.getValue("nobility")>=0){
 
-                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 242).size(rate, 18);
-                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 242).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(420, 235).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(367, 235).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(155, 242).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(200, 242).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(400, 235).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(330, 235).setevent(EVENT_UNTOUCH, checkTime);
             }
             else
             {
-                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(220, 223).size(rate, 18);
-                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(268, 223).color(100, 100, 100);
-                element.addsprite("adddefence2.png").pos(420, 217).setevent(EVENT_UNTOUCH,addMagic);
-                element.addsprite("timeLeft.png").pos(367, 217).setevent(EVENT_UNTOUCH, checkTime);
+                manabar = element.addsprite("magic_bar.png").anchor(0, 0).pos(155, 223).size(rate, 18);
+                manalab = element.addlabel(str(global.user.getValue("mana"))+"/"+str(global.user.getValue("boundary")), null, 14, FONT_BOLD).anchor(0, 0).pos(200, 223).color(100, 100, 100);
+                element.addsprite("adddefence2.png").pos(400, 217).setevent(EVENT_UNTOUCH,addMagic);
+                element.addsprite("timeLeft.png").pos(330, 217).setevent(EVENT_UNTOUCH, checkTime);
             }
         }
         else if(p==1){
