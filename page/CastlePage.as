@@ -198,7 +198,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-     var actButton;
+    var actButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
