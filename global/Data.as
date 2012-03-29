@@ -24,7 +24,7 @@ var Others = dict([
     "crops yield increase 60%", "population recruited increase 60%", "tax from stores increase 60%", "Soldier's ATK increase 15%", 
     "crops yield increase 80%", "population recruited increase 80%", "tax from stores increase 80%", "Soldier's ATK increase 20%", 
     "crops yield increase 100%", "population recruited increase 100%", "tax from stores increase 100%", "Soldier's ATK increase 25%", 
-    "rewards for visiting friends, increase 5 coins", "rewards for visiting friends, increase 10 coins", "rewards for visiting friends, increase 20 coins", "rewards for visiting friends, increase 30 coins", "rewards for visiting friends, increase 50 coins", 
+    "get 5 more coins for visiting friends", "get 10 more coins for visiting friends", "get 20 more coins for visiting friends", "get 30 more coins for visiting friends", "get 50 more coins for visiting friends", 
     "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense"]], 
 
 ["newstr", [
@@ -75,7 +75,7 @@ var Dicts =
 
 ["request_done", "Request handled"], 
 
-["friend_notload", "Sorry, can't get your friend list"], ["friend_ally_notice", "You can visit your friend and ally with him. Allies can help you fight!"], ["friend_invite", "Come to creat miracles with me!"], ["friend_invite_success", "Invited successfully!"], 
+["friend_notload", "Sorry, can't retrieve your friend list"], ["friend_ally_notice", "You can visit your friend and ally with him. Allies can help you fight!"], ["friend_invite", "Come to creat miracles with me!"], ["friend_invite_success", "Invited successfully!"], 
 
 ["nest_style_cannotchange", "Your dragon is growing, you can't change your dragon type now!"], 
 
@@ -83,7 +83,7 @@ var Dicts =
 ["nest_talk_noon", "Good afternoon, I'm hungry, would you feed me, please"], 
 ["nest_talk_night", "Good night, early to bed, early to rise"], 
 
-["nest_talk_other", "I'll be stronger after training, come and train with me now!"], 
+["nest_talk_other", "I need to train to become stronger. Train with me now."], 
 
 ["nest_talk_feedover", "I've eaten enough, thanks"], ["nest_talk_notfeedover", "I'm hungry now, would you feed me?"], 
 
@@ -106,7 +106,7 @@ var Dicts =
 
 ["share_format", "[NAME][DESCRIBE], Come on! join [NAME] and build your own miracle empire together!"], 
 
-["share_box_format", "[NAME] has got a mysterious treasure chest, but he(she) can't unlock it without your help, Let's go and help him(her)!"], 
+["share_box_format", "[NAME] has received a mysterious treasure chest but can't open it without your help!"], 
 
 ["share_petup_1", "you have evolved your pet successfully"], ["share_petup_2", "'s baby dragon has grown up"], 
 
@@ -187,10 +187,10 @@ var Dicts =
 
 ["sendFight", "Sent forces: "], ["totalFight", "Total ATK"], ["lostFight", "Lost forces"], ["returnFight", "Return forces"], ["defenceFight", "Defense"], ["lostDefence", "Lost defense"], ["leftDefence", "Left defense"], ["lostCoin", "Lost coin"], ["share", "Share"], ["ok", "Ok"], ["attack", "Attack"], ["defence", "Defense"], ["retry", "Retry"], 
 ["cancel", "Cancel"], ["netFail1", "Could not connect to the game server. Please try again later."], ["netFail2", "Could not connect to the game server. Please try again later."], ["taskShare", "Congrats, you finish this task!"], ["shareReward", "Share with your friends to get 100 silvers."], ["complete", "Complete"], ["giveup", "Give up"], ["giveupwarn", "You will lose one chance to get reward if you give up this task."], ["playWithme", "Come create miracles with me!"], ["goSee", "Have a look"], ["IKnow", "Got it"], ["genAdd", "Ordinary"], ["fastAdd", "Fast"], 
-["chooseDefence", "Defense increase you choose: "], 
+["chooseDefence", "Increases Defense: "], 
 ["youLeft", "Left "], 
 ["allyNum", " Ally number"], 
-["sureToally", "Sure to ally with him/her?"], 
+["sureToally", "Are you sure you want to ally with this friend?"], 
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"], 
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
 ["cancelAlly", "Are you sure you want to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], 
@@ -229,7 +229,7 @@ var Dicts =
 ["helpMe", "Help"], 
 ["askFri", "Ask help"], 
 ["unknown", "Unknown"], 
-["getDragon", "has got the Dragon's nest, but still need your help to activate, let's go and help him!"], 
+["getDragon", "has built a Dragon's nest but needs your help to activate it!"], 
 ["callPet", "Congrats! You have activated the Dragon's nest, now you can summon your pet!"],
 ["myPet", "my pet"], 
 ["dragonPost", "[NAME] has activated Dragon's nest successfully, join the Miracle Empire and have fun!"], ["curPet", "current pet"], ["changeMode", "change mode"], 
@@ -252,7 +252,7 @@ var Dicts =
 ["next", "Next"], 
 ["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure you want to purchase [NAME]?"], ["acc", "SpeedUp"], 
 ["leftTime", "Time left "], 
-["noBattle", "War mode unable"], 
+["noBattle", "War mode not enabled"], 
 ["winNum", "wins"], 
 ["netRefresh", "Could not connect to the game server. Please try again later."], ["fresh", "refresh"], 
 
@@ -260,7 +260,7 @@ var Dicts =
 ["peopUp", " pop capacity"], 
 ["sureTosell", "Are you sure you want to sell [NAME]?"], 
 ["sell", "Sell"], 
-["toDetect", "use on detecting"], 
+["toDetect", "Spy on enemies"], 
 ["unitPower", "unit fighting"], 
 ["chooseStone", "Choose stone"], 
 ["noUpdate", "No new update"], 
@@ -323,8 +323,8 @@ var Dicts =
 ["EmpireNotOpen", "Sorry, higher level castle is not opened."], 
 ["sendCatapult", "Dispatch"], 
 ["notSendCata", "No"], 
-["petNeedDownload", "Summon pet need to download pictures, sure to download?"], 
-["warNeedDownload", "Enter into war map need to download pictures, sure to download?"], 
+["petNeedDownload", "Summon pet requires you to download pictures, proceed?"], 
+["warNeedDownload", "Entering war map requires you to download pictures, proceed?"], 
 ["downloading", "Downloading pictures..."], 
 ["SendCata", "Do you want to dispatch your [NUM] catapults?"], 
 ["Buy", "Buy"], 
@@ -334,34 +334,34 @@ var Dicts =
 ["ItGrowUp", "It grows up!"], 
 ["Produce", "Produce"], 
 ["Fast", "Fast"], 
-["CataExplain", "Catapults only can be used when attack others, and at that time it will have extra ATK. [NAME] ATK [ATK]"], 
+["CataExplain", "Catapults only can be used when attack others; they help boost your ATK. [NAME] ATK [ATK]"], 
 ["CardAddOne", "Your magic capacity will increase by 1 when you get the violet card."], 
 ["CardAddTwo", "Reach the top level and your magic capacity will increase by 2."], 
 
-["sendSuc", "request successfully sent!"], 
+["sendSuc", "request sent successfully!"], 
 ["downloading", "Downloading files..."], 
-["downMusic", "You should download 800K music files before enjoy music. Sure to download?"], 
-["showDownNow", "To have good game experience, you need download 3M pictures. Sure to download?"], 
+["downMusic", "You need to download 800K music files to experience the game music. Proceed?"], 
+["showDownNow", "To experience the most out of the game you need to download 3M pictures. Proceed?"], 
 
 ["Build", "Build"], 
 
-["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Come on to build it!"], 
+["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Build it!"], 
 ["OrdStart", "Ordinary"], 
 ["SpeStart", "Special"], 
-["PlayingDra", "[NAME] is playing Dragon Wheel, come on to join us in Miracle Empire!"], 
-["DraNot", "Sorry, you don't have enough Dragon stone, you can get it for free by opening treasure chest or killing monsters!"], 
+["PlayingDra", "[NAME] is playing Dragon Wheel, join "playingDra" in Miracle Empire!"], 
+["DraNot", "Sorry, you don't have enough Dragon stones, you can get more by opening treasure chest or killing monsters!"], 
 
 ["CaeNot", "Sorry, you don't have enough caesars!"], 
-["HowDra", "You can use Dragon Stone or caesars to play Dragon Wheel. Tip: Dragon Stone can be obtained by opening treasure chesk or killing monsters."], 
-["drumReward", "Click drum icon to get extra silvers during fight! You click [NUM] times and get [MONEY] silvers in the fight!"], 
-["drumFeed", "[NAME] click drum [NUM] times and get [MONEY] silvers as reward, come on to join Miracle Empire!"], 
-["lev1Disk", "You should upgrade to Baron to play this kind of Dragon wheel."], 
-["lev2Disk", "You should upgrade to Knight to play this kind of Dragon Wheel."], 
+["HowDra", "You can use Dragon Stones or caesars to play Dragon Wheel. Tip: Dragon Stones can be obtained by opening treasure chesk or killing monsters."], 
+["drumReward", "Tap the drum icon to get extra silver during fights! You tapped [NUM] times and get [MONEY] silvers in the fight!"], 
+["drumFeed", "[NAME] tapped drum [NUM] times and got [MONEY] silver in Miracle Empire!"], 
+["lev1Disk", "Upgrade to Baron to play this kind of Dragon wheel."], 
+["lev2Disk", "Upgrade to Knight to play this kind of Dragon Wheel."], 
 ["spe", "lumber"], 
 ["boundary", "Magic Capacity"], 
 ["dragonStone", "Dragon Stone"], 
 ["power", "soldiers"], 
-["oldUser", "Welcome back to Miracle Empire! You get 10 caesars!"], 
+["oldUser", "Welcome back to Miracle Empire! You got 10 caesars for playing!"], 
 ["", ""], 
 
 ];
@@ -578,13 +578,13 @@ var Statics =
 "[ENAME] is too powerful, strengthen your military power and fight another day!", 
 "Congrats! you have defeated [ENAME], go on fighting and gain glory!", 
 "How to add power", 
-"[USERNAME] has entered a new map. Come on, Let's build our own Miracle Empire with [USERNAME]!", 
-"[USERNAME]has upgraded to [NOBNAME], Come on, Let's build our own Miracle Empire with [USERNAME]!", 
-"[USERNAME] has upgraded the territory, Come on, Let's build our own Miracle Empire with [USERNAME]!", 
-"[USERNAME] has defeated the invaders, Come on, Let's build our own Miracle Empire with [USERNAME]!", 
-"[USERNAME] is defeated by [ENAME], Let's go and get revenge for [USERNAME]!", 
+"[USERNAME] has entered a new map. Come on. Let's build our own Miracle Empire with [USERNAME]!", 
+"[USERNAME] has upgraded to [NOBNAME]. Come on. Let's build our own Miracle Empire with [USERNAME]!", 
+"[USERNAME] has gotten more territory. Come on. Let's build our own Miracle Empire with [USERNAME]!", 
+"[USERNAME] has defeated the invaders. Come on, Let's build our own Miracle Empire with [USERNAME]!", 
+"[USERNAME] has been defeated by [ENAME]. Let's go and get revenge for [USERNAME]!", 
 "[USERNAME]'s army has been defeated, gather your troops and help [USERNAME] out!", 
-"[USERNAME] has defeated [ENAME], Let's build our own Miracle Empire with [USERNAME]!", 
+"[USERNAME] has defeated [ENAME]. Let's build our own Miracle Empire with [USERNAME]!", 
 "You must reach Lv. 15 to unlock one-step finishing", 
 "Sorry, you don't have spare farmland for one-step finishing", 
 "Sorry, your crops are growing, please try again later", 
