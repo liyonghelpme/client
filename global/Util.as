@@ -1,4 +1,35 @@
 var TipShow = 0;
+function showName(name)
+{
+    var newName = "";
+    /*
+    var start = 0;
+    var countWord = 0;
+    var hanZi = 0;
+    for(var i = 0; i < len(name) && countWord < 4; i++)
+    {
+        if(name[i] & 0x80 != 0)//first char of HanZi
+        {
+            start = 1;
+            hanZi = 1;
+        }
+        else if(start == 1 && hanZi == 2)//third char of HanZi
+        {
+            start = 0;
+            countWord++;
+        }
+        else if(start == 1)//read Char
+            hanZi++;
+        else
+            countWord++;
+    }
+    */
+    if(len(name) > 6)
+        newName = substring(name, 0, 6)+"..";
+    else
+        newName = name;
+    return newName;
+}
 function checkNightBuild(bid)
 {
     return bid>=512&&bid<=516 || bid>=542&&bid<=549 || bid >= 567 && bid <= 569;

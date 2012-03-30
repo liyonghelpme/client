@@ -1,7 +1,7 @@
-//const RateURL = "http: //papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
-const RateURL = "market: //details?id=com.papaya.miracle_beta1";
-const NewsURL = "market: //details?id=com.papaya.miracle_beta1";
-//const NewsURL = "http: //papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
+//const RateURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
+const RateURL = "market://details?id=com.papaya.miracle1";
+const NewsURL = "market://details?id=com.papaya.miracle1";
+//const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
 
 var Others = dict([
 ["SPYITEMS", ["win: ", "fight: ", "soldier force: ", "ally force: ", "defense: "]], 
@@ -69,7 +69,7 @@ var Dicts =
 
 ["money", "silver"], ["caesars", "caesars"], ["food", "food"], ["labor", "Idle population"], ["person", "population"], ["stone", "stone"], ["wood", "wood"], ["caesar", "Caesar"], 
 
-["share", "Share"], ["back", "Back"], ["change", "Done"], ["ok", "Yes"], ["send", "Send"], ["cancel", "Cancel"], ["system", "System"], ["devine", "Display"], ["retry", "Retry"], ["help", "Help"], ["close", "Close"], ["openbox", "Open"], ["askforhelp", "Ask friend"], 
+["share", "Share"], ["back", "Back"], ["change", "Done"], ["send", "Send"], ["cancel", "Cancel"], ["system", "System"], ["devine", "Display"], ["retry", "Retry"], ["help", "Help"], ["close", "Close"], ["openbox", "Open"], ["askforhelp", "Ask friend"], 
 
 ["loading_str", "loading..."], ["self", "me"], 
 
@@ -190,10 +190,10 @@ var Dicts =
 ["chooseDefence", "Increases Defense: "], 
 ["youLeft", "Left "], 
 ["allyNum", " Ally number"], 
-["sureToally", "Are you sure you want to ally with this friend?"], 
+["sureToally", "Do you want to ally with this friend?"], 
 ["taskFinishPost", "[NAME] complete [TASK] task, come on to build your own miracle empire with me!"], 
 ["allyOk", "You will be reinforced from your allies when you are at war. You need Caesar to destroy the covenant, choose ally carefully"], 
-["cancelAlly", "Are you sure you want to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishing"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], 
+["cancelAlly", "Do you want to cancel alliance with "], ["makeAlly", "Ally"], ["punish", "Punishment"], ["allyUp", "The number of your allies has reached its maximum"], ["add", "Add"], ["close", "Close"], 
 
 ["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], ["hintPower", "hint: Your army's ATK will increase if you are on line"], ["youWin", "You win"], ["attackIt", "Attack!"], ["inBuild", "building"], ["inCall", "recruiting"], ["inProduct", "producing"], ["training", "Training"], ["planting", "Planting"], ["wooding", "producing"], ["stoning", "mining"], ["proDefing", "producing"], ["blessing", "performing"], ["free", "free"], ["egging", "incubating"], ["growing", "growing"], ["shopping", "Purchase"], ["buyCaesar", "Buy Caesar coins"], ["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"], ["population", "the Liberty Goddess can increase the number of people you can recruit by performing magic"], ["war", "the god of war can strenthen your soldier's ATK by performing magic"], ["beast", "the god of beast will increase your defense by performing magic"], 
 
@@ -233,14 +233,14 @@ var Dicts =
 ["callPet", "Congrats! You have activated the Dragon's nest, now you can summon your pet!"],
 ["myPet", "my pet"], 
 ["dragonPost", "[NAME] has activated Dragon's nest successfully, join the Miracle Empire and have fun!"], ["curPet", "current pet"], ["changeMode", "change mode"], 
-["petAtt", "[NAME] will increase [POWER] fighting point every growing point, are you sure changing mode?"], ["freeFee", "for free"], ["changeAtt", "Change attribute"], ["petPro", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] ATK. Are you sure you want to change?"], 
+["petAtt", "[NAME] will increase [POWER] fighting point every growing point, are you sure changing mode?"], ["freeFee", "for free"], ["changeAtt", "Change attribute"], ["petPro", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] ATK. Do you want to change?"], 
 ["spy_result_format", "You lost [NUM] scouts, get [WHO]'s castle info: "], 
 ["spy_result2_noenemy", "There is no army attacking the castle at this time."], 
 ["spy_result2_format", "There are [NUM] army attacking the castle, the fast one arrive at [TIME]."], 
 ["spy_result2_mode3_format", "Total ATK [NUM]"], 
 
 ["choosePet", "Choose pet"], 
-["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Are you sure your want to summon?"], 
+["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Do your want to summon?"], 
 ["inProtect", "Protecting"], 
 ["attNoProtect", "You can't enable protec mode while attacking others."], 
 ["openProtect", "enable protection"], 
@@ -250,7 +250,7 @@ var Dicts =
 ["cityLevelUp", ", your territory is level up!"], 
 ["oneLevel", ", you need more experiences to upgrade your territory!"], 
 ["next", "Next"], 
-["choosePlant", "Choose Crops"], ["sureToBuy", "Are you sure you want to purchase [NAME]?"], ["acc", "SpeedUp"], 
+["choosePlant", "Choose Crops"], ["sureToBuy", "Do you want to purchase [NAME]?"], ["acc", "SpeedUp"], 
 ["leftTime", "Time left "], 
 ["noBattle", "War mode not enabled"], 
 ["winNum", "wins"], 
@@ -282,7 +282,7 @@ var Dicts =
 ["incomePost", "[NAME] has gained tribute rewards from colonies, join the Miracle Empire and have fun"], 
 ["chooseWood", "Choose lumber"], 
 ["youNeed", "You still lack "], ["speNeed", "Need more special materials"], 
-["fullfilMana", "Refil magic"], ["fullfil", "Refil"], ["curMana", "Magic Value"],
+["fullfilMana", "Refill magic"], ["fullfil", "Refill"], ["curMana", "Magic Value"],
 ["nextTime", "next charge time "], 
 
 ["You", "You"], ["StillNeed", " still need "], 
@@ -313,6 +313,7 @@ var Dicts =
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"], 
 ["Download", "Downloading"], 
 ["LackMagic", "Sorry, your magic isn't enough, fill it up now? Tips: every 5 mins will recover 1 magic."], 
+["LackMaCap", "Sorry, you don't have enough magic capacity. You can buy some decors to increase it."],
 ["infpower", "Infantry: "], 
 ["cavpower", "Cavalry: "], 
 ["addsoldier", "Reinforce"], 
@@ -348,7 +349,7 @@ var Dicts =
 ["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Build it!"], 
 ["OrdStart", "Ordinary"], 
 ["SpeStart", "Special"], 
-["PlayingDra", "[NAME] is playing Dragon Wheel, join "playingDra" in Miracle Empire!"], 
+["PlayingDra", "[NAME] is playing Dragon Wheel, join \"playingDra\" in Miracle Empire!"], 
 ["DraNot", "Sorry, you don't have enough Dragon stones, you can get more by opening treasure chest or killing monsters!"], 
 
 ["CaeNot", "Sorry, you don't have enough caesars!"], 
@@ -368,7 +369,7 @@ var Dicts =
 
 var Names = dict([
 
-["ROOMNAME1", ["Orange Cottage", "Orange Cottage", "Orange Cottage", "Red Cottage", "Red Cottage", "Red Cottage", "Blue Cottage", "Blue Cottage", "Blue Cottage", "Purple Cottage", "Purple Cottage", "Purple Cottage", "Orange House", "Orange House", "Orange House", "Red House", "Red House", "Red House", "Blue House", "Blue House", "Blue House", "Purple House", "Purple House", "Purple House", "Orange Villa", "Orange Villa", "Orange Villa", "Red Villa", "Red Villa", "Red Villa", "Blue Villa", "Blue Villa", "Blue Villa", "Purple Villa", "Purple Villa", "Purple Villa", "Orange Mansion", "Orange Mansion", "Orange Mansion", "Red Mansion", "Red Mansion", "Red Mansion", "Blue Mansion", "Blue Mansion", "Blue Mansion", "Purple Mansion", "Purple Mansion", "Purple Mansion", "Orange Manor", "Orange Manor", "Orange Manor", "Red Manor", "Red Manor", "Red Manor", "Blue Manor", "Blue Manor", "Blue Manor", "Purple Manor", "Purple Manor", "Purple Manor", "Orange Magical Manor", "Orange Magical Manor", "Orange Magical Manor", "Red Magical Manor", "Red Magical Manor", "Red Magical Manor", "Blue Magical Manor", "Blue Magical Manor", "Blue Magical Manor", "Purple Magical Manor", "Purple Magical Manor", "Purple Magical Manor", "Orange Palace", "Orange Palace", "Orange Palace", "Golden Palace", "Golden Palace", "Golden Palace", 
+["ROOMNAME1", ["Orange Cottage", "Orange Cottage", "Orange Cottage", "Red Cottage", "Red Cottage", "Red Cottage", "Blue Cottage", "Blue Cottage", "Blue Cottage", "Purple Cottage", "Purple Cottage", "Purple Cottage", "Orange House", "Orange House", "Orange House", "Red House", "Red House", "Red House", "Blue House", "Blue House", "Blue House", "Purple House", "Purple House", "Purple House", "Orange Villa", "Orange Villa", "Orange Villa", "Red Villa", "Red Villa", "Red Villa", "Blue Villa", "Blue Villa", "Blue Villa", "Purple Villa", "Purple Villa", "Purple Villa", "Orange Mansion", "Orange Mansion", "Orange Mansion", "Red Mansion", "Red Mansion", "Red Mansion", "Blue Mansion", "Blue Mansion", "Blue Mansion", "Purple Mansion", "Purple Mansion", "Purple Mansion", "Orange Manor", "Orange Manor", "Orange Manor", "Red Manor", "Red Manor", "Red Manor", "Blue Manor", "Blue Manor", "Blue Manor", "Purple Manor", "Purple Manor", "Purple Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Orange Palace", "Orange Palace", "Orange Palace", "Golden Palace", "Golden Palace", "Golden Palace", 
 "Attic", "Attic", "Attic"
 ]], 
 ["ROOMNAME" , ["Orange Cottage Lv. 1", "Orange Cottage Lv. 2", "Orange Cottage Lv. 3", "Red Cottage Lv. 1", "Red Cottage Lv. 2", "Red Cottage Lv. 3", "Blue Cottage Lv. 1", "Blue Cottage Lv. 2", "Blue Cottage Lv. 3", "Purple Cottage Lv. 1", "Purple Cottage Lv. 2", "Purple Cottage Lv. 3", "Orange House Lv. 1", "Orange House Lv. 2", "Orange House Lv. 3", "Red House Lv. 1", "Red House Lv. 2", "Red House Lv. 3", "Blue House Lv. 1", "Blue House Lv. 2", "Blue House Lv. 3", "Purple House Lv. 1", "Purple House Lv. 2", "Purple House Lv. 3", "Orange Villa Lv. 1", "Orange Villa Lv. 2", "Orange Villa Lv. 3", "Red Villa Lv. 1", "Red Villa Lv. 2", "Red Villa Lv. 3", "Blue Villa Lv. 1", "Blue Villa Lv. 2", "Blue Villa Lv. 3", "Purple Villa Lv. 1", "Purple Villa Lv. 2", "Purple Villa Lv. 3", "Orange Mansion Lv. 1", "Orange Mansion Lv. 2", "Orange Mansion Lv. 3", "Red Mansion Lv. 1", "Red Mansion Lv. 2", "Red Mansion Lv. 3", "Blue Mansion Lv. 1", "Blue Mansion Lv. 2", "Blue Mansion Lv. 3", "Purple Mansion Lv. 1", "Purple Mansion Lv. 2", "Purple Mansion Lv. 3", "Orange Manor Lv. 1", "Orange Manor Lv. 2", "Orange Manor Lv. 3", "Red Manor Lv. 1", "Red Manor Lv. 2", "Red Manor Lv. 3", "Blue Manor Lv. 1", "Blue Manor Lv. 2", "Blue Manor Lv. 3", "Purple Manor Lv. 1", "Purple Manor Lv. 2", "Purple Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", 
@@ -409,7 +410,7 @@ var Names = dict([
 ["OBJNAME" , [
 "Brick Road", "Concrete Road", "Red Brick Road", "Stone Road", "Golden Road", 
 "White Flowerbed", "Red Flowerbed", "Pink Flowerbed", "Yellow Flowerbed", "Blue Flowerbed", " Purple Flowerbed", 
-"Lawn", "Vine Lamp", "Street Lamp", "Lamp Post1", "Lamp Post2", "Flower Lamp", "Guideboard", "Bench", "Well" , "Magic Well", "Purple Flowers", "Red Flowers", "Orange Flowers", "Dark Green Nepenthe", "Yellow Nepenthe", "Green Nepenthe", "Blue Nepenthe", "Pink Cherry Tree", "Purple Cherry Tree", "Lavender Cherry Tree", "Red Cherry Tree", "Orange Shrubs", "Yellow Shrubs", "Green Shrubs", "Spring Maple Tree", "Summer Maple Tree", "Autumn Maple Tree", "Angel Statue", "Rabbit", "Moon cakes", "Moon Festival Rabbit", "Red Candy Lamp", "Golden Candy Lamp", "Jack-O'-Lantern", "Rose lantern", "Blue Gem latern", "Green Gem latern", "Golden Gem latern", "Purple Gem latern", 
+"Lawn", "Vine Lamp", "Street Lamp", "Lamp Post1", "Lamp Post2", "Flower Lamp", "Guideboard", "Bench", "Well" , "Magic Well", "Purple Flowers", "Red Flowers", "Orange Flowers", "Green Nepenthe", "Yellow Nepenthe", "Green Nepenthe", "Blue Nepenthe", "Pink Cherry Tree", "Purple Cherry Tree", "Violet Cherry Tree", "Red Cherry Tree", "Orange Shrubs", "Yellow Shrubs", "Green Shrubs", "Spring Maple Tree", "Summer Maple Tree", "Autumn Maple Tree", "Angel Statue", "Rabbit", "Moon cakes", "Moon Festival Rabbit", "Red Candy Lamp", "Golden Candy Lamp", "Jack-O'-Lantern", "Rose lantern", "Blue Gem latern", "Green Gem latern", "Golden Gem latern", "Purple Gem latern", 
 "Santa", "Elegant Xmas tree", "Xmas tree", "Elegant Snowmen", "Snowmen", "Elegant Reindeer", "Reindeer", 
 "Palm Tree", "Red Lantern", "Stele", "Tai Miao", "Cross", "Pavilion", 
 "Cupid", "Rose Flowers", "Rose Garden", "Love Tree", 
@@ -459,17 +460,17 @@ dict([["req", "selectgift"], ["des", ["Request Gift", "Your friends can send fre
 dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint: click the treasure chest on the left, you can ask your friends for help, or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]), 
 dict([["des", ["Rate", "If you love our game, help us by rating on Android Market!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade cottage", "Upgrading buildings will increase production efficiency.", "upgrade cottage", "hint: click a normal cottage first and then click the upgrade icon"]], ["checknum", 1], ["lev", 6], ["pair", ["ground_id", 101]], ["reward", [500, 20, 0]], ["type", 0], ["id", 14]]), 
-dict([["req", "person"], ["des", ["Increase Population!", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "increase population", "hint: click a free dwelling house first, then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]), 
-dict([["req", "build"], ["des", ["Build house", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "build normal house"]], ["checknum", 2], ["lev", 6], ["pair", ["ground_id", 112]], ["reward", [400, 25, 0]], ["type", 0], ["id", 16]]), 
-dict([["req", "planting"], ["des", ["Plant carrots", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant carrots"]], ["checknum", 6], ["lev", 6], ["pair", ["object_id", 1, "type", 0]], ["reward", [600, 30, 0]], ["type", 0], ["id", 17]]), 
+dict([["req", "person"], ["des", ["Increase Population!", "Homes provide people with a place to live.", "increase population", "hint: click a free dwelling house first, then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]), 
+dict([["req", "build"], ["des", ["Build house", "Homes provide people with a place to live.", "build normal house"]], ["checknum", 2], ["lev", 6], ["pair", ["ground_id", 112]], ["reward", [400, 25, 0]], ["type", 0], ["id", 16]]), 
+dict([["req", "planting"], ["des", ["Plant carrots", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant carrots"]], ["checknum", 6], ["lev", 6], ["pair", ["object_id", 1, "type", 0]], ["reward", [600, 30, 0]], ["type", 0], ["id", 17]]), 
 dict([["req", "money"], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from normal butcher shop"]], ["checknum", 1500], ["lev", 6], ["pair", ["bid", 6]], ["reward", [800, 80, 1]], ["type", 1], ["id", 18]]), 
 dict([["req", "helpopen"], ["des", ["Open Treasure Chest!", "Help your friends open treasure chest and get rewards.", "open treasure chest of your friends", "hint: visit your friends' territory, click the treasure chest icon"]], ["checknum", 5], ["lev", 7], ["pair", []], ["reward", [1000, 25, 0]], ["type", 0], ["id", 25]]), 
 dict([["des", ["Invite friends", "Add a friend for more fun and more rewards, it’s a social game!", "invite friends", "Hint: Tap on your friends list and invite your friends on Papaya to play with you. You can also do this by tapping on the invite button in the menu"]], ["checknum", 3], ["lev", 7], ["reward", [2000, 50, 1]], ["type", 4], ["id", 26]]), 
-dict([["req", "planting"], ["checknum", 4], ["des", ["Plant corns", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant corns"]], ["lev", 8], ["pair", ["object_id", 2, "type", 0]], ["reward", [1200, 48, 1]], ["type", 0], ["id", 27]]), 
+dict([["req", "planting"], ["checknum", 4], ["des", ["Plant corns", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant corns"]], ["lev", 8], ["pair", ["object_id", 2, "type", 0]], ["reward", [1200, 48, 1]], ["type", 0], ["id", 27]]), 
 dict([["req", "build"], ["des", ["Summon Goddess", "God and Goddess statues can perform miracles and magic!", "summon Harvest Goddess", "hint: click the building icon first, then click the miracle page to build Harvest Goddess"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 400]], ["reward", [1000, 40, 0]], ["type", 0], ["id", 28]]), 
 dict([["req", "godbless"], ["des", ["Perform magic", "God and Goddess statues can perform miracles and magic!", "Harvest Goddess performs magic"]], ["checknum", 1], ["lev", 8], ["pair", ["godtype", 0]], ["reward", [1000, 30, 1]], ["type", 0], ["id", 29]]), 
-dict([["req", "planting"], ["des", ["Plant pineapple", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant pineapple"]], ["checknum", 6], ["lev", 8], ["pair", ["object_id", 3, "type", 0]], ["reward", [1200, 36, 0]], ["type", 0], ["id", 30]]), 
-dict([["req", "build"], ["des", ["Build house", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "build a Magical Manor"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 160]], ["reward", [1000, 50, 1]], ["type", 0], ["id", 31]]), 
+dict([["req", "planting"], ["des", ["Plant pineapple", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant pineapple"]], ["checknum", 6], ["lev", 8], ["pair", ["object_id", 3, "type", 0]], ["reward", [1200, 36, 0]], ["type", 0], ["id", 30]]), 
+dict([["req", "build"], ["des", ["Build house", "Homes provide people with a place to live.", "build a Magical Manor"]], ["checknum", 1], ["lev", 8], ["pair", ["ground_id", 160]], ["reward", [1000, 50, 1]], ["type", 0], ["id", 31]]), 
 dict([["checknum", 1], ["des", ["Show your territory", "Take a screenshot of your territory and share it with your friends.", "screenshot and share", "hint: click menu button first and then click screenshot button"]], ["lev", 8], ["reward", [800, 30, 0]], ["type", 5], ["id", 32]]), 
 dict([["des", ["Help friends", "Help your friends remove pests from their farmland, and you will be rewarded.", "eliminate negative state for friends", "hint: visit your friends' territory and help them killing worms, weeding, repairing or cleaning"]], ["checknum", 1], ["lev", 9], ["reward", [1200, 40, 0]], ["type", 6], ["id", 35]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade bakery", "Advanced buildings will help facilitate the development of your territory!", "upgrade a normal bakery"]], ["checknum", 1], ["lev", 9], ["pair", ["ground_id", 301]], ["reward", [1000, 40, 0]], ["type", 0], ["id", 36]]), 
@@ -482,14 +483,14 @@ dict([["req", "completepay"], ["des", ["Charge", "You can get bonus rewards for 
 dict([["req", "build"], ["des", ["Build brick roads", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build brick roads"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 500]], ["reward", [600, 30, 0]], ["type", 0], ["id", 43]]), 
 dict([["req", "build"], ["des", ["Build Flowerbed", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build Flowerbed"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 505]], ["reward", [600, 60, 0]], ["type", 0], ["id", 44]]), 
 dict([["req", "build"], ["des", ["Build golden roads", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build golden roads"]], ["checknum", 3], ["lev", 11], ["pair", ["ground_id", 504]], ["reward", [1800, 50, 1]], ["type", 0], ["id", 45]]), 
-dict([["req", "build"], ["des", ["Build villa", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "build a villa"]], ["checknum", 2], ["lev", 11], ["pair", ["ground_id", 124]], ["reward", [1200, 30, 0]], ["type", 0], ["id", 46]]), 
+dict([["req", "build"], ["des", ["Build villa", "Homes provide people with a place to live.", "build a villa"]], ["checknum", 2], ["lev", 11], ["pair", ["ground_id", 124]], ["reward", [1200, 30, 0]], ["type", 0], ["id", 46]]), 
 dict([["req", "build"], ["checknum", 1], ["des", ["Build vine lamp", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build vine lamp"]], ["lev", 11], ["pair", ["ground_id", 512]], ["reward", [1200, 30, 1]], ["type", 0], ["id", 47]]), 
 dict([["req", "build"], ["des", ["Build magic well", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build a magic well"]], ["checknum", 1], ["lev", 11], ["pair", ["ground_id", 520]], ["reward", [1200, 90, 1]], ["type", 0], ["id", 48]]), 
-dict([["req", "planting"], ["des", ["Plant eggplants", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant eggplants"]], ["checknum", 6], ["lev", 11], ["pair", ["object_id", 4, "type", 0]], ["reward", [1300, 100, 0]], ["type", 0], ["id", 49]]), 
-dict([["req", "planting"], ["des", ["Plant tomatoes", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant tomatoes"]], ["checknum", 6], ["lev", 11], ["pair", ["object_id", 5, "type", 0]], ["reward", [1300, 50, 1]], ["type", 0], ["id", 50]]), 
+dict([["req", "planting"], ["des", ["Plant eggplants", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant eggplants"]], ["checknum", 6], ["lev", 11], ["pair", ["object_id", 4, "type", 0]], ["reward", [1300, 100, 0]], ["type", 0], ["id", 49]]), 
+dict([["req", "planting"], ["des", ["Plant tomatoes", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant tomatoes"]], ["checknum", 6], ["lev", 11], ["pair", ["object_id", 5, "type", 0]], ["reward", [1300, 50, 1]], ["type", 0], ["id", 50]]), 
 dict([["req", "build"], ["checknum", 1], ["des", ["Summon Goddess", "God and Goddess statues can perform miracles and magic!", "summon Liberty Goddess"]], ["lev", 12], ["pair", ["ground_id", 401]], ["reward", [1500, 50, 0]], ["type", 0], ["id", 51]]), 
 dict([["req", "godbless"], ["checknum", 1], ["des", ["Perform magic", "God and Goddess statues can perform miracles and magic!", "Liberty Goddess performs magic"]], ["lev", 12], ["pair", ["godtype", 1]], ["reward", [1100, 50, 1]], ["type", 0], ["id", 52]]), 
-dict([["req", "person"], ["des", ["Increase population", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "increase your population"]], ["checknum", 100], ["lev", 12], ["pair", []], ["reward", [1500, 100, 0]], ["type", 1], ["id", 53]]), 
+dict([["req", "person"], ["des", ["Increase population", "Homes provide people with a place to live. You need more people to have more soldiers.", "increase your population"]], ["checknum", 100], ["lev", 12], ["pair", []], ["reward", [1500, 100, 0]], ["type", 1], ["id", 53]]), 
 dict([["req", "money"], ["checknum", 3000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from restaurant Lv. 1"]], ["lev", 12], ["pair", ["bid", 9]], ["reward", [1500, 70, 0]], ["type", 1], ["id", 54]]), 
 dict([["req", "build"], ["des", ["Build cavalry camp", "You can train soldiers to attack other players, kill monsters and protect your territory.", "build a normal cavalry camp"]], ["checknum", 1], ["lev", 13], ["pair", ["ground_id", 203]], ["reward", [1800, 40, 0]], ["type", 0], ["id", 56]]), 
 dict([["req", "soldiers"], ["checknum", 40], ["des", ["Train cavalries", "You can train soldiers to attack other players, kill monsters and protect your territory.", "train cavalry Lv. 1"]], ["lev", 13], ["pair", ["btype", 1, "objtype", 0]], ["reward", [2000, 50, 0]], ["type", 1], ["id", 57]]), 
@@ -499,12 +500,12 @@ dict([["req", "updatebuilding"], ["checknum", 1], ["des", ["Upgrade infantry cam
 dict([["req", "soldiers"], ["des", ["Train infantry Lv. 2", "You can train soldiers to attack other players, kill monsters and protect your territory.", "train infantries", "hint: click the intermediate infantry camp and choose the infantry icon"]], ["checknum", 60], ["lev", 14], ["pair", ["btype", 0, "objtype", 1]], ["reward", [3000, 90, 0]], ["type", 1], ["id", 63]]), 
 dict([["req", "money"], ["checknum", 6000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.", "collect taxes from book store Lv. 1"]], ["lev", 14], ["pair", ["bid", 15]], ["reward", [1800, 150, 1]], ["type", 1], ["id", 65]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade Magical Manor", "Advanced buildings will help facilitate the development of your territory!", "upgrade a Magical Manor"]], ["checknum", 1], ["lev", 14], ["pair", ["ground_id", 161]], ["reward", [2000, 200, 1]], ["type", 0], ["id", 66]]), 
-dict([["req", "build"], ["checknum", 1], ["des", ["Build mansion", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "build a mansion"]], ["lev", 15], ["pair", ["ground_id", 136]], ["reward", [1500, 60, 0]], ["type", 0], ["id", 67]]), 
+dict([["req", "build"], ["checknum", 1], ["des", ["Build mansion", "Homes provide people with a place to live. You need more people to have more soldiers.", "build a mansion"]], ["lev", 15], ["pair", ["ground_id", 136]], ["reward", [1500, 60, 0]], ["type", 0], ["id", 67]]), 
 dict([["req", "build"], ["des", ["Build well", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build a ordinary well"]], ["checknum", 1], ["lev", 15], ["pair", ["ground_id", 519]], ["reward", [300, 15, 0]], ["type", 0], ["id", 68]]), 
 dict([["req", "wood"], ["des", ["Collect willow woods", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect willow woods"]], ["checknum", 130], ["lev", 15], ["pair", ["objid", 1]], ["reward", [2100, 180, 0]], ["type", 1], ["id", 69]]), 
 dict([["req", "money"], ["checknum", 5000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from clinic Lv. 1"]], ["lev", 15], ["pair", ["bid", 12]], ["reward", [1500, 100, 0]], ["type", 1], ["id", 70]]), 
 dict([["req", "money"], ["checknum", 3500], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from butcher shop Lv. 2"]], ["lev", 15], ["pair", ["bid", 7]], ["reward", [2500, 250, 1]], ["type", 1], ["id", 71]]), 
-dict([["req", "planting"], ["des", ["Plant pumpkins", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant pumpkins"]], ["checknum", 6], ["lev", 16], ["pair", ["object_id", 7, "type", 0]], ["reward", [1800, 96, 0]], ["type", 0], ["id", 72]]), 
+dict([["req", "planting"], ["des", ["Plant pumpkins", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant pumpkins"]], ["checknum", 6], ["lev", 16], ["pair", ["object_id", 7, "type", 0]], ["reward", [1800, 96, 0]], ["type", 0], ["id", 72]]), 
 dict([["req", "build"], ["checknum", 1], ["des", ["Summon god", "God and Goddess statues can perform miracles and magic!", "summon Mars"]], ["lev", 16], ["pair", ["ground_id", 403]], ["reward", [1600, 100, 0]], ["type", 0], ["id", 73]]), 
 dict([["req", "godbless"], ["des", ["Perform magic", "God and Goddess statues can perform miracles and magic!", "Mars performs magic"]], ["checknum", 1], ["lev", 16], ["pair", ["godtype", 3]], ["reward", [1300, 100, 1]], ["type", 0], ["id", 74]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade statue", "The magic power of higher level god or Goddess will be stronger!", "upgrade a statue of god or Goddess"]], ["checknum", 1], ["lev", 16], ["pair", ["ground_id", 404]], ["reward", [4000, 250, 1]], ["type", 0], ["id", 75]]), 
@@ -521,8 +522,8 @@ dict([["req", "build"], ["checknum", 3], ["des", ["Build shrubbery", "Beautifull
 dict([["req", "build"], ["checknum", 1], ["des", ["Build angel statue", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build angel statue"]], ["lev", 19], ["pair", ["ground_id", 538]], ["reward", [2000, 100, 1]], ["type", 0], ["id", 87]]), 
 dict([["req", "updatebuilding"], ["checknum", 1], ["des", ["Upgrade clinic", "Advanced buildings will help facilitate the development of your territory!", "upgrade a clinic Lv. 1"]], ["lev", 19], ["pair", ["ground_id", 313]], ["reward", [3000, 100, 0]], ["type", 0], ["id", 88]]), 
 dict([["req", "build"], ["des", ["Build Farmland", "Gem farmland will increase crops yield.", "build gem farmland"]], ["checknum", 4], ["lev", 20], ["pair", ["ground_id", 3]], ["reward", [4000, 200, 1]], ["type", 0], ["id", 89]]), 
-dict([["req", "planting"], ["des", ["Plant peaches", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant peaches"]], ["checknum", 3], ["lev", 20], ["pair", ["object_id", 8, "type", 0]], ["reward", [3000, 150, 1]], ["type", 0], ["id", 90]]), 
-dict([["req", "build"], ["checknum", 2], ["des", ["Build manor", "Homes provide people with a place to live. You need more people to have more soldiers and to build buildings.", "build manor Lv. 2"]], ["lev", 20], ["pair", ["ground_id", 148]], ["reward", [2100, 100, 0]], ["type", 0], ["id", 91]]), 
+dict([["req", "planting"], ["des", ["Plant peaches", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant peaches"]], ["checknum", 3], ["lev", 20], ["pair", ["object_id", 8, "type", 0]], ["reward", [3000, 150, 1]], ["type", 0], ["id", 90]]), 
+dict([["req", "build"], ["checknum", 2], ["des", ["Build manor", "Homes provide people with a place to live. You need more people to have more soldiers.", "build manor Lv. 2"]], ["lev", 20], ["pair", ["ground_id", 148]], ["reward", [2100, 100, 0]], ["type", 0], ["id", 91]]), 
 dict([["req", "build"], ["checknum", 1], ["des", ["Summon Goddess", "God and Goddess statues can perform miracles and magic!", "summon wealth god"]], ["lev", 20], ["pair", ["ground_id", 402]], ["reward", [2300, 130, 0]], ["type", 0], ["id", 92]]), 
 dict([["req", "godbless"], ["des", ["Perform magic", "God and Goddess statues can perform miracles and magic!", "perform wealth god's magic"]], ["checknum", 1], ["lev", 20], ["pair", ["godtype", 2]], ["reward", [1400, 100, 1]], ["type", 0], ["id", 93]]), 
 dict([["req", "money"], ["checknum", 3500], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from clothing shop Lv. 1"]], ["lev", 21], ["pair", ["bid", 18]], ["reward", [2600, 150, 0]], ["type", 1], ["id", 94]]), 
@@ -531,18 +532,18 @@ dict([["req", "expand"], ["des", ["Expand territory", "Don’t run out of space 
 dict([["req", "money"], ["checknum", 6000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from butcher shop Lv. 3"]], ["lev", 21], ["pair", ["bid", 8]], ["reward", [4000, 300, 1]], ["type", 1], ["id", 97]]), 
 dict([["req", "stone"], ["checknum", 130], ["des", ["Collect basalt", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect basalt"]], ["lev", 22], ["pair", ["objid", 1]], ["reward", [2800, 210, 0]], ["type", 1], ["id", 98]]), 
 dict([["req", "money"], ["checknum", 10000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from book store Lv. 2"]], ["lev", 22], ["pair", ["bid", 16]], ["reward", [4000, 280, 1]], ["type", 1], ["id", 99]]), 
-dict([["req", "planting"], ["des", ["Plant watermelon", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant watermelon"]], ["checknum", 6], ["lev", 23], ["pair", ["object_id", 9, "type", 0]], ["reward", [2900, 240, 0]], ["type", 0], ["id", 101]]), 
+dict([["req", "planting"], ["des", ["Plant watermelon", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant watermelon"]], ["checknum", 6], ["lev", 23], ["pair", ["object_id", 9, "type", 0]], ["reward", [2900, 240, 0]], ["type", 0], ["id", 101]]), 
 dict([["req", "money"], ["checknum", 13000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from casino Lv. 1"]], ["lev", 24], ["pair", ["bid", 24]], ["reward", [4500, 350, 1]], ["type", 1], ["id", 103]]), 
 dict([["req", "stone"], ["des", ["Collect limestone", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect limestone"]], ["checknum", 200], ["lev", 24], ["pair", ["objid", 2]], ["reward", [4500, 350, 1]], ["type", 1], ["id", 104]]), 
 dict([["req", "build"], ["des", ["Building maple", "Beautifully decorating your territory will increase your overall population and magic capacity.", "building maple"]], ["checknum", 3], ["lev", 25], ["pair", ["ground_id", 535]], ["reward", [1400, 90, 1]], ["type", 0], ["id", 106]]), 
-dict([["req", "planting"], ["des", ["Plant strawberry", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant strawberry"]], ["checknum", 6], ["lev", 25], ["pair", ["object_id", 11, "type", 0]], ["reward", [5400, 420, 1]], ["type", 0], ["id", 107]]), 
+dict([["req", "planting"], ["des", ["Plant strawberry", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant strawberry"]], ["checknum", 6], ["lev", 25], ["pair", ["object_id", 11, "type", 0]], ["reward", [5400, 420, 1]], ["type", 0], ["id", 107]]), 
 dict([["req", "wood"], ["des", ["Collect oak", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect oak woods"]], ["checknum", 300], ["lev", 25], ["pair", ["objid", 5]], ["reward", [5700, 420, 0]], ["type", 1], ["id", 108]]), 
-dict([["req", "planting"], ["des", ["Plant mango", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant mango"]], ["checknum", 6], ["lev", 26], ["pair", ["object_id", 10, "type", 0]], ["reward", [3300, 240, 1]], ["type", 0], ["id", 110]]), 
+dict([["req", "planting"], ["des", ["Plant mango", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant mango"]], ["checknum", 6], ["lev", 26], ["pair", ["object_id", 10, "type", 0]], ["reward", [3300, 240, 1]], ["type", 0], ["id", 110]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade statue", "The magic power of god or Goddess will be stronger!", "upgrade a silver statue of god or Goddess"]], ["checknum", 1], ["lev", 26], ["pair", ["ground_id", 408]], ["reward", [4000, 450, 1]], ["type", 0], ["id", 111]]), 
 dict([["req", "updatebuilding"], ["checknum", 1], ["des", ["Upgrade Magical Manor", "Advanced buildings will help facilitate the development of your territory!", "upgrade a Magical Manor Lv. 2"]], ["lev", 26], ["pair", ["ground_id", 162]], ["reward", [5000, 450, 0]], ["type", 0], ["id", 112]]), 
 dict([["req", "stone"], ["des", ["Collect granite", "Wood and stone are needed to upgrade your buildings and produce weapons.!", "collect granite"]], ["checknum", 100], ["lev", 27], ["pair", ["objid", 3]], ["reward", [3000, 300, 0]], ["type", 1], ["id", 113]]), 
 dict([["req", "updatebuilding"], ["checknum", 1], ["des", ["Upgrade cavalry camp", "Advanced buildings will help facilitate the development of your territory!", "upgrade a cavalry camp Lv. 2"]], ["lev", 27], ["pair", ["ground_id", 205]], ["reward", [4000, 480, 1]], ["type", 0], ["id", 114]]), 
-dict([["req", "planting"], ["des", ["Plant corns", "You can increase your crop yield with special farmland and by building the Harvest Goddess statue.", "plant corns on the crystal farmland"]], ["checknum", 6], ["lev", 27], ["pair", ["object_id", 2, "type", 0, "bid", 2]], ["reward", [4500, 500, 1]], ["type", 0], ["id", 115]]), 
+dict([["req", "planting"], ["des", ["Plant corns", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "plant corns on the crystal farmland"]], ["checknum", 6], ["lev", 27], ["pair", ["object_id", 2, "type", 0, "bid", 2]], ["reward", [4500, 500, 1]], ["type", 0], ["id", 115]]), 
 dict([["req", "wood"], ["des", ["Collect pine trees", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect pine trees"]], ["checknum", 200], ["lev", 28], ["pair", ["objid", 4]], ["reward", [4200, 300, 0]], ["type", 1], ["id", 116]]), 
 dict([["req", "money"], ["checknum", 16000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from casino Lv. 2"]], ["lev", 28], ["pair", ["bid", 25]], ["reward", [5600, 480, 0]], ["type", 1], ["id", 117]]), 
 dict([["req", "money"], ["checknum", 15000], ["des", ["Collect taxes", "You can collect higher tax revenue from more higher level stores.!", "collect taxes from book store Lv. 3"]], ["lev", 28], ["pair", ["bid", 17]], ["reward", [5600, 480, 1]], ["type", 1], ["id", 118]]), 
@@ -559,7 +560,7 @@ var WarTasks =
 [dict([["req", "warinfo"], ["des", ["Unlock war mode", "Reach to Lv. 10 to unlock War Mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]), 
 dict([["req", "dialog-help"], ["des", ["View HELP", "Learn more about War Mode by checking out the HELP document", "view HELP about war"]], ["checknum", 1], ["reward", [100, 5, 0]], ["type", 2], ["id", 1]]), 
 dict([["req", "makeally"], ["des", ["Ally with friends", "Ally with some friends, and they can help you by providing you with soldiers during a battle", "Become allies with friend"]], ["checknum", 1], ["pair", []], ["reward", [500, 10, 0]], ["type", 0], ["id", 2]]), 
-dict([["req", "adddefence"], ["des", ["Increase defense", "Tap on your castle and tap the  \”[+]\”  button to upgrade the your castle wall’s defense", "add 100 defense"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]), 
+dict([["req", "adddefence"], ["des", ["Increase defense", "Tap on your castle and tap the [+]  button to upgrade the your castle wall’s defense", "add 100 defense"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]), 
 dict([["req", "build"], ["des", ["Build scout camp", "Scout camps are used to train scouts", "build scout camp Lv. 1"]], ["checknum", 1], ["pair", ["ground_id", 206]], ["reward", [500, 8, 0]], ["type", 0], ["id", 4]]), 
 dict([["req", "soldiers"], ["des", ["Train scout", "If be prepared for battle, spy on your enemies to learn more about them!", "train scout Lv. 1"]], ["checknum", 9], ["pair", ["byte", 2, "objtype", 0]], ["reward", [800, 10, 0]], ["type", 1], ["id", 5]]), 
 dict([["req", "detect"], ["des", ["Detect enemy", "If you want to win, it's better you know your enemy!", "detect enemy"]], ["checknum", 1], ["pair", []], ["reward", [300, 7, 0]], ["type", 0], ["id", 6]]), 
@@ -647,6 +648,7 @@ const AttWithCata = 100;
 const AttNoCata = 101;
 const NoCata = -3001;
 const DiskShare = -4000;
+const RankFri = -6000;
 
 const ManaChargeTime = 300000;
 const AddDefCae = 25;

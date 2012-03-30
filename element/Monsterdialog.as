@@ -60,7 +60,7 @@ class Monsterdialog extends ContextObject{
         dialog.usedefaultbutton(2,[global.getStaticString("attack"), global.getStaticString("back")]);
         if(flagdefeatable == 0){
             contextNode.get(0).addsprite("caesars_big.png").pos(0, 20).anchor(50, 50);
-            contextNode.get(0).addlabel(str(-DefeatMon_Cae), null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(10, 15);
+            contextNode.get(0).addlabel(str(-DefeatMon_Cae), null, 24, FONT_BOLD).color(100, 100, 100, 100).pos(10, 15);
             if(global.user.getValue("caesars") < abs(DefeatMon_Cae))
             {
                 contextNode.get(0).texture("boxbutton2.png");

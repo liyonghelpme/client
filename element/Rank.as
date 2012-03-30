@@ -71,7 +71,7 @@ class Rank extends ContextObject{
 
             nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(curX, curY).color(0, 0, 0, 100);
             //nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(pos[i*2], pos[i*2+1]).color(0, 0, 0, 100);
-            nameNode.addlabel(str(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
+            nameNode.addlabel(showName(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
 
             curY += difY;
         }
@@ -80,7 +80,10 @@ class Rank extends ContextObject{
         var myrank = data.get("myrank")[0]+1;
         var food = data.get("myrank")[1];
         trace("show rank user", myrank);
-        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
+        if(myrank >= 1000)
+            nameNode.addlabel("999+", null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
+        else
+            nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
         nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(642, 56).color(0, 0, 0, 100);
     }
 

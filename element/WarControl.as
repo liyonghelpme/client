@@ -543,11 +543,11 @@ class WarControl extends ContextObject{
                 mypower = datadict.get("leftpower");
             }
             if(mypower > 10000)
-                addV = 100;
+                addV = 50;
             else if(mypower > 1000)
-                addV = 80;
+                addV = 30;
             else if(mypower > 100)
-                addV =  50;
+                addV = 20;
             if(touchNums < 9000/addV)
                 touchNums++;
             global.user.changeValueAnimate2(dragon, "money", addV, 0);

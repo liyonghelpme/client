@@ -309,7 +309,11 @@ class UserController{
         var y = ps[1]-hi*17+ne.size()[1]/2;
         var n = node().pos(x,y);
         n.add(sprite("fly"+key+".png").anchor(100,50).pos(-5,0));
+        if(key == "labor")
+            value = -value;
+
         var ns = str(value);
+
         var f = 0;
         if(value > 0){
             ns = "+"+ns;

@@ -95,7 +95,7 @@ function setlogin(){
 }
 
 var curTime = 0;
-var allTex = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+var allTex = ["1.jpg", "2.jpg", "4.jpg", "3.jpg", "5.jpg"];
 for(var t = 0; t < len(allTex); t++)
 {
     if(fetch(allTex[t]) == null)

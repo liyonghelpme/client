@@ -30,7 +30,7 @@ class AllyControl extends ContextObject{
             }
             else if(mode==1){
                 element.addsprite("pic3.jpg").anchor(50,50).pos(80,120);
-                element.addlabel(global.getStaticString("cancelAlly")+fname,null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,47).color(0,0,0,100);
+                element.addlabel(global.getStaticString("cancelAlly")+fname,null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,30).color(0,0,0,100);
                 var cap = element.addsprite("cancelallyelement.png").anchor(50,50).pos(269,150);
                 cap.addlabel(global.getStaticString("punish"),null,25).anchor(20,50).color(100,0,0,100);
                 cap.addsprite("caesars_big.png").anchor(50,50).pos(80,35).size(32,32);

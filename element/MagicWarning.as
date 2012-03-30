@@ -15,23 +15,46 @@ class MagicWarning extends ContextObject{
 
     function getelement(){
         if(element == null){
+            var mana = global.user.getValue("mana");
+            var boundary = global.user.getValue("boundary");
+
+            costcae = (boundary-mana+2)/3;
+
             element = node();
             element.addsprite("pic6.jpg").anchor(50, 50).pos(80, 120);
-            element.addlabel(global.getStaticString("LackMagic"), null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
+            if(costcae > 0)
+                element.addlabel(global.getStaticString("LackMagic"), null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
+            else
+                element.addlabel(global.getStaticString("LackMaCap"), null, 24, FONT_NORMAL, 240, 0, ALIGN_LEFT).anchor(0, 50).pos(148, 105).color(0, 0, 0, 100);
+
         }
         return element;
     }
     
     function paintNode(){
+        var mana = global.user.getValue("mana");
+        var boundary = global.user.getValue("boundary");
+
+        costcae = (boundary-mana+2)/3;
+
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
         contextNode = dialog.getNode();
-        dialog.usedefaultbutton(2,[global.getStaticString("fullfil"), global.getStaticString("cancel")]);
+        if(costcae > 0)
+            dialog.usedefaultbutton(2,[global.getStaticString("fullfil"), global.getStaticString("cancel")]);
+        else
+            dialog.usedefaultbutton(1, global.getStaticString("ok"));
+            
+        //if(costcae > 0)
+        //{
         var cae = sprite("caesars_big.png").anchor(50,50).pos(56,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
         //cae.addsprite("caesars_big.png").size(32, 32).pos(0, 10).size(40, 40);
         moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
         contextNode.add(cae,4);
+        if(costcae == 0)
+            cae.visible(0);
+        //}
         timerefresh();
     }
 

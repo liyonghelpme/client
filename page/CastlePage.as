@@ -286,9 +286,10 @@ class CastlePage extends ContextObject{
         if(rankYet == 0)
         {
             //rankYet = 1;
-            setRankYet();
+            //setRankYet();
             trace("rankHeart", global.userid, cuid);
-            global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeart");
+            useaction("rankHeart", null, null);
+            //global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeart");
         }
     }
     function showAct()
@@ -589,8 +590,12 @@ class CastlePage extends ContextObject{
         else if(p == "rankHeart")
         {
             f = global.getfriend(cpid);
-            global.pushContext(null, new Warningdialog(["If "+f.get("empirename")+" is beautiful, you can give "+f.get("name")+" scores. You can only give 1 score to the same friend per day.", null, 4]), NonAutoPop);
+            global.pushContext(this, new Warningdialog(["If "+f.get("empirename")+" is beautiful, you can give "+f.get("name")+" scores. You can only give 1 score to the same friend per day.", RankFri, 4]), NonAutoPop);
 
+        }
+        else if(p == "rankHeartFin")
+        {
+            setRankYet();
         }
     }
     
@@ -2111,7 +2116,11 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     function reloadNode(re){
         hiddentime = 10;
-        if(re == DownWarn)
+        if(re == RankFri)
+        {
+            global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeartFin");
+        }
+        else if(re == DownWarn)
         {
             spriteManager.DecideToDown(); 
         }
