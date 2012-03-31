@@ -22,10 +22,12 @@ class QuickControl extends ContextObject{
             element.addsprite("objectblock.png").anchor(50,50).pos(109,121);
             var obj=global.request[global.currentLevel];
             var bl=100;
+            /*
             if(obj.baseobj.contextid == 3){
                 bl = 67;
             }
             else if(obj.bid>=600&&obj.bid<700){
+                
                 bl = 67;
             }
             else if(obj.baseobj.objectid/100 == 4){
@@ -34,7 +36,13 @@ class QuickControl extends ContextObject{
                     bl=60;
                 }
             }
-            element.addsprite(obj.gettexture()).anchor(50,50).pos(109,121).scale(bl);
+            */
+            var build = element.addsprite(obj.gettexture()).anchor(50,50).pos(109,121);
+            build.prepare();
+            var bsize = build.size();
+            bl = min(150*100/bsize[0], 150*100/bsize[1]);
+            build.scale(bl);
+
             element.addsprite("quickback.jpg").pos(202,58);
             qfiller = element.addsprite("quickfiller.jpg").pos(203,59).size(0,20);
             qlabel = qfiller.addlabel("0%",null,20).color(0,0,0,100).anchor(50,50).pos(82,10);

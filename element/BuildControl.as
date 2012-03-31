@@ -61,10 +61,22 @@ class BuildControl extends ContextObject{
                 }
             }
             else if(mode == STATUE_INDEX){
-                bl=50;
+                bl = 75;
+                /*
+                var tex = sprite(place.gettexture());
+                tex.prepare();
+                tex = tex.size();
+                bl = min(160*100/tex[0], 90*100/tex[1]);
+                */
             }
             if(placeObj.buildcontextname!="nest"){
-                back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
+                var build = back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
+                build.prepare();
+                var bsize = build.size();
+                bl = min(160*100/bsize[0], 70*100/bsize[1]);
+                build.scale(bl);
+                
+
                 var namelabel = back.addlabel(global.getname(placeObj.buildcontextname,placeObj.objectid%100),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state == BUILDING || place.state == WORKING){
                     if((mode != GOD_INDEX && mode != STATUE_INDEX) || place.state != WORKING ){

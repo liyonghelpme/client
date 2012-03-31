@@ -370,11 +370,17 @@ var Dicts =
 var Names = dict([
 
 ["ROOMNAME1", ["Orange Cottage", "Orange Cottage", "Orange Cottage", "Red Cottage", "Red Cottage", "Red Cottage", "Blue Cottage", "Blue Cottage", "Blue Cottage", "Purple Cottage", "Purple Cottage", "Purple Cottage", "Orange House", "Orange House", "Orange House", "Red House", "Red House", "Red House", "Blue House", "Blue House", "Blue House", "Purple House", "Purple House", "Purple House", "Orange Villa", "Orange Villa", "Orange Villa", "Red Villa", "Red Villa", "Red Villa", "Blue Villa", "Blue Villa", "Blue Villa", "Purple Villa", "Purple Villa", "Purple Villa", "Orange Mansion", "Orange Mansion", "Orange Mansion", "Red Mansion", "Red Mansion", "Red Mansion", "Blue Mansion", "Blue Mansion", "Blue Mansion", "Purple Mansion", "Purple Mansion", "Purple Mansion", "Orange Manor", "Orange Manor", "Orange Manor", "Red Manor", "Red Manor", "Red Manor", "Blue Manor", "Blue Manor", "Blue Manor", "Purple Manor", "Purple Manor", "Purple Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Magical Manor", "Orange Palace", "Orange Palace", "Orange Palace", "Golden Palace", "Golden Palace", "Golden Palace", 
-"Attic", "Attic", "Attic"
+"Attic", "Attic", "Attic",
+"Snow House", "Snow House", "Snow House",
+"Tree House", "Tree House", "Tree House",
+
 ]], 
 ["ROOMNAME" , ["Orange Cottage Lv. 1", "Orange Cottage Lv. 2", "Orange Cottage Lv. 3", "Red Cottage Lv. 1", "Red Cottage Lv. 2", "Red Cottage Lv. 3", "Blue Cottage Lv. 1", "Blue Cottage Lv. 2", "Blue Cottage Lv. 3", "Purple Cottage Lv. 1", "Purple Cottage Lv. 2", "Purple Cottage Lv. 3", "Orange House Lv. 1", "Orange House Lv. 2", "Orange House Lv. 3", "Red House Lv. 1", "Red House Lv. 2", "Red House Lv. 3", "Blue House Lv. 1", "Blue House Lv. 2", "Blue House Lv. 3", "Purple House Lv. 1", "Purple House Lv. 2", "Purple House Lv. 3", "Orange Villa Lv. 1", "Orange Villa Lv. 2", "Orange Villa Lv. 3", "Red Villa Lv. 1", "Red Villa Lv. 2", "Red Villa Lv. 3", "Blue Villa Lv. 1", "Blue Villa Lv. 2", "Blue Villa Lv. 3", "Purple Villa Lv. 1", "Purple Villa Lv. 2", "Purple Villa Lv. 3", "Orange Mansion Lv. 1", "Orange Mansion Lv. 2", "Orange Mansion Lv. 3", "Red Mansion Lv. 1", "Red Mansion Lv. 2", "Red Mansion Lv. 3", "Blue Mansion Lv. 1", "Blue Mansion Lv. 2", "Blue Mansion Lv. 3", "Purple Mansion Lv. 1", "Purple Mansion Lv. 2", "Purple Mansion Lv. 3", "Orange Manor Lv. 1", "Orange Manor Lv. 2", "Orange Manor Lv. 3", "Red Manor Lv. 1", "Red Manor Lv. 2", "Red Manor Lv. 3", "Blue Manor Lv. 1", "Blue Manor Lv. 2", "Blue Manor Lv. 3", "Purple Manor Lv. 1", "Purple Manor Lv. 2", "Purple Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", "Magical Manor Lv. 1", "Magical Manor Lv. 2", "Magical Manor Lv. 3", 
 "Orange Palace Lv. 1", "Orange Palace Lv. 2", "Orange Palace Lv. 3", "Golden Palace Lv. 1", "Golden Palace Lv. 2", "Golden Palace Lv. 3", 
-"Attic Lv. 1", "Attic Lv. 2", "Attic Lv. 3"
+"Attic Lv. 1", "Attic Lv. 2", "Attic Lv. 3",
+
+"Snow House Lv. 1", "Snow House Lv. 2", "Snow House Lv. 3",
+"Tree House Lv. 1", "Tree House Lv. 2", "Tree House Lv. 3",
 ]], 
 
 ["SOLDIER_NAME" , ["Lv. 1", "Lv. 2", "Lv. 3", "Lv. 1", "Lv. 2", "Lv. 3", "Lv. 1", "Lv. 2", "Lv. 3"]], 
@@ -391,7 +397,7 @@ var Names = dict([
 
 ["EXTEND_PETS_NAME" , ["Earth Dragon", "Fire Dragon", "Water Dragon"]], 
 
-["STATUE_NAME" , ["Medusa", "Boar Warrior", "Wolf Warrior", "Bear Warrior", "Lion Warrior", "Dragon Warrior"]], 
+["STATUE_NAME" , ["Medusa", "Boar Warrior", "Wolf Warrior", "Bear Warrior", "Lion Warrior", "Dragon Warrior", "Tower1", "Tower2"]], 
 
 ["FACTNAME" , ["Bakery Lv. 1", "Bakery Lv. 2", "Bakery Lv. 3", "Fruit shop Lv. 1", "Fruit shop Lv. 2", "Fruit shop Lv. 3", "Butcher shop Lv. 1", "Butcher shop Lv. 2", "Butcher shop Lv. 3", "Restaurant Lv. 1", "Restaurant Lv. 2", "Restaurant Lv. 3", "Clinic Lv. 1", "Clinic Lv. 2", "Clinic Lv. 3", "Book Store Lv. 1", "Book Store Lv. 2", "Book Store Lv. 3", "Clothing Store Lv. 1", "Clothing Store Lv. 2", "Clothing Store Lv. 3", "Jewelers Lv. 1", "Jewelers Lv. 2", "Jewelers Lv. 3", "Casino Lv. 1", "Casino Lv. 2", "Casino Lv. 3", "Dojo Lv. 1", "Dojo Lv. 2", "Dojo Lv. 3", "Fish Market Lv. 1", "Fish Market Lv. 2", "Fish Market Lv. 3"]], 
 
@@ -414,7 +420,9 @@ var Names = dict([
 "Santa", "Elegant Xmas tree", "Xmas tree", "Elegant Snowmen", "Snowmen", "Elegant Reindeer", "Reindeer", 
 "Palm Tree", "Red Lantern", "Stele", "Tai Miao", "Cross", "Pavilion", 
 "Cupid", "Rose Flowers", "Rose Garden", "Love Tree", 
-"Egypt Tower", "Elephant Lamp", "Horse Lamp", ]], 
+"Egypt Tower", "Elephant Lamp", "Horse Lamp", 
+"Royal Road", "Camphor", "High Shrubs", "Watchtower", 
+]], 
 
 
 ["nobilityname" , ["Civilian", "Baron", "Knight", "Count", "Bishop", "Duke", "Emperor"]], 

@@ -10,8 +10,8 @@ class CampControl extends ContextObject{
     var lastx;
     var flagmove;
     var objsmax;
-    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605];
-    const objlevel = [1, 3, 11, 24, 12, 12, 13, 13, 15, 15];
+    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605, 1606, 1607];
+    const objlevel = [1, 3, 11, 24, 12, 12, 13, 13, 15, 15, 20, 20];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
@@ -88,10 +88,18 @@ class CampControl extends ContextObject{
             oi=oi%100;
             objs[i] = sprite("dialogelement2d2.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
             objs[i].addlabel(STATUE_NAME[oi],null,16, FONT_NORMAL, 100, 100).anchor(50,0).pos(74,10).color(0,0,0,100);
-            if(objcontext[i]/1000==2){
-                 bl=75;
-            }
-            objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112).scale(bl);
+            //if(objcontext[i]/1000==2){
+            //     bl=75;
+            //}
+
+            var build = objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112);
+            build.prepare();
+            var oldSize = build.size();
+            bl = min(140*100/oldSize[0], 140*100/oldSize[1]);
+            build.scale(bl);
+
+            if(i >= (len(objlevel)-2))
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

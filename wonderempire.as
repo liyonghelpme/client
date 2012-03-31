@@ -1,9 +1,12 @@
 import global.INCLUDE;
 
 var myid;
+/*
 if(ppy_connected()!=1){
     ppy_login();
 }
+*/
+
 global.self = global;
 global.user = new UserController();
 
