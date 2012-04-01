@@ -7,8 +7,20 @@ class FactControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 11;
-    var objcontext = [2300, 2303, 2306, 2309, 2330, 3327, 2315, 2312, 2318, 2324, 2321];
-    var objlevel = [1, 4, 6, 8, 10, 12, 14, 15, 21, 24, 29];
+    var objcontext = [
+    2333, 
+    2336,
+    2300, 2303, 2306, 2309, 2330,
+
+    3327, 2315, 2312, 
+
+    2318, 2324, 2321];
+    var objlevel = [
+    11,
+    18,
+    1, 4, 6, 8, 10, 
+    12, 14, 15, 
+    21, 24, 29];
     function FactControl(){
         objsmax = len(objcontext);
         contextname ="element-build-fact";

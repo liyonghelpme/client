@@ -44,7 +44,7 @@ class Builddialog extends ContextObject{
             buildpages[i].global = global;
             buildtabs.append(tab);
         }
-        //buildtabs[0].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
+        buildtabs[2].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         buildtabs[0].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         buildtabs[3].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         //buildtabs[5].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
