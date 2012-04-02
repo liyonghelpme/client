@@ -25,8 +25,9 @@ class FactControl extends ContextObject{
         objsmax = len(objcontext);
         contextname ="element-build-fact";
         contextNode = null;
-        objs = new Array(11);
-        buildable = new Array(11);
+        objsmax = len(objcontext);
+        objs = range(0, objsmax);
+        buildable = range(0, objsmax);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -49,6 +50,10 @@ class FactControl extends ContextObject{
             var b=100;
             if(objcontext[i]/1000==3) b=66;
             var fac = objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
+            if(i < 2)
+            {
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            }
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);

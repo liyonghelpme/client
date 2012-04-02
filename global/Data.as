@@ -399,9 +399,15 @@ var Names = dict([
 
 ["STATUE_NAME" , ["Medusa", "Boar Warrior", "Wolf Warrior", "Bear Warrior", "Lion Warrior", "Dragon Warrior", "Tower1", "Tower2"]], 
 
-["FACTNAME" , ["Bakery Lv. 1", "Bakery Lv. 2", "Bakery Lv. 3", "Fruit shop Lv. 1", "Fruit shop Lv. 2", "Fruit shop Lv. 3", "Butcher shop Lv. 1", "Butcher shop Lv. 2", "Butcher shop Lv. 3", "Restaurant Lv. 1", "Restaurant Lv. 2", "Restaurant Lv. 3", "Clinic Lv. 1", "Clinic Lv. 2", "Clinic Lv. 3", "Book Store Lv. 1", "Book Store Lv. 2", "Book Store Lv. 3", "Clothing Store Lv. 1", "Clothing Store Lv. 2", "Clothing Store Lv. 3", "Jewelers Lv. 1", "Jewelers Lv. 2", "Jewelers Lv. 3", "Casino Lv. 1", "Casino Lv. 2", "Casino Lv. 3", "Dojo Lv. 1", "Dojo Lv. 2", "Dojo Lv. 3", "Fish Market Lv. 1", "Fish Market Lv. 2", "Fish Market Lv. 3"]], 
+["FACTNAME" , ["Bakery Lv. 1", "Bakery Lv. 2", "Bakery Lv. 3", "Fruit shop Lv. 1", "Fruit shop Lv. 2", "Fruit shop Lv. 3", "Butcher shop Lv. 1", "Butcher shop Lv. 2", "Butcher shop Lv. 3", "Restaurant Lv. 1", "Restaurant Lv. 2", "Restaurant Lv. 3", "Clinic Lv. 1", "Clinic Lv. 2", "Clinic Lv. 3", "Book Store Lv. 1", "Book Store Lv. 2", "Book Store Lv. 3", "Clothing Store Lv. 1", "Clothing Store Lv. 2", "Clothing Store Lv. 3", "Jewelers Lv. 1", "Jewelers Lv. 2", "Jewelers Lv. 3", "Casino Lv. 1", "Casino Lv. 2", "Casino Lv. 3", "Dojo Lv. 1", "Dojo Lv. 2", "Dojo Lv. 3", "Fish Market Lv. 1", "Fish Market Lv. 2", "Fish Market Lv. 3", 
+"Carpenter Shop Lv. 1", "Carpenter Shop Lv. 2", "Carpenter Shop Lv. 3", 
+"Hotel Lv. 1", "Hotel Lv. 2", "Hotel Lv. 3", 
+]], 
 
-["FACTNAME1" , ["Bakery", "Bakery", "Bakery", "Fruit shop", "Fruit shop", "Fruit shop", "Butcher shop", "Butcher shop", "Butcher shop", "Restaurant", "Restaurant", "Restaurant", "Clinic", "Clinic", "Clinic", "Book Store", "Book Store", "Book Store", "Clothing Store", "Clothing Store", "Clothing Store", "Jewelers", "Jewelers", "Jewelers", "Casino", "Casino", "Casino", "Dojo", "Dojo", "Dojo", "Fish Market", "Fish Market", "Fish Market"]], 
+["FACTNAME1" , ["Bakery", "Bakery", "Bakery", "Fruit shop", "Fruit shop", "Fruit shop", "Butcher shop", "Butcher shop", "Butcher shop", "Restaurant", "Restaurant", "Restaurant", "Clinic", "Clinic", "Clinic", "Book Store", "Book Store", "Book Store", "Clothing Store", "Clothing Store", "Clothing Store", "Jewelers", "Jewelers", "Jewelers", "Casino", "Casino", "Casino", "Dojo", "Dojo", "Dojo", "Fish Market", "Fish Market", "Fish Market",
+"Carpenter", "Carpenter", "Carpenter", 
+"Hotel", "Hotel", "Hotel", 
+]], 
 
 ["CAMPNAME" , ["Infantry Camp Lv. 1", "Infantry Camp Lv. 2", "Infantry Camp Lv. 3", "Cavalry Camp Lv. 1", "Cavalry Camp Lv. 2", "Cavalry Camp Lv. 3", "Scout Camp Lv. 1", "Scout Camp Lv. 2", "Scout Camp Lv. 3", "Workshop Lv. 1", "Workshop Lv. 2", "Workshop Lv. 3"]], 
 ["CAMPNAME1" , ["Infantry Camp", "Infantry Camp", "Infantry Camp", "Cavalry Camp", "Cavalry Camp", "Cavalry Camp", "Scout Camp", "Scout Camp", "Scout Camp", "Workshop", "Workshop", "Workshop"]], 
