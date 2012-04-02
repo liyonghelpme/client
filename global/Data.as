@@ -200,16 +200,16 @@ var Dicts =
 ["dragon", "You can summon your own pet after building Dragon Nest."], 
 ["godBless", "[GOD] can perform magic, are you sure to summon [GOD]?"], 
 ["call", "Summon"], ["coin", "coin"], ["freePeople", "idle people"], ["food", "food"], 
-["zijin", "Your magic capacity will increase by 1 when you get the violet card."], 
-["freeZijin", "Your magic capacity will increase by 1 when you get the violet card."], 
-["youGet", "Congrats! You get [NAME]! [END]"], 
+["zijin", "Your magic capacity will increase by 1 when card level up."], 
+["freeZijin", "Your magic capacity will increase by 1 when card level up."], 
+["youGet", "Congrats, you got [NAME]! [END]"], 
 ["youPost", "[NAME] got [CARD] [CARDLEV], join [NAME] to build your own miracle empire!"], 
 ["loading", "Loading..."], ["noNews", "No messages"], ["loginBonus", "[NAME] has played the miracle empire and has gained daily rewards"], 
 ["godShow", "Magic"], ["inGodShow", ""], 
 ["show", "Perform"], 
 ["friend", "Friends"], 
 ["level", "Lev"], 
-["expandOver", "Congrats! Expanding successfully"], 
+["expandOver", "Congrats, you've just acquired more land!"], 
 ["expandPost", "[NAME] has expanded his territory, come and join the Miracle Empire!"], 
 ["feedback", "If you have any advice of feedback, please email"], 
 ["feedGift", "You will get mysterious gifts if your advice is accepted"], 
@@ -312,7 +312,7 @@ var Dicts =
 ["NobZijin", "Your magic capacity will increase by 1 when card level up."], 
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"], 
 ["Download", "Downloading"], 
-["LackMagic", "Sorry, your magic isn't enough, fill it up now? Tips: every 5 mins will recover 1 magic."], 
+["LackMagic", "Not enough magic, recharge now?  Tips: magic recharges 1 point every 5 minutes."], 
 ["LackMaCap", "Sorry, you don't have enough magic capacity. You can buy some decors to increase it."],
 ["infpower", "Infantry: "], 
 ["cavpower", "Cavalry: "], 
@@ -320,7 +320,7 @@ var Dicts =
 ["minussoldier", "Withdraw"], 
 ["getresource", "Collect"], 
 ["quickSendArmy", "SpeedUp"], 
-["LevelNot", "Sorry, you need to upgrade to Lv. [LEVEL] to upgrade your castle."], 
+["LevelNot", "Sorry, you need to reach Lv. [LEVEL] to upgrade your castle."], 
 ["EmpireNotOpen", "Sorry, higher level castle is not opened."], 
 ["sendCatapult", "Dispatch"], 
 ["notSendCata", "No"], 
@@ -459,7 +459,7 @@ var Names = dict([
 
 
 var Tasks = 
-[dict([["req", "build"], ["des", ["Build Farmland!", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "Build ordinary farmland"]], ["checknum", 1], ["lev", 3], ["pair", ["ground_id", 1]], ["reward", [200, 5, 0]], ["type", 0], ["id", 0]]), 
+[dict([["req", "build"], ["des", ["Build Farmland!", "You can increase crop yield with special farmland or by building the Harvest Goddess statue.", "Build ordinary farmland"]], ["checknum", 1], ["lev", 3], ["pair", ["ground_id", 1]], ["reward", [200, 5, 0]], ["type", 0], ["id", 0]]), 
 dict([["req", "planting"], ["des", ["Plant wheat", "You can increase crop yield with special farmland and by building the Harvest Goddess statue.", "planting wheat", "Tip: Click on a free plot of farmland, then tap the seed icon and choose wheat"]], ["checknum", 3], ["lev", 3], ["pair", ["object_id", 0, "type", 0]], ["reward", [300, 15, 0]], ["type", 0], ["id", 1]]), 
 dict([["req", "money"], ["des", ["Collect taxes ", "You can collect higher tax revenue from more higher level stores.", "collect taxes from bakery"]], ["checknum", 100], ["lev", 3], ["pair", ["bid", 0]], ["reward", [200, 15, 0]], ["type", 1], ["id", 2]]), 
 dict([["req", "dialog-territoryinfo"], ["des", ["Check Territory Info", "It is wise to be familiar with your territory.", "Click on your castle", "hint: click castle to check your territory information"]], ["checknum", 1], ["lev", 3], ["reward", [100, 5, 0]], ["type", 2], ["id", 3]]), 
@@ -571,7 +571,7 @@ dict([["req", "stone"], ["des", ["Collect marble", "Wood and stone are needed to
 
 
 var WarTasks = 
-[dict([["req", "warinfo"], ["des", ["Unlock war mode", "Reach to Lv. 10 to unlock War Mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]), 
+[dict([["req", "warinfo"], ["des", ["Unlock war mode", "Reach Lv. 10 to unlock war mode and fight with friends", "you can unlock war mode to fight with friends", "Unlock war mode", "Hint: Tap on map, then tap War Mode"]], ["checknum", 1], ["pair", []], ["reward", [5000, 10, 0]], ["type", 0], ["id", 0]]), 
 dict([["req", "dialog-help"], ["des", ["View HELP", "Learn more about War Mode by checking out the HELP document", "view HELP about war"]], ["checknum", 1], ["reward", [100, 5, 0]], ["type", 2], ["id", 1]]), 
 dict([["req", "makeally"], ["des", ["Ally with friends", "Ally with some friends, and they can help you by providing you with soldiers during a battle", "Become allies with friend"]], ["checknum", 1], ["pair", []], ["reward", [500, 10, 0]], ["type", 0], ["id", 2]]), 
 dict([["req", "adddefence"], ["des", ["Increase defense", "Tap on your castle and tap the [+]  button to upgrade the your castle wall’s defense", "add 100 defense"]], ["checknum", 100], ["reward", [1000, 15, 0]], ["type", 3], ["id", 3]]), 
@@ -683,7 +683,7 @@ const CallDragon = 1000;
 const Tips = dict([
 [3, "Night mode begins everyday at 8 pm. Having lamps and other light decorations will come in handy then. You can toggle night mode under the settings option."], 
 [4, "Click on your castle to see your territory's info. Here you can view your attack power, special articles, magic, resources, etc."], 
-[5, "Decoration are great for your empire! They can increase your population and magic capacity too!"], 
+[5, "Decorations are great for your empire! They can increase your population and magic capacity too!"], 
 
 [7, "Want to get more silver and/or free caesars? Tap the FAQ button."], 
 [8, "You can build Harvest Goddess statue now! The statue can perform magic that will increase your crops' yield as well as one-step harvesting and planting."], 

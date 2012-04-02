@@ -31,8 +31,8 @@ const buildcontext = [
 ];
 
 
-const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
-//const BASE_URL = "http://23.21.135.42:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+const BASE_URL = "http://23.21.135.42:8000/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
@@ -564,8 +564,8 @@ class GlobalController{
     function getEmptyName(gid){
         var secondName = ["Moon ","Sun ", "Earth ", "Lone ", "Sky ", "Far ", "New ", "Old ", "Wind ", "Tooth "];
         var firstName = ["Light ", "Dark ", "Small ", "Great ", "Sill ", "Late ", "Far ", "Near ", "Red ", "Blue ", "Lone ", "East "];
-        var lastName = ["Country", "City", "Town", "Village", "State", "Province", "Bay", "Hill", "Lake"];
-        return firstName[(gid/8)%len(firstName)]+secondName[(gid+1234)%len(secondName)]+lastName[(gid+3456)%len(lastName)];
+        var lastName = ["County", "City", "Town", "Village", "State", "Province", "Bay", "Hill", "Lake"];
+        return firstName[(gid/8)%len(firstName)]+lastName[(gid+3456)%len(lastName)];
     }
     
     function unlock(){

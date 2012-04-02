@@ -379,8 +379,10 @@ class BuildObject extends ContextObject{
         //rdict.update("builds",[self]);
         //rdict.update("city",global.context[0].ccid
         //global.context[0]
+        /*
         if(rand(10)==5)
             global.http.addrequest(0,"addminusstate2",["city_id","type","grid_id"],[global.context[0].ccid,mstate2,baseobj.posi[0]*RECTMAX+baseobj.posi[1]],self,"addminus");
+        */
     }
 
     function gettimeper(){
