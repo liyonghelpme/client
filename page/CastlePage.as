@@ -198,7 +198,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    var actButton;
+    //var actButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -214,7 +214,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        //actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
 
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
@@ -816,8 +816,8 @@ class CastlePage extends ContextObject{
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
                     hideHomeMenu();
-                    if(cpid != 0)
-                        actButton.visible(1);
+                    //if(cpid != 0)
+                    //    actButton.visible(1);
                     //actButton.texture("heartPlus.png");
                 }
                 box.setbox(-1,0,0);
@@ -913,9 +913,11 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
+        /*
         actButton.visible(1);
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
+        */
         tipButton.visible(1);
         spriteManager.showDownIcon();
     }
@@ -924,12 +926,14 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
+        /*
         actButton.visible(0);
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
         else 
             actButton.texture("heartPlus.png", GRAY);
         actButton.setevent(EVENT_UNTOUCH, addHeart);
+        */
         tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
@@ -939,7 +943,7 @@ class CastlePage extends ContextObject{
     function setRankYet()
     {
         rankYet = 1;
-        actButton.texture("heartPlus.png", GRAY); 
+        //actButton.texture("heartPlus.png", GRAY); 
         var fri = datadict.get(cpid);
 
         if(fri != null)
@@ -1003,13 +1007,14 @@ class CastlePage extends ContextObject{
         f.update("empirename",ename);
         
         hideHomeMenu();
+        /*
         if(cpid != 0)
             actButton.visible(1);
         if(rankYet == 1)
         {
             actButton.texture("heartPlus.png", GRAY); 
         }
-
+      */
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");
@@ -1823,7 +1828,7 @@ class CastlePage extends ContextObject{
                 if(newstate < 3 && global.flagnew == 0){
                     trace("update flagnew", global.flagnew);
                     global.pushContext(self,new NewControl(newstate),NotAdd);
-                    actButton.visible(0);
+                    //actButton.visible(0);
                 }
                 else{//new user not popup foodlost
                     var monNum = warmap.monstercontroller.monsternum;

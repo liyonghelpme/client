@@ -291,7 +291,7 @@ var Dicts =
 
 ["MonsterCardGet", " your magic capacity will +2 when upgrade to top lev."], 
 
-["ChangELevUp", "You still need [DAY] continuous logins to get Moon Goddess lev[LEV], and your magic capacity will +1"], 
+["ChangELevUp", "You still need [DAY] continuous logins to get Moon Goddess Lv. [LEV], and your magic capacity will +1"], 
 ["OtherCardLevUp", ""], 
 ["NobCard", "[WHO] needs to defeated [NUM] more opponents to upgrade to [CARD]"], 
 

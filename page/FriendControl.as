@@ -205,11 +205,9 @@ class FriendControl{
         if(flaglock==1&&flagfriendover==0){
             flistback.addlabel(global.getStaticString("loading_str"),null,40).anchor(50,50).pos(400,52).color(0,0,0,100);
         }
-        /*
         else if(flaglock==1&&flagfriendover>1){
             flistback.addlabel(global.getStaticString("friend_notload"),null,20).anchor(50,50).pos(400,52).color(0,0,0,100);
         }
-        */
         else{
             var i;
             var j;

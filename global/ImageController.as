@@ -1,6 +1,7 @@
     //"downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png", 
+    //"heart.png", "heartPlus.png", "rankHeart.jpg",
 class ImageController{
-    const images1 = ["disk0.png", "heart.png", "heartPlus.png", "rankHeart.jpg", "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",
+    const images1 = ["disk0.png",  "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",
     "room85.png","room86.png",
     "fact33.png", "fact34.png", "fact35.png", "fact36.png", "fact37.png",
     "fact38.png"
