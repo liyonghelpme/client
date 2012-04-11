@@ -360,13 +360,18 @@ class UserController{
         if(buildable.get("ok")==1){
             return 1;
         }
-        else if(cost.get("mana") == null){
-            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
+        else if(cost.get("mana") != null){
+            global.pushContext(null, new MagicWarning(), NonAutoPop);
             return 0;
+        }
+        else if(cost.get("caesar") != null)
+        {
+            global.pushContext(null, new Warningdialog(), NonAutoPop);
+            return null;
         }
         else
         {
-            global.pushContext(null, new MagicWarning(), NonAutoPop);
+            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
             return 0;
         }
     }

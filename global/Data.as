@@ -314,6 +314,7 @@ var Dicts =
 ["Download", "Downloading"], 
 ["LackMagic", "Sorry, your magic isn't enough, fill it up now? Tips: every 5 mins will recover 1 magic."], 
 ["LackMaCap", "Sorry, you don't have enough magic capacity. You can buy some decors to increase it."],
+["LackCae", "Sorry, you don't have enough caesar coins, "]
 ["infpower", "Infantry: "], 
 ["cavpower", "Cavalry: "], 
 ["addsoldier", "Reinforce"], 
@@ -352,8 +353,8 @@ var Dicts =
 ["PlayingDra", "[NAME] is playing Dragon Wheel, join \"playingDra\" in Miracle Empire!"], 
 ["DraNot", "Sorry, you don't have enough Dragon stones, you can get more by opening treasure chest or killing monsters!"], 
 
-["CaeNot", "Sorry, you don't have enough caesars!"], 
-["HowDra", "You can use Dragon Stones or caesars to play Dragon Wheel. Tip: Dragon Stones can be obtained by opening treasure chesk or killing monsters."], 
+["CaeNot", "Sorry, you don't have enough caesar coins!"], 
+["HowDra", "You can use Dragon Stones or caesar coins to play Dragon Wheel. Tip: Dragon Stones can be obtained by opening treasure chesk or killing monsters."], 
 ["drumReward", "Tap the drum icon to get extra silver during fights! You tapped [NUM] times and get [MONEY] silvers in the fight!"], 
 ["drumFeed", "[NAME] tapped drum [NUM] times and got [MONEY] silver in Miracle Empire!"], 
 ["lev1Disk", "Upgrade to Baron to play this kind of Dragon wheel."], 
@@ -362,7 +363,7 @@ var Dicts =
 ["boundary", "Magic Capacity"], 
 ["dragonStone", "Dragon Stone"], 
 ["power", "soldiers"], 
-["oldUser", "Welcome back to Miracle Empire! You got 10 caesars for playing!"], 
+["oldUser", "Welcome back to Miracle Empire! You got 10 caesar coins for playing!"], 
 ["", ""], 
 
 ];
@@ -471,7 +472,7 @@ dict([["req", "getfriend"], ["des", ["Visit Caesar's territory", "Visit Caesar's
 dict([["req", "dialog-circle"], ["des", ["Add friends", "Add a friend for more fun and more rewards, it’s a social game!", "add friends in Circle", "hint: click the friends list first, then click the circle icon."]], ["checknum", 1], ["lev", 5], ["reward", [700, 10, 0]], ["type", 2], ["id", 9]]), 
 dict([["req", "selectgift"], ["checknum", 1], ["des", ["Send gift", "You can send free gifts to your friends.", "send a gift", "hint: visit your friend's territory and tap the gift icon on the left to send them gifts"]], ["lev", 5], ["pair", ["askorgive", 0]], ["reward", [200, 10, 0]], ["type", 0], ["id", 10]]), 
 dict([["req", "selectgift"], ["des", ["Request Gift", "Your friends can send free gift to you.", "request a gift", "Hint: visit your friends' territory and tap the gift icon on the left, choose a gift and ask for it"]], ["checknum", 1], ["lev", 5], ["pair", ["askorgive", 1]], ["reward", [300, 10, 0]], ["type", 0], ["id", 11]]), 
-dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint: click the treasure chest on the left, you can ask your friends for help, or you can use caesars to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]), 
+dict([["req", "completeopen"], ["des", ["Open Treasure Chest!", "Friends can help you open the treasure chest!", "open the treasure chest", "hint: click the treasure chest on the left, you can ask your friends for help, or you can use caesar coins to open it."]], ["checknum", 1], ["lev", 5], ["pair", []], ["reward", [500, 20, 0]], ["type", 0], ["id", 12]]), 
 dict([["des", ["Rate", "If you love our game, help us by rating on Android Market!", "rate Miracle Empire"]], ["checknum", 1], ["lev", 5], ["reward", [-10, 30, 0]], ["type", 3], ["id", 13]]), 
 dict([["req", "updatebuilding"], ["des", ["Upgrade cottage", "Upgrading buildings will increase production efficiency.", "upgrade cottage", "hint: click a normal cottage first and then click the upgrade icon"]], ["checknum", 1], ["lev", 6], ["pair", ["ground_id", 101]], ["reward", [500, 20, 0]], ["type", 0], ["id", 14]]), 
 dict([["req", "person"], ["des", ["Increase Population!", "Homes provide people with a place to live.", "increase population", "hint: click a free dwelling house first, then click the recruit icon"]], ["checknum", 50], ["lev", 6], ["pair", []], ["reward", [500, 30, 0]], ["type", 1], ["id", 15]]), 
@@ -493,7 +494,7 @@ dict([["req", "build"], ["des", ["Build Farmlands", "Crystal farmland increases 
 dict([["req", "build"], ["checknum", 1], ["des", ["Build lumber mill", "Wood and stone are needed to upgrade your buildings and produce weapons.", "build a lumber mill"]], ["lev", 10], ["pair", ["ground_id", 5]], ["reward", [1500, 50, 0]], ["type", 0], ["id", 39]]), 
 dict([["req", "wood"], ["des", ["Collect maple woods", "Wood and stone are needed to upgrade your buildings and produce weapons.", "collect maple woods"]], ["checknum", 30], ["lev", 10], ["pair", ["objid", 0]], ["reward", [1500, 60, 0]], ["type", 1], ["id", 40]]), 
 dict([["checknum", 5], ["des", ["Invite friends", "Add a friend for more fun and more rewards, it’s a social game!", "invite your friends to join", "hint: enter your friends' list and invite your friends, you can also click menu to invite"]], ["lev", 10], ["reward", [3000, 70, 1]], ["type", 4], ["id", 41]]), 
-dict([["req", "completepay"], ["des", ["Charge", "You can get bonus rewards for recharging your caesars.", "charge and gain the rewards"]], ["checknum", 1], ["lev", 10], ["pair", []], ["reward", [1000, 200, 1]], ["type", 0], ["id", 42]]), 
+dict([["req", "completepay"], ["des", ["Charge", "You can get bonus rewards for recharging your caesar coins.", "charge and gain the rewards"]], ["checknum", 1], ["lev", 10], ["pair", []], ["reward", [1000, 200, 1]], ["type", 0], ["id", 42]]), 
 dict([["req", "build"], ["des", ["Build brick roads", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build brick roads"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 500]], ["reward", [600, 30, 0]], ["type", 0], ["id", 43]]), 
 dict([["req", "build"], ["des", ["Build Flowerbed", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build Flowerbed"]], ["checknum", 6], ["lev", 11], ["pair", ["ground_id", 505]], ["reward", [600, 60, 0]], ["type", 0], ["id", 44]]), 
 dict([["req", "build"], ["des", ["Build golden roads", "Beautifully decorating your territory will increase your overall population and magic capacity.", "build golden roads"]], ["checknum", 3], ["lev", 11], ["pair", ["ground_id", 504]], ["reward", [1800, 50, 1]], ["type", 0], ["id", 45]]), 
@@ -685,7 +686,7 @@ const Tips = dict([
 [4, "Click on your castle to see your territory's info. Here you can view your attack power, special articles, magic, resources, etc."], 
 [5, "Decoration are great for your empire! They can increase your population and magic capacity too!"], 
 
-[7, "Want to get more silver and/or free caesars? Tap the FAQ button."], 
+[7, "Want to get more silver and/or free caesar coins? Tap the FAQ button."], 
 [8, "You can build Harvest Goddess statue now! The statue can perform magic that will increase your crops' yield as well as one-step harvesting and planting."], 
 [9, "Build the Dragon Wheel and then use the Dragon Stone to get FREE caesars."], 
 [10, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."], 
