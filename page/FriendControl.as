@@ -259,11 +259,17 @@ class FriendControl{
             check((fpos[friendmode-1]-45)/90);
         }
     }
+    var tryTimes = 0;
     var bufferflist1;
     function hfriend(requestId, ret_code, response){
+        trace("loading friend Data", requestId, ret_code, response);
+
         if(ret_code ==0){
-            trace("fail to get friend from us!");
+            trace("fail to get friend from us!", tryTimes);
             flagfriendover = 3;
+            tryTimes++;
+            if(tryTimes > 2)
+                return 0;
             var fdict = dict();
             fdict.update("offset",len(bufferflist1));
             fdict.update("limit",500);
@@ -271,7 +277,7 @@ class FriendControl{
             return 0;
         }
         else{
-            trace("sucload1!");
+            trace("sucload1!", len(response.get("data")));
             bufferflist1.extend(response.get("data"));
             if(len(response.get("data"))<500){
                 bufferflist1.append(dict([["name",global.getStaticString("caesar")],["id",0],["avatar_version",0],["isplayer",1]]));
@@ -282,6 +288,7 @@ class FriendControl{
                 fdict = dict();
                 fdict.update("offset",len(bufferflist1));
                 fdict.update("limit",500);
+                trace("fdict", fdict);
                 ppy_query("list_friends", fdict, hfriend);
             }
             //global.http.addrequest(0,"retlev",["uid","rrstring"],[global.userid,string1],self,"retlevback");

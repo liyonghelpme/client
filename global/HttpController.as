@@ -21,6 +21,7 @@ class HttpController extends ContextObject{
     }
     function addrequest(syn,requrl,postkey,postvalue,cmdobj,cmd){
         trace("addhttprequest",requrl,postkey,postvalue);
+        //not show clock
         if(syn == 1 && synlock == 0){
             global.lock();
             synlock = 1;
@@ -59,21 +60,23 @@ class HttpController extends ContextObject{
     
     function addhandle(handle){
         trace("handle object", handle.get("target"));
-        if(handle.get("target").contextname.rfind("object-build")!=-1){
-            if(len(handledict2)<1){
-                var rid=http_request(BASE_URL+handle.get("request"),httpcallback,handle.get("poststr"),15000);
-                handledict2.update(rid,handle);
-                requestnum++;
- 
-            }
-            else{
-                requestlist.append(handle);
-            }
+        //if(handle.get("target").contextname.rfind("object-build")!=-1){
+        if(len(handledict2)<1){
+            var rid=http_request(BASE_URL+handle.get("request"),httpcallback,handle.get("poststr"),15000);
+            handledict2.update(rid,handle);
+            requestnum++;
+
         }
+        else{
+            requestlist.append(handle);
+        }
+        //}
+        /*
         else{
             rid=http_request(BASE_URL+handle.get("request"),httpcallback,handle.get("poststr"),15000);
             handledict.update(rid,handle);
         }
+        */
     }
     
     function paintNode(){

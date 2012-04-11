@@ -38,13 +38,13 @@ class Cardget extends ContextObject{
             }
             mb.add(m);
             var endstr = "!";
-            if(cardid>13&&cardid<18){
-                if(cardlevel<5){
-                    endstr = global.getStaticString("zijin");
-                }
-                else{
-                    endstr = global.getStaticString("freeZijin");
-                }
+            if(cardid >= 13 && cardid < 18){//not monster
+                //if(cardlevel<5){
+                endstr = global.getStaticString("zijin");
+                //}
+                //else{
+                //    endstr = global.getStaticString("freeZijin");
+                //}
             }
             else
             {

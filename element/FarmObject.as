@@ -64,14 +64,14 @@ class FarmObject extends BuildObject{
             global.http.addrequest(0,"harvest",["user_id","city_id","grid_id","type"],[global.userid,global.cityid,baseobj.posi[0]*RECTMAX+baseobj.posi[1],type],self,"state4over");
         }
         else if(s == 2 && p!=null){
-            if(global.user.getValue("money") > PLANT_PRICE[p]){
-                objid = p;
-                var ps = baseobj.posi[0]*RECTMAX+baseobj.posi[1];
-                type = 0;
-                if(bid==5) type = 2;
-                else if(bid==6) type = 1;
-                global.http.addrequest(0,"planting",["user_id","city_id","grid_id","object_id","type"],[global.userid,global.cityid,ps,objid,type],self,"state2over");
-            }
+            //if(global.user.getValue("money") > PLANT_PRICE[p]){
+            objid = p;
+            var ps = baseobj.posi[0]*RECTMAX+baseobj.posi[1];
+            type = 0;
+            if(bid==5) type = 2;
+            else if(bid==6) type = 1;
+            global.http.addrequest(0,"planting",["user_id","city_id","grid_id","object_id","type"],[global.userid,global.cityid,ps,objid,type],self,"state2over");
+            //}
         }
     }
 
