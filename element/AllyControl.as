@@ -19,7 +19,7 @@ class AllyControl extends ContextObject{
         if(element == null){
             element = node();
             if(mode==0){
-                element.addlabel(global.getStaticString("youLeft")+str(global.allymax-len(global.context[0].friend.flist2))+global.getStaticString("allyNum"),null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
+                element.addlabel(global.getFormatString("youLeft", ["[NUM]", str(global.allymax-len(global.context[0].friend.flist2))]),null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
                 element.addsprite("adddefence.png").anchor(50,50).pos(395,34).setevent(EVENT_UNTOUCH,addallybound);
                 element.addlabel(global.getStaticString("sureToally"),null,24).pos(25,81).color(0,0,0,100);
                 var ap = element.addsprite("allyelement.png").anchor(50,50).pos(219,159);

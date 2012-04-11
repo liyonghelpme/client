@@ -26,7 +26,8 @@ class BuyControl extends ContextObject{
             tabs[i].addlabel(num[2],null,18).anchor(50,50).pos(25,175).color(0,0,0,100);
         }
         choosetab(0,0,0);
-        ppy_query("papayas",null,setpapayas);
+        //ppy_query("papayas",null,setpapayas);
+        global.user.getPapaya(setpapayas);
         var w=sprite("wait1.png").anchor(50,50).pos(605,59);
         w.addaction(waitaction1);
         contextNode.add(w,1,10);
@@ -41,13 +42,32 @@ class BuyControl extends ContextObject{
             closedialog(0,0);
         }
     }
+    var userPapaya = 0;
+    var getPapaFin = 0;
+    var caeLabel = null;
+    var papaLabel = null;
     function setpapayas(r,rc,c){
         if(rc != 0){
-            contextNode.get(10).addaction(stop());
-            contextNode.remove(10);
-            contextNode.addlabel(str(global.user.getValue("caesars")),null,18).anchor(0,50).pos(555,46).color(5,5,64,100);
-            contextNode.addlabel(str(c.get("papayas")),null,18).anchor(0,50).pos(555,72).color(5,5,64,100);
-            contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
+            if(contextNode.get(10) != null)
+            {
+                contextNode.get(10).addaction(stop());
+                contextNode.remove(10);
+            }
+            if(caeLabel == null)
+                caeLabel = contextNode.addlabel(str(global.user.getValue("caesars")),null,18).anchor(0,50).pos(555,46).color(5,5,64,100);
+            else
+                caeLabel.text(str(global.user.getValue("caesars")));
+            userPapaya = c.get("papayas");
+            if(papaLabel == null)
+            {
+                papaLabel = contextNode.addlabel(str(c.get("papayas")),null,18).anchor(0,50).pos(555,72).color(5,5,64,100);
+                contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
+            }
+            else
+            {
+                papaLabel.text(str(c.get("papayas")));
+            }
+            getPapaFin = 1;
         }
     }
     
@@ -56,17 +76,35 @@ class BuyControl extends ContextObject{
     }
     
     function buycaesars(n,e){
-        global.popContext(null);
+        if(getPapaFin == 0)
+            return;
         var num = buystr[selecttab].split("+");
+
+        global.http.addrequest(0, "buyCae", ["uid", "cae", "pap"], [global.userid, int(num[0]), int(num[2])+10000*userPapaya], this, "buyCae");
+        if(userPapaya < int(num[2]))
+        {
+            //global.popContext(null);
+            global.pushContext(null, new PapaNot(), NonAutoPop);
+            return;
+        }
+
+        global.popContext(null);
         start_payment(global.getStaticString("buyCaesar"), global.getStaticString("buyCaesar")+str(int(num[0])+int(num[1])),"",int(num[2]),buycaesars2);
     }
     
     function buycaesars2(pid, ret, tid, receipt, param){
+        trace("buy caesars", ret, pid, tid);
         if(ret==1){
             var num = buystr[selecttab].split("+");
             trace("buy caesars", tid, receipt, num[2]);
             global.http.addrequest(0,"completepay",["uid","tid","papapas","signature"],[global.userid,tid,int(num[2]),receipt],self,"buyover");
         }
+        /*
+        else {
+            global.pushContext(null, new PapaNot(), NonAutoPop);
+        }
+        */
+        //global.pushContext(null, new PapaNot(), NonAutoPop);    
     }
     
     function useaction(p,rc,c){

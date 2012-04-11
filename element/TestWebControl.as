@@ -109,6 +109,7 @@ class TestWebControl extends ContextObject{
         contextNode.addaction(stop());
         contextNode.removefromparent();
         web.removefromparent();
+        global.user.getPapaya(null);
     }
     
     function pause(){

@@ -197,7 +197,6 @@ class MedalControl extends ContextObject{
                         global.pushContext(null,new Warningdialog([global.getStaticString(map.get(param)),null,5]),NonAutoPop);
                         /*
                         if(param<12){
-
                         }
                         else if(param==13){
                             global.pushContext(null,new Warningdialog([global.getStaticString("ChangEZijin"),null,5]),NonAutoPop);

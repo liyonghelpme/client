@@ -139,6 +139,26 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
+    var updates;
+    var papayas = 0;
+
+    var callBack = null;
+    function setPapaya(r, rc, c)
+    {
+        trace("getPapa", r, rc, c);
+        if(rc != 0)
+        {
+            papayas = c.get("papayas"); 
+        }
+        if(callBack != null)
+            callBack(r, rc, c);
+    }
+    function getPapaya(cb)
+    {
+        if(cb != null)
+            callBack = cb;
+        ppy_query("papayas", null, setPapaya);
+    }
     
     function UserController(){
         userinfo = dict();

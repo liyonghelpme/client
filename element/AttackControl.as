@@ -38,7 +38,7 @@ class AttackControl extends ContextObject{
             atime = t[2]*(abs(spos[0]-epos[0])+mw)+t[1]*(abs(spos[1]-epos[1])-mw);
         }
         contextNode.addlabel(global.getStaticString("attack_time")+global.getStaticString(":"),null,20,FONT_BOLD).anchor(100,50).pos(115,371).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("attacktime_notice"),null,16).pos(300,366).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("attacktime_notice"),null,16).pos(250,366).color(0,0,0,100);
         timelabel = contextNode.addlabel(global.gettimestr(atime),null,20).anchor(0,50).pos(119,371).color(0,0,0,100);
         var bt = sprite("boxbutton1.png").anchor(50,50).pos(142,420).setevent(EVENT_UNTOUCH,attack);
         contextNode.add(bt,2,0);

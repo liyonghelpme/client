@@ -18,6 +18,7 @@ import element.DailyDialog;
 import element.GiftDialog;
 import element.Quitdialog;
 import element.BuyControl;
+import element.PapaNot;
 import element.Cardget;
 import element.NewControl;
 import element.Infodialog;
