@@ -352,6 +352,8 @@ class UserController{
             var key = items[i][0];
             var value = items[i][1];
             var cmpvalue = 0;
+            if(key == "ok")
+                continue;
             if(key == "special")
             {
                 var speItems = value.items();
@@ -366,13 +368,25 @@ class UserController{
             }
             else
             {
-                if(key=="labor" || key=="person"){
-                    key = "person";
-                    cmpvalue = getValue("labor");
+                trace("key", key);
+                if(key == "friend")
+                {
+                    if(len(global.ppyuserdict)-2-value < cmpvalue)
+                    {
+                        buildable.update("ok", 0);
+                        buildable.update(global.getStaticString(items[i][0]), value+cmpvalue-len(global.ppyuserdict)+2);
+                    }
                 }
-                if(getValue(key)-value<cmpvalue){
-                    buildable.update("ok",0);
-                    buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                else
+                {
+                    if(key=="labor" || key=="person"){
+                        key = "person";
+                        cmpvalue = getValue("labor");
+                    }
+                    if(getValue(key)-value<cmpvalue){
+                        buildable.update("ok",0);
+                        buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                    }
                 }
             }
         }
@@ -384,10 +398,10 @@ class UserController{
             global.pushContext(null, new MagicWarning(), NonAutoPop);
             return 0;
         }
-        else if(cost.get("caesar") != null)
+        else if(cost.get("caesars") != null)
         {
             global.pushContext(null, new CaeWarning(), NonAutoPop);
-            return null;
+            return 0;
         }
         else
         {

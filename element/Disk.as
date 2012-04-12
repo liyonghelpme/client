@@ -161,22 +161,25 @@ class Disk extends ContextObject{
         if(lock == 1 || play == 0)
             return;
         lock = 1;
+        var ret;
         if(p == 0)
         {
-            need = global.user.getValue("dragonStone")
-            if(need < 1)
+            //need = global.user.getValue("dragonStone")
+            ret = global.user.testCost(dict([["dragonStone", 1]]));
+            if(ret == 0)
             {
-                global.pushContext(null, new Warningdialog([global.getStaticString("DraNot"), null, 6]), NonAutoPop);
+                //global.pushContext(null, new Warningdialog([global.getStaticString("DraNot"), null, 6]), NonAutoPop);
                 lock = 0;
                 return;
             }
         }
         else
         {
-            need = global.user.getValue("caesars");
-            if(need < 1)
+            //need = global.user.getValue("caesars");
+            ret = global.user.testCost(dict([["caesars", 1]]));   
+            if(ret == 0)
             {
-                global.pushContext(null, new Warningdialog([global.getStaticString("CaeNot"), null, 6]), NonAutoPop)
+                //global.pushContext(null, new Warningdialog([global.getStaticString("CaeNot"), null, 6]), NonAutoPop)
                 lock = 0;
                 return;
             }

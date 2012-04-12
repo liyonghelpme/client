@@ -71,7 +71,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("money") < DISK_MONEY[0])
                 {
                     buildable[i].update("ok", 0);
-                    buildable[i].update(global.getStaticString("money"), DISK_MONEY[0]-global.user.getValue("money"));
+                    buildable[i].update("money", DISK_MONEY[0]);
                     color = 100;
                 }
                 trace("index", index, obji);
@@ -105,7 +105,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("money")<GOD_B_PRICE[0]){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("coin"),GOD_B_PRICE[0]-global.user.getValue("money"));
+                    buildable[i].update("money", GOD_B_PRICE[0]);
                 }
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                 objs[i].addlabel(str(GOD_B_PRICE[0]),null,16).pos(34,202).color(cl,0,0,100);
@@ -114,7 +114,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("food") < GOD_FOOD[0]){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("food"),GOD_FOOD[0]-global.user.getValue("food"));
+                    buildable[i].update("food", GOD_FOOD[0]);
                 }
                 objs[i].addsprite("food.png").size(29,33).pos(80,195);
                 objs[i].addlabel(str(GOD_FOOD[0]),null,16).pos(113,202).color(cl,0,0,100);
@@ -148,7 +148,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("money")<data.get("price")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("coin"),data.get("price")-global.user.getValue("money"));
+                    buildable[i].update("money", data.get("price"));
                 }
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                 objs[i].addlabel(str(data.get("price")),null,16).pos(30,202).color(cl,0,0,100);
@@ -157,7 +157,7 @@ class GodControl extends ContextObject{
                 if(global.user.getValue("food") <data.get("food")){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("food"),data.get("food")-global.user.getValue("food"));
+                    buildable[i].update("food", data.get("food"));
                 }
                 objs[i].addsprite("food.png").size(29,33).pos(80,195);
                 objs[i].addlabel(str(data.get("food")),null,16).pos(103,202).color(cl,0,0,100);
@@ -248,8 +248,9 @@ class GodControl extends ContextObject{
                 if(flagmove == 0){
                     n.texture("dialogelement2l.png");
                     global.lastpage[0] = 4;
-                    if(buildable[param].get("ok")==0){
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 0){
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
                         var oid = objcontext[param];

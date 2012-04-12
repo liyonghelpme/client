@@ -158,7 +158,7 @@ class NestObject extends BuildObject{
     var extendid;
     var substate;
     var istrain;
-    var trainnum;
+    var trainnum = 0;
     override function setstate(){
         if(contextNode == null){
             return 0;
