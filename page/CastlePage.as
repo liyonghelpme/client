@@ -1302,9 +1302,11 @@ class CastlePage extends ContextObject{
             newstate = data.get("newstate",3);
             if(newstate == 0)
             {
+                /*
                 var today = data.get("today");
                 var todayNum = today.get("todayNum", 0);
                 var totalNum = today.get("totalNum", 0);
+                */
                 /*
                 if(totalNum >= 6000 && todayNum >= 100)
                 {
@@ -1312,15 +1314,16 @@ class CastlePage extends ContextObject{
                 }
                 */
             }
-            var deadDay = data.get("deadDay", 7);
+            //var deadDay = data.get("deadDay", 7);
             //addcmd(dict([["name","deadDay"], ["num", deadDay]]));
-
+            /*
             var tp24 = data.get("tp24", 0);
             if(tp24 == 1)
             {
                finishTJAction("3dbc399f-0922-472c-bf51-ae7935be3ce8"); 
                trace("finish tp");
             }
+            */
             var loginYet = data.get("loginYet", 1);
             if(loginYet == 0)
             {

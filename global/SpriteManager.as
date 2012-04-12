@@ -102,6 +102,8 @@ class SpriteManager
     var getWarYet = 0;
     function getWar()
     {
+        warBack();
+        /*
         if(downWarYet == 1 && notdownload == 0)
         {
             warBack();
@@ -110,6 +112,7 @@ class SpriteManager
         downWarYet = 1;
         var arr = [] + warpic;
         getDownload(arr, warBack, DownWarPic);
+        */
     }
 
     var dragonPlace;
