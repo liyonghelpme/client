@@ -429,18 +429,18 @@ class WarControl extends ContextObject{
             }
             if(datadict.get("leftself")==1){
                 contextNode.addlabel(global.getStaticString("sendFight")+str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                contextNode.addlabel(global.getStaticString("lostFight")+":",null,20).pos(343,245).color(0,0,0,100);
-                contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                contextNode.addlabel(global.getStaticString("defenceFight")+":"+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
+                contextNode.addlabel(global.getStaticString("lostFight")+str(-datadict.get("powerlost")),null,20).pos(343,245).color(0,0,0,100);
+                //contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
+                contextNode.addlabel(global.getStaticString("defenceFight")+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
             }
             else{
                 contextNode.addlabel(global.getStaticString("defenceFight")+":"+ str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                contextNode.addlabel(global.getStaticString("lostDefence")+":",null,20).pos(343,245).color(0,0,0,100);
-                contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                contextNode.addlabel(global.getStaticString("leftDefence")+":"+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
+                contextNode.addlabel(global.getStaticString("lostDefence")+str(-datadict.get("powerlost")),null,20).pos(343,245).color(0,0,0,100);
+                //contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
+                contextNode.addlabel(global.getStaticString("leftDefence")+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
                 if(datadict.get("leftwin")==1){
-                    contextNode.addlabel(global.getStaticString("lostCoin")+":",null,20).pos(343,309).color(0,0,0,100);
-                    contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
+                    contextNode.addlabel(global.getStaticString("lostCoin")+rwd[2],null,20).pos(343,309).color(0,0,0,100);
+                    //contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                 }
             }
 

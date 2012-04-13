@@ -49,7 +49,7 @@ class Nestbuilddialog extends ContextObject{
             }
         }
         else{
-            contextNode.get(1).add(label(global.getStaticString("askFri"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19),0,1);
+            contextNode.get(1).add(label(global.getStaticString("askFri"),null,BUTTONFONTSIZE-5).anchor(50,50).pos(62,19),0,1);
             if(helpperson != maxperson){
                 contextNode.get(1).setevent(EVENT_UNTOUCH,askforhelp);
             }
@@ -59,7 +59,7 @@ class Nestbuilddialog extends ContextObject{
             }
         }
         contextNode.add(sprite("boxbutton2.png").pos(270,330).setevent(EVENT_UNTOUCH,closedialog),0,2);
-        contextNode.get(2).addlabel(global.getStaticString("close"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
+        contextNode.get(2).addlabel(global.getStaticString("close"),null,BUTTONFONTSIZE-5).anchor(50,50).pos(62,19);
         var l = contextNode.addlabel("",null,30).pos(133,37).color(0,0,0,100);
         evnodes = new Array(0);
         var xx;

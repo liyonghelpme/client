@@ -29,17 +29,17 @@ var Others = dict([
 
 ["newstr", [
 "{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'select', 'param': 0, 'tp': [600, 140], 'text': \"Your people need food, tap on the idle farmland.\"}",   
-"{'cp': [328, 288], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'bttap', 'param': 0, 'tp': [600, 140], 'text': ' Tap the plant icon.'}",   
+"{'cp': [328, 288], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'btclick', 'param': 0, 'tp': [600, 140], 'text': ' Tap the plant icon.'}",   
 "{'cp': [209, 181], 'cz': [240, 240], 'type': 1, 'posi': [17, 8], 'cmd': 'state2over', 'param': 0, 'tp': [600, 140], 'text': 'Plant your first crop by tapping on wheat.'}",   
 "{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'select', 'param': 0, 'tp': [600, 140], 'text': \"It takes time to grow crops, but we can accelerate growth time, start by tapping on the busy farmland.\"}",   
-"{'cp': [328, 288], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'bttap', 'param': 0, 'tp': [600, 140], 'text': 'Tap the clock.'}",   
+"{'cp': [328, 288], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'btclick', 'param': 0, 'tp': [600, 140], 'text': 'Tap the clock.'}",   
 "{'cp': [314, 342], 'cz': [160, 60], 'gtype': 0, 'posi': [17, 8], 'cmd': 'speed', 'param': 0, 'tp': [600, 140], 'text': \"Tap Speed Up to accelerate your crop\'s growth\"}",   
 "{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'state4over', 'param': 0, 'tp': [600, 140], 'text': 'Harvest wheat.'}",   
 
 "", 
 
 "{'gtype': 2, 'posi': [17, 8], 'cmd': 'harvest', 'param': 0, 'tp': [400, 240], 'text': 'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
-"{'cp': [35, 435], 'cz': [80, 80], 'gtype': 1, 'posi': [14, 13], 'cmd': 'mtap', 'param': 4, 'tp': [200, 140], 'text': \"An empire needs people to construct buildings and become soldiers. Build home for people to live in. Tap on the Build Icon.\"}",   
+"{'cp': [35, 435], 'cz': [80, 80], 'gtype': 1, 'posi': [14, 13], 'cmd': 'mclick', 'param': 4, 'tp': [200, 140], 'text': \"An empire needs people to construct buildings and become soldiers. Build home for people to live in. Tap on the Build Icon.\"}",   
 "{'cp': [100, 250], 'cz': [160, 280], 'gtype': 1, 'posi': [14, 13], 'cmd': 'pop', 'param': 2100, 'mp': [400, 240], 'tp': [400, 140], 'text': ' Tap cottage '}",   
 "{'cp': [445, 75], 'cz': [80, 80], 'gtype': 0, 'posi': [14, 13], 'cmd': 'build', 'param': 1, 'mp': [400, 180], 'tp': [600, 340], 'text': \"Choose a plot of land to build it and tap yes when ready.\"}", 
 "{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [14, 15], 'cmd': 'state4over', 'param': 0, 'tp': [600, 140], 'text': 'People have already moved into this home. Tap on the cottage to recruit them for work.'}",   
@@ -50,8 +50,8 @@ var Others = dict([
 "", 
 
 "{'gtype': 2, 'posi': [14, 10], 'cmd': 'state4over', 'param': 0, 'tp': [400, 240], 'text': 'Task Two completed+1500+2+10+ Next step +You have recruited people and collected taxes.'}",   
-"{'cp': [106, 435], 'cz': [80, 80], 'gtype': 5, 'posi': [14, 10], 'cmd': 'mtap', 'param': 5, 'tp': [200, 140], 'text': 'There are monsters pillaging your crops. Kill them and protect your territory.'}",   
-"{'cp': [177, 435], 'cz': [80, 80], 'gtype': 5, 'posi': [14, 10], 'cmd': 'mtap', 'param': 2, 'tp': [200, 140], 'text': \"Tap on the map to see what's going on around you.\"}",   
+"{'cp': [106, 435], 'cz': [80, 80], 'gtype': 5, 'posi': [14, 10], 'cmd': 'mclick', 'param': 5, 'tp': [200, 140], 'text': 'There are monsters pillaging your crops. Kill them and protect your territory.'}",   
+"{'cp': [177, 435], 'cz': [80, 80], 'gtype': 5, 'posi': [14, 10], 'cmd': 'mclick', 'param': 2, 'tp': [200, 140], 'text': \"Tap on the map to see what's going on around you.\"}",   
 "{'cp': [650, 360], 'cz': [120, 120], 'gtype': 4, 'posi': 0, 'cmd': 'monster', 'param': 15, 'tp': [600, 140], 'mp': [650, 360], 'text': 'Tap on the monster to attack it.'}",   
 "{'cp': [310, 386], 'cz': [160, 80], 'gtype': 5, 'posi': 0, 'cmd': 'attack', 'param': 1, 'tp': [200, 140], 'mp': [650, 360], 'text': 'Tap attack'}",   
 "{'cp': [450, 360], 'cz': [120, 120], 'gtype': 4, 'posi': 0, 'cmd': 'goback', 'tp': [600, 140], 'mp': [650, 360], 'text': 'Congrats, you won! tap on your castle to return to your territory.'}, ",    
@@ -67,7 +67,7 @@ var Dicts =
 [
 ["build_defence_format", "Building a [BUILD] will add [DEFENCE] to castle defense, are you sure you want to build it?"], 
 
-["money", "silver coins"], ["caesars", "caesar coins"], ["food", "food"], ["labor", "Idle population"], ["person", "population"], ["stone", "stone"], ["wood", "wood"], ["caesar", "Caesar"], 
+["money", "silver coins"], ["caesars", "caesar coins"], ["food", "food"], ["labor", "idle population"], ["person", "population"], ["stone", "stone"], ["wood", "wood"], ["caesar", "Caesar"], 
 
 ["share", "Share"], ["back", "Back"], ["change", "Done"], ["send", "Send"], ["cancel", "Cancel"], ["system", "System"], ["devine", "Activate"], ["retry", "Retry"], ["help", "Help"], ["close", "Close"], ["openbox", "Open"], ["askforhelp", "Ask friend"], 
 
@@ -76,7 +76,7 @@ var Dicts =
 ["request_done", "Request handled"], 
 
 ["friend_notload", "Sorry, can't retrieve your friend list"], 
-["friend_ally_notice", "You can visit your friend and ally with them. Allies can help you fight!"], 
+["friend_ally_notice", "You can visit your friends and ally with them. Allies can help you fight!"], 
 ["friend_invite", "Come create miracles with me!"], ["friend_invite_success", "Invited successfully!"], 
 
 ["nest_style_cannotchange", "Your dragon is growing, you can't change your dragon type now!"], 
@@ -107,40 +107,40 @@ var Dicts =
 ["box_str_2", "Let's share the treasure!"],
 ["box_str_3", "You found a treasure chest, ask friends to help you open it."], 
 
-["god_bless_over", "You have already performed magic!"], 
+["god_bless_over", "Your magic power is recharging."], 
 
-["share_format", "[NAME][DESCRIBE], Come on! join [NAME] and build your own Miracle Empire together!"], 
+["share_format", "[NAME][DESCRIBE]. Come on! Join [NAME] and build your own Miracle Empire together!"], 
 
 ["share_box_format", "[NAME] has received a mysterious treasure chest but can't open it without your help!"], 
 
 ["share_petup_1", "You have raised your dragon successfully"], 
 ["share_petup_2", "'s baby dragon has grown up"], 
 
-["share_openbox", " opened one special treasure chest"], 
+["share_openbox", " opened a special treasure chest"], 
 
 ["default_petname", "my pet"], 
 
 ["news_nonews", "No more news"], 
 
-["news_element0", "<b>[NAME]<b> visited your land"], 
+["news_element0", "<b>[NAME]<b> visited you."], 
 
-["news_element1", "<b>[NAME]<b> helped you manage your castle"], 
+["news_element1", "<b>[NAME]<b> helped you manage your castle."], 
 
 ["news_element2", "<b>[NAME]<b> sent you a gift."], 
 
-["news_element3", " You defeat <b>[NAME]<b>"], 
+["news_element3", " You defeated <b>[NAME]<b>."], 
 
-["news_element4", "<b>[NAME]<b> defeated you"], 
+["news_element4", "<b>[NAME]<b> defeated you."], 
 
 ["news_element5", "<b>[NAME]<b> helped you open a treasure chest."], 
 
-["news_element6", "<b>[NAME]<b> helped you feed your pet"], 
+["news_element6", "<b>[NAME]<b> helped you feed your pet."], 
 
-["gift_element0", "[NAME] sent you a gift: [GIFT]"], 
+["gift_element0", "[NAME] sent you a gift: [GIFT]."], 
 
-["gift_element1", "[NAME] ask you for a gift: [GIFT]"], 
+["gift_element1", "[NAME] ask you for a gift: [GIFT]."], 
 
-["monster_foodwilllost", "Kill the monsters before your next login, otherwise they will steal your crops!"], 
+["monster_foodwilllost", "Monsters are trying to steal your crops, kill them before your next login."], 
 
 ["monster_refresh_format", "Hey, [NAME], give me your crops, or there will be hell to pay."], 
 
@@ -148,13 +148,13 @@ var Dicts =
 
 ["war_newmap_notice", "Congrats! you entered a new map. Hint: there are more powerful players on this map"], 
 
-["spy_notice", "Tip: Higher level scouts will find more details."], 
+["spy_notice", "Tip: higher level scouts find more details about your enemy."], 
 
-["chat_empty", "Content can't be empty"], 
+["chat_empty", "Content can't be empty."], 
 ["chat_wordlimit", "Content must be less than 30 characters."], 
 ["chat_nettimeout", "Could not connect to the game server. Please try again later."], 
 
-["text_wordlimit_format", "Limit [NUM] words!"], 
+["text_wordlimit_format", "Limit [NUM] characters!"], 
 ["text_cannotset", "Name your empire!"], 
 ["text_nettimeout", "Could not connect to the game server. Please try again later."], 
 
@@ -170,7 +170,7 @@ var Dicts =
 ["update_caesars", "Fast"], 
 ["update_warning", "The building is busy. Upgrading it will interrupt the process, are you sure?"], 
 
-["onekey_plant", "One-step planting"], ["onekey_harvest", "One-step harvesting"], ["onekey_product", "One-step collect taxes"], ["onekey_visit_normal", "One-step ordinary visit"], ["onekey_visit_inc", "One-step accumulated visit"], ["onekey_title", "One-step operation"], 
+["onekey_plant", "One-step planting"], ["onekey_harvest", "One-step harvesting"], ["onekey_product", "One-step collect taxes"], ["onekey_visit_normal", "One-step visit all"], ["onekey_visit_inc", "One-step visit all (compounded)"], ["onekey_title", "One-step operation"], 
 
 ["onekey_gotohelp", "How to use it?"], 
 
@@ -178,15 +178,15 @@ var Dicts =
 
 ["tab_fortress", "Forts"],
 
-["nobattle_fail_whenhasattack", "Sorry, you can't enable protect mode while attacking"], 
+["nobattle_fail_whenhasattack", "Sorry, you can't be in protect mode while attacking."], 
 
-["nobattle_whenattack", "Attacking will end protect mode"], 
-["attack_whenattacked", "You are already attacking that person"], 
-["attack_whenupdated", "Sorry, that player has gone to new map"], 
+["nobattle_whenattack", "Attacking will end protect mode."], 
+["attack_whenattacked", "You are already attacking that person."], 
+["attack_whenupdated", "Sorry, that player has gone to a new map."], 
 ["attack_whenwon", "You have already conquered that castle."], 
 ["attack_cancel", "Do you really want to cancel this battle?"], 
 ["attack_time", "Time"], 
-["attacktime_notice", "*More cavalry results in a shoter march time"], 
+["attacktime_notice", "*More cavalry results in a shorter march time"], 
 ["attacktime", "Time"], 
 ["state_attacking", "Attacking..."], 
 ["state_defencing", "Defending..."], 
@@ -198,7 +198,7 @@ var Dicts =
 
 //conquered by
 ["master", "Conquered by: "], [": ", ": "], 
-["user_notoccupy", "Unconquered"], ["user_occupy", "Free"], ["user_protected", "In protect"], ["user_fighting", "Fighting"], ["user_attacking", "marching..."], 
+["user_notoccupy", "Unconquered"], ["user_occupy", "Free"], ["user_protected", "Protecting"], ["user_fighting", "Fighting"], ["user_attacking", "Marching..."], 
 ["resource_get_format", "This fortress produces [MONEY] coins, [FOOD] food, [WOOD] wood, [STONE] stones per hour. Come back in [TIME]."], 
 ["quit", "Quit"], ["back", "Back"], 
 
@@ -233,7 +233,7 @@ var Dicts =
 ["allyNum", " Ally number"], 
 ["sureToally", "Do you want to ally with this friend?"], 
 ["taskFinishPost", "[NAME] complete [TASK] task, come on and build your own Miracle Empire with me!"], 
-["allyOk", "You will be reinforced from your allies when you are at war. You need caesar coins to destroy the covenant, choose ally carefully"], 
+["allyOk", "Allies can help you when you are at war. It costs 5 caesar coins to break off an alliance, so choose your allies carefully."], 
 ["cancelAlly", "Do you want to cancel alliance with "], 
 ["makeAlly", "Ally"], 
 ["punish", "Punishment"], 
@@ -241,7 +241,7 @@ var Dicts =
 ["add", "Add"], ["close", "Close"], 
 
 ["addAlly", "Add an ally"], ["attackNow", "Your army is on the way"], 
-["HintPower", "Hint: your army's ATK will increase if you are on line"], 
+["HintPower", "Hint: your army's ATK will increase if you are online"], 
 ["youWin", "You win"],
 ["attackIt", "Attack!"],
 ["inBuild", "Building"], 
@@ -258,10 +258,10 @@ var Dicts =
 ["growing", "Growing"], 
 ["shopping", "Purchase"], 
 ["buyCaesar", "Buy caesar coins"], 
-["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"],
-["population", "The Liberty Goddess can increase the number of people you can recruit by performing magic"], 
-["war", "The War God can strenthen your soldiers' ATK by performing magic"], 
-["beast", "The Beast God will increase your defense by performing magic"], 
+//["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"],
+//["population", "The Liberty Goddess can increase the number of people you can recruit by performing magic"], 
+//["war", "The War God can strenthen your soldiers' ATK by performing magic"], 
+//["beast", "The Beast God will increase your defense by performing magic"], 
 
 ["dragon", "You can summon your own pet after building a Dragon Nest."], 
 ["godBless", "[GOD] can perform magic, are you sure you want to summon [GOD]?"], 
@@ -270,7 +270,7 @@ var Dicts =
 ["freeZijin", "Your magic capacity will increase by 1 when you level up."], 
 ["youGet", "Congrats, you got the [NAME] card! [END]"], 
 ["youPost", "[NAME] got [CARD] [CARDLEV] card, join [NAME] to build your own Miracle Empire!"], 
-["loading", "Loading..."], ["noNews", "No messages"], ["loginBonus", "[NAME] has played the Miracle Empire and has gained daily rewards"], 
+["loading", "Loading..."], ["noNews", "No messages"], ["loginBonus", "[NAME] has played the Miracle Empire today and received daily rewards!"], 
 ["godShow", "Magic"], ["inGodShow", ""], 
 ["show", "Perform"], 
 ["friend", "friends"], 
@@ -284,20 +284,20 @@ var Dicts =
 ["send", "Send"], 
 ["accept", "Accept"], 
 ["levelUp", "[NAME] has level up to [LEVEL], play Miracle Empire and enjoy!"], 
-["killAll", "[NAME] has defeated territory threatening monsters, play Miracle Empire and have fun!"], 
+["killAll", "[NAME] has defeated crop stealing monsters, play Miracle Empire and have fun!"], 
 ["nextMonster", "Next attack: "], 
 ["comeSoon", "Coming soon"], 
 //["goInNewMap", ", you will find more powerful players on a higher level map."], 
 ["NobUp", "Congrats! You've become a "], 
 ["attackIs", "ATK: "], 
-["powerlack", "You don't have enough ATK!"], 
+["powerlack", "Your soldiers aren't strong enough!"], 
 ["monRob", "Monsters have robbed [FOOD] crops"], 
 ["active", "Active"], 
 ["activeDra", "Will you help me activate it?"], 
 ["letsShare", "Let's share the treasure!"],
 ["askForAct", "Ask friends for help!"], 
 ["helpMe", "Help"], 
-["askFri", "Ask help"], 
+["askFri", "Request help"], 
 ["unknown", "Unknown"], 
 ["getDragon", "has built a Dragon's Nest but needs your help to activate it!"], 
 ["callPet", "Congrats! You have activated your Dragon's Nest, now you can summon your pet!"],
@@ -305,13 +305,13 @@ var Dicts =
 ["dragonPost", "[NAME]'s Dragon's Nest has been activated successfully, play Miracle Empire and have fun!"], 
 ["curPet", "current pet"], 
 ["changeMode", "change mode"], 
-["petAtt", "A [NAME]'s ATK will increase by [POWER] for every growing point, are you sure you want to change the dragon's type?"], 
+["petAtt", "A [NAME]'s ATK will increase by [POWER] for every growing point, are you sure you want to change dragon types?"], 
 ["freeFee", "for free"], 
 ["changeAtt", "Change attribute"], 
-["petPro", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] ATK. Do you want to change the dragon's type?"], 
+["petPro", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] ATK. Do you want to change the dragon types?"], 
 ["spy_result_format", "You lost [NUM] scouts getting [WHO]'s castle info: "], 
 ["spy_result2_noenemy", "There is no army attacking this castle now."], 
-["spy_result2_format", "There are [NUM] army marching to attack the castle, the first one will arrive at [TIME]."], 
+["spy_result2_format", "There are [NUM] armies marching to attack the castle, the first one will arrive at [TIME]."], 
 ["spy_result2_mode3_format", "Total ATK [NUM]"], 
 
 ["choosePet", "Choose Pet"], 
@@ -367,7 +367,7 @@ var Dicts =
 
 ["You", "You"], ["StillNeed", " still need "], 
 
-["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card. Your magic capacity will increase by 2 when you get the [NAME] Lv. 5 card."], 
+["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card. Your magic capacity will increase by 2."], 
 
 ["MonsterCardGet", " your magic capacity will increase by 2 when you get the Lv. 5 card."], 
 
@@ -472,7 +472,7 @@ var Names = dict([
 ["MONSTERNAME" , ["Snake Lv. 1", "Snake Lv. 2", "Snake Lv. 3", "Boar Lv. 1", "Boar Lv. 2", "Boar Lv. 3", "Wolf Lv. 1", "Wolf Lv. 2", "Wolf Lv. 3", "Bear Lv. 1", "Bear Lv. 2", "Bear Lv. 3", "Lion Lv. 1", "Lion Lv. 2", "Lion Lv. 3", "Dragon Lv. 1", "Dragon Lv. 2", "Dragon Lv. 3", "Snake King Lv. 1", "Snake King Lv. 2", "Snake King Lv. 3", "Boar King Lv. 1", "Boar King Lv. 2", "Boar King Lv. 3", "Wolf King Lv. 1", "Wolf King Lv. 2", "Wolf King Lv. 3", "Bear King Lv. 1", "Bear King Lv. 2", "Bear King Lv. 3", "Lion King Lv. 1", "Lion King Lv. 2", "Lion King Lv. 3", "Dragon King Lv. 1", "Dragon King Lv. 2", "Dragon King Lv. 3"]], 
 
 
-["PETS_NAME" , ["Dragon Egg A Lv. 1", "Dragon egg A Lv. 2", "Dragon egg A Lv. 3", "Dragon egg B Lv. 1", "Dragon egg B Lv. 2", "Dragon egg B Lv. 3"]], 
+["PETS_NAME" , ["Dragon Egg A Lv. 1", "Dragon Egg A Lv. 2", "Dragon Egg A Lv. 3", "Dragon Egg B Lv. 1", "Dragon Egg B Lv. 2", "Dragon Egg B Lv. 3"]], 
 
 
 ["EXTEND_NAME" , ["earth", "fire", "water"]], 

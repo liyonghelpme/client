@@ -1,7 +1,8 @@
-import element.TooManyUser;
-import element.Score;
-import element.Rank;
-import element.OldUser;
+//import element.TooManyUser;
+//import element.Score;
+//import element.Rank;
+//import element.OldUser;
+import element.Vip;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -198,7 +199,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    //var actButton;
+    var actButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -214,7 +215,13 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        actButton.prepare();
+        /*
+        var bsize = actButton.size();
+        var bl = min(50*100/bsize[0], 50*100/bsize[1]);
+        actButton.scale(bl);
+        */
 
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
@@ -294,7 +301,7 @@ class CastlePage extends ContextObject{
     }
     function showAct()
     {
-        global.pushContext(null, new Score(), NonAutoPop);
+        global.pushContext(null, new Vip(), NonAutoPop);
         //global.pushContext(null, new Rank(), NonAutoPop);
     }
     function showTipDia(n, e, p, x, y, points)
@@ -815,6 +822,7 @@ class CastlePage extends ContextObject{
                         friendinfolabel.parent().get(1).texture("nobi"+str(ccard[12]%100)+".png").size(25,25);
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
+                    f.update("nob", ccard[12]%100);
                     hideHomeMenu();
                     //if(cpid != 0)
                     //    actButton.visible(1);
@@ -913,8 +921,8 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        /*
         actButton.visible(1);
+        /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
         */
@@ -926,8 +934,8 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        /*
         actButton.visible(0);
+        /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
         else 
@@ -969,7 +977,7 @@ class CastlePage extends ContextObject{
 
         */
         //friendpredict.update(pid,data);
-        if(friend.flist!=null && friend.friendmode==1){
+        //if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
                 if((fi-2) >= len(friend.flist1))
@@ -977,7 +985,7 @@ class CastlePage extends ContextObject{
                 addprefriend(friend.flist1[fi-2].get("id"));
             }
             */
-        }
+        //}
         rankYet = data.get("rankYet", 0); 
         //trace("first rank", rankYet, data);
         cpid = int(data.get("id"));
@@ -1000,6 +1008,7 @@ class CastlePage extends ContextObject{
         }
         pagedict.update(cpid,contextNode.pos());
         var f = global.getfriend(cpid);
+
         friendlevlabel.text("Level "+str(f.get("level")));
         var ename = data.get("empirename");
         friendnamelabel.text(ename);
@@ -1051,6 +1060,8 @@ class CastlePage extends ContextObject{
             friendinfolabel.parent().get(1).texture("nobi"+str(ccard[12]%100)+".png").size(25,25);
             friendinfolabel.text(NOBNAME[ccard[12]%100]);
         }
+        f.update("nob", ccard[12]%100);
+
         var state2dict = dict();
         if(minusstr != ""){
             var minus = minusstr.split(";");
@@ -1324,21 +1335,26 @@ class CastlePage extends ContextObject{
                trace("finish tp");
             }
             */
+            /*
             var loginYet = data.get("loginYet", 1);
             if(loginYet == 0)
             {
                 //show cae add
                 addcmd(dict([["name","oldUser"]]));
             }
+            */
+
             if(newstate < 3)
                 global.InNew = 1;
             else
                 global.InNew = 0;
+            /*
             if(global.TooMany == 1)
             {
                 var tooMany = new TooManyUser();
                 LoadPage.add(tooMany.getNode())
             }
+            */
             LoadPage.put(newstate);
             LoadPage = null;
             if(data.get("ppyname")!=ppy_username()){
@@ -1824,7 +1840,7 @@ class CastlePage extends ContextObject{
             initlock = -1;
             if(global.TooMany == 1)
             {
-                global.pushContext(null, new TooManyUser(), NonAutoPop);
+                //global.pushContext(null, new TooManyUser(), NonAutoPop);
             }
             else
             {
@@ -2276,7 +2292,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         }
         else if(name == "oldUser")
         {
-            global.pushContext(null, new OldUser(), NonAutoPop);
+            //global.pushContext(null, new OldUser(), NonAutoPop);
             //global.pushContext(null, new Warningdialog([global.getStaticString("oldUser"), null, 1]), NonAutoPop);
         }
     }

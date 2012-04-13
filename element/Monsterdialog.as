@@ -61,6 +61,8 @@ class Monsterdialog extends ContextObject{
         if(flagdefeatable == 0){
             contextNode.get(0).addsprite("caesars_big.png").pos(0, 20).anchor(50, 50);
             contextNode.get(0).addlabel(str(-DefeatMon_Cae), null, 24, FONT_BOLD).color(100, 100, 100, 100).pos(10, 15);
+            //var cost = dict([["caesars", -DefeatMon_Cae]]);
+            //var ret = global.user.testCost(cost);
             if(global.user.getValue("caesars") < abs(DefeatMon_Cae))
             {
                 contextNode.get(0).texture("boxbutton2.png");

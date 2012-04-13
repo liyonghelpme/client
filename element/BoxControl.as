@@ -222,10 +222,16 @@ class BoxControl extends ContextObject{
 
     function openboxwithcaesars(n,e){
         if(lock==0){
+            var cost = dict([["caesars", 1]]);
+            var ret = global.user.testCost(cost);
+            if(ret == 0)
+                return 0;
+            /*
             if(global.user.getValue("caesars")<1){
                 global.pushContext(self,new Warningdialog(dict([["ok",0],[global.getStaticString("caesars"),1]])),NonAutoPop);
                 return 0;
             }
+            */
             lock=1;
             global.http.addrequest(1,"selfopen",["user_id"],[global.userid],self,"selfopenover");
         }

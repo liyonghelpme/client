@@ -72,7 +72,7 @@ class BuyControl extends ContextObject{
     }
     
     function buypapayas(n,e){
-        global.pushContext(null,new TestWebControl(4),NonAutoPop);
+        //global.pushContext(null,new TestWebControl(4),NonAutoPop);
     }
     
     function buycaesars(n,e){
@@ -84,8 +84,8 @@ class BuyControl extends ContextObject{
         if(userPapaya < int(num[2]))
         {
             //global.popContext(null);
-            global.pushContext(null, new PapaNot(), NonAutoPop);
-            return;
+            //global.pushContext(null, new PapaNot(), NonAutoPop);
+            //return;
         }
 
         global.popContext(null);

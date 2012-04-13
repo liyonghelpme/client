@@ -309,13 +309,16 @@ class FriendControl{
     }
     
     function beginaddlist(){
+        trace("flagbuffer", flagbuffer);
         if(flagbuffer==2){
             flagbuffer=0;
             flagfriendover=1;
             var cfdict = dict();
+            trace("flist1", len(flist1));
             for(var i=0;i<len(flist1);i++){
                 cfdict.update(flist1[i].get("id"),flist1[i]);
             }
+            trace("buffer1", len(bufferflist1));
             for(i=0;i<len(bufferflist1);i++){
                     var fn = bufferflist1[i];
                     var id = fn.get("id");
@@ -331,21 +334,29 @@ class FriendControl{
             }
             var bd = dict();
             var db = c_opendb(0,"friendinvited");
+            //id lev visited nobility
+            trace("getNob", len(bufferflist3));
             for(i=0;i<len(bufferflist3);i++){
                 fn = bufferflist3[i];
-                id = int(fn.get("papayaid"));
+                //id = int(fn.get("papayaid"));
+                id = int(fn[0]);
                 bd.update(id,1);
                 if(cfdict.get(id)!=null){
                     var fb=cfdict.get(id);
                 }
                 else{
+                    trace("not get friend", id);
                     continue;
+                    /*
                     fb = dict();
                     fb.update("id",id);
                     flist1.append(fb);
+                    */
                 }
-                fb.update("level",fn.get("lev"));
-                fb.update("visited",fn.get("visited"));
+                fb.update("level",fn[1]);
+                fb.update("visited",fn[2]);
+                fb.update("nob", fn[3]*3);
+
                 if(fb.get("level")>-1)
                     global.ppyuserdict.update(str(id),fb); 
                 else if(db.get(str(id))==1){
@@ -556,6 +567,7 @@ class FriendControl{
                     name = substring(name,0,6)+"..";
                 }
                 nd.addlabel(name,null,16).anchor(50,50).pos(36,69).color(0,  0,  0,100);
+                //trace("person", per);
                 if(per.get("level")>-1){
                     var le = nd.addsprite(friendimage[4]).anchor(35,30).pos(0,0);
                     le.addlabel(str(per.get("level")),null,16).anchor(50,50).pos(19,18);
@@ -563,11 +575,17 @@ class FriendControl{
                     if(per.get("visited")==0){
                         nd.add(sprite(friendimage[2]).anchor(50,50).pos(57,56),1,2);
                     }
+                    var nobility = per.get("nob", 0);
+                    if(nobility/3 >= 3)
+                    {
+                        var vip = nd.addsprite("vip.png").anchor(50, 50).pos(60, 10).scale(20*100/70);    
+                    }
                 }
                 else{
                     nd.addsprite(friendimage[3]);
                     param=-per.get("id")-10;
                 }
+
             }
         }
         else if(friendmode==2){
@@ -703,7 +721,7 @@ class FriendControl{
         ppy_query("send_notification",d,inviteover);
         for(var i=0;i<len(flist1);i++){
             if(flist1[i].get("id")==ppyid){
-                trace("find",i);
+                //trace("find",i);
                 flist1.pop(i);
                 var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
                 db.put(str(ppyid),1);

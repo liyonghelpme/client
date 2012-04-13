@@ -139,9 +139,15 @@ class AllyControl extends ContextObject{
             //http_request(BASE_URL+"makeally?uid="+str(global.userid)+"&fid="+str(global.context[0].cuid),makeallyover);
         }
     }
-
+    var canCost = 5;
     function cancelally(){
         if(lock==0){
+            var cost = dict();
+            cost.update("caesars", canCost);
+            var ret = global.user.testCost(cost);
+            if(ret == 0)
+                return;
+
             lock=1;
             global.http.addrequest(1,"cancelally",["uid","fid"],[global.userid,global.context[0].cuid],self,"cancelallyover");
             //http_request(BASE_URL+"cancelally?uid="+str(global.userid)+"&fid="+str(global.context[0].cuid),cancelallyover);
@@ -165,7 +171,7 @@ class AllyControl extends ContextObject{
             global.context[0].allybutton.texture("bindButton.png",UPDATE_SIZE);
             global.context[0].flagally = 0;
             global.context[0].friend.flist2.remove(global.context[0].cpid);
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-5,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-canCost,-6);
             global.popContext(null);
         }
     }

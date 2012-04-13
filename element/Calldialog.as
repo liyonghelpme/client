@@ -2,7 +2,7 @@ class Calldialog extends ContextObject{
     var info;
     var element;
     var dialog;
-    var goddes=[global.getStaticString("fulfill"),global.getStaticString("population"),global.getStaticString("fortune"), global.getStaticString("war"), global.getStaticString("beast")];
+    //var goddes=[global.getStaticString("fulfill"),global.getStaticString("population"),global.getStaticString("fortune"), global.getStaticString("war"), global.getStaticString("beast")];
     function Calldialog(i){
         contextname = "dialog-build-callgod";
         contextNode = null;

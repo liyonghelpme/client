@@ -48,7 +48,7 @@ class TestInputControl extends ContextObject{
             var ul = len(st);
             l = l-(ul - l)/6;
             if(l>14){
-                warning.text(global.getFormatString("text_wordlimit_format",["[NUM]","7"]));
+                warning.text(global.getFormatString("text_wordlimit_format",["[NUM]","14"]));
                 lock=0;
                 return 0;
             }

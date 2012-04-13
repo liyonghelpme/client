@@ -4,7 +4,9 @@ class ImageController{
     const images1 = ["disk0.png",  "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",
     "room85.png","room86.png",
     "fact33.png", "fact34.png", "fact35.png", "fact36.png", "fact37.png",
-    "fact38.png"
+    "fact38.png",
+    "warback.png", "loadingwarback.jpg",
+    "vip.png",
     ];
     //"disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png", "drum.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "object67.png", "object67_l.png", "object68.png", "object68_l.png", "object69.png", "object69_l.png"];
     const images2 = ["help.png"];

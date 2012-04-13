@@ -42,9 +42,11 @@ class BuildControl extends ContextObject{
         if(placeObj.buildcontextname != "obj"){
             var back = sprite("buildcontrolback2.png").anchor(50,100).pos(0,9);
             contextNode.add(back,0,111);
+            /*
             var bl=90;
 
             // size == 3 
+
             if(placeObj.contextid == 3){
                 bl = 60;
                 if(mode == FARM_INDEX && place.state==WORKING){
@@ -62,18 +64,23 @@ class BuildControl extends ContextObject{
             }
             else if(mode == STATUE_INDEX){
                 bl = 75;
-                /*
-                var tex = sprite(place.gettexture());
-                tex.prepare();
-                tex = tex.size();
-                bl = min(160*100/tex[0], 90*100/tex[1]);
-                */
+
             }
+            */
+            /*
+            var tex = sprite(place.gettexture());
+            tex.prepare();
+            tex = tex.size();
+            bl = min(160*100/tex[0], 90*100/tex[1]);
+            */
+            var bl = 100;
             if(placeObj.buildcontextname!="nest"){
                 var build = back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
                 build.prepare();
                 var bsize = build.size();
-                bl = min(160*100/bsize[0], 70*100/bsize[1]);
+                bl = min(180*100/bsize[0], 80*100/bsize[1]);
+                bl = max(bl, 40);
+                trace("control2 ", bsize, bl);
                 build.scale(bl);
                 
 
@@ -233,6 +240,7 @@ class BuildControl extends ContextObject{
         else{
             back = contextNode.addsprite("buildcontrolback1.png").anchor(50,100).pos(0,9);
             back.addlabel(global.getname("obj",placeObj.objectid-500),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
+            /*
             bl=120;
             if(placeObj.objectid==541){
                 bl=60;
@@ -240,7 +248,14 @@ class BuildControl extends ContextObject{
             else if(placeObj.contextid==2){
                 bl=92;
             }
-            back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65).scale(bl);
+            */
+
+            build = back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65).scale(bl);
+            build.prepare();
+            bsize = build.size();
+            bl = min(180*100/bsize[0], 110*100/bsize[1]);
+            trace("control1", bsize, bl);
+            build.scale(bl);
             beginx = -119;
         }
         if(placeObj.objectid < DRAGON_ID && mode != GOD_INDEX && mode != DISK_INDEX)
