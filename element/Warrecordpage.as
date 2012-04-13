@@ -103,7 +103,7 @@ class Warrecordpage extends ContextObject{
         */
 
         if(getWarrecordList("readed",datas[index]) == 1){
-            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(305,14).color(20,20,20,100);
+            items[index].addlabel(global.getStaticString("reqHandle"),null,20,FONT_ITALIC).pos(355,14).color(20,20,20,100);
         }
         else{//not readed 
             items[index].addsprite("wrbutton1.png").pos(296,8).setevent(EVENT_UNTOUCH,receivegift,index);
