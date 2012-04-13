@@ -427,14 +427,14 @@ var Dicts =
 
 ["Build", "Build"], 
 
-["PlayDragon", "You can use Dragon Stone to play Dragon Wheel. Build it!"], 
+["PlayDragon", "Use Dragon Stones to gamble on the Dragon Wheel."], 
 ["OrdStart", "Ordinary"], 
 ["SpeStart", "Special"], 
 ["PlayingDra", "[NAME] is playing Dragon Wheel, join \"playingDra\" in Miracle Empire!"], 
 ["DraNot", "Sorry, you don't have enough Dragon stones, you can get more by opening treasure chest or killing monsters!"], 
 
 ["CaeNot", "Sorry, you don't have enough caesar coins!"], 
-["HowDra", "You can use Dragon Stones or caesar coins to play Dragon Wheel. Tip: Dragon Stones can be obtained by opening treasure chesk or killing monsters."], 
+["HowDra", "Dragon Stones or caesar coins are needed to play Dragon Wheel. Tip: opening treasure chesk or killing monsters to get Dragon Stone."], 
 ["drumReward", "Tap the drum icon to get extra silver coins during fights! You tapped [NUM] times and get [MONEY] silver coins in the fight!"], 
 ["drumFeed", "[NAME] tapped drum [NUM] times and got [MONEY] silver coins in Miracle Empire!"], 
 ["lev1Disk", "Upgrade to Baron to play this kind of Dragon wheel."], 
