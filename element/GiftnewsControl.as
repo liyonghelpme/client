@@ -80,7 +80,7 @@ class GiftnewsControl extends ContextObject{
                     }
                     cell.addlabel(itemstr,null,20).pos(57,19).color(0,0,0,100);
                     if(item[0]==-1){
-                        cell.addlabel(global.getStaticString("request_done"),null,20,FONT_ITALIC).pos(374,19).color(20,20,20,100);
+                        cell.addlabel(global.getStaticString("request_done"),null,20,FONT_ITALIC).pos(384,19).color(20,20,20,100);
                     }
                     else{
                         if(item[3]==1){

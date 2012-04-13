@@ -80,6 +80,7 @@ class BuildControl extends ContextObject{
                 var bsize = build.size();
                 bl = min(180*100/bsize[0], 80*100/bsize[1]);
                 bl = max(bl, 40);
+                bl = min(bl, 100);
                 trace("control2 ", bsize, bl);
                 build.scale(bl);
                 
@@ -255,6 +256,8 @@ class BuildControl extends ContextObject{
             bsize = build.size();
             bl = min(180*100/bsize[0], 110*100/bsize[1]);
             trace("control1", bsize, bl);
+            bl = max(bl, 40);
+            bl = min(100, bl);
             build.scale(bl);
             beginx = -119;
         }
