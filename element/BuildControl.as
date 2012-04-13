@@ -250,7 +250,7 @@ class BuildControl extends ContextObject{
             }
             */
 
-            build = back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65).scale(bl);
+            build = back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65);
             build.prepare();
             bsize = build.size();
             bl = min(180*100/bsize[0], 110*100/bsize[1]);

@@ -19,7 +19,7 @@ class ResourceControl extends ContextObject{
     function paintNode(){
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("resourceelement.jpg").pos(11,11);
-        contextNode.addlabel(ENAME[rdata[2]]+global.getStaticString(":")+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
+        contextNode.addlabel(ENAME[rdata[2]]+":"+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("infpower")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("cavpower")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").pos(493,14).setevent(EVENT_UNTOUCH,closedialog);
@@ -31,7 +31,7 @@ class ResourceControl extends ContextObject{
         if(tc > rc[4])
             tc = rc[4];
         contextNode.addlabel(global.getStaticString("money")+global.getStaticString(":")+str(rc[0]*tc),null,18).pos(44,207).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("food")+global.getStaticString(":")+str(rc[1]*tc),null,18).pos(164,207).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("food")+global.getStaticString(":")+str(rc[1]*tc),null,18).pos(184,207).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("wood")+global.getStaticString(":")+str(rc[2]*tc),null,18).pos(274,207).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("stone")+global.getStaticString(":")+str(rc[3]*tc),null,18).pos(404,207).color(0,0,0,100);
         if(tc < rc[4])

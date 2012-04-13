@@ -73,7 +73,7 @@ var Dicts =
 
 ["loading_str", "loading..."], ["self", "me"], 
 
-["request_done", "Request handled"], 
+["request_done", "Done"], 
 
 ["friend_notload", "Sorry, can't retrieve your friend list"], 
 ["friend_ally_notice", "You can visit your friends and ally with them. Allies can help you fight!"], 
@@ -312,10 +312,10 @@ var Dicts =
 ["spy_result_format", "You lost [NUM] scouts getting [WHO]'s castle info: "], 
 ["spy_result2_noenemy", "There is no army attacking this castle now."], 
 ["spy_result2_format", "There are [NUM] armies marching to attack the castle, the first one will arrive at [TIME]."], 
-["spy_result2_mode3_format", "Total ATK [NUM]"], 
+["spy_result2_mode3_format", "ATK Strength: [NUM]"], 
 
 ["choosePet", "Choose Pet"], 
-["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point add [ADD] ATK. Do you want to summon?"], 
+["callDragonDia", "[NAME]'s basic ATK is [POWER], every growing point adds [ADD] to ATK. Summon?"], 
 ["inProtect", "Protecting"], 
 ["attNoProtect", "You can't enable protect mode while attacking others."], 
 ["openProtect", "enable protection"], 
@@ -328,42 +328,42 @@ var Dicts =
 //knight - 3 class --> knight 2 class  higher  
 
 //["NobUp", "Congrats! You've become a [NAME]"]+, 
-["oneLevel", ". Continue to defeat more enemies to reach a higher rank!"], 
+["oneLevel", ". Continue to defeat more enemies to reach higher ranks!"], 
 ["next", "Next"], 
-["choosePlant", "Choose Crop"], ["sureToBuy", "Do you want to purchase [NAME]?"], ["acc", "SpeedUp"], 
+["choosePlant", "Choose Crop"], ["sureToBuy", "Do you want to purchase [NAME]?"], ["acc", "Speed Up"], 
 ["leftTime", "Time left "], 
 ["noBattle", "War mode not enabled"], 
 ["winNum", "wins"], 
 ["netRefresh", "Could not connect to the game server. Please try again later."], ["fresh", "refresh"], 
 
-["fightAdd", "Hint: soldiers have extra ATK in fortress"], 
+["fightAdd", "Hint: soldiers get an ATK bonus while garrisoning a fortress"], 
 ["peopUp", " pop capacity"], 
 ["sureTosell", "Are you sure you want to sell [NAME]?"], 
 ["sell", "Sell"], 
 ["toDetect", "Spy on enemies"], 
 ["unitPower", "Strength per unit"], 
 ["chooseStone", "Choose stone"], 
-["noUpdate", "No new update"], 
-["visitReward", "[NAME] has got the rewards of visiting friends, join the Miracle Empire and have fun!"], 
-["yourArmy", "Your military has arrived [NAME]'s territory, war is near!"], 
+["noUpdate", "No new updates"], 
+["visitReward", "[NAME] has gotten the rewards for visiting friends, join Miracle Empire and have fun!"], 
+["yourArmy", "Your military has arrived at [NAME]'s territory. Prepare for war!"], 
 ["enemyArmy", "[NAME]'s military has arrived your territory, let's get ready for the fight!"], 
 ["viewWar", "watching"], 
 ["skip", "Skip"], 
-["sendArmy", "<g>+ has send his army to attack your territory"], 
+["sendArmy", "<g>+ has sent his army to attack your territory"], 
 
-["godInc", "Hint: your enemy's soldier's ATK will increase a regular porpotion +<b> <b>"], 
+["godInc", "Hint: your enemy's soldier's ATK will increase porpotion +<b> <b>"], 
 
-["howDef", "*How to strengthen defense"], 
+["howDef", "*How to strengthen your defense"], 
 ["youNeed", "You need more"], 
-["speNeed", "Not enough special materials."], 
-["clearList", "Hint: this list will be emptied in new battlefield."], 
-["reqHandle", "Requests handled"], 
-["income", "Congrats! You have [NUM] colonies, they give you [COIN] coins as tribute."], 
-["incomePost", "[NAME] has gained tribute rewards from colonies, join the Miracle Empire and have fun"], 
+["speNeed", "Not enough materials."], 
+["clearList", "Tip: your win/lose record will reset when you enter a new battlefield"], 
+["reqHandle", "Done"], 
+["income", "Congrats! You have [NUM] colonies and will receive [COIN] coins as tribute."], 
+["incomePost", "[NAME] get tribute from colonies, join Miracle Empire and have fun!"], 
 ["chooseWood", "Choose lumber"], 
 ["youNeed", "You still lack "], ["speNeed", "Need more special materials"], 
 ["fullfilMana", "Refill magic"], ["fullfil", "Refill"], ["curMana", "Magic Value"],
-["nextTime", "next charge time "], 
+["nextTime", "Recharge 1 magic in time "], 
 
 ["You", "You"], ["StillNeed", " still need "], 
 
@@ -373,9 +373,9 @@ var Dicts =
 
 ["ChangELevUp", "You still need [DAY] continuous logins to get Moon Goddess Lv. [LEV], and your magic capacity will increase by 1"], 
 ["OtherCardLevUp", ""], 
-["NobCard", "[WHO] needs to defeated [NUM] more opponents to upgrade to [CARD]"], 
+["NobCard", "[WHO] need to defeated [NUM] more opponents to get the [CARD] card."], 
 
-["BusiCard", "Get [NUM] silver coins to upgrade your [TYPE] to the next level. Your magic capacity will increase by 1 when you level up!"], 
+["BusiCard", "Get [NUM] to get the next level [TYPE]. Your magic capacity will increase by 1 when you get the [TYPE]!"], 
 
 ["FriendCard0", "[WHO] need to upgrade the God of Friendship to Lv. 5 to get [NAME] [LEV]. Your magic capacity will increase by 1 when you level up."], 
 
@@ -392,8 +392,8 @@ var Dicts =
 ["NobZijin", "Congrats! Nobility level up. Your magic capacity has increased by 1."], 
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"], 
 ["Download", "Downloading"], 
-["LackMagic", "Not enough magic, recharge now?  Tips: magic recharges 1 point every 5 minutes."], 
-["LackMaCap", "Sorry, you don't have enough magic capacity. You can buy some decors to increase it."],
+["LackMagic", "Not enough magic, recharge now?  Tip: magic recharges 1 point every 5 minutes."], 
+["LackMaCap", "Sorry, your magic capacity isn't high enough. You can buy some decorations to increase it."],
 ["LackCae", "Sorry, you don't have enough caesar coins. Purchase caesar coins now?"],
 ["infpower", "Infantry: "], 
 ["cavpower", "Cavalry: "], 
@@ -402,13 +402,13 @@ var Dicts =
 ["getresource", "Collect"], 
 ["quickSendArmy", "SpeedUp"], 
 ["LevelNot", "Sorry, you need to reach Lv. [LEVEL] to upgrade your castle."], 
-["EmpireNotOpen", "Sorry, higher level castle is not opened."], 
+["EmpireNotOpen", "Sorry, you can't upgrade your castle yet."], 
 ["sendCatapult", "Dispatch"], 
 ["notSendCata", "No"], 
-["petNeedDownload", "Summon pet requires you to download pictures, proceed?"], 
-["warNeedDownload", "Entering war map requires you to download pictures, proceed?"], 
+["petNeedDownload", "Summon a pet requires you to download pictures, proceed?"], 
+["warNeedDownload", "Entering the war map requires you to download pictures, proceed?"], 
 ["downloading", "Downloading pictures..."], 
-["SendCata", "Do you want to dispatch your [NUM] catapults?"], 
+["SendCata", "Do you want to dispatch [NUM] catapults?"], 
 ["Buy", "Buy"], 
 ["sureBuyMana", "Are you sure you want to buy [NUM] mana?"], 
 ["ChooseCata", "Choose Catapult"], 
@@ -515,7 +515,7 @@ var Names = dict([
 
 ["nobilityname" , ["Civilian", "Baron", "Knight", "Count", "Bishop", "Duke", "Emperor"]], 
 
-["NOBNAME" , ["3-class Civilian", "2-class Civilian", "1-class Civilian", "3-class Baron", "2-class Baron", "1-class Baron", "3-class Knight", "2-class Knight", "1-class Knight", "3-class Count", "2-class class Count", "1-class Count", "3-class Bishop", "2-class Bishop", "1-class Bishop", "3-class Duke", "2-class Duke", "1-class Duke", "Emperor"]], 
+["NOBNAME" , ["3-class Civilian", "2-class Civilian", "1-class Civilian", "3-class Baron", "2-class Baron", "1-class Baron", "3-class Knight", "2-class Knight", "1-class Knight", "3-class Count", "2-class Count", "1-class Count", "3-class Bishop", "2-class Bishop", "1-class Bishop", "3-class Duke", "2-class Duke", "1-class Duke", "Emperor"]], 
 
 ["NOBNAME2", ["Civilian", "Civilian", "Civilian", "Baron", "Baron", "Baron", "Knight", "Knight", "Knight", "Count", "Count", "Count", "Bishop", "Bishop", "Bishop", "Duke", "Duke", "Duke", "Emperor"]], 
 

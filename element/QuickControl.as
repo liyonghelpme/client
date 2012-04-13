@@ -60,7 +60,7 @@ class QuickControl extends ContextObject{
         dialog.usedefaultbutton(2,[global.getStaticString("acc"),global.getStaticString("cancel")]);
         var cae = sprite("magic_big.png").anchor(50,50).pos(40,228).size(40,40);
         moneylabel1 = cae.addlabel("",null,30,FONT_BOLD).pos(22,13).color(0,0,0,100);
-        moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(100,100,100,100);
+        moneylabel = cae.addlabel("",null,24,FONT_BOLD).pos(25,16).color(0,0,0,100);
         contextNode.add(cae,4);
         timerefresh();
     }
