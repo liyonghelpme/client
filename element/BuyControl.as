@@ -61,7 +61,7 @@ class BuyControl extends ContextObject{
             if(papaLabel == null)
             {
                 papaLabel = contextNode.addlabel(str(c.get("papayas")),null,18).anchor(0,50).pos(555,72).color(5,5,64,100);
-                contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
+                //contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
             }
             else
             {
