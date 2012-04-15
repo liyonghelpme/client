@@ -190,10 +190,29 @@ class MenuControl extends ContextObject{
             global.popContext(null);
             //global.dialogscreen.visible(0);
             global.context[0].menu.visible(0);
-            global.shotscreen.bitmap(shotover,1);
+            global.shotscreen.bitmap(getPid,1);
+        }
+    }
+    function getPid(n, b, p)
+    {
+        ppy_upload(dict([["photo", b.bitmap2bytes("png")]]), shotover, null);
+    }
+    function shotover(rid, rt, con, para)
+    {
+        if(rt != 0)
+        {
+            con = json_loads(con);
+            var pid = con.get("pid");
+            trace("pid", pid, con);
+            ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]),global.getStaticString(35), pid);
+            global.context[0].menu.visible(1);
+            if(global.task.tasktype==5){
+                global.task.inctaskstep(1);
+            }
         }
     }
 
+    /*
     function shotover(n,b,p){
         trace("shotover",p);
         ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]),global.getStaticString(35),b.bitmap2bytes("png"));
@@ -202,6 +221,7 @@ class MenuControl extends ContextObject{
             global.task.inctaskstep(1);
         }
     }
+    */
 
     function quit(n,e){
         if(global.currentLevel == contextLevel){

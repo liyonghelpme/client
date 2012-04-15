@@ -1,4 +1,5 @@
-import element.Act;
+//import element.Act;
+import element.Score;
 import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
@@ -76,6 +77,7 @@ class CastlePage extends ContextObject{
     var waitfriend;
     var inpos = -140;
     var LoadPage;
+    var rankYet = 1;
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -209,7 +211,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("actPlant.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+        actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
@@ -225,7 +227,7 @@ class CastlePage extends ContextObject{
         friendinfolabel = b.addlabel("",null,20).color(0,0,0,100).anchor(0,50).pos(0,50).pos(95,45);
         friendmoney = 0;
         /*以上要改*/
-        allybutton = fmenu.addsprite("bindButton.png").anchor(100,0).pos(780,210).setevent(EVENT_UNTOUCH,ally);
+        allybutton = fmenu.addsprite("bindButton.png").anchor(100,0).pos(780, MenuY).setevent(EVENT_UNTOUCH,ally);
         giftbutton=fmenu.addsprite("giftButton.png").pos(20,280).setevent(EVENT_UNTOUCH,gotoGift);
         medalbutton = fmenu.addsprite("medalIcon.png").pos(20,140).setevent(EVENT_UNTOUCH,gotomedal);
         favatar = b.addsprite().pos(12,8).size(50,50);
@@ -279,7 +281,8 @@ class CastlePage extends ContextObject{
     }
     function showAct(n, e, p, x, y, points)
     {
-        global.pushContext(null, new Act(), NonAutoPop);
+        //global.pushContext(null, new Act(), NonAutoPop);
+        global.pushContext(null, new Score(), NonAutoPop);
     }
     function loveShow(n, e, p, x, y, points)
     {
@@ -535,7 +538,7 @@ class CastlePage extends ContextObject{
                 friendpredict.clear();
             }
             f = json_loads(c);
-            friendpredict.update(int(f.get("id")),f);
+            //friendpredict.update(int(f.get("id")),f);
         }
         else if(p=="getmypets"){
             var data=json_loads(c);
@@ -570,6 +573,14 @@ class CastlePage extends ContextObject{
         else if(p == "changeBoundary")
         {
             changeBoundary();
+        }
+        else if(p == "rankHeart")
+        {
+            f = global.getfriend(cpid);
+            if(f != null)
+            {
+                global.pushContext(null, new Warningdialog(["如果你觉得"+f.get("empirename")+"漂亮， 你可以给"+f.get("name")+"加1分， 每天每个好友最多1分哦！", null, 4]), NonAutoPop);
+            }
         }
     }
     
@@ -788,6 +799,8 @@ class CastlePage extends ContextObject{
                         friendinfolabel.text(NOBNAME[ccard[12]%100]);
                     }
                     hideHomeMenu();
+                    if(cpid != 0)
+                        actButton.visible(1);
                 }
                 box.setbox(-1,0,0);
                 self.resume();
@@ -824,18 +837,20 @@ class CastlePage extends ContextObject{
             datadict.pop(mi);
             pagedict.pop(mi);
         }
-        var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode);
+        var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode, rankYet);
         datadict.update(cpid,data);
         pagedict.update(cpid,contextNode.pos());
     }
 
     function popdata(){
         var data = datadict.get(cpid);
+        rankYet = data[12];
         grounds = data[0];
         box.helpperson = data[2];
         box.maxperson = data[3];
         box.boxfriends = data[4];
         box.setbox(-1,0,0);
+
         if(box.boxbutton.visible() != 0){
             giftbutton.pos(20,280);
         }
@@ -867,7 +882,7 @@ class CastlePage extends ContextObject{
         if(p==null||p==ppy_userid()||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
             return 0;
         }
-        friendpredict.update(p,1);
+        //friendpredict.update(p,1);
         global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"addprefriend");
     }
     function showHomeMenu()
@@ -875,7 +890,9 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        //actButton.visible(1);
+        actButton.visible(1);
+        actButton.texture("heart.png");
+        actButton.setevent(EVENT_UNTOUCH, showAct);
         tipButton.visible(1);
         spriteManager.showDownIcon();
     }
@@ -884,13 +901,41 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        //actButton.visible(0);
+        actButton.visible(0);
+        if(rankYet == 0)
+            actButton.texture("heartPlus.png");
+        else
+            actButton.texture("heartPlus.png", GRAY);
+        actButton.setevent(EVENT_UNTOUCH, addHeart);
         tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
+    function setRankYet()
+    {
+        rankYet = 1;
+        actButton.texture("heartPlus.png", GRAY);
+        var fri = datadict.get(cpid);
+        if(fri != null)
+        {
+            fri[12] = 1;
+        }
+        fri = friendpredict.get(cpid);
+        if(fri != null)
+        {
+            fri["rankYet"] = 1;
+        }
+    }
+    function addHeart()
+    {
+        if(rankYet == 0)
+        {
+            setRankYet();
+            global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeart");
+        }
+    }
 
     function getfriendover(data){
-        friendpredict.update(pid,data);
+        //friendpredict.update(pid,data);
         if(friend.flist!=null && friend.friendmode==1){
             /*
             for(var fi=friend.selectf+1;fi<friend.selectf+2&&fi<friend.flength;fi++){
@@ -898,6 +943,7 @@ class CastlePage extends ContextObject{
             }
             */
         }
+        rankYet = data.get("rankYet", 0);
         cpid = int(data.get("id"));
         cuid = data.get("frienduserid");
         ccid = data.get("city_id");
@@ -922,6 +968,12 @@ class CastlePage extends ContextObject{
         f.update("empirename",ename);
         
         hideHomeMenu();
+        if(cpid != 0)
+            actButton.visible(1);
+        if(rankYet == 1)
+        {
+            actButton.texture("heartPlus.png", GRAY);
+        }
 
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
@@ -1693,6 +1745,7 @@ class CastlePage extends ContextObject{
             initlock = -1;
             if(newstate < 3&&global.flagnew == 0){
                 global.pushContext(self,new NewControl(newstate),NotAdd);
+                actButton.visible(0);
             }
             else{//new user not popup foodlost
                 if(global.system.flagrob == 0 && global.flagnew == 0)
@@ -2129,6 +2182,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             if(cpid!=0)
                 global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
         }
+
     }
     var reqlock=0;
     function receiveover(r,rc,c){

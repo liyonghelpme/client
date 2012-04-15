@@ -10,8 +10,8 @@ class CampControl extends ContextObject{
     var lastx;
     var flagmove;
     var objsmax = 4;
-    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605];
-    const objlevel = [1,3,11, 25, 12, 12, 13, 13, 15, 15];
+    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605, 1606, 1607];
+    const objlevel = [1,3,11, 25, 12, 12, 13, 13, 15, 15, 20, 20];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
