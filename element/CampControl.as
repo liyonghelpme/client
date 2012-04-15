@@ -40,6 +40,7 @@ class CampControl extends ContextObject{
         buildable[i] = dict([["ok",1]]);
         var objid = objcontext[i]%100;
         var oi = objcontext[i]%1000;
+
         if(oi < 600)//camp
         {
             objs[i] = sprite("dialogelement2u.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y).size(148,276);
@@ -47,12 +48,7 @@ class CampControl extends ContextObject{
 //            objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
             var camp = objs[i].addsprite("camp"+str(objid)+".png").anchor(50,100).pos(74,160);
             //spriteManager.getPic("camp"+str(objid)+".png", camp);
-            
-            /*
-            if(i==3){//catapult
-                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
-            }
-            */
+
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -94,9 +90,11 @@ class CampControl extends ContextObject{
         }
         else if(oi < 700)
         {
-            var bl;
+            var bl = 100;
             oi=oi%100;
             objs[i] = sprite("dialogelement2d2.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
+
+
             objs[i].addlabel(STATUE_NAME[oi],null,16, FONT_NORMAL, 100, 100).anchor(50,0).pos(74,10).color(0,0,0,100);
             if(objcontext[i]/1000==2){
                  bl=75;
@@ -145,6 +143,9 @@ class CampControl extends ContextObject{
                 objs[i].addlabel(str(STATUE_DEFENCE[oi]),null,16).pos(34,244).color(0,0,0,100);
             }
             
+        }
+        if(i >= (len(objcontext)-2)){//catapult
+            objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
         }
     }
     

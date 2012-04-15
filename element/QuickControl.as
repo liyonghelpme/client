@@ -77,6 +77,7 @@ class QuickControl extends ContextObject{
         }
     }
 
+    
     function speedbegin(r,rc,c){
 trace("speed",rc,c);
         if(rc != 0){
@@ -85,6 +86,8 @@ trace("speed",rc,c);
             timelabel.removefromparent();
             qlabel.removefromparent();
             qfiller.addaction(sizeto(600,165,20));
+            c = json_loads(c);
+            costcae = c.get("manaCost");
         }
         else
             lock=0;

@@ -327,7 +327,7 @@ class NewControl extends ContextObject{
             global.context[0].addcmd(cm);
             global.lastpage[1]=400;
             global.user.changeValue("money",3000);
-            global.context[0].actButton.visible(1);
+            //global.context[0].actButton.visible(1);
             return 0;
         }
         else if(newstrs[strnum]==null){

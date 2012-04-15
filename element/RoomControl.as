@@ -42,11 +42,9 @@ class RoomControl extends ContextObject{
             var hou = objs[i].addsprite("room"+str(obji)+".png").anchor(50,100).pos(74,160).scale(sc);
             //spriteManager.getPic("room"+str(obji)+".png", hou);
             
-            /*
-            if(i<1){
+            if(i<2){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
-            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
