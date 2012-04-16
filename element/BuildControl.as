@@ -79,7 +79,7 @@ class BuildControl extends ContextObject{
                 build.prepare();
                 var bsize = build.size();
                 bl = min(180*100/bsize[0], 80*100/bsize[1]);
-                bl = max(bl, 40);
+                bl = min(120, max(bl, 40));
                 trace("control2 ", bsize, bl);
                 build.scale(bl);
                 
@@ -164,18 +164,18 @@ class BuildControl extends ContextObject{
             else{
                 namelabel = back.addlabel(global.data.getbuild(place.bid).get("name"),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state >= EGG_STATE){
-                    var max;
+                    var mmax;
                     if((place.state - EGG_STATE) < len(hmax))
-                        max = hmax[place.state-EGG_STATE];
+                        mmax = hmax[place.state-EGG_STATE];
                     else
-                        max = hmax[len(hmax)-1];
+                        mmax = hmax[len(hmax)-1];
                     //var hmax;
                     var add;
                     if((place.state-EGG_STATE) < len(hmaxs))
                         add = hmaxs[place.state-EGG_STATE];
                     else
                         add = hmaxs[len(hmaxs)-1];
-                    var stt = place.health/(max/3);
+                    var stt = place.health/(mmax/3);
                     if(stt>2) stt=2;
                     if(place.state==3){
                         var eggpic = sprite("egg-"+str(stt+1)+".png").anchor(50,0).pos(107,7);
@@ -204,7 +204,7 @@ class BuildControl extends ContextObject{
                     namelabel.anchor(0,50).pos(18,123).text(place.petname).scale(90);
                     buttons.append(23);
                     if(global.context[0].flagfriend == 1){
-                        if(place.health>=max||len(place.helpfriends)>=add||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
+                        if(place.health>=mmax||len(place.helpfriends)>=add||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
                             buttons[0] = -23;
                         }
                     }
@@ -220,13 +220,13 @@ class BuildControl extends ContextObject{
                         }
                     }
                     buttons.append(19);
-                    if(place.health>=max){
+                    if(place.health>=mmax){
                         back.addsprite("nestpetfiller2.png",ARGB_8888).pos(11,146).size(190,24);
                         timelabel = back.addlabel("MAX",null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
                     }
                     else{
-                        back.addsprite("nestpetfiller"+str(stt)+".png",ARGB_8888).pos(11,146).size(190*place.health/max,24);
-                        timelabel = back.addlabel(str(place.health)+"/"+str(max),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
+                        back.addsprite("nestpetfiller"+str(stt)+".png",ARGB_8888).pos(11,146).size(190*place.health/mmax,24);
+                        timelabel = back.addlabel(str(place.health)+"/"+str(mmax),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
                     }
                 }
                 else{
@@ -255,6 +255,8 @@ class BuildControl extends ContextObject{
             bsize = build.size();
             bl = min(180*100/bsize[0], 110*100/bsize[1]);
             trace("control1", bsize, bl);
+            bl = max(bl, 40);
+            bl = min(120, bl);
             build.scale(bl);
             beginx = -119;
         }

@@ -363,6 +363,7 @@ class FriendControl{
                     flist1.remove(fb);
                 }
             }
+            trace("ppyuserdict", len(global.ppyuserdict));
             bd.update(ppy_userid(),1);
             for(i=len(bufferflist1)-1;i>=0;i--){
                 if(bd.get(bufferflist1[i].get("id"))==1){
