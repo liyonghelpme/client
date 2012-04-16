@@ -355,7 +355,7 @@ if(sta != null)
     MONSTERNAME = sta.get("MONSTERNAME");
 }
 
-const WarMode_Lev = 10;
+const WarMode_Lev = 6;
 
 var image=dict();    
 function getimage(str){

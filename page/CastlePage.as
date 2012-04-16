@@ -3,6 +3,7 @@
 //import element.Rank;
 //import element.OldUser;
 import element.Vip;
+import element.Unlock;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -1397,6 +1398,7 @@ class CastlePage extends ContextObject{
           	else{
             	global.user.setValue("nobility",data.get("nobility",-1)*3+data.get("subno",0));
             }
+
             var landkind =  data.get("landkind",0);
             global.user.setValue("cityname",data.get("empirename",DEFAULT_NAME));
             global.user.setValue("stone",data.get("stone",0));
@@ -1442,6 +1444,7 @@ class CastlePage extends ContextObject{
             if(data.get("lev",1)<global.user.getValue("level")){
                 global.http.addrequest(0,"levup",["uid","lev"],[global.userid,global.user.getValue("level")],self,"levelup");
             }
+
             global.mapid = data.get("map_id",0);
             var godtimestr = ["foodgodtime","populationgodtime","wealthgodtime","wargodtime"];
             var block = sprite("grid20.png");
@@ -1681,6 +1684,13 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //addcmd(dict([["name","notice"]]));
+
+                    var level = global.user.getValue("level");
+                    var nobility = global.user.getValue("nobility");
+                    if(level >= 6 && nobility < 0)
+                    {
+                        addcmd(dict([["name", "unlock"]]));
+                    }
 
                     var bdict = dict();
                     bdict.update("name","daily");
@@ -2294,6 +2304,10 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         {
             //global.pushContext(null, new OldUser(), NonAutoPop);
             //global.pushContext(null, new Warningdialog([global.getStaticString("oldUser"), null, 1]), NonAutoPop);
+        }
+        else if(name == "unlock")
+        {   
+            global.pushContext(null, new Unlock(), NonAutoPop);
         }
     }
     var reqlock=0;
