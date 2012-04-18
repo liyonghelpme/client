@@ -4,6 +4,8 @@
 //import element.OldUser;
 import element.Vip;
 import element.Unlock;
+import element.MonScore;
+import element.MonRank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -200,7 +202,8 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    var actButton;
+    //var actButton;
+    var monButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -216,8 +219,9 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
-        actButton.prepare();
+        //actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
+        //actButton.prepare();
         /*
         var bsize = actButton.size();
         var bl = min(50*100/bsize[0], 50*100/bsize[1]);
@@ -304,6 +308,10 @@ class CastlePage extends ContextObject{
     {
         global.pushContext(null, new Vip(), NonAutoPop);
         //global.pushContext(null, new Rank(), NonAutoPop);
+    }
+    function showMon()
+    {
+        global.pushContext(null, new MonScore(), NonAutoPop); 
     }
     function showTipDia(n, e, p, x, y, points)
     {
@@ -922,7 +930,8 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        actButton.visible(1);
+        //actButton.visible(1);
+        monButton.visible(1);
         /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
@@ -935,7 +944,8 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        actButton.visible(0);
+        //actButton.visible(0);
+        monButton.visible(0);
         /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
@@ -1683,7 +1693,7 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    //addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name","notice"]]));
 
                     var level = global.user.getValue("level");
                     var nobility = global.user.getValue("nobility");
@@ -1844,6 +1854,7 @@ class CastlePage extends ContextObject{
             else
             {
                 global.user.setValue("manatime", now);
+                addManaLock = 0;
             }
         }
         if(initlock == 0){

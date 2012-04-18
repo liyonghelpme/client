@@ -231,10 +231,12 @@ class BuildControl extends ContextObject{
                 }
                 else{
 
-                    build =  back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
+                    build =  back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
+                    build.prepare();
                     bsize = build.size();
                     bl = min(180*100/bsize[0], 80*100/bsize[1]);
                     bl = min(120, max(bl, 40));
+                    build.scale(bl);
 
                     buttons.append(25);
                     back.addlabel(global.getStaticString("free"),null,20).anchor(0,50).pos(18,158).color(1,17,56);

@@ -31,8 +31,8 @@ const buildcontext = [
 ];
 
 
-const BASE_URL = "http://23.21.135.42:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+//const BASE_URL = "http://23.21.135.42:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
@@ -176,7 +176,8 @@ const MONSTER_POWER = [20,30,41,25,37,49,28,42,56,33,49,65,40,58,77,50,75,100,42
 
 const EXPAND_LEVEL=[4,7,10,15,20,25,30,40,50,60];
 const EXPAND_MONEY=[10000,50000,100000,500000,1000000,1500000,2000000,2500000,3000000,5000000];
-const EXPAND_CAESARS=[10, 30, 50, 70, 100, 150, 200, 300, 500, 1000];
+//const EXPAND_CAESARS=[10, 30, 50, 70, 100, 150, 200, 300, 500, 1000];
+const EXPAND_CAESARS = [5, 15, 25, 35, 50, 75, 100, 150, 250, 500];
 const EXPAND_FRIEND=[1,10,50,100,200,400,800,1000,2000,5000];
 const EXPAND_EXP=[10,20,40,70,110,150,210,280,360,450];
 

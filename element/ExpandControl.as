@@ -49,13 +49,16 @@ class ExpandControl extends ContextObject{
                 obj.addlabel("x"+str(EXPAND_FRIEND[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
             }
             else if(i==1){
-                obj.addsprite("caesars_big.png").anchor(100,50).pos(89,242);
+                obj.addsprite("caesars_big.png").anchor(100,50).pos(43,242);
                 if(EXPAND_CAESARS[obji]>global.user.getValue("caesars")){
                     buildable[i].update("ok",0);
                     buildable[i].update("caesars", EXPAND_CAESARS[obji]);
                     cl = 100;
                 }
-                obj.addlabel("x"+str(EXPAND_CAESARS[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
+                obj.addsprite("cross.png").anchor(0, 50).pos(43, 242);
+                obj.addlabel("x"+str(EXPAND_CAESARS[obji]*2),null,20).anchor(0,50).pos(43,242).color(cl,0,0,100);
+                obj.addlabel("x"+str(EXPAND_CAESARS[obji]),null,20).anchor(0,50).pos(115,242).color(cl,0,0,100);
+
             }
             else{
                 obj.addsprite("money_big.png").anchor(50,50).pos(39,229).size(20,20);

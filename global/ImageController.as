@@ -6,7 +6,7 @@ class ImageController{
     "fact33.png", "fact34.png", "fact35.png", "fact36.png", "fact37.png",
     "fact38.png",
     "warback.png", "loadingwarback.jpg",
-    "vip.png",
+    "cross.png", "mail.png", "MonAct.png", "MonRank.jpg",
     ];
     //"disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png", "drum.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "object67.png", "object67_l.png", "object68.png", "object68_l.png", "object69.png", "object69_l.png"];
     const images2 = ["help.png"];
