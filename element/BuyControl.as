@@ -61,7 +61,7 @@ class BuyControl extends ContextObject{
             if(papaLabel == null)
             {
                 papaLabel = contextNode.addlabel(str(c.get("papayas")),null,18).anchor(0,50).pos(555,72).color(5,5,64,100);
-                contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
+                //contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
             }
             else
             {
@@ -81,13 +81,15 @@ class BuyControl extends ContextObject{
         var num = buystr[selecttab].split("+");
 
         global.http.addrequest(0, "buyCae", ["uid", "cae", "pap"], [global.userid, int(num[0]), int(num[2])+10000*userPapaya], this, "buyCae");
+        /*
         if(userPapaya < int(num[2]))
         {
             //global.popContext(null);
             //global.pushContext(null, new PapaNot(), NonAutoPop);
             //return;
         }
-
+        */
+        trace("start_payment", num);
         global.popContext(null);
         start_payment(global.getStaticString("buyCaesar"), global.getStaticString("buyCaesar")+str(int(num[0])+int(num[1])),"",int(num[2]),buycaesars2);
     }
