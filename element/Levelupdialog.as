@@ -73,6 +73,11 @@ class Levelupdialog extends ContextObject{
         */
         global.popContext(null);
         var level = global.user.getValue("level");
+        trace("levelup", data, global.user.getValue("level"));
+        //if(data != null)
+        //    var level = data.get("level", global.user.getValue("level"));
+        //else 
+        //    level = global.user.getValue("level");
         global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
         trace("level", LevAddPer, level);
         if(level%10==0){

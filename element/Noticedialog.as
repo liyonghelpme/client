@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-        "Thou have blessed thee with 50% off land expansion from now to April 25th."
+        "To thou who are concerned: Ye may now earn XP by playing Dragon Wheel. Get some Dragon Stones or caesar coins to play!"
     ]; 
     function paintNode(){
         updatenum=-1;

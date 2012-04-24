@@ -6,6 +6,7 @@ import element.Vip;
 import element.Unlock;
 import element.MonScore;
 import element.MonRank;
+import element.Invite;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -622,6 +623,7 @@ class CastlePage extends ContextObject{
             if(tid>-1 && global.task.tasktype == -1){
                 global.task.inittask(tid,0);
             }
+            data.update("level", global.user.getValue("level"))
             addcmd(dict([["name","levup"], ["data", data]]));
         }
     }
@@ -1313,6 +1315,8 @@ class CastlePage extends ContextObject{
     }
 
     var statestr="";
+    var week = -1;
+    var getBonus = 0;
     function getidback(r,rc,c){
         if(rc != 0){
             var data = json_loads(c);
@@ -1336,6 +1340,8 @@ class CastlePage extends ContextObject{
                 }
                 */
             }
+            week = data.get("week");
+            //addcmd(dict([["name", "inviteFriend"]]));
             //var deadDay = data.get("deadDay", 7);
             //addcmd(dict([["name","deadDay"], ["num", deadDay]]));
             /*
@@ -1676,6 +1682,7 @@ class CastlePage extends ContextObject{
                 global.system.flagrob = data.get("foodlost", 0);
 
                 var bonus = data.get("bonus",0);
+                getBonus = bonus;
 
                 //how to solve this problem ? 
                 //by random ? 
@@ -2319,6 +2326,18 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "unlock")
         {   
             global.pushContext(null, new Unlock(), NonAutoPop);
+        }
+        else if(name == "inviteFriend")
+        {
+            if(global.flagnew == 0 && getBonus != 0)
+            {
+                trace("week", week, getBonus);
+                if(week == 2 || week == 5)
+                {
+                    //global.pushContext(null, new Invite(), NonAutoPop);
+                    friend.inviteAll();
+                }
+            }
         }
     }
     var reqlock=0;

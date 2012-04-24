@@ -229,6 +229,17 @@ var DiskRewards = [
     dict([["food", 9]]),
     dict([["caesars", 99]]),
     ],
+    [
+    dict([["exp", 19]]),
+    dict([["exp", 119]]),
+    dict([["exp", 1119]]),
+    dict([["exp", 49]]),
+    dict([["exp", 499]]),
+    dict([["exp", 9]]),
+    dict([["exp", 99]]),
+    dict([["exp", 9999]]),
+    dict([["exp", 999]]),
+    ],
 
 ];
 function colorWords(str, width, ew)

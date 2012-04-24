@@ -4,31 +4,31 @@ const NewsURL = "market://details?id=com.papaya.miracle1";
 //const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
 
 var Others = dict([
-["SPYITEMS", ["win: ", "fight: ", "soldier force: ", "ally force: ", "defense: "]], 
+["SPYITEMS", ["Wins: ", "Fights: ", "Soldiers: ", "Ally Soldiers: ", "Castle Defense: "]], 
 
 ["items" , []], //update News information
 ["timestr", ["1 hour", "6 hours", "24 hours"]], 
 
-["ganname1", ["You can only send every friend one gift per day", 
-        "You can ask for gift from every friend once a day"]], 
+["ganname1", ["Thou may only send a friend one gift per day.", 
+        "Thou may only ask a friend for one gift per day."]], 
 
 ["btname1", ["Delay", "Refresh"]], 
 
 ["timestr1", ["2 hours", "8 hours", "24 hours"]], 
 
-["newupdate1", ["Your territory change to night mode from 8 p.m to 6 a.m automatically. Tap menu button->night scene to close"]], 
+["newupdate1", ["Night mode will be automatically activated from 8 p.m to 6 a.m every day. Tap menu button -> night to toggle on/off. "]], 
 
 ["godstr", [
-    "crops yield increase 20%", "population recruited increase 20%", "tax from stores increase 20%", "Soldier's ATK increase 5%", 
-    "crops yield increase 40%", "population recruited increase 40%", "tax from stores increase 40%", "Soldier's ATK increase 10%", 
-    "crops yield increase 60%", "population recruited increase 60%", "tax from stores increase 60%", "Soldier's ATK increase 15%", 
-    "crops yield increase 80%", "population recruited increase 80%", "tax from stores increase 80%", "Soldier's ATK increase 20%", 
-    "crops yield increase 100%", "population recruited increase 100%", "tax from stores increase 100%", "Soldier's ATK increase 25%", 
-    "get 5 more coins for visiting friends", "get 10 more coins for visiting friends", "get 20 more coins for visiting friends", "get 30 more coins for visiting friends", "get 50 more coins for visiting friends", 
-    "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense", "the statue of monsters will strengthen the defense"]], 
+    "Crop yields will increase by 20%", "Population growth will increase by 20%", "Tax revenue from stores will increase by 20%", "Soldiers' ATK will increase by 5%", 
+    "Crop yields will increase by 40%", "Population growth will increase by 40%", "Tax revenue from stores will increase by 40%", "Soldiers' ATK will increase by 10%", 
+    "Crop yields will increase by 60%", "Population growth will increase by 60%", "Tax revenue from stores will increase by 60%", "Soldiers' ATK will increase by 15%", 
+    "Crop yields will increase by 80%", "Population growth will increase by 80%", "Tax revenue from stores will increase by 80%", "Soldiers' ATK will increase by 20%", 
+    "Crop yields will increase by 100%", "Population growth will increase by 100%", "Tax revenue from stores will increase by 100%", "Soldiers' ATK will increase by 25%", 
+    "Get 5 more sliver coins when you visit friends", "Get 10 more silver coins when you visit friends", "Get 20 more silver coins when you visit friends", "Get 30 more silver coins when you visit friends", "Get 50 more silver coins when you visit friends", 
+    "Strengthen your castle defense", "Strengthen your castle defense", "Strengthen your castle defense", "Strengthen your castle defense", "Strengthen your castle defense"]], 
 
 ["newstr", [
-"{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'select', 'param': 0, 'tp': [600, 140], 'text': \"Your people need food, tap on the idle farmland.\"}",   
+"{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'select', 'param': 0, 'tp': [600, 140], 'text': \"It is thy responsibility to provide food for your subjects. Tap on the idle farmland.\"}",   
 "{'cp': [328, 288], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'btclick', 'param': 0, 'tp': [600, 140], 'text': ' Tap the plant icon.'}",   
 "{'cp': [209, 181], 'cz': [240, 240], 'type': 1, 'posi': [17, 8], 'cmd': 'state2over', 'param': 0, 'tp': [600, 140], 'text': 'Plant your first crop by tapping on wheat.'}",   
 "{'cp': [400, 300], 'cz': [120, 120], 'gtype': 0, 'posi': [17, 8], 'cmd': 'select', 'param': 0, 'tp': [600, 140], 'text': \"It takes time to grow crops, but we can accelerate growth time, start by tapping on the busy farmland.\"}",   
@@ -38,7 +38,7 @@ var Others = dict([
 
 "", 
 
-"{'gtype': 2, 'posi': [17, 8], 'cmd': 'harvest', 'param': 0, 'tp': [400, 240], 'text': 'Task one completed+500+1+4+ Next step + Agriculture related task completed!'}",   
+"{'gtype': 2, 'posi': [17, 8], 'cmd': 'harvest', 'param': 0, 'tp': [400, 240], 'text': 'Task one completed+500+1+4+ Next step + Finished agriculture task!'}",   
 "{'cp': [35, 435], 'cz': [80, 80], 'gtype': 1, 'posi': [14, 13], 'cmd': 'mclick', 'param': 4, 'tp': [200, 140], 'text': \"An empire needs people to construct buildings and become soldiers. Build home for people to live in. Tap on the Build Icon.\"}",   
 "{'cp': [100, 250], 'cz': [160, 280], 'gtype': 1, 'posi': [14, 13], 'cmd': 'pop', 'param': 2100, 'mp': [400, 240], 'tp': [400, 140], 'text': ' Tap cottage '}",   
 "{'cp': [445, 75], 'cz': [80, 80], 'gtype': 0, 'posi': [14, 13], 'cmd': 'build', 'param': 1, 'mp': [400, 180], 'tp': [600, 340], 'text': \"Choose a plot of land to build it and tap yes when ready.\"}", 
@@ -122,21 +122,21 @@ var Dicts =
 
 ["news_nonews", "No more news"], 
 
-["news_element0", "<b>[NAME]<b> visited you."], 
+["news_element0", "<b>[NAME]<b> hath visited you."], 
 
 ["news_element1", "<b>[NAME]<b> helped you manage your castle."], 
 
-["news_element2", "<b>[NAME]<b> sent you a gift."], 
+["news_element2", "<b>[NAME]<b> hath sent you a gift."], 
 
-["news_element3", " You defeated <b>[NAME]<b>."], 
+["news_element3", " You hath defeated <b>[NAME]<b>."], 
 
-["news_element4", "<b>[NAME]<b> defeated you."], 
+["news_element4", "<b>[NAME]<b> hath defeated you."], 
 
-["news_element5", "<b>[NAME]<b> helped you open a treasure chest."], 
+["news_element5", "<b>[NAME]<b> hath helped you open a treasure chest."], 
 
-["news_element6", "<b>[NAME]<b> helped you feed your pet."], 
+["news_element6", "<b>[NAME]<b> hath fed your pet."], 
 
-["gift_element0", "[NAME] sent you a gift: [GIFT]."], 
+["gift_element0", "[NAME] hath sent you a gift: [GIFT]."], 
 
 ["gift_element1", "[NAME] ask you for a gift: [GIFT]."], 
 
@@ -344,7 +344,7 @@ var Dicts =
 ["unitPower", "Strength per unit"], 
 ["chooseStone", "Choose stone"], 
 ["noUpdate", "No new updates"], 
-["visitReward", "[NAME] has gotten the rewards for visiting friends, join Miracle Empire and have fun!"], 
+["visitReward", "[NAME] has gotten the rewards when you visit friends, join Miracle Empire and have fun!"], 
 ["yourArmy", "Your military has arrived at [NAME]'s territory. Prepare for war!"], 
 ["enemyArmy", "[NAME]'s military has arrived your territory, let's get ready for the fight!"], 
 ["viewWar", "watching"], 
@@ -434,17 +434,18 @@ var Dicts =
 ["DraNot", "Sorry, you don't have enough Dragon stones, you can get more by opening treasure chest or killing monsters!"], 
 
 ["CaeNot", "Sorry, you don't have enough caesar coins!"], 
-["HowDra", "Dragon Stones or caesar coins are needed to play Dragon Wheel. Tip: opening treasure chesk or killing monsters to get Dragon Stone."], 
+["HowDra", "Dragon Stones or caesar coins are needed to play Dragon Wheel. Tip: opening treasure chest or killing monsters to get Dragon Stone."], 
 ["drumReward", "Tap the drum icon to get extra silver coins during fights! You tapped [NUM] times and get [MONEY] silver coins in the fight!"], 
 ["drumFeed", "[NAME] tapped drum [NUM] times and got [MONEY] silver coins in Miracle Empire!"], 
-["lev1Disk", "Upgrade to Baron to play this kind of Dragon wheel."], 
-["lev2Disk", "Upgrade to Knight to play this kind of Dragon Wheel."], 
+["lev1Disk", "Obtain the rank of Baron before you can  play this Dragon wheel."], 
+["lev2Disk", "Obtain the rank of Knight before your can play this Dragon Wheel."], 
 ["spe", "lumber"], 
 ["boundary", "Magic Capacity"], 
 ["dragonStone", "Dragon Stone"], 
 ["power", "soldiers"], 
 ["oldUser", "Welcome back to Miracle Empire! You got 10 caesar coins for playing!"], 
 ["PapaNot", "You don't have enough papayas to make this purchase. Purchase papayas now?"], 
+["exp", "Exp"], 
 ["", ""], 
 
 ];

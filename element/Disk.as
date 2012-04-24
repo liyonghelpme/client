@@ -24,7 +24,8 @@ class Disk extends ContextObject{
 
         global.timer.addlistener(-1, this);
     }
-    var state = 0;
+    const StateNum = 4;
+    var state = 3;
     function paintNode(){
         contextNode = sprite("diskback.jpg", ARGB_8888).anchor(50,50).pos(400,240);
         disk = contextNode.addsprite("dragonDisk.png").anchor(50, 50).pos(274, 225);
@@ -54,62 +55,74 @@ class Disk extends ContextObject{
 
         contextNode.addsprite("changeDisk.png").pos(713, 404).anchor(50, 50).setevent(EVENT_UNTOUCH, refreshDisk).scale(80);
         showWord = contextNode.addlabel("", null, 20, FONT_NORMAL, 200, 0, ALIGN_LEFT).pos(535, 281).color(100, 0, 0, 100);
+        setDisk();
 
     }
     var showWord = null;
     var play = 1;
+    function setDisk()
+    {
+        if(state == 0)
+        {
+            play = 1;
+            disk.texture("dragonDisk.png");
+            showWord.visible(0);
+            but1.texture("boxbutton1.png");
+            but2.texture("boxbutton4.png");
+        }
+        else if(state == 1)
+        {
+
+            disk.texture("powDisk.png");
+            var nob = global.user.getValue("nobility");
+            play = 1;
+            showWord.visible(0);
+            but1.texture("boxbutton1.png");
+            but2.texture("boxbutton4.png");
+            if(nob < 3)
+            {
+                play = 0;
+                showWord.text(global.getStaticString("lev1Disk"));
+                showWord.visible(1);
+                but1.texture("boxbutton2.png");
+                but2.texture("boxbutton2.png");
+            }
+                
+        }
+        else if(state == 2)
+        {
+            disk.texture("caeDisk.png");
+            play = 1;
+            nob = global.user.getValue("nobility");
+            showWord.visible(0);
+            but1.texture("boxbutton1.png");
+            but2.texture("boxbutton4.png");
+            if(nob < 6)
+            {
+                play = 0;
+                showWord.text(global.getStaticString("lev2Disk"));
+                showWord.visible(1);
+                but1.texture("boxbutton2.png");
+                but2.texture("boxbutton2.png");
+            }
+        }
+        else if(state == 3)
+        {
+            disk.texture("expDisk.png");
+            play = 1;
+            showWord.visible(0);
+            but1.texture("boxbutton1.png");
+            but2.texture("boxbutton4.png");
+        }
+    }
     function refreshDisk()
     {
         if(lock == 0)
         {
             lock = 1;
             state += 1;
-            state %= 3;
-            if(state == 0)
-            {
-                play = 1;
-                disk.texture("dragonDisk.png");
-                showWord.visible(0);
-                but1.texture("boxbutton1.png");
-                but2.texture("boxbutton4.png");
-            }
-            else if(state == 1)
-            {
-
-                disk.texture("powDisk.png");
-                var nob = global.user.getValue("nobility");
-                play = 1;
-                showWord.visible(0);
-                but1.texture("boxbutton1.png");
-                but2.texture("boxbutton4.png");
-                if(nob < 3)
-                {
-                    play = 0;
-                    showWord.text(global.getStaticString("lev1Disk"));
-                    showWord.visible(1);
-                    but1.texture("boxbutton2.png");
-                    but2.texture("boxbutton2.png");
-                }
-                    
-            }
-            else
-            {
-                disk.texture("caeDisk.png");
-                play = 1;
-                nob = global.user.getValue("nobility");
-                showWord.visible(0);
-                but1.texture("boxbutton1.png");
-                but2.texture("boxbutton4.png");
-                if(nob < 6)
-                {
-                    play = 0;
-                    showWord.text(global.getStaticString("lev2Disk"));
-                    showWord.visible(1);
-                    but1.texture("boxbutton2.png");
-                    but2.texture("boxbutton2.png");
-                }
-            }
-
+            state %= StateNum;
+            setDisk();
             lock = 0;
         }
     }

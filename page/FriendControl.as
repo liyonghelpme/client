@@ -333,7 +333,7 @@ class FriendControl{
                     }
             }
             var bd = dict();
-            var db = c_opendb(0,"friendinvited");
+            //var db = c_opendb(0,"friendinvited");
             //id lev visited nobility
             trace("getNob", len(bufferflist3));
             for(i=0;i<len(bufferflist3);i++){
@@ -359,11 +359,18 @@ class FriendControl{
 
                 if(fb.get("level")>-1)
                     global.ppyuserdict.update(str(id),fb); 
+                /*
                 else if(db.get(str(id))==1){
                     flist1.remove(fb);
                 }
+                */
             }
-            trace("ppyuserdict", len(global.ppyuserdict));
+            trace("ppyuserdict", len(global.ppyuserdict), len(flist1));
+            if(len(flist1) > 0)
+            {
+                global.context[0].addcmd(dict([["name", "inviteFriend"]]));
+            }
+
             bd.update(ppy_userid(),1);
             for(i=len(bufferflist1)-1;i>=0;i--){
                 if(bd.get(bufferflist1[i].get("id"))==1){
@@ -437,7 +444,7 @@ class FriendControl{
                 http_request(BASE_URL+"addppyfriend",retlevback,"uid="+str(global.userid)+"&rrstring="+uri_encode(string1));
                 return 0;
             }
-            var db = c_opendb(0,"friendinvited");
+            //var db = c_opendb(0,"friendinvited");
             var cfdict = dict();
             for(var i=0;i<len(flist1);i++){
                 cfdict.update(flist1[i].get("id"),flist1[i]);
@@ -450,9 +457,11 @@ class FriendControl{
                     fn = cfdict.get(id);
                 }
                 else{
+                    /*
                     if(db.get(str(id))==1){
                         continue;
                     }
+                    */
                     flist1.append(fn);
                 }
                 if(obj.get(str(id))==null || obj.get(str(id)).get("level")==-1){
@@ -717,6 +726,49 @@ class FriendControl{
         }
     }
     
+    /*
+    function inviteAll()
+    {
+        for(var i= 0; i < 1000; i++)
+        {
+            var d=dict([["message",global.getStaticString("friend_invite")],["uid", i]]);
+            ppy_query("send_notification", d, null);
+        }
+    }
+    */
+    var curInvite = 0;
+    var inviting = 0;
+    var curTimer = null;
+    function inviteAll()
+    {
+        inviting = 1;
+        if(curInvite == 0)
+        {
+            curTimer = c_addtimer(100, timerefresh);
+            //global.timer.addlistener(time()/1000+24*3600, this);
+        }
+        trace("inviteAll", len(flist1));
+        if(curInvite >= len(flist1))
+        {
+            //global.unlock();
+            curTimer.stop();
+            return;
+        }
+
+        var ppyid = flist1[curInvite++].get("id");       
+        var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
+        ppy_query("send_notification", d, finInvite);
+    }
+    function finInvite(r, rc, cdict)
+    {
+        inviting = 0;
+    }
+    function timerefresh(timer)
+    {
+        if(inviting == 0)
+            inviteAll();
+    }
+
     function invitefriend(ppyid){
         var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
         ppy_query("send_notification",d,inviteover);
@@ -724,8 +776,8 @@ class FriendControl{
             if(flist1[i].get("id")==ppyid){
                 //trace("find",i);
                 flist1.pop(i);
-                var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
-                db.put(str(ppyid),1);
+                //var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
+                //db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();
                 return 0;

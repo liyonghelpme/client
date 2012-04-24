@@ -89,7 +89,7 @@ class BuildControl extends ContextObject{
                     if((mode != GOD_INDEX && mode != STATUE_INDEX) || place.state != WORKING ){
                         buttons.append(ACC_BUTTON);
                     }
-                    timelabel = back.addlabel("",null,20).anchor(100,50).pos(197,158).color(0,0,0,100);
+                    timelabel = back.addlabel("",null,20).anchor(100,50).pos(200,158).color(0,0,0,100);
                     timelabel.addaction(repeat(callfunc(updatetime),delaytime(1000)));
                     var labelstr = global.getStaticString("inBuild");
                     if(place.state == WORKING){
@@ -118,7 +118,7 @@ class BuildControl extends ContextObject{
                             buttons.append(-BLESS_BUTTON);
                         }
                     }
-                    back.addlabel(labelstr,null,20).anchor(0,50).pos(18,158).color(56,1,1);
+                    back.addlabel(labelstr,null,20).anchor(0,50).pos(16,158).color(56,1,1);
                 }
                 else{
                     //trace("mode, bid", mode, place.bid);
