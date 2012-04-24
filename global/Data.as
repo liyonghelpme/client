@@ -257,7 +257,7 @@ var Dicts =
 ["egging", "Incubating"], 
 ["growing", "Growing"], 
 ["shopping", "Purchase"], 
-["buyCaesar", "Buy caesar coins"], 
+["buyCaesar", " caesar coins"], 
 //["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"],
 //["population", "The Liberty Goddess can increase the number of people you can recruit by performing magic"], 
 //["war", "The War God can strenthen your soldiers' ATK by performing magic"], 
