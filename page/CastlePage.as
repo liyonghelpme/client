@@ -4,8 +4,8 @@
 //import element.OldUser;
 import element.Vip;
 import element.Unlock;
-import element.MonScore;
-import element.MonRank;
+//import element.MonScore;
+//import element.MonRank;
 import element.Invite;
 class CastlePage extends ContextObject{
     var lastpoint;
@@ -204,7 +204,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     //var actButton;
-    var monButton;
+    //var monButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -221,7 +221,7 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         //actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
-        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
+        //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         /*
         var bsize = actButton.size();
@@ -312,7 +312,8 @@ class CastlePage extends ContextObject{
     }
     function showMon()
     {
-        global.pushContext(null, new MonScore(), NonAutoPop); 
+        //global.pushContext(null, new MonScore(), NonAutoPop); 
+
     }
     function showTipDia(n, e, p, x, y, points)
     {
@@ -933,7 +934,7 @@ class CastlePage extends ContextObject{
         leftmenu.visible(1);
         rightmenu.visible(1);
         //actButton.visible(1);
-        monButton.visible(1);
+        //monButton.visible(1);
         /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
@@ -947,7 +948,7 @@ class CastlePage extends ContextObject{
         leftmenu.visible(0);
         rightmenu.visible(0);
         //actButton.visible(0);
-        monButton.visible(0);
+        //monButton.visible(0);
         /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
