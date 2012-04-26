@@ -1701,7 +1701,7 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
 
                     var level = global.user.getValue("level");
                     var nobility = global.user.getValue("nobility");
