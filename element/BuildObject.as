@@ -343,6 +343,7 @@ class BuildObject extends ContextObject{
         else if(state == WORKING && state2==0 && mstate+4*(lefttime-1)/alltime <4){
             refreshminus();
         }
+        //trace("minus", state, state2, mstate, lefttime, alltime, mstate+4*(lefttime-1)/alltime);
     }
     function refreshminus(){
         if(minuslock==1){
@@ -380,10 +381,9 @@ class BuildObject extends ContextObject{
         //rdict.update("builds",[self]);
         //rdict.update("city",global.context[0].ccid
         //global.context[0]
-        /*
+        trace("refreshMinus");
         if(rand(10)==5)
             global.http.addrequest(0,"addminusstate2",["city_id","type","grid_id"],[global.context[0].ccid,mstate2,baseobj.posi[0]*RECTMAX+baseobj.posi[1]],self,"addminus");
-        */
     }
 
     function gettimeper(){

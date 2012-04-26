@@ -18,6 +18,7 @@ import element.DailyDialog;
 import element.GiftDialog;
 import element.Quitdialog;
 import element.BuyControl;
+import element.PapaNot;
 import element.Cardget;
 import element.NewControl;
 import element.Infodialog;
@@ -31,6 +32,7 @@ import element.Monsterrobfood;
 import element.ChargeMagic;
 import element.CheckTime;
 import element.MagicWarning;
+import element.CaeWarning;
 import element.Tip;
 
 import page.MapPage;

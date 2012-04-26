@@ -328,6 +328,8 @@ class UserController{
             var key = items[i][0];
             var value = items[i][1];
             var cmpvalue = 0;
+            if(key == "ok")
+                continue;
             if(key == "special")
             {
                 var speItems = value.items();
@@ -342,13 +344,23 @@ class UserController{
             }
             else
             {
-                if(key=="labor" || key=="person"){
-                    key = "person";
-                    cmpvalue = getValue("labor");
+                if(key == "friend")
+                {
+                    if(len(global.ppyuserdict) - 2- value < cmpvalue)
+                    {
+                        buildable.update("ok", 0);
+                        buildable.update("好友", value+cmpvalue-len(global.ppyuserdict)+2);
+                    }
                 }
-                if(getValue(key)-value<cmpvalue){
-                    buildable.update("ok",0);
-                    buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                else {
+                    if(key=="labor" || key=="person"){
+                        key = "person";
+                        cmpvalue = getValue("labor");
+                    }
+                    if(getValue(key)-value<cmpvalue){
+                        buildable.update("ok",0);
+                        buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                    }
                 }
             }
         }
@@ -356,13 +368,19 @@ class UserController{
         if(buildable.get("ok")==1){
             return 1;
         }
-        else if(cost.get("mana") == null){
-            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
+        else if(cost.get("mana") != null){
+            global.pushContext(null, new MagicWarning(), NonAutoPop);
+
+            return 0;
+        }
+        else if(cost.get("caesars") != null)
+        {
+            global.pushContext(null, new CaeWarning(), NonAutoPop);
             return 0;
         }
         else
         {
-            global.pushContext(null, new MagicWarning(), NonAutoPop);
+            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
             return 0;
         }
     }

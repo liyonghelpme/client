@@ -41,6 +41,10 @@ class BuyControl extends ContextObject{
             closedialog(0,0);
         }
     }
+    var userPapaya = 0;
+    var getPapaFin = 0;
+    var caeLabel = null;
+    var papaLabel = null;
     function setpapayas(r,rc,c){
         if(rc != 0){
             contextNode.get(10).addaction(stop());
@@ -48,6 +52,9 @@ class BuyControl extends ContextObject{
             contextNode.addlabel(str(global.user.getValue("caesars")),null,18).anchor(0,50).pos(555,46).color(5,5,64,100);
             contextNode.addlabel(str(c.get("papayas")),null,18).anchor(0,50).pos(555,72).color(5,5,64,100);
             contextNode.addsprite("addpapayas.png").anchor(0,50).pos(610,72).setevent(EVENT_UNTOUCH,buypapayas);
+            userPapaya = c.get("papayas");
+            getPapaFin = 1;
+
         }
     }
     
@@ -56,8 +63,18 @@ class BuyControl extends ContextObject{
     }
     
     function buycaesars(n,e){
-        global.popContext(null);
+        if(getPapaFin == 0)
+            return;
         var num = buystr[selecttab].split("+");
+        trace("buy", userPapaya, num);
+        if(userPapaya < int(num[2]))
+        {
+            global.popContext(null);
+            global.pushContext(null, new PapaNot(), NonAutoPop);
+            return;
+        }
+        global.popContext(null);
+
         start_payment("购买凯撒币","购买"+str(int(num[0])+int(num[1]))+"个凯撒币","",int(num[2]),buycaesars2);
     }
     

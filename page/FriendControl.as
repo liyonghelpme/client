@@ -351,6 +351,10 @@ class FriendControl{
                     bufferflist1.pop(i);
                 }
             }
+            if(len(flist1) > 0)
+            {
+                global.context[0].addcmd(dict([["name", "inviteFriend"]]));
+            }
             //updateflist1();
             if(flist!=null){
                 refreshflist();
@@ -690,6 +694,35 @@ class FriendControl{
         }
     }
     
+    var curInvite = 0;
+    var inviting = 0;
+    var curTimer = null;
+    function inviteAll()
+    {
+        trace("inviteAll");
+        inviting = 1;
+        if(curInvite == 0)
+        {
+            curTimer = c_addtimer(100, timerefresh);
+        }
+        if(curInvite >= len(flist1))
+        {
+            curTimer.stop();
+            return;
+        }
+        var ppyid = flist1[curInvite++].get("id");
+        var d = dict([["message", global.getStaticString("friend_invite")], ["uid", ppyid]]);
+        ppy_query("send_notification", d, finInvite);
+    }
+    function finInvite(r, rc, cdict)
+    {
+        inviting = 0;
+    }
+    function timerefresh(timer)
+    {
+        if(inviting == 0)
+            inviteAll();
+    }
     function invitefriend(ppyid){
         var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
         ppy_query("send_notification",d,inviteover);

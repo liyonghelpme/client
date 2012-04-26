@@ -63,7 +63,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("银币",price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -72,7 +72,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("空闲人口",nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update("person", nperson);
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -81,7 +81,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("粮食",food-global.user.getValue("food"));
+                        buildable[i].update("food", food);
                     }
                     objs[i].addsprite("food.png").size(29,33).pos(80,195);
                     objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);
@@ -92,7 +92,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update("凯撒币",price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -189,8 +189,9 @@ class FactControl extends ContextObject{
             else if(e == EVENT_UNTOUCH){
                 if(flagmove == 0){
                     global.lastpage[0] = 1;
-                    if(buildable[param].get("ok")==0){
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 0){
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{//ok to build groundid
                         global.popContext(objcontext[param]);

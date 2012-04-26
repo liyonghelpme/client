@@ -163,28 +163,45 @@ class Disk extends ContextObject{
     function startGame(n, e, p, x, y, points)
     {
         var need;
+        var ret;
         if(lock == 1 || play == 0)
             return;
         lock = 1;
         if(p == 0)
         {
             need = global.user.getValue("dragonStone")
+            ret = global.user.testCost(dict([["dragonStone", 1]]));
+            if(ret == 0)
+            {
+                lock = 0;
+                return;
+            }
+            /*
             if(need < 1)
             {
                 global.pushContext(null, new Warningdialog(["抱歉，仙龙石不足！ 可以通过杀怪和开宝箱来免费获得仙龙石。", null, 6]), NonAutoPop);
                 lock = 0;
                 return;
             }
+            */
         }
         else
         {
-            need = global.user.getValue("caesars");
+            //need = global.user.getValue("caesars");
+            ret = global.user.testCost(dict([["caesars", 1]]));
+            if(ret == 0)
+            {
+                lock = 0;
+                return;
+            }
+            /*
             if(need < 1)
             {
                 global.pushContext(null, new Warningdialog(["抱歉，凯撒币不足！", null, 6]), NonAutoPop)
                 lock = 0;
                 return;
             }
+            */
         }
 
         finish = 0;

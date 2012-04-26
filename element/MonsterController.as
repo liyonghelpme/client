@@ -97,19 +97,21 @@ class MonsterController extends ContextObject{
         }
         else if(e==EVENT_UNTOUCH){
             n.texture("mapleftmenutab0.png");
-                if(global.user.getValue("caesars")<bvalue){
-                    global.pushContext(null,new Warningdialog(dict([["ok",0],["凯撒币",bvalue-global.user.getValue("caesars")]])),NonAutoPop);
-                    return 0;
-                }
-                if(p==0){
-                    global.http.addrequest(1,"delaymonster",["uid"],[global.userid],self,"delaymonster");
-                }
-                else if(p==1){
-                    var mstr = refreshmonsters();
-                    timeisend=1;
-                    isTiming = 0;
-                    global.http.addrequest(1,"speedupmonster",["uid","monsterstr"],[global.userid,mstr],self,"speedupmonster");
-                }
+            var cost = dict([["caesars", bvalue]]);
+            var ret = global.user.testCost(cost);
+            if(ret == 0){
+                //global.pushContext(null,new Warningdialog(dict([["ok",0],["凯撒币",bvalue-global.user.getValue("caesars")]])),NonAutoPop);
+                return 0;
+            }
+            if(p==0){
+                global.http.addrequest(1,"delaymonster",["uid"],[global.userid],self,"delaymonster");
+            }
+            else if(p==1){
+                var mstr = refreshmonsters();
+                timeisend=1;
+                isTiming = 0;
+                global.http.addrequest(1,"speedupmonster",["uid","monsterstr"],[global.userid,mstr],self,"speedupmonster");
+            }
         }
     }
     

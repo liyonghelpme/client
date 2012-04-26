@@ -1,6 +1,6 @@
 //import element.Act;
-import element.Score;
-import element.Rank;
+//import element.Score;
+//import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -282,7 +282,7 @@ class CastlePage extends ContextObject{
     function showAct(n, e, p, x, y, points)
     {
         //global.pushContext(null, new Act(), NonAutoPop);
-        global.pushContext(null, new Score(), NonAutoPop);
+        //global.pushContext(null, new Score(), NonAutoPop);
     }
     function loveShow(n, e, p, x, y, points)
     {
@@ -1257,6 +1257,7 @@ class CastlePage extends ContextObject{
     }
 
     var statestr="";
+    var getBonus = 0;
     function getidback(r,rc,c){
         if(rc != 0){
             var data = json_loads(c);
@@ -1574,6 +1575,7 @@ class CastlePage extends ContextObject{
                 global.system.flagrob = data.get("foodlost", 0);
 
                 var bonus = data.get("bonus",0);
+                getBonus = bonus;
 
                 //how to solve this problem ? 
                 //by random ? 
@@ -2187,6 +2189,14 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "chat"){
             if(cpid!=0)
                 global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
+        }
+        else if(name == "inviteFriend")
+        {
+            trace("inviteFriend", global.flagnew, getBonus);
+            if(global.flagnew == 0 && getBonus != 0)
+            {
+                friend.inviteAll();
+            }
         }
 
     }

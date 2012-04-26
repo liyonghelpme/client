@@ -89,9 +89,13 @@ class SpriteManager
     var getWarYet = 0;
     function getWar()
     {   
+        warBack();
+
+        /*
         getWarYet = 1;
         var arr = [] + warpic;
         getDownload(arr, warBack, DownWarPic);
+        */
     }
 
     var dragonPlace;
