@@ -334,7 +334,7 @@ class FriendControl{
                     }
             }
             var bd = dict();
-            //var db = c_opendb(0,"friendinvited");
+            var db = c_opendb(0,"friendinvited");
             //id lev visited nobility
             trace("getNob", len(bufferflist3));
             for(i=0;i<len(bufferflist3);i++){
@@ -360,11 +360,9 @@ class FriendControl{
 
                 if(fb.get("level")>-1)
                     global.ppyuserdict.update(str(id),fb); 
-                /*
                 else if(db.get(str(id))==1){
                     flist1.remove(fb);
                 }
-                */
             }
             trace("ppyuserdict", len(global.ppyuserdict), len(flist1));
             if(len(flist1) > 0)
