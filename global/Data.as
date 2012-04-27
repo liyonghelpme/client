@@ -511,6 +511,7 @@ var Names = dict([
 "Cupid", "Rose Flowers", "Rose Garden", "Love Tree", 
 "Egypt Tower", "Elephant Lamp", "Horse Lamp", 
 "Royal Road", "Camphor", "High Shrubs", "Watchtower", 
+"Royal Knight", "Flag Pier", "Square Brick 1", "Square Brick 2", 
 ]], 
 
 
@@ -771,18 +772,21 @@ const Tips = dict([
 [4, "Tap on your castle to see your territory's info. Here you can view your attack power, special articles, magic, resources, etc."], 
 [5, "Decorations are great for your empire! They can increase your population and magic capacity too!"], 
 
+[6, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."], 
 [7, "Want to get more silver and/or free caesar coins? Tap the FAQ button."], 
 [8, "You can build Harvest Goddess statue now! The statue can perform magic that will increase your crops' yield as well as one-step harvesting and planting."], 
 [9, "Build the Dragon Wheel and then use the Dragon Stone to get FREE caesar coins."], 
-[10, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."], 
 
+[10, "You can build Dragon nest now. A dragon nest will allow you to raise a pet dragon. When it reaches adulthood, it can help you fight in battles."], 
 [11, "Build a lumber mill. Wood is a necessary resource for upgrading buildings."], 
 [12, "Build the Population Goddess statue! She can perform magic that increases your population recruitment number."], 
 [13, "Tip: You will be given silver coins as a reward, and you will have a higher probability of winning!"], 
 [14, "Cavalry's speed is higher than infantry's."], 
-[15, "You can build Dragon nest now. A dragon nest will allow you to raise a pet dragon. When it reaches adulthood, it can help you fight in battles."], 
+
 //[15, "Dragons help defend your empire. You can also train it to increase its ATK."], 
 [16, "Build the War God statue! He can perform magic that will increase your ATK power during battles."], 
+[17, "You will get many silver coins and dragon stones as rewards when you upgrade to higher level."],
+
 [18, "Build a stone quarry. Stone is necessary to upgrade buildings."], 
 [19, "There are forts scatter around the world map. When you occupy a fort it will produce resouces for you every hour."], 
 [20, "You can upgrade your castle to Lv. 2! Upgrading will increase your magic capacity by 5, and your population capacity by 100."], 

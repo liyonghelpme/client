@@ -58,7 +58,7 @@ var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
 var src = backNode.addsprite().anchor(50,50).pos(400,240);
 
 //var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
-var lpng = "loadingback.jpg";
+var lpng = "loading_new.jpg";
 var lback = fetch(lpng);
 var loadingstr = "";
 if(lback==null){
@@ -68,6 +68,7 @@ if(lback==null){
 else{
     src.texture(lpng);
 }
+
 global.dialogscreen.add(backNode,0);
 backNode.add(label(loadingstr+"0%",null,25).anchor(50,100).pos(400,440),0,1);
 var loadbar = fetch("loadingbar.png")

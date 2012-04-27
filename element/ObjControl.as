@@ -8,6 +8,7 @@ class ObjControl extends ContextObject{
     var flagmove;
     var objsmax;
     const objcontext = [
+    1574, 1575, 1576, 1577,
     1500, 1501, 1502, 
     1570,
     1503, 1561, 2566, 1504, 1515, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 2553, 2554, 1513, 2555, 2556, 1514, 1546, 1547, 1548, 1549, 
@@ -19,6 +20,7 @@ class ObjControl extends ContextObject{
     ];
 
     const objlevel = [
+    3, 3, 3, 3,
     1, 1, 1,
     3,
     4, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 
@@ -70,7 +72,7 @@ class ObjControl extends ContextObject{
                 bl=100;
             }
             var objpng = objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
-            if(i >= (len(objcontext)-6)){
+            if(i < 4){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
             if(objlevel[i]>global.user.getValue("level")){

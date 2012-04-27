@@ -23,6 +23,7 @@ const buildcontext = [
 1563, 1564, 2565, 2566,
 1567, 1568, 1569,
 1570, 1571, 1572, 1573,
+1574, 1575, 1576, 1577,
 //statue
 2600,2601,2602,2603,2604,2605,
 1606, 1607,
@@ -31,8 +32,8 @@ const buildcontext = [
 ];
 
 
-const BASE_URL = "http://23.21.135.42:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+//const BASE_URL = "http://23.21.135.42:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
@@ -190,11 +191,13 @@ const EXTEND_UP=[0,3,3];
 //discount sale price
 const OBJ_PRICE = [10, 20, 30, 50, -1, 250, 250, 250, 250, -2, -2, 200, -5, 400, 600, 200, 800, 900, 8000, 2000, -5, 3000, 3000, -10, 3000, 3000, -10, -10, 4000, 4000, -10, -10, 800, 800, -10, 6000, -15, 6000, -30, 3000, -8, -99, -20, -20, -15, -10, 5000, 5000, -10, -10, -100, -99, 10000, -10, 5000, 8000, -15, -10, 4000, 1500, 10000, 3000, 1000, -100, -18, -200, -20,
 -25, 10000, 9000, 
--2, 8000, 12000, 50000];
+-2, 8000, 12000, 50000,
+-5, 500, 100, 100];
 
 const OBJ_PERSON = [5, 5, 5, 7, 15, 13, 13, 13, 13, 18, 18, 13, 40, 15, 15, 12, 17, 18, 67, 50, 45, 40, 40, 90, 41, 41, 93, 93, 45, 45, 91, 91, 19, 19, 90, 65, 100, 65, 150, 45, 90, -1, 110, 110, 99, 89, 44, 44, 85, 85, -1, -1, 70, 80, 43, 60, 93, 91, 46, 24, 130, 40, 21, -1, 110, -3, 100,
 130, 72, 70,
-26, 70, 75, 95];
+26, 70, 75, 95,
+20, 13, 6, 6];
 
 const STATUE_PRICE = [10000, -10, 20000, -20, 50000, -50, 80000, -80];
 const STATUE_DEFENCE=[600,700,1150,1300,3000,3200, 4000, 4400];
@@ -218,6 +221,8 @@ const FILLER_W = 119;
 const FILLER_H = 13;
 const BUTTONFONTSIZE = 26;
 const LevAddPer = 100;
+const LevAddCoin = 1000;
+const LevAddDra = 2;
 
 const LEV_EXP =[0,20,50,110,210,360,660,1160,1960,3160,4860,7160,10160,14060,19130,25721,34289,43713,54079,65481,78023,91819,106994,123686,142047,162244,184460,208897,235777,265345];
 const UNLOCK = dict(
@@ -465,7 +470,7 @@ class DataController{
     var builddict;
     function DataController(){
         builddict = dict();
-        var build = dict([["size",3],["level",15],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
+        var build = dict([["size",3],["level",10],["price", 50000],["food", 500],["exp",0],["personmax",100],["name","Dragon Nest"]]);
 
         builddict.update(1000,build);
 
