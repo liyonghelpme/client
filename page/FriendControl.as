@@ -776,8 +776,8 @@ class FriendControl{
             if(flist1[i].get("id")==ppyid){
                 //trace("find",i);
                 flist1.pop(i);
-                //var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
-                //db.put(str(ppyid),1);
+                var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
+                db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();
                 return 0;
