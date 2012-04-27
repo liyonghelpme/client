@@ -777,12 +777,12 @@ class FriendControl{
     function invitefriend(ppyid){
         var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
         ppy_query("send_notification",d,inviteover);
+        var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
         for(var i=0;i<len(flist1);i++){
             if(flist1[i].get("id")==ppyid){
                 //trace("find",i);
                 flist1.pop(i);
-                //var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
-                //db.put(str(ppyid),1);
+                db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();
                 return 0;
