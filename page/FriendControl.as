@@ -120,7 +120,8 @@ class FriendControl{
     }
     
     function loadourdata(){
-        http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        //http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        global.http.addrequest(0, "retlev", ["uid"], [global.userid], this, "loadover");
     }
     
     function loaddata(g,s){
@@ -428,6 +429,10 @@ class FriendControl{
     function useaction(p,rc,c){
         if(p=="retlevback"){
             retlevback(0,rc,c);
+        }
+        else if(p == "loadover")
+        {
+            loadover(null, rc, c);
         }
     }
 
