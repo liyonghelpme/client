@@ -22,25 +22,11 @@ class QuickControl extends ContextObject{
             element.addsprite("objectblock.png").anchor(50,50).pos(109,121);
             var obj=global.request[global.currentLevel];
             var bl=100;
-            /*
-            if(obj.baseobj.contextid == 3){
-                bl = 67;
-            }
-            else if(obj.bid>=600&&obj.bid<700){
-                
-                bl = 67;
-            }
-            else if(obj.baseobj.objectid/100 == 4){
-                bl = 52;
-                if(obj.bid>=20){
-                    bl=60;
-                }
-            }
-            */
             var build = element.addsprite(obj.gettexture()).anchor(50,50).pos(109,121);
             build.prepare();
             var bsize = build.size();
-            bl = min(150*100/bsize[0], 150*100/bsize[1]);
+            bl = min(130*100/bsize[0], 130*100/bsize[1]);
+            bl = max(40, min(bl, 120));
             build.scale(bl);
 
             element.addsprite("quickback.jpg").pos(202,58);

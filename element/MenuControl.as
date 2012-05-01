@@ -134,6 +134,7 @@ class MenuControl extends ContextObject{
                     }
                 }
             }
+            global.myDock.showNight();
         }
         else{
             global.context[0].contextNode.texture("800480.jpg");
@@ -156,6 +157,7 @@ class MenuControl extends ContextObject{
                         
                 }
             }
+            global.myDock.recover();
         }
     }
     

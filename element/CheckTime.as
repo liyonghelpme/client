@@ -89,7 +89,7 @@ class CheckTime extends ContextObject{
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
 
-            costcae = (boundary-mana+2)/3;
+            costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             qlabel.text(str(mana)+"/"+str(boundary));

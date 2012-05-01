@@ -3,10 +3,14 @@
 //import element.Rank;
 //import element.OldUser;
 import element.Vip;
-import element.Unlock;
-import element.MonScore;
-import element.MonRank;
+//import element.Unlock;
+//import element.MonScore;
+//import element.MonRank;
 import element.Invite;
+import element.ShipHouse;
+import element.Ship;
+import element.Trading;
+import element.BuildData;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -130,7 +134,7 @@ class CastlePage extends ContextObject{
         contextNode.addsprite("empirebacklefttop.png").scale(300);
         contextNode.addsprite("empirebackrighttop.png").anchor(100,0).pos(PAGE_W,0).scale(300);
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);
-        contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
+        rightBottom = contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
         contextNode.add(node(),20000,1);
         if(global.system.flagnight==0 && global.system.enableNight){
             contextNode.texture("800480night.jpg");
@@ -204,7 +208,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     //var actButton;
-    var monButton;
+    //var monButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -221,7 +225,7 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         //actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
-        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
+        //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         /*
         var bsize = actButton.size();
@@ -312,7 +316,8 @@ class CastlePage extends ContextObject{
     }
     function showMon()
     {
-        global.pushContext(null, new MonScore(), NonAutoPop); 
+        //global.pushContext(null, new MonScore(), NonAutoPop); 
+
     }
     function showTipDia(n, e, p, x, y, points)
     {
@@ -933,7 +938,7 @@ class CastlePage extends ContextObject{
         leftmenu.visible(1);
         rightmenu.visible(1);
         //actButton.visible(1);
-        monButton.visible(1);
+        //monButton.visible(1);
         /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
@@ -947,7 +952,7 @@ class CastlePage extends ContextObject{
         leftmenu.visible(0);
         rightmenu.visible(0);
         //actButton.visible(0);
-        monButton.visible(0);
+        //monButton.visible(0);
         /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
@@ -1326,54 +1331,16 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             newstate = data.get("newstate",3);
-            if(newstate == 0)
-            {
-                /*
-                var today = data.get("today");
-                var todayNum = today.get("todayNum", 0);
-                var totalNum = today.get("totalNum", 0);
-                */
-                /*
-                if(totalNum >= 6000 && todayNum >= 100)
-                {
-                    global.TooMany = 1;
-                }
-                */
-            }
             week = data.get("week");
-            //addcmd(dict([["name", "inviteFriend"]]));
-            //var deadDay = data.get("deadDay", 7);
-            //addcmd(dict([["name","deadDay"], ["num", deadDay]]));
-            /*
-            var tp24 = data.get("tp24", 0);
-            if(tp24 == 1)
-            {
-               finishTJAction("3dbc399f-0922-472c-bf51-ae7935be3ce8"); 
-               trace("finish tp");
-            }
-            */
-            /*
-            var loginYet = data.get("loginYet", 1);
-            if(loginYet == 0)
-            {
-                //show cae add
-                addcmd(dict([["name","oldUser"]]));
-            }
-            */
 
             if(newstate < 3)
                 global.InNew = 1;
             else
                 global.InNew = 0;
-            /*
-            if(global.TooMany == 1)
-            {
-                var tooMany = new TooManyUser();
-                LoadPage.add(tooMany.getNode())
-            }
-            */
             LoadPage.put(newstate);
             LoadPage = null;
+
+
             if(data.get("ppyname")!=ppy_username()){
                 global.http.addrequest(0,"updateppyname",["uid","ppyname"],[global.userid,ppy_username()],self,"nothing");
             }
@@ -1391,9 +1358,10 @@ class CastlePage extends ContextObject{
 
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
-            global.user.setValue("manatime", now);
+            global.user.setValue("manatime", now);//btime serverTime  time()/1000 clientTime
             trace("mana", global.user.getValue("mana"));
             trace("manatime", global.user.getValue("manatime"));
+
 
 
             global.user.setValue("caesars",data.get("cae",0));
@@ -1496,8 +1464,9 @@ class CastlePage extends ContextObject{
                     }
                 }
             var objs = data.get("stri","0,370,0,0,0").split(";");
-            //var btime = data.get("time",190000000);
             global.inittimer(btime);
+
+
             var hour=btime%86400/3600;
             if(hour<6||hour>=20){
                 global.system.flagnight=0;
@@ -1518,6 +1487,11 @@ class CastlePage extends ContextObject{
                 contextNode.get(1).color(100,100,100,100);
                 contextNode.remove(0);
             }
+
+            var ship = data.get("ship", [0, 0, 0, 0, 0]);//state startTime, timeNeed , goodsKind, num
+            var dock = new ShipHouse(ship);
+            contextNode.add(dock.bg);
+
             //groundid gridid objectid producttime finish
             for(var x=0;x<len(objs);x++){
                 var objdata = objs[x].split(",");
@@ -1704,10 +1678,12 @@ class CastlePage extends ContextObject{
 
                     var level = global.user.getValue("level");
                     var nobility = global.user.getValue("nobility");
+                    /*
                     if(level >= 6 && nobility < 0)
                     {
                         addcmd(dict([["name", "unlock"]]));
                     }
+                  */
 
                     var bdict = dict();
                     bdict.update("name","daily");
@@ -2325,7 +2301,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         }
         else if(name == "unlock")
         {   
-            global.pushContext(null, new Unlock(), NonAutoPop);
+            //global.pushContext(null, new Unlock(), NonAutoPop);
         }
         else if(name == "inviteFriend")
         {
@@ -2445,12 +2421,16 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             global.unlock();
         }
     }
+    var rightBottom = null;
     function resume(){
         contextNode = global.screen.addsprite("800480.jpg",ARGB_8888).size(PAGE_W,PAGE_H).anchor(50,50).pos(pausepos).scale(100+mode);
         contextNode.addsprite("empirebacklefttop.png").scale(300);
         contextNode.addsprite("empirebackrighttop.png").anchor(100,0).pos(PAGE_W,0).scale(300);
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);
-        contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
+        rightBottom = contextNode.addsprite("empirebackrightbottom.png").anchor(100,100).pos(PAGE_W,PAGE_H).scale(300);
+        contextNode.add(global.myDock.bg);
+        global.myDock.showNight();
+
         contextNode.add(node(),20000,1);
         if(global.system.flagnight==0 && global.system.enableNight){
             contextNode.texture("800480night.jpg");

@@ -120,7 +120,8 @@ class FriendControl{
     }
     
     function loadourdata(){
-        http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        //http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        global.http.addrequest(0, "retlev", ["uid"], [global.userid], this, "loadover");
     }
     
     function loaddata(g,s){
@@ -333,7 +334,7 @@ class FriendControl{
                     }
             }
             var bd = dict();
-            //var db = c_opendb(0,"friendinvited");
+            var db = c_opendb(0,"friendinvited");
             //id lev visited nobility
             trace("getNob", len(bufferflist3));
             for(i=0;i<len(bufferflist3);i++){
@@ -359,11 +360,9 @@ class FriendControl{
 
                 if(fb.get("level")>-1)
                     global.ppyuserdict.update(str(id),fb); 
-                /*
                 else if(db.get(str(id))==1){
                     flist1.remove(fb);
                 }
-                */
             }
             trace("ppyuserdict", len(global.ppyuserdict), len(flist1));
             if(len(flist1) > 0)
@@ -428,6 +427,10 @@ class FriendControl{
     function useaction(p,rc,c){
         if(p=="retlevback"){
             retlevback(0,rc,c);
+        }
+        else if(p == "loadover")
+        {
+            loadover(null, rc, c);
         }
     }
 
@@ -772,11 +775,11 @@ class FriendControl{
     function invitefriend(ppyid){
         var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
         ppy_query("send_notification",d,inviteover);
+        var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
         for(var i=0;i<len(flist1);i++){
             if(flist1[i].get("id")==ppyid){
                 //trace("find",i);
                 flist1.pop(i);
-                var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
                 db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();

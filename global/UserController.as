@@ -267,6 +267,29 @@ class UserController{
         setValue(name,v);
         trace("LOG",name+" changed:"+str(value));
     }
+    function changeBuildValue(obj, key, value, hi)
+    {
+        trace("changeBuildValue", obj, key, value, hi);
+        if(value==0){
+            return 0;
+        }
+        changeValue(key,value);
+        var ps = obj.house.pos();
+        var x = ps[0]+obj.contextid*2;
+        var y = ps[1]-obj.contextid*17-hi*17;
+        var n = node().pos(x,y);
+        n.add(sprite("fly"+key+".png").anchor(100,50).pos(-5,0));
+        var ns = str(value);
+        var f = 0;
+        if(value > 0){
+            ns = "+"+ns;
+            f = 1;
+        }
+        n.addlabel(ns,null,40).color(100,f*100,0,100).anchor(0,50).pos(5,0);
+        n.addaction(sequence(moveby(1000,0,-80),tintto(1000,0,0,0,0),callfunc(removeself)));
+        global.context[0].contextNode.add(n.scale(80),20000);
+        
+    }
     function changeValueAnimate(ne,key,value,hi){
         if(value==0){
             return 0;
@@ -409,4 +432,5 @@ class UserController{
             return 0;
         }
     }
+
 }

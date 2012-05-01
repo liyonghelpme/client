@@ -3,6 +3,17 @@ const RateURL = "market://details?id=com.papaya.miracle1";
 const NewsURL = "market://details?id=com.papaya.miracle1";
 //const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
 
+var TradeKinds = [
+[2, 0, 1, 1000, 10*60],
+[2, 0, 10, 11000, 15*60],
+[2, 0, 100, 120000, 30*60],
+[1, 0, 100, 1000, 15*60],
+[1, 0, 1000, 8000, 2*3600],
+[1, 0, 10000, 60000, 8*3600],
+[0, 1, 50000, 2000, 10*60],
+[0, 1, 10000, 1000, 4*3600],
+[0, 1, 5000, 600, 12*3600],
+];
 var Others = dict([
 ["SPYITEMS", ["Wins: ", "Fights: ", "Soldiers: ", "Ally Soldiers: ", "Castle Defense: "]], 
 
@@ -136,9 +147,9 @@ var Dicts =
 
 ["news_element6", "<b>[NAME]<b> hath fed your pet."], 
 
-["gift_element0", "[NAME] hath sent you a gift: [GIFT]."], 
+["gift_element0", "[NAME] sent: [GIFT]."], 
 
-["gift_element1", "[NAME] ask you for a gift: [GIFT]."], 
+["gift_element1", "[NAME] ask for: [GIFT]."], 
 
 ["monster_foodwilllost", "Monsters are trying to steal your crops, kill them before your next login."], 
 
@@ -257,7 +268,7 @@ var Dicts =
 ["egging", "Incubating"], 
 ["growing", "Growing"], 
 ["shopping", "Purchase"], 
-["buyCaesar", "Buy caesar coins"], 
+["buyCaesar", " caesar coins"], 
 //["fulfill", "The Harvest Goddess can increase the crop yield by performing magic"],
 //["population", "The Liberty Goddess can increase the number of people you can recruit by performing magic"], 
 //["war", "The War God can strenthen your soldiers' ATK by performing magic"], 
@@ -367,7 +378,7 @@ var Dicts =
 
 ["You", "You"], ["StillNeed", " still need "], 
 
-["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card. Your magic capacity will increase by 2."], 
+["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card."], 
 
 ["MonsterCardGet", " your magic capacity will increase by 2 when you get the Lv. 5 card."], 
 
@@ -390,6 +401,7 @@ var Dicts =
 ["PlantZijin", "Congrats! You've earned the Planting Lv. 5 card. Your magic capacity has increased by 1."], 
 ["BusiZijin", "Congrats! You've earned the Business Lv. 5 card. Your magic capacity has increased by 1."], 
 ["NobZijin", "Congrats! Nobility level up. Your magic capacity has increased by 1."], 
+["FriendZijin", "Congrats! You've earned the Friendship Lv. 5 card. Your magic capacity has increased by 1."],
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"], 
 ["Download", "Downloading"], 
 ["LackMagic", "Not enough magic, recharge now?  Tip: magic recharges 1 point every 5 minutes."], 
@@ -446,6 +458,8 @@ var Dicts =
 ["oldUser", "Welcome back to Miracle Empire! You got 10 caesar coins for playing!"], 
 ["PapaNot", "You don't have enough papayas to make this purchase. Purchase papayas now?"], 
 ["exp", "Exp"], 
+["BuyShip", "You need to upgrade to Lv. 15 to buy ship:)"], 
+["BuyShipNow", "Congrats! You can buy ship to trade with others. Are you sure you want to buy it?"],
 ["", ""], 
 
 ];
@@ -511,6 +525,7 @@ var Names = dict([
 "Cupid", "Rose Flowers", "Rose Garden", "Love Tree", 
 "Egypt Tower", "Elephant Lamp", "Horse Lamp", 
 "Royal Road", "Camphor", "High Shrubs", "Watchtower", 
+"Royal Knight", "Flag Pier", "Square Brick 1", "Square Brick 2", 
 ]], 
 
 
@@ -771,18 +786,22 @@ const Tips = dict([
 [4, "Tap on your castle to see your territory's info. Here you can view your attack power, special articles, magic, resources, etc."], 
 [5, "Decorations are great for your empire! They can increase your population and magic capacity too!"], 
 
+[6, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."], 
 [7, "Want to get more silver and/or free caesar coins? Tap the FAQ button."], 
 [8, "You can build Harvest Goddess statue now! The statue can perform magic that will increase your crops' yield as well as one-step harvesting and planting."], 
 [9, "Build the Dragon Wheel and then use the Dragon Stone to get FREE caesar coins."], 
-[10, "You can unlock war mode. Now you can attack other players. Be careful, once you unlock war mode there is no turning back."], 
 
+[10, "You can build Dragon nest now. A dragon nest will allow you to raise a pet dragon. When it reaches adulthood, it can help you fight in battles."], 
 [11, "Build a lumber mill. Wood is a necessary resource for upgrading buildings."], 
 [12, "Build the Population Goddess statue! She can perform magic that increases your population recruitment number."], 
 [13, "Tip: You will be given silver coins as a reward, and you will have a higher probability of winning!"], 
 [14, "Cavalry's speed is higher than infantry's."], 
-[15, "You can build Dragon nest now. A dragon nest will allow you to raise a pet dragon. When it reaches adulthood, it can help you fight in battles."], 
-//[15, "Dragons help defend your empire. You can also train it to increase its ATK."], 
+
+[15, "Castle defense work as a shield for your soldiers. Others can just break your shield, but can't kill your soldiers!"], 
+
 [16, "Build the War God statue! He can perform magic that will increase your ATK power during battles."], 
+[17, "You will get many silver coins and dragon stones as rewards when you upgrade to higher level."],
+
 [18, "Build a stone quarry. Stone is necessary to upgrade buildings."], 
 [19, "There are forts scatter around the world map. When you occupy a fort it will produce resouces for you every hour."], 
 [20, "You can upgrade your castle to Lv. 2! Upgrading will increase your magic capacity by 5, and your population capacity by 100."], 
