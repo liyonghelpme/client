@@ -1,7 +1,12 @@
     //"downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png", 
     //"heart.png", "heartPlus.png", "rankHeart.jpg",
 class ImageController{
-    const images1 = ["room85.png", "empire4.png"];
+    const images1 = [
+        "buyIn.png", "close.png", "coinTradeSel.png", "coinTradeUn.png", 
+        "dockGoods.png", "foodTradeSel.png", "foodTradeUn.png", "empire4_ln.png", 
+        "sel.png", "sellOut.png", "ship0.png", "ship1.png", "ship2.png", "shipHouse.png",
+        "shipTip.png", "trade.png",
+    ];
     /*
     "disk0.png",  "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",
     "room85.png","room86.png",

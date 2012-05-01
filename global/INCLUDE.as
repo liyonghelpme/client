@@ -33,6 +33,10 @@ import element.CheckTime;
 import element.MagicWarning;
 import element.CaeWarning;
 import element.BuyControl;
+import element.BuyShip;
+//import element.Ship;
+import element.MyQuick;
+import element.MyWarnDialog;
 import element.Tip;
 
 import page.MapPage;

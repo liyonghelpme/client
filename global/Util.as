@@ -103,7 +103,7 @@ function clearShotScreen()
 }
 
 
-var businessPic =  ["disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "room63.png", "plant_fail.png", "object49.png", "nobi2.png", "object43_l.png", "monster_2_3.png", "opbutton5.png", "plant4_3.png", "room25.png", "room17.png", "room33.png", "plant8_3.png", "object18.png", "camp1.png", "monster_5_2.png", "plant12_3.png", "plant3_4.png", "room7.png", "gift2.png", "room44.png", "plant11_3.png", "soldier3_2.png", "plant9.png", "plant3_3.png", "object58.png", "personfail.png", "room35.png", "room34.png", "monster_1_1.png", "plant4_4.png", "room30.png", "monster_8_2.png", "object14_l.png", "monster_5_1.png", "object54.png", "room29.png", "room27.png", "object16.png", "object42.png", "monster_6_1.png", "object26.png", "object14.png", "room39.png", "monster_2_2.png", "object23.png", "monster_10_2.png", "room22.png", 
+var businessPic =  ["expDisk.png", "disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "room63.png", "plant_fail.png", "object49.png", "nobi2.png", "object43_l.png", "monster_2_3.png", "opbutton5.png", "plant4_3.png", "room25.png", "room17.png", "room33.png", "plant8_3.png", "object18.png", "camp1.png", "monster_5_2.png", "plant12_3.png", "plant3_4.png", "room7.png", "gift2.png", "room44.png", "plant11_3.png", "soldier3_2.png", "plant9.png", "plant3_3.png", "object58.png", "personfail.png", "room35.png", "room34.png", "monster_1_1.png", "plant4_4.png", "room30.png", "monster_8_2.png", "object14_l.png", "monster_5_1.png", "object54.png", "room29.png", "room27.png", "object16.png", "object42.png", "monster_6_1.png", "object26.png", "object14.png", "room39.png", "monster_2_2.png", "object23.png", "monster_10_2.png", "room22.png", 
 ];
 
 /*
@@ -157,6 +157,7 @@ const FINISH_BUILDING = 2;
 const BUILDING = 1;
 const WORKING = 3;
 const FINISH_WORKING = 4;
+const SHIP_WAITING = 5;
 
 const ACC_TIME = 1;
 

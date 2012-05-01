@@ -3,6 +3,17 @@ const RateURL = "market://details?id=com.papaya.miracle1";
 const NewsURL = "market://details?id=com.papaya.miracle1";
 //const NewsURL = "http://papayamobile.com/a/mr?p=com.papaya.miracle_beta1&referrer=in_game_rating";
 
+var TradeKinds = [
+[2, 0, 1, 1000, 10*60],
+[2, 0, 10, 11000, 15*60],
+[2, 0, 100, 120000, 30*60],
+[1, 0, 100, 1000, 15*60],
+[1, 0, 1000, 8000, 2*3600],
+[1, 0, 10000, 60000, 8*3600],
+[0, 1, 50000, 2000, 10*60],
+[0, 1, 10000, 1000, 4*3600],
+[0, 1, 5000, 600, 12*3600],
+];
 var Others = dict([
 ["SPYITEMS", ["Wins: ", "Fights: ", "Soldiers: ", "Ally Soldiers: ", "Castle Defense: "]], 
 
@@ -136,9 +147,9 @@ var Dicts =
 
 ["news_element6", "<b>[NAME]<b> hath fed your pet."], 
 
-["gift_element0", "[NAME] hath sent you a gift: [GIFT]."], 
+["gift_element0", "[NAME] sent: [GIFT]."], 
 
-["gift_element1", "[NAME] ask you for a gift: [GIFT]."], 
+["gift_element1", "[NAME] ask for: [GIFT]."], 
 
 ["monster_foodwilllost", "Monsters are trying to steal your crops, kill them before your next login."], 
 
@@ -367,7 +378,7 @@ var Dicts =
 
 ["You", "You"], ["StillNeed", " still need "], 
 
-["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card. Your magic capacity will increase by 2."], 
+["MonsterLevUp", "You still need to defeat [NUM] more [NAME] to get the [NAME] Lv. [LEV] card."], 
 
 ["MonsterCardGet", " your magic capacity will increase by 2 when you get the Lv. 5 card."], 
 
@@ -390,6 +401,7 @@ var Dicts =
 ["PlantZijin", "Congrats! You've earned the Planting Lv. 5 card. Your magic capacity has increased by 1."], 
 ["BusiZijin", "Congrats! You've earned the Business Lv. 5 card. Your magic capacity has increased by 1."], 
 ["NobZijin", "Congrats! Nobility level up. Your magic capacity has increased by 1."], 
+["FriendZijin", "Congrats! You've earned the Friendship Lv. 5 card. Your magic capacity has increased by 1."],
 ["PlantingCard", "Planting Card"], ["BusinessCard", "Business Card"], 
 ["Download", "Downloading"], 
 ["LackMagic", "Not enough magic, recharge now?  Tip: magic recharges 1 point every 5 minutes."], 
@@ -446,6 +458,8 @@ var Dicts =
 ["oldUser", "Welcome back to Miracle Empire! You got 10 caesar coins for playing!"], 
 ["PapaNot", "You don't have enough papayas to make this purchase. Purchase papayas now?"], 
 ["exp", "Exp"], 
+["BuyShip", "You need to upgrade to Lv. 15 to buy ship:)"], 
+["BuyShipNow", "Congrats! You can buy ship to trade with others. Are you sure you want to buy it?"],
 ["", ""], 
 
 ];

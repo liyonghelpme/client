@@ -42,37 +42,6 @@ class BuildControl extends ContextObject{
         if(placeObj.buildcontextname != "obj"){
             var back = sprite("buildcontrolback2.png").anchor(50,100).pos(0,9);
             contextNode.add(back,0,111);
-            /*
-            var bl=90;
-
-            // size == 3 
-
-            if(placeObj.contextid == 3){
-                bl = 60;
-                if(mode == FARM_INDEX && place.state==WORKING){
-                    bl=100;
-                }
-                if(placeObj.objectid>171 && placeObj.objectid<200){
-                    bl=50;
-                }
-            }
-            else if(placeObj.buildcontextname == "god"){
-                bl = 35;
-                if(place.bid>=20){
-                    bl=40;
-                }
-            }
-            else if(mode == STATUE_INDEX){
-                bl = 75;
-
-            }
-            */
-            /*
-            var tex = sprite(place.gettexture());
-            tex.prepare();
-            tex = tex.size();
-            bl = min(160*100/tex[0], 90*100/tex[1]);
-            */
             var bl = 100;
             if(placeObj.buildcontextname!="nest"){
                 var build = back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
@@ -247,15 +216,6 @@ class BuildControl extends ContextObject{
         else{
             back = contextNode.addsprite("buildcontrolback1.png").anchor(50,100).pos(0,9);
             back.addlabel(global.getname("obj",placeObj.objectid-500),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
-            /*
-            bl=120;
-            if(placeObj.objectid==541){
-                bl=60;
-            }
-            else if(placeObj.contextid==2){
-                bl=92;
-            }
-            */
 
             build = back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65);
             build.prepare();

@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-        "Sorry, our server was down from 12:00 am April 23 because of a db bug. We have fixed it and will compensate you 10 Dragon stones. Enjoy your experience in Miracle Empire :)"
+	"Hi all, dock and ship is coming. You can use them to trade with others. Come on to buy your ship:)" 
     ]; 
     function paintNode(){
         updatenum=-1;

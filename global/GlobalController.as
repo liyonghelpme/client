@@ -32,8 +32,8 @@ const buildcontext = [
 ];
 
 
-const BASE_URL = "http://23.21.135.42:8000/";
-//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+//const BASE_URL = "http://23.21.135.42:8000/";
+const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
@@ -53,6 +53,9 @@ const DISK_PERSON = [30];
 const DISK_LEV = [3];
 const DISK_TIME = [45*60];
 const DISK_NAME = ["Dragon Wheel"];
+
+const DOCK_NAME = ["Dock"];
+const DOCK_COST = [130000, 50];
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 const FARM_PRICE = [0,1000,-20,-50,-100,10000,28500];
@@ -490,6 +493,7 @@ class DataController{
 
 
 class GlobalController{
+    var myDock;
     var Quit;
     var TooMany = 0;
     var InNew = 0;
@@ -594,32 +598,6 @@ class GlobalController{
         return stringDict.get(index,"");
     }
     
-    /*
-    function getMedalString(index,pre,leftnum,medallevel){
-        var medalstr = pre+" still need ";
-
-        if(index<12){
-            medalstr = medalstr+" defeat "+str(leftnum)+" "+substring(MONSTERNAME[index*3],6);
-
-        }
-        else if(index==13){
-            medalstr = medalstr+" continue login "+str(leftnum)+"days";
-
-        }
-        medalstr = medalstr+" to get "+cardprename[index]+cardlevelname[medallevel];
-
-        if(index == 13)
-        {
-            medalstr += global.getStaticString("CardAddOne");
-        }
-        else if(index < 12)
-        {
-            medalstr += global.getStaticString("CardAddTwo");
-        }
-        return medalstr;
-    }
-    */
-    
     function getFormatString(index,pair){
         //trace("format", index, pair);
         var rstr = getStaticString(index);
@@ -634,12 +612,6 @@ class GlobalController{
     }
 
 
-    
-    /*
-    function getMedalString2(who,cstr,ctype,clevel){
-        return who+cstr+"才能获得"+cardprename[ctype]+cardlevelname[clevel]+"。该卡每升一级将会增加一点魔法值上";
-    }
-    */
     
     function GlobalController(){
         Quit = 0;
@@ -678,6 +650,7 @@ class GlobalController{
         dataname.update("wood",WOONAME);
         dataname.update("statue",STATUE_NAME);
         dataname.update("disk", DISK_NAME);
+        dataname.update("dock", DOCK_NAME);
         timer =null;
         data = new DataController();
         ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","Caesar"]])]]);
