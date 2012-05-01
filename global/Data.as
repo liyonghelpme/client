@@ -797,7 +797,8 @@ const Tips = dict([
 [13, "Tip: You will be given silver coins as a reward, and you will have a higher probability of winning!"], 
 [14, "Cavalry's speed is higher than infantry's."], 
 
-//[15, "Dragons help defend your empire. You can also train it to increase its ATK."], 
+[15, "Castle defense work as a shield for your soldiers. Others can just break your shield, but can't kill your soldiers!"], 
+
 [16, "Build the War God statue! He can perform magic that will increase your ATK power during battles."], 
 [17, "You will get many silver coins and dragon stones as rewards when you upgrade to higher level."],
 
