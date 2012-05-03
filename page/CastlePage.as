@@ -2,11 +2,13 @@
 //import element.Score;
 //import element.Rank;
 //import element.OldUser;
-import element.Vip;
+//import element.Vip;
 //import element.Unlock;
 //import element.MonScore;
 //import element.MonRank;
-import element.Invite;
+//import element.Invite;
+import element.MonScore;
+import element.Rank;
 import element.ShipHouse;
 import element.Ship;
 import element.Trading;
@@ -207,7 +209,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    //var actButton;
+    var actButton;
     //var monButton;
     var tipButton;
     function initialMenu(){
@@ -224,7 +226,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
         //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         /*
@@ -311,8 +313,8 @@ class CastlePage extends ContextObject{
     }
     function showAct()
     {
-        global.pushContext(null, new Vip(), NonAutoPop);
-        //global.pushContext(null, new Rank(), NonAutoPop);
+        //global.pushContext(null, new Vip(), NonAutoPop);
+        global.pushContext(null, new MonScore(), NonAutoPop);
     }
     function showMon()
     {
@@ -937,7 +939,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        //actButton.visible(1);
+        actButton.visible(1);
         //monButton.visible(1);
         /*
         actButton.texture("heart.png");
@@ -951,7 +953,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        //actButton.visible(0);
+        actButton.visible(0);
         //monButton.visible(0);
         /*
         if(rankYet == 0)
@@ -1560,7 +1562,7 @@ class CastlePage extends ContextObject{
                     //state 0 1 2 3 4
                     //0  1 building 2 finishBuilding 3 working 4 harvest enabled
                     var state;
-                    if(time == 0 ){//finish Building 
+                    if(time == 0 && finish == 1 ){//finish Building 
                         state = FINISH_BUILDING;
                     }
                     else if(finish == 0)

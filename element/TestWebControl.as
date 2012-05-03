@@ -21,6 +21,10 @@ class TestWebControl extends ContextObject{
         else if(m==4){
             contextname="dialog-papayas";
         }
+        else if(m == 5)
+        {
+            contextname = "dialog-invite";
+        }
         else if(type(m)==type("")){
             contextname="dialog-help";
             mode=2;
@@ -78,6 +82,12 @@ class TestWebControl extends ContextObject{
             web = v_create(V_PPY_WEB_VIEW,4,65,791,411);
             v_root().addview(web);
             web.openurl("static_getpapayas");
+        }
+        else if(mode == 5)
+        {
+            web = v_create(V_PPY_WEB_VIEW, 4, 65, 791, 411);
+            v_root().addview(web);
+            web.openurl("static_findfriends?from=MiracleEmpire");
         }
         contextNode.focus(1);
     }

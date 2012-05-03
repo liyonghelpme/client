@@ -147,8 +147,10 @@ class FriendControl{
         }
         if(flist1==null){
             flaglock=1;
-            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",ppy_userid()],["name",ppy_username()],["level",0],["visited",1]])];
+            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",ppy_userid()],["name",ppy_username()],["level",0],["visited",1], ["nob", global.user.getValue("nobility")*3]])];
+
         }
+        //var nobility = per.get("nob", 0);
         var le = len(flist1);
         for(var i=0;i<le;i++){
             if(flist1[i].get("level")!=-1){
@@ -238,7 +240,7 @@ class FriendControl{
                 trace("initing");
                 for(i=1;i<length;i++){
                     if(flist1[i].get("id") == selectp){
-                        selectf = i+2;
+                        selectf = i+CAESAR;
                         break;
                     }
                 }
@@ -280,6 +282,8 @@ class FriendControl{
         else{
             trace("sucload1!", len(response.get("data")));
             bufferflist1.extend(response.get("data"));
+            //flagbuffer++;
+            //beginaddlist();
             if(len(response.get("data"))<500){
                 bufferflist1.append(dict([["name",global.getStaticString("caesar")],["id",0],["avatar_version",0],["isplayer",1]]));
                 flagbuffer++;
@@ -543,27 +547,34 @@ class FriendControl{
         }
     }
     
+    const CIRCLE = 0;
+    const RANK = 1;
+    const INVITE = 2;
+    const CAESAR = 3;
+    
+    const PCIRCLE = -1;
+    const PRANK = -5;
     //view apart from data 
     function getfnode(i){
         var nd;
         var param;
         if(friendmode==1){
-            if(i==0){
+            if(i==CIRCLE){
                 nd = sprite("friend_objcircle.png");
                 param=-1;
             }
-            else if(i==1){
+            else if(i==RANK){
                 nd = sprite("friend_rank.png");
                 param=-5;
             }
-            else if(i==flength-1){
+            else if(i==INVITE){
                 nd = sprite("friend_objinvite.png");
                 nd.addsprite(friendimage[3]);
                 param=-2;
             }
             else{
-                var per=flist1[i-2];
-                if(i==2){
+                var per=flist1[i-CAESAR];
+                if(i==CAESAR){
                     nd = sprite("friend_caesar.png");
                 }
                 else{
@@ -680,7 +691,7 @@ class FriendControl{
                         if(friendmode==1){
                             for(var i=0;i<len(flist1);i++){
                                 if(flist1[i].get("id")==param){
-                                    selectf = i+2;
+                                    selectf = i+CAESAR;
                                     break;
                                 }
                             }
@@ -701,12 +712,19 @@ class FriendControl{
                         global.pushContext(null,new TestWebControl(0),NonAutoPop);
                     }
                     else if(param == -2){
+                        if(getmodel() == 6)
+                        {
+                            //addWeb("static_findfriends?from=game", 800, 480);
+                            global.pushContext(null, new TestWebControl(5), NonAutoPop);
+                        }
+                        /*
                         if(sysinfo(21)!=null&&int(sysinfo(21))>=4){
                             invite_friends(INVITE_STR[0],INVITE_STR[1],INVITE_STR[2]);
                         }
                         else{
                             global.pushContext(null,new TestWebControl(1),NonAutoPop);
                         }
+                        */
                     }
                     else if(param == -3){
                         global.context[0].ally(0,0,3);
@@ -729,16 +747,6 @@ class FriendControl{
         }
     }
     
-    /*
-    function inviteAll()
-    {
-        for(var i= 0; i < 1000; i++)
-        {
-            var d=dict([["message",global.getStaticString("friend_invite")],["uid", i]]);
-            ppy_query("send_notification", d, null);
-        }
-    }
-    */
     var curInvite = 0;
     var inviting = 0;
     var curTimer = null;

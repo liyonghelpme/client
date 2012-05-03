@@ -282,5 +282,20 @@ function showWord(text)
 }
 
 
+function addWeb(url, sw, sh)
+{
+    var h = 64;
+    var frame = v_create(V_GROUP, 0, 0, sw, sh).setevent(EVENT_TOUCH, donothing).focusable(1);
+    var web = v_create(V_PPY_WEB_VIEW, 0, h, sw, sh-h);
+    frame.addview(web);
+    v_root().addview(frame);
+    frame.create(V_IMAGE_VIEW).pos(0, 0, sw, h).image("titleBar.png").setevent(EVENT_TOUCH, closeWeb, frame);
+    web.openurl(url);
+}
+function closeWeb(node, event, param)
+{
+    param.removefromparent();
+    param = null;
+}
 
 

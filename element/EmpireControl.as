@@ -121,7 +121,7 @@ class EmpireControl extends ContextObject{
             element.addlabel(str(len(global.ppyuserdict)-2),null,20).anchor(0,50).pos(260,offy+36).color(0,0,0,100);
             element.addlabel(str(global.rect)+"x"+str(global.rect),null,20).anchor(0,50).pos(260,offy+72).color(0,0,0,100);
             element.addlabel(str(global.user.getValue("personmax")),null,20).anchor(0,50).pos(271,offy+107).color(0,0,0,100);
-            element.addlabel(str(global.user.getValue("labor"))+"/"+str(global.user.getValue("person")),null,20).anchor(0,50).pos(300,offy+142).color(0,0,0,100);
+            element.addlabel(str(global.user.getValue("person"))+"/"+str(global.user.getValue("labor")),null,20).anchor(0,50).pos(300,offy+142).color(0,0,0,100);
             //element.addlabel(str(global.user.getValue("person")-global.user.getValue("labor")),null,20).anchor(0,50).pos(200,offy+175).color(0,0,0,100);
 
             rate = global.user.getValue("mana")*140/global.user.getValue("boundary");

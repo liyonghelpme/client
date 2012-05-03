@@ -80,8 +80,10 @@ class CallbackSoldier extends ContextObject{
             if(data.get("id",1)==1){
                 //global.soldiers[0] = global.soldiers[0]+soldiers[0];
                 //global.soldiers[1] = global.soldiers[1]+soldiers[1];
-                ChangeSoldier(0, soldiers[0]);
-                ChangeSoldier(1, soldiers[1]);
+                var inf = data.get("inf", 0);
+                var cav = data.get("cav", 0);
+                ChangeSoldier(0, inf);
+                ChangeSoldier(1, cav);
                 edata[7]=edata[7]-soldiers[0];
                 edata[8]=edata[8]-soldiers[1];
                 global.popContext(null);

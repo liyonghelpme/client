@@ -18,7 +18,7 @@ class MagicWarning extends ContextObject{
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
 
-            costcae = (boundary-mana+2)/3;
+            costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
 
             element = node();
             element.addsprite("pic6.jpg").anchor(50, 50).pos(80, 120);
@@ -35,7 +35,7 @@ class MagicWarning extends ContextObject{
         var mana = global.user.getValue("mana");
         var boundary = global.user.getValue("boundary");
 
-        costcae = (boundary-mana+2)/3;
+        costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
 
         var dialog = new Simpledialog(1,self);
         dialog.init(dialog,global);
@@ -105,7 +105,7 @@ class MagicWarning extends ContextObject{
             var mana = global.user.getValue("mana");
             var boundary = global.user.getValue("boundary");
 
-            costcae = (boundary-mana+2)/3;
+            costcae = (boundary-mana+ChargeMana-1)/ChargeMana;
             moneylabel.text(str(costcae));
             moneylabel1.text(str(costcae));
             trace("charge mana", mana, boundary);
