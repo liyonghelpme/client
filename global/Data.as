@@ -93,7 +93,7 @@ var Dicts =
 ["nest_style_cannotchange", "Your dragon is growing, you can't change your dragon type now!"], 
 
 ["nest_talk_morning", "Hey, what a great day today!"], 
-["nest_talk_noon", "Hey, I'm hungry, feed me!"], 
+["nest_talk_noon", "Hey, good noon!"], 
 ["nest_talk_night", "Good night, early to bed, early to rise"], 
 
 ["nest_talk_other", "I need to train to become stronger. Train with me now."], 
@@ -162,7 +162,7 @@ var Dicts =
 ["spy_notice", "Tip: higher level scouts find more details about enemy."], 
 
 ["chat_empty", "Content can't be empty."], 
-["chat_wordlimit", "Content must be less than 30 characters."], 
+["chat_wordlimit", "Content must be less than 60 characters."], 
 ["chat_nettimeout", "Could not connect to the game server. Please try again later."], 
 
 ["text_wordlimit_format", "Limit [NUM] characters!"], 
