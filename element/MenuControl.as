@@ -27,7 +27,7 @@ class MenuControl extends ContextObject{
 
     //config: flagmusic,flagnotice
     function initwithconfig(){
-        var fp = c_file_open("config"+str(ppy_userid()),1);
+        var fp = c_file_open("config"+str(global.papaId),1);
         var configstr = "011";
         if(c_file_exist(fp) != 0){
             configstr = c_file_op(C_FILE_READ,fp);
@@ -49,7 +49,7 @@ class MenuControl extends ContextObject{
     }
     
     function rewriteconfig(){
-        var fp = c_file_open("config"+str(ppy_userid()),1);
+        var fp = c_file_open("config"+str(global.papaId),1);
         c_file_op(C_FILE_WRITE,fp,str(flagmusic)+str(flagnotice)+str(enableNight));
     }
     

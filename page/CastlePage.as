@@ -175,11 +175,11 @@ class CastlePage extends ContextObject{
     function goback(n,e){
         if(friend.flist!=null){
             friend.flagmove=0;
-            friend.friendclicked(n,EVENT_UNTOUCH,ppy_userid(),0);
+            friend.friendclicked(n,EVENT_UNTOUCH,global.papaId,0);
         }
         else{
-            getfriend(ppy_userid());
-            friend.selectp=ppy_userid();
+            getfriend(global.papaId);
+            friend.selectp=global.papaId;
         }
     }
 
@@ -265,7 +265,7 @@ class CastlePage extends ContextObject{
         var empirelabel = ub.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
         global.user.initExp(explabel,expfiller,levellabel,global.user,LEV_EXP);
         global.user.initText("cityname",empirelabel);
-        ub.addsprite(avatar_url(ppy_userid())).pos(12,8).size(50,50);
+        ub.addsprite(avatar_url(global.papaId)).pos(12,8).size(50,50);
 
         var personb = sprite("personboard1.png");
         var magicbar = personb.addsprite("mana_bar.png").anchor(0, 0).pos(39, 19).size(1, 18);
@@ -809,7 +809,7 @@ class CastlePage extends ContextObject{
                 cpid = p;
                 popdata();
                 pausepos = pagedict.get(cpid);
-                if(p==ppy_userid()){//back
+                if(p==global.papaId){//back
                     flagfriend = 0;
                     showHomeMenu();
                     //actButton.texture("heart.png");
@@ -853,7 +853,7 @@ class CastlePage extends ContextObject{
                 return 0;
             }
             
-            if(p!=ppy_userid()){//not visit yet
+            if(p!=global.papaId){//not visit yet
                 pid = p;
                 global.flock();
                 needlock=1;
@@ -874,9 +874,9 @@ class CastlePage extends ContextObject{
             var mtime=null;
             var mi=-1;
             for(var i=0;i<len(datadict);i++){
-                if(items[i][0] != ppy_userid())
+                if(items[i][0] != global.papaId)
                 {
-                //if(items[i][0]!=ppy_userid()&&(mtime==null||items[i][1][10]<mtime)){
+                //if(items[i][0]!=global.papaId&&(mtime==null||items[i][1][10]<mtime)){
                     mtime = items[i][1][10];
                     mi = items[i][0];
                     break;
@@ -928,7 +928,7 @@ class CastlePage extends ContextObject{
             allybutton.texture("bindButton.png",UPDATE_SIZE);
     }
     function addprefriend(p){
-        if(p==null||p==ppy_userid()||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
+        if(p==null||p==global.papaId||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
             return 0;
         }
         friendpredict.update(p,1);
@@ -1314,11 +1314,16 @@ class CastlePage extends ContextObject{
         LoadPage = page;
         page.put(10);
         blocknode = contextNode.addnode().visible(0);
-        cpid = ppy_userid();
+        cpid = global.papaId;
         pagedict = dict();
         pagedict.update(cpid,contextNode.pos());
         initlock = 1;
-        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),1,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
+        //global.papaId = global.papaId;
+        if(global.papaId == 0)
+        {
+            ppy_login();
+        }
+        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[global.papaId, 1,md5(str(global.papaId)+"-0800717193")],self,"getidback");
     }
 
     var statestr="";

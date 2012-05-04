@@ -538,6 +538,7 @@ class DataController{
 
 
 class GlobalController{
+    var papaId = ppy_userid();
     var myDock;
     var Quit;
     var TooMany = 0;
@@ -698,7 +699,7 @@ class GlobalController{
         dataname.update("dock", DOCK_NAME);
         timer =null;
         data = new DataController();
-        ppyuserdict = dict([[str(ppy_userid()),dict([["name",ppy_username()]])],["0",dict([["name","Caesar"]])]]);
+        ppyuserdict = dict([[str(papaId),dict([["name",ppy_username()]])],["0",dict([["name","Caesar"]])]]);
 
     }
     

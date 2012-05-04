@@ -592,7 +592,7 @@ trace("warinfo",rc,c);
         var mbutton = sprite("warmenubutton.png").anchor(50,50).pos(RIGHTOFF,240);
         rightmenu.add(mbutton,1,1);
         rightmenu.addsprite("wartabuser.png").pos(30+RIGHTOFF,12);
-        rightmenu.addsprite(avatar_url(ppy_userid())).pos(33+RIGHTOFF,15).size(50,50);
+        rightmenu.addsprite(avatar_url(global.papaId)).pos(33+RIGHTOFF,15).size(50,50);
         for(var i=0;i<3;i++){
             var b=rightmenu.addsprite("warbutton"+str(i)+"0.png").pos(30+RIGHTOFF+i*60,73);
             b.setevent(EVENT_UNTOUCH,buttonclicked,i);
@@ -709,7 +709,7 @@ trace("warinfo",rc,c);
                     if(global.battlelist[i][2]==1){
                         u.texture("wartabperson_b.png");
                         trace(userdict.get(global.battlelist[i][3])[1]);
-                        if(int(userdict.get(global.battlelist[i][3])[0]) != ppy_userid())
+                        if(int(userdict.get(global.battlelist[i][3])[0]) != global.papaId)
                         {
                             u.addlabel(global.getStaticString("state_attacking"),null,13).pos(50,25);
                         }

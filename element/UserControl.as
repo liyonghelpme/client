@@ -46,7 +46,7 @@ class UserControl extends ContextObject{
         trace("OnCity", eudata, global.flagnew, global.battlelist);
         if((eudata[8] != 1 && eudata[1]>=0)
                 || global.flagnew==1 
-                || (eudata[1]<0 && int(eudata[0]) != ppy_userid()) ){//emptyCity not mine
+                || (eudata[1]<0 && int(eudata[0]) != global.papaId) ){//emptyCity not mine
             for(i=0;i<len(global.battlelist);i++){
                 if(global.battlelist[i][2]==1&&global.battlelist[i][3] == eudata[3]){
                     ebindex = i;

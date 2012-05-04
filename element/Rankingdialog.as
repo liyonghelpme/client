@@ -50,7 +50,7 @@ class Rankingpage extends ContextObject{
         if(po==0 && type==1){
             var selfindex=0;
             for(var i=0;i<len(items);i++){
-                if(int(items[i][2])==ppy_userid()){
+                if(int(items[i][2])==global.papaId){
                     selfindex = i;
                     break;
                 }
@@ -89,7 +89,7 @@ class Rankingpage extends ContextObject{
                             break;
                         }
                         var item = items[i];
-                        if(int(item[2])==ppy_userid()){
+                        if(int(item[2])==global.papaId){
                             fix="self";
                         }
                         else{
@@ -140,7 +140,7 @@ class Rankingpage extends ContextObject{
                             break;
                         }
                         item = items[i];
-                        if(int(item[2])==ppy_userid()){
+                        if(int(item[2])==global.papaId){
                             fix="self";
                         }
                         else{
@@ -192,7 +192,7 @@ class Rankingpage extends ContextObject{
                             break;
                         }
                         item = items[i];
-                        if(int(item[2])==ppy_userid()){
+                        if(int(item[2])==global.papaId){
                             fix="self";
                         }
                         else{

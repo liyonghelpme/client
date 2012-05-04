@@ -38,7 +38,7 @@ function showTip()
 {
     var level = global.user.getValue("level");
 
-    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
     var con = "[0]";
     if(c_file_exist(fp) != 0)
     {
@@ -60,7 +60,7 @@ function showTip()
 }
 function clearTip()
 {
-    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
     c_file_op(C_FILE_WRITE, fp, "[0]");
 }
 function removeTip()
@@ -68,7 +68,7 @@ function removeTip()
     if(TipShow == 1)
     {
         global.castalPage.tipButton.removefromparent();
-        var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+        var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
         c_file_op(C_FILE_WRITE, fp, "[1]");
         TipShow = 0;
     }

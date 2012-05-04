@@ -36,7 +36,7 @@ class FriendControl{
         fpos=[0,0];
         flagfriendover = 0;
         selectf = 0;
-        selectp = ppy_userid();
+        selectp = global.papaId;
         friendback = sprite("friendback.png").pos(900,375).size(800,105);
         friendback.add(sprite("friendclose.png",ARGB_8888).setevent(EVENT_TOUCH,closefriendmenu),1);
         flistback = null;
@@ -147,7 +147,7 @@ class FriendControl{
         }
         if(flist1==null){
             flaglock=1;
-            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",ppy_userid()],["name",ppy_username()],["level",0],["visited",1], ["nob", global.user.getValue("nobility")*3]])];
+            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",global.papaId],["name",ppy_username()],["level",0],["visited",1], ["nob", global.user.getValue("nobility")*3]])];
 
         }
         //var nobility = per.get("nob", 0);
@@ -161,7 +161,7 @@ class FriendControl{
                 flaglock=1;
             }
         }
-        global.ppyuserdict.get(str(ppy_userid())).update("visited",1);
+        global.ppyuserdict.get(str(global.papaId)).update("visited",1);
     }
     
     function updateflist1(){
@@ -215,8 +215,8 @@ class FriendControl{
             var i;
             var j;
             if(friendmode==1){
-                if(global.ppyuserdict.get(str(ppy_userid())).get("level",0)<global.user.getValue("level")){
-                    global.ppyuserdict.get(str(ppy_userid())).update("level",global.user.getValue("level"));
+                if(global.ppyuserdict.get(str(global.papaId)).get("level",0)<global.user.getValue("level")){
+                    global.ppyuserdict.get(str(global.papaId)).update("level",global.user.getValue("level"));
                 }
                 var flagloop = 1;
                 var tmp;
@@ -374,7 +374,7 @@ class FriendControl{
                 global.context[0].addcmd(dict([["name", "inviteFriend"]]));
             }
 
-            bd.update(ppy_userid(),1);
+            bd.update(global.papaId,1);
             for(i=len(bufferflist1)-1;i>=0;i--){
                 if(bd.get(bufferflist1[i].get("id"))==1){
                     bufferflist1.pop(i);
@@ -482,7 +482,7 @@ class FriendControl{
                     global.ppyuserdict.update(str(id),fn);
                 }
             }
-            var s=global.getfriend(ppy_userid());
+            var s=global.getfriend(global.papaId);
             s.update("visited",1);
             s.update("level",global.user.getValue("level"));
             flagfriendover = 1;
