@@ -7,7 +7,8 @@ if(ppy_connected()!=1){
 }
 */
 //global.papaId = ppy_userid();
-if(global.papaId == 0)
+trace("papayaid", global.papaId);
+if(global.papaId == 0 ||  global.papaId == null)
     ppy_login();
 
 global.self = global;

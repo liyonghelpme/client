@@ -36,7 +36,7 @@ class FriendControl{
         fpos=[0,0];
         flagfriendover = 0;
         selectf = 0;
-        selectp = global.papaId;
+        selectp = ppy_userid();
         friendback = sprite("friendback.png").pos(900,375).size(800,105);
         friendback.add(sprite("friendclose.png",ARGB_8888).setevent(EVENT_TOUCH,closefriendmenu),1);
         flistback = null;
