@@ -1706,6 +1706,7 @@ class CastlePage extends ContextObject{
                         addcmd(bdict);
                     }
                 }
+
                 if(data.get("wonBonus",0)!=0){
                     bdict = dict();
                     bdict.update("name","wonbonus");
@@ -1715,8 +1716,12 @@ class CastlePage extends ContextObject{
                 }
 
             }
-            if(global.TooMany == 0)
-                initlock = 0;
+            //addcmd(dict([["name", "showBanner"]]));
+            //if(global.TooMany == 0)
+            //    initlock = 0;
+
+
+
             friend.loaddata(global,friend);
             friend.loadourdata();
             menu.add(friend.friendback);
@@ -1749,6 +1754,8 @@ class CastlePage extends ContextObject{
                 system_gc();
             }
             c_invoke(delayresume,2000,null);
+
+
         }
         else{
             quitgame();
@@ -1828,9 +1835,34 @@ class CastlePage extends ContextObject{
     }
     var addManaLock = 0;
     var downAllPic = 0;
+    var lastTime = 0;
     function timerefresh(timer,tick,param){
         var i;
+    
         var now = time();
+        /*
+        var dif = 0;
+        if(lastTime == 0)
+        {
+            lastTime = time();
+        }
+        else
+        {
+            dif = now - lastTime;
+        }
+
+        if(banner != null)
+        {
+            banTime += dif;
+            trace("removeBanner", banTime);
+            if(banTime > 10000)
+            {
+                banner.removefromparent();
+                banner = null;
+            }
+        }
+        */
+
         if((now - global.user.getValue("manatime")) > ManaChargeTime && addManaLock == 0 )
         {
             addManaLock = 1;
@@ -2241,6 +2273,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     {
         global.user.changeValueAnimate2(global.context[0].moneyb, "boundary", 1, -6);
     }
+    var banner = null;
+    var banTime = 0;
     function executecmd(cmd){
         var name = cmd.get("name");
         if(name == "daily" && global.flagnew==0){
@@ -2320,6 +2354,17 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                     //global.pushContext(null, new Invite(), NonAutoPop);
                     friend.inviteAll();
                 }
+            }
+        }
+        else if(name == "showBanner")
+        {
+            trace("show Banner");
+            if(global.flagnew == 0)
+            {
+                banner = v_create(V_APPFLOOD_BANNER, 0, 0, 400, 70);
+                trace("banner", banner);
+                v_root().addview(banner); 
+                //openUrl("appfloodad");
             }
         }
     }
