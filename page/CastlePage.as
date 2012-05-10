@@ -1716,9 +1716,9 @@ class CastlePage extends ContextObject{
                 }
 
             }
-            //addcmd(dict([["name", "showBanner"]]));
+
             //if(global.TooMany == 0)
-            //    initlock = 0;
+            initlock = 0;
 
 
 
@@ -1755,6 +1755,7 @@ class CastlePage extends ContextObject{
             }
             c_invoke(delayresume,2000,null);
 
+            addcmd(dict([["name", "showBanner"]]));
 
         }
         else{
@@ -1840,7 +1841,6 @@ class CastlePage extends ContextObject{
         var i;
     
         var now = time();
-        /*
         var dif = 0;
         if(lastTime == 0)
         {
@@ -1855,13 +1855,12 @@ class CastlePage extends ContextObject{
         {
             banTime += dif;
             trace("removeBanner", banTime);
-            if(banTime > 10000)
+            if(banTime > 20000)
             {
                 banner.removefromparent();
                 banner = null;
             }
         }
-        */
 
         if((now - global.user.getValue("manatime")) > ManaChargeTime && addManaLock == 0 )
         {
@@ -2363,6 +2362,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             {
                 banner = v_create(V_APPFLOOD_BANNER, 0, 0, 400, 70);
                 trace("banner", banner);
+                if(banner == null)
+                    return;
                 v_root().addview(banner); 
                 //openUrl("appfloodad");
             }
