@@ -58,10 +58,11 @@ var flaglogin = 0;
 var flaglastimage = 0;
 
 var percent =0;
-var backNode = node().size(800, 480).setevent(EVENT_TOUCH,donothing);
+var backNode = node().size(800, 480).setevent(EVENT_TOUCH,donothing, "backNode");
 var black = backNode.addsprite("dark.png").size(800, 480);
 var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
 var src = backNode.addsprite().anchor(50,50).pos(400,240);
+var next = sprite("skip4.png").anchor(50, 50).pos(713, 436);
 
 //var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
 var lpng = "loading_new.jpg";
@@ -118,22 +119,59 @@ var oneceMax = 0;
 var NewPicTime = 2000;
 var SwitchTime = 4;
 var TotalTime = 10;
+var touchYet = 0;
+function touchBegan(n, e, p, x, y, points)
+{
+    trace("touch", next);
+    //touchYet = 1;
+    src.texture(allTex[curTex]);
+    tar.texture(allTex[(curTex+1)%len(allTex)]);
+    src.addaction(fadeout(NewPicTime));
+    tar.addaction(fadein(NewPicTime));
+    curTex += 1;
+    if(curTex >= (len(allTex)))
+    {
+        next.setevent(EVENT_TOUCH, null);
+        curTex = len(allTex)-1;
+        oneceMax = 1;
+        //timer.stop();
+        //global.context[0].initialControls();
+        //backNode.removefromparent();
+        tar = null;
+        src = null;
+        next.setevent(EVENT_TOUCH, null);
+        next.removefromparent();
+        next = null;
+    }
+    else
+    {
+        var temp = src;
+        src = tar;
+        tar = temp;
+    }
+}
+var setNext = 0;
 var percentmax = 0;
     function loading(timer){
         if(percent == 100){
-            if(backNode.get() < 3)
+            //trace("next Button", next, src, tar, oneceMax);
+            //完成加载之后， 设置用户当前的新手状态
+            /*
+            if(backNode.get() < 3 && touchYet == 1)
             {
-                curTime += 1;
+                touchYet = 0;
+                //curTime += 1;
                 src.texture(allTex[curTex]);
                 tar.texture(allTex[(curTex+1)%len(allTex)]);
-                if(curTime == SwitchTime && oneceMax == 0 && curTex < (len(allTex)-1))
+                //curTime == SwitchTime &&
+                if(oneceMax == 0 && curTex < (len(allTex)-1))
                 {
                     src.addaction(fadeout(NewPicTime));
                     tar.addaction(fadein(NewPicTime));
                 }
-                if(curTime >= TotalTime)
+                //if(curTime >= TotalTime)
                 {
-                    curTime = 0;
+                    //curTime = 0;
                     curTex += 1;
                     if(curTex == (len(allTex)-1))
                         oneceMax = 1;
@@ -150,15 +188,30 @@ var percentmax = 0;
                     }
                 }
             }
+            */
             if(backNode.get() < 3)
             {
-                backNode.remove(1); 
-                backNode.remove(2);
+
                 if(oneceMax == 1)
                 {
+                    trace("finish Show");
+                    //next.setevent(EVENT_TOUCH, null);
+                    //next.removefromparent();
                     timer.stop();
                     global.context[0].initialControls();
                     backNode.removefromparent();
+                }
+                else if(setNext == 0)
+                {
+                    setNext = 1;
+                    backNode.remove(1); 
+                    backNode.remove(2);
+                    //next.visible(1);
+                    next.setevent(EVENT_TOUCH, touchBegan);
+                    src.texture(allTex[curTex]);
+                    //touchBegan(null, null, null, null, null, null);
+                    getscene().add(next, 10000);
+                    //backNode.setevent(EVENT_TOUCH, null);
                 }
             }
             else

@@ -6,7 +6,8 @@ class ImageController{
         "dockGoods.png", "foodTradeSel.png", "foodTradeUn.png", "empire4_ln.png", 
         "sel.png", "sellOut.png", "ship0.png", "ship1.png", "ship2.png", "shipHouse.png",
         "shipTip.png", "trade.png",
-        "foodAct.png", "foodRank.jpg",
+        "skip4.png",
+        //"foodAct.png", "foodRank.jpg",
     ];
     /*
     "disk0.png",  "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",

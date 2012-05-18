@@ -39,8 +39,8 @@ const buildcontext = [
 ];
 
 
-//const BASE_URL = "http://23.21.135.42:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+const BASE_URL = "http://23.21.135.42:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 const WARCHAT_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com:8004/";
 //const WARCHAT_URL = "http://uhz000738.chinaw3.com:8004/";
 const HELP_URL = "http://ec2-23-20-68-199.compute-1.amazonaws.com/";
@@ -156,10 +156,26 @@ const FACT_B_EXP = [3, 7, 11, 5, 9, 14, 15, 20, 25, 7, 9, 11, 9, 11, 13, 25, 30,
 19, 21, 23,
 4, 8, 13,
 14, 19, 24,] ;
-const FACT_EXP = [1, 2, 3, 3, 5, 7, 5, 7, 9, 7, 9, 11, 7, 9, 11, 17, 19, 21, 15, 17, 19, 19, 21, 23, 21, 23, 25, 20, 22, 24, 13, 15, 17,
-13, 15, 17, 19, 21, 23,
-3, 4, 6,
-4, 6, 8,] ;
+const FACT_EXP = [
+2, 3, 5, 
+4, 6, 10, 
+6, 8, 12, 
+8, 10, 15, 
+13, 15, 20, 
+20, 23, 27, 
+
+18, 23, 30, 
+23, 28, 35, 
+21, 25, 32,
+
+20, 22, 27,
+
+14, 16, 20,
+15, 17, 21,
+
+19, 21, 30,
+3, 4, 8,
+4, 6, 10,] ;
 
 const FACT_TIME = [600, 600, 600, 5400, 5400, 5400, 1800, 1800, 1800, 10440, 10440, 10440, 1800, 1800, 1800, 14400, 14400, 14400, 7200, 7200, 7200, 14400, 14400, 14400, 26280, 26280, 26280, 36000, 36000, 36000, 7920, 7920, 7920,
 6*3600, 6*3600, 6*3600, 
@@ -423,8 +439,8 @@ function removeself(n){
     n.removefromparent();
 }
 
-function donothing(){
-    trace("sb");
+function donothing(n, e, p, x, y, points){
+    trace("sb", n, e, p, x, y, points);
     return 1;
 }
     

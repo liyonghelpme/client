@@ -7,7 +7,7 @@
 //import element.MonScore;
 //import element.MonRank;
 //import element.Invite;
-import element.MonScore;
+//import element.MonScore;
 import element.Rank;
 import element.ShipHouse;
 import element.Ship;
@@ -209,7 +209,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    var actButton;
+    //var actButton;
     //var monButton;
     var tipButton;
     function initialMenu(){
@@ -226,7 +226,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        //actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
         //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         /*
@@ -314,7 +314,7 @@ class CastlePage extends ContextObject{
     function showAct()
     {
         //global.pushContext(null, new Vip(), NonAutoPop);
-        global.pushContext(null, new MonScore(), NonAutoPop);
+        //global.pushContext(null, new MonScore(), NonAutoPop);
     }
     function showMon()
     {
@@ -939,7 +939,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(1);
         leftmenu.visible(1);
         rightmenu.visible(1);
-        actButton.visible(1);
+        //actButton.visible(1);
         //monButton.visible(1);
         /*
         actButton.texture("heart.png");
@@ -953,7 +953,7 @@ class CastlePage extends ContextObject{
         topmenu.visible(0);
         leftmenu.visible(0);
         rightmenu.visible(0);
-        actButton.visible(0);
+        //actButton.visible(0);
         //monButton.visible(0);
         /*
         if(rankYet == 0)
@@ -1719,6 +1719,7 @@ class CastlePage extends ContextObject{
 
             //if(global.TooMany == 0)
             initlock = 0;
+            //addcmd(dict([["name", "showBanner"]]));
 
 
 
@@ -1755,7 +1756,6 @@ class CastlePage extends ContextObject{
             }
             c_invoke(delayresume,2000,null);
 
-            addcmd(dict([["name", "showBanner"]]));
 
         }
         else{
@@ -1849,13 +1849,14 @@ class CastlePage extends ContextObject{
         else
         {
             dif = now - lastTime;
+            lastTime = now;
         }
 
         if(banner != null)
         {
             banTime += dif;
             trace("removeBanner", banTime);
-            if(banTime > 20000)
+            if(banTime > 10000)
             {
                 banner.removefromparent();
                 banner = null;
