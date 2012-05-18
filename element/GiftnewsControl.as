@@ -55,7 +55,7 @@ class GiftnewsControl extends ContextObject{
         if(len(items) < fpage*PAGEITEMS && len(items)<length){
             if(lock==0){
                 lock = 1;
-            global.http.addrequest(0,"getgift",["uid","off","num"],[ppy_userid(),0,length],self,"addnewsitems");
+            global.http.addrequest(0,"getgift",["uid","off","num"],[global.papaId,0,length],self,"addnewsitems");
             }
         }
         else{

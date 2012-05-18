@@ -6,7 +6,7 @@ class Rank extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite("rankHeart.jpg").anchor(50,50).pos(400,240);
+        contextNode = sprite("foodRank.jpg").anchor(50,50).pos(400,240);
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
@@ -84,7 +84,7 @@ class Rank extends ContextObject{
             nameNode.addlabel("999+", null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
         else
             nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
-        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(642, 56).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(576, 56).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

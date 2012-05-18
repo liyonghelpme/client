@@ -38,7 +38,7 @@ function showTip()
 {
     var level = global.user.getValue("level");
 
-    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
     var con = "[0]";
     if(c_file_exist(fp) != 0)
     {
@@ -60,7 +60,7 @@ function showTip()
 }
 function clearTip()
 {
-    var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+    var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
     c_file_op(C_FILE_WRITE, fp, "[0]");
 }
 function removeTip()
@@ -68,7 +68,7 @@ function removeTip()
     if(TipShow == 1)
     {
         global.castalPage.tipButton.removefromparent();
-        var fp = c_file_open("tipShowYet"+str(ppy_userid()), 1);
+        var fp = c_file_open("tipShowYet"+str(global.papaId), 1);
         c_file_op(C_FILE_WRITE, fp, "[1]");
         TipShow = 0;
     }
@@ -282,5 +282,20 @@ function showWord(text)
 }
 
 
+function addWeb(url, sw, sh)
+{
+    var h = 64;
+    var frame = v_create(V_GROUP, 0, 0, sw, sh).setevent(EVENT_TOUCH, donothing).focusable(1);
+    var web = v_create(V_PPY_WEB_VIEW, 0, h, sw, sh-h);
+    frame.addview(web);
+    v_root().addview(frame);
+    frame.create(V_IMAGE_VIEW).pos(0, 0, sw, h).image("titleBar.png").setevent(EVENT_TOUCH, closeWeb, frame);
+    web.openurl(url);
+}
+function closeWeb(node, event, param)
+{
+    param.removefromparent();
+    param = null;
+}
 
 

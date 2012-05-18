@@ -2,11 +2,13 @@
 //import element.Score;
 //import element.Rank;
 //import element.OldUser;
-import element.Vip;
+//import element.Vip;
 //import element.Unlock;
 //import element.MonScore;
 //import element.MonRank;
-import element.Invite;
+//import element.Invite;
+//import element.MonScore;
+import element.Rank;
 import element.ShipHouse;
 import element.Ship;
 import element.Trading;
@@ -173,11 +175,11 @@ class CastlePage extends ContextObject{
     function goback(n,e){
         if(friend.flist!=null){
             friend.flagmove=0;
-            friend.friendclicked(n,EVENT_UNTOUCH,ppy_userid(),0);
+            friend.friendclicked(n,EVENT_UNTOUCH,global.papaId,0);
         }
         else{
-            getfriend(ppy_userid());
-            friend.selectp=ppy_userid();
+            getfriend(global.papaId);
+            friend.selectp=global.papaId;
         }
     }
 
@@ -224,7 +226,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("vip.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        //actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
         //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         /*
@@ -263,7 +265,7 @@ class CastlePage extends ContextObject{
         var empirelabel = ub.addlabel(DEFAULT_NAME,null,20).color(0,0,0,100).anchor(0,50).pos(69,20);
         global.user.initExp(explabel,expfiller,levellabel,global.user,LEV_EXP);
         global.user.initText("cityname",empirelabel);
-        ub.addsprite(avatar_url(ppy_userid())).pos(12,8).size(50,50);
+        ub.addsprite(avatar_url(global.papaId)).pos(12,8).size(50,50);
 
         var personb = sprite("personboard1.png");
         var magicbar = personb.addsprite("mana_bar.png").anchor(0, 0).pos(39, 19).size(1, 18);
@@ -311,8 +313,8 @@ class CastlePage extends ContextObject{
     }
     function showAct()
     {
-        global.pushContext(null, new Vip(), NonAutoPop);
-        //global.pushContext(null, new Rank(), NonAutoPop);
+        //global.pushContext(null, new Vip(), NonAutoPop);
+        //global.pushContext(null, new MonScore(), NonAutoPop);
     }
     function showMon()
     {
@@ -807,7 +809,7 @@ class CastlePage extends ContextObject{
                 cpid = p;
                 popdata();
                 pausepos = pagedict.get(cpid);
-                if(p==ppy_userid()){//back
+                if(p==global.papaId){//back
                     flagfriend = 0;
                     showHomeMenu();
                     //actButton.texture("heart.png");
@@ -851,7 +853,7 @@ class CastlePage extends ContextObject{
                 return 0;
             }
             
-            if(p!=ppy_userid()){//not visit yet
+            if(p!=global.papaId){//not visit yet
                 pid = p;
                 global.flock();
                 needlock=1;
@@ -872,9 +874,9 @@ class CastlePage extends ContextObject{
             var mtime=null;
             var mi=-1;
             for(var i=0;i<len(datadict);i++){
-                if(items[i][0] != ppy_userid())
+                if(items[i][0] != global.papaId)
                 {
-                //if(items[i][0]!=ppy_userid()&&(mtime==null||items[i][1][10]<mtime)){
+                //if(items[i][0]!=global.papaId&&(mtime==null||items[i][1][10]<mtime)){
                     mtime = items[i][1][10];
                     mi = items[i][0];
                     break;
@@ -926,7 +928,7 @@ class CastlePage extends ContextObject{
             allybutton.texture("bindButton.png",UPDATE_SIZE);
     }
     function addprefriend(p){
-        if(p==null||p==ppy_userid()||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
+        if(p==null||p==global.papaId||friendpredict.get(p)!=null||global.ppyuserdict.get(str(p))==null){
             return 0;
         }
         friendpredict.update(p,1);
@@ -1312,11 +1314,16 @@ class CastlePage extends ContextObject{
         LoadPage = page;
         page.put(10);
         blocknode = contextNode.addnode().visible(0);
-        cpid = ppy_userid();
+        cpid = global.papaId;
         pagedict = dict();
         pagedict.update(cpid,contextNode.pos());
         initlock = 1;
-        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),1,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
+        //global.papaId = global.papaId;
+        if(global.papaId == 0)
+        {
+            ppy_login();
+        }
+        global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[global.papaId, 1,md5(str(global.papaId)+"-0800717193")],self,"getidback");
     }
 
     var statestr="";
@@ -1560,7 +1567,7 @@ class CastlePage extends ContextObject{
                     //state 0 1 2 3 4
                     //0  1 building 2 finishBuilding 3 working 4 harvest enabled
                     var state;
-                    if(time == 0 ){//finish Building 
+                    if(time == 0 && finish == 1 ){//finish Building 
                         state = FINISH_BUILDING;
                     }
                     else if(finish == 0)
@@ -1699,6 +1706,7 @@ class CastlePage extends ContextObject{
                         addcmd(bdict);
                     }
                 }
+
                 if(data.get("wonBonus",0)!=0){
                     bdict = dict();
                     bdict.update("name","wonbonus");
@@ -1708,8 +1716,13 @@ class CastlePage extends ContextObject{
                 }
 
             }
-            if(global.TooMany == 0)
-                initlock = 0;
+
+            //if(global.TooMany == 0)
+            initlock = 0;
+            addcmd(dict([["name", "showBanner"]]));
+
+
+
             friend.loaddata(global,friend);
             friend.loadourdata();
             menu.add(friend.friendback);
@@ -1742,6 +1755,8 @@ class CastlePage extends ContextObject{
                 system_gc();
             }
             c_invoke(delayresume,2000,null);
+
+
         }
         else{
             quitgame();
@@ -1821,9 +1836,33 @@ class CastlePage extends ContextObject{
     }
     var addManaLock = 0;
     var downAllPic = 0;
+    var lastTime = 0;
     function timerefresh(timer,tick,param){
         var i;
+    
         var now = time();
+        var dif = 0;
+        if(lastTime == 0)
+        {
+            lastTime = time();
+        }
+        else
+        {
+            dif = now - lastTime;
+            lastTime = now;
+        }
+
+        if(banner != null)
+        {
+            banTime += dif;
+            trace("removeBanner", banTime);
+            if(banTime > 10000)
+            {
+                banner.removefromparent();
+                banner = null;
+            }
+        }
+
         if((now - global.user.getValue("manatime")) > ManaChargeTime && addManaLock == 0 )
         {
             addManaLock = 1;
@@ -2234,6 +2273,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     {
         global.user.changeValueAnimate2(global.context[0].moneyb, "boundary", 1, -6);
     }
+    var banner = null;
+    var banTime = 0;
     function executecmd(cmd){
         var name = cmd.get("name");
         if(name == "daily" && global.flagnew==0){
@@ -2313,6 +2354,19 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                     //global.pushContext(null, new Invite(), NonAutoPop);
                     friend.inviteAll();
                 }
+            }
+        }
+        else if(name == "showBanner")
+        {
+            trace("show Banner");
+            if(global.flagnew == 0)
+            {
+                banner = v_create(V_APPFLOOD_BANNER, 0, 0, 400, 70);
+                trace("banner", banner);
+                if(banner == null)
+                    return;
+                v_root().addview(banner); 
+                //openUrl("appfloodad");
             }
         }
     }

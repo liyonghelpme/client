@@ -230,7 +230,7 @@ class WarControl extends ContextObject{
         data.update("powerlost", getWarrecordList("lostPower", d));
         data.update("leftpower", getWarrecordList("attFullPow", d));
         data.update("rightpower", getWarrecordList("defFullPow", d));
-        data.update(_self+"ppyid",ppy_userid());
+        data.update(_self+"ppyid", global.papaId);
         data.update(_enemy+"ppyid",getWarrecordList("otherUid", d));//other ppyid
         data.update("leftpower2", getWarrecordList("attPurePow", d));
         data.update("rightpower2", getWarrecordList("defPurePow", d));

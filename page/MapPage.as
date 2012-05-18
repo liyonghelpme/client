@@ -96,7 +96,7 @@ class MapPage extends ContextObject{
         var em=baseNode.addsprite("mapempirelv1_self.png",ARGB_8888).anchor(50,50).pos(800,480);
         em.setevent(EVENT_UNTOUCH,goback);
                 var fly = sprite("mapelement1.png").anchor(50,50).pos(35,0);
-                fly.addsprite(avatar_url(ppy_userid())).size(38,38).pos(15,11);
+                fly.addsprite(avatar_url(global.papaId)).size(38,38).pos(15,11);
                 var name = global.user.getValue("cityname");
                 if(len(name)>9){
                     name = name[0]+name[1]+name[2]+name[3]+name[4]+name[5]+"..";
@@ -273,9 +273,9 @@ trace("warinfo",rc,c);
         var mbutton = sprite("warmenubutton.png").anchor(50,50).pos(RIGHTOFF,240);
         rightmenu.add(mbutton,1,1);
         rightmenu.addsprite("wartabuser.png").pos(30+RIGHTOFF,12);
-        rightmenu.addsprite(avatar_url(ppy_userid())).pos(33+RIGHTOFF,15).size(50,50);
+        rightmenu.addsprite(avatar_url(global.papaId)).pos(33+RIGHTOFF,15).size(50,50);
         
-        rightmenu.addlabel(global.getfriend(ppy_userid()).get("name"),null,20).anchor(0,50).pos(88+RIGHTOFF,25).color(0,0,0,100);
+        rightmenu.addlabel(global.getfriend(global.papaId).get("name"),null,20).anchor(0,50).pos(88+RIGHTOFF,25).color(0,0,0,100);
         rightmenu.addsprite("power.png").pos(88+RIGHTOFF,40);
         powerlabel = rightmenu.addlabel(str(global.soldiers[0]+global.soldiers[1]),null,20).color(0,0,0,100).pos(115+RIGHTOFF,40);
         rightmenu.addsprite("warhelp.png").pos(33+RIGHTOFF,75).setevent(EVENT_UNTOUCH,gotohelp,"war");

@@ -391,7 +391,7 @@ class UserController{
             }
             else
             {
-                trace("key", key);
+
                 if(key == "friend")
                 {
                     if(len(global.ppyuserdict)-2-value < cmpvalue)
@@ -402,6 +402,7 @@ class UserController{
                 }
                 else
                 {
+                    trace("key", key, value, getValue(key));
                     if(key=="labor" || key=="person"){
                         key = "person";
                         cmpvalue = getValue("labor");

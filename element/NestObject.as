@@ -330,7 +330,7 @@ class NestObject extends BuildObject{
                             contextNode.add(to);
                         }
                     }
-                    else if(len(helpfriends)>=5||helpfriends.index(ppy_userid())!=-1){
+                    else if(len(helpfriends)>=5||helpfriends.index(global.papaId)!=-1){
                             tlabel.text(global.getStaticString("nest_talk_feedover"));
                     }
                     else{
@@ -381,7 +381,7 @@ class NestObject extends BuildObject{
                                 //contextNode.get(1).subnodes()[0].add(to);
                             }
                         }
-                        else if(len(helpfriends)>=7||helpfriends.index(ppy_userid())!=-1){
+                        else if(len(helpfriends)>=7||helpfriends.index(global.papaId)!=-1){
                             tlabel.text(global.getStaticString("nest_talk_feedover"));
                         }
                         else{
@@ -456,7 +456,7 @@ class NestObject extends BuildObject{
             var data=json_loads(c);
             var hadd=1;
             if(global.context[0].flagfriend==1){
-                helpfriends.append(ppy_userid());
+                helpfriends.append(global.papaId);
                 global.user.changeValueAnimate2(global.context[0].friendnamelabel,"food",-20,-6);
                 global.user.changeValueAnimate2(global.context[0].moneyb,"money", FeedMoney,-6);
                 if(global.card[18]%10==3){

@@ -4,7 +4,7 @@
 class ShipHouse
 {
     var bg;
-    var state = FINISH_BUILDING;//2 free 3 working --> 4finishing working 
+    var state = FINISH_BUILDING;//2 free 3 working --> 4finishing working 5 SHIP_WAITING 
     var timeBegin = 0;//time Begin
     var timeNeed = 0;//time Need 
     var leftTime = 0;
@@ -79,6 +79,10 @@ class ShipHouse
     }
     function useaction(p, rc, c)
     {
+        var data = json_loads(c);
+        var id = data.get("id");
+        if(id == 0)
+            return;
         if(p == "buyShip")
         {
             hasShip = 1;

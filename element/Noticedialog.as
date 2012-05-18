@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-	"Hi all, dock and ship is coming. You can use them to trade with others. Come on to buy your ship:)" 
+    "My Lord, From now on XP values on certain buildings have increased. Check them out and level up faster so you can unlock war mode, raise your dragon, and level up faster!  -Miracle Empire Team"
     ]; 
     function paintNode(){
         updatenum=-1;
