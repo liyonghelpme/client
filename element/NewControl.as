@@ -87,7 +87,7 @@ class NewControl extends ContextObject{
             back.addsprite("storybacktop.png",ARGB_8888);
             back.addsprite("storybackbottom.png",ARGB_8888).anchor(0,100).pos(0,480);
             back.addsprite("skip3.png").anchor(100,100).pos(790,470).setevent(EVENT_UNTOUCH,rm);
-            content.addaction(sequence(moveby(15000,0,-1000),callfunc(rm)));
+            content.addaction(sequence(moveby(30000,0,-1000),callfunc(rm)));
         }
         function donothing(n,e){
             return 1;
