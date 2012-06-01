@@ -154,7 +154,7 @@ class CastlePage extends ContextObject{
 
     function buycaesars(n,e){
         hiddentime = 10;
-        gloTime = 0;
+        clearHidden();
         if(global.currentLevel == contextLevel){
             global.pushContext(self,new BuyControl(),NonAutoPop);
         }
@@ -162,7 +162,7 @@ class CastlePage extends ContextObject{
 
     function keydownevent(n,e,p,kc){
         hiddentime=10;
-        gloTime = 0;
+        clearHidden();
         if(kc == 4){
             global.pushContext(self,new Quitdialog(),NonAutoPop);
         }
@@ -421,7 +421,7 @@ class CastlePage extends ContextObject{
 
     function menubuttonclicked(n,e,p){
         hiddentime = 10;
-        gloTime = 0;
+        clearHidden();
         if(global.currentLevel == contextLevel){
             if(e == EVENT_TOUCH){
                 n.texture("buttonback1.png");
@@ -785,7 +785,7 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         trace("enter map page");
         hiddentime =10;
-        gloTime = 0;
+        clearHidden();
         if(contextLevel >= global.currentLevel){
             spriteManager.getWar();
         }
@@ -793,7 +793,7 @@ class CastlePage extends ContextObject{
 
     function openfriendmenu(n,e,p){
         hiddentime = 10;
-        gloTime = 0;
+        clearHidden();
         friend.openfriendmenu(p);
         friendbutton.texture("friendbutton"+str(friend.friendmode)+".png");
     }
@@ -803,7 +803,7 @@ class CastlePage extends ContextObject{
         trace("getfriend", p);
         curFriend = p;
         hiddentime =10;
-        gloTime = 0;
+        clearHidden();
         if(p==null||p == cpid){
             return 0;
         }
@@ -1213,7 +1213,7 @@ class CastlePage extends ContextObject{
 
     function openinputview(n,e){
         hiddentime = 10;
-        gloTime = 0;
+        clearHidden();
         if(contextLevel >= global.currentLevel){
             global.pushContext(self,new TestInputControl(),NonAutoPop);
         }
@@ -1244,7 +1244,7 @@ class CastlePage extends ContextObject{
     var lastclicktime;
     function nodeMoveEvent(node,event,param,x,y,points){
         hiddentime = 10;
-        gloTime = 0;
+        clearHidden();
         if(contextLevel >= global.currentLevel){
             if(event == EVENT_TOUCH){
                 lastpoint = contextNode.node2world(x,y);
@@ -1860,7 +1860,8 @@ class CastlePage extends ContextObject{
             dif = now - lastTime;
             lastTime = now;
         }
-        gloTime += dif;
+        if(gloBanner == null)
+            gloTime += dif;
         if(gloTime >= 30000 && hidden == 1)
         {
             gloTime = 0;
@@ -2391,7 +2392,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         }
         else if(name == "showGlobal")
         {
-            if(global.flagnew == 0)
+            if(global.flagnew == 0 && gloBanner == null)
             {
                 gloBanner = openUrl("appfloodad"); 
                 trace("globalBanner", gloBanner);
@@ -2403,6 +2404,11 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         if(rc!=0 && json_loads(c).get("id")==1){
         }
         reqlock=0;
+    }
+    function clearHidden()
+    {
+        gloBanner = null;
+        gloTime = 0;
     }
     var expandtype;
     function expandover(r,rc,c){
