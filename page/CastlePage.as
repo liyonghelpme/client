@@ -154,6 +154,7 @@ class CastlePage extends ContextObject{
 
     function buycaesars(n,e){
         hiddentime = 10;
+        gloTime = 0;
         if(global.currentLevel == contextLevel){
             global.pushContext(self,new BuyControl(),NonAutoPop);
         }
@@ -161,6 +162,7 @@ class CastlePage extends ContextObject{
 
     function keydownevent(n,e,p,kc){
         hiddentime=10;
+        gloTime = 0;
         if(kc == 4){
             global.pushContext(self,new Quitdialog(),NonAutoPop);
         }
@@ -419,6 +421,7 @@ class CastlePage extends ContextObject{
 
     function menubuttonclicked(n,e,p){
         hiddentime = 10;
+        gloTime = 0;
         if(global.currentLevel == contextLevel){
             if(e == EVENT_TOUCH){
                 n.texture("buttonback1.png");
@@ -782,6 +785,7 @@ class CastlePage extends ContextObject{
     function entermap(n,e){
         trace("enter map page");
         hiddentime =10;
+        gloTime = 0;
         if(contextLevel >= global.currentLevel){
             spriteManager.getWar();
         }
@@ -789,6 +793,7 @@ class CastlePage extends ContextObject{
 
     function openfriendmenu(n,e,p){
         hiddentime = 10;
+        gloTime = 0;
         friend.openfriendmenu(p);
         friendbutton.texture("friendbutton"+str(friend.friendmode)+".png");
     }
@@ -798,6 +803,7 @@ class CastlePage extends ContextObject{
         trace("getfriend", p);
         curFriend = p;
         hiddentime =10;
+        gloTime = 0;
         if(p==null||p == cpid){
             return 0;
         }
@@ -1207,6 +1213,7 @@ class CastlePage extends ContextObject{
 
     function openinputview(n,e){
         hiddentime = 10;
+        gloTime = 0;
         if(contextLevel >= global.currentLevel){
             global.pushContext(self,new TestInputControl(),NonAutoPop);
         }
@@ -1237,6 +1244,7 @@ class CastlePage extends ContextObject{
     var lastclicktime;
     function nodeMoveEvent(node,event,param,x,y,points){
         hiddentime = 10;
+        gloTime = 0;
         if(contextLevel >= global.currentLevel){
             if(event == EVENT_TOUCH){
                 lastpoint = contextNode.node2world(x,y);
@@ -1837,6 +1845,7 @@ class CastlePage extends ContextObject{
     var addManaLock = 0;
     var downAllPic = 0;
     var lastTime = 0;
+    var freeTime = 0;
     function timerefresh(timer,tick,param){
         var i;
     
@@ -1851,7 +1860,13 @@ class CastlePage extends ContextObject{
             dif = now - lastTime;
             lastTime = now;
         }
-
+        gloTime += dif;
+        if(gloTime >= 30000 && hidden == 1)
+        {
+            gloTime = 0;
+            addcmd(dict([["name", "showGlobal"]]));
+        }
+            
         if(banner != null)
         {
             banTime += dif;
@@ -1918,6 +1933,7 @@ class CastlePage extends ContextObject{
             hidden = 1;
             hiddentime = -1;
             menu.addaction(sequence(tintto(1000,  0,  0,  0,0),callfunc(menuvisible)));
+            //addcmd(dict([["name", "showGlobal"]]));
         }
         else if(hiddentime > 0){
             if(global.currentLevel +global.flagnew== 0)
@@ -2158,6 +2174,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
 
     function sizeMode(node,event,param){
         hiddentime = 10;
+        gloTime = 0;
         if(contextLevel >= global.currentLevel){
             if((mode== -60 && param < 0)||(mode== 50 && param > 0))
                 return 0;
@@ -2183,6 +2200,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     function reloadNode(re){
         hiddentime = 10;
+        gloTime = 0;
         if(re == RankFri)
         {
             global.http.addrequest(0, "rankHeart", ["uid", "oid"], [global.userid, cuid], this, "rankHeartFin");
@@ -2275,6 +2293,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     }
     var banner = null;
     var banTime = 0;
+    var gloTime = 0;
+    var gloBanner = null;
     function executecmd(cmd){
         var name = cmd.get("name");
         if(name == "daily" && global.flagnew==0){
@@ -2367,6 +2387,14 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                     return;
                 v_root().addview(banner); 
                 //openUrl("appfloodad");
+            }
+        }
+        else if(name == "showGlobal")
+        {
+            if(global.flagnew == 0)
+            {
+                gloBanner = openUrl("appfloodad"); 
+                trace("globalBanner", gloBanner);
             }
         }
     }
