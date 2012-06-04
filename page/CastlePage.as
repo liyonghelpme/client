@@ -1342,11 +1342,38 @@ class CastlePage extends ContextObject{
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[global.papaId, 1,md5(str(global.papaId)+"-0800717193")],self,"getidback");
     }
 
+    var getImageYet = 0;
+    var imageUrl = null;
+    var packageDownload = null;
+    var toIdentifier = null;
+    function finGetImage(rid, rcode, con)
+    {
+        trace("finGetImage", rid, rcode, con);
+        if(rcode == 0)
+            return;
+
+        con = json_loads(con);
+        trace("finGet", con.get("toIdentifier"), con.get("toImageUrl"), con.get("toPackageDownloadLink"));
+
+        imageUrl = con.get("toImageUrl");
+        packageDownload = con.get("toPackageDownloadLink");
+        toIdentifier = con.get("toIdentifier");
+        getImageYet = 1;
+    }
+    function getImageAndUrl()
+    {
+        var did = sysinfo(31);
+        trace("deviceId", did);
+        did = md5(did);
+        http_request("http://connect.papayamobile.com:8080/xpromt/apple/requestInfo?userid="+did+"&fromIdentifier=com.papaya.miracle1", finGetImage);
+    }
+
     var statestr="";
     var week = -1;
     var getBonus = 0;
     function getidback(r,rc,c){
         if(rc != 0){
+            getImageAndUrl();
             var data = json_loads(c);
             global.userid = data.get("id",0);
             cuid = global.userid;
@@ -1854,9 +1881,29 @@ class CastlePage extends ContextObject{
     var downAllPic = 0;
     var lastTime = 0;
     var freeTime = 0;
+    var curAdPic = null;
+    function visitSuc(rid, rcode, con)
+    {
+        trace("visitSuc", rid, rcode, con);
+    }
+    function visitAd()
+    {
+        openUrl(packageDownload);
+        curAdPic.removefromparent();
+        curAdPic = null;
+        var did = sysinfo(31);
+        did = md5(did);
+        http_request("http://connect.papayamobile.com:8080/xpromt/apple/clickImage?userid="+did+"&fromIdentifier=com.papaya.miracle1&toIdentifier="+toIdentifier, visitSuc);
+    }
     function timerefresh(timer,tick,param){
+        if(getImageYet == 1)
+        {
+            curAdPic = sprite(imageUrl).setevent(EVENT_TOUCH, visitAd).anchor(50, 50).pos(400, 240);
+            getscene().add(curAdPic, 1000);
+            getImageYet = 0;
+        }
+
         var i;
-    
         var now = time();
         var dif = 0;
         if(lastTime == 0)
