@@ -214,6 +214,7 @@ class CastlePage extends ContextObject{
     //var actButton;
     //var monButton;
     var tipButton;
+    //var moreGames;
     function initialMenu(){
         flagally = 0;
         menu = sprite().size(800,480);
@@ -231,6 +232,7 @@ class CastlePage extends ContextObject{
         //actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
         //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
+        //moreGames = menu.addsprite("moreGame.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_TOUCH, showMore).scale(60*100/47);
         /*
         var bsize = actButton.size();
         var bl = min(50*100/bsize[0], 50*100/bsize[1]);
@@ -301,6 +303,10 @@ class CastlePage extends ContextObject{
 
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
+    }
+    function showMore()
+    {
+        openUrl("appfloodpanel", PANEL_BOTTOM);
     }
     function addHeart()
     {
@@ -947,6 +953,7 @@ class CastlePage extends ContextObject{
         rightmenu.visible(1);
         //actButton.visible(1);
         //monButton.visible(1);
+        //moreGames.visible(1);
         /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
@@ -961,6 +968,7 @@ class CastlePage extends ContextObject{
         rightmenu.visible(0);
         //actButton.visible(0);
         //monButton.visible(0);
+        //moreGames.visible(0);
         /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
@@ -1862,7 +1870,7 @@ class CastlePage extends ContextObject{
         }
         if(gloBanner == null)
             gloTime += dif;
-        if(gloTime >= 30000 && hidden == 1)
+        if(gloTime >= 180000 && hidden == 1)
         {
             gloTime = 0;
             addcmd(dict([["name", "showGlobal"]]));
@@ -2394,7 +2402,8 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         {
             if(global.flagnew == 0 && gloBanner == null)
             {
-                gloBanner = openUrl("appfloodad"); 
+                gloBanner = 1;
+                openUrl("appfloodad"); 
                 trace("globalBanner", gloBanner);
             }
         }

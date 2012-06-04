@@ -32,20 +32,24 @@ var ispause = 0;
 export("onpause",onpausefunc);
 export("onresume",onresumefunc);
     function onpausefunc(){
+        /*
         if(global.currentLevel>=0&&global.system.flagmusic == 1)
             global.system.music.pause();
+        */
         if(global.context[0].initlock==-1){
-            global.context[0].pause();
+            //global.context[0].pause();
             ispause=1;
         }
     }
 
     function onresumefunc(){
+        /*
         if(global.currentLevel>=0&&global.system.flagmusic == 1)
             global.system.music.play(-1);
+        */
         if(ispause==1){
             ispause = 0;
-            global.context[0].resume();
+            //global.context[0].resume();
         }
     }
 
