@@ -1373,7 +1373,7 @@ class CastlePage extends ContextObject{
     var getBonus = 0;
     function getidback(r,rc,c){
         if(rc != 0){
-            getImageAndUrl();
+            //getImageAndUrl();
             var data = json_loads(c);
             global.userid = data.get("id",0);
             cuid = global.userid;
