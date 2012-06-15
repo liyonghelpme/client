@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-    "My Lord, From now on XP values on certain buildings have increased. Check them out and level up faster so you can unlock war mode, raise your dragon, and level up faster!  -Miracle Empire Team"
+    "Thou have blessed thee with 50% off land expansion from June 11th to June 21th."
     ]; 
     function paintNode(){
         updatenum=-1;

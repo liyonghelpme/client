@@ -4,10 +4,10 @@
 //import element.OldUser;
 //import element.Vip;
 //import element.Unlock;
-//import element.MonScore;
-//import element.MonRank;
+import element.MonScore;
+import element.MonRank;
 //import element.Invite;
-//import element.MonScore;
+import element.MonScore;
 import element.Rank;
 import element.ShipHouse;
 import element.Ship;
@@ -212,7 +212,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     //var actButton;
-    //var monButton;
+    var monButton;
     var tipButton;
     //var moreGames;
     function initialMenu(){
@@ -230,7 +230,7 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         //actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
-        //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
+        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         //moreGames = menu.addsprite("moreGame.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_TOUCH, showMore).scale(60*100/47);
         /*
@@ -326,7 +326,8 @@ class CastlePage extends ContextObject{
     }
     function showMon()
     {
-        //global.pushContext(null, new MonScore(), NonAutoPop); 
+        global.pushContext(null, new MonScore(), NonAutoPop); 
+        //global.pushContext(null, new MonRank(), NonAutoPop);
 
     }
     function showTipDia(n, e, p, x, y, points)

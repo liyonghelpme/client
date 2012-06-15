@@ -3,7 +3,7 @@ class EmpireControl extends ContextObject{
     var tabs;
     var element;
     var building;
-    const EmpireLevel = [20, 30, 40];
+    const EmpireLevel = [20, 30, 40, 50];
     function EmpireControl(b){
         contextname = "dialog-territoryinfo";
         contextNode = null;

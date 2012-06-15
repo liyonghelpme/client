@@ -7,6 +7,7 @@ class ImageController{
         "sel.png", "sellOut.png", "ship0.png", "ship1.png", "ship2.png", "shipHouse.png",
         "shipTip.png", "trade.png",
         "skip4.png",
+        "MonRank.png", "MonAct.png",
         //"foodAct.png", "foodRank.jpg",
     ];
     /*

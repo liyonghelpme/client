@@ -50,7 +50,7 @@ class Builddialog extends ContextObject{
         //buildtabs[5].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         //buildtabs[4].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
         buildtabs[5].add(sprite("new.png").anchor(50,40).pos(30,0),3,3);
-        //buildtabs[6].add(sprite("mail.png").anchor(50,40).pos(30,0),3,3);
+        buildtabs[6].add(sprite("mail.png").anchor(50,40).pos(30,0),3,3);
         contextNode.add(sprite("dialogback_left.png",ARGB_8888).pos(0,97),1);
         contextNode.add(sprite("dialogback_right.png",ARGB_8888).anchor(100,0).pos(800,97),1);
         changePage(0,0,global.lastpage[0]);

@@ -414,7 +414,7 @@ var Dicts =
 ["getresource", "Collect"], 
 ["quickSendArmy", "SpeedUp"], 
 ["LevelNot", "Sorry, you need to reach Lv. [LEVEL] to upgrade your castle."], 
-["EmpireNotOpen", "Sorry, you can't upgrade your castle yet."], 
+["EmpireNotOpen", "Your castle has reached to top level."], 
 ["sendCatapult", "Dispatch"], 
 ["notSendCata", "No"], 
 ["petNeedDownload", "Summon a pet requires you to download pictures, proceed?"], 
