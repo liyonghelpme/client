@@ -460,6 +460,7 @@ var Dicts =
 ["exp", "Exp"], 
 ["BuyShip", "You need to upgrade to Lv. 15 to buy ship:)"], 
 ["BuyShipNow", "Congrats! You can buy ship to trade with others. Are you sure you want to buy it?"],
+["inviteString", "hi, 我的邀请码是[CODE]，快来与我一起玩奇迹帝国吧！"], 
 ["", ""], 
 
 ];

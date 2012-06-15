@@ -141,6 +141,7 @@ class UserController{
     var handledict;
     var updates;
     var papayas = 0;
+    var inviteCode = null;
 
     var callBack = null;
     function setPapaya(r, rc, c)
@@ -164,7 +165,20 @@ class UserController{
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
+        global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], this, "getCode");
         //setValue("hasDisk", 0);
+    }
+    function useaction(p, rc, c)
+    {
+        trace(p, rc, c);
+        if(p == getCode)
+        {
+            if(rc != 0)
+            {
+                c = json_loads(c);
+                inviteCode = c.get("code");
+            }
+        }
     }
     
     function initText(name,l){
