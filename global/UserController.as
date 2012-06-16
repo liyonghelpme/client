@@ -165,13 +165,17 @@ class UserController{
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
-        global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], this, "getCode");
+        //global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], this, "getCode");
         //setValue("hasDisk", 0);
+    }
+    function prepareCode(obj)
+    {
+        global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], obj, "getCode");
     }
     function useaction(p, rc, c)
     {
         trace(p, rc, c);
-        if(p == getCode)
+        if(p == "getCode")
         {
             if(rc != 0)
             {

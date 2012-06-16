@@ -38,6 +38,8 @@ import element.BuyShip;
 import element.MyQuick;
 import element.MyWarnDialog;
 import element.Tip;
+import element.LoginInvite;
+import element.InviteDialog;
 
 import page.MapPage;
 import element.MonsterController;

@@ -631,6 +631,15 @@ class CastlePage extends ContextObject{
         {
             setRankYet();
         }
+        else if(p == "getCode")
+        {
+            if(rc != 0)
+            {
+                c = json_loads(c);
+                global.user.inviteCode = c.get("code");
+                global.pushContext(null, new LoginInvite(), NonAutoPop);
+            }
+        }
     }
     
     function levelup(r,rc,c){
@@ -1725,7 +1734,8 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name", "loginInvite"]]));
 
                     var level = global.user.getValue("level");
                     var nobility = global.user.getValue("nobility");
@@ -2353,6 +2363,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     var gloTime = 0;
     var gloBanner = null;
     function executecmd(cmd){
+        trace("cmd is", cmd);
         var name = cmd.get("name");
         if(name == "daily" && global.flagnew==0){
             var bonus = cmd.get("bonus");
@@ -2454,6 +2465,16 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 openUrl("appfloodad"); 
                 trace("globalBanner", gloBanner);
             }
+        }
+        else if(name == "loginInvite")
+        {
+
+            if(global.user.inviteCode == null)
+            {
+                global.user.prepareCode(this);
+            }
+            else
+                global.pushContext(null, new LoginInvite(), NonAutoPop);
         }
     }
     var reqlock=0;

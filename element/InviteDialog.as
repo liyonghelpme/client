@@ -13,8 +13,8 @@ class InviteDialog extends ContextObject{
         contextNode.addlabel("input invite code:", null, 18).pos(55, 39).color(0, 0, 0);
         input = v_create(V_INPUT_VIEW, 198+109, 105+81, 208, 50);
         v_root().addview(input);
-        contextNode.addsprite("boxbutton1.png").pos(198, 205).anchor(50, 50).size(187, 38);
-        contextNode.addlabel("确定并分享我的邀请码",null, 30).anchor(50, 50).color(100, 100, 100).setevent(EVENT_TOUCH, shareMyCode);
+        var but0 = contextNode.addsprite("boxbutton1.png").pos(198, 205).anchor(50, 50).size(220, 38).setevent(EVENT_TOUCH, shareMyCode);
+        contextNode.addlabel("确定并分享我的邀请码",null, 20).pos(198, 205).anchor(50, 50).color(100, 100, 100);
     }
     function closedialog()
     {
@@ -27,10 +27,11 @@ class InviteDialog extends ContextObject{
     }
     function shareMyCode()
     {
+        global.popContext(null);
         global.http.addrequest(0, "invite/writeInviteCode", ["uid", "code"], [global.userid, input.text()], this, "writeCode");
 
     }
-    function useraction(p, rc, c)
+    function useaction(p, rc, c)
     {
         trace(p, rc, c);
         if(p == "writeCode")
@@ -40,7 +41,7 @@ class InviteDialog extends ContextObject{
                 if(global.user.inviteCode != null)
                 {
                     //c = json_loads(c);
-                    ppy_postnewsfeed(getFormatString("inviteString", ["[CODE]", str(global.user.inviteCode)]), NewsURL, null);
+                    ppy_postnewsfeed(global.getFormatString("inviteString", ["[CODE]", str(global.user.inviteCode)]), NewsURL, null);
                 }
             }
         }

@@ -461,6 +461,8 @@ var Dicts =
 ["BuyShip", "You need to upgrade to Lv. 15 to buy ship:)"], 
 ["BuyShipNow", "Congrats! You can buy ship to trade with others. Are you sure you want to buy it?"],
 ["inviteString", "hi, 我的邀请码是[CODE]，快来与我一起玩奇迹帝国吧！"], 
+["inviteNotice", "现在开始，每邀请1个好友来玩奇迹帝国能获得10个免费凯撒币哦！方法：好友登录游戏输入你的邀请码，你将获得10个凯撒币！你的邀请码是：[CODE]"], 
+["okInvite", "输入邀请码"], 
 ["", ""], 
 
 ];
