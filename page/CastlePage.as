@@ -1,6 +1,8 @@
 //import element.Act;
 //import element.Score;
 //import element.Rank;
+import element.MonScore;
+import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -196,6 +198,7 @@ class CastlePage extends ContextObject{
     }
     
     //var actButton;
+    var monButton;
     var tipButton;
     function initialMenu(){
         flagally = 0;
@@ -212,6 +215,8 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         //actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct);
+
+        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         tipButton = sprite("tips.png").anchor(100, 0).pos(RightMenuAlign, MenuY).setevent(EVENT_UNTOUCH, showTipDia);
 
         friendbutton = fmenu.addsprite("friendbutton1.png").anchor(100,100).pos(790,470).setevent(EVENT_TOUCH,openfriendmenu,0);
@@ -274,6 +279,10 @@ class CastlePage extends ContextObject{
 
         //var loveButton = menu.addsprite("love_in.png").anchor(50, 50).pos(750, 310);
         //loveButton.setevent(EVENT_UNTOUCH, loveShow);
+    }
+    function showMon()
+    {
+        global.pushContext(null, new MonScore(), NonAutoPop);
     }
     function showTipDia(n, e, p, x, y, points)
     {

@@ -6,7 +6,7 @@ class Rank extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite("rankHeart.jpg").anchor(50,50).pos(400,240);
+        contextNode = sprite("MonRank.jpg").anchor(50,50).pos(400,240);
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
