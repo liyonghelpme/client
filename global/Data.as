@@ -355,7 +355,7 @@ var Dicts =
 ["unitPower", "Strength per unit"], 
 ["chooseStone", "Choose stone"], 
 ["noUpdate", "No new updates"], 
-["visitReward", "[NAME] has gotten the rewards when you visit friends, join Miracle Empire and have fun!"], 
+["visitReward", "[NAME] has gotten the rewards when you visit friends, join miracle empire and have fun!"], 
 ["yourArmy", "Your military has arrived at [NAME]'s territory. Prepare for war!"], 
 ["enemyArmy", "[NAME]'s military has arrived your territory, let's get ready for the fight!"], 
 ["viewWar", "watching"], 
@@ -460,9 +460,11 @@ var Dicts =
 ["exp", "Exp"], 
 ["BuyShip", "You need to upgrade to Lv. 15 to buy ship:)"], 
 ["BuyShipNow", "Congrats! You can buy ship to trade with others. Are you sure you want to buy it?"],
-["inviteString", "hi, 我的邀请码是[CODE]，快来与我一起玩奇迹帝国吧！"], 
-["inviteNotice", "现在开始，每邀请1个好友来玩奇迹帝国能获得10个免费凯撒币哦！方法：好友登录游戏输入你的邀请码，你将获得10个凯撒币！你的邀请码是：[CODE]"], 
-["okInvite", "输入邀请码"], 
+["inviteString", "hi, my invite code is [CODE], join Miracle Empire and have fun!"], 
+["inviteNotice", 
+"From now on, you will get 10 free caesar coins once you successfully invite one friend to play Miracle Empire! Tip: your friend log in Miracle Empire,  input your invite code and you will get 10 free caesars! One friend only can add once for you. Your invite code is [CODE]"
+    ], 
+["okInvite", "Input Invite Code"], 
 ["", ""], 
 
 ];

@@ -7,7 +7,7 @@
 import element.MonScore;
 import element.MonRank;
 //import element.Invite;
-import element.MonScore;
+//import element.MonScore;
 import element.Rank;
 import element.ShipHouse;
 import element.Ship;
@@ -637,7 +637,7 @@ class CastlePage extends ContextObject{
             {
                 c = json_loads(c);
                 global.user.inviteCode = c.get("code");
-                global.pushContext(null, new LoginInvite(), NonAutoPop);
+                //global.pushContext(null, new LoginInvite(), NonAutoPop);
             }
         }
     }
@@ -1383,6 +1383,7 @@ class CastlePage extends ContextObject{
     var getBonus = 0;
     function getidback(r,rc,c){
         if(rc != 0){
+
             //getImageAndUrl();
             var data = json_loads(c);
             global.userid = data.get("id",0);
@@ -1390,6 +1391,7 @@ class CastlePage extends ContextObject{
             if(global.userid == 0){
                 quitgame();
             }
+            global.user.prepareCode(this);
             newstate = data.get("newstate",3);
             week = data.get("week");
 
@@ -2469,12 +2471,14 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "loginInvite")
         {
 
+            /*
             if(global.user.inviteCode == null)
             {
                 global.user.prepareCode(this);
             }
             else
-                global.pushContext(null, new LoginInvite(), NonAutoPop);
+            */
+            global.pushContext(null, new LoginInvite(), NonAutoPop);
         }
     }
     var reqlock=0;
