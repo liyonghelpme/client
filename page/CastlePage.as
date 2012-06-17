@@ -284,6 +284,8 @@ class CastlePage extends ContextObject{
         topmenu.add(personb.pos(210,0),-1,1);
         moneyb = menu.addnode().pos(640,43);
         var mb = topmenu.addsprite("moneyboard.png").anchor(100,0).pos(800,0).setevent(EVENT_UNTOUCH,buycaesars);
+        mb.addsprite("mail.png").anchor(50, 50).pos(142, 54);
+
         var moneylabel = mb.addlabel("0",null,18).anchor(0,50).pos(37,16).color(0,0,0,100);
         var caesarslabel = mb.addlabel("0",null,18).anchor(0,50).pos(61,44).color(0,0,0,100);
         global.user.initText("money",moneylabel);
