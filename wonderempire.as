@@ -56,7 +56,7 @@ var tar = backNode.addsprite().anchor(50, 50).pos(400, 240);
 var src = backNode.addsprite().anchor(50,50).pos(400,240);
 
 //var page = sprite().setevent(EVENT_TOUCH,donothing).anchor(50,50).pos(400,240);
-var lpng = "loading_spring.jpg";
+var lpng = "loadingback.jpg";
 var lback = fetch(lpng);
 var loadingstr = "";
 if(lback==null){

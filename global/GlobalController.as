@@ -449,6 +449,7 @@ class DataController{
 
 
 class GlobalController{
+    var dialogController;
     var emptyCitiesInGlo = null;
     var mapUsers = null;
     var self;
@@ -872,3 +873,4 @@ var global = new GlobalController();
 var spriteManager = new SpriteManager(global);
 spriteManager.self = spriteManager;
 global.sp = spriteManager;
+//global.dialogController = new DialogController();

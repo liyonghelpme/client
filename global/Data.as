@@ -76,6 +76,10 @@ const stringDict=dict([
 ["spe", "特殊物品木条"],
 ["dragonStone", "仙龙石"],
 ["power", "战斗力"],
+["monsterResult", "你参与了杀死蛮荒古兽的活动，获得仙龙石[NUM]个。"],
+["monsterDisappear", "该怪兽不存在！"],
+["soldierNot", "士兵不足！"],
+["monKill", "攻击蛮荒古兽成功，损失步兵[INF], 损失骑兵[CAV], 损失投石车[CATA], 怪兽剩余战力[LEFTPOWER]。"],
 ["", ""],
 
 ]);

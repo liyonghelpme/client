@@ -591,6 +591,12 @@ class CastlePage extends ContextObject{
                 global.pushContext(null, new Warningdialog(["如果你觉得"+f.get("empirename")+"漂亮， 你可以给"+f.get("name")+"加1分， 每天每个好友最多1分哦！", null, 4]), NonAutoPop);
             }
         }
+        /*
+        else if(p == "getMyResult")
+        {
+            global.dialogController.addMonResult(json_loads(c).get("res"));
+        }
+        */
     }
     
     function levelup(r,rc,c){
@@ -1265,13 +1271,35 @@ class CastlePage extends ContextObject{
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 
+    //var monsterResult = [];
     var statestr="";
     var getBonus = 0;
+    /*
+    function addMonResult(res)
+    {
+        monsterResult += res;
+        trace("addMonResult", monsterResult);
+        //trace("addMonsterResult", res, monsterResult);
+    }
+
+    function getMyResult()
+    {
+        global.http.addrequest(0, "monsterc/getMyResult", ["uid"], [global.userid], this, "getMyResult");
+    }
+    */
+
     function getidback(r,rc,c){
         if(rc != 0){
             var data = json_loads(c);
+
+            //[uid mid dragonNum, power, totalNum ]
+            //monsterResult = data.get("monsterResult", []);
+            //trace("monsterResult", monsterResult);
+
+
             global.userid = data.get("id",0);
             cuid = global.userid;
+            //getMyResult();
             if(global.userid == 0){
                 quitgame();
             }
@@ -1304,6 +1332,7 @@ class CastlePage extends ContextObject{
             global.user.setValue("citydefence",data.get("citydefence",0));
             
 
+        
             global.user.setValue("person",data.get("population",570));
             global.user.setValue("labor",data.get("labor_num",390));
             global.user.setValue("personmax",data.get("popupbound", 1500));
@@ -1743,6 +1772,14 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
+        /*
+        if(len(monsterResult) > 0)
+        {
+            trace("monsterResult", monsterResult);
+            var res = monsterResult.pop();
+            addcmd(dict([["name", "monsterResult"], ["data", res]]));
+        }
+        */
         if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
         {
             addManaLock = 1;
@@ -2207,6 +2244,15 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 friend.inviteAll();
             }
         }
+        /*
+        else if(name == "monsterResult")
+        {
+            var data = cmd.get("data"); 
+            var words = global.getFormatString("monsterResult", ["[NUM]", str(data.get("dragonNum"))]); 
+            global.pushContext(null, new MyWarnDialog(null, 1, words), NonAutoPop); 
+            global.user.changeValue("dragonStone", data.get("dragonNum"));
+        }
+        */
 
     }
     var reqlock=0;

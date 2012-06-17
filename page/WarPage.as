@@ -217,15 +217,22 @@ class WarPage extends ContextObject{
         }
     }
 
+    const MAP_WIDTH = 600;
+    const MAP_HEIGHT = 360;
+    const MAP_SIZE = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [8, 8], [10, 10]];
+    var monsters = [];
+    const MAX_MAP_Z = 100000;
     function initialover(r,rc,c){
 trace("warinfo",rc,c);
         initlock=initlock-2;
         trace("net unlock",initlock);
         trace("initial warData");
         if(rc!=0){
+
             userdict.clear();
             global.mapUsers = userdict;
             var data = json_loads(c);
+
             if(data.get("id",1)!=0){
                 selfgid = data.get("gridid",4);
                 nobility = data.get("nobility",0);
@@ -271,8 +278,25 @@ trace("warinfo",rc,c);
                 loadempty(list);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
                 warchat.global=global;
+
+                var nNobility = min(len(MAP_SIZE)-1, max(0, nobility));
+                var mapSize = MAP_SIZE[nNobility];
+                var mPos = [mapSize[0]*MAP_WIDTH/2, mapSize[1]*MAP_HEIGHT/2];
+                var monster = data.get("monster", []); 
+                for(var m = 0; m < len(monster); m++)
+                {
+                    var mon = new Monster(this, monster[m]);
+                    monsters.append(mon);
+                    mon.setPos(mPos);
+                    baseNode.add(mon.bg, MAX_MAP_Z);
+                    trace("addMonster", mon, monster[m], mPos);
+                }
             }
         }
+    }
+    function removeMonster(m)
+    {
+        monsters.remove(m);
     }
     
     function loadempty(list){
@@ -385,7 +409,8 @@ trace("warinfo",rc,c);
     function addplace(x,y){
         var s=sprite("warback.png",ARGB_8888).size(1204,724).pos(1200*y,720*x);
         var blockid=x*pn+y;
-        baseNode.add(s,10000-blockid, blockid+10000);
+        //z tag
+        baseNode.add(s, 10000-blockid, blockid+10000);
         placedict.update(blockid,s);
         var objlist = [0,0,1,2,2,3+abs(boolrand(3,y)%2),4-abs(boolrand(4,x)%2)];
         var objlev = [0,0,0,0,0,0,0,0];

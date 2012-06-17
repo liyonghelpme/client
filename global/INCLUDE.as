@@ -34,6 +34,7 @@ import element.CheckTime;
 import element.MagicWarning;
 import element.CaeWarning;
 import element.Tip;
+import element.DialogController;
 
 import page.MapPage;
 import element.MonsterController;
@@ -46,6 +47,9 @@ import element.ResourceControl;
 import element.NobattleControl;
 import element.Waraboutinfo;
 import element.Warchatdialog;
+import element.MyWarnDialog;
+import element.MonsterAttack;
+import element.Monster;
 
 
 import element.Simpledialog;

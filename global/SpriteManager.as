@@ -13,7 +13,7 @@ class SpriteManager
     var askToDown;
     var downLoadType = NotDownload;
 
-    var IconPos = 1;
+    var IconPos = 2;
     function SpriteManager(g)
     {
         global = g;
