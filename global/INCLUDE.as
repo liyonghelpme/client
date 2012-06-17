@@ -52,6 +52,8 @@ import element.ResourceControl;
 import element.NobattleControl;
 import element.Waraboutinfo;
 import element.Warchatdialog;
+import element.Monster;
+import element.MonsterAttack;
 
 
 import element.Simpledialog;

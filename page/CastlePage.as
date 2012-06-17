@@ -642,6 +642,17 @@ class CastlePage extends ContextObject{
                 //global.pushContext(null, new LoginInvite(), NonAutoPop);
             }
         }
+        else if(p == "getMyResult")
+        {
+            if(rc != 0)
+                addMonResult(json_loads(c).get("res")); 
+        }
+    }
+    var monsterResult = [];
+    function addMonResult(res)
+    {
+        trace("addMonResult", res);
+        monsterResult += res; 
     }
     
     function levelup(r,rc,c){
@@ -1383,6 +1394,10 @@ class CastlePage extends ContextObject{
     var statestr="";
     var week = -1;
     var getBonus = 0;
+    function getMonResult()
+    {
+        global.http.addrequest(0, "monsterc/getMyResult", ["uid"], [global.userid], this, "getMyResult");
+    }
     function getidback(r,rc,c){
         if(rc != 0){
 
@@ -1393,6 +1408,7 @@ class CastlePage extends ContextObject{
             if(global.userid == 0){
                 quitgame();
             }
+            getMonResult();
             global.user.prepareCode(this);
             newstate = data.get("newstate",3);
             week = data.get("week");
@@ -1911,6 +1927,11 @@ class CastlePage extends ContextObject{
         http_request("http://connect.papayamobile.com:8080/xpromt/apple/clickImage?userid="+did+"&fromIdentifier=com.papaya.miracle1&toIdentifier="+toIdentifier, visitSuc);
     }
     function timerefresh(timer,tick,param){
+        if(len(monsterResult) > 0)
+        {
+            var res = monsterResult.pop(0);
+            addcmd(dict([["name", "monsterResult"], ["data", res]]));
+        }
         if(getImageYet == 1)
         {
             curAdPic = sprite(imageUrl).setevent(EVENT_TOUCH, visitAd).anchor(50, 50).pos(400, 240);
@@ -2473,14 +2494,14 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         else if(name == "loginInvite")
         {
 
-            /*
-            if(global.user.inviteCode == null)
-            {
-                global.user.prepareCode(this);
-            }
-            else
-            */
             global.pushContext(null, new LoginInvite(), NonAutoPop);
+        }
+        else if(name == "monsterResult")
+        {
+            var data = cmd.get("data"); 
+            var words = global.getFormatString("monsterResult", ["[NUM]", str(data.get("dragonNum"))]); 
+            global.pushContext(null, new MyWarnDialog(null, 1, words), NonAutoPop); 
+            global.user.changeValue("dragonStone", data.get("dragonNum"));
         }
     }
     var reqlock=0;

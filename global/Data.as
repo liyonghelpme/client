@@ -465,6 +465,10 @@ var Dicts =
 "From now on, you will get 10 free caesar coins once you successfully invite one friend to play Miracle Empire! Tip: your friend log in Miracle Empire,  input your invite code and you will get 10 free caesars! One friend only can add once for you. Your invite code is [CODE]"
     ], 
 ["okInvite", "Input Invite Code"], 
+["monsterResult", "You join friends to kill the monster on map, get [NUM] dragon stone!"], 
+["monsterDisappear", "Monster not on this map!"], 
+["soldierNot", "soldier not enough to attack!"], 
+["monKill", "Kill the monster! Infantry lost [INF], cavalry Lost [CAV], catapult lost [CATA], monster left health [LEFTPOWER]"], 
 ["", ""], 
 
 ];
