@@ -89,12 +89,7 @@ class MenuControl extends ContextObject{
     
     function invite(){
         global.popContext(null);
-        if(sysinfo(21)!=null&&int(sysinfo(21))>=4){
-            invite_friends(INVITE_STR[0],INVITE_STR[1],INVITE_STR[2]);
-        }
-        else{
-            global.pushContext(null,new TestWebControl(1),NonAutoPop);
-        }
+        global.pushContext(null, new LoginInvite(), NonAutoPop);
     }
     
     function entermedal(){

@@ -260,6 +260,7 @@ class CastlePage extends ContextObject{
         topmenu.add(personb.pos(210,0),-1,1);
         moneyb = menu.addnode().pos(640,43);
         var mb = topmenu.addsprite("moneyboard.png").anchor(100,0).pos(800,0).setevent(EVENT_UNTOUCH,buycaesars);
+        mb.addsprite("mail.png").anchor(50, 50).pos(142, 54);
         var moneylabel = mb.addlabel("0",null,18).anchor(0,50).pos(37,16).color(0,0,0,100);
         var caesarslabel = mb.addlabel("0",null,18).anchor(0,50).pos(61,44).color(0,0,0,100);
         global.user.initText("money",moneylabel);
@@ -591,12 +592,19 @@ class CastlePage extends ContextObject{
                 global.pushContext(null, new Warningdialog(["如果你觉得"+f.get("empirename")+"漂亮， 你可以给"+f.get("name")+"加1分， 每天每个好友最多1分哦！", null, 4]), NonAutoPop);
             }
         }
-        /*
+        else if(p == "getCode")
+        {
+            if(rc != 0)
+            {
+                c = json_loads(c);
+                global.user.inviteCode = c.get("code");
+            }
+        }
         else if(p == "getMyResult")
         {
-            global.dialogController.addMonResult(json_loads(c).get("res"));
+            if(rc != 0)
+                addMonResult(json_loads(c).get("res"));
         }
-        */
     }
     
     function levelup(r,rc,c){
@@ -1271,10 +1279,9 @@ class CastlePage extends ContextObject{
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 
-    //var monsterResult = [];
+    var monsterResult = [];
     var statestr="";
     var getBonus = 0;
-    /*
     function addMonResult(res)
     {
         monsterResult += res;
@@ -1286,23 +1293,19 @@ class CastlePage extends ContextObject{
     {
         global.http.addrequest(0, "monsterc/getMyResult", ["uid"], [global.userid], this, "getMyResult");
     }
-    */
 
     function getidback(r,rc,c){
         if(rc != 0){
             var data = json_loads(c);
 
-            //[uid mid dragonNum, power, totalNum ]
-            //monsterResult = data.get("monsterResult", []);
-            //trace("monsterResult", monsterResult);
-
-
             global.userid = data.get("id",0);
             cuid = global.userid;
-            //getMyResult();
             if(global.userid == 0){
                 quitgame();
             }
+            //getMyResult();
+            global.user.prepareCode(this);
+
             if(data.get("ppyname")!=ppy_username()){
                 global.http.addrequest(0,"updateppyname",["uid","ppyname"],[global.userid,ppy_username()],self,"nothing");
             }
@@ -1632,6 +1635,7 @@ class CastlePage extends ContextObject{
 
                 if(bonus != 0){
                     //addcmd(dict([["name","notice"]]));
+                    addcmd(dict([["name", "loginInvite"]]));
 
                     var bdict = dict();
                     bdict.update("name","daily");
@@ -1772,14 +1776,12 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
-        /*
         if(len(monsterResult) > 0)
         {
             trace("monsterResult", monsterResult);
             var res = monsterResult.pop();
             addcmd(dict([["name", "monsterResult"], ["data", res]]));
         }
-        */
         if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
         {
             addManaLock = 1;
@@ -2244,7 +2246,10 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
                 friend.inviteAll();
             }
         }
-        /*
+        else if(name == "loginInvite")
+        {
+            global.pushContext(null, new LoginInvite(), NonAutoPop);
+        }
         else if(name == "monsterResult")
         {
             var data = cmd.get("data"); 
@@ -2252,7 +2257,6 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             global.pushContext(null, new MyWarnDialog(null, 1, words), NonAutoPop); 
             global.user.changeValue("dragonStone", data.get("dragonNum"));
         }
-        */
 
     }
     var reqlock=0;

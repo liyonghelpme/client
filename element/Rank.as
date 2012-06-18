@@ -81,7 +81,7 @@ class Rank extends ContextObject{
         var food = data.get("myrank")[1];
         trace("show rank user", myrank);
         nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(246, 48).color(0, 0, 0, 100);
-        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(615, 48).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(571, 48).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

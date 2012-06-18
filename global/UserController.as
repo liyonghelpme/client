@@ -139,6 +139,11 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
+    var inviteCode = null;
+    function prepareCode(obj)
+    {
+        global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], obj, "getCode");
+    }
     
     function UserController(){
         userinfo = dict();

@@ -1,3 +1,5 @@
+const MAP_WIDTH = 600;
+const MAP_HEIGHT = 360;
 var TipShow = 0;
 function checkNightBuild(bid)
 {

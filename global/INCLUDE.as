@@ -1,5 +1,8 @@
 
 import page.CastlePage;
+import element.LoginInvite;
+import element.InviteDialog;
+
 import element.WarChoose;
 import element.WarControl;
 import page.FriendControl;
@@ -40,6 +43,8 @@ import page.MapPage;
 import element.MonsterController;
 import element.Monsterdialog;
 
+import element.MonsterAttack;
+import element.Monster;
 
 import page.WarPage;
 import element.UserControl;
@@ -48,8 +53,8 @@ import element.NobattleControl;
 import element.Waraboutinfo;
 import element.Warchatdialog;
 import element.MyWarnDialog;
-import element.MonsterAttack;
-import element.Monster;
+
+
 
 
 import element.Simpledialog;

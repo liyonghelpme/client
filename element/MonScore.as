@@ -11,10 +11,10 @@ class MonScore extends ContextObject{
         , null, 25, FONT_NORMAL, 374, 0, ALIGN_LEFT).pos(200, 84).color(0, 0, 0, 100);
 
         contextNode.addsprite("boxbutton1.png").pos(275, 406).anchor(50, 50).setevent(EVENT_UNTOUCH, getRank);
-        contextNode.addlabel("Ranking", null, 20).pos(275, 406).anchor(50, 50).color(100, 100, 100, 100);
+        contextNode.addlabel("排行榜", null, 20).pos(275, 406).anchor(50, 50).color(100, 100, 100, 100);
 
         contextNode.addsprite("boxbutton2.png").pos(453, 406).anchor(50, 50).setevent(EVENT_UNTOUCH, closedialog);
-        contextNode.addlabel("OK", null, 20).pos(453, 406).anchor(50, 50).color(100, 100, 100, 100);
+        contextNode.addlabel("确定", null, 20).pos(453, 406).anchor(50, 50).color(100, 100, 100, 100);
     }
     function getRank()
     {

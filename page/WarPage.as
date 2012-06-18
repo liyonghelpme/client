@@ -171,6 +171,7 @@ class WarPage extends ContextObject{
         baseNode.addaction(tintto(800,100,100,100,100));
         initialMenu();
         initlock = -1;
+        restoreMonster();
     }
 
     var inite = 0;
@@ -217,8 +218,7 @@ class WarPage extends ContextObject{
         }
     }
 
-    const MAP_WIDTH = 600;
-    const MAP_HEIGHT = 360;
+
     const MAP_SIZE = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [8, 8], [10, 10]];
     var monsters = [];
     const MAX_MAP_Z = 100000;
@@ -279,19 +279,26 @@ trace("warinfo",rc,c);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
                 warchat.global=global;
 
-                var nNobility = min(len(MAP_SIZE)-1, max(0, nobility));
-                var mapSize = MAP_SIZE[nNobility];
-                var mPos = [mapSize[0]*MAP_WIDTH/2, mapSize[1]*MAP_HEIGHT/2];
-                var monster = data.get("monster", []); 
-                for(var m = 0; m < len(monster); m++)
-                {
-                    var mon = new Monster(this, monster[m]);
-                    monsters.append(mon);
-                    mon.setPos(mPos);
-                    baseNode.add(mon.bg, MAX_MAP_Z);
-                    trace("addMonster", mon, monster[m], mPos);
-                }
+                setMonster(data.get("monster", []));
+
             }
+        }
+    }
+
+    function setMonster(monsterData)
+    {
+        var nNobility = min(len(MAP_SIZE)-1, max(0, global.user.getValue("nobility")/3));
+        var mapSize = MAP_SIZE[nNobility];
+        var mPos = [mapSize[0]*MAP_WIDTH/2, mapSize[1]*MAP_HEIGHT/2];
+        var monster = monsterData; 
+        monsters = [];
+        for(var m = 0; m < len(monster); m++)
+        {
+            var mon = new Monster(this, monster[m]);
+            monsters.append(mon);
+            mon.setPos(mPos);
+            baseNode.add(mon.bg, MAX_MAP_Z);
+            trace("addMonster", mon, monster[m], mPos);
         }
     }
     function removeMonster(m)
@@ -299,6 +306,15 @@ trace("warinfo",rc,c);
         monsters.remove(m);
     }
     
+    function restoreMonster()
+    {
+        for(var i = 0; i < len(monsters); i++)
+        {
+            var mon = monsters[i];
+            mon.bg.removefromparent();
+            baseNode.add(mon.bg, MAX_MAP_Z);
+        }
+    }
     function loadempty(list){
         if(list == null)
             return;

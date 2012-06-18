@@ -80,6 +80,9 @@ const stringDict=dict([
 ["monsterDisappear", "该怪兽不存在！"],
 ["soldierNot", "士兵不足！"],
 ["monKill", "攻击蛮荒古兽成功，损失步兵[INF], 损失骑兵[CAV], 损失投石车[CATA], 怪兽剩余战力[LEFTPOWER]。"],
+["inviteNotice", "每天第一次登录推广对话框：每邀请1个好友来玩奇迹帝国能获得10个免费凯撒币哦！提示：好友登录游戏输入你的邀请码，你将获得10个凯撒币！同个好友只能给你加一次凯撒币。你的邀请码是：[CODE]"],
+["okInvite", "输入邀请码"],
+["inviteString", "hi, 我的邀请码是[CODE]，快来与我一起玩奇迹帝国吧！"],
 ["", ""],
 
 ]);

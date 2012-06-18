@@ -3,6 +3,7 @@ class BuyControl extends ContextObject{
     var selecttab;
 
     const buystr = ["3+0+300","10+1+1000","25+5+2500","50+15+5000","100+40+10000"];
+    const newValue = [5, 13, 30, 60, 120];
     //const buystr = ["3+0+300","10+2+1000","25+7+2500","50+20+5000","100+50+10000"];
 
     function BuyControl(){
@@ -19,6 +20,7 @@ class BuyControl extends ContextObject{
             var num = buystr[i].split("+");
             tabs[i] = contextNode.addsprite("buyelement10.png").pos(29+i*133,105).setevent(EVENT_UNTOUCH,choosetab,i);
             tabs[i].addlabel(num[0],null,25).anchor(50,50).pos(79,31).color(0,0,0,100);
+            tabs[i].addlabel("X"+str(newValue[i]), null, 25).anchor(0, 50).pos(79, 35).color(100, 0, 0);
             if(num[1]!="0"){
                 tabs[i].addlabel(num[1],null,20).anchor(50,50).pos(90,73).color(0,0,0,100);
                 //tabs[i].addsprite("temp"+str(i)+".png").pos(73,61);
@@ -66,6 +68,8 @@ class BuyControl extends ContextObject{
         if(getPapaFin == 0)
             return;
         var num = buystr[selecttab].split("+");
+        var caeNum = newValue[selecttab];
+
         trace("buy", userPapaya, num);
         if(userPapaya < int(num[2]))
         {
@@ -75,7 +79,7 @@ class BuyControl extends ContextObject{
         }
         global.popContext(null);
 
-        start_payment("购买凯撒币","购买"+str(int(num[0])+int(num[1]))+"个凯撒币","",int(num[2]),buycaesars2);
+        start_payment("购买凯撒币","购买"+str(caeNum)+"个凯撒币","",int(num[2]),buycaesars2);
     }
     
     function buycaesars2(pid, ret, tid, receipt, param){
@@ -94,7 +98,9 @@ class BuyControl extends ContextObject{
     function buyover(r,rc,c){
         if(json_loads(c).get("id")==1){
             var num=buystr[selecttab].split("+");
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",int(num[0])+int(num[1]),-6);
+            var caeNum = newValue[selecttab];
+
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars", caeNum,-6);
         }
     }
 
