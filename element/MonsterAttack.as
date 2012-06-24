@@ -39,14 +39,12 @@ class MonsterAttack extends ContextObject{
             mb.add(sprite("moveblock.png").anchor(50,50).pos(79,16),1,0);
             slabels[i] = mb.addlabel("0",null,16).anchor(0,50).pos(59,-21).color(0,0,0,100);
         }
-        /*
         if(global.flagnew == 0){
             csnum(mb,EVENT_TOUCH,0,70);
         }
         else{
             csnum(mb,EVENT_TOUCH,0,600);
         }
-        */
     }
     
     function csnum(n,e,p,x){
