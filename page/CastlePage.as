@@ -93,6 +93,21 @@ class CastlePage extends ContextObject{
     var inpos = -140;
     var LoadPage;
     var rankYet = 1;
+
+    var monsterNode = null;
+    function setMonsterNode(monNode)
+    {
+        if(monNode != null)
+        {
+            monsterNode = monNode;
+            if(contextNode != null)
+                contextNode.add(monsterNode, 1000);
+        }
+    }
+    function clearMonsterNode()
+    {
+        monsterNode = null;
+    }
     function CastlePage(){
         contextname = "page-castle";
         contextNode = null;
@@ -133,6 +148,8 @@ class CastlePage extends ContextObject{
 
     override function paintNode(){
         contextNode = sprite("800480.jpg",ARGB_8888).size(PAGE_W,PAGE_H).anchor(50,50).pos(400,240);
+        setMonsterNode(monsterNode);
+
         contextNode.addsprite("empirebacklefttop.png").scale(300);
         contextNode.addsprite("empirebackrighttop.png").anchor(100,0).pos(PAGE_W,0).scale(300);
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);
@@ -1398,6 +1415,7 @@ class CastlePage extends ContextObject{
     {
         global.http.addrequest(0, "monsterc/getMyResult", ["uid"], [global.userid], this, "getMyResult");
     }
+    var busiMonster;
     function getidback(r,rc,c){
         if(rc != 0){
 
@@ -1409,6 +1427,9 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             getMonResult();
+            busiMonster = new BusiMonster(this);
+            busiMonster.updateData();
+
             global.user.prepareCode(this);
             newstate = data.get("newstate",3);
             week = data.get("week");
@@ -1754,8 +1775,8 @@ class CastlePage extends ContextObject{
                 }
 
                 if(bonus != 0){
-                    //addcmd(dict([["name","notice"]]));
-                    addcmd(dict([["name", "loginInvite"]]));
+                    addcmd(dict([["name","notice"]]));
+                    //addcmd(dict([["name", "loginInvite"]]));
 
                     var level = global.user.getValue("level");
                     var nobility = global.user.getValue("nobility");
@@ -2617,6 +2638,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
     var rightBottom = null;
     function resume(){
         contextNode = global.screen.addsprite("800480.jpg",ARGB_8888).size(PAGE_W,PAGE_H).anchor(50,50).pos(pausepos).scale(100+mode);
+        setMonsterNode(monsterNode);
         contextNode.addsprite("empirebacklefttop.png").scale(300);
         contextNode.addsprite("empirebackrighttop.png").anchor(100,0).pos(PAGE_W,0).scale(300);
         contextNode.addsprite("empirebackleftbottom.png").anchor(0,100).pos(0,PAGE_H).scale(300);

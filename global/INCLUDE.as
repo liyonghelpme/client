@@ -1,5 +1,8 @@
 
 import page.CastlePage;
+import page.BusiMonster;
+import page.MonsterDia;
+
 import element.WarChoose;
 import element.WarControl;
 import page.FriendControl;
