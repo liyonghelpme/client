@@ -1,10 +1,10 @@
 //import element.TooManyUser;
 //import element.Score;
-//import element.Rank;
+import element.Rank;
 //import element.OldUser;
 //import element.Vip;
 //import element.Unlock;
-//import element.MonScore;
+import element.MonScore;
 //import element.MonRank;
 //import element.Invite;
 //import element.MonScore;
@@ -228,7 +228,7 @@ class CastlePage extends ContextObject{
         else
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
-    //var actButton;
+    var actButton;
     //var monButton;
     var tipButton;
     //var moreGames;
@@ -246,7 +246,7 @@ class CastlePage extends ContextObject{
 
         
         fmenu = menu.addsprite().visible(0);
-        //actButton = menu.addsprite("foodAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
+        actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
         //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         //moreGames = menu.addsprite("moreGame.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_TOUCH, showMore).scale(60*100/47);
@@ -342,6 +342,7 @@ class CastlePage extends ContextObject{
     {
         //global.pushContext(null, new Vip(), NonAutoPop);
         //global.pushContext(null, new MonScore(), NonAutoPop);
+        global.pushContext(null, new MonScore(), NonAutoPop);
     }
     function showMon()
     {
@@ -864,7 +865,7 @@ class CastlePage extends ContextObject{
                 if(p==global.papaId){//back
                     flagfriend = 0;
                     showHomeMenu();
-                    //actButton.texture("heart.png");
+                    actButton.texture("heart.png");
 
                     fmenu.visible(0);
                 }
@@ -894,9 +895,9 @@ class CastlePage extends ContextObject{
                     }
                     f.update("nob", ccard[12]%100);
                     hideHomeMenu();
-                    //if(cpid != 0)
-                    //    actButton.visible(1);
-                    //actButton.texture("heartPlus.png");
+                    if(cpid != 0)
+                        actButton.visible(1);
+                    actButton.texture("heartPlus.png");//add Heart to Friend
                 }
                 box.setbox(-1,0,0);
                 self.resume();
@@ -986,6 +987,7 @@ class CastlePage extends ContextObject{
         friendpredict.update(p,1);
         global.http.addrequest(0,"getfriend",["userid","otherid","user_kind"],[global.userid,p,0],self,"addprefriend");
     }
+    //main Home Menu
     function showHomeMenu()
     {
         topmenu.visible(1);
@@ -994,10 +996,9 @@ class CastlePage extends ContextObject{
         //actButton.visible(1);
         //monButton.visible(1);
         //moreGames.visible(1);
-        /*
         actButton.texture("heart.png");
         actButton.setevent(EVENT_UNTOUCH, showAct);
-        */
+
         tipButton.visible(1);
         spriteManager.showDownIcon();
     }
@@ -1009,13 +1010,12 @@ class CastlePage extends ContextObject{
         //actButton.visible(0);
         //monButton.visible(0);
         //moreGames.visible(0);
-        /*
         if(rankYet == 0)
             actButton.texture("heartPlus.png");
         else 
             actButton.texture("heartPlus.png", GRAY);
         actButton.setevent(EVENT_UNTOUCH, addHeart);
-        */
+
         tipButton.visible(0);
         spriteManager.hideDownIcon();
     }
@@ -1024,8 +1024,9 @@ class CastlePage extends ContextObject{
     //var data = new Array(grounds,ccard,box.helpperson,box.maxperson,box.boxfriends,flagally,map,cuid,ccid,friendmoney,time(),mode, rankYet);
     function setRankYet()
     {
+        trace("rankYet");
         rankYet = 1;
-        //actButton.texture("heartPlus.png", GRAY); 
+        actButton.texture("heartPlus.png", GRAY); 
         var fri = datadict.get(cpid);
 
         if(fri != null)
@@ -1060,6 +1061,7 @@ class CastlePage extends ContextObject{
             }
             */
         //}
+        trace("rankYet", rankYet);
         rankYet = data.get("rankYet", 0); 
         //trace("first rank", rankYet, data);
         cpid = int(data.get("id"));
@@ -1097,7 +1099,7 @@ class CastlePage extends ContextObject{
         {
             actButton.texture("heartPlus.png", GRAY); 
         }
-      */
+        */
         map = new Array(0);
         for(var k=0;k<1600;k++) map.append(0);
         var objs = data.get("stri").split(";");

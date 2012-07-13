@@ -127,9 +127,31 @@ class MonsterDia extends ContextObject{
                     global.user.changeValue("catapult", -lostCata);
                 }
                 global.user.changeValue("dragonStone", c.get("dragonNum"));
+                //global.user.changeValueAnimate2(global.context[0].moneyb, "dragonStone", draNum, -4);
                 //monster.removeSelf(c.get("dragonNum"));
+                showDragonStone(c.get("dragonNum"));
             }
         }
+    }
+
+    function showDragonStone(value)
+    {
+        var ps = monster.bg.pos();
+        var bSize = monster.bg.size();
+        var x = ps[0] + bSize[0]/2;
+        var y = ps[1] - 17;
+        var n = node().pos(x,y);
+        n.add(sprite("opbutton27.png").anchor(100, 50).pos(-5, 0));
+
+        var ns = str(value);
+        var f = 0;
+        if(value > 0){
+            ns = "+"+ns;
+            f = 1;
+        }
+        n.addlabel(ns,null,40).color(100,f*100,0,100).anchor(0,50).pos(5,0);
+        n.addaction(sequence(itintto(0, 0, 0, 0), delaytime(5000), itintto(100, 100, 100, 100), moveby(1000,0,-80),tintto(1000,0,0,0,0),callfunc(removeself)));
+        global.context[0].contextNode.add(n.scale(80),20000);
     }
 
     function closedialog(node,event,p){

@@ -7,6 +7,11 @@ myRank rank num
 
 服务器： 1小时更新 删除旧的数据 去掉旧的数据更新
 杀死一个怪兽 增加一个得分
+
+heartRank:
+返回用户当前的排名heart 数据 
+访问好友 rankYet
+没有rankYet 则加1
 */
 class Rank extends ContextObject{
     var nameNode;
@@ -16,7 +21,7 @@ class Rank extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite("MonRank.jpg").anchor(50,50).pos(400,240);
+        contextNode = sprite("heartRank.jpg").anchor(50,50).pos(400,240);
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
@@ -94,7 +99,7 @@ class Rank extends ContextObject{
             nameNode.addlabel("999+", null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
         else
             nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
-        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(600, 56).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(635, 56).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

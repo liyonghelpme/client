@@ -21,7 +21,7 @@ class MonsterOnBusi
 
         //load_sprite_sheet("soldierm"+str(kind)+".plist");
         //"soldierm"+str(kind)+".plist/ss"+str(kind)+"m0.png"
-        bg = sprite("monster_"+str(kind)+"_1.png").pos(map.monPoses[posId]).anchor(50, 100);
+        bg = sprite("monster_"+str(kind)+"_1.png").pos(map.monPoses[posId]);
         //movAct = repeat(animate(2000, "soldierm"+str(kind)+".plist/ss"+str(kind)+"m0.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m1.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m2.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m3.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m4.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m5.png", "soldierm"+str(kind)+".plist/ss"+str(kind)+"m6.png", UPDATE_SIZE));
         movAct = repeat(animate(1000, "monster_"+str(kind)+"_1.png", "monster_"+str(kind)+"_2.png","monster_"+str(kind)+"_3.png")); 
 
@@ -59,7 +59,7 @@ class MonsterOnBusi
     {
         bg.removefromparent(); 
         map.mPids.remove(posId);
-        global.user.changeValueAnimate2(global.context[0].moneyb, "dragonStone", draNum, -4);
+
         
         /*
         var OFFX = 50;
@@ -92,7 +92,7 @@ class MonsterOnBusi
 class BusiMonster
 {
     //怪兽最多有10个保证有10个位置可以放置怪兽
-    var monPoses = [[411, 1050], [1014, 258], [834, 321], [561, 417], [357, 552], [2076, 186], [483, 1149], [756, 1323], [1566, 1413], [2250, 417]]; 
+    var monPoses = [[411, 1070], [1014, 230], [834, 300], [561, 400], [357, 529], [2076, 156], [483, 1169], [756, 1243], [1656, 1302], [2250, 437]]; 
     //18-35
     var monName = dict([
         [18, "Snake King"],

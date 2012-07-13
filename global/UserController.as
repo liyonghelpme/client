@@ -335,7 +335,11 @@ class UserController{
             var x = ps[0]+ne.contextid*2;
             var y = ps[1]-ne.contextid*17-hi*17;
             var n = node().pos(x,y);
-            if(key=="citydefence"){
+            if(key == "dragonStone")
+            {
+                n.add(sprite("opbutton27.png").anchor(100, 50).pos(-5, 0));
+            }
+            else if(key=="citydefence"){
                 n.add(sprite("defence.png").anchor(100,50).pos(-25,0));
             }
             else{
