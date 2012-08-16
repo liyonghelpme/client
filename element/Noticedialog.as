@@ -7,7 +7,7 @@ class Noticedialog extends ContextObject{
     var showlabel;
     var buttonlabel;
     const newupdate = [
-    "Sire, Monsters are invading our lands! Kill them and earn Dragon Stones!"
+    "liensaraband build the Best Empire and won 100 dragon stones! LuiLuiLuiLui and other 19 users won 10 dragon stones. Now Contest of Killing monsters is coming! Kill every 10 monsters and you will win 1 dragon stone."
     ]; 
     function paintNode(){
         updatenum=-1;

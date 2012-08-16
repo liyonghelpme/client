@@ -39,8 +39,8 @@ const buildcontext = [
 ];
 
 
-//const BASE_URL = "http://23.21.135.42:8000/";
-const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
+const BASE_URL = "http://23.21.135.42:8000/";
+//const BASE_URL = "http://uhz000738.chinaw3.com:8888/";
 trace("initBaseUrl", BASE_URL);
 
 const WARCHAT_URL = "http://23.21.135.42:8004/";
