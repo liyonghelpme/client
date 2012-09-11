@@ -1,13 +1,18 @@
 class Noticedialog extends ContextObject{
-    function Noticedialog(){
+    var monNum;
+    var dragonNum;
+    function Noticedialog(m, d){
+        monNum = m;
+        dragonNum = d;
+        newupdate[0] = global.getFormatString("getReward", ["[N0]", str(monNum), "[N1]", str(monNum/10)]); 
         contextname = "dialog-notice";
         contextNode = null;
     }
     var updatenum;
     var showlabel;
     var buttonlabel;
-    const newupdate = [
-    "liensaraband build the Best Empire and won 100 dragon stones! LuiLuiLuiLui and other 19 users won 10 dragon stones. Now Contest of Killing monsters is coming! Kill every 10 monsters and you will win 1 dragon stone."
+    var newupdate = [
+        "" 
     ]; 
     function paintNode(){
         updatenum=-1;
@@ -34,6 +39,10 @@ class Noticedialog extends ContextObject{
             else{
                 buttonlabel.text(global.getStaticString("next"));
             }
+            //显示怪兽数量 奖励仙龙石数量
+            //newupdate[updatenum] = newupdate[updatenum].replace("[N0]", str(monNum));
+            //newupdate[updatenum] = newupdate[updatenum].replace("[N1]", str(monNum/10));
+            trace(newupdate[updatenum]);
             showlabel.text(newupdate[updatenum]);
         }
     }

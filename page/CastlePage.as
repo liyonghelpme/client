@@ -229,7 +229,7 @@ class CastlePage extends ContextObject{
             global.pushContext(null,new Chatdialog(cuid),NonAutoPop);
     }
     //var actButton;
-    var monButton;
+    //var monButton;
     var tipButton;
     //var moreGames;
     function initialMenu(){
@@ -247,7 +247,7 @@ class CastlePage extends ContextObject{
         
         fmenu = menu.addsprite().visible(0);
         //actButton = menu.addsprite("heart.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showAct).scale(60*100/70, 60*100/70);
-        monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
+        //monButton = menu.addsprite("MonAct.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_UNTOUCH, showMon).scale(60*100/70, 60*100/70);
         //actButton.prepare();
         //moreGames = menu.addsprite("moreGame.png").anchor(100, 0).pos(RightMenuAlign, MenuY+MenuDifY).setevent(EVENT_TOUCH, showMore).scale(60*100/47);
 
@@ -296,7 +296,8 @@ class CastlePage extends ContextObject{
         topmenu.add(personb.pos(210,0),-1,1);
         moneyb = menu.addnode().pos(640,43);
         var mb = topmenu.addsprite("moneyboard.png").anchor(100,0).pos(800,0).setevent(EVENT_UNTOUCH,buycaesars);
-        //mb.addsprite("mail.png").anchor(50, 50).pos(142, 54);
+
+        mb.addsprite("mail.png").anchor(50, 50).pos(142, 54);
 
         var moneylabel = mb.addlabel("0",null,18).anchor(0,50).pos(37,16).color(0,0,0,100);
         var caesarslabel = mb.addlabel("0",null,18).anchor(0,50).pos(61,44).color(0,0,0,100);
@@ -659,6 +660,18 @@ class CastlePage extends ContextObject{
         {
             if(rc != 0)
                 addMonResult(json_loads(c).get("res")); 
+        }
+        else if(p == "getRewardOver")
+        {
+            if(rc != 0)
+            {
+                trace("getRewardOver", c);
+                c = json_loads(c);
+                var dragonNum = c.get("dragonNum");
+                var monNum = c.get("monNum");
+                //if(dragonNum > 0)
+                addcmd(dict([["name", "notice"], ["dragonNum", dragonNum], ["monNum", monNum]])); 
+            }
         }
     }
     var monsterResult = [];
@@ -1777,8 +1790,15 @@ class CastlePage extends ContextObject{
                     }
                 }
 
+                //如果得到的dragonNum > 0 则显示notice
+
+
                 if(bonus != 0){
-                    addcmd(dict([["name","notice"]]));
+                    global.http.addrequest(0, "getReward", ["uid"], [global.userid], this, "getRewardOver");
+
+
+                    
+                    //addcmd(dict([["name","notice"]]));
                     //addcmd(dict([["name", "loginInvite"]]));
 
                     var level = global.user.getValue("level");
@@ -2463,7 +2483,10 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             global.pushContext(self,new Warningdialog([global.getFormatString("warrecord_notice_format",["[NUM]",str(cmd.get("num"))]),800,3]),NonAutoPop);
         }
         else if(name == "notice"){
-            global.pushContext(self,new Noticedialog(),NonAutoPop);
+            var dragonNum = cmd.get("dragonNum");
+            global.user.changeValue("dragonStone", dragonNum);
+            var monNum = cmd.get("monNum");
+            global.pushContext(self,new Noticedialog(monNum, dragonNum),NonAutoPop);
         }
         else if(name == "wonbonus"){
             global.pushContext(self,new Wonbonus(cmd.get("num"),cmd.get("money")),NonAutoPop);

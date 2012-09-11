@@ -469,6 +469,7 @@ var Dicts =
 ["monsterDisappear", "Monster not on this map!"], 
 ["soldierNot", "soldier not enough to attack!"], 
 ["monKill", "Kill the monster! Infantry lost [INF], cavalry Lost [CAV], catapult lost [CATA], monster left health [LEFTPOWER]"], 
+["getReward",  "You kill [N0] monsters during contest, and get [N1] dragon stones as awards. Now Recharge Discount is coming! Limited time offer up for grabs, available now or never! Hurry!"],
 ["", ""], 
 
 ];
