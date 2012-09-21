@@ -1,4 +1,4 @@
-import element.Rankingdialog;
+//import element.Rankingdialog;
 class FriendControl{
     var friendmode;
     var friendback;

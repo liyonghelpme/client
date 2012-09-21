@@ -1,8 +1,8 @@
 //import element.Act;
 //import element.Score;
 //import element.Rank;
-import element.MonScore;
-import element.Rank;
+//import element.MonScore;
+//import element.Rank;
 class CastlePage extends ContextObject{
     var lastpoint;
     var centerpoint;
@@ -296,7 +296,7 @@ class CastlePage extends ContextObject{
     }
     function loveShow(n, e, p, x, y, points)
     {
-        global.pushContext(null, new Love(), NonAutoPop);
+        //global.pushContext(null, new Love(), NonAutoPop);
     }
     var leftbuttonnum;
     var rightbuttonnum;
@@ -600,11 +600,13 @@ class CastlePage extends ContextObject{
                 global.user.inviteCode = c.get("code");
             }
         }
+        /*
         else if(p == "getMyResult")
         {
             if(rc != 0)
                 addMonResult(json_loads(c).get("res"));
         }
+        */
     }
     
     function levelup(r,rc,c){
@@ -1279,9 +1281,12 @@ class CastlePage extends ContextObject{
         global.http.addrequest(0,"logsign",["papayaid","user_kind","md5"],[ppy_userid(),0,md5(str(ppy_userid())+"-0800717193")],self,"getidback");
     }
 
-    var monsterResult = [];
     var statestr="";
     var getBonus = 0;
+    /*
+
+    var monsterResult = [];
+
     function addMonResult(res)
     {
         monsterResult += res;
@@ -1293,6 +1298,7 @@ class CastlePage extends ContextObject{
     {
         global.http.addrequest(0, "monsterc/getMyResult", ["uid"], [global.userid], this, "getMyResult");
     }
+    */
 
     function getidback(r,rc,c){
         if(rc != 0){
@@ -1304,7 +1310,7 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             //getMyResult();
-            global.user.prepareCode(this);
+            //global.user.prepareCode(this);
 
             if(data.get("ppyname")!=ppy_username()){
                 global.http.addrequest(0,"updateppyname",["uid","ppyname"],[global.userid,ppy_username()],self,"nothing");
@@ -1776,12 +1782,14 @@ class CastlePage extends ContextObject{
     function timerefresh(timer,tick,param){
         var i;
         var now = time();
+        /*
         if(len(monsterResult) > 0)
         {
             trace("monsterResult", monsterResult);
             var res = monsterResult.pop();
             addcmd(dict([["name", "monsterResult"], ["data", res]]));
         }
+        */
         if((now - global.user.getValue("manatime")) > 300000 && addManaLock == 0 )
         {
             addManaLock = 1;
@@ -2250,6 +2258,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
         {
             global.pushContext(null, new LoginInvite(), NonAutoPop);
         }
+        /*
         else if(name == "monsterResult")
         {
             var data = cmd.get("data"); 
@@ -2257,6 +2266,7 @@ defOtherid defEmpirename defNobility attGod defGod catapult defCatapult
             global.pushContext(null, new MyWarnDialog(null, 1, words), NonAutoPop); 
             global.user.changeValue("dragonStone", data.get("dragonNum"));
         }
+        */
 
     }
     var reqlock=0;

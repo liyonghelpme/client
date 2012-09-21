@@ -1,3 +1,4 @@
+/*
 import element.OnekeyController;
 import element.Devinedialog;
 import element.QuickControl;
@@ -15,6 +16,7 @@ import element.ProCatapult;
 import element.Catapult;
 import element.DiskExplain;
 import element.Disk;
+*/
 class BuildControl extends ContextObject{
     var place;
     var placeObj;

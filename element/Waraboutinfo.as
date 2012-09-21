@@ -1,8 +1,10 @@
+/*
 import element.Attacklistpage;
 import element.Defencelistpage;
 import element.Warrecordpage;
 import element.Warrecordinfo;
 import element.Warrecordlist;
+*/
 class Waraboutinfo extends ContextObject{
     var pageindex;
     var pages;

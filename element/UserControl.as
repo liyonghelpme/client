@@ -1,9 +1,11 @@
+/*
 import element.AttackControl;
 import element.Attackbegindialog;
 import element.SpyControl;
 import element.Spyresult;
 import element.Spyresult2;
 import element.SpeedattackControl;
+*/
 
 class UserControl extends ContextObject{
     var pn;

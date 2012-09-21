@@ -8,7 +8,7 @@ class LoginInvite extends ContextObject{
     function paintNode(){
         contextNode = sprite("dialogback_expand.png",ARGB_8888).anchor(50,50).pos(400, 280).size(450, 310);
         //contextNode.addsprite("girl1.png").anchor(50,100).pos(0,310).size(191,409);
-        showlabel = contextNode.addlabel(global.getFormatString("inviteNotice", ["[CODE]", str(global.user.inviteCode)]),null,20,FONT_BOLD, 372, 214,ALIGN_LEFT).anchor(0, 0).pos(40, 20).color(0,0,0,100);
+        showlabel = contextNode.addlabel(global.getFormatString("inviteNotice", ["[CODE]", str(global.user.inviteCode)]),null,20,FONT_BOLD, 372, 214,ALIGN_LEFT).anchor(0, 0).pos(40, 50).color(0,0,0,100);
         var WIDTH = 140;
         var HEIGHT = 38;
         var but0 = contextNode.addsprite("boxbutton1.png").anchor(50,50).pos(150,264).size(WIDTH, HEIGHT).setevent(EVENT_UNTOUCH, writeCode);

@@ -1,3 +1,4 @@
+/*
 import element.RoomControl;
 import element.FactControl;
 import element.CampControl;
@@ -6,6 +7,7 @@ import element.GodControl;
 import element.Calldialog;
 import element.ObjControl;
 import element.ExpandControl;
+*/
 class Builddialog extends ContextObject{
     var pageindex;
     var buildpages;

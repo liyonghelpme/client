@@ -1,5 +1,7 @@
+/*
 import element.QuickControl;
 import element.PlantControl;
+*/
 
 class FarmControl extends ContextObject{
     var farm;

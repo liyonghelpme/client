@@ -171,7 +171,7 @@ class WarPage extends ContextObject{
         baseNode.addaction(tintto(800,100,100,100,100));
         initialMenu();
         initlock = -1;
-        restoreMonster();
+        //restoreMonster();
     }
 
     var inite = 0;
@@ -279,12 +279,13 @@ trace("warinfo",rc,c);
                 warchat = new Warchatdialog(global.userid,global.user.getValue("cityname"),global.mapid);
                 warchat.global=global;
 
-                setMonster(data.get("monster", []));
+                //setMonster(data.get("monster", []));
 
             }
         }
     }
 
+    /*
     function setMonster(monsterData)
     {
         var nNobility = min(len(MAP_SIZE)-1, max(0, global.user.getValue("nobility")/3));
@@ -315,6 +316,7 @@ trace("warinfo",rc,c);
             baseNode.add(mon.bg, MAX_MAP_Z);
         }
     }
+    */
     function loadempty(list){
         if(list == null)
             return;

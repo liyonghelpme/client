@@ -1,5 +1,7 @@
+/*
 import element.CataControl;
 import element.WarReward;
+*/
 class SoldierImage{
     var images;
     function SoldierImage(){

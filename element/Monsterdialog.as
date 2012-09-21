@@ -1,4 +1,4 @@
-import element.Refreshdialog;
+//import element.Refreshdialog;
 class Monsterdialog extends ContextObject{
     var mid;
     var mtype;

@@ -71,12 +71,14 @@ class BuyControl extends ContextObject{
         var caeNum = newValue[selecttab];
 
         trace("buy", userPapaya, num);
+        /*
         if(userPapaya < int(num[2]))
         {
             global.popContext(null);
             global.pushContext(null, new PapaNot(), NonAutoPop);
             return;
         }
+        */
         global.popContext(null);
 
         start_payment("购买凯撒币","购买"+str(caeNum)+"个凯撒币","",int(num[2]),buycaesars2);

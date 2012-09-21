@@ -1,7 +1,10 @@
+/*
 import element.GiftnewsControl;
 import element.ChatnewsControl;
 import element.UpnewsControl;
 import element.NewsControl;
+*/
+
 class Infodialog extends ContextObject{
     var pageindex;
     var pages;

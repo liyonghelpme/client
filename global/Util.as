@@ -92,9 +92,11 @@ var businessPic = [];
 
 var warpic = [];
 
-var DragonPic = 
+var DragonPic = [];
+/*
 ["fire-1-2.png", "earth-4-7.png", "earth-3.png", "water-1-7.png", "egg-1-0.png", "egg-2-3.png", "egg-2-2.png", "fire-1-11.png", "fire-2.png", "fire-9.png", "earth-2.png", "earth-1.png", "egg-3-7.png", "earth-f1.png", "egg-3-5.png", "fire-1-10.png", "fire-3.png", "egg-3.png", "fire-4-3.png", "earth-1-13.png", "fire-1-6.png", "fire-1-9.png", "earth-1-2.png", "water-4-9.png", "earth-9.png", "water-1-6.png", "egg-1-3.png", "fire-1-3.png", "water-f1.png", "egg-2.png", "earth-4-4.png", "earth-4-5.png", "water-1-12.png", "water-1-5.png", "water-4-3.png", "water-4-2.png", "earth-1-9.png", "water-4-7.png", "egg-2-0.png", "earth-f2.png", "earth-4-9.png", "water-1-13.png", "earth-4-2.png", "earth-4-6.png", "earth-f4.png", "fire-4-2.png", "water-4-5.png", "earth-4-8.png", "fire-1-8.png", "water-5.png", "egg-3-2.png", "egg-3-3.png", "egg-1.png", "earth-f3.png", "fire-1-4.png", "water-2.png", "water-3.png", "earth-1-1.png", "egg-3-0.png", "earth-1-12.png", "earth-1-8.png", "water-4-6.png", "fire-6.png", "water-f3.png", "fire-f1.png", "water-4.png", "water-1-10.png", "fire-4-8.png", "earth-1-7.png", "earth-1-6.png", "fire-1-12.png", "fire-1-13.png", "fire-1.png", "water-f4.png", "fire-4-9.png", "water-1-4.png", "fire-4-1.png", "fire-4-4.png", "egg-2-1.png", "earth-1-5.png", "water-f2.png", "egg-3-1.png", "earth-5.png", "earth-4.png",
 ];
+*/
 
 const RightMenuAlign = 780;
 const MenuY = 140; 

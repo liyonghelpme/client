@@ -1,3 +1,4 @@
+/*
 import element.GodObject;
 import element.RoomObject;
 import element.FactObject;
@@ -12,6 +13,7 @@ import element.Petstate4;
 import element.Nestbuilddialog;
 import element.DragonDisk;
 import element.BuildObject;
+*/
 class NormalObject extends ContextObject{
     var contextid;
     var objectid;

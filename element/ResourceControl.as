@@ -1,4 +1,4 @@
-import element.CallbackSoldier;
+//import element.CallbackSoldier;
 class ResourceControl extends ContextObject{
     var slabels;
     var soldiers;
