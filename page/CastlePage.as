@@ -1310,7 +1310,7 @@ class CastlePage extends ContextObject{
                 quitgame();
             }
             //getMyResult();
-            //global.user.prepareCode(this);
+            global.user.prepareCode(this);
 
             if(data.get("ppyname")!=ppy_username()){
                 global.http.addrequest(0,"updateppyname",["uid","ppyname"],[global.userid,ppy_username()],self,"nothing");
@@ -1639,8 +1639,9 @@ class CastlePage extends ContextObject{
                     }
                 }
 
+                addcmd(dict([["name","notice"]]));
                 if(bonus != 0){
-                    //addcmd(dict([["name","notice"]]));
+
                     addcmd(dict([["name", "loginInvite"]]));
 
                     var bdict = dict();

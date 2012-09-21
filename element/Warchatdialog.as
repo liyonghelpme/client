@@ -42,7 +42,7 @@ class Warchatdialog{
             web.visible(0);
         //web = v_create(V_INPUT_VIEW,13,14,446,40);
         //v_root().addview(web);
-        pid=http_request("http://223.4.85.114:8003/recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
+        pid=http_request(CHAT_URL+"recv?uid="+str(uid)+"&cid="+str(cid)+"&since="+str(lasttime),additems);
         return contextNode;
     }
     
@@ -67,7 +67,7 @@ class Warchatdialog{
         }
         else{
             web.text("");
-            http_request("http://223.4.85.114:8003/send?uid="+str(uid)+"&name="+uri_encode(name)+"&cid="+str(cid)+"&text="+st,sendover);
+            http_request(CHAT_URL+"send?uid="+str(uid)+"&name="+uri_encode(name)+"&cid="+str(cid)+"&text="+st,sendover);
         }
     }
     

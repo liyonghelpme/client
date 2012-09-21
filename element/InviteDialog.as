@@ -83,7 +83,7 @@ class InviteDialog extends ContextObject{
                 }
                 else 
                 {
-                    global.user.prepareCode(this);
+                    //global.user.prepareCode(this);
                 }
                 */
             }
