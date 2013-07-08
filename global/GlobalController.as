@@ -44,12 +44,12 @@ const LevUpPop = 10;
 //const BASE_URL = "http://uhz000738.chinaw3.com:8080/";
 //const HELP_URL = "http://223.4.87.9/#";
 
-const CHAT_URL = "http://uhz000738.chinaw3.com:8003/"
+const CHAT_URL = "http://121.199.3.147:8003/"
 
-const BASE_URL = "http://uhz000738.chinaw3.com:8000/";
+const BASE_URL = "http://121.199.3.147:8000/";
 trace("BASE_URL", BASE_URL);
 
-const HELP_URL = "http://uhz000738.chinaw3.com/";
+const HELP_URL = "http://121.199.3.147/";
 
 const NEWDATA = [[1000,1,200,370,590,0,60],[1450,2,220,370,590,6,60],[2550,5,190,370,600,26,60]];
 

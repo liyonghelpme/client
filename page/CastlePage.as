@@ -1639,7 +1639,7 @@ class CastlePage extends ContextObject{
                     }
                 }
 
-                addcmd(dict([["name","notice"]]));
+                //addcmd(dict([["name","notice"]]));
                 if(bonus != 0){
 
                     addcmd(dict([["name", "loginInvite"]]));

@@ -114,7 +114,7 @@ trace("speed",rc,c);
             flagquick++;
         }
         else if(flagquick == 2){
-            global.user.changeValueAnimate(global.request[global.currentLevel].baseobj,"mana",-costcae,0);
+            //global.user.changeValueAnimate(global.request[global.currentLevel].baseobj,"mana",-costcae,0);
             global.popContext(null);
             lock = 0;
             timeisend=1;
