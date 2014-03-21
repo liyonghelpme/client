@@ -1473,6 +1473,8 @@ class CastlePage extends ContextObject{
             global.user.setValue("catapult", data.get("catapultnum", 0)); 
             global.user.setValue("actFood", data.get("actFood", 0));
 
+
+
             var diff = btime - data.get("lasttime", 0);
             var now = time() - diff*1000;
             global.user.setValue("manatime", now);//btime serverTime  time()/1000 clientTime
@@ -1498,6 +1500,7 @@ class CastlePage extends ContextObject{
           	}
           	else{
             	global.user.setValue("nobility",data.get("nobility",-1)*3+data.get("subno",0));
+                addcmd(dict([["name","notice"]]));
             }
 
             var landkind =  data.get("landkind",0);

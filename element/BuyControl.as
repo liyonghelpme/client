@@ -4,8 +4,8 @@ class BuyControl extends ContextObject{
 
     const buystr = ["3+0+300","10+1+1000","25+5+2500","50+10+5000","100+20+10000"];
 
-    const newValue = [5, 13, 30, 60, 120];
-    const TOTAL_CAE = [5, 14, 35, 70, 140];
+    const newValue = [4, 13, 30, 60, 120];
+    const TOTAL_CAE = [4, 14, 35, 70, 140];
     //const newValue = [3, 10, 25, 50, 100];
     //const buystr = ["3+0+300","10+1+1000","25+5+2500","50+10+5000","100+20+10000"];
 
