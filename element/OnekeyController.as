@@ -47,7 +47,7 @@ class OnekeyController extends ContextObject{
             var i = 0;
             for(i=0;i<tabsize;i++){ 
                 tabs[i] = element.addsprite("dialogelement_god_normal.png").pos(162-tabsize*125/2+i*125,110).setevent(EVENT_UNTOUCH,choosetab,i);
-            tabs[i].addlabel(global.getStaticString(tabstr[i]),null,20,FONT_NORMAL,80,0).anchor(50,50).pos(57,60).color(0,0,0,100);
+                tabs[i].addlabel(global.getStaticString(tabstr[i]),null,20,FONT_NORMAL, 120,0).anchor(50,50).pos(57,60).color(0,0,0,100);
                 tabs[i].addsprite("magic_big.png").anchor(50,50).pos(43,130);
                 tabs[i].addlabel("x"+str(costs[i]),null,20).anchor(0,50).pos(62,130).color(0,0,0,100);
             }

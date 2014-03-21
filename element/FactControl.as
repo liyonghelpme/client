@@ -7,14 +7,29 @@ class FactControl extends ContextObject{
     var flagmove;
     var buildable;
     var objsmax = 11;
-    var objcontext = [2300, 2303, 2306, 2309, 2330, 3327, 2315, 2312, 2318, 2324, 2321];
-    var objlevel = [1, 4, 6, 8, 10, 12, 14, 15, 21, 24, 29];
+    var objcontext = [
+    2339, 2342,
+    2300, 2303, 2306, 2309, 2330,
+    2333, 
+
+    3327, 2315, 2312, 
+    2336,
+
+    2318, 2324, 2321];
+    var objlevel = [
+    3, 3,
+    1, 4, 6, 8, 10, 
+    11, 
+    12, 14, 15, 
+    18,
+    21, 24, 29];
     function FactControl(){
         objsmax = len(objcontext);
         contextname ="element-build-fact";
         contextNode = null;
-        objs = new Array(11);
-        buildable = new Array(11);
+        objsmax = len(objcontext);
+        objs = range(0, objsmax);
+        buildable = range(0, objsmax);
         pageposmax = 1161-objsmax*161;
         if(pageposmax > 400) pageposmax = 400;
         flagmove = 0;
@@ -37,7 +52,10 @@ class FactControl extends ContextObject{
             var b=100;
             if(objcontext[i]/1000==3) b=66;
             var fac = objs[i].addsprite("fact"+str(oi)+".png").anchor(50,100).pos(74,160).scale(b);
-            //spriteManager.getPic("fact"+str(oi)+".png", fac);
+            if(i < 2)
+            {
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            }
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -53,7 +71,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -62,7 +80,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update("person", nperson);
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -71,7 +89,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("food"),food-global.user.getValue("food"));
+                        buildable[i].update("food", food);
                     }
                     objs[i].addsprite("food.png").size(29,33).pos(80,195);
                     objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);
@@ -82,7 +100,7 @@ class FactControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -180,8 +198,9 @@ class FactControl extends ContextObject{
                 n.texture("dialogelement2p.png");
                 if(flagmove == 0){
                     global.lastpage[0] = 1;
-                    if(buildable[param].get("ok")==0){
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 0){
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{//ok to build groundid
                         global.popContext(objcontext[param]);

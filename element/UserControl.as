@@ -46,7 +46,7 @@ class UserControl extends ContextObject{
         trace("OnCity", eudata, global.flagnew, global.battlelist);
         if((eudata[8] != 1 && eudata[1]>=0)
                 || global.flagnew==1 
-                || (eudata[1]<0 && int(eudata[0]) != ppy_userid()) ){//emptyCity not mine
+                || (eudata[1]<0 && int(eudata[0]) != global.papaId) ){//emptyCity not mine
             for(i=0;i<len(global.battlelist);i++){
                 if(global.battlelist[i][2]==1&&global.battlelist[i][3] == eudata[3]){
                     ebindex = i;
@@ -106,8 +106,8 @@ class UserControl extends ContextObject{
                 board.addlabel(NOBNAME[eudata[2]*3+eudata[6]],null,14).pos(100,77).color(0,0,0,100);
             }
             else{
-                board.addlabel(global.getStaticString("master")+global.context[1].userdict.get(eudata[5])[4],null,18).pos(56,56).color(0,0,0,100);
-                board.addlabel(ENAME[eudata[2]]+global.getStaticString(":")+eudata[4],null,18).pos(56,77).color(0,0,0,100);
+                board.addlabel(global.getStaticString("master")+global.context[1].userdict.get(eudata[5])[4],null,15).pos(56,56).color(0,0,0,100);
+                board.addlabel(ENAME[eudata[2]]+global.getStaticString(":")+eudata[4],null,15).pos(56,77).color(0,0,0,100);
             }
         }
         l=board.addlabel("",null,18).pos(12,107).color(0,0,0,100);

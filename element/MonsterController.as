@@ -97,8 +97,10 @@ class MonsterController extends ContextObject{
         }
         else if(e==EVENT_UNTOUCH){
             n.texture("mapleftmenutab0.png");
-                if(global.user.getValue("caesars")<bvalue){
-                    global.pushContext(null,new Warningdialog(dict([["ok",0],[global.getStaticString("caesar"),bvalue-global.user.getValue("caesars")]])),NonAutoPop);
+                var cost = dict([["caesars", bvalue]]);
+                var ret = global.user.testCost(cost);
+                if(ret == 0){
+                    //global.pushContext(null,new Warningdialog(dict([["ok",0],[global.getStaticString("caesar"),bvalue-global.user.getValue("caesars")]])),NonAutoPop);
                     return 0;
                 }
                 if(p==0){

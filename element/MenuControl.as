@@ -13,6 +13,7 @@ class MenuControl extends ContextObject{
     var musiclist;
     var bigbutton;
     var smallbutton;
+    var enableNight;
 
     function MenuControl(){
         contextname = "dialog-system";
@@ -21,16 +22,17 @@ class MenuControl extends ContextObject{
         musiclist=new Array(0);
         flagrob = 0;
         flagnight=0;
+        enableNight = 0;
     }
 
     //config: flagmusic,flagnotice
     function initwithconfig(){
-        var fp = c_file_open("config"+str(ppy_userid()),1);
-        var configstr = "01";
+        var fp = c_file_open("config"+str(global.papaId),1);
+        var configstr = "011";
         if(c_file_exist(fp) != 0){
             configstr = c_file_op(C_FILE_READ,fp);
-            if(len(configstr)!=2){
-                configstr = "01";
+            if(len(configstr)!=3){
+                configstr = "111";
             }
         }
 
@@ -40,14 +42,15 @@ class MenuControl extends ContextObject{
             flagmusic = 0;
 
         flagnotice = int(configstr[1]);
+        enableNight = int(configstr[2]);
         fp = null;
         rewriteconfig();
         music = null;
     }
     
     function rewriteconfig(){
-        var fp = c_file_open("config"+str(ppy_userid()),1);
-        c_file_op(C_FILE_WRITE,fp,str(flagmusic)+str(flagnotice));
+        var fp = c_file_open("config"+str(global.papaId),1);
+        c_file_op(C_FILE_WRITE,fp,str(flagmusic)+str(flagnotice)+str(enableNight));
     }
     
     function pushmusic(name){
@@ -74,11 +77,12 @@ class MenuControl extends ContextObject{
         }
     }
 
+    //flagnight && enableNight = night
     function paintNode(){
         contextNode = sprite("dialogback_menu.png").anchor(50,50).pos(400,240).size(439,383);
         contextNode.addsprite("builddialogclose.png").anchor(100,0).pos(423,13).setevent(EVENT_UNTOUCH,closedialog);
         //refreshbutton = contextNode.addsprite("refreshbutton.png").pos(17,76).setevent(EVENT_UNTOUCH,refreshuser);
-        contextNode.addsprite("nightbutton"+str(flagnight)+".png").pos(17,76).setevent(EVENT_UNTOUCH,changenight);
+        contextNode.addsprite("nightbutton"+str(1-enableNight)+".png").pos(17,76).setevent(EVENT_UNTOUCH,changenight);
         musicbutton = contextNode.addsprite("musicbutton"+str(flagmusic)+".png").pos(154,76).setevent(EVENT_UNTOUCH,switchmusic);
         noticebutton = contextNode.addsprite("noticebutton"+str(flagnotice)+".png").pos(291,76).setevent(EVENT_UNTOUCH,switchnotice);
         screenbutton = contextNode.addsprite("screenbutton.png").pos(17,213).setevent(EVENT_UNTOUCH,screenshot);
@@ -88,12 +92,15 @@ class MenuControl extends ContextObject{
     
     function invite(){
         global.popContext(null);
+        global.pushContext(null, new LoginInvite(), NonAutoPop);
+        /*
         if(sysinfo(21)!=null&&int(sysinfo(21))>=4){
             invite_friends(INVITE_STR[0],INVITE_STR[1],INVITE_STR[2]);
         }
         else{
             global.pushContext(null,new TestWebControl(1),NonAutoPop);
         }
+        */
     }
     
     function entermedal(){
@@ -102,10 +109,11 @@ class MenuControl extends ContextObject{
     }
     
     function changenight(n){
-        flagnight=1-flagnight;
-        n.texture("nightbutton"+str(flagnight)+".png");
+        enableNight = 1- enableNight;
+        n.texture("nightbutton"+str(1-enableNight)+".png");
         var grounds = global.context[0].grounds;
-        if(flagnight==0){
+        rewriteconfig();
+        if(enableNight && flagnight == 0){
             global.context[0].contextNode.texture("800480night.jpg");
             global.context[0].menu.color(50,50,60,100);
             global.context[0].contextNode.get(1).color(50,50,60,100);
@@ -116,19 +124,20 @@ class MenuControl extends ContextObject{
                 }
                 else{
                     grounds[i].objnode.color(50,50,60,100);
-                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=549){
+                    if(checkNightBuild(grounds[i].objectid))
+                    {
                         var lightpng = sprite("object"+str(grounds[i].objectid-500)+"_l.png", ARGB_8888).anchor(0,100).pos(0,33*grounds[i].contextid+1);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        //spriteManager.getPic("object"+str(grounds[i].objectid-500)+"_l.png", lightpng);
+                        
                     }
                     else if(grounds[i].objectid==0){
                         lightpng = sprite("empire"+str(grounds[i].empireLevel)+"_l.png").anchor(50,100).pos(269,283).size(524,398);
                         grounds[i].contextNode.add(lightpng,1,1);
-                        //spriteManager.getPic("empire"+str(grounds[i].empireLevel)+"_l.png", lightpng);
                         grounds[i].showYanhua();
                     }
                 }
             }
+            global.myDock.showNight();
         }
         else{
             global.context[0].contextNode.texture("800480.jpg");
@@ -141,7 +150,9 @@ class MenuControl extends ContextObject{
                 }
                 else{
                     grounds[i].objnode.color(100,100,100,100);
-                    if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544||grounds[i].objectid==0){
+                    //if(grounds[i].objectid>=512&&grounds[i].objectid<=516 ||grounds[i].objectid>=542&&grounds[i].objectid<=544||grounds[i].objectid==0){
+                    if(checkNightBuild(grounds[i].objectid))
+                    {
                         grounds[i].contextNode.remove(1);
                     }
                     if(grounds[i].objectid == 0)
@@ -149,6 +160,7 @@ class MenuControl extends ContextObject{
                         
                 }
             }
+            global.myDock.recover();
         }
     }
     
@@ -185,18 +197,42 @@ class MenuControl extends ContextObject{
             global.popContext(null);
             //global.dialogscreen.visible(0);
             global.context[0].menu.visible(0);
-            global.shotscreen.bitmap(shotover,1);
+            global.shotscreen.bitmap(getPid,1);
         }
     }
 
-    function shotover(n,b,p){
-        trace("shotover",p);
-        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]),global.getStaticString(35),b.bitmap2bytes("png"));
+    var pid;
+    function getPid(n, b, p)
+    {
+        ppy_upload(dict([["photo", b.bitmap2bytes("png")]]), shotover, null); 
+    }
+    function shotover(rid, rc, con, para)
+    {
+        con = json_loads(con);
+        pid = con.get("pid");
+        trace("pid", pid, con);
+
+        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]), NewsURL, pid, postSuc, null);
         global.context[0].menu.visible(1);
         if(global.task.tasktype==5){
             global.task.inctaskstep(1);
         }
     }
+    function postSuc()
+    {
+        trace("post suc");
+    }
+
+    /*
+    function shotover(n,b,p){
+        trace("shotover",p);
+        ppy_postnewsfeed(global.getFormatString(33,["[NAME]",ppy_username()]), NewURL, b.bitmap2bytes("png"));
+        global.context[0].menu.visible(1);
+        if(global.task.tasktype==5){
+            global.task.inctaskstep(1);
+        }
+    }
+    */
 
     function quit(n,e){
         if(global.currentLevel == contextLevel){

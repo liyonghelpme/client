@@ -24,27 +24,20 @@ class Cardget extends ContextObject{
             mb.addsprite("medaltab"+str(cardlevel)+".png").pos(3,32);
             if(cardid<6){
                 var m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(0,100).pos(29,128);
-                //spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
                 m.prepare();
                 var ms = m.size();
                 m.size(70,ms[1]*70/ms[0]);
             }
             else if(cardid<12){
                 m=sprite("monster_"+str(cardid*3+cardlevel/2)+"_1.png").anchor(50,100).pos(62,128);
-                //spriteManager.getPic("monster_"+str(cardid*3+cardlevel/2)+"_1.png", m)
             }
             else{
                 m=sprite("medalcard"+str(cardid-13)+"_"+str(cardlevel)+".png").pos(3,32);
             }
             mb.add(m);
             var endstr = "!";
-            if(cardid>13&&cardid<18){
-                if(cardlevel<5){
-                    endstr = global.getStaticString("zijin");
-                }
-                else{
-                    endstr = global.getStaticString("freeZijin");
-                }
+            if(cardid >= 13 && cardid < 18){//not monster
+                endstr = global.getStaticString("zijin");
             }
             else
             {

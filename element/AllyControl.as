@@ -19,7 +19,7 @@ class AllyControl extends ContextObject{
         if(element == null){
             element = node();
             if(mode==0){
-                element.addlabel(global.getStaticString("youLeft")+str(global.allymax-len(global.context[0].friend.flist2))+global.getStaticString("allyNum"),null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
+                element.addlabel(global.getFormatString("youLeft", ["[NUM]", str(global.allymax-len(global.context[0].friend.flist2))]),null,18).anchor(100,0).pos(358,26).color(0,0,0,100);
                 element.addsprite("adddefence.png").anchor(50,50).pos(395,34).setevent(EVENT_UNTOUCH,addallybound);
                 element.addlabel(global.getStaticString("sureToally"),null,24).pos(25,81).color(0,0,0,100);
                 var ap = element.addsprite("allyelement.png").anchor(50,50).pos(219,159);
@@ -30,7 +30,7 @@ class AllyControl extends ContextObject{
             }
             else if(mode==1){
                 element.addsprite("pic3.jpg").anchor(50,50).pos(80,120);
-                element.addlabel(global.getStaticString("cancelAlly")+fname,null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,47).color(0,0,0,100);
+                element.addlabel(global.getStaticString("cancelAlly")+fname,null,20,FONT_NORMAL,220,0,ALIGN_LEFT).pos(161,30).color(0,0,0,100);
                 var cap = element.addsprite("cancelallyelement.png").anchor(50,50).pos(269,150);
                 cap.addlabel(global.getStaticString("punish"),null,25).anchor(20,50).color(100,0,0,100);
                 cap.addsprite("caesars_big.png").anchor(50,50).pos(80,35).size(32,32);
@@ -139,9 +139,15 @@ class AllyControl extends ContextObject{
             //http_request(BASE_URL+"makeally?uid="+str(global.userid)+"&fid="+str(global.context[0].cuid),makeallyover);
         }
     }
-
+    var canCost = 5;
     function cancelally(){
         if(lock==0){
+            var cost = dict();
+            cost.update("caesars", canCost);
+            var ret = global.user.testCost(cost);
+            if(ret == 0)
+                return;
+
             lock=1;
             global.http.addrequest(1,"cancelally",["uid","fid"],[global.userid,global.context[0].cuid],self,"cancelallyover");
             //http_request(BASE_URL+"cancelally?uid="+str(global.userid)+"&fid="+str(global.context[0].cuid),cancelallyover);
@@ -165,7 +171,7 @@ class AllyControl extends ContextObject{
             global.context[0].allybutton.texture("bindButton.png",UPDATE_SIZE);
             global.context[0].flagally = 0;
             global.context[0].friend.flist2.remove(global.context[0].cpid);
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-5,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",-canCost,-6);
             global.popContext(null);
         }
     }

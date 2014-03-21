@@ -35,7 +35,7 @@ class GiftnewsControl extends ContextObject{
     }
     
     function choosePage(n,e,po){
-        if(global.context[0].reqlock==1 ||lock==1 || pagenum >= 1 && po == -1 || pagenum == pagemax && po == 1)
+        if(global.context[0].reqlock==1 ||lock==1 || pagenum <= 1 && po == -1 || pagenum == pagemax && po == 1)
             return 0;
         var p = pagenum+po;
         if(p>1)
@@ -55,7 +55,7 @@ class GiftnewsControl extends ContextObject{
         if(len(items) < fpage*PAGEITEMS && len(items)<length){
             if(lock==0){
                 lock = 1;
-            global.http.addrequest(0,"getgift",["uid","off","num"],[ppy_userid(),0,length],self,"addnewsitems");
+            global.http.addrequest(0,"getgift",["uid","off","num"],[global.papaId,0,length],self,"addnewsitems");
             }
         }
         else{
@@ -80,7 +80,7 @@ class GiftnewsControl extends ContextObject{
                     }
                     cell.addlabel(itemstr,null,20).pos(57,19).color(0,0,0,100);
                     if(item[0]==-1){
-                        cell.addlabel(global.getStaticString("request_done"),null,20,FONT_ITALIC).pos(374,19).color(20,20,20,100);
+                        cell.addlabel(global.getStaticString("request_done"),null,20,FONT_ITALIC).pos(420,19).color(20,20,20,100);
                     }
                     else{
                         if(item[3]==1){

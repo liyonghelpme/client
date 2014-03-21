@@ -68,7 +68,7 @@ class Warningdialog extends ContextObject{
                 }
                 else if(info[1]>=0){
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
-                    dialog.usedefaultbutton(2,[global.getStaticString("ok"),global.getStaticString("cancel")]);
+                    dialog.usedefaultbutton(2,[global.getStaticString("yes"),global.getStaticString("cancel")]);
                 }
                 else if(info[1]==-1){
                     element.addlabel(info[0],null,24,FONT_NORMAL,216,0,ALIGN_LEFT).anchor(0,50).pos(148,105).color(0,0,0,100);
@@ -83,6 +83,11 @@ class Warningdialog extends ContextObject{
                 {
                     element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
                     dialog.usedefaultbutton(2,[global.getStaticString("ok"),global.getStaticString("cancel")]);
+                }
+                else if(info[1] == RankFri)
+                {
+                    element.addlabel(info[0],null,24,FONT_NORMAL,240,0,ALIGN_LEFT).anchor(50,50).pos(268,105).color(0,0,0,100);
+                    dialog.usedefaultbutton(2,["Score", global.getStaticString("cancel")]);
                 }
             }
             else if(info.get("ok")==0){

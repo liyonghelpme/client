@@ -77,11 +77,11 @@ class Adddefencedialog extends ContextObject{
         costtype = p;
         var cost = dict();
         if(p==0){
-            cost.update("caesars",(defencenum+99)/100);
+            cost.update("caesars",(defencenum+AddDefCae-1)/AddDefCae);
         }
         else{
-            cost.update("money",defencenum*100);
-            cost.update("food",defencenum*5);
+            cost.update("money",defencenum*AddDefCoin);
+            cost.update("food",defencenum*AddDefFood);
         }
         if(global.user.testCost(cost)!=0){
             global.popContext(null);

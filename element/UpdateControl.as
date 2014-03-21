@@ -9,12 +9,12 @@ class UpdateControl extends ContextObject{
     var updatetype;
     var updatebid;
     var buildable;
-    const EmpireCoin = [0,100000, 500000];
-    const EmpireFood = [0,1000, 5000];
-    const EmpirePeople = [0, 100, 500];
-    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30"];
-    const EmpirePopUp = [0, 0, 0];
-    const EmpireMana = [0, 5, 5];
+    const EmpireCoin = [0,100000, 500000, 800000, 1000000];
+    const EmpireFood = [0,1000, 5000, 10000, 20000];
+    const EmpirePeople = [0, 100, 500, 500, 1000];
+    const EmpireSpe = ["","150;a,30;b,30;c,30", "200;d,30;e,30;f,30", "300;a,40;b,40;c,40", "500;e,40;f,40;g,40"];
+    const EmpirePopUp = [0, 0, 0, 0, 0];
+    const EmpireMana = [0, 5, 5, 5, 10];
 
     const objcontextname = ["farm","room","camp","fact","shen", "empire"];
     function UpdateControl(){
@@ -338,7 +338,7 @@ class UpdateControl extends ContextObject{
             {
                 obj.objnode.texture("empire"+str(obj.empireLevel+1)+".png");
                 //Normal Object not empire
-                if(global.system.flagnight==0){
+                if(global.system.flagnight==0 && global.system.enableNight){
                     obj.contextNode.get(1).texture("empire"+str(obj.empireLevel+1)+"_l.png");
                     obj.showYanhua();
                 }

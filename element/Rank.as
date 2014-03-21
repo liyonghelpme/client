@@ -1,3 +1,18 @@
+/*
+显示打怪数量的排名
+
+getFoodRank: 返回 top 10 和 自身排名 以及当前杀死的怪兽数目
+top  otherid food num 
+myRank rank num
+
+服务器： 1小时更新 删除旧的数据 去掉旧的数据更新
+杀死一个怪兽 增加一个得分
+
+heartRank:
+返回用户当前的排名heart 数据 
+访问好友 rankYet
+没有rankYet 则加1
+*/
 class Rank extends ContextObject{
     var nameNode;
     function Rank(){
@@ -6,7 +21,7 @@ class Rank extends ContextObject{
     }
 
     function paintNode(){
-        contextNode = sprite("foodRank.jpg").anchor(50,50).pos(400,240);
+        contextNode = sprite("MonRank.jpg").anchor(50,50).pos(400,240);
         contextNode.addsprite("builddialogclose.png").anchor(50, 50).pos(762, 30).setevent(EVENT_TOUCH,closedialog);
         nameNode = contextNode.addnode();
 
@@ -28,6 +43,11 @@ class Rank extends ContextObject{
             }
         }
     }
+    var pos = 
+    [
+    300, 122, 300, 200, 300, 298, 300, 398, 
+    613, 122, 613, 200, 613, 298, 613, 398];
+
     function showData(data)
     {
         nameNode.removefromparent();
@@ -65,7 +85,8 @@ class Rank extends ContextObject{
             head.scale(s);
 
             nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(curX, curY).color(0, 0, 0, 100);
-            nameNode.addlabel(str(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
+            //nameNode.addlabel(str(top[i][1]), null, 20).anchor(0, 50).pos(pos[i*2], pos[i*2+1]).color(0, 0, 0, 100);
+            nameNode.addlabel(showName(top[i][2]), null, 15).anchor(50, 50).pos(curX+nameInitX, curY+nameInitY).color(0, 0, 0, 100);
 
             curY += difY;
         }
@@ -74,8 +95,11 @@ class Rank extends ContextObject{
         var myrank = data.get("myrank")[0]+1;
         var food = data.get("myrank")[1];
         trace("show rank user", myrank);
-        nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(245, 47).color(0, 0, 0, 100);
-        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(625, 47).color(0, 0, 0, 100);
+        if(myrank >= 1000)
+            nameNode.addlabel("999+", null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
+        else
+            nameNode.addlabel(str(myrank), null, 30).anchor(0, 50).pos(260, 56).color(0, 0, 0, 100);
+        nameNode.addlabel(str(food), null, 30).anchor(0, 50).pos(635, 56).color(0, 0, 0, 100);
     }
 
     function closedialog(node,event,p){

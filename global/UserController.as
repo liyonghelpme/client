@@ -139,12 +139,50 @@ class UserController{
     var userinfo;
     var flaginit;
     var handledict;
+    var updates;
+    var papayas = 0;
+    var inviteCode = null;
+
+    var callBack = null;
+    function setPapaya(r, rc, c)
+    {
+        trace("getPapa", r, rc, c);
+        if(rc != 0)
+        {
+            papayas = c.get("papayas"); 
+        }
+        if(callBack != null)
+            callBack(r, rc, c);
+    }
+    function getPapaya(cb)
+    {
+        if(cb != null)
+            callBack = cb;
+        ppy_query("papayas", null, setPapaya);
+    }
     
     function UserController(){
         userinfo = dict();
         handledict = dict();
         flaginit = 1;
+        //global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], this, "getCode");
         //setValue("hasDisk", 0);
+    }
+    function prepareCode(obj)
+    {
+        global.http.addrequest(0, "invite/getInviteCode", ["uid"], [global.userid], obj, "getCode");
+    }
+    function useaction(p, rc, c)
+    {
+        trace(p, rc, c);
+        if(p == "getCode")
+        {
+            if(rc != 0)
+            {
+                c = json_loads(c);
+                inviteCode = c.get("code");
+            }
+        }
     }
     
     function initText(name,l){
@@ -247,6 +285,29 @@ class UserController{
         setValue(name,v);
         trace("LOG",name+" changed:"+str(value));
     }
+    function changeBuildValue(obj, key, value, hi)
+    {
+        trace("changeBuildValue", obj, key, value, hi);
+        if(value==0){
+            return 0;
+        }
+        changeValue(key,value);
+        var ps = obj.house.pos();
+        var x = ps[0]+obj.contextid*2;
+        var y = ps[1]-obj.contextid*17-hi*17;
+        var n = node().pos(x,y);
+        n.add(sprite("fly"+key+".png").anchor(100,50).pos(-5,0));
+        var ns = str(value);
+        var f = 0;
+        if(value > 0){
+            ns = "+"+ns;
+            f = 1;
+        }
+        n.addlabel(ns,null,40).color(100,f*100,0,100).anchor(0,50).pos(5,0);
+        n.addaction(sequence(moveby(1000,0,-80),tintto(1000,0,0,0,0),callfunc(removeself)));
+        global.context[0].contextNode.add(n.scale(80),20000);
+        
+    }
     function changeValueAnimate(ne,key,value,hi){
         if(value==0){
             return 0;
@@ -274,7 +335,11 @@ class UserController{
             var x = ps[0]+ne.contextid*2;
             var y = ps[1]-ne.contextid*17-hi*17;
             var n = node().pos(x,y);
-            if(key=="citydefence"){
+            if(key == "dragonStone")
+            {
+                n.add(sprite("opbutton27.png").anchor(100, 50).pos(-5, 0));
+            }
+            else if(key=="citydefence"){
                 n.add(sprite("defence.png").anchor(100,50).pos(-25,0));
             }
             else{
@@ -309,7 +374,11 @@ class UserController{
         var y = ps[1]-hi*17+ne.size()[1]/2;
         var n = node().pos(x,y);
         n.add(sprite("fly"+key+".png").anchor(100,50).pos(-5,0));
+        if(key == "labor")
+            value = -value;
+
         var ns = str(value);
+
         var f = 0;
         if(value > 0){
             ns = "+"+ns;
@@ -328,6 +397,8 @@ class UserController{
             var key = items[i][0];
             var value = items[i][1];
             var cmpvalue = 0;
+            if(key == "ok")
+                continue;
             if(key == "special")
             {
                 var speItems = value.items();
@@ -342,13 +413,26 @@ class UserController{
             }
             else
             {
-                if(key=="labor" || key=="person"){
-                    key = "person";
-                    cmpvalue = getValue("labor");
+
+                if(key == "friend")
+                {
+                    if(len(global.ppyuserdict)-2-value < cmpvalue)
+                    {
+                        buildable.update("ok", 0);
+                        buildable.update(global.getStaticString(items[i][0]), value+cmpvalue-len(global.ppyuserdict)+2);
+                    }
                 }
-                if(getValue(key)-value<cmpvalue){
-                    buildable.update("ok",0);
-                    buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                else
+                {
+                    trace("key", key, value, getValue(key));
+                    if(key=="labor" || key=="person"){
+                        key = "person";
+                        cmpvalue = getValue("labor");
+                    }
+                    if(getValue(key)-value<cmpvalue){
+                        buildable.update("ok",0);
+                        buildable.update(global.getStaticString(items[i][0]),value+cmpvalue-getValue(key));
+                    }
                 }
             }
         }
@@ -356,14 +440,20 @@ class UserController{
         if(buildable.get("ok")==1){
             return 1;
         }
-        else if(cost.get("mana") == null){
-            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
+        else if(cost.get("mana") != null){
+            global.pushContext(null, new MagicWarning(), NonAutoPop);
+            return 0;
+        }
+        else if(cost.get("caesars") != null)
+        {
+            global.pushContext(null, new CaeWarning(), NonAutoPop);
             return 0;
         }
         else
         {
-            global.pushContext(null, new MagicWarning(), NonAutoPop);
+            global.pushContext(null,new Warningdialog(buildable),NonAutoPop);
             return 0;
         }
     }
+
 }

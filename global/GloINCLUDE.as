@@ -1,3 +1,4 @@
+import global.UserController;
 import global.SpriteManager;
 import element.Warningdialog;
 import global.Util;

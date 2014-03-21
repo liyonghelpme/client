@@ -7,6 +7,11 @@ class ExpandControl extends ContextObject{
     var flagmove;
     var buildable;
     const objsmax = 0;
+    /*
+    扩建打折：
+        客户端 数据修改
+        服务器 数据修改 expand
+    */
     function ExpandControl(){
         contextname = "element-build-expand";
         contextNode = null;
@@ -43,7 +48,7 @@ class ExpandControl extends ContextObject{
                 obj.addsprite("tfriend.png").anchor(100,50).pos(89,242);
                 if(EXPAND_FRIEND[obji]>len(global.ppyuserdict)-2){
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("friend"),EXPAND_FRIEND[obji]-len(global.ppyuserdict)+2);
+                    buildable[i].update("friend", EXPAND_FRIEND[obji]);
                     cl = 100;
                 }
                 obj.addlabel("x"+str(EXPAND_FRIEND[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
@@ -52,23 +57,34 @@ class ExpandControl extends ContextObject{
                 obj.addsprite("caesars_big.png").anchor(100,50).pos(89,242);
                 if(EXPAND_CAESARS[obji]>global.user.getValue("caesars")){
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("caesar"),EXPAND_CAESARS[obji]-global.user.getValue("caesars"));
+                    buildable[i].update("caesars", EXPAND_CAESARS[obji]);
                     cl = 100;
                 }
                 obj.addlabel("x"+str(EXPAND_CAESARS[obji]),null,20).anchor(0,50).pos(93,242).color(cl,0,0,100);
+                /*
+                obj.addsprite("caesars_big.png").anchor(100,50).pos(39,242);
+                if(EXPAND_CAESARS[obji]>global.user.getValue("caesars")){
+                    buildable[i].update("ok",0);
+                    buildable[i].update("caesars", EXPAND_CAESARS[obji]);
+                    cl = 100;
+                }
+                obj.addsprite("cross.png").anchor(0, 50).pos(43, 242);
+                obj.addlabel("x"+str(EXPAND_CAESARS[obji]*2),null,20).anchor(0,50).pos(43,242).color(cl,0,0,100);
+                obj.addlabel("x"+str(EXPAND_CAESARS[obji]),null,20).anchor(0,50).pos(100,242).color(cl,0,0,100);
+                */
             }
             else{
                 obj.addsprite("money_big.png").anchor(50,50).pos(39,229).size(20,20);
                 if(EXPAND_MONEY[obji]>global.user.getValue("money")){
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("coin"),EXPAND_MONEY[obji]-global.user.getValue("money"));
+                    buildable[i].update("money", EXPAND_MONEY[obji]);
                     cl = 100;
                 }
                 obj.addlabel(str(EXPAND_MONEY[obji]),null,20).anchor(0,50).pos(68,229).color(cl,0,0,100);
                 cl =0;
                 if(EXPAND_LEVEL[obji]>global.user.getValue("level")){
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("level"),EXPAND_LEVEL[obji]-global.user.getValue("level"));
+                    buildable[i].update("level", EXPAND_LEVEL[obji]);
                     cl = 100;
                 }
                 obj.addsprite("tlevel.png").anchor(50,50).pos(39,249);
@@ -124,12 +140,14 @@ class ExpandControl extends ContextObject{
             }
             else if(e == EVENT_UNTOUCH){
                 if(flagmove == 0){
-                    if(buildable[param].get("ok")==1){
+                    trace("expand", buildable[param]);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 1){
                         global.lastpage[0] = 6;
                         global.popContext(900+param);
                     }
                     else{
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                 }
                 else{

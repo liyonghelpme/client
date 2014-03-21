@@ -1,7 +1,28 @@
     //"downStart.png", "actPlant.png", "actIntro.jpg", "foodRank.jpg", "rewardCup.png", 
+    //"heart.png", "heartPlus.png", "rankHeart.jpg",
 class ImageController{
+    /*
     const images1 = [
-    "disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png"];
+        "buyIn.png", "close.png", "coinTradeSel.png", "coinTradeUn.png", 
+        "dockGoods.png", "foodTradeSel.png", "foodTradeUn.png", "empire4_ln.png", 
+        "sel.png", "sellOut.png", "ship0.png", "ship1.png", "ship2.png", "shipHouse.png",
+        "shipTip.png", "trade.png",
+        "skip4.png",
+        "MonRank.png", "MonAct.png",
+        //"foodAct.png", "foodRank.jpg",
+    ];
+    */
+    const images1 = ["buyIn.png"];
+    /*
+    "disk0.png",  "build606.png", "build607.png", "room81.png", "room82.png","room83.png","room84.png",
+    "room85.png","room86.png",
+    "fact33.png", "fact34.png", "fact35.png", "fact36.png", "fact37.png",
+    "fact38.png",
+    "warback.png", "loadingwarback.jpg",
+    "cross.png", "mail.png", "MonAct.png", "MonRank.jpg", "expDisk.png", "drum2.png"
+    ];
+    */
+    //"disk0.png", "diskback.jpg", "dragonDisk.png", "dragonhead.png", "opbutton27.png", "opbutton28.png", "drum.png", "caeDisk.png", "powDisk.png", "changeDisk.png", "object67.png", "object67_l.png", "object68.png", "object68_l.png", "object69.png", "object69_l.png"];
     const images2 = ["help.png"];
     var images;
     var imageindex;

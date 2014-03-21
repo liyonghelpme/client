@@ -85,7 +85,7 @@ class BoxControl extends ContextObject{
         contextNode.add(sprite("boxbutton1.png").pos(50,330),0,1);
         if(mode == 1){
             contextNode.get(1).addlabel(global.getStaticString("help"),null,BUTTONFONTSIZE).anchor(50,50).pos(62,19);
-            if(list.index(ppy_userid())==-1 && helpperson<maxperson){
+            if(list.index(global.papaId)==-1 && helpperson<maxperson){
                 flaghelp = 1;
                 contextNode.get(1).setevent(EVENT_UNTOUCH,helpopenbox);
             }
@@ -111,12 +111,12 @@ class BoxControl extends ContextObject{
         var xx;
         for(var i=0;i<maxperson;i++){
             if(i<helpperson){
-                if(list[i]!=ppy_userid() && mode==1)
+                if(list[i]!=global.papaId && mode==1)
                     xx =contextNode.addsprite("boxunknownperson.png").pos(32+78*(i%5),103+107*(i/5));
                 else{
                     xx=contextNode.addsprite("boxperson.png").pos(32+78*(i%5),103+107*(i/5));
-                    if(list[i]<0 || list[i]==ppy_userid()){
-                        xx.addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
+                    if(list[i]<0 || list[i]==global.papaId){
+                        xx.addsprite(avatar_url(global.papaId)).pos(6,7).size(50,50);
                         xx.addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                     }
                     else{
@@ -222,10 +222,16 @@ class BoxControl extends ContextObject{
 
     function openboxwithcaesars(n,e){
         if(lock==0){
+            var cost = dict([["caesars", 1]]);
+            var ret = global.user.testCost(cost);
+            if(ret == 0)
+                return 0;
+            /*
             if(global.user.getValue("caesars")<1){
                 global.pushContext(self,new Warningdialog(dict([["ok",0],[global.getStaticString("caesars"),1]])),NonAutoPop);
                 return 0;
             }
+            */
             lock=1;
             global.http.addrequest(1,"selfopen",["user_id"],[global.userid],self,"selfopenover");
         }
@@ -238,7 +244,7 @@ trace("selfopen",rc,c);
                 evnodes[helpperson].remove(1);
                 evnodes[helpperson].remove(0);
                 evnodes[helpperson].texture("boxperson.png");
-                evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
+                evnodes[helpperson].addsprite(avatar_url(global.papaId)).pos(6,7).size(50,50);
                 evnodes[helpperson].addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
                 evnodes[helpperson].setevent(EVENT_UNTOUCH,null);
                 helpperson++;
@@ -267,10 +273,10 @@ trace("selfopen",rc,c);
 trace("helpopen",rc,c);
         if(rc!=0 && json_loads(c).get("id")>0){
             evnodes[helpperson].texture("boxperson.png");
-            evnodes[helpperson].addsprite(avatar_url(ppy_userid())).pos(6,7).size(50,50);
+            evnodes[helpperson].addsprite(avatar_url(global.papaId)).pos(6,7).size(50,50);
             evnodes[helpperson].addlabel(global.getStaticString("self"),null,16).anchor(50,50).pos(31,69).color(0,0,0,100);
             helpperson++;
-            boxfriends.append(str(ppy_userid()));
+            boxfriends.append(str(global.papaId));
             setbox(-1,0,0);
             contextNode.get(1).texture("boxbutton2.png");
             flaghelp = 0;
@@ -292,7 +298,7 @@ trace("helpopen",rc,c);
         }
         else
         {
-            boxfriends.append(str(ppy_userid()));
+            boxfriends.append(str(global.papaId));
             setbox(-1,0,0);
             contextNode.get(1).texture("boxbutton2.png");
             flaghelp = 0;

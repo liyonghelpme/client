@@ -7,13 +7,30 @@ class ObjControl extends ContextObject{
     var buildable;
     var flagmove;
     var objsmax;
-    const objcontext = [1500, 1501, 1502, 1503, 1561, 2566, 1504, 1515, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 2553, 2554, 1513, 2555, 2556, 1514, 1546, 1547, 1548, 1549, 
+    const objcontext = [
+    1574, 1575, 1576, 1577,
+    1578, 1579, 1580, 1581, 1582, 
+    1500, 1501, 1502, 
+    1570,
+    1503, 1561, 2566, 1504, 1515, 1505, 1506, 1507, 1508, 1509, 1510, 1511, 1512, 2553, 2554, 1513, 2555, 2556, 1514, 1546, 1547, 1548, 1549, 
     //2560, 
-    1516, 1520, 1517, 2550, 1518, 1545, 1532, 1519, 1533, 1534, 2544, 1528, 1529, 1530, 1531, 1557, 1521, 1522, 1523, 2540, 1524, 1525, 1526, 1527, 1558, 1538, 1535, 1536, 1537, 1563, 1542, 1543, 1562, 2551, 1552, 1564, 1559, 2565, 2539, 2541];
+    1516, 1520, 1517, 2550, 1518, 1545, 1532, 1519, 1533, 1534, 2544, 1528, 1529, 1530, 1531, 1557, 1521, 1522, 1523, 2540, 1524, 1525, 1526, 1527, 1558, 1538, 1535, 1536, 1537, 1563, 1542, 1543, 1562, 2551, 1552, 1564, 1559, 2565, 2539, 2541,
+    
+    1567, 1568, 1569,
+    1571, 1572, 1573,
+    ];
 
-    const objlevel = [1, 1, 1, 4, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 
+    const objlevel = [
+    3, 3, 3, 3,
+    4, 4, 5, 5, 5,
+    1, 1, 1,
+    3,
+    4, 4, 4, 5, 5, 6, 6, 6, 6, 7, 7, 8, 8, 8, 8, 9, 9, 9, 10, 10, 10, 10, 10, 
     //10, 
-    11, 11, 12, 12, 13, 13, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 20, 20, 20, 20, 21, 21, 21, 22, 22, 23, 24, 24, 25, 25];
+    11, 11, 12, 12, 13, 13, 14, 15, 15, 15, 15, 16, 16, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 18, 19, 20, 20, 20, 20, 21, 21, 21, 22, 22, 23, 24, 24, 25, 25,
+    26, 27, 27,
+    28, 28, 29,
+    ];
 
     function ObjControl(){
         objsmax = len(objcontext);
@@ -57,7 +74,9 @@ class ObjControl extends ContextObject{
                 bl=100;
             }
             var objpng = objs[i].addsprite("object"+str(oi)+".png").anchor(50,50).pos(74,112).scale(bl);
-            //spriteManager.getPic("object"+str(oi)+".png", objpng);
+            if(i < 9){
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
+            }
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -76,7 +95,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("caesars"),price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -85,7 +104,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -124,7 +143,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -133,7 +152,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -143,7 +162,7 @@ class ObjControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update("person", nperson);
                     }
                     objs[i].addsprite("person.png").size(32,30).pos(83,159);
                     objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -263,8 +282,13 @@ class ObjControl extends ContextObject{
                 }
                 if(flagmove == 0){
                     global.lastpage[0] = 5;
-                    if(buildable[param].get("ok")==0){
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    trace("buildable value", buildable[param]);
+                    //buildable[param].pop("ok");
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 0){
+                        //buildable[param].pop("ok");
+                        //var ret = global.user.testCost(buildable);
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
                         if(oi < statueNum){

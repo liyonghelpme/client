@@ -1,4 +1,5 @@
 import element.CataControl;
+import element.WarReward;
 class SoldierImage{
     var images;
     function SoldierImage(){
@@ -229,7 +230,7 @@ class WarControl extends ContextObject{
         data.update("powerlost", getWarrecordList("lostPower", d));
         data.update("leftpower", getWarrecordList("attFullPow", d));
         data.update("rightpower", getWarrecordList("defFullPow", d));
-        data.update(_self+"ppyid",ppy_userid());
+        data.update(_self+"ppyid", global.papaId);
         data.update(_enemy+"ppyid",getWarrecordList("otherUid", d));//other ppyid
         data.update("leftpower2", getWarrecordList("attPurePow", d));
         data.update("rightpower2", getWarrecordList("defPurePow", d));
@@ -304,6 +305,7 @@ class WarControl extends ContextObject{
             }
             global.popContext(null);
             global.pushContext(null,self,NonAutoPop);
+
         }
     }
 
@@ -334,13 +336,28 @@ class WarControl extends ContextObject{
         n.get(1).text(p);
     }
     
+    var keepTou = 0;
     function closedialog(n,e,p){
         global.popContext(null);
         if(p==1){
             ppy_postnewsfeed(global.getFormatString(10+2*datadict.get("leftself")+datadict.get("leftwin"),["[USERNAME]",ppy_username(),"[ENAME]",datadict.get(_enemy+"name")]),  NewsURL, null);
         }
+        if(touchNums > 0)
+        {
+            global.http.addrequest(1, "warReward", ["uid", "times", "addV"], [global.userid, touchNums, addV], self, "warreward");
+            keepTou = touchNums;
+            touchNums = 0;
+            //dragon.removefromparent();
+        }
     }
-    
+    function useaction(p, rc, c)
+    {
+        if(p == "warreward")
+        {
+            trace("add warreward", touchNums, addV);
+            global.pushContext(null, new WarReward(keepTou, addV), NonAutoPop);
+        }
+    }
     function paintNode(){
                 function powernumtolevel(num){
                     if(num>=100000){
@@ -383,23 +400,26 @@ class WarControl extends ContextObject{
             var offy=152;
             var mon = datadict.get("monster");
             var noOwn = datadict.get("noOwner");
+            trace("reward", rwd);
+
+
+
             if(mon == 0)
             {
                 if(datadict.get("leftwin") == datadict.get("leftself")){
                     infolabel.color(76,3,0,100);
-                    if(rwd[0]!="0"){
-                        rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
-                        rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
-                        offy = 174;
-                    }
-                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
-                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
                 }
                 else{
                     infolabel.color(0,17,76,100);
-                    rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
-                    rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
                 }
+
+                if(rwd[0]!="0"){
+                    rwn.addsprite("caesars_big.png").anchor(50,50).pos(89,130).size(32,32);
+                    rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,130).color(0,0,0,100);
+                    offy = 164;
+                }
+                rwn.addsprite("money_big.png").anchor(50,50).pos(89,offy).size(32,32);
+                rwn.addlabel(rwd[1],null,24).anchor(0,50).pos(136,offy).color(0,0,0,100);
             }
             else
             {
@@ -407,22 +427,23 @@ class WarControl extends ContextObject{
                 rwn.addsprite("money_big.png").anchor(50,50).pos(89,133).size(32,32);
                 rwn.addlabel(rwd[0],null,24).anchor(0,50).pos(136,133).color(0,0,0,100);
             }
-                if(datadict.get("leftself")==1){
-                    contextNode.addlabel(global.getStaticString("sendFight")+str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                    contextNode.addlabel(global.getStaticString("lostFight")+":",null,20).pos(343,245).color(0,0,0,100);
-                    contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel(global.getStaticString("defenceFight")+":"+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
+            if(datadict.get("leftself")==1){
+                contextNode.addlabel(global.getStaticString("sendFight")+str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                contextNode.addlabel(global.getStaticString("lostFight")+str(-datadict.get("powerlost")),null,20).pos(343,245).color(0,0,0,100);
+                //contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
+                contextNode.addlabel(global.getStaticString("defenceFight")+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
+            }
+            else{
+                contextNode.addlabel(global.getStaticString("defenceFight")+":"+ str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
+                contextNode.addlabel(global.getStaticString("lostDefence")+str(-datadict.get("powerlost")),null,20).pos(343,245).color(0,0,0,100);
+                //contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
+                contextNode.addlabel(global.getStaticString("leftDefence")+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
+                if(datadict.get("leftwin")==1){
+                    contextNode.addlabel(global.getStaticString("lostCoin")+rwd[2],null,20).pos(343,309).color(0,0,0,100);
+                    //contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
                 }
-                else{
-                    contextNode.addlabel(global.getStaticString("defenceFight")+":"+ str(datadict.get(_self+"power2")),null,20).pos(343,220).color(0,0,0,100);
-                    contextNode.addlabel(global.getStaticString("lostDefence")+":",null,20).pos(343,245).color(0,0,0,100);
-                    contextNode.addlabel(str(-datadict.get("powerlost")),null,20).pos(463,245).color(100,0,0,100);
-                    contextNode.addlabel(global.getStaticString("leftDefence")+":"+str(datadict.get(_self+"power2") - datadict.get("powerlost")),null,20).pos(343,270).color(0,0,0,100);
-                    if(datadict.get("leftwin")==1){
-                        contextNode.addlabel(global.getStaticString("lostCoin")+":",null,20).pos(343,309).color(0,0,0,100);
-                        contextNode.addlabel(rwd[2],null,20).pos(459,309).color(100,0,0,100);
-                    }
-                }
+            }
+
             setbutton(1,356,407,global.getStaticString("share")).setevent(EVENT_UNTOUCH,closedialog,1);
             setbutton(2,498,407,global.getStaticString("ok")).setevent(EVENT_UNTOUCH,closedialog,null);
             if(flaganimate==1){
@@ -430,19 +451,16 @@ class WarControl extends ContextObject{
                 contextNode.visible(0);
                 contextNode.add(sprite("dark.png").size(820,500).anchor(50,50).pos(335,233).color(0,0,0,darkColorAlpha),-1);
                 element.addaction(sequence(tintto(1500,100,100,100,100),callfunc(initanimate,datadict)));
+                dragon = element.addsprite("drum2.png").pos(73, 418).anchor(50, 50).scale(100).setevent(EVENT_TOUCH|EVENT_UNTOUCH, obtainMoney);
+                touchNums = 0; 
 
                 if(datadict.get("leftself") == 1){
                     leftuser = element.addsprite("battleuserback0.png");
-                    //spriteManager.getPic("battleuserback0.png", leftuser);
                     rightuser= element.addsprite("battleuserback1.png").anchor(100,0).pos(800,0);
-                    //spriteManager.getPic("battleuserback1.png", rightuser);
                 }
                 else{
                     leftuser = element.addsprite("battleuserback1.png");
-                    //spriteManager.getPic("battleuserback1.png", leftuser);
-
                     rightuser= element.addsprite("battleuserback0.png").anchor(100,0).pos(800,0);
-                    //spriteManager.getPic("battleuserback0.png", rightuser);
 
                 }
                 leftuser.addsprite(avatar_url(datadict.get("leftppyid"))).pos(25,19).size(50,50);
@@ -498,6 +516,41 @@ class WarControl extends ContextObject{
                 global.system.pushmusic("4.mp3");
                 flaganimate=2;
             }
+        }
+    }
+    var touchNums = 0;
+    var dragon = null;
+    var addV = 10;
+    function obtainMoney(n, e, p, x, y, points)
+    {
+        if(e == EVENT_TOUCH)
+        {
+            dragon.scale(160);   
+        }
+        else if(e == EVENT_UNTOUCH)
+        {
+            dragon.scale(100);
+            addV = 10;
+            var leftself = datadict.get("leftself");
+            var mypower = 0;
+            //data.update("leftpower", getWarrecordList("attFullPow", d));
+            if(leftself == 0)
+            {
+                mypower = datadict.get("rightpower");  
+            }
+            else
+            {
+                mypower = datadict.get("leftpower");
+            }
+            if(mypower > 10000)
+                addV = 50;
+            else if(mypower > 1000)
+                addV = 30;
+            else if(mypower > 100)
+                addV = 20;
+            if(touchNums < 9000/addV)
+                touchNums++;
+            global.user.changeValueAnimate2(dragon, "money", addV, 0);
         }
     }
     var soldiers1;
@@ -796,6 +849,11 @@ class WarControl extends ContextObject{
     }
     
     function animateover(){
+        if(dragon != null)
+        {
+            dragon.removefromparent();
+            dragon = null;
+        }
         timer.stop();
         contextNode.visible(1);
     }

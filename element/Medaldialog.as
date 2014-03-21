@@ -52,14 +52,12 @@ class MedalControl extends ContextObject{
             obj.addlabel(cardprename[ci],null,18).anchor(50,0).pos(62,10).color(23,20,3,100);
             if(ci<6){
                 var m=sprite("monster_"+str(ci*3+clevel/2)+"_1.png").anchor(0,100).pos(29,128);
-                //spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
                 m.prepare();
                 var ms = m.size();
                 m.size(70,ms[1]*70/ms[0]);
             }
             else if(ci<12){
                 m=sprite("monster_"+str(ci*3+clevel/2)+"_1.png").anchor(50,100).pos(62,128);
-                //spriteManager.getPic("monster_"+str(ci*3+clevel/2)+"_1.png", m);
             }
             var medal;
             if(clevel==0){
@@ -70,7 +68,6 @@ class MedalControl extends ContextObject{
                 }
                 else{
                     medal = obj.addsprite("medalcard"+str(ci-13)+"_1.png").pos(3,32).color(40,40,40,100);
-                    //spriteManager.getPic("medalcard"+str(ci-13)+"_1.png", medal);
                 }
             }
             else{
@@ -81,7 +78,6 @@ class MedalControl extends ContextObject{
                 }
                 else if(ci!=12){
                     medal = obj.addsprite("medalcard"+str(ci-13)+"_"+str(clevel)+".png").pos(3,32);
-                    //spriteManager.getPic("medalcard"+str(ci-13)+"_"+str(clevel)+".png", medal);
                 }
                 else{
                     obj.addsprite("medalnob.png").pos(3,32);
@@ -89,11 +85,9 @@ class MedalControl extends ContextObject{
                     obj.addlabel(NOBNAME[medals[ci]%100],null,15).anchor(50,0).pos(62,105).color(23,20,3,100);
                 }
             }
-            //if(clevel<5||(ci==12&&medals[ci]%100<18)){
-                obj.setevent(EVENT_TOUCH,objselect,ci);
-                obj.setevent(EVENT_MOVE,objselect,ci);
-                obj.setevent(EVENT_UNTOUCH,objselect,ci);
-            //}
+            obj.setevent(EVENT_TOUCH,objselect,ci);
+            obj.setevent(EVENT_MOVE,objselect,ci);
+            obj.setevent(EVENT_UNTOUCH,objselect,ci);
             clevels[ci]=clevel;
         }
     }
@@ -187,31 +181,17 @@ class MedalControl extends ContextObject{
                         }
                     }
                     else{
-                        var map = dict([[12, "MonsterZijin"],
+                        var map = dict(
+                        [
+                        [12, "MonsterZijin"],
                         [13, "ChangEZijin"],
                         [14, "PlantZijin"],
                         [15, "BusiZijin"],
-                        [16, "NobZijin"]
+                        [16, "NobZijin"],
+                        [18, "FriendZijin"],
                         ]);
 
                         global.pushContext(null,new Warningdialog([global.getStaticString(map.get(param)),null,5]),NonAutoPop);
-                        /*
-                        if(param<12){
-
-                        }
-                        else if(param==13){
-                            global.pushContext(null,new Warningdialog([global.getStaticString("ChangEZijin"),null,5]),NonAutoPop);
-                        }
-                        else if(param==14){
-                            global.pushContext(null,new Warningdialog([global.getStaticString("PlantZijin"),null,5]),NonAutoPop);
-                        }
-                        else if(param==15){
-                            global.pushContext(null,new Warningdialog([global.getStaticString("BusiZijin"),null,5]),NonAutoPop);
-                        }
-                        else if(param==18){
-                            global.pushContext(null,new Warningdialog([global.getStaticString("NobZijin"),null,5]),NonAutoPop);
-                        }
-                        */
                     }
                 }
                 else{

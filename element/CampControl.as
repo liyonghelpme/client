@@ -10,8 +10,8 @@ class CampControl extends ContextObject{
     var lastx;
     var flagmove;
     var objsmax;
-    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605];
-    const objlevel = [1, 3, 11, 24, 12, 12, 13, 13, 15, 15];
+    const objcontext = [2200,2206,2203, 2209, 2600, 2601, 2602, 2603, 2604, 2605, 1606, 1607];
+    const objlevel = [1, 3, 11, 24, 12, 12, 13, 13, 15, 15, 20, 20];
     var buildable;
     function CampControl(){
         contextname = "element-build-camp";
@@ -57,7 +57,7 @@ class CampControl extends ContextObject{
                 if(global.user.getValue("money")<price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                    buildable[i].update("money", price);
                 }
                 objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                 objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -66,7 +66,7 @@ class CampControl extends ContextObject{
                     if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                        buildable[i].update("person", nperson);
                     }
                 objs[i].addsprite("person.png").size(32,30).pos(83,165);
                 objs[i].addlabel(str(nperson),null,16).pos(118,170).color(cl,0,0,100);
@@ -75,7 +75,7 @@ class CampControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("food"),food-global.user.getValue("food"));
+                        buildable[i].update("food", food);
                     }
                 objs[i].addsprite("food.png").size(29,33).pos(80,195);
                 objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);
@@ -88,10 +88,18 @@ class CampControl extends ContextObject{
             oi=oi%100;
             objs[i] = sprite("dialogelement2d2.png").pos(DIALOG_BASE_X+i*DIALOG_OFF_X,DIALOG_BASE_Y);
             objs[i].addlabel(STATUE_NAME[oi],null,16, FONT_NORMAL, 100, 100).anchor(50,0).pos(74,10).color(0,0,0,100);
-            if(objcontext[i]/1000==2){
-                 bl=75;
-            }
-            objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112).scale(bl);
+            //if(objcontext[i]/1000==2){
+            //     bl=75;
+            //}
+
+            var build = objs[i].addsprite("build"+str(objcontext[i]%1000)+".png").anchor(50,50).pos(74,112);
+            build.prepare();
+            var oldSize = build.size();
+            bl = min(140*100/oldSize[0], 140*100/oldSize[1]);
+            build.scale(bl);
+
+            if(i >= (len(objlevel)-2))
+                objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             if(objlevel[i]>global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -108,7 +116,7 @@ class CampControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -117,7 +125,7 @@ class CampControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -127,7 +135,7 @@ class CampControl extends ContextObject{
                 if(global.user.getValue("person")-global.user.getValue("labor") < nperson){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("freePeople"),nperson-global.user.getValue("person")+global.user.getValue("labor"));
+                    buildable[i].update("person", nperson);
                 }
                 objs[i].addsprite("person.png").size(32,30).pos(83,159);
                 objs[i].addlabel(str(nperson),null,16).pos(118,165).color(cl,0,0,100);
@@ -224,8 +232,9 @@ class CampControl extends ContextObject{
                     else
                         n.texture("dialogelement2d2.png");
                     global.lastpage[0] = 3;
-                    if(buildable[param].get("ok")==0){
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret ==0){
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
                     }
                     else{
                         if(oi < statueNum)

@@ -19,7 +19,7 @@ class ResourceControl extends ContextObject{
     function paintNode(){
         contextNode = sprite("dialogback_d.png").anchor(50,50).pos(400,240);
         contextNode.addsprite("resourceelement.jpg").pos(11,11);
-        contextNode.addlabel(ENAME[rdata[2]]+global.getStaticString(":")+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
+        contextNode.addlabel(ENAME[rdata[2]]+": "+rdata[4],null,30,FONT_BOLD).anchor(50,0).pos(279,40).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("infpower")+str(rdata[7]),null,18).pos(44,124).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("cavpower")+str(rdata[8]),null,18).pos(277,124).color(0,0,0,100);
         contextNode.addsprite("builddialogclose.png").pos(493,14).setevent(EVENT_UNTOUCH,closedialog);
@@ -30,10 +30,10 @@ class ResourceControl extends ContextObject{
         var oldTime = tc;
         if(tc > rc[4])
             tc = rc[4];
-        contextNode.addlabel(global.getStaticString("money")+global.getStaticString(":")+str(rc[0]*tc),null,18).pos(44,207).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("food")+global.getStaticString(":")+str(rc[1]*tc),null,18).pos(164,207).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("wood")+global.getStaticString(":")+str(rc[2]*tc),null,18).pos(274,207).color(0,0,0,100);
-        contextNode.addlabel(global.getStaticString("stone")+global.getStaticString(":")+str(rc[3]*tc),null,18).pos(404,207).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("money")+": "+str(rc[0]*tc),null,18).pos(44,207).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("food")+": "+str(rc[1]*tc),null,18).pos(184,207).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("wood")+": "+str(rc[2]*tc),null,18).pos(274,207).color(0,0,0,100);
+        contextNode.addlabel(global.getStaticString("stone")+": "+str(rc[3]*tc),null,18).pos(404,207).color(0,0,0,100);
         if(tc < rc[4])
             contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+global.timer.times2c(rdata[9])-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
         else
@@ -41,7 +41,7 @@ class ResourceControl extends ContextObject{
             
         //contextNode.addlabel(global.getFormatString("resource_get_format",["[MONEY]",str(rc[0]),"[FOOD]",str(rc[1]),"[WOOD]",str(rc[2]),"[STONE]",str(rc[3]),"[TIME]",global.gettimestr((tc+1)*3600+rdata[9]-global.timer.currenttime)]),null,18,FONT_NORMAL,504,0,ALIGN_LEFT).pos(27,276).color(0,0,0,100);
         contextNode.addlabel(global.getStaticString("fightAdd"), null, 18).pos(28,348).color(0,0,0,100);
-        contextNode.addsprite("help2.png").pos(489,342).setevent(EVENT_UNTOUCH,gotohelp,"fortress");
+        contextNode.addsprite("help2.png").pos(489,362).setevent(EVENT_UNTOUCH,gotohelp,"fortress");
         var button;
         var ebindex=-1;
         for(var i=0;i<len(global.battlelist);i++){

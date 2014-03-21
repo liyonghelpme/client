@@ -60,7 +60,9 @@ class Monsterdialog extends ContextObject{
         dialog.usedefaultbutton(2,[global.getStaticString("attack"), global.getStaticString("back")]);
         if(flagdefeatable == 0){
             contextNode.get(0).addsprite("caesars_big.png").pos(0, 20).anchor(50, 50);
-            contextNode.get(0).addlabel(str(-DefeatMon_Cae), null, 24, FONT_BOLD).color(0, 0, 0, 100).pos(10, 15);
+            contextNode.get(0).addlabel(str(-DefeatMon_Cae), null, 24, FONT_BOLD).color(100, 100, 100, 100).pos(10, 15);
+            //var cost = dict([["caesars", -DefeatMon_Cae]]);
+            //var ret = global.user.testCost(cost);
             if(global.user.getValue("caesars") < abs(DefeatMon_Cae))
             {
                 contextNode.get(0).texture("boxbutton2.png");
@@ -113,7 +115,7 @@ class Monsterdialog extends ContextObject{
                     m.addaction(sequence(stop(),delaytime(3500),animate(3000,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
                 else{
-                    var temp = sprite("monster_"+str(mtype)+"_dead.png");
+                    //var temp = sprite("monster_"+str(mtype)+"_dead.png");
                     //spriteManager.getPic("monster_"+str(mtype)+"_dead.png", temp)
                     m.addaction(sequence(stop(),delaytime(3500),itexture("monster_"+str(mtype)+"_dead.png"),delaytime(1000),animate(2500,"01.png","02.png","03.png","04.png","05.png","06.png","07.png","08.png","09.png","10.png","11.png","12.png","13.png","14.png","15.png"),itexture(""),delaytime(2000),callfunc(removeself)));
                 }
@@ -217,15 +219,15 @@ class Monsterdialog extends ContextObject{
             var l = global.user.getValue("level");
             if(l<9){
                 exp = (mpower+3)/4;
-                money=(mpower+1)/2*30;
+                money=(mpower+1)/2*5;
             }
             else if(l<15){
                 exp = (mpower*2+4)/5;
-                money=(mpower*3+4)/5*30;
+                money=(mpower*3+4)/5*5;
             }
             else{
                 exp = (mpower+1)/2;
-                money=(mpower*13+19)/20*30;
+                money=(mpower*13+19)/20*5;
             }
             global.user.changeValueAnimate2(m[0],"exp",exp,0);
             global.user.changeValueAnimate2(m[0],"money",money,-2);

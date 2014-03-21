@@ -45,7 +45,7 @@ class PlantControl extends ContextObject{
                 if(global.user.getValue("caesars") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
+                    buildable[i].update("caesars", price);
                 }
                 cell.addsprite("caesars_big.png").size(20,20).anchor(0,50).pos(17,125);
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,125).color(cl,0,0,100);
@@ -56,7 +56,7 @@ class PlantControl extends ContextObject{
                 if(global.user.getValue("money") < price){
                     cl=100;
                     buildable[i].update("ok",0);
-                    buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                    buildable[i].update("money", price);
                 }
                 cell.addlabel(str(price),null,20).anchor(0,50).pos(39,125).color(cl,0,0,100);
             }
@@ -126,7 +126,8 @@ class PlantControl extends ContextObject{
             }
         }
         else{
-            global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+            global.user.testCost(buildable[param]);
+            //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
         }
     }
 

@@ -30,13 +30,17 @@ class Levelupdialog extends ContextObject{
         }
         var levelback = contextNode.addsprite("dialogback_levup.jpg").pos(163,40);
         levelback.addlabel(str(global.user.getValue("level")),null,36).anchor(0,50).pos(305,65).color(100,0,0,100);
-        levelback.addsprite("money_big.png").anchor(50,50).pos(144,137).size(24,24);
-        var m = global.user.getValue("level")*200;
-        levelback.addlabel(str(m),null,24).anchor(0,50).pos(160,137).color(0,0,0,100);
+        levelback.addsprite("money_big.png").anchor(50,50).pos(117,137).size(24,24);
+        //var level = global.user.getValue("level");
+        var m = level*LevAddCoin+5000;
+        levelback.addlabel(str(m),null,24).anchor(0,50).pos(133,137).color(0,0,0,100);
+
+        levelback.addsprite("opbutton27.png").anchor(50, 50).pos(216, 137).size(24, 24);
+        levelback.addlabel(str(level*2),null,24).anchor(0,50).pos(232,137).color(0,0,0,100);
         
         if(level%10==0){
-            levelback.addsprite("caesars_big.png").anchor(50,50).pos(260,137).size(24,24);
-            levelback.addlabel(str(level/10),null,24).anchor(0,50).pos(276,137).color(0,0,0,100);
+            levelback.addsprite("caesars_big.png").anchor(50,50).pos(295,137).size(24,24);
+            levelback.addlabel(str(level/10),null,24).anchor(0,50).pos(310,137).color(0,0,0,100);
             levelback.addsprite("personlimit.png").anchor(50,50).pos(360,137).size(22,24);
             levelback.addlabel(str(LevUpPop),null,24).anchor(0,50).pos(376,137).color(0,0,0,100);
         }
@@ -63,21 +67,15 @@ class Levelupdialog extends ContextObject{
     }
     
     function closedialog(node,event,p){
-        /*
-        if(global.flagnew == 0)
-        {
-            global.user.setValue("money", data.get("coin"));
-            global.user.setValue("caesars", data.get("cae"));
-            global.user.setValue("personmax", data.get("pop"));
-        }
-        */
         global.popContext(null);
         var level = global.user.getValue("level");
-        global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*200,-8);
+        trace("levelup", data, global.user.getValue("level"));
+        global.user.changeValueAnimate2(global.context[0].moneyb,"money",level*LevAddCoin+5000,-8);
+        global.user.changeValueAnimate2(global.context[0].moneyb, "dragonStone", level*LevAddDra, -10);
         trace("level", LevAddPer, level);
         if(level%10==0){
             global.user.changeValueAnimate2(global.context[0].ub,"personmax", LevAddPer, -6);
-            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-6);
+            global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",level/10,-4);
         }
         if(p==1){
             global.http.addrequest(0,"share",["uid"],[global.userid],global.context[0],"share");

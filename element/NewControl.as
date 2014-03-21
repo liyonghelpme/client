@@ -87,7 +87,7 @@ class NewControl extends ContextObject{
             back.addsprite("storybacktop.png",ARGB_8888);
             back.addsprite("storybackbottom.png",ARGB_8888).anchor(0,100).pos(0,480);
             back.addsprite("skip3.png").anchor(100,100).pos(790,470).setevent(EVENT_UNTOUCH,rm);
-            content.addaction(sequence(moveby(15000,0,-1000),callfunc(rm)));
+            content.addaction(sequence(moveby(30000,0,-1000),callfunc(rm)));
         }
         function donothing(n,e){
             return 1;
@@ -109,13 +109,10 @@ class NewControl extends ContextObject{
             global.context[0].nodeMove(mp[0]-p[0],mp[1]-p[1]);
         }
         else{
-            //if(opobj!=null){
-            //trace(mp);
             var ep = global.context[1].mplace[7];
             p = global.context[1].baseNode.node2world(ep[0],ep[1]);
             //trace(p);
             global.context[1].nodeMove(mp[0]-p[0],mp[1]-p[1]);
-            //}
         }
         circle.pos(cp).scale(cz[0]*5/2,cz[1]*5/2);
         point.pos(cp[0],cp[1]-cz[1]/2);
@@ -201,17 +198,22 @@ class NewControl extends ContextObject{
         }
     }
     
+    var changing = 0;
     function nextstate(n,e){
-    	if(n!=0){
+    	if(n!=0 && lock == 0){
     	    lock=1;
     	    var strs = noticetext.split("+");
             global.user.changeValueAnimate2(global.context[0].moneyb,"money",int(strs[1]),-6);
             global.user.changeValueAnimate2(global.context[0].moneyb,"caesars",int(strs[2]),-4);
             global.user.changeValueAnimate2(global.context[0].ub,"exp",int(strs[3]),-4);
     	}
-    	strnum++;
-        contextNode.color(0,0,0,0);
-        c_addtimer(1000,checkfinish,null,1000,1);
+        if(changing == 0)
+        {
+            changing = 1;
+            strnum++;
+            contextNode.color(0,0,0,0);
+            c_addtimer(1000,checkfinish,null,1000,1);
+        }
     }
     
     function ctest(n,e,p,x,y){
@@ -311,6 +313,7 @@ class NewControl extends ContextObject{
             global.wartask.initwartask(0,0);
             var cm = dict([["name","daily"],["bonus",3000]]);
             global.context[0].addcmd(cm);
+            //global.context[0].actButton.visible(1);
             global.lastpage[1]=400;
             global.user.changeValue("money",3000);
             spriteManager.addDownIcon();
@@ -325,6 +328,7 @@ class NewControl extends ContextObject{
         loadstr();
         loadnode();
         lock=0;
+        changing = 0;
     }
     
     function checkinit(timer){

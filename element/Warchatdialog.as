@@ -51,7 +51,7 @@ class Warchatdialog{
         var l = len(t);
         var st = uri_encode(t);
         var ul = len(st);
-        l = l-(ul - l)/6;
+        //l = l-(ul - l)/6;
         if(t==""){
             items.append([0,global.getStaticString("system"),global.getStaticString("chat_empty"),0]);
             

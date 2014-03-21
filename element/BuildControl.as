@@ -42,35 +42,23 @@ class BuildControl extends ContextObject{
         if(placeObj.buildcontextname != "obj"){
             var back = sprite("buildcontrolback2.png").anchor(50,100).pos(0,9);
             contextNode.add(back,0,111);
-            var bl=90;
-
-            // size == 3 
-            if(placeObj.contextid == 3){
-                bl = 60;
-                if(mode == FARM_INDEX && place.state==WORKING){
-                    bl=100;
-                }
-                if(placeObj.objectid>171 && placeObj.objectid<200){
-                    bl=50;
-                }
-            }
-            else if(placeObj.buildcontextname == "god"){
-                bl = 35;
-                if(place.bid>=20){
-                    bl=40;
-                }
-            }
-            else if(mode == STATUE_INDEX){
-                bl=50;
-            }
+            var bl = 100;
             if(placeObj.buildcontextname!="nest"){
-                back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
+                var build = back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
+                build.prepare();
+                var bsize = build.size();
+                bl = min(180*100/bsize[0], 80*100/bsize[1]);
+                bl = min(120, max(bl, 40));
+                trace("control2 ", bsize, bl);
+                build.scale(bl);
+                
+
                 var namelabel = back.addlabel(global.getname(placeObj.buildcontextname,placeObj.objectid%100),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state == BUILDING || place.state == WORKING){
                     if((mode != GOD_INDEX && mode != STATUE_INDEX) || place.state != WORKING ){
                         buttons.append(ACC_BUTTON);
                     }
-                    timelabel = back.addlabel("",null,20).anchor(100,50).pos(197,158).color(0,0,0,100);
+                    timelabel = back.addlabel("",null,20).anchor(100,50).pos(200,158).color(0,0,0,100);
                     timelabel.addaction(repeat(callfunc(updatetime),delaytime(1000)));
                     var labelstr = global.getStaticString("inBuild");
                     if(place.state == WORKING){
@@ -99,7 +87,7 @@ class BuildControl extends ContextObject{
                             buttons.append(-BLESS_BUTTON);
                         }
                     }
-                    back.addlabel(labelstr,null,20).anchor(0,50).pos(18,158).color(56,1,1);
+                    back.addlabel(labelstr,null,20).anchor(0,50).pos(16,158).color(56,1,1);
                 }
                 else{
                     //trace("mode, bid", mode, place.bid);
@@ -145,18 +133,18 @@ class BuildControl extends ContextObject{
             else{
                 namelabel = back.addlabel(global.data.getbuild(place.bid).get("name"),null,20).anchor(50,50).pos(107,123).color(0,0,0,100);
                 if(place.state >= EGG_STATE){
-                    var max;
+                    var mmax;
                     if((place.state - EGG_STATE) < len(hmax))
-                        max = hmax[place.state-EGG_STATE];
+                        mmax = hmax[place.state-EGG_STATE];
                     else
-                        max = hmax[len(hmax)-1];
+                        mmax = hmax[len(hmax)-1];
                     //var hmax;
                     var add;
                     if((place.state-EGG_STATE) < len(hmaxs))
                         add = hmaxs[place.state-EGG_STATE];
                     else
                         add = hmaxs[len(hmaxs)-1];
-                    var stt = place.health/(max/3);
+                    var stt = place.health/(mmax/3);
                     if(stt>2) stt=2;
                     if(place.state==3){
                         var eggpic = sprite("egg-"+str(stt+1)+".png").anchor(50,0).pos(107,7);
@@ -185,7 +173,7 @@ class BuildControl extends ContextObject{
                     namelabel.anchor(0,50).pos(18,123).text(place.petname).scale(90);
                     buttons.append(23);
                     if(global.context[0].flagfriend == 1){
-                        if(place.health>=max||len(place.helpfriends)>=add||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
+                        if(place.health>=mmax||len(place.helpfriends)>=add||place.helpfriends.index(ppy_userid())!=-1||global.user.getValue("food")<20){
                             buttons[0] = -23;
                         }
                     }
@@ -201,17 +189,24 @@ class BuildControl extends ContextObject{
                         }
                     }
                     buttons.append(19);
-                    if(place.health>=max){
+                    if(place.health>=mmax){
                         back.addsprite("nestpetfiller2.png",ARGB_8888).pos(11,146).size(190,24);
                         timelabel = back.addlabel("MAX",null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
                     }
                     else{
-                        back.addsprite("nestpetfiller"+str(stt)+".png",ARGB_8888).pos(11,146).size(190*place.health/max,24);
-                        timelabel = back.addlabel(str(place.health)+"/"+str(max),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
+                        back.addsprite("nestpetfiller"+str(stt)+".png",ARGB_8888).pos(11,146).size(190*place.health/mmax,24);
+                        timelabel = back.addlabel(str(place.health)+"/"+str(mmax),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
                     }
                 }
                 else{
-                    back.addsprite(place.gettexture()).anchor(50,50).pos(107,55).scale(bl);
+
+                    build =  back.addsprite(place.gettexture()).anchor(50,50).pos(107,55);
+                    build.prepare();
+                    bsize = build.size();
+                    bl = min(180*100/bsize[0], 80*100/bsize[1]);
+                    bl = min(120, max(bl, 40));
+                    build.scale(bl);
+
                     buttons.append(25);
                     back.addlabel(global.getStaticString("free"),null,20).anchor(0,50).pos(18,158).color(1,17,56);
                 }
@@ -221,14 +216,15 @@ class BuildControl extends ContextObject{
         else{
             back = contextNode.addsprite("buildcontrolback1.png").anchor(50,100).pos(0,9);
             back.addlabel(global.getname("obj",placeObj.objectid-500),null,20).anchor(50,50).pos(107,158).color(0,0,0,100);
-            bl=120;
-            if(placeObj.objectid==541){
-                bl=60;
-            }
-            else if(placeObj.contextid==2){
-                bl=92;
-            }
-            back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65).scale(bl);
+
+            build = back.addsprite("object"+str(placeObj.objectid-500)+".png").anchor(50,50).pos(107,65);
+            build.prepare();
+            bsize = build.size();
+            bl = min(180*100/bsize[0], 110*100/bsize[1]);
+            trace("control1", bsize, bl);
+            bl = max(bl, 40);
+            bl = min(120, bl);
+            build.scale(bl);
             beginx = -119;
         }
         if(placeObj.objectid < DRAGON_ID && mode != GOD_INDEX && mode != DISK_INDEX)

@@ -14,25 +14,31 @@ class RoomControl extends ContextObject{
     //400 是居中位置
     //设置方法， 可以根据编号动态设定
     const objlevel = [
+    3, 3,
     1,1,1,1,
     5,5,5,5,
+    7,
     8,8,8,8,
     10,10,10,10,
-    12,
+    12, 13,
     15,15,15,15,
     18,
     20,20,20,20,
-    22];
+    22,
+    ];
     const objcontext = [
+    2187, 2190,
     2100,2103,2106,2109, 
     2112,2115,2118,2121,
+    2181, 
     2160,2163,2166,2169,
     2124,2127,2130,2133,
-    3172,
+    3172, 2184,
     3136,3139,3142,3145,
     3175,
     3148,3151,3154,3157,
-    2178];
+    2178,
+    ];
     var buildable;
     function RoomControl(){
         contextname = "element-build-room";
@@ -57,11 +63,9 @@ class RoomControl extends ContextObject{
             var hou = objs[i].addsprite("room"+str(obji)+".png").anchor(50,100).pos(74,160).scale(sc);
             //spriteManager.getPic("room"+str(obji)+".png", hou);
             
-            /*
-            if(i<1){
+            if(i<2){
                 objs[i].addsprite("new.png").anchor(100,100).scale(150).pos(137,160);
             }
-            */
             if(objlevel[i] > global.user.getValue("level")){
                 objs[i].texture("dialogelement_lock2.png");
                 objs[i].addlabel(str(objlevel[i]),null,16).anchor(50,50).pos(119,244).color(100,0,0,100);
@@ -77,7 +81,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("caesars")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("caesar"),price-global.user.getValue("caesars"));
+                        buildable[i].update("caesars", price);
                     }
                     objs[i].addsprite("caesars_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -86,7 +90,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("money")<price){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("coin"),price-global.user.getValue("money"));
+                        buildable[i].update("money", price);
                     }
                     objs[i].addsprite("money_big.png").size(20,20).pos(10,202);
                     objs[i].addlabel(str(price),null,16).pos(34,202).color(cl,0,0,100);
@@ -97,7 +101,7 @@ class RoomControl extends ContextObject{
                     if(global.user.getValue("food") < food){
                         cl=100;
                         buildable[i].update("ok",0);
-                        buildable[i].update(global.getStaticString("food"),food-global.user.getValue("food"));
+                        buildable[i].update("food", food);
                     }
                     objs[i].addsprite("food.png").size(29,33).pos(80,195);
                     objs[i].addlabel(str(food),null,16).pos(113,202).color(cl,0,0,100);
@@ -203,8 +207,11 @@ class RoomControl extends ContextObject{
             else if(e == EVENT_UNTOUCH){
                 if(flagmove == 0){
                     global.lastpage[0] = 0;
-                    if(buildable[param].get("ok") == 0)
-                        global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    var ret = global.user.testCost(buildable[param]);
+                    if(ret == 0)
+                    {
+                        //global.pushContext(self,new Warningdialog(buildable[param]),NonAutoPop);
+                    }
                     else
                         global.popContext(objcontext[param]);
                 }

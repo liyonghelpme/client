@@ -120,7 +120,8 @@ class FriendControl{
     }
     
     function loadourdata(){
-        http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        //http_request(BASE_URL+"retlev?uid="+str(global.userid),loadover);
+        global.http.addrequest(0, "retlev", ["uid"], [global.userid], this, "loadover");
     }
     
     function loaddata(g,s){
@@ -146,8 +147,10 @@ class FriendControl{
         }
         if(flist1==null){
             flaglock=1;
-            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",ppy_userid()],["name",ppy_username()],["level",0],["visited",1]])];
+            flist1 = [dict([["id",0],["name",global.getStaticString("caesar")],["level",30],["visited",1]]),dict([["id",global.papaId],["name",ppy_username()],["level",0],["visited",1], ["nob", global.user.getValue("nobility")*3]])];
+
         }
+        //var nobility = per.get("nob", 0);
         var le = len(flist1);
         for(var i=0;i<le;i++){
             if(flist1[i].get("level")!=-1){
@@ -158,7 +161,7 @@ class FriendControl{
                 flaglock=1;
             }
         }
-        global.ppyuserdict.get(str(ppy_userid())).update("visited",1);
+        global.ppyuserdict.get(str(global.papaId)).update("visited",1);
     }
     
     function updateflist1(){
@@ -212,8 +215,8 @@ class FriendControl{
             var i;
             var j;
             if(friendmode==1){
-                if(global.ppyuserdict.get(str(ppy_userid())).get("level",0)<global.user.getValue("level")){
-                    global.ppyuserdict.get(str(ppy_userid())).update("level",global.user.getValue("level"));
+                if(global.ppyuserdict.get(str(global.papaId)).get("level",0)<global.user.getValue("level")){
+                    global.ppyuserdict.get(str(global.papaId)).update("level",global.user.getValue("level"));
                 }
                 var flagloop = 1;
                 var tmp;
@@ -237,7 +240,7 @@ class FriendControl{
                 trace("initing");
                 for(i=1;i<length;i++){
                     if(flist1[i].get("id") == selectp){
-                        selectf = i+2;
+                        selectf = i+CAESAR;
                         break;
                     }
                 }
@@ -259,11 +262,17 @@ class FriendControl{
             check((fpos[friendmode-1]-45)/90);
         }
     }
+    var tryTimes = 0;
     var bufferflist1;
     function hfriend(requestId, ret_code, response){
+        trace("loading friend Data", requestId, ret_code, response);
+
         if(ret_code ==0){
-            trace("fail to get friend from us!");
+            trace("fail to get friend from us!", tryTimes);
             flagfriendover = 3;
+            tryTimes++;
+            if(tryTimes > 2)
+                return 0;
             var fdict = dict();
             fdict.update("offset",len(bufferflist1));
             fdict.update("limit",500);
@@ -271,8 +280,10 @@ class FriendControl{
             return 0;
         }
         else{
-            trace("sucload1!");
+            trace("sucload1!", len(response.get("data")));
             bufferflist1.extend(response.get("data"));
+            //flagbuffer++;
+            //beginaddlist();
             if(len(response.get("data"))<500){
                 bufferflist1.append(dict([["name",global.getStaticString("caesar")],["id",0],["avatar_version",0],["isplayer",1]]));
                 flagbuffer++;
@@ -282,6 +293,7 @@ class FriendControl{
                 fdict = dict();
                 fdict.update("offset",len(bufferflist1));
                 fdict.update("limit",500);
+                trace("fdict", fdict);
                 ppy_query("list_friends", fdict, hfriend);
             }
             //global.http.addrequest(0,"retlev",["uid","rrstring"],[global.userid,string1],self,"retlevback");
@@ -302,13 +314,16 @@ class FriendControl{
     }
     
     function beginaddlist(){
+        trace("flagbuffer", flagbuffer);
         if(flagbuffer==2){
             flagbuffer=0;
             flagfriendover=1;
             var cfdict = dict();
+            trace("flist1", len(flist1));
             for(var i=0;i<len(flist1);i++){
                 cfdict.update(flist1[i].get("id"),flist1[i]);
             }
+            trace("buffer1", len(bufferflist1));
             for(i=0;i<len(bufferflist1);i++){
                     var fn = bufferflist1[i];
                     var id = fn.get("id");
@@ -324,28 +339,42 @@ class FriendControl{
             }
             var bd = dict();
             var db = c_opendb(0,"friendinvited");
+            //id lev visited nobility
+            trace("getNob", len(bufferflist3));
             for(i=0;i<len(bufferflist3);i++){
                 fn = bufferflist3[i];
-                id = int(fn.get("papayaid"));
+                //id = int(fn.get("papayaid"));
+                id = int(fn[0]);
                 bd.update(id,1);
                 if(cfdict.get(id)!=null){
                     var fb=cfdict.get(id);
                 }
                 else{
+                    trace("not get friend", id);
                     continue;
+                    /*
                     fb = dict();
                     fb.update("id",id);
                     flist1.append(fb);
+                    */
                 }
-                fb.update("level",fn.get("lev"));
-                fb.update("visited",fn.get("visited"));
+                fb.update("level",fn[1]);
+                fb.update("visited",fn[2]);
+                fb.update("nob", fn[3]*3);
+
                 if(fb.get("level")>-1)
                     global.ppyuserdict.update(str(id),fb); 
                 else if(db.get(str(id))==1){
                     flist1.remove(fb);
                 }
             }
-            bd.update(ppy_userid(),1);
+            trace("ppyuserdict", len(global.ppyuserdict), len(flist1));
+            if(len(flist1) > 0)
+            {
+                global.context[0].addcmd(dict([["name", "inviteFriend"]]));
+            }
+
+            bd.update(global.papaId,1);
             for(i=len(bufferflist1)-1;i>=0;i--){
                 if(bd.get(bufferflist1[i].get("id"))==1){
                     bufferflist1.pop(i);
@@ -403,6 +432,10 @@ class FriendControl{
         if(p=="retlevback"){
             retlevback(0,rc,c);
         }
+        else if(p == "loadover")
+        {
+            loadover(null, rc, c);
+        }
     }
 
     function retlevback(r,rc,c){
@@ -418,7 +451,7 @@ class FriendControl{
                 http_request(BASE_URL+"addppyfriend",retlevback,"uid="+str(global.userid)+"&rrstring="+uri_encode(string1));
                 return 0;
             }
-            var db = c_opendb(0,"friendinvited");
+            //var db = c_opendb(0,"friendinvited");
             var cfdict = dict();
             for(var i=0;i<len(flist1);i++){
                 cfdict.update(flist1[i].get("id"),flist1[i]);
@@ -431,9 +464,11 @@ class FriendControl{
                     fn = cfdict.get(id);
                 }
                 else{
+                    /*
                     if(db.get(str(id))==1){
                         continue;
                     }
+                    */
                     flist1.append(fn);
                 }
                 if(obj.get(str(id))==null || obj.get(str(id)).get("level")==-1){
@@ -447,7 +482,7 @@ class FriendControl{
                     global.ppyuserdict.update(str(id),fn);
                 }
             }
-            var s=global.getfriend(ppy_userid());
+            var s=global.getfriend(global.papaId);
             s.update("visited",1);
             s.update("level",global.user.getValue("level"));
             flagfriendover = 1;
@@ -512,27 +547,34 @@ class FriendControl{
         }
     }
     
+    const CIRCLE = 0;
+    const RANK = 1;
+    const INVITE = 2;
+    const CAESAR = 3;
+    
+    const PCIRCLE = -1;
+    const PRANK = -5;
     //view apart from data 
     function getfnode(i){
         var nd;
         var param;
         if(friendmode==1){
-            if(i==0){
+            if(i==CIRCLE){
                 nd = sprite("friend_objcircle.png");
                 param=-1;
             }
-            else if(i==1){
+            else if(i==RANK){
                 nd = sprite("friend_rank.png");
                 param=-5;
             }
-            else if(i==flength-1){
+            else if(i==INVITE){
                 nd = sprite("friend_objinvite.png");
                 nd.addsprite(friendimage[3]);
                 param=-2;
             }
             else{
-                var per=flist1[i-2];
-                if(i==2){
+                var per=flist1[i-CAESAR];
+                if(i==CAESAR){
                     nd = sprite("friend_caesar.png");
                 }
                 else{
@@ -549,6 +591,7 @@ class FriendControl{
                     name = substring(name,0,6)+"..";
                 }
                 nd.addlabel(name,null,16).anchor(50,50).pos(36,69).color(0,  0,  0,100);
+                //trace("person", per);
                 if(per.get("level")>-1){
                     var le = nd.addsprite(friendimage[4]).anchor(35,30).pos(0,0);
                     le.addlabel(str(per.get("level")),null,16).anchor(50,50).pos(19,18);
@@ -556,11 +599,17 @@ class FriendControl{
                     if(per.get("visited")==0){
                         nd.add(sprite(friendimage[2]).anchor(50,50).pos(57,56),1,2);
                     }
+                    var nobility = per.get("nob", 0);
+                    if(nobility/3 >= 3)
+                    {
+                        var vip = nd.addsprite("vip.png").anchor(50, 50).pos(60, 10).scale(20*100/70);    
+                    }
                 }
                 else{
                     nd.addsprite(friendimage[3]);
                     param=-per.get("id")-10;
                 }
+
             }
         }
         else if(friendmode==2){
@@ -642,7 +691,7 @@ class FriendControl{
                         if(friendmode==1){
                             for(var i=0;i<len(flist1);i++){
                                 if(flist1[i].get("id")==param){
-                                    selectf = i+2;
+                                    selectf = i+CAESAR;
                                     break;
                                 }
                             }
@@ -663,12 +712,19 @@ class FriendControl{
                         global.pushContext(null,new TestWebControl(0),NonAutoPop);
                     }
                     else if(param == -2){
+                        if(getmodel() == 6)
+                        {
+                            //addWeb("static_findfriends?from=game", 800, 480);
+                            global.pushContext(null, new TestWebControl(5), NonAutoPop);
+                        }
+                        /*
                         if(sysinfo(21)!=null&&int(sysinfo(21))>=4){
                             invite_friends(INVITE_STR[0],INVITE_STR[1],INVITE_STR[2]);
                         }
                         else{
                             global.pushContext(null,new TestWebControl(1),NonAutoPop);
                         }
+                        */
                     }
                     else if(param == -3){
                         global.context[0].ally(0,0,3);
@@ -691,14 +747,47 @@ class FriendControl{
         }
     }
     
+    var curInvite = 0;
+    var inviting = 0;
+    var curTimer = null;
+    function inviteAll()
+    {
+        inviting = 1;
+        if(curInvite == 0)
+        {
+            curTimer = c_addtimer(100, timerefresh);
+            //global.timer.addlistener(time()/1000+24*3600, this);
+        }
+        trace("inviteAll", len(flist1));
+        if(curInvite >= len(flist1))
+        {
+            //global.unlock();
+            curTimer.stop();
+            return;
+        }
+
+        var ppyid = flist1[curInvite++].get("id");       
+        var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
+        ppy_query("send_notification", d, finInvite);
+    }
+    function finInvite(r, rc, cdict)
+    {
+        inviting = 0;
+    }
+    function timerefresh(timer)
+    {
+        if(inviting == 0)
+            inviteAll();
+    }
+
     function invitefriend(ppyid){
         var d=dict([["message",global.getStaticString("friend_invite")],["uid",ppyid]]);
         ppy_query("send_notification",d,inviteover);
+        var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
         for(var i=0;i<len(flist1);i++){
             if(flist1[i].get("id")==ppyid){
-                trace("find",i);
+                //trace("find",i);
                 flist1.pop(i);
-                var db = c_opendb(0,"friendinvited");//invite such friend how to clear db? 
                 db.put(str(ppyid),1);
                 //updateflist1();
                 refreshflist();

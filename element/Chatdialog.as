@@ -42,9 +42,9 @@ class Chatdialog extends ContextObject{
             var l = len(t);
             var st = uri_encode(t);
             var ul = len(st);
-            l = l-(ul - l)/6;
+            //l = l-(ul - l)/6;
             if(l>120){
-                element.get(10).text(global.getFormatString("text_wordlimit_format",["[NUM]","60"])).color(100,0,0,100);
+                element.get(10).text(global.getFormatString("text_wordlimit_format",["[NUM]","120"])).color(100,0,0,100);
                 lock=0;
                 return 0;
             }
